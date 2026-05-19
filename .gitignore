@@ -1,0 +1,7 @@
+# Godot 4+ specific ignores
+.godot/
+src/.godot/
+/android/
+devlogs/priv/
+src/export/
+src/record/
