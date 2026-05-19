@@ -6,56 +6,86 @@
 [ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="3_ivh0c"]
 [ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_wreli"]
 [ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_ymk4h"]
-[ext_resource type="Texture2D" uid="uid://cidheaemokk" path="res://assets/tilemap/ground-outline-mask.png" id="6_st48t"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_a7cap"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="7_dfn7m"]
 [ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="8_8rm7r"]
-[ext_resource type="PackedScene" uid="uid://chrfjxt3c0qf3" path="res://world/world/deco_block_golden.tscn" id="8_dfn7m"]
+[ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="8_mhdck"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="9_c64tk"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="10_dfn7m"]
 [ext_resource type="PackedScene" uid="uid://djgv45k3n5ibr" path="res://object/objects/obj_switch.tscn" id="10_wreli"]
 [ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/door.gd" id="11_ymk4h"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="12_plji1"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="12_st48t"]
-[ext_resource type="PackedScene" uid="uid://bn6154eu6l5ce" path="res://object/objects/block_unmashed_1x1.tscn" id="15_dfn7m"]
+[ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="18_a7cap"]
+[ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="19_mhdck"]
 
-[node name="Level" type="Node2D" unique_id=1688286197]
+[sub_resource type="Resource" id="Resource_fnnb2"]
+script = ExtResource("19_mhdck")
+mash_type = 99
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_a7cap"]
+script = ExtResource("19_mhdck")
+mash_type = 3
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_mhdck"]
+script = ExtResource("19_mhdck")
+mash_type = 3
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_5p8t3"]
+script = ExtResource("19_mhdck")
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_q81rx"]
+script = ExtResource("19_mhdck")
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_cq6aa"]
+script = ExtResource("19_mhdck")
+mash_type = 3
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
 script = ExtResource("1_sjq8i")
+level_goal = NodePath("World/LevelGoal")
+player = NodePath("Player")
 metadata/_custom_type_script = "uid://5fpkm17tw6kn"
 
 [node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_s578s")]
 
 [node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
 position = Vector2(672, 400)
-zoom = Vector2(1.3, 1.3)
+zoom = Vector2(1.2, 1.2)
 script = ExtResource("2_q0wsq")
 
-[node name="World" parent="." unique_id=1317599791 instance=ExtResource("3_ivh0c")]
+[node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("3_ivh0c")]
+terrain = NodePath("Terrain")
+camera = NodePath("../Cam")
 
 [node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
 modulate = Color(0.95, 0.95, 0.95, 1)
 script = ExtResource("4_wreli")
 metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
 
+[node name="TileMapLayer" type="TileMapLayer" parent="World/Terrain" unique_id=263742369]
+tile_map_data = PackedByteArray("AAAJAAgAAgAAAAEAAAAKAAgAAgABAAEAAAAJAAcAAgAAAAEAAAAKAAcAAgABAAEAAAAJAAYAAgAAAAEAAAAKAAYAAgABAAEAAAAJAAUAAgAAAAEAAAAKAAUAAgABAAEAAAAJAAQAAgAAAAEAAAAKAAQAAgABAAEAAAAJAAMAAgAAAAEAAAAKAAMAAgABAAEAAAAHAAMAAgAAAAEAAAAIAAMAAgABAAEAAAAFAAMAAgAAAAEAAAAGAAMAAgABAAEAAAAFAAQAAgAAAAEAAAAGAAQAAgABAAEAAAAFAAUAAgAAAAEAAAAGAAUAAgABAAEAAAAFAAYAAgAAAAEAAAAGAAYAAgABAAEAAAAFAAcAAgAAAAEAAAAGAAcAAgABAAEAAAAFAAgAAgAAAAEAAAAGAAgAAgABAAEAAAAHAAgAAgAAAAEAAAAIAAgAAgABAAEAAAAHAAcAAgAAAAEAAAAIAAcAAgABAAEAAAAHAAYAAgAAAAEAAAAIAAYAAgABAAEAAAAHAAUAAgAAAAEAAAAIAAUAAgABAAEAAAAHAAQAAgAAAAEAAAAIAAQAAgABAAEAAAA=")
+tile_set = ExtResource("5_ymk4h")
+
 [node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=1940869259]
 light_mask = 8
-tile_map_data = PackedByteArray("AAANAAwAAAAJAAMAAAANAAsAAAAKAAEAAAANAAoAAAAKAAEAAAAMAAwAAAAJAAMAAAAMAAsAAAAKAAEAAAALAAwAAAAJAAMAAAALAAsAAAAKAAEAAAAKAAwAAAAJAAMAAAAKAAsAAAAKAAEAAAAJAAwAAAAJAAMAAAAJAAsAAAAKAAEAAAAIAAwAAAAJAAMAAAAIAAsAAAAKAAEAAAAHAAwAAAAJAAMAAAAHAAsAAAAKAAEAAAAGAAwAAAAJAAMAAAAGAAsAAAAKAAEAAAAGAAoAAAAKAAEAAAAFAAwAAAAJAAMAAAAFAAsAAAAKAAEAAAAFAAoAAAAKAAEAAAAMAAoAAAAKAAEAAAAHAAoAAAAKAAEAAAAIAAoAAAAKAAEAAAAJAAoAAAAKAAEAAAAKAAoAAAAKAAEAAAALAAoAAAAKAAEAAAAOAAoAAAAKAAEAAAAOAAsAAAAKAAEAAAAOAAwAAAAJAAMAAAALAAUAAAALAAMAAAAKAAUAAAAJAAMAAAAJAAUAAAAIAAMAAAAFAAkAAAAGAAEAAAAGAAkAAAAKAAAAAAAHAAkAAAAKAAAAAAAIAAkAAAAKAAAAAAAJAAkAAAAKAAAAAAAKAAkAAAAKAAAAAAALAAkAAAAKAAAAAAAFAAIAAAAJAAMAAAAGAAIAAAAJAAMAAAAHAAIAAAAJAAMAAAAJAAMAAAAIAAEAAAAJAAQAAAAIAAEAAAAIAAIAAAAJAAMAAAAJAAIAAAAFAAIAAAAKAAQAAAAKAAEAAAAKAAMAAAAKAAEAAAAKAAIAAAAGAAEAAAALAAQAAAALAAIAAAALAAMAAAALAAIAAAALAAIAAAALAAAAAAAMAAkAAAAKAAAAAAANAAkAAAAKAAAAAAAOAAkAAAAFAAEAAAAKAAEAAAALAAAAAAAJAAEAAAAKAAAAAAAIAAEAAAAKAAAAAAAHAAEAAAAKAAAAAAAGAAEAAAAKAAAAAAAFAAEAAAAGAAEAAAAPAAkAAAAKAAEAAAAPAAoAAAAKAAEAAAAPAAsAAAAKAAEAAAAPAAwAAAAJAAMAAAAQAAcAAAAKAAAAAAAQAAgAAAAKAAEAAAAQAAkAAAAKAAEAAAAQAAoAAAAKAAEAAAAQAAsAAAAKAAEAAAAQAAwAAAAJAAMAAAARAAcAAAAFAAEAAAARAAgAAAAKAAEAAAARAAkAAAAKAAEAAAARAAoAAAAKAAEAAAARAAsAAAAKAAEAAAARAAwAAAAJAAMAAAASAAcAAAALAAIAAAASAAgAAAALAAIAAAASAAkAAAALAAIAAAASAAoAAAALAAIAAAASAAsAAAALAAIAAAASAAwAAAALAAMAAAAOAAcAAAAIAAAAAAAOAAgAAAAIAAEAAAAPAAcAAAAKAAAAAAAPAAgAAAAKAAEAAAARAP//AAAIAAAAAAARAAAAAAAIAAEAAAARAAEAAAAIAAEAAAARAAIAAAAIAAEAAAARAAMAAAAIAAEAAAARAAQAAAAIAAEAAAARAAUAAAAIAAEAAAARAAYAAAAIAAEAAAASAP//AAALAAAAAAASAAAAAAALAAIAAAASAAEAAAALAAIAAAASAAIAAAALAAIAAAASAAMAAAALAAIAAAASAAQAAAALAAIAAAASAAUAAAALAAIAAAASAAYAAAALAAIAAAABAP//AAAIAAAAAAABAAAAAAAIAAEAAAABAAEAAAAIAAEAAAABAAIAAAAIAAEAAAABAAMAAAAIAAEAAAABAAQAAAAIAAEAAAABAAUAAAAIAAEAAAABAAYAAAAIAAEAAAABAAcAAAAIAAEAAAABAAgAAAAIAAEAAAABAAkAAAAIAAEAAAABAAoAAAAIAAEAAAABAAsAAAAIAAEAAAABAAwAAAAIAAMAAAACAP//AAAKAAAAAAACAAAAAAAKAAEAAAACAAEAAAAKAAEAAAACAAIAAAAKAAEAAAACAAMAAAAKAAEAAAACAAQAAAAKAAEAAAACAAUAAAAKAAEAAAACAAYAAAAKAAEAAAACAAcAAAAKAAEAAAACAAgAAAAKAAEAAAACAAkAAAAKAAEAAAACAAoAAAAKAAEAAAACAAsAAAAKAAEAAAACAAwAAAAJAAMAAAADAP//AAAKAAAAAAADAAAAAAAKAAEAAAADAAEAAAAKAAEAAAADAAIAAAAKAAEAAAADAAgAAAAKAAEAAAADAAkAAAAKAAEAAAADAAoAAAAKAAEAAAADAAsAAAAKAAEAAAADAAwAAAAJAAMAAAAEAAEAAAAKAAEAAAAEAAIAAAAGAAIAAAAEAAkAAAAKAAEAAAAEAAoAAAAKAAEAAAAEAAsAAAAKAAEAAAAEAAwAAAAJAAMAAAADAAMAAAAKAAEAAAADAAQAAAAKAAEAAAADAAUAAAAKAAEAAAADAAYAAAAKAAEAAAADAAcAAAAKAAEAAAAEAP//AAAKAAAAAAAEAAAAAAAKAAEAAAAEAAMAAAALAAIAAAAEAAQAAAALAAIAAAAEAAUAAAALAAIAAAAEAAYAAAALAAIAAAAEAAcAAAALAAIAAAAEAAgAAAAGAAEAAAAFAP//AAALAAAAAAAFAAAAAAALAAIAAAAFAAgAAAALAAAAAAA=")
+tile_map_data = PackedByteArray("AAANAAwAAAAJAAMAAAANAAsAAAAKAAEAAAANAAoAAAAKAAEAAAAMAAwAAAAIAAMAAAAMAAsAAAAIAAEAAAAJAAwAAAALAAMAAAAJAAsAAAALAAIAAAAIAAwAAAAJAAMAAAAIAAsAAAAKAAEAAAAHAAwAAAAJAAMAAAAHAAsAAAAKAAEAAAAGAAwAAAAJAAMAAAAGAAsAAAAKAAEAAAAGAAoAAAAKAAEAAAAFAAwAAAAJAAMAAAAFAAsAAAAKAAEAAAAFAAoAAAAKAAEAAAAMAAoAAAAIAAEAAAAHAAoAAAAKAAEAAAAIAAoAAAAKAAEAAAAJAAoAAAALAAIAAAAOAAoAAAAKAAEAAAAOAAsAAAAKAAEAAAAOAAwAAAAJAAMAAAALAAUAAAALAAMAAAAKAAUAAAAJAAMAAAAJAAUAAAAIAAMAAAAFAAkAAAAGAAEAAAAGAAkAAAAKAAAAAAAHAAkAAAAKAAAAAAAIAAkAAAAKAAAAAAAJAAkAAAALAAAAAAAFAAIAAAAJAAMAAAAGAAIAAAAJAAMAAAAHAAIAAAAJAAMAAAAJAAMAAAAIAAEAAAAJAAQAAAAIAAEAAAAIAAIAAAAJAAMAAAAJAAIAAAAFAAIAAAAKAAQAAAAKAAEAAAAKAAMAAAAKAAEAAAAKAAIAAAAGAAEAAAALAAQAAAALAAIAAAALAAMAAAALAAIAAAALAAIAAAALAAAAAAAMAAkAAAAIAAAAAAANAAkAAAAKAAAAAAAOAAkAAAAFAAEAAAAKAAEAAAALAAAAAAAJAAEAAAAKAAAAAAAIAAEAAAAKAAAAAAAHAAEAAAAKAAAAAAAGAAEAAAAKAAAAAAAFAAEAAAAGAAEAAAAPAAkAAAAKAAEAAAAPAAoAAAAKAAEAAAAPAAsAAAAKAAEAAAAPAAwAAAAJAAMAAAAQAAcAAAAKAAAAAAAQAAgAAAAKAAEAAAAQAAkAAAAKAAEAAAAQAAoAAAAKAAEAAAAQAAsAAAAKAAEAAAAQAAwAAAAJAAMAAAARAAcAAAAFAAEAAAARAAgAAAAKAAEAAAARAAkAAAAKAAEAAAARAAoAAAAKAAEAAAARAAsAAAAKAAEAAAARAAwAAAAJAAMAAAASAAcAAAAKAAEAAAASAAgAAAAKAAEAAAASAAkAAAAKAAEAAAASAAoAAAAKAAEAAAASAAsAAAAKAAEAAAASAAwAAAAJAAMAAAAOAAcAAAAIAAAAAAAOAAgAAAAIAAEAAAAPAAcAAAAKAAAAAAAPAAgAAAAKAAEAAAARAP//AAAIAAAAAAARAAAAAAAIAAEAAAARAAEAAAAIAAEAAAARAAIAAAAIAAEAAAARAAMAAAAIAAEAAAARAAQAAAAIAAEAAAARAAUAAAAIAAEAAAARAAYAAAAIAAEAAAASAP//AAAKAAAAAAASAAAAAAAKAAEAAAASAAEAAAAKAAEAAAASAAIAAAAKAAEAAAASAAMAAAAKAAEAAAASAAQAAAAKAAEAAAASAAUAAAAKAAEAAAASAAYAAAAKAAEAAAABAP//AAAIAAAAAAABAAAAAAAIAAEAAAABAAEAAAAIAAEAAAABAAIAAAAIAAEAAAABAAMAAAAIAAEAAAABAAQAAAAIAAEAAAABAAUAAAAIAAEAAAABAAYAAAAIAAEAAAABAAcAAAAIAAEAAAABAAgAAAAIAAEAAAABAAkAAAAIAAEAAAABAAoAAAAIAAEAAAABAAsAAAAIAAEAAAABAAwAAAAIAAMAAAACAP//AAAKAAAAAAACAAAAAAAKAAEAAAACAAEAAAAKAAEAAAACAAIAAAAKAAEAAAACAAMAAAAKAAEAAAACAAQAAAAKAAEAAAACAAUAAAAKAAEAAAACAAYAAAAKAAEAAAACAAcAAAAKAAEAAAACAAgAAAAKAAEAAAACAAkAAAAKAAEAAAACAAoAAAAKAAEAAAACAAsAAAAKAAEAAAACAAwAAAAJAAMAAAADAP//AAAKAAAAAAADAAAAAAAKAAEAAAADAAEAAAAKAAEAAAADAAIAAAAKAAEAAAADAAgAAAAKAAEAAAADAAkAAAAKAAEAAAADAAoAAAAKAAEAAAADAAsAAAAKAAEAAAADAAwAAAAJAAMAAAAEAAEAAAAKAAEAAAAEAAIAAAAGAAIAAAAEAAkAAAAKAAEAAAAEAAoAAAAKAAEAAAAEAAsAAAAKAAEAAAAEAAwAAAAJAAMAAAADAAMAAAAKAAEAAAADAAQAAAAKAAEAAAADAAUAAAAKAAEAAAADAAYAAAAKAAEAAAADAAcAAAAKAAEAAAAEAP//AAAKAAAAAAAEAAAAAAAKAAEAAAAEAAMAAAALAAIAAAAEAAQAAAALAAIAAAAEAAUAAAALAAIAAAAEAAYAAAALAAIAAAAEAAcAAAALAAIAAAAEAAgAAAAGAAEAAAAFAP//AAALAAAAAAAFAAAAAAALAAIAAAAFAAgAAAALAAAAAAATAAwAAAAJAAMAAAATAAsAAAAKAAEAAAATAAoAAAAKAAEAAAATAAkAAAAKAAEAAAATAAgAAAAKAAEAAAATAAcAAAAKAAEAAAATAAYAAAAKAAEAAAATAAUAAAAKAAEAAAATAAQAAAAKAAEAAAATAAMAAAAKAAEAAAATAAIAAAAKAAEAAAATAAEAAAAKAAEAAAATAAAAAAAKAAEAAAATAP//AAAKAAAAAAAUAP//AAALAAAAAAAUAAAAAAALAAIAAAAUAAEAAAALAAIAAAAUAAIAAAALAAIAAAAUAAMAAAALAAIAAAAUAAQAAAALAAIAAAAUAAUAAAALAAIAAAAUAAYAAAALAAIAAAAUAAcAAAALAAIAAAAUAAgAAAALAAIAAAAUAAkAAAALAAIAAAAUAAoAAAALAAIAAAAUAAsAAAALAAIAAAAUAAwAAAALAAMAAAA=")
 tile_set = ExtResource("5_ymk4h")
 
-[node name="Foreground" type="TileMapLayer" parent="World/Terrain" unique_id=535445719]
-tile_set = ExtResource("5_ymk4h")
+[node name="WorldBlocks" type="Node2D" parent="World" unique_id=878227140]
+script = ExtResource("7_a7cap")
+metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
 
-[node name="Sprite2D" type="Sprite2D" parent="World/Terrain" unique_id=1770064885]
-clip_children = 1
-texture = ExtResource("6_st48t")
-centered = false
-
-[node name="Outline" type="TileMapLayer" parent="World/Terrain/Sprite2D" unique_id=1563137053]
-tile_set = ExtResource("5_ymk4h")
-
-[node name="DecoBlock2" parent="World/Terrain" unique_id=1372033511 instance=ExtResource("8_dfn7m")]
+[node name="DecoBlock" parent="World/WorldBlocks" unique_id=825592049 instance=ExtResource("8_mhdck")]
 position = Vector2(320, 192)
 
-[node name="DecoBlock3" parent="World/Terrain" unique_id=1300634635 instance=ExtResource("8_dfn7m")]
+[node name="DecoBlock2" parent="World/WorldBlocks" unique_id=2141752553 instance=ExtResource("8_mhdck")]
 position = Vector2(704, 640)
 
 [node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("7_dfn7m")]
@@ -71,18 +101,19 @@ script = ExtResource("8_8rm7r")
 metadata/_custom_type_script = "uid://blq670fy1uldv"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("10_dfn7m")]
-is_mash_type = 99
+attributes = SubResource("Resource_fnnb2")
 
 [node name="MashBlockCheckerID2" parent="World/LevelGoal/Order" unique_id=1137784662 instance=ExtResource("10_dfn7m")]
 position = Vector2(64, 0)
-is_mash_type = 1
+attributes = SubResource("Resource_a7cap")
 
 [node name="MashBlockCheckerID3" parent="World/LevelGoal/Order" unique_id=6362023 instance=ExtResource("10_dfn7m")]
 position = Vector2(0, 64)
-is_mash_type = 1
+attributes = SubResource("Resource_mhdck")
 
 [node name="MashBlockCheckerID4" parent="World/LevelGoal/Order" unique_id=1639356803 instance=ExtResource("10_dfn7m")]
 position = Vector2(-64, 64)
+attributes = SubResource("Resource_5p8t3")
 
 [node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("12_plji1")]
 position = Vector2(586, 176)
@@ -108,13 +139,14 @@ position = Vector2(576, 416)
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("9_c64tk")]
 position = Vector2(544, 448)
 
-[node name="Unmashed" parent="." unique_id=1096808338 instance=ExtResource("15_dfn7m")]
-position = Vector2(352, 464)
+[node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("18_a7cap")]
+position = Vector2(352, 432)
+block_attributes = SubResource("Resource_q81rx")
 
-[node name="Unmashed2" parent="." unique_id=1983073269 instance=ExtResource("15_dfn7m")]
-position = Vector2(864, 464)
-mash_type = 1
+[node name="UnmashedSpawner2" parent="." unique_id=562887108 instance=ExtResource("18_a7cap")]
+position = Vector2(864, 480)
+block_attributes = SubResource("Resource_cq6aa")
 
-[node name="Unmashed3" parent="." unique_id=1555404407 instance=ExtResource("15_dfn7m")]
-position = Vector2(1056, 352)
-mash_type = 1
+[node name="UnmashedSpawner3" parent="." unique_id=1054915082 instance=ExtResource("18_a7cap")]
+position = Vector2(1056, 384)
+block_attributes = SubResource("Resource_cq6aa")
