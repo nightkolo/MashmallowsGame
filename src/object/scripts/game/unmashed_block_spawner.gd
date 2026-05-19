@@ -9,6 +9,8 @@ class_name UnmashedSpawner
 @export var tutorial_block: bool = false ## If [code]true[/code], this block shows a "Press X to Mash" prompt.
 @export var custom_spawn: Node2D ## Spawn location in the tree. Default is [member GameMgr.current_level] if not assigned
 @export_tool_button("Display (For this specific node only)") var p_display = display_block
+@export_group("Customize")
+@export var cherry_bomb_strength: float = 1600.0 
 @export_category("Objects to Assign")
 @export var sprite: Sprite2D ## For displaying node in editor
 @export var collision_deflector: StaticBody2D ## For preventing player from being in the spawn location of this spawner
@@ -44,6 +46,7 @@ func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: #
 	unmashed.global_position = global_position
 	unmashed.attributes = block_attributes
 	unmashed.tutorial_block = tutorial_block
+	unmashed.cherry_bomb_strength = cherry_bomb_strength
 	unmashed.was_mashed = false
 	
 	await _deflect_end()
