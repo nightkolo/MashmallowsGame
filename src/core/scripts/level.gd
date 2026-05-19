@@ -55,7 +55,7 @@ func deflect_spawn_blocks():
 
 func spawn_blocks(p_spawn_speed: float = spawn_anim_time_each):
 	for spawn: UnmashedSpawner in spawners:
-		await spawn.spawn(0, p_spawn_speed)
+		await spawn.spawn(-1, p_spawn_speed)
 
 
 func anim_level_goal():

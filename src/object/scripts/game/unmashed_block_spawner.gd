@@ -61,6 +61,7 @@ func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: #
 			GameMgr.current_level.move_child(unmashed, node_index)
 		
 	unmashed.anim_spawn_particles()
+	unmashed.name = "Unmashed" + str(GameLogic.number_of_blocks)
 
 	await get_tree().create_timer(misc_consective_delay).timeout
 	
