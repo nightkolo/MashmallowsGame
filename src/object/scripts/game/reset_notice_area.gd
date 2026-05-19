@@ -1,9 +1,14 @@
+## @experimental
 extends Area2D
 class_name ResetNoticeArea
 
-enum Condition {NO_UNMASHED_IN_AREA, NO_CHERRY_BOMB_IN_AREA}
+enum Condition {
+	NO_UNMASHED_IN_AREA = 0, 
+	NO_CHERRY_BOMB_IN_AREA = 1 ## @experimental
+	}
 
 @export var condition: Condition
+@export var blocks_in_area_should_be: int 
 
 var timer: Timer = Timer.new()
 
@@ -19,6 +24,17 @@ func _ready() -> void:
 		match condition:
 			
 			Condition.NO_UNMASHED_IN_AREA:
+				# if !(body is Player):
+
+				# 	return
+				# var player := body as Player
+				# var overlapping := get_overlapping_bodies()
+				# var has_unmashed := overlapping.any(func(node):
+				# 	return node is Unmashed
+				# )
+				# if !has_unmashed and player.child_blocks.size() == 1:
+				# 	got_stuck()
+
 				if body is Player:
 					var player := body as Player
 					var bodies: Array[Node2D] = get_overlapping_bodies()
@@ -27,6 +43,18 @@ func _ready() -> void:
 						return entry is Unmashed
 						).is_empty() && player.child_blocks.size() == 1:
 							got_stuck()
+
+			Condition.NO_CHERRY_BOMB_IN_AREA:
+				pass
+				# if body is Player:
+				# 	var player := body as Player
+				# 	var bodies: Array[Node2D] = get_overlapping_bodies()
+					
+				# 	if bodies.filter(
+				# 		func(entry: Node2D): 
+				# 		return entry is Unmashed
+				# 		).is_empty() && player.child_blocks.size() == 1:
+				# 			got_stuck()
 		)
 
 

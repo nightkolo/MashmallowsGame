@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="17_1c02f"]
 [ext_resource type="Script" uid="uid://b1ywqitlocj3y" path="res://object/scripts/one_way_platform.gd" id="18_1c02f"]
 [ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="18_1owjf"]
+[ext_resource type="Script" uid="uid://htbtlhtomd2y" path="res://object/scripts/game/reset_notice_area.gd" id="18_354dw"]
 
 [sub_resource type="Resource" id="Resource_bj6vw"]
 script = ExtResource("17_1c02f")
@@ -42,6 +43,9 @@ metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 [sub_resource type="Resource" id="Resource_6x15t"]
 script = ExtResource("17_1c02f")
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x15t"]
+size = Vector2(674, 258)
 
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "level_info", "player")]
 script = ExtResource("1_qvnao")
@@ -126,7 +130,7 @@ Be gentle, they're overwhelmed."
 offset_bottom = 176.0
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-27421.738, 3.358441e-12, 4776, 3584)
+region_rect = Rect2(-55308.668, 6.773264e-12, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 248.0
@@ -139,7 +143,7 @@ visible_characters = 73
 
 [node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
 position = Vector2(255, 162)
-rotation = 0.006494521
+rotation = -0.107482806
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_12cdj")]
 position = Vector2(608, 432)
@@ -165,5 +169,15 @@ block_attributes = SubResource("Resource_6x15t")
 [node name="UnmashedSpawner6" parent="." unique_id=912885785 instance=ExtResource("18_1owjf")]
 position = Vector2(352, 120)
 block_attributes = SubResource("Resource_6x15t")
+
+[node name="ResetNoticeArea" type="Area2D" parent="." unique_id=1216073129]
+script = ExtResource("18_354dw")
+condition = 1
+blocks_in_area_should_be = 3
+metadata/_custom_type_script = "uid://htbtlhtomd2y"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResetNoticeArea" unique_id=1537824399]
+position = Vector2(519, 487)
+shape = SubResource("RectangleShape2D_6x15t")
 
 [editable path="World/LevelInfo"]
