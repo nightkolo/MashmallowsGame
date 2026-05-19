@@ -100,7 +100,7 @@ func _ready() -> void:
 	)
 	
 	GameLogic.order_gain.connect(func(_amount: int):
-		var comp := GameLogic.completion_percentage
+		var comp : float = GameLogic.completion_percentage
 		
 		if comp != 1.0:
 			var sfx: AudioStreamPlayer = order_progress.pick_random()

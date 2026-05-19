@@ -15,13 +15,13 @@ func _ready() -> void:
 		)
 	
 	sfx_btn.pressed.connect(func():
-		var setting := GameMgr.get_game_sfx_muted_setting()
+		var setting : bool = GameMgr.get_game_sfx_muted_setting()
 		GameMgr.set_game_sfx_muted(!setting)
 		
 		update_options()
 		)
 	music_btn.pressed.connect(func():
-		var setting := GameMgr.get_game_music_muted_setting()
+		var setting : bool = GameMgr.get_game_music_muted_setting()
 		GameMgr.set_game_music_muted(!setting)
 		
 		update_options()
