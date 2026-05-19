@@ -59,7 +59,7 @@ func _ready() -> void:
 	monolog.monolog_finished.connect(func():
 		await get_tree().create_timer(1.5).timeout
 
-		Trans.player_zoom_to_scene("res://world/levels/level_1.tscn")
+		Trans.player_zoom_to_scene(Util.LEVEL_FILE_BEGIN + "1" + Util.LEVEL_FILE_END)
 		# GameMgr.game_end.emit()
 	)
 	player.has_waken_up.connect(func():

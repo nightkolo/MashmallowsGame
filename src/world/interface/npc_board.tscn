@@ -124,7 +124,6 @@ position = Vector2(-86, -135)
 
 [node name="InteractNotice" type="ColorRect" parent="InfoNodes/Sprite2D" unique_id=1001590448]
 unique_name_in_owner = true
-visible = false
 offset_left = 35.0
 offset_top = 190.0
 offset_right = 193.0

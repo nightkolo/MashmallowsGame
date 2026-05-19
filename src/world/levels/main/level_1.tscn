@@ -106,10 +106,21 @@ offset_top = 464.0
 offset_right = 936.0
 offset_bottom = 504.0
 
-[node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-200.98357, 2.4613424e-14, 4776, 3584)
+[node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.5, 0.5)
 
-[node name="i_circle" parent="World/LevelInfo/i_node" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
+[node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
+region_rect = Rect2(-110.26689, 1.3503796e-14, 4776, 3584)
+
+[node name="MonologLabel" parent="World/LevelInfo/LabelContainer" parent_id_path=PackedInt32Array(1741767880, 7455025) index="0" unique_id=587048025]
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="InfoSpriteNode" parent="World/LevelInfo" index="2" unique_id=1221176953]
+visible = false
+
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
 position = Vector2(168, 256)
 rotation = 0.12809762
 

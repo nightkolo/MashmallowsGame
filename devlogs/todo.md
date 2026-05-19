@@ -27,8 +27,8 @@
     - [x] Fix bitten masking
     - [x] Choice button theme
     - [x] Spawner Deflector
+    - [x] Undo help
     - [ ] Fix rough transition
-    - [ ] Undo help
   - [x] Blocks
     - [x] Styled press "X" to mash
     - [x] Angry eyed cherry bomb

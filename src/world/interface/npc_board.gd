@@ -91,7 +91,8 @@ func anim_monolog_active(active: bool):
 var t_interact: Tween
 
 func anim_interact(active: bool):
-	
+	# interact_notice.visible = active
+
 	if t_interact:
 		t_interact.kill()
 	t_interact = create_tween().set_parallel(true)
