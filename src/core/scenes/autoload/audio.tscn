@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://bmw5xc6xifxkt"]
+
+[ext_resource type="Script" uid="uid://cu082kfq5wwn3" path="res://core/scripts/audio.gd" id="1_0i5ur"]
+[ext_resource type="AudioStream" uid="uid://dcxe7scqjrox0" path="res://audio/sounds/order_loss.ogg" id="2_a8t0x"]
+[ext_resource type="AudioStream" uid="uid://c8mdl0rnljbfq" path="res://audio/sounds/order_lost.wav" id="3_a8t0x"]
+[ext_resource type="AudioStream" uid="uid://bffdthrjgvshy" path="res://audio/sounds/order_progress_01.wav" id="4_a8t0x"]
+[ext_resource type="AudioStream" uid="uid://dxhpvdo2rxhw" path="res://audio/sounds/order_complete.wav" id="5_a8t0x"]
+[ext_resource type="AudioStream" uid="uid://bv86nt5h231jl" path="res://audio/sounds/order_progress_02.wav" id="5_pf5qh"]
+[ext_resource type="AudioStream" uid="uid://cayy711rg26c" path="res://audio/music/stage_music_01.ogg" id="7_dv5vm"]
+[ext_resource type="AudioStream" uid="uid://fx4btcdoowkx" path="res://audio/sounds/game_reset_01.wav" id="8_1jeqf"]
+[ext_resource type="AudioStream" uid="uid://ctr6ph8bi3wnu" path="res://audio/sounds/game_reset_02.wav" id="9_lo713"]
+[ext_resource type="AudioStream" uid="uid://dbasaqplmrtor" path="res://audio/sounds/game_pause.wav" id="10_2o34p"]
+[ext_resource type="AudioStream" uid="uid://dv13xrx4125mj" path="res://audio/sounds/game_start_01.wav" id="11_fetaq"]
+[ext_resource type="AudioStream" uid="uid://dgi0dgydt3bxl" path="res://audio/sounds/game_start_02.wav" id="12_fetaq"]
+[ext_resource type="AudioStream" uid="uid://dnmoufaarbyrq" path="res://audio/sounds/button_click_01.wav" id="13_bptgd"]
+[ext_resource type="AudioStream" uid="uid://q4nhdfcpj1df" path="res://audio/sounds/button_click_02.wav" id="14_6k8tn"]
+[ext_resource type="AudioStream" uid="uid://dchre6eq6lpma" path="res://audio/sounds/button_click_03.wav" id="15_le1s8"]
+[ext_resource type="AudioStream" uid="uid://dyanh6tuto5bi" path="res://audio/sounds/button_click_04.wav" id="16_77vwl"]
+[ext_resource type="AudioStream" uid="uid://l1b6wlrgof7e" path="res://audio/sounds/ui_button_hover.ogg" id="17_77vwl"]
+[ext_resource type="AudioStream" uid="uid://ctd1pw4r4q7iy" path="res://audio/sounds/transition_up_04.wav" id="18_5kwce"]
+[ext_resource type="AudioStream" uid="uid://dgqil8opubafv" path="res://audio/sounds/transition_down_02.wav" id="19_6tju7"]
+[ext_resource type="AudioStream" uid="uid://bx5etj3xhfa2v" path="res://audio/sounds/transition_up_02.wav" id="20_fxsxp"]
+[ext_resource type="AudioStream" uid="uid://dwkdw6kh7aj2q" path="res://audio/sounds/text_01.wav" id="21_ev6ee"]
+[ext_resource type="AudioStream" uid="uid://dk1laxpyjlaah" path="res://audio/sounds/level_info.wav" id="21_n40pt"]
+[ext_resource type="AudioStream" uid="uid://b4ipf5eei7e5g" path="res://audio/sounds/monolog_box_off.wav" id="22_6tju7"]
+[ext_resource type="AudioStream" uid="uid://dhmlmpn6kvrtc" path="res://audio/sounds/monolog_box_on.wav" id="23_duyo6"]
+[ext_resource type="AudioStream" uid="uid://c11v7qosjbk8i" path="res://audio/sounds/monolog_next_01.wav" id="23_n40pt"]
+
+[node name="Audio" type="Node" unique_id=686307286]
+process_mode = 3
+script = ExtResource("1_0i5ur")
+
+[node name="Gameplay" type="Node" parent="." unique_id=1261521769]
+
+[node name="OrderLoss" type="AudioStreamPlayer" parent="Gameplay" unique_id=2146919442]
+unique_name_in_owner = true
+stream = ExtResource("2_a8t0x")
+bus = &"Gameplay"
+
+[node name="OrderLost" type="AudioStreamPlayer" parent="Gameplay" unique_id=304652917]
+unique_name_in_owner = true
+stream = ExtResource("3_a8t0x")
+volume_db = 2.0
+bus = &"Gameplay"
+
+[node name="OrderProgress01" type="AudioStreamPlayer" parent="Gameplay" unique_id=498794114]
+unique_name_in_owner = true
+stream = ExtResource("4_a8t0x")
+volume_db = 5.0
+bus = &"Gameplay"
+
+[node name="OrderProgress02" type="AudioStreamPlayer" parent="Gameplay" unique_id=1267598244]
+unique_name_in_owner = true
+stream = ExtResource("5_a8t0x")
+volume_db = 6.0
+bus = &"Gameplay"
+
+[node name="OrderProgress03" type="AudioStreamPlayer" parent="Gameplay" unique_id=302813439]
+unique_name_in_owner = true
+stream = ExtResource("5_pf5qh")
+volume_db = 5.0
+bus = &"Gameplay"
+
+[node name="UI" type="Node" parent="." unique_id=1306566131]
+
+[node name="MusicStage" type="AudioStreamPlayer" parent="UI" unique_id=2084042225]
+unique_name_in_owner = true
+stream = ExtResource("7_dv5vm")
+volume_db = -8.0
+bus = &"Music"
+
+[node name="GameReset01" type="AudioStreamPlayer" parent="UI" unique_id=2113812102]
+unique_name_in_owner = true
+stream = ExtResource("8_1jeqf")
+bus = &"UI"
+
+[node name="GameReset02" type="AudioStreamPlayer" parent="UI" unique_id=107026745]
+unique_name_in_owner = true
+stream = ExtResource("9_lo713")
+bus = &"UI"
+
+[node name="GamePause" type="AudioStreamPlayer" parent="UI" unique_id=2004807554]
+unique_name_in_owner = true
+stream = ExtResource("10_2o34p")
+bus = &"UI"
+
+[node name="GameUnpause" type="AudioStreamPlayer" parent="UI" unique_id=299801094]
+unique_name_in_owner = true
+stream = ExtResource("11_fetaq")
+bus = &"UI"
+
+[node name="GameStart" type="AudioStreamPlayer" parent="UI" unique_id=186682741]
+unique_name_in_owner = true
+stream = ExtResource("12_fetaq")
+bus = &"UI"
+
+[node name="UIButtonClick" type="AudioStreamPlayer" parent="UI" unique_id=448444448]
+unique_name_in_owner = true
+stream = ExtResource("13_bptgd")
+bus = &"UI"
+
+[node name="UIButtonClick2" type="AudioStreamPlayer" parent="UI" unique_id=2046436096]
+unique_name_in_owner = true
+stream = ExtResource("14_6k8tn")
+bus = &"UI"
+
+[node name="UIButtonClick3" type="AudioStreamPlayer" parent="UI" unique_id=1930317524]
+unique_name_in_owner = true
+stream = ExtResource("15_le1s8")
+bus = &"UI"
+
+[node name="UIButtonClick4" type="AudioStreamPlayer" parent="UI" unique_id=117843520]
+unique_name_in_owner = true
+stream = ExtResource("16_77vwl")
+bus = &"UI"
+
+[node name="UIButtonHover" type="AudioStreamPlayer" parent="UI" unique_id=996246704]
+unique_name_in_owner = true
+stream = ExtResource("17_77vwl")
+volume_db = -20.0
+bus = &"UI"
+
+[node name="Trans1" type="AudioStreamPlayer" parent="UI" unique_id=749926112]
+unique_name_in_owner = true
+stream = ExtResource("18_5kwce")
+volume_db = -10.0
+bus = &"UI"
+
+[node name="Trans2" type="AudioStreamPlayer" parent="UI" unique_id=1209043698]
+unique_name_in_owner = true
+stream = ExtResource("19_6tju7")
+volume_db = -10.0
+bus = &"UI"
+
+[node name="Trans3" type="AudioStreamPlayer" parent="UI" unique_id=809580551]
+unique_name_in_owner = true
+stream = ExtResource("20_fxsxp")
+volume_db = -10.0
+bus = &"UI"
+
+[node name="MonologOn" type="AudioStreamPlayer" parent="UI" unique_id=262010473]
+unique_name_in_owner = true
+stream = ExtResource("23_duyo6")
+volume_db = -10.0
+bus = &"UI"
+
+[node name="LevelInfoOn" type="AudioStreamPlayer" parent="UI" unique_id=1321391458]
+unique_name_in_owner = true
+stream = ExtResource("21_n40pt")
+bus = &"UI"
+
+[node name="MonologOff" type="AudioStreamPlayer" parent="UI" unique_id=194830153]
+unique_name_in_owner = true
+stream = ExtResource("22_6tju7")
+volume_db = -30.0
+bus = &"UI"
+
+[node name="MonologNext" type="AudioStreamPlayer" parent="UI" unique_id=967794462]
+unique_name_in_owner = true
+stream = ExtResource("23_n40pt")
+bus = &"UI"
+
+[node name="Text1" type="AudioStreamPlayer" parent="UI" unique_id=1606251481]
+unique_name_in_owner = true
+stream = ExtResource("21_ev6ee")
+bus = &"UI"

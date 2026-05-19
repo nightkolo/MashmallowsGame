@@ -1,0 +1,312 @@
+[gd_scene format=3 uid="uid://chans4uy22002"]
+
+[ext_resource type="Script" uid="uid://b56yygeh2dlui" path="res://object/scripts/player.gd" id="1_4nn7u"]
+[ext_resource type="PackedScene" uid="uid://bt15qcfnm63xf" path="res://object/objects/block_mashed_1x1.tscn" id="2_2147m"]
+[ext_resource type="Script" uid="uid://so163641iedd" path="res://object/scripts/components/component_player_animation.gd" id="3_h5uus"]
+[ext_resource type="Script" uid="uid://ba8ddu0h1rbst" path="res://object/scripts/controller/state_machine.gd" id="4_q8hb4"]
+[ext_resource type="Script" uid="uid://5q2iroi0log8" path="res://object/scripts/controller/run_state.gd" id="5_2rlf8"]
+[ext_resource type="Script" uid="uid://cscy5x7o5jpgj" path="res://object/scripts/controller/airborne_state.gd" id="5_ksjmp"]
+[ext_resource type="Script" uid="uid://dhy6g1c121mo8" path="res://object/scripts/controller/idle_state.gd" id="5_q8hb4"]
+[ext_resource type="AudioStream" uid="uid://goybud2pjn8p" path="res://audio/sfx/player_jump_multiple.wav" id="7_4driq"]
+[ext_resource type="Script" uid="uid://cwo2p27ganrdb" path="res://object/scripts/components/component_player_sfx.gd" id="8_vhdde"]
+[ext_resource type="AudioStream" uid="uid://c3pemrmkkgaqu" path="res://audio/sfx/player_fall_01.wav" id="11_33vi3"]
+[ext_resource type="AudioStream" uid="uid://dn5iyogt2oje6" path="res://audio/sfx/player_jump_single.wav" id="13_s62i3"]
+[ext_resource type="AudioStream" uid="uid://bxcr6d163a1y0" path="res://audio/sfx/player_jump_heavy.wav" id="15_5xn7n"]
+[ext_resource type="AudioStream" uid="uid://cglohpgbj0fku" path="res://audio/sfx/player_land_03.wav" id="16_4driq"]
+[ext_resource type="AudioStream" uid="uid://brm8n6hfiqij4" path="res://audio/sfx/player_land_01.wav" id="16_81t2s"]
+[ext_resource type="AudioStream" uid="uid://cqh85kxbs5ptq" path="res://audio/sfx/player_unmash_01.wav" id="16_ucb6m"]
+[ext_resource type="AudioStream" uid="uid://c0ildgki0e3p3" path="res://audio/sfx/player_mash_03.wav" id="17_81t2s"]
+[ext_resource type="AudioStream" uid="uid://cc4b71f6qjok0" path="res://audio/sfx/player_land_02.wav" id="17_djp6n"]
+[ext_resource type="AudioStream" uid="uid://dy42gg0257x5m" path="res://audio/sfx/block_unmashed_entered.wav" id="19_33vi3"]
+[ext_resource type="AudioStream" uid="uid://cvxfwclmul14h" path="res://audio/sfx/player_land_04.wav" id="19_exfef"]
+[ext_resource type="AudioStream" uid="uid://gjp2178l1lwb" path="res://audio/sfx/cherry_bomb_exploded_01.wav" id="19_vhdde"]
+[ext_resource type="AudioStream" uid="uid://bax3g23nfqmt8" path="res://audio/sfx/vocal_cherry_bomb_laugh.wav" id="20_822h2"]
+[ext_resource type="AudioStream" uid="uid://dfagxvgn36fsu" path="res://audio/sfx/player_land_hard_01.wav" id="20_cv7sh"]
+[ext_resource type="AudioStream" uid="uid://7dekcvumq8hk" path="res://audio/sfx/player_squash_01.wav" id="20_s62i3"]
+[ext_resource type="AudioStream" uid="uid://dfki70h17wv8g" path="res://audio/sfx/block_unmashed_exited.wav" id="20_uls5r"]
+[ext_resource type="AudioStream" uid="uid://b6u4rrm7g5qkn" path="res://audio/sfx/player_stretch_01.wav" id="21_822h2"]
+[ext_resource type="AudioStream" uid="uid://c1ft78ncmebur" path="res://audio/sfx/player_mash_01.wav" id="22_xerq1"]
+[ext_resource type="AudioStream" uid="uid://dpnhafwpo760x" path="res://audio/sfx/player_slide_01.wav" id="24_dosag"]
+[ext_resource type="PackedScene" uid="uid://b8b1jq0amanoa" path="res://world/particles_z.tscn" id="25_33vi3"]
+[ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="28_5xn7n"]
+[ext_resource type="LabelSettings" uid="uid://dohg6g363o0sh" path="res://core/resources/label/prompt_text_label.tres" id="28_81t2s"]
+
+[sub_resource type="Gradient" id="Gradient_uls5r"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s62i3"]
+gradient = SubResource("Gradient_uls5r")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_33vi3"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4jk3r"]
+gradient = SubResource("Gradient_33vi3")
+width = 700
+height = 700
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_822h2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5xn7n"]
+gradient = SubResource("Gradient_822h2")
+
+[node name="Player" type="CharacterBody2D" unique_id=1691389058 node_paths=PackedStringArray("animator", "state_machine", "original_block")]
+collision_layer = 2
+collision_mask = 2153
+script = ExtResource("1_4nn7u")
+animator = NodePath("PlayerAnimationComponent")
+state_machine = NodePath("StateMachine")
+original_block = NodePath("Mashed")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1616398743]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=301866769]
+self_modulate = Color(1, 1, 1, 0.2)
+z_index = -1
+texture = SubResource("GradientTexture2D_s62i3")
+
+[node name="TerrainLight" type="PointLight2D" parent="." unique_id=1262133972]
+energy = 0.4
+range_item_cull_mask = 8
+texture = SubResource("GradientTexture2D_4jk3r")
+
+[node name="PlayerZoomTrans" type="Node2D" parent="." unique_id=1185996982]
+visible = false
+modulate = Color(0.10980392, 0.03137255, 0.13333334, 1)
+
+[node name="TransR" type="Sprite2D" parent="PlayerZoomTrans" unique_id=269819542]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(640, 0)
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture2D_5xn7n")
+
+[node name="TransD" type="Sprite2D" parent="PlayerZoomTrans" unique_id=81169215]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(0, 640)
+scale = Vector2(40, 20)
+texture = SubResource("GradientTexture2D_5xn7n")
+
+[node name="TransU" type="Sprite2D" parent="PlayerZoomTrans" unique_id=344042313]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(0, -640)
+scale = Vector2(40, 20)
+texture = SubResource("GradientTexture2D_5xn7n")
+
+[node name="TransL" type="Sprite2D" parent="PlayerZoomTrans" unique_id=12802473]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-640, 0)
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture2D_5xn7n")
+
+[node name="Mashed" parent="." unique_id=499008387 instance=ExtResource("2_2147m")]
+mash_type = 99
+
+[node name="Audio" type="Node2D" parent="." unique_id=117140185 node_paths=PackedStringArray("sfx_jump_single", "sfx_jump_mult", "sfx_jump_heavy", "slide_sfx", "fall_sfx", "sfx_unmash_enter", "sfx_unmash_exit")]
+script = ExtResource("8_vhdde")
+sfx_jump_single = NodePath("Jump01")
+sfx_jump_mult = NodePath("Jump02")
+sfx_jump_heavy = NodePath("Jump03")
+slide_sfx = NodePath("Slide01")
+fall_sfx = NodePath("Fall01")
+sfx_unmash_enter = NodePath("UnmashEnter")
+sfx_unmash_exit = NodePath("UnmashExit")
+
+[node name="Fall01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1357927000]
+stream = ExtResource("11_33vi3")
+volume_db = -30.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Jump01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1375524]
+stream = ExtResource("13_s62i3")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Jump02" type="AudioStreamPlayer2D" parent="Audio" unique_id=806071470]
+stream = ExtResource("7_4driq")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Jump03" type="AudioStreamPlayer2D" parent="Audio" unique_id=2840009]
+stream = ExtResource("15_5xn7n")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Land01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1079389287]
+stream = ExtResource("16_81t2s")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Land02" type="AudioStreamPlayer2D" parent="Audio" unique_id=1940800812]
+stream = ExtResource("17_djp6n")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Land03" type="AudioStreamPlayer2D" parent="Audio" unique_id=2086795886]
+stream = ExtResource("16_4driq")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Land04" type="AudioStreamPlayer2D" parent="Audio" unique_id=1182105597]
+stream = ExtResource("19_exfef")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="LandHard01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1375177112]
+stream = ExtResource("20_cv7sh")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Mash01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1217163206]
+stream = ExtResource("22_xerq1")
+volume_db = 5.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Mash03" type="AudioStreamPlayer2D" parent="Audio" unique_id=778212917]
+stream = ExtResource("17_81t2s")
+volume_db = 10.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Slide01" type="AudioStreamPlayer2D" parent="Audio" unique_id=47125604]
+stream = ExtResource("24_dosag")
+volume_db = -80.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Unmash01" type="AudioStreamPlayer2D" parent="Audio" unique_id=73677496]
+stream = ExtResource("16_ucb6m")
+volume_db = 15.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="UnmashEnter" type="AudioStreamPlayer2D" parent="Audio" unique_id=1983815356]
+stream = ExtResource("19_33vi3")
+volume_db = 5.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="UnmashExit" type="AudioStreamPlayer2D" parent="Audio" unique_id=1670651370]
+stream = ExtResource("20_uls5r")
+volume_db = 5.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Bomb" type="AudioStreamPlayer2D" parent="Audio" unique_id=155810312]
+stream = ExtResource("19_vhdde")
+volume_db = 10.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Laugh" type="AudioStreamPlayer2D" parent="Audio" unique_id=715540081]
+stream = ExtResource("20_822h2")
+volume_db = -5.0
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Squash" type="AudioStreamPlayer2D" parent="Audio" unique_id=121804976]
+stream = ExtResource("20_s62i3")
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Stretch" type="AudioStreamPlayer2D" parent="Audio" unique_id=421616628]
+stream = ExtResource("21_822h2")
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Timers" type="Node" parent="." unique_id=1381808234]
+
+[node name="JumpBufferTimer" type="Timer" parent="Timers" unique_id=2097318703]
+unique_name_in_owner = true
+wait_time = 0.12
+one_shot = true
+
+[node name="CoyoteJumpTimer" type="Timer" parent="Timers" unique_id=2022613437]
+unique_name_in_owner = true
+wait_time = 0.12
+one_shot = true
+
+[node name="CherryBombAirTimer" type="Timer" parent="Timers" unique_id=1702203392]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="Timers" unique_id=1918497938]
+unique_name_in_owner = true
+wait_time = 15.0
+
+[node name="StateMachine" type="Node" parent="." unique_id=1326447240 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_q8hb4")
+initial_state = NodePath("AirState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=73227345]
+script = ExtResource("5_q8hb4")
+
+[node name="RunState" type="Node" parent="StateMachine" unique_id=2067635367]
+script = ExtResource("5_2rlf8")
+
+[node name="AirState" type="Node" parent="StateMachine" unique_id=2062112355]
+script = ExtResource("5_ksjmp")
+
+[node name="PlayerAnimationComponent" type="Node" parent="." unique_id=896765118]
+script = ExtResource("3_h5uus")
+
+[node name="MashNotice" type="Node2D" parent="." unique_id=290957168]
+visible = false
+z_index = 2
+
+[node name="Label" type="Label" parent="MashNotice" unique_id=851291197]
+offset_left = -155.0
+offset_top = -111.0
+offset_right = 166.0
+offset_bottom = -61.0
+text = "Press  \"X\" to Mash"
+label_settings = ExtResource("28_81t2s")
+
+[node name="InputPrompt" parent="MashNotice" unique_id=2128616327 instance=ExtResource("28_5xn7n")]
+position = Vector2(-19, -92)
+character = "X"
+blink_time = 1.0
+blink_interval = 0.0
+
+[node name="ResetNotice" type="Node2D" parent="." unique_id=1114537431]
+visible = false
+
+[node name="Label" type="Label" parent="ResetNotice" unique_id=397740992]
+offset_left = -153.0
+offset_top = -101.0
+offset_right = 154.0
+offset_bottom = -51.0
+text = "Press \"R\" to Reset"
+label_settings = ExtResource("28_81t2s")
+
+[node name="InputPrompt" parent="ResetNotice" unique_id=803596045 instance=ExtResource("28_5xn7n")]
+position = Vector2(-22, -78)
+character = "R"
+blink_time = 1.0
+blink_interval = 0.0
+
+[node name="Z" parent="." unique_id=2080773523 instance=ExtResource("25_33vi3")]
+position = Vector2(22, -19)
+emitting = false

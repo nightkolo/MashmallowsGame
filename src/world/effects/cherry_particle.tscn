@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://v5yymw5try40"]
+
+[ext_resource type="Script" uid="uid://b4vy2aepxreg0" path="res://world/effects/cherry_particle.gd" id="1_ps06n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo1kq"]
+
+[sub_resource type="Gradient" id="Gradient_ps06n"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ms5f0"]
+gradient = SubResource("Gradient_ps06n")
+width = 20
+height = 20
+
+[node name="CherryParticle" type="RigidBody2D" unique_id=1257495662]
+collision_layer = 128
+gravity_scale = 0.3
+linear_velocity = Vector2(150, 0)
+script = ExtResource("1_ps06n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=998436350]
+shape = SubResource("RectangleShape2D_mo1kq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1849038093]
+texture = SubResource("GradientTexture2D_ms5f0")

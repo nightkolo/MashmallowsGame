@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cdwjmv7lmhqho"]
+
+[ext_resource type="Script" uid="uid://c6lom4h3fj07d" path="res://object/scripts/components/component_block_mashed_sfx.gd" id="1_4ukqa"]
+[ext_resource type="AudioStream" uid="uid://wukyyatklaar" path="res://audio/sfx/block_mashed_vocal_01.wav" id="2_s175c"]
+[ext_resource type="AudioStream" uid="uid://blh015n8pgqtl" path="res://audio/sfx/block_mashed_vocal_02.wav" id="3_4ukqa"]
+[ext_resource type="AudioStream" uid="uid://dx4xxesfmncjo" path="res://audio/sfx/block_mashed_vocal_cherry_bomb.wav" id="4_8ti3b"]
+
+[node name="MashedAudio" type="Node2D" unique_id=1474038607]
+script = ExtResource("1_4ukqa")
+
+[node name="Vocal01" type="AudioStreamPlayer2D" parent="." unique_id=179048598]
+stream = ExtResource("2_s175c")
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="Vocal02" type="AudioStreamPlayer2D" parent="." unique_id=1665160783]
+stream = ExtResource("3_4ukqa")
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="VocalCB" type="AudioStreamPlayer2D" parent="." unique_id=516274406]
+stream = ExtResource("4_8ti3b")
+volume_db = 12.0
+panning_strength = 2.0
+bus = &"Gameplay"

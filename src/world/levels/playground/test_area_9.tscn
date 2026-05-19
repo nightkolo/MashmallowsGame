@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cqcq8pxs2gw6k"]
+
+[ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="1_nm0en"]
+[ext_resource type="Resource" uid="uid://by01eynd38lgk" path="res://core/resources/monolog/monolog_flow_test.tres" id="2_jjslu"]
+
+[node name="Node2D" type="Control" unique_id=129316838]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MonologSystem" type="Node" parent="." unique_id=227827247]
+script = ExtResource("1_nm0en")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=723687260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1138616033]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1121088546]
+layout_mode = 2
+fit_content = true
+
+[node name="RichTextLabe2" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=2062050397]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+visible_characters = 56
+
+[node name="Choice" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=290534433]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Choice" unique_id=818852748]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/Choice" unique_id=1883600986]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MonologSystem" type="Node" parent="MarginContainer" unique_id=599538488 node_paths=PackedStringArray("label", "choice_1", "choice_2")]
+script = ExtResource("1_nm0en")
+auto_start = false
+flow = ExtResource("2_jjslu")
+label = NodePath("../VBoxContainer/RichTextLabe2")
+choice_1 = NodePath("../VBoxContainer/Choice/Button")
+choice_2 = NodePath("../VBoxContainer/Choice/Button2")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[node name="Button" type="Button" parent="." unique_id=689628025]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://djgv45k3n5ibr"]
+
+[ext_resource type="Script" uid="uid://dj330fftlpvf6" path="res://object/scripts/switch.gd" id="1_xbd11"]
+[ext_resource type="Texture2D" uid="uid://ptrycg6vxx8o" path="res://assets/objects/switch-base.png" id="2_eiu2u"]
+[ext_resource type="Texture2D" uid="uid://cqywemxa6mc65" path="res://assets/objects/switch-head.png" id="2_f3jwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjq8i"]
+size = Vector2(42, 16)
+
+[node name="Switch" type="Area2D" unique_id=267643424]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("1_xbd11")
+metadata/_custom_type_script = "uid://dj330fftlpvf6"
+
+[node name="Head" type="Sprite2D" parent="." unique_id=400262420]
+position = Vector2(0, -13.82)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_f3jwt")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=2118330992]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_eiu2u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1817825463]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_sjq8i")
+
+[node name="Audio" type="Node2D" parent="." unique_id=330845784]

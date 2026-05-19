@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://d0nbdjl7inkmr"]
+
+[ext_resource type="Script" uid="uid://dyrhspudi6l5j" path="res://interface/runtime/ui_menu_pause.gd" id="1_e5gcu"]
+[ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="1_x2cp5"]
+[ext_resource type="PackedScene" uid="uid://bltj01af7hhkl" path="res://interface/runtime/game_title.tscn" id="4_ckd5b"]
+[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="5_b1ou4"]
+[ext_resource type="Script" uid="uid://dpw8xwxo4mbrv" path="res://interface/interactors/audio_options_container.gd" id="9_ksf64"]
+[ext_resource type="Texture2D" uid="uid://b4ndvo76fmqy1" path="res://assets/interface/option-sfx.png" id="9_usxwo"]
+[ext_resource type="Texture2D" uid="uid://73cne5ae0fv5" path="res://assets/interface/option-music.png" id="10_u8yhx"]
+
+[sub_resource type="FontVariation" id="FontVariation_q0gsl"]
+spacing_glyph = -2
+spacing_space = 1
+
+[node name="PauseMenu" type="Control" unique_id=1897938556]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e5gcu")
+
+[node name="BG2" type="ColorRect" parent="." unique_id=312090760]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="BG" type="ColorRect" parent="." unique_id=1979856892]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenuAgain" type="MarginContainer" parent="." unique_id=210506977]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_x2cp5")
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuAgain" unique_id=499771693]
+layout_mode = 2
+
+[node name="GameTitle" parent="PauseMenuAgain/VBoxContainer" unique_id=682979663 instance=ExtResource("4_ckd5b")]
+layout_mode = 2
+
+[node name="Content" type="MarginContainer" parent="PauseMenuAgain/VBoxContainer" unique_id=929336527]
+custom_minimum_size = Vector2(500, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuAgain/VBoxContainer/Content" unique_id=1865565876]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PauseInfo" type="RichTextLabel" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer" unique_id=1299424878]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_q0gsl")
+bbcode_enabled = true
+text = "[outline_size=8][outline_color=#3f3f3f][color=#ffffff][center][font_size=24]≈Order 00-00 Paused≈"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer" unique_id=1336958102]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ResumeButton" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer" unique_id=590496215 groups=["UIButton"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../VBoxContainer2/AudioOptions/SFX")
+focus_neighbor_bottom = NodePath("../ResetButton")
+text = "Continue"
+script = ExtResource("5_b1ou4")
+
+[node name="ResetButton" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer" unique_id=2002915590 groups=["UIButton"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ReturnButton")
+text = "Reset"
+script = ExtResource("5_b1ou4")
+
+[node name="OptionsButton" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer" unique_id=1419509246 groups=["UIButton"]]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ReturnButton")
+text = "Options"
+script = ExtResource("5_b1ou4")
+
+[node name="ReturnButton" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer" unique_id=1240758479 groups=["UIButton"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../ResetButton")
+focus_neighbor_bottom = NodePath("../VBoxContainer2/AudioOptions/SFX")
+text = "Quit"
+script = ExtResource("5_b1ou4")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer" unique_id=1268052083]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="AudioOptions" type="HBoxContainer" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1985167060]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 25
+script = ExtResource("9_ksf64")
+
+[node name="SFX" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=1250700385 groups=["UIButton"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_right = NodePath("../Music")
+focus_neighbor_bottom = NodePath("../../../ResumeButton")
+theme_override_font_sizes/font_size = 28
+text = "
+"
+script = ExtResource("5_b1ou4")
+
+[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/SFX" unique_id=144325998]
+position = Vector2(25, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/SFX/Node2D" unique_id=2128629024]
+self_modulate = Color(1, 1, 0.735357, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_usxwo")
+
+[node name="Music" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=405952188 groups=["UIButton"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_left = NodePath("../SFX")
+focus_neighbor_bottom = NodePath("../../../ResumeButton")
+theme_override_font_sizes/font_size = 28
+script = ExtResource("5_b1ou4")
+
+[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/Music" unique_id=1911473318]
+position = Vector2(25, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/Music/Node2D" unique_id=1327074708]
+self_modulate = Color(1, 1, 0.735357, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_u8yhx")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1128378327]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=355929016]
+layout_mode = 2

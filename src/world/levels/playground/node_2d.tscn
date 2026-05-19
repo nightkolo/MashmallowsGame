@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cvnl0u2of1e5h"]
+
+[ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="1_0e48y"]
+[ext_resource type="Resource" uid="uid://by01eynd38lgk" path="res://core/resources/monolog/monolog_flow_test.tres" id="2_epypp"]
+
+[node name="Node2D" type="Node" unique_id=1289288736]
+script = ExtResource("1_0e48y")
+flow = ExtResource("2_epypp")
+BBCODE_DEFAULT = "[center][font_size=45.0][outline_size=15.0]"
+speed_up_time = 0.005
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=405371539]
+offset_right = 1072.0
+offset_bottom = 512.0
+bbcode_enabled = true
+text = "[center][font_size=45.0][outline_size=15.0]Heya, I'm Marshmallow Lady, you may address me as Millie"
+visible_characters = 56

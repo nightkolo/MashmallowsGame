@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://ceriw05y6fknw"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_3yogn"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="2_qcsc4"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="3_l0o7d"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_5i0wg"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_noxfk"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="6_hjnbq"]
+[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="7_gegs0"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="8_nrchv"]
+[ext_resource type="PackedScene" uid="uid://cys70kcpvkm0y" path="res://world/interface/speech_bubble.tscn" id="9_iemxx"]
+[ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="10_000o6"]
+[ext_resource type="Script" uid="uid://drojb13rqhkar" path="res://core/resources/game_dialog/monolog_millie.gd" id="11_ms5ty"]
+[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="12_lvyc6"]
+[ext_resource type="Script" uid="uid://coaf2q56w0fhq" path="res://core/resources/game_dialog/monolog_tree.gd" id="13_hdfjn"]
+[ext_resource type="Script" uid="uid://bsf7yi865jfdq" path="res://core/resources/game_dialog/monolog_animation.gd" id="13_iemxx"]
+[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="14_wibxd"]
+
+[sub_resource type="Resource" id="Resource_1vcj7"]
+script = ExtResource("12_lvyc6")
+monolog_line = "Hello."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_hdfjn"]
+script = ExtResource("13_iemxx")
+animate_expression = 1
+metadata/_custom_type_script = "uid://bsf7yi865jfdq"
+
+[sub_resource type="Resource" id="Resource_lvyc6"]
+script = ExtResource("13_iemxx")
+animate_expression = 1
+metadata/_custom_type_script = "uid://bsf7yi865jfdq"
+
+[sub_resource type="Resource" id="Resource_iemxx"]
+script = ExtResource("12_lvyc6")
+monolog_line = "Hey."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_000o6"]
+script = ExtResource("12_lvyc6")
+monolog_line = "Byebye."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_30biq"]
+script = ExtResource("12_lvyc6")
+monolog_line = "Hey."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_v7hd2"]
+script = ExtResource("12_lvyc6")
+monolog_line = "Byebye."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_3ocqa"]
+script = ExtResource("13_hdfjn")
+monolog_path_1 = "Choice 1"
+monolog_flow_1 = Array[ExtResource("11_ms5ty")]([SubResource("Resource_lvyc6"), SubResource("Resource_iemxx"), SubResource("Resource_000o6")])
+monolog_path_2 = "Chioce 2"
+monolog_flow_2 = Array[ExtResource("11_ms5ty")]([SubResource("Resource_30biq"), SubResource("Resource_v7hd2")])
+monolog_line = "Select something..."
+metadata/_custom_type_script = "uid://coaf2q56w0fhq"
+
+[sub_resource type="Resource" id="Resource_ms5ty"]
+script = ExtResource("12_lvyc6")
+monolog_line = "Gooodbye."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_i1irw"]
+script = ExtResource("14_wibxd")
+monolog_flow = Array[ExtResource("11_ms5ty")]([SubResource("Resource_1vcj7"), SubResource("Resource_hdfjn"), SubResource("Resource_3ocqa"), SubResource("Resource_ms5ty")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[node name="Level" type="Node2D" unique_id=1688286197]
+script = ExtResource("1_3yogn")
+no_progression = true
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(640, 400)
+script = ExtResource("2_qcsc4")
+
+[node name="World" parent="." unique_id=1317599791 instance=ExtResource("3_l0o7d")]
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("4_5i0wg")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_set = ExtResource("5_noxfk")
+
+[node name="Foreground" type="TileMapLayer" parent="World/Terrain" unique_id=535445719]
+tile_set = ExtResource("5_noxfk")
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("6_hjnbq")]
+
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=690408388]
+script = ExtResource("7_gegs0")
+metadata/_custom_type_script = "uid://blq670fy1uldv"
+
+[node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("8_nrchv")]
+
+[node name="Order" type="Node2D" parent="World" unique_id=975513827]
+script = ExtResource("7_gegs0")
+metadata/_custom_type_script = "uid://blq670fy1uldv"
+
+[node name="SpeechBubble" parent="World" unique_id=1740413481 instance=ExtResource("9_iemxx")]
+offset_left = 465.0
+offset_top = 360.0
+offset_right = 465.0
+offset_bottom = 360.0
+
+[node name="TiledSprite2D" parent="World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
+region_rect = Rect2(-27812.424, 3.4061716e-12, 4776, 3584)
+
+[node name="MonologSystem" type="Node" parent="World" unique_id=743468895 node_paths=PackedStringArray("speech_bubble", "choice_1", "choice_2")]
+script = ExtResource("10_000o6")
+flow = SubResource("Resource_i1irw")
+speech_bubble = NodePath("../SpeechBubble")
+choice_1 = NodePath("../SpeechBubble/MonologOptions/Choice1")
+choice_2 = NodePath("../SpeechBubble/MonologOptions/Choice2")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[editable path="World/LevelGoal"]
+[editable path="World/SpeechBubble"]

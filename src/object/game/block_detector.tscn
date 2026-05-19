@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://krw76abox8r3"]
+
+[ext_resource type="Script" uid="uid://blm45b8q7uqt5" path="res://object/scripts/game/block_detector.gd" id="1_ealfv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw56o"]
+size = Vector2(60, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jws23"]
+size = Vector2(70, 1)
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_dw56o"]
+length = 45.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_jws23"]
+length = 45.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_gib7m"]
+length = 45.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_u5qrw"]
+length = 45.0
+
+[node name="BlockDetect" type="Node2D" unique_id=2042283883]
+script = ExtResource("1_ealfv")
+metadata/_custom_type_script = "uid://blm45b8q7uqt5"
+
+[node name="Right" type="RayCast2D" parent="." unique_id=409331326]
+unique_name_in_owner = true
+enabled = false
+target_position = Vector2(45, 0)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="Left" type="RayCast2D" parent="." unique_id=1079650675]
+unique_name_in_owner = true
+enabled = false
+target_position = Vector2(-45, 0)
+collision_mask = 8
+
+[node name="Right2" type="RayCast2D" parent="." unique_id=1037801714]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -64)
+enabled = false
+target_position = Vector2(45, 0)
+collision_mask = 8
+
+[node name="Left2" type="RayCast2D" parent="." unique_id=1695914218]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -64)
+enabled = false
+target_position = Vector2(-45, 0)
+collision_mask = 8
+
+[node name="Down" type="RayCast2D" parent="." unique_id=553699482]
+unique_name_in_owner = true
+enabled = false
+target_position = Vector2(0, 45)
+collision_mask = 8
+
+[node name="GroundRay" type="ShapeCast2D" parent="." unique_id=810734938]
+shape = SubResource("RectangleShape2D_dw56o")
+target_position = Vector2(0, 35)
+collision_mask = 2113
+
+[node name="WallRay" type="ShapeCast2D" parent="." unique_id=80293009]
+shape = SubResource("RectangleShape2D_jws23")
+target_position = Vector2(0, 16)
+collision_mask = 73
+
+[node name="BlocksRay" type="ShapeCast2D" parent="." unique_id=1047533884]
+shape = SubResource("RectangleShape2D_dw56o")
+target_position = Vector2(0, 35)
+collision_mask = 9
+
+[node name="UnmashedBlockDetect1x1" type="Area2D" parent="." unique_id=223326301]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="Collision" type="CollisionShape2D" parent="UnmashedBlockDetect1x1" unique_id=1650151399]
+unique_name_in_owner = true
+shape = SubResource("SeparationRayShape2D_dw56o")
+
+[node name="Collision2" type="CollisionShape2D" parent="UnmashedBlockDetect1x1" unique_id=2090835592]
+unique_name_in_owner = true
+rotation = 1.5707964
+shape = SubResource("SeparationRayShape2D_jws23")
+
+[node name="Collision3" type="CollisionShape2D" parent="UnmashedBlockDetect1x1" unique_id=1115858749]
+unique_name_in_owner = true
+rotation = -1.5707964
+shape = SubResource("SeparationRayShape2D_dw56o")
+
+[node name="UnmashedBlockDetect1x2" type="Area2D" parent="." unique_id=1055852279]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="Collision8" type="CollisionShape2D" parent="UnmashedBlockDetect1x2" unique_id=432777623]
+unique_name_in_owner = true
+shape = SubResource("SeparationRayShape2D_gib7m")
+
+[node name="Collision7" type="CollisionShape2D" parent="UnmashedBlockDetect1x2" unique_id=273817622]
+unique_name_in_owner = true
+rotation = 1.5707964
+shape = SubResource("SeparationRayShape2D_u5qrw")
+
+[node name="Collision6" type="CollisionShape2D" parent="UnmashedBlockDetect1x2" unique_id=52526145]
+unique_name_in_owner = true
+rotation = -1.5707964
+shape = SubResource("SeparationRayShape2D_gib7m")
+
+[node name="Collision5" type="CollisionShape2D" parent="UnmashedBlockDetect1x2" unique_id=674369830]
+unique_name_in_owner = true
+position = Vector2(0, -64)
+rotation = -1.5707964
+shape = SubResource("SeparationRayShape2D_gib7m")
+
+[node name="Collision4" type="CollisionShape2D" parent="UnmashedBlockDetect1x2" unique_id=1621507148]
+unique_name_in_owner = true
+position = Vector2(0, -64)
+rotation = 1.5707964
+shape = SubResource("SeparationRayShape2D_u5qrw")
+
+[node name="CherryBombRays" type="Node2D" parent="." unique_id=562371206]
+visible = false
+
+[node name="Up" type="RayCast2D" parent="CherryBombRays" unique_id=466133333]
+enabled = false
+target_position = Vector2(0, -55)
+collision_mask = 2
+
+[node name="Right" type="RayCast2D" parent="CherryBombRays" unique_id=838427552]
+enabled = false
+target_position = Vector2(55, 0)
+collision_mask = 2
+
+[node name="Left" type="RayCast2D" parent="CherryBombRays" unique_id=1152081446]
+enabled = false
+target_position = Vector2(-55, 0)
+collision_mask = 2

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://7i2kjfba5ohg"]
+
+[ext_resource type="Texture2D" uid="uid://cfb4ba36pyaqo" path="res://assets/world/terrain-deco-white.png" id="1_lys81"]
+[ext_resource type="Script" uid="uid://cbn8qpxo7nej1" path="res://world/world/deco_block.gd" id="1_mcuxp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me5s4"]
+size = Vector2(128, 128)
+
+[node name="DecoBlock" type="StaticBody2D" unique_id=825592049]
+script = ExtResource("1_mcuxp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1379495287]
+texture = ExtResource("1_lys81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=785762680]
+shape = SubResource("RectangleShape2D_me5s4")

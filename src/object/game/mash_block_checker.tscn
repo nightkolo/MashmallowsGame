@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://yivkpt02m4ox"]
+
+[ext_resource type="Script" uid="uid://bspkwd50fdkqc" path="res://object/scripts/game/mash_block_checker.gd" id="1_euh6i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5k4"]
+
+[node name="MashBlockChecker" type="Area2D" unique_id=2075480081]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_euh6i")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=748763289]
+visible = false
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1529780948]
+shape = SubResource("RectangleShape2D_sk5k4")

@@ -1,0 +1,37 @@
+[gd_scene format=4 uid="uid://b6of7r1q4l3l1"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_desex"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="2_2enpk"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="2_jpekk"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="3_2enpk"]
+[ext_resource type="PackedScene" uid="uid://bn6154eu6l5ce" path="res://object/objects/block_unmashed_1x1.tscn" id="4_ohytp"]
+[ext_resource type="PackedScene" uid="uid://vs5datj6ikqy" path="res://object/objects/block_unmashed_1x2.tscn" id="6_2enpk"]
+
+[node name="Level" type="Node2D" unique_id=2026468441]
+script = ExtResource("1_desex")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1532469930]
+anchor_mode = 0
+
+[node name="World" parent="." unique_id=1317599791 instance=ExtResource("2_2enpk")]
+
+[node name="TileMap" type="Node2D" parent="World" unique_id=836057586]
+
+[node name="Ground" type="TileMapLayer" parent="World/TileMap" unique_id=25901073]
+tile_map_data = PackedByteArray("AAACAAkAAAAKAAAAAAADAAkAAAAKAAAAAAAEAAkAAAAKAAAAAAAFAAkAAAAKAAAAAAAMAAkAAAAIAAAAAAANAAkAAAAKAAAAAAATAAkAAAAKAAAAAAATAAoAAAAKAAEAAAATAAsAAAAKAAEAAAATAAwAAAAJAAMAAAASAAwAAAAJAAMAAAARAAwAAAAJAAMAAAAQAAwAAAAJAAMAAAAPAAwAAAAJAAMAAAAOAAwAAAAJAAMAAAANAAwAAAAJAAMAAAAMAAwAAAAJAAMAAAALAAwAAAAJAAMAAAAKAAwAAAAJAAMAAAAJAAwAAAAJAAMAAAAIAAwAAAAJAAMAAAAHAAwAAAAJAAMAAAAGAAwAAAAJAAMAAAAFAAwAAAAJAAMAAAAEAAwAAAAJAAMAAAADAAwAAAAJAAMAAAACAAwAAAAJAAMAAAABAAwAAAAJAAMAAAAAAAwAAAAJAAMAAAAAAAsAAAAKAAEAAAAAAAoAAAAKAAEAAAAAAAkAAAAKAAAAAAAOAAkAAAAKAAAAAAAPAAkAAAAKAAAAAAAQAAkAAAAKAAAAAAARAAkAAAAKAAAAAAAGAAkAAAALAAAAAAAGAAoAAAAGAAEAAAAHAAoAAAAKAAAAAAAIAAoAAAAKAAAAAAAJAAoAAAAKAAAAAAAKAAoAAAAKAAAAAAALAAoAAAAKAAAAAAAMAAoAAAAFAAEAAAASAAkAAAAKAAAAAAAMAAsAAAAKAAEAAAAFAAoAAAAKAAEAAAALAAsAAAAKAAEAAAAKAAsAAAAKAAEAAAAJAAsAAAAKAAEAAAAIAAsAAAAKAAEAAAAHAAsAAAAKAAEAAAAGAAsAAAAKAAEAAAAFAAsAAAAKAAEAAAAEAAsAAAAKAAEAAAAEAAoAAAAKAAEAAAADAAsAAAAKAAEAAAADAAoAAAAKAAEAAAACAAsAAAAKAAEAAAACAAoAAAAKAAEAAAABAAsAAAAKAAEAAAABAAoAAAAKAAEAAAABAAkAAAAKAAAAAAASAAsAAAAKAAEAAAASAAoAAAAKAAEAAAARAAsAAAAKAAEAAAARAAoAAAAKAAEAAAAQAAsAAAAKAAEAAAAQAAoAAAAKAAEAAAAPAAsAAAAKAAEAAAAPAAoAAAAKAAEAAAAOAAsAAAAKAAEAAAAOAAoAAAAKAAEAAAANAAsAAAAKAAEAAAANAAoAAAAKAAEAAAD//wwAAAAIAAMAAAD//wsAAAAIAAEAAAD//woAAAAIAAEAAAD//wkAAAAIAAAAAAAUAAkAAAALAAAAAAAUAAoAAAALAAIAAAAUAAsAAAALAAIAAAAUAAwAAAALAAMAAAA=")
+tile_set = ExtResource("2_jpekk")
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("3_2enpk")]
+position = Vector2(352, 480)
+
+[node name="Unmashed" parent="." unique_id=1096808338 instance=ExtResource("4_ohytp")]
+position = Vector2(640, 512)
+mash_type = 1
+
+[node name="Unmashed2" parent="." unique_id=1830165316 instance=ExtResource("4_ohytp")]
+position = Vector2(832, 480)
+mash_type = 3
+
+[node name="Unmashed3" parent="." unique_id=1000124606 instance=ExtResource("6_2enpk")]
+position = Vector2(544, 512)

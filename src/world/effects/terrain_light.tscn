@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://l52q2l55w3bc"]
+
+[sub_resource type="Gradient" id="Gradient_bcsmf"]
+offsets = PackedFloat32Array(0.7, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.735357, 0.735357, 0.735357, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rxp25"]
+gradient = SubResource("Gradient_bcsmf")
+width = 1280
+height = 800
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="TerrainLight" type="PointLight2D" unique_id=1486142948]
+blend_mode = 2
+range_item_cull_mask = 8
+texture = SubResource("GradientTexture2D_rxp25")

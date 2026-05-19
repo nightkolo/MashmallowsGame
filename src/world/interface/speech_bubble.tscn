@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://cys70kcpvkm0y"]
+
+[ext_resource type="Script" uid="uid://ccs7s5wb771j5" path="res://world/interface/speech_bubble.gd" id="1_1xvqj"]
+[ext_resource type="Texture2D" uid="uid://bdgcvmm6phosi" path="res://assets/interface/speech-bubble-01.png" id="2_4dudd"]
+[ext_resource type="Texture2D" uid="uid://cxvh8xb1jrys0" path="res://assets/interface/tile-01.png" id="3_3nxva"]
+[ext_resource type="Script" uid="uid://fxlkx3uku371" path="res://world/interface/anim_monolog_arrow.gd" id="4_3nxva"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://core/scripts/nodes/tiled_sprite_2d.gd" id="4_q7ypm"]
+[ext_resource type="Texture2D" uid="uid://cgq0uf5sbuc4y" path="res://assets/interface/spiral-01.png" id="5_2u6u0"]
+[ext_resource type="Texture2D" uid="uid://dijxm1mx3uc6k" path="res://assets/interface/speech-bubble-02.png" id="5_lioc5"]
+[ext_resource type="Texture2D" uid="uid://c7j8xf8pbj1lw" path="res://assets/interface/monolog-arrows-01.png" id="7_3nxva"]
+[ext_resource type="Theme" uid="uid://d4jbf26t3rslk" path="res://core/resources/label/rich_label_speech_bubble.tres" id="7_83via"]
+[ext_resource type="Texture2D" uid="uid://c7am3wr5li7qp" path="res://assets/interface/monolog-circle-01.png" id="8_q7ypm"]
+[ext_resource type="Texture2D" uid="uid://d0286a7yc5riv" path="res://assets/interface/arrow-01.png" id="9_3nxva"]
+[ext_resource type="Texture2D" uid="uid://b2eon0rafjo35" path="res://assets/interface/monolog-circle-02.png" id="10_q7ypm"]
+[ext_resource type="Texture2D" uid="uid://crqxq1e0df1rc" path="res://assets/interface/monolog-arrow-02.png" id="11_lioc5"]
+[ext_resource type="Theme" uid="uid://c6sw73i0um5ji" path="res://core/resources/theme/theme_monolog_option_buttons.tres" id="14_yhju5"]
+[ext_resource type="Script" uid="uid://spkvih1sevlw" path="res://interface/animators/anim_button_monolog_option.gd" id="15_6mdjn"]
+
+[node name="SpeechBubble" type="Control" unique_id=1740413481]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1xvqj")
+
+[node name="BubbleContainer" type="MarginContainer" parent="." unique_id=407716705]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 112.0
+
+[node name="Bubble" type="NinePatchRect" parent="BubbleContainer" unique_id=827350809]
+clip_children = 2
+layout_mode = 2
+texture = ExtResource("2_4dudd")
+region_rect = Rect2(0, 0, 65, 65)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 33
+patch_margin_bottom = 33
+
+[node name="TiledSprite2D" type="Sprite2D" parent="BubbleContainer/Bubble" unique_id=1380465130]
+self_modulate = Color(1, 1, 1, 0.1)
+texture_repeat = 2
+position = Vector2(0, 48)
+texture = ExtResource("3_3nxva")
+region_enabled = true
+region_rect = Rect2(-72665.69, 8.899875e-12, 4776, 3584)
+script = ExtResource("4_q7ypm")
+animate_scroll = true
+scroll_trajectory = 3.141592653589793
+metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
+
+[node name="MaskedSpiral" type="Sprite2D" parent="BubbleContainer/Bubble" unique_id=1151986924]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0.2)
+position = Vector2(-114, 85)
+texture = ExtResource("5_2u6u0")
+
+[node name="Outline" type="NinePatchRect" parent="BubbleContainer" unique_id=221575294]
+clip_children = 2
+layout_mode = 2
+texture = ExtResource("5_lioc5")
+region_rect = Rect2(0, 0, 69, 69)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 33
+patch_margin_bottom = 33
+
+[node name="LabelContainer" type="MarginContainer" parent="." unique_id=513679288]
+layout_mode = 0
+offset_left = -272.0
+offset_top = -64.0
+offset_right = -16.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MonologLabel" type="RichTextLabel" parent="LabelContainer" unique_id=731498132]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("7_83via")
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Arrow" type="Node2D" parent="." unique_id=1028429041]
+script = ExtResource("4_3nxva")
+
+[node name="MonologArrows01" type="Sprite2D" parent="Arrow" unique_id=525693980]
+unique_name_in_owner = true
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_3nxva")
+
+[node name="Circle" type="Sprite2D" parent="Arrow" unique_id=1207081773]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.735357, 1, 1)
+clip_children = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_q7ypm")
+
+[node name="MaskedArrow" type="Sprite2D" parent="Arrow/Circle" unique_id=1762713811]
+unique_name_in_owner = true
+position = Vector2(0, 6)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("9_3nxva")
+
+[node name="Border" type="Sprite2D" parent="Arrow/Circle" unique_id=674489677]
+unique_name_in_owner = true
+self_modulate = Color(1, 0.735357, 1, 1)
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("10_q7ypm")
+
+[node name="Arrow" type="Sprite2D" parent="Arrow" unique_id=240517094]
+unique_name_in_owner = true
+position = Vector2(48, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_lioc5")
+
+[node name="Arrow2" type="Sprite2D" parent="Arrow" unique_id=50104106]
+unique_name_in_owner = true
+position = Vector2(-48, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_lioc5")
+flip_h = true
+
+[node name="MonologOptions" type="HBoxContainer" parent="." unique_id=2042871335]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 92.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("14_yhju5")
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Choice1" type="Button" parent="MonologOptions" unique_id=1932466959]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../Choice2")
+focus_neighbor_right = NodePath("../Choice2")
+text = "AAA"
+script = ExtResource("15_6mdjn")
+
+[node name="Choice2" type="Button" parent="MonologOptions" unique_id=870054960]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../Choice1")
+focus_neighbor_right = NodePath("../Choice1")
+text = "AAA"
+script = ExtResource("15_6mdjn")

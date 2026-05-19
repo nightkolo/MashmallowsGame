@@ -1,0 +1,236 @@
+[gd_scene format=3 uid="uid://cb0na4nijl8sd"]
+
+[ext_resource type="Script" uid="uid://chpk8tjfibon8" path="res://world/interface/level_goal.gd" id="1_icga6"]
+[ext_resource type="Texture2D" uid="uid://c37704my1omdm" path="res://assets/interface/level-goal-board.png" id="2_l8bwh"]
+[ext_resource type="LabelSettings" uid="uid://biveh1g52dl6r" path="res://core/resources/label/level_number_label.tres" id="2_orw8f"]
+[ext_resource type="Texture2D" uid="uid://cex7p2po0vf0o" path="res://assets/interface/star-order-02.png" id="3_f5ssy"]
+[ext_resource type="Texture2D" uid="uid://d7ynr3djawm0" path="res://assets/interface/star-order-01.png" id="3_orw8f"]
+[ext_resource type="Texture2D" uid="uid://ckif0m37fj50y" path="res://core/resources/gradient/order_star_gradient_texture_2d.tres" id="6_802ow"]
+[ext_resource type="Texture2D" uid="uid://cq3e383r2otus" path="res://assets/world/particle-rabbitstar-02.png" id="7_pk5px"]
+[ext_resource type="PackedScene" uid="uid://vikjlul2kro3" path="res://world/world/particles_bokoblock_stage_complete.tscn" id="8_nxo46"]
+[ext_resource type="AudioStream" uid="uid://2lwusygelkwr" path="res://audio/sounds/level_goal_show.ogg" id="9_5fwxa"]
+[ext_resource type="AudioStream" uid="uid://kp30v1a1r10f" path="res://audio/sounds/level_goal_board_01.wav" id="10_6yybx"]
+
+[sub_resource type="Curve" id="Curve_e5qsn"]
+_data = [Vector2(0, 0.7), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_p2oce"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pij12"]
+load_path = "res://.godot/imported/particle-rabbitstar-02.png-e5e1f661cd8a9fa5b2674e30614c35f5.ctex"
+
+[sub_resource type="Curve" id="Curve_tl5we"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_5fwxa"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="LevelGoal" type="Control" unique_id=1777396113]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_icga6")
+
+[node name="Board" type="Control" parent="." unique_id=1651127727]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LevelGoalBoard" type="NinePatchRect" parent="Board" unique_id=877003082]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -96.0
+offset_right = 288.0
+offset_bottom = 384.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_l8bwh")
+region_rect = Rect2(0, 0, 270, 270)
+patch_margin_left = 128
+patch_margin_top = 128
+patch_margin_right = 126
+patch_margin_bottom = 126
+
+[node name="MarginContainer" type="MarginContainer" parent="Board/LevelGoalBoard" unique_id=1654161507]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Board/LevelGoalBoard/MarginContainer" unique_id=1835387487]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LevelNumber" type="Label" parent="Board/LevelGoalBoard/MarginContainer/VBoxContainer" unique_id=1805443537]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00-00"
+label_settings = ExtResource("2_orw8f")
+horizontal_alignment = 1
+
+[node name="Audio" type="Node2D" parent="Board" unique_id=1135956814]
+
+[node name="Show" type="AudioStreamPlayer2D" parent="Board/Audio" unique_id=1327224908]
+unique_name_in_owner = true
+stream = ExtResource("9_5fwxa")
+volume_db = 18.0
+panning_strength = 2.0
+bus = &"UI"
+
+[node name="Shake" type="AudioStreamPlayer2D" parent="Board/Audio" unique_id=469737436]
+unique_name_in_owner = true
+stream = ExtResource("10_6yybx")
+volume_db = 20.0
+pitch_scale = 0.75
+panning_strength = 2.0
+bus = &"UI"
+
+[node name="Star" type="Node2D" parent="." unique_id=1640468128]
+unique_name_in_owner = true
+position = Vector2(80, 160)
+
+[node name="Star2" type="Node2D" parent="Star" unique_id=863524772]
+
+[node name="NoWin" type="Sprite2D" parent="Star/Star2" unique_id=181896781]
+unique_name_in_owner = true
+clip_children = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_orw8f")
+
+[node name="PercentGradient" type="Sprite2D" parent="Star/Star2" unique_id=1408087934]
+unique_name_in_owner = true
+clip_children = 1
+scale = Vector2(1.16, 1.1)
+texture = ExtResource("6_802ow")
+
+[node name="Win" type="Sprite2D" parent="Star/Star2/PercentGradient" unique_id=1822019438]
+self_modulate = Color(1, 1, 0.24780053, 1)
+position = Vector2(3.0994415e-06, 0.90908957)
+scale = Vector2(0.425, 0.425)
+texture = ExtResource("3_f5ssy")
+
+[node name="ParticlesStar" type="CPUParticles2D" parent="Star" unique_id=765662077]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 1
+texture = ExtResource("7_pk5px")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 25.0
+direction = Vector2(1, 1)
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = 30.0
+angular_velocity_max = 180.0
+damping_min = 150.0
+damping_max = 150.0
+angle_min = -120.9
+angle_max = 197.9
+scale_amount_curve = SubResource("Curve_e5qsn")
+color_ramp = SubResource("Gradient_p2oce")
+
+[node name="ParticlesStar2" type="CPUParticles2D" parent="Star" unique_id=974892478]
+unique_name_in_owner = true
+z_index = 2
+position = Vector2(-4, 0)
+emitting = false
+amount = 1
+texture = ExtResource("7_pk5px")
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 25.0
+direction = Vector2(-1, 1)
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+angular_velocity_min = 30.0
+angular_velocity_max = 180.0
+damping_min = 150.0
+damping_max = 150.0
+angle_min = -120.9
+angle_max = 197.9
+scale_amount_curve = SubResource("Curve_e5qsn")
+color_ramp = SubResource("Gradient_p2oce")
+
+[node name="Particles" parent="Star" unique_id=1465561876 instance=ExtResource("8_nxo46")]
+unique_name_in_owner = true
+position = Vector2(-3, -1)
+
+[node name="SpawnParticles" type="CPUParticles2D" parent="." unique_id=1155644642]
+unique_name_in_owner = true
+z_index = 6
+position = Vector2(0, 120)
+emitting = false
+texture = SubResource("CompressedTexture2D_pij12")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 400.0
+angular_velocity_max = 250.0
+damping_min = 120.0
+damping_max = 120.0
+scale_amount_curve = SubResource("Curve_tl5we")
+color_ramp = SubResource("Gradient_5fwxa")
+
+[node name="SpawnParticles2" type="CPUParticles2D" parent="." unique_id=526007310]
+unique_name_in_owner = true
+z_index = 6
+emitting = false
+texture = SubResource("CompressedTexture2D_pij12")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(60, 1)
+direction = Vector2(1, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+damping_min = 120.0
+damping_max = 120.0
+scale_amount_curve = SubResource("Curve_tl5we")
+
+[node name="SpawnParticles3" type="CPUParticles2D" parent="." unique_id=801837470]
+unique_name_in_owner = true
+z_index = 6
+emitting = false
+texture = SubResource("CompressedTexture2D_pij12")
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(60, 1)
+direction = Vector2(-1, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+damping_min = 120.0
+damping_max = 120.0
+scale_amount_curve = SubResource("Curve_tl5we")

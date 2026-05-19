@@ -1,0 +1,434 @@
+[gd_scene format=4 uid="uid://br8kc02k76ibk"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_saqt4"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_l728u"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_gwvtg"]
+[ext_resource type="Script" uid="uid://b3301uyw5i1iv" path="res://world/levels/main/intro_comp.gd" id="4_y72ok"]
+[ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="5_vp58q"]
+[ext_resource type="Script" uid="uid://drojb13rqhkar" path="res://core/resources/game_dialog/monolog_millie.gd" id="6_dlprc"]
+[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="7_uo10l"]
+[ext_resource type="Script" uid="uid://bsf7yi865jfdq" path="res://core/resources/game_dialog/monolog_animation.gd" id="8_ioh1j"]
+[ext_resource type="Script" uid="uid://coaf2q56w0fhq" path="res://core/resources/game_dialog/monolog_tree.gd" id="9_dnfhd"]
+[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="10_j75gc"]
+[ext_resource type="AudioStream" uid="uid://cti38do6a3qct" path="res://audio/sounds/speech_generic.wav" id="11_pp181"]
+[ext_resource type="AudioStream" uid="uid://doutjfd6vfo3s" path="res://audio/sounds/speech_ka.wav" id="12_17l4c"]
+[ext_resource type="AudioStream" uid="uid://bgtyfv4mukx" path="res://audio/sounds/speech_ke.wav" id="13_kqy10"]
+[ext_resource type="AudioStream" uid="uid://lim7kxx0wuhn" path="res://audio/sounds/speech_ki.wav" id="14_pqaih"]
+[ext_resource type="AudioStream" uid="uid://dlivpjd07hi8g" path="res://audio/sounds/speech_ko.wav" id="15_i7pym"]
+[ext_resource type="AudioStream" uid="uid://df0l3dd7j6esl" path="res://audio/sounds/speech_ku.wav" id="16_nsrur"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="17_8lw6g"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="18_vbhtd"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="19_lwopc"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="20_45rg4"]
+[ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="21_0l8wq"]
+[ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="22_0t8fm"]
+[ext_resource type="Texture2D" uid="uid://bjfbkepenqn6d" path="res://assets/interface/input-arrow.png" id="23_nl2gi"]
+[ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="24_swyrv"]
+[ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="25_wr5xd"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="26_dc01s"]
+[ext_resource type="PackedScene" uid="uid://cys70kcpvkm0y" path="res://world/interface/speech_bubble.tscn" id="27_ce4h8"]
+[ext_resource type="Script" uid="uid://d2gl7vnb88axq" path="res://world/world/monolog_activation_area.gd" id="28_y4i7q"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="29_owqqn"]
+
+[sub_resource type="Resource" id="Resource_0o6nf"]
+script = ExtResource("7_uo10l")
+monolog_line = "Nice task, what a candidate!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_p111g"]
+script = ExtResource("7_uo10l")
+monolog_emotion = 2
+monolog_line = "......"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_d8enu"]
+script = ExtResource("7_uo10l")
+monolog_emotion = 2
+monolog_line = "You probably don't know who I am"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_my08x"]
+script = ExtResource("7_uo10l")
+monolog_eyes = 2
+monolog_line = "Well... unless you've played this game twice or something"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_8is5q"]
+script = ExtResource("7_uo10l")
+monolog_line = "I'm Marshmallow Lady, you may address me as Millie"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_mmk00"]
+script = ExtResource("7_uo10l")
+monolog_eyes = 3
+monolog_line = "I'm made out of candy, joy, and eccentricism!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_wbx4n"]
+script = ExtResource("8_ioh1j")
+animate_expression = 5
+metadata/_custom_type_script = "uid://bsf7yi865jfdq"
+
+[sub_resource type="Resource" id="Resource_o4sdu"]
+script = ExtResource("7_uo10l")
+monolog_emotion = 5
+monolog_line = "AAAAAAAAA!!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_c4agd"]
+script = ExtResource("7_uo10l")
+monolog_emotion = 5
+monolog_line = "You-.. You bit me!!!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_j16u5"]
+script = ExtResource("7_uo10l")
+monolog_emotion = 5
+monolog_line = "What have you done?!?!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_dtp6q"]
+script = ExtResource("7_uo10l")
+monolog_emotion = 5
+monolog_line = "The pain! The pain is too much!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_5jp5s"]
+script = ExtResource("7_uo10l")
+monolog_emotion = 5
+monolog_line = "AAAAAAAA"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_dkpg5"]
+script = ExtResource("8_ioh1j")
+metadata/_custom_type_script = "uid://bsf7yi865jfdq"
+
+[sub_resource type="Resource" id="Resource_i8e48"]
+script = ExtResource("7_uo10l")
+monolog_line = "Alright, you're lucky I can regenerate."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_oj4og"]
+script = ExtResource("7_uo10l")
+monolog_eyes = 3
+monolog_line = "WHY THANK YOU!!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_1x2i2"]
+script = ExtResource("7_uo10l")
+monolog_eyes = 2
+monolog_line = "Do you know how many people chose the latter option?"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_3q136"]
+script = ExtResource("7_uo10l")
+monolog_line = "They really want a piece of me, huh"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_jyevi"]
+script = ExtResource("9_dnfhd")
+monolog_path_1 = "Eat her anyway"
+monolog_flow_1 = Array[ExtResource("6_dlprc")]([SubResource("Resource_wbx4n"), SubResource("Resource_o4sdu"), SubResource("Resource_c4agd"), SubResource("Resource_j16u5"), SubResource("Resource_dtp6q"), SubResource("Resource_5jp5s"), SubResource("Resource_dkpg5"), SubResource("Resource_i8e48")])
+monolog_path_2 = "Got it"
+monolog_flow_2 = Array[ExtResource("6_dlprc")]([SubResource("Resource_oj4og"), SubResource("Resource_1x2i2"), SubResource("Resource_3q136")])
+monolog_line = "I may be sweet, but don't eat me. My candy parts are expired."
+metadata/_custom_type_script = "uid://coaf2q56w0fhq"
+
+[sub_resource type="Resource" id="Resource_2vsxg"]
+script = ExtResource("7_uo10l")
+monolog_line = " Anyway, enough monologuing. Let's get into fulfilling orders!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_xfjp3"]
+script = ExtResource("10_j75gc")
+monolog_flow = Array[ExtResource("6_dlprc")]([SubResource("Resource_0o6nf"), SubResource("Resource_p111g"), SubResource("Resource_d8enu"), SubResource("Resource_my08x"), SubResource("Resource_8is5q"), SubResource("Resource_mmk00"), SubResource("Resource_jyevi"), SubResource("Resource_2vsxg")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[sub_resource type="LabelSettings" id="LabelSettings_dr7fv"]
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p111g"]
+size = Vector2(800, 200)
+
+[sub_resource type="Resource" id="Resource_py3s4"]
+script = ExtResource("25_wr5xd")
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nw2w"]
+size = Vector2(165, 20)
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("player")]
+editor_description = "BlackOutSprite2D: z_index = 1
+NPC & SpeechBubble: z_index = 2"
+script = ExtResource("1_saqt4")
+level_id = 0
+auto_spawn_unmashed_blocks = false
+player = NodePath("Player")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_l728u")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(640, 400)
+script = ExtResource("3_gwvtg")
+
+[node name="Intro" type="Node" parent="." unique_id=29428490 node_paths=PackedStringArray("player", "camera", "area_text", "node_text", "text_1", "text_2", "scene_1", "scene_2", "level", "monolog")]
+script = ExtResource("4_y72ok")
+player = NodePath("../Player")
+camera = NodePath("../Cam")
+area_text = NodePath("../Scene1/Area2D")
+node_text = NodePath("../Scene1/Text")
+text_1 = NodePath("../Scene1/Text/Text1")
+text_2 = NodePath("../Scene1/Text/Text2")
+scene_1 = NodePath("../Scene1")
+scene_2 = NodePath("../Scene2")
+level = NodePath("..")
+monolog = NodePath("../MonologSystem")
+
+[node name="MonologSystem" type="Node" parent="." unique_id=1815639917 node_paths=PackedStringArray("speech_bubble", "character", "choice_1", "choice_2")]
+script = ExtResource("5_vp58q")
+auto_start = false
+reveal_name_at = 4
+flow = SubResource("Resource_xfjp3")
+speech_bubble = NodePath("../Scene2/World/SpeechBubble")
+character = NodePath("../Scene2/World/NPC")
+speech_generic = ExtResource("11_pp181")
+speech_a = ExtResource("12_17l4c")
+speech_e = ExtResource("13_kqy10")
+speech_i = ExtResource("14_pqaih")
+speech_o = ExtResource("15_i7pym")
+speech_u = ExtResource("16_nsrur")
+choice_1 = NodePath("../Scene2/World/SpeechBubble/MonologOptions/Choice1")
+choice_2 = NodePath("../Scene2/World/SpeechBubble/MonologOptions/Choice2")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[node name="Scene1" type="Node2D" parent="." unique_id=831149436]
+
+[node name="World" parent="Scene1" unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("17_8lw6g")]
+terrain = NodePath("TileMaps")
+camera = NodePath("../../Cam")
+
+[node name="TileMaps" type="Node2D" parent="Scene1/World" unique_id=1237230088]
+script = ExtResource("18_vbhtd")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground2" type="TileMapLayer" parent="Scene1/World/TileMaps" unique_id=462480928]
+tile_map_data = PackedByteArray("AAAAAP//AAAKAAAAAAAAAAAAAAAKAAEAAAAAAAEAAAAKAAEAAAAAAAIAAAAKAAEAAAAAAAMAAAAKAAEAAAAAAAQAAAAKAAEAAAAAAAUAAAAKAAEAAAAAAAYAAAAKAAEAAAAAAAcAAAAKAAEAAAAAAAgAAAAKAAEAAAABAP//AAAKAAAAAAABAAAAAAAKAAEAAAABAAEAAAAKAAEAAAABAAIAAAAKAAEAAAABAAMAAAAKAAEAAAABAAQAAAAKAAEAAAABAAcAAAAKAAEAAAABAAgAAAAKAAEAAAACAAcAAAAGAAEAAAACAAgAAAAKAAEAAAADAAgAAAAKAAEAAAAEAAoAAAAKAAEAAAAEAAsAAAAKAAEAAAAEAAwAAAAJAAMAAAAFAAkAAAALAAIAAAAFAAoAAAAGAAEAAAAFAAsAAAAKAAEAAAAFAAwAAAAJAAMAAAAGAAoAAAAKAAAAAAAGAAsAAAAKAAEAAAAGAAwAAAAJAAMAAAAHAAkAAAAIAAAAAAAHAAoAAAAFAAEAAAAHAAsAAAAKAAEAAAAHAAwAAAAJAAMAAAAIAAkAAAAKAAAAAAAIAAoAAAAKAAEAAAAIAAsAAAAKAAEAAAAIAAwAAAAJAAMAAAAJAAkAAAAKAAAAAAAJAAoAAAAKAAEAAAAJAAsAAAAKAAEAAAAJAAwAAAAJAAMAAAAKAAoAAAAKAAEAAAAKAAsAAAAKAAEAAAAKAAwAAAAJAAMAAAALAAoAAAAGAAEAAAALAAsAAAAKAAEAAAALAAwAAAAJAAMAAAAMAAoAAAAKAAAAAAAMAAsAAAAKAAEAAAAMAAwAAAAJAAMAAAANAAoAAAAKAAAAAAANAAsAAAAKAAEAAAANAAwAAAAJAAMAAAAOAAoAAAAKAAAAAAAOAAsAAAAKAAEAAAAOAAwAAAAJAAMAAAAPAAoAAAAKAAAAAAAPAAsAAAAKAAEAAAAPAAwAAAAJAAMAAAAQAAUAAAAFAAIAAAAQAAYAAAAIAAEAAAAQAAcAAAAIAAEAAAAQAAgAAAAIAAEAAAAQAAkAAAAIAAEAAAAQAAoAAAAFAAEAAAAQAAsAAAAKAAEAAAAQAAwAAAAJAAMAAAARAP//AAAIAAAAAAARAAAAAAAIAAEAAAARAAEAAAAIAAEAAAARAAIAAAAIAAEAAAARAAMAAAAIAAEAAAARAAQAAAAFAAEAAAARAAUAAAAKAAEAAAARAAYAAAAKAAEAAAARAAcAAAAKAAEAAAARAAgAAAAKAAEAAAARAAkAAAAKAAEAAAARAAoAAAAKAAEAAAARAAsAAAAKAAEAAAARAAwAAAAJAAMAAAASAP//AAAKAAAAAAASAAAAAAAKAAEAAAASAAEAAAAKAAEAAAASAAIAAAAKAAEAAAASAAMAAAAKAAEAAAASAAQAAAAKAAEAAAASAAUAAAAKAAEAAAASAAYAAAAKAAEAAAASAAcAAAAKAAEAAAASAAgAAAAKAAEAAAASAAkAAAAKAAEAAAASAAoAAAAKAAEAAAASAAsAAAAKAAEAAAASAAwAAAAJAAMAAAATAP//AAAKAAAAAAATAAAAAAAKAAEAAAATAAEAAAAKAAEAAAATAAIAAAAKAAEAAAATAAMAAAAKAAEAAAATAAQAAAAKAAEAAAATAAUAAAAKAAEAAAATAAYAAAAKAAEAAAATAAcAAAAKAAEAAAATAAgAAAAKAAEAAAATAAkAAAAKAAEAAAATAAoAAAAKAAEAAAATAAsAAAAKAAEAAAATAAwAAAAJAAMAAAAUAP//AAAKAAAAAAAUAAAAAAAKAAEAAAAUAAEAAAAKAAEAAAAUAAIAAAAKAAEAAAAUAAMAAAAKAAEAAAAUAAQAAAAKAAEAAAAUAAUAAAAKAAEAAAAUAAYAAAAKAAEAAAAUAAcAAAAKAAEAAAAUAAgAAAAKAAEAAAAUAAkAAAAKAAEAAAAUAAoAAAAKAAEAAAAUAAsAAAAKAAEAAAAUAAwAAAAJAAMAAAAVAP//AAALAAAAAAAVAAAAAAALAAIAAAAVAAEAAAALAAIAAAAVAAIAAAALAAIAAAAVAAMAAAALAAIAAAAVAAsAAAAGAAEAAAAVAAwAAAAJAAMAAAABAAUAAAAKAAEAAAABAAYAAAAKAAEAAAACAP//AAAKAAAAAAACAAAAAAAKAAEAAAACAAEAAAAKAAEAAAACAAIAAAAKAAEAAAACAAMAAAAKAAEAAAACAAQAAAAGAAIAAAACAAUAAAALAAIAAAACAAYAAAALAAIAAAADAP//AAALAAAAAAADAAAAAAALAAIAAAADAAEAAAALAAIAAAADAAIAAAALAAIAAAADAAMAAAALAAIAAAADAAQAAAALAAMAAAAEAAcAAAAKAAAAAAAEAAgAAAAKAAEAAAAEAAkAAAAKAAEAAAAFAAcAAAALAAAAAAAFAAgAAAALAAIAAAAJAAUAAAAKAAAAAAAJAAYAAAAJAAMAAAAKAAUAAAAJAAEAAAAKAAYAAAALAAMAAAAKAAkAAAAKAAAAAAALAAkAAAALAAAAAAAWAAsAAAAKAAAAAAAWAAwAAAAJAAMAAAAXAP//AAAAAAAAAAAXAAAAAAAAAAIAAAAXAAsAAAALAAAAAAAXAAwAAAALAAMAAAD/////AAAIAAAAAAD//wAAAAAIAAEAAAD//wEAAAAIAAEAAAD//wIAAAAIAAEAAAD//wMAAAAIAAEAAAAAAAkAAAAKAAEAAAAAAAoAAAAKAAEAAAAAAAsAAAAKAAEAAAD//wsAAAAIAAEAAAD//woAAAAIAAEAAAD//wkAAAAIAAEAAAD//wgAAAAIAAEAAAD//wcAAAAIAAEAAAD//wYAAAAIAAEAAAD//wUAAAAIAAEAAAD//wQAAAAIAAEAAAAAAAwAAAAJAAMAAAABAAwAAAAJAAMAAAACAAwAAAAJAAMAAAADAAwAAAAJAAMAAAADAAsAAAAKAAEAAAADAAoAAAAKAAEAAAACAAoAAAAKAAEAAAABAAoAAAAKAAEAAAABAAsAAAAKAAEAAAACAAsAAAAKAAEAAAACAAkAAAAKAAEAAAABAAkAAAAKAAEAAAADAAkAAAAKAAEAAAD//wwAAAAIAAMAAAAQAAQAAAAKAAAAAAADAAcAAAAKAAAAAAAVAAYAAAALAAIAAAAVAAUAAAALAAIAAAAVAAQAAAALAAIAAAAVAAcAAAALAAIAAAAVAAgAAAALAAIAAAAVAAkAAAALAAIAAAAVAAoAAAALAAIAAAALAAUAAAAJAAMAAAAMAAUAAAAJAAMAAAANAAUAAAAJAAMAAAAOAAUAAAAJAAMAAAAPAAUAAAAJAAMAAAALAAQAAAAKAAAAAAAMAAQAAAAKAAAAAAANAAQAAAAKAAAAAAAOAAQAAAAKAAAAAAAPAAQAAAAKAAAAAAAKAAQAAAAIAAAAAAAIAAUAAAAIAAAAAAAIAAYAAAAIAAMAAAA=")
+tile_set = ExtResource("19_lwopc")
+
+[node name="WorldBlocks" type="Node2D" parent="Scene1/World" unique_id=128896199]
+script = ExtResource("20_45rg4")
+
+[node name="DecoBlock" parent="Scene1/World/WorldBlocks" unique_id=825592049 instance=ExtResource("21_0l8wq")]
+position = Vector2(1080, 585)
+
+[node name="DecoBlock2" parent="Scene1/World/WorldBlocks" unique_id=2086355695 instance=ExtResource("21_0l8wq")]
+position = Vector2(1035, 315)
+
+[node name="DecoBlock3" parent="Scene1/World/WorldBlocks" unique_id=86587566 instance=ExtResource("21_0l8wq")]
+position = Vector2(315, 525)
+
+[node name="DecoBlock4" parent="Scene1/World/WorldBlocks" unique_id=1454955934 instance=ExtResource("21_0l8wq")]
+position = Vector2(120, 375)
+
+[node name="InputPrompt" type="Node2D" parent="Scene1/World" unique_id=226312240]
+position = Vector2(640, 704)
+
+[node name="InputPrompt2" parent="Scene1/World/InputPrompt" unique_id=2128616327 instance=ExtResource("22_0t8fm")]
+position = Vector2(0, -66)
+
+[node name="Base" parent="Scene1/World/InputPrompt/InputPrompt2" index="1" unique_id=736620297]
+position = Vector2(0, -0.98761547)
+
+[node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt2/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
+rotation = -94663.63
+
+[node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt2/Base" index="3" unique_id=1893349169]
+self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+position = Vector2(2, -8)
+rotation = -1.5707964
+texture = ExtResource("23_nl2gi")
+
+[node name="InputPrompt" parent="Scene1/World/InputPrompt" unique_id=1420007166 instance=ExtResource("22_0t8fm")]
+
+[node name="Base" parent="Scene1/World/InputPrompt/InputPrompt" index="1" unique_id=736620297]
+position = Vector2(0, -2)
+
+[node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(1420007166, 206340744) index="0" unique_id=520484544]
+rotation = -94663.63
+
+[node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt/Base" index="3" unique_id=2138650363]
+self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+position = Vector2(2, -8)
+rotation = 1.5707964
+texture = ExtResource("23_nl2gi")
+
+[node name="InputPrompt3" parent="Scene1/World/InputPrompt" unique_id=823154426 instance=ExtResource("22_0t8fm")]
+position = Vector2(64, 0)
+
+[node name="Base" parent="Scene1/World/InputPrompt/InputPrompt3" index="1" unique_id=736620297]
+position = Vector2(0, -2)
+
+[node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt3/Base/Sprite2D2" parent_id_path=PackedInt32Array(823154426, 206340744) index="0" unique_id=520484544]
+rotation = -94663.63
+
+[node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt3/Base" index="3" unique_id=1815677311]
+self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+position = Vector2(2, -8)
+texture = ExtResource("23_nl2gi")
+
+[node name="InputPrompt4" parent="Scene1/World/InputPrompt" unique_id=1387734507 instance=ExtResource("22_0t8fm")]
+position = Vector2(-64, 0)
+
+[node name="Base" parent="Scene1/World/InputPrompt/InputPrompt4" index="1" unique_id=736620297]
+position = Vector2(0, -2)
+
+[node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt4/Base/Sprite2D2" parent_id_path=PackedInt32Array(1387734507, 206340744) index="0" unique_id=520484544]
+rotation = -94663.63
+
+[node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt4/Base" index="3" unique_id=1257870127]
+self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+position = Vector2(2, -8)
+texture = ExtResource("23_nl2gi")
+flip_h = true
+
+[node name="Label" type="Label" parent="Scene1/World/InputPrompt" unique_id=233891723]
+visible = false
+offset_left = -205.0
+offset_top = -44.0
+offset_right = -85.0
+offset_bottom = 22.0
+text = "Move"
+label_settings = SubResource("LabelSettings_dr7fv")
+
+[node name="Area2D" type="Area2D" parent="Scene1" unique_id=213609837]
+position = Vector2(615, 180)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene1/Area2D" unique_id=1814579072]
+position = Vector2(45, -30)
+shape = SubResource("RectangleShape2D_p111g")
+
+[node name="Text" type="Node2D" parent="Scene1" unique_id=1669800411]
+
+[node name="Text1" type="RichTextLabel" parent="Scene1/Text" unique_id=859526773]
+offset_left = 60.0
+offset_top = 80.0
+offset_right = 1220.0
+offset_bottom = 138.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+bbcode_enabled = true
+text = "[b][font_size=42.0][outline_size=20.0][tornado freq=10.0 radius=1.0]You are a marshmallow."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Text2" type="RichTextLabel" parent="Scene1/Text" unique_id=195566315]
+offset_left = 60.0
+offset_top = 142.0
+offset_right = 1220.0
+offset_bottom = 200.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+bbcode_enabled = true
+text = "[b][font_size=42.0][outline_size=20.0][tornado freq=10.0 radius=1.0]You can stick to other marshmallows."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="UnmashedSpawner" parent="Scene1" unique_id=1761846739 node_paths=PackedStringArray("custom_spawn") instance=ExtResource("24_swyrv")]
+position = Vector2(405, 600)
+block_attributes = SubResource("Resource_py3s4")
+tutorial_block = true
+custom_spawn = NodePath("..")
+
+[node name="UnmashedSpawner2" parent="Scene1" unique_id=424227978 node_paths=PackedStringArray("custom_spawn") instance=ExtResource("24_swyrv")]
+position = Vector2(225, 420)
+block_attributes = SubResource("Resource_py3s4")
+tutorial_block = true
+custom_spawn = NodePath("..")
+
+[node name="UnmashedSpawner3" parent="Scene1" unique_id=1079691976 node_paths=PackedStringArray("custom_spawn") instance=ExtResource("24_swyrv")]
+position = Vector2(600, 285)
+block_attributes = SubResource("Resource_py3s4")
+tutorial_block = true
+custom_spawn = NodePath("..")
+
+[node name="UnmashedSpawner4" parent="Scene1" unique_id=1328735812 node_paths=PackedStringArray("custom_spawn") instance=ExtResource("24_swyrv")]
+position = Vector2(1050, 210)
+block_attributes = SubResource("Resource_py3s4")
+tutorial_block = true
+custom_spawn = NodePath("..")
+
+[node name="Scene2" type="Node2D" parent="." unique_id=831454771]
+position = Vector2(1380, 0)
+
+[node name="World" parent="Scene2" unique_id=1842092107 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("17_8lw6g")]
+terrain = NodePath("TileMaps")
+camera = NodePath("../../Cam")
+
+[node name="TileMaps" type="Node2D" parent="Scene2/World" unique_id=1188850970]
+script = ExtResource("18_vbhtd")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground2" type="TileMapLayer" parent="Scene2/World/TileMaps" unique_id=1936553600]
+tile_map_data = PackedByteArray("AAAEAAoAAAAKAAAAAAAEAAsAAAAKAAEAAAAEAAwAAAAJAAMAAAAFAAoAAAAKAAAAAAAFAAsAAAAKAAEAAAAFAAwAAAAJAAMAAAAGAAoAAAAKAAAAAAAGAAsAAAAKAAEAAAAGAAwAAAAJAAMAAAAHAAoAAAAKAAAAAAAHAAsAAAAKAAEAAAAHAAwAAAAJAAMAAAAIAAoAAAAKAAAAAAAIAAsAAAAKAAEAAAAIAAwAAAAJAAMAAAAJAAoAAAAKAAAAAAAJAAsAAAAKAAEAAAAJAAwAAAAJAAMAAAAKAAoAAAAKAAAAAAAKAAsAAAAKAAEAAAAKAAwAAAAJAAMAAAALAAoAAAAKAAAAAAALAAsAAAAKAAEAAAALAAwAAAAJAAMAAAAMAAoAAAAKAAAAAAAMAAsAAAAKAAEAAAAMAAwAAAAJAAMAAAANAAoAAAAFAAEAAAANAAsAAAAKAAEAAAANAAwAAAAJAAMAAAAOAAoAAAAKAAEAAAAOAAsAAAAKAAEAAAAOAAwAAAAJAAMAAAAPAAoAAAAKAAEAAAAPAAsAAAAKAAEAAAAPAAwAAAAJAAMAAAAQAAoAAAAKAAEAAAAQAAsAAAAKAAEAAAAQAAwAAAAJAAMAAAARAP//AAAKAAAAAAARAAAAAAAKAAEAAAARAAEAAAAKAAEAAAARAAIAAAAKAAEAAAARAAMAAAAKAAEAAAARAAQAAAAKAAEAAAARAAUAAAAKAAEAAAARAAYAAAAKAAEAAAARAAcAAAAKAAEAAAARAAgAAAAKAAEAAAARAAkAAAAKAAEAAAARAAoAAAAKAAEAAAARAAsAAAAKAAEAAAARAAwAAAAJAAMAAAASAP//AAAKAAAAAAASAAAAAAAKAAEAAAASAAEAAAAKAAEAAAASAAIAAAAKAAEAAAASAAMAAAAKAAEAAAASAAQAAAAKAAEAAAASAAUAAAAKAAEAAAASAAYAAAAKAAEAAAASAAcAAAAKAAEAAAASAAgAAAAKAAEAAAASAAkAAAAKAAEAAAASAAoAAAAKAAEAAAASAAsAAAAKAAEAAAASAAwAAAAJAAMAAAATAP//AAAKAAAAAAATAAAAAAAKAAEAAAATAAEAAAAKAAEAAAATAAIAAAAKAAEAAAATAAMAAAAKAAEAAAATAAQAAAAKAAEAAAATAAUAAAAKAAEAAAATAAYAAAAKAAEAAAATAAcAAAAKAAEAAAATAAgAAAAKAAEAAAATAAkAAAAKAAEAAAATAAoAAAAKAAEAAAATAAsAAAAKAAEAAAATAAwAAAAJAAMAAAAUAP//AAAKAAAAAAAUAAAAAAAKAAEAAAAUAAEAAAAKAAEAAAAUAAIAAAAKAAEAAAAUAAMAAAAKAAEAAAAUAAQAAAAKAAEAAAAUAAUAAAAKAAEAAAAUAAYAAAAKAAEAAAAUAAcAAAAKAAEAAAAUAAgAAAAKAAEAAAAUAAkAAAAKAAEAAAAUAAoAAAAKAAEAAAAUAAsAAAAKAAEAAAAUAAwAAAAJAAMAAAAVAP//AAAKAAAAAAAVAAAAAAAKAAEAAAAVAAEAAAAKAAEAAAAVAAIAAAAKAAEAAAAVAAMAAAAKAAEAAAAVAAQAAAAKAAEAAAAVAAUAAAAKAAEAAAAVAAYAAAAKAAEAAAAVAAcAAAAKAAEAAAAVAAgAAAAKAAEAAAAVAAkAAAAKAAEAAAAVAAoAAAAKAAEAAAAVAAsAAAAKAAEAAAAVAAwAAAAJAAMAAAAWAP//AAAKAAAAAAAWAAAAAAAKAAEAAAAWAAEAAAAKAAEAAAAWAAIAAAAKAAEAAAAWAAMAAAAKAAEAAAAWAAQAAAAKAAEAAAAWAAUAAAAKAAEAAAAWAAYAAAAKAAEAAAAWAAcAAAAKAAEAAAAWAAgAAAAKAAEAAAAWAAkAAAAKAAEAAAAWAAoAAAAKAAEAAAAWAAsAAAAKAAEAAAAWAAwAAAAJAAMAAAAXAP//AAALAAAAAAAXAAAAAAALAAIAAAAXAAEAAAALAAIAAAAXAAIAAAALAAIAAAAXAAMAAAALAAIAAAAXAAQAAAALAAIAAAAXAAUAAAALAAIAAAAXAAYAAAALAAIAAAAXAAcAAAALAAIAAAAXAAgAAAALAAIAAAAXAAkAAAALAAIAAAAXAAoAAAALAAIAAAAXAAsAAAALAAIAAAAXAAwAAAALAAMAAAAAAAoAAAAIAAAAAAAAAAsAAAAIAAEAAAAAAAwAAAAIAAMAAAABAAwAAAAJAAMAAAACAAwAAAAJAAMAAAADAAwAAAAJAAMAAAADAAsAAAAKAAEAAAADAAoAAAAKAAAAAAACAAoAAAAKAAAAAAABAAoAAAAKAAAAAAABAAsAAAAKAAEAAAACAAsAAAAKAAEAAAAQAAkAAAAKAAEAAAAQAAgAAAAKAAEAAAAQAAcAAAAKAAEAAAAQAAYAAAAKAAEAAAAQAAUAAAAKAAEAAAAQAAQAAAAKAAEAAAAQAAMAAAAKAAEAAAAQAAIAAAAKAAEAAAAQAAEAAAAKAAEAAAAQAAAAAAAKAAEAAAAQAP//AAAKAAAAAAAPAAkAAAAKAAEAAAAPAAgAAAAKAAEAAAAPAAcAAAAKAAEAAAAPAAYAAAAKAAEAAAAPAAUAAAAKAAEAAAAPAAQAAAAKAAEAAAAPAAMAAAAKAAEAAAAPAAIAAAAKAAEAAAAPAAEAAAAKAAEAAAAPAAAAAAAKAAEAAAAPAP//AAAKAAAAAAAOAAkAAAAKAAEAAAAOAAgAAAAKAAEAAAAOAAcAAAAKAAEAAAAOAAYAAAAKAAEAAAAOAAUAAAAKAAEAAAAOAAQAAAAKAAEAAAAOAAMAAAAKAAEAAAAOAAIAAAAKAAEAAAAOAAEAAAAKAAEAAAAOAAAAAAAKAAEAAAAOAP//AAAKAAAAAAANAAkAAAAIAAEAAAANAAgAAAAIAAEAAAANAAcAAAAIAAEAAAANAAYAAAAIAAEAAAANAAUAAAAIAAEAAAANAAQAAAAIAAEAAAANAAMAAAAIAAEAAAANAAIAAAAIAAEAAAANAAEAAAAIAAEAAAANAAAAAAAIAAEAAAANAP//AAAIAAAAAAAAAP3/AAAIAAEAAAAAAP7/AAAIAAEAAAAAAP//AAAIAAEAAAAAAAAAAAAIAAEAAAAAAAEAAAAIAAEAAAAAAAIAAAAIAAEAAAAAAAMAAAAIAAMAAAABAP3/AAAKAAEAAAABAP7/AAAKAAEAAAABAP//AAAKAAEAAAABAAAAAAAKAAEAAAABAAEAAAAKAAEAAAABAAIAAAAKAAEAAAABAAMAAAAJAAMAAAACAP3/AAAKAAEAAAACAP7/AAAKAAEAAAACAP//AAAKAAEAAAACAAAAAAAKAAEAAAACAAEAAAAKAAEAAAACAAIAAAAKAAEAAAACAAMAAAAJAAMAAAADAP3/AAAKAAEAAAADAP7/AAAKAAEAAAADAP//AAAKAAEAAAADAAAAAAAKAAEAAAADAAEAAAAKAAEAAAADAAIAAAAKAAEAAAADAAMAAAAJAAMAAAAEAP3/AAAKAAEAAAAEAP7/AAAKAAEAAAAEAP//AAAKAAEAAAAEAAAAAAAKAAEAAAAEAAEAAAAKAAEAAAAEAAIAAAAKAAEAAAAEAAMAAAAJAAMAAAAFAP3/AAAKAAEAAAAFAP7/AAAKAAEAAAAFAP//AAAKAAEAAAAFAAAAAAAKAAEAAAAFAAEAAAAKAAEAAAAFAAIAAAAKAAEAAAAFAAMAAAAFAAIAAAAFAAQAAAAIAAMAAAAGAP3/AAAKAAEAAAAGAP7/AAAKAAEAAAAGAP//AAAKAAEAAAAGAAAAAAAKAAEAAAAGAAEAAAAKAAEAAAAGAAIAAAAKAAEAAAAGAAMAAAAKAAEAAAAGAAQAAAAJAAMAAAAHAP3/AAAKAAEAAAAHAP7/AAAKAAEAAAAHAP//AAAKAAEAAAAHAAAAAAAKAAEAAAAHAAEAAAAKAAEAAAAHAAIAAAAKAAEAAAAHAAMAAAAGAAIAAAAHAAQAAAALAAMAAAAIAP7/AAAKAAEAAAAIAP//AAAKAAEAAAAIAAAAAAAKAAEAAAAIAAEAAAAKAAEAAAAIAAIAAAAKAAEAAAAIAAMAAAAJAAMAAAAJAP7/AAAKAAEAAAAJAP//AAAKAAEAAAAJAAAAAAAKAAEAAAAJAAEAAAAKAAEAAAAJAAIAAAAKAAEAAAAJAAMAAAAJAAMAAAAKAP7/AAAKAAEAAAAKAP//AAAKAAEAAAAKAAAAAAAKAAEAAAAKAAEAAAAKAAEAAAAKAAIAAAAKAAEAAAAKAAMAAAAJAAMAAAALAP7/AAALAAIAAAALAP//AAALAAIAAAALAAAAAAALAAIAAAALAAEAAAALAAIAAAALAAIAAAALAAIAAAALAAMAAAALAAMAAAAAAPv/AAAIAAAAAAAAAPz/AAAIAAEAAAABAPv/AAAKAAAAAAABAPz/AAAKAAEAAAACAPv/AAAKAAAAAAACAPz/AAAKAAEAAAADAPv/AAAKAAAAAAADAPz/AAAKAAEAAAAEAPv/AAAKAAAAAAAEAPz/AAAKAAEAAAAFAPv/AAAKAAAAAAAFAPz/AAAKAAEAAAAGAPv/AAAKAAAAAAAGAPz/AAAKAAEAAAAHAPv/AAALAAAAAAAHAPz/AAAGAAEAAAAIAPz/AAAKAAAAAAAIAP3/AAAKAAEAAAAJAPz/AAAKAAAAAAAJAP3/AAAKAAEAAAAKAPz/AAAKAAAAAAAKAP3/AAAKAAEAAAALAPz/AAALAAAAAAALAP3/AAALAAIAAAA=")
+tile_set = ExtResource("19_lwopc")
+
+[node name="Foreground" type="TileMapLayer" parent="Scene2/World/TileMaps" unique_id=1239824453]
+tile_set = ExtResource("19_lwopc")
+
+[node name="WorldBlocks" type="Node2D" parent="Scene2/World" unique_id=1985226160]
+script = ExtResource("20_45rg4")
+
+[node name="DecoBlock" parent="Scene2/World/WorldBlocks" unique_id=876687084 instance=ExtResource("21_0l8wq")]
+position = Vector2(450, 255)
+
+[node name="DecoBlock2" parent="Scene2/World/WorldBlocks" unique_id=1473638959 instance=ExtResource("21_0l8wq")]
+position = Vector2(720, 705)
+
+[node name="NPC" parent="Scene2/World" unique_id=1914110685 instance=ExtResource("26_dc01s")]
+position = Vector2(855, 330)
+scale = Vector2(1.5, 1.5)
+starting_emote = 4
+
+[node name="SpeechBubble" parent="Scene2/World" unique_id=1740413481 instance=ExtResource("27_ce4h8")]
+z_index = 2
+offset_left = 871.0
+offset_top = 458.0
+offset_right = 871.0
+offset_bottom = 458.0
+
+[node name="TiledSprite2D" parent="Scene2/World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
+region_rect = Rect2(-2119.2, 2.5952284e-13, 4776, 3584)
+
+[node name="Choice1" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
+visible = false
+disabled = true
+
+[node name="Choice2" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="1" unique_id=870054960]
+visible = false
+disabled = true
+
+[node name="DecoBlock" parent="Scene2" unique_id=1775006636 instance=ExtResource("21_0l8wq")]
+position = Vector2(450, 255)
+
+[node name="MonologArea" type="Area2D" parent="Scene2" unique_id=789184799 node_paths=PackedStringArray("monolog_system_to_activate")]
+position = Vector2(750, 630)
+script = ExtResource("28_y4i7q")
+monolog_system_to_activate = NodePath("../../MonologSystem")
+metadata/_custom_type_script = "uid://d2gl7vnb88axq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scene2/MonologArea" unique_id=760343161]
+position = Vector2(7.5, 0)
+shape = SubResource("RectangleShape2D_5nw2w")
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("29_owqqn")]
+position = Vector2(900, 585)
+start_asleep = true
+
+[editable path="Scene1/World/InputPrompt/InputPrompt2"]
+[editable path="Scene1/World/InputPrompt/InputPrompt"]
+[editable path="Scene1/World/InputPrompt/InputPrompt3"]
+[editable path="Scene1/World/InputPrompt/InputPrompt4"]
+[editable path="Scene2/World/SpeechBubble"]

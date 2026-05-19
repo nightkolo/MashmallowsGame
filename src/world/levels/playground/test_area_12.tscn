@@ -1,0 +1,81 @@
+[gd_scene format=4 uid="uid://vlq7prin22ie"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_rvrrg"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="2_4osr5"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="3_ch5s5"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_2o147"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_pkwa5"]
+[ext_resource type="Texture2D" uid="uid://cidheaemokk" path="res://assets/tilemap/ground-outline-mask.png" id="6_dvkiu"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="7_57c4d"]
+[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="8_s0vmo"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="9_a1yt5"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="10_gusrp"]
+[ext_resource type="PackedScene" uid="uid://bn6154eu6l5ce" path="res://object/objects/block_unmashed_1x1.tscn" id="12_pkwa5"]
+[ext_resource type="PackedScene" uid="uid://vs5datj6ikqy" path="res://object/objects/block_unmashed_1x2.tscn" id="13_dvkiu"]
+
+[node name="Level" type="Node2D" unique_id=1688286197]
+script = ExtResource("1_rvrrg")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(688, 448)
+zoom = Vector2(1.6, 1.6)
+script = ExtResource("2_4osr5")
+dynamic_cam = false
+
+[node name="World" parent="." unique_id=1317599791 instance=ExtResource("3_ch5s5")]
+bg_color = Color(1, 0.67263305, 0.99160117, 1)
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("4_2o147")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_map_data = PackedByteArray("AAAEAAoAAAAKAAAAAAAFAAoAAAAKAAAAAAAGAAoAAAAKAAAAAAAHAAoAAAAKAAAAAAAIAAoAAAAKAAAAAAAJAAoAAAAKAAAAAAAKAAoAAAAKAAAAAAALAAoAAAAKAAAAAAAMAAoAAAAKAAAAAAANAAoAAAAFAAEAAAADAAoAAAAKAAAAAAACAAoAAAAGAAEAAAABAAoAAAAKAAEAAAABAAsAAAAKAAEAAAACAAsAAAAKAAEAAAACAAwAAAAJAAMAAAADAAwAAAAJAAMAAAAEAAwAAAAJAAMAAAAFAAwAAAAJAAMAAAAGAAwAAAAJAAMAAAAHAAsAAAAKAAEAAAAIAAsAAAAKAAEAAAAJAAsAAAAKAAEAAAAKAAsAAAAKAAEAAAALAAsAAAAKAAEAAAAMAAsAAAAKAAEAAAANAAsAAAAKAAEAAAAOAAsAAAAKAAEAAAAPAAsAAAAKAAEAAAAQAAsAAAAKAAEAAAARAAsAAAALAAIAAAARAAoAAAALAAAAAAAQAAoAAAAKAAAAAAAPAAoAAAAGAAEAAAAOAAoAAAAKAAEAAAAFAAsAAAAKAAEAAAAEAAsAAAAKAAEAAAADAAsAAAAKAAEAAAABAAwAAAAJAAMAAAAGAAsAAAAKAAEAAAAPAAwAAAAJAAMAAAAQAAwAAAAJAAMAAAARAAwAAAAGAAMAAAASAAwAAAADAAMAAAAOAAwAAAAJAAMAAAANAAwAAAAJAAMAAAAMAAwAAAAJAAMAAAALAAwAAAAJAAMAAAAKAAwAAAAJAAMAAAAJAAwAAAAJAAMAAAAIAAwAAAAJAAMAAAAHAAwAAAAJAAMAAAANAAkAAAAIAAAAAAAOAAkAAAAKAAAAAAAPAAkAAAALAAAAAAACAAkAAAALAAAAAAABAAkAAAAKAAAAAAAAAAkAAAAIAAAAAAAAAAoAAAAIAAEAAAAAAAsAAAAIAAEAAAAAAAwAAAAIAAMAAAA=")
+tile_set = ExtResource("5_pkwa5")
+
+[node name="Foreground" type="TileMapLayer" parent="World/Terrain" unique_id=535445719]
+tile_set = ExtResource("5_pkwa5")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Terrain" unique_id=1770064885]
+clip_children = 1
+texture = ExtResource("6_dvkiu")
+centered = false
+
+[node name="Outline" type="TileMapLayer" parent="World/Terrain/Sprite2D" unique_id=1563137053]
+tile_set = ExtResource("5_pkwa5")
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("7_57c4d")]
+
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=690408388]
+script = ExtResource("8_s0vmo")
+metadata/_custom_type_script = "uid://blq670fy1uldv"
+
+[node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("9_a1yt5")]
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("10_gusrp")]
+position = Vector2(816, 464)
+
+[node name="Unmashed2" parent="." unique_id=1597136109 instance=ExtResource("12_pkwa5")]
+position = Vector2(240, 544)
+
+[node name="Unmashed3" parent="." unique_id=1255822740 instance=ExtResource("12_pkwa5")]
+position = Vector2(240, 448)
+
+[node name="Unmashed7" parent="." unique_id=1324326364 instance=ExtResource("12_pkwa5")]
+position = Vector2(624, 352)
+mash_type = 1
+
+[node name="Unmashed4" parent="." unique_id=1262447485 instance=ExtResource("12_pkwa5")]
+position = Vector2(624, 272)
+
+[node name="Unmashed5" parent="." unique_id=1957847022 instance=ExtResource("13_dvkiu")]
+position = Vector2(144, 464)
+
+[node name="Unmashed6" parent="." unique_id=922430211 instance=ExtResource("13_dvkiu")]
+position = Vector2(624, 496)
+mash_type = 3
+
+[editable path="World/LevelGoal"]

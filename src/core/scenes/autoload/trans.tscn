@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://bqe6pedspolx4"]
+
+[ext_resource type="Script" uid="uid://pnjloqibygdv" path="res://core/scripts/trans.gd" id="1_otbg6"]
+
+[sub_resource type="Animation" id="Animation_otbg6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trans1/Up:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trans1/Down:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 800)]
+}
+
+[sub_resource type="Animation" id="Animation_lytgr"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trans2/Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ljjyv"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trans2/Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_otgeb"]
+resource_name = "slide_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trans1/Up:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, -400), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trans1/Down:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 800), Vector2(0, 400)]
+}
+
+[sub_resource type="Animation" id="Animation_ei0j5"]
+resource_name = "slide_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trans1/Up:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trans1/Down:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 400), Vector2(0, 800)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei0j5"]
+_data = {
+&"RESET": SubResource("Animation_otbg6"),
+&"fade_in": SubResource("Animation_lytgr"),
+&"fade_out": SubResource("Animation_ljjyv"),
+&"slide_in": SubResource("Animation_otgeb"),
+&"slide_out": SubResource("Animation_ei0j5")
+}
+
+[node name="Trans" type="CanvasLayer" unique_id=99184853]
+script = ExtResource("1_otbg6")
+
+[node name="Anim" type="AnimationPlayer" parent="." unique_id=1208150388]
+libraries/ = SubResource("AnimationLibrary_ei0j5")
+
+[node name="Trans1" type="Node2D" parent="." unique_id=726988486]
+visible = false
+
+[node name="Up" type="ColorRect" parent="Trans1" unique_id=1287711765]
+offset_top = -400.0
+offset_right = 1280.0
+color = Color(0, 0, 0, 1)
+
+[node name="Down" type="ColorRect" parent="Trans1" unique_id=604253936]
+offset_top = 800.0
+offset_right = 1280.0
+offset_bottom = 1200.0
+color = Color(0, 0, 0, 1)
+
+[node name="Trans2" type="Node2D" parent="." unique_id=1222399744]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="Trans2" unique_id=1816131517]
+
+[node name="ColorRect" type="ColorRect" parent="Trans2/Node2D" unique_id=1002991023]
+offset_right = 1280.0
+offset_bottom = 800.0

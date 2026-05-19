@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://ck1gettgytye7"]
+
+[ext_resource type="Script" uid="uid://c1ie7cayeplgf" path="res://world/interface/level_info.gd" id="1_chl1b"]
+[ext_resource type="Texture2D" uid="uid://bdgcvmm6phosi" path="res://assets/interface/speech-bubble-01.png" id="2_8wlhc"]
+[ext_resource type="Texture2D" uid="uid://cxvh8xb1jrys0" path="res://assets/interface/tile-01.png" id="3_402cg"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://core/scripts/nodes/tiled_sprite_2d.gd" id="4_vjwu3"]
+[ext_resource type="Texture2D" uid="uid://cgq0uf5sbuc4y" path="res://assets/interface/spiral-01.png" id="5_wcwov"]
+[ext_resource type="Texture2D" uid="uid://dijxm1mx3uc6k" path="res://assets/interface/speech-bubble-02.png" id="6_k1ofw"]
+[ext_resource type="Theme" uid="uid://d4jbf26t3rslk" path="res://core/resources/label/rich_label_speech_bubble.tres" id="7_5jjr5"]
+[ext_resource type="Texture2D" uid="uid://wgw8015p7hw4" path="res://assets/interface/infopoint-information.png" id="8_8wlhc"]
+
+[node name="LevelInfo" type="Control" unique_id=1741767880]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_chl1b")
+
+[node name="BubbleContainer" type="MarginContainer" parent="." unique_id=29693961]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 255.0
+offset_bottom = 135.0
+pivot_offset_ratio = Vector2(0.5, 0)
+
+[node name="Bubble" type="NinePatchRect" parent="BubbleContainer" unique_id=1010957929]
+clip_children = 2
+layout_mode = 2
+texture = ExtResource("2_8wlhc")
+region_rect = Rect2(0, 0, 65, 65)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 33
+patch_margin_bottom = 33
+
+[node name="TiledSprite2D" type="Sprite2D" parent="BubbleContainer/Bubble" unique_id=1932792285]
+self_modulate = Color(1, 1, 1, 0.1)
+texture_repeat = 2
+position = Vector2(192, 176)
+texture = ExtResource("3_402cg")
+region_enabled = true
+region_rect = Rect2(-22243.66, 2.7242041e-12, 4776, 3584)
+script = ExtResource("4_vjwu3")
+animate_scroll = true
+scroll_trajectory = 3.141592653589793
+metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
+
+[node name="MaskedSpiral" type="Sprite2D" parent="BubbleContainer/Bubble" unique_id=1639729591]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(1, 1, 1, 0.2)
+position = Vector2(128, 64)
+texture = ExtResource("5_wcwov")
+
+[node name="Outline" type="NinePatchRect" parent="BubbleContainer" unique_id=338170850]
+visible = false
+clip_children = 2
+layout_mode = 2
+texture = ExtResource("6_k1ofw")
+region_rect = Rect2(0, 0, 69, 69)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 33
+patch_margin_bottom = 33
+
+[node name="LabelContainer" type="MarginContainer" parent="." unique_id=7455025]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 128.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MonologLabel" type="RichTextLabel" parent="LabelContainer" unique_id=587048025]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("7_5jjr5")
+bbcode_enabled = true
+text = "[b][font_size=21.0]Mash the [M][color=yellow]Marshmallows[/color] to fulfill the order!"
+scroll_active = false
+visible_characters = 46
+
+[node name="InfoSpriteNode" type="Node2D" parent="." unique_id=1221176953]
+unique_name_in_owner = true
+
+[node name="InfoSprite" type="Sprite2D" parent="InfoSpriteNode" unique_id=690829696]
+unique_name_in_owner = true
+position = Vector2(255, 135)
+rotation = -0.012070071
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_8wlhc")

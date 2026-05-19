@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://qjvmasbcnvbp"]
+
+[ext_resource type="Script" uid="uid://cqirvybp01ngf" path="res://world/interface/npc_board.gd" id="1_f72hj"]
+[ext_resource type="PackedScene" uid="uid://e41hr0ovjcl5" path="res://world/character/millie.tscn" id="3_f72hj"]
+[ext_resource type="Texture2D" uid="uid://3m47rnjmxcm1" path="res://assets/interface/npc-board.png" id="3_hkb5g"]
+[ext_resource type="Texture2D" uid="uid://cgq0uf5sbuc4y" path="res://assets/interface/spiral-01.png" id="4_8pasw"]
+[ext_resource type="Texture2D" uid="uid://bc4arhcoe7cyi" path="res://assets/interface/npc-board-outline-02.png" id="4_p7rwn"]
+[ext_resource type="Texture2D" uid="uid://cas733rat33tx" path="res://assets/interface/npc-board-mask-02.png" id="5_usmij"]
+[ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="7_usmij"]
+[ext_resource type="LabelSettings" uid="uid://dohg6g363o0sh" path="res://core/resources/label/prompt_text_label.tres" id="8_u7np0"]
+[ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="9_u7np0"]
+
+[sub_resource type="FontVariation" id="FontVariation_pp1vp"]
+base_font = ExtResource("7_usmij")
+spacing_glyph = -1
+spacing_top = -12
+spacing_bottom = -12
+
+[sub_resource type="LabelSettings" id="LabelSettings_pp1vp"]
+font = SubResource("FontVariation_pp1vp")
+font_size = 48
+outline_size = 20
+outline_color = Color(0.33101895, 0.33101892, 0.33101892, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.149)
+shadow_offset = Vector2(1, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_u7np0"]
+font = SubResource("FontVariation_pp1vp")
+font_size = 64
+outline_size = 20
+outline_color = Color(0.33101895, 0.33101892, 0.33101892, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.149)
+shadow_offset = Vector2(1, 3)
+
+[node name="NPCBoard" type="Node2D" unique_id=1914110685]
+script = ExtResource("1_f72hj")
+
+[node name="Board" type="Node2D" parent="." unique_id=1974844944]
+
+[node name="NpcBoard" type="Sprite2D" parent="Board" unique_id=401397119]
+clip_children = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_hkb5g")
+centered = false
+
+[node name="MaskedSpiral" type="Sprite2D" parent="Board/NpcBoard" unique_id=1357623102]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.2)
+position = Vector2(176, 186)
+rotation = -1098.1772
+scale = Vector2(2, 2)
+texture = ExtResource("4_8pasw")
+
+[node name="NpcBoardOutline" type="Sprite2D" parent="Board" unique_id=1912445747]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_p7rwn")
+centered = false
+
+[node name="NpcBoardMask" type="Sprite2D" parent="Board" unique_id=606391574]
+clip_children = 1
+position = Vector2(86, 61)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_usmij")
+
+[node name="NodeMillie" type="Node2D" parent="Board/NpcBoardMask" unique_id=612389165]
+unique_name_in_owner = true
+position = Vector2(0, 206)
+
+[node name="Millie" parent="Board/NpcBoardMask/NodeMillie" unique_id=2121837621 instance=ExtResource("3_f72hj")]
+unique_name_in_owner = true
+position = Vector2(0, -2)
+scale = Vector2(0.95, 1)
+
+[node name="InfoNodes" type="Node2D" parent="." unique_id=1546510149]
+z_index = 1
+position = Vector2(88, 134)
+
+[node name="Nameplate" type="ColorRect" parent="InfoNodes" unique_id=204120133]
+unique_name_in_owner = true
+visible = false
+offset_left = -89.0
+offset_top = 31.0
+offset_right = 91.0
+offset_bottom = 85.5
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(1, 1, 1, 0)
+
+[node name="Label" type="Label" parent="InfoNodes/Nameplate" unique_id=1652400792]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 317.0
+offset_bottom = 109.0
+scale = Vector2(0.5, 0.5)
+text = "Marshmallow
+Lady"
+label_settings = SubResource("LabelSettings_pp1vp")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="InfoNodes/Nameplate" unique_id=983884813]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -18.0
+offset_right = -47.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "???"
+label_settings = SubResource("LabelSettings_u7np0")
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="InfoNodes" unique_id=399705449]
+position = Vector2(-86, -135)
+
+[node name="InteractNotice" type="ColorRect" parent="InfoNodes/Sprite2D" unique_id=1001590448]
+unique_name_in_owner = true
+visible = false
+offset_left = 35.0
+offset_top = 190.0
+offset_right = 193.0
+offset_bottom = 238.0
+scale = Vector2(0.5, 0.5)
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="InfoNodes/Sprite2D/InteractNotice" unique_id=823469196]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 218.0
+offset_bottom = 58.0
+text = "Interact"
+label_settings = ExtResource("8_u7np0")
+
+[node name="InputPrompt" parent="InfoNodes/Sprite2D/InteractNotice" unique_id=2128616327 instance=ExtResource("9_u7np0")]
+position = Vector2(24, 34)
+character = "E"
+blink_time = 1.0
+blink_interval = 0.0

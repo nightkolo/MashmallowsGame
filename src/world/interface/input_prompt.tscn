@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://c7f3rvl7v62ii"]
+
+[ext_resource type="Script" uid="uid://dlev8pungmme8" path="res://world/interface/input_prompt.gd" id="1_6kxu5"]
+[ext_resource type="Texture2D" uid="uid://tt2inkgtr62a" path="res://assets/interface/input-depth.png" id="2_nhcje"]
+[ext_resource type="Texture2D" uid="uid://c4kf7ogbyv1al" path="res://assets/interface/input-prompt-mask.png" id="2_vdlyq"]
+[ext_resource type="Texture2D" uid="uid://cc8yt5s1i1gyo" path="res://assets/interface/spiral-02.png" id="3_nhcje"]
+[ext_resource type="Texture2D" uid="uid://df2nwuveo6qoo" path="res://assets/interface/input-top.png" id="5_ji4v2"]
+[ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="5_nefyv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o4sdu"]
+font = ExtResource("5_nefyv")
+font_size = 80
+font_color = Color(0.7490196, 0.7490196, 0.7490196, 1)
+outline_size = 15
+
+[node name="InputPrompt" type="Node2D" unique_id=2128616327]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_6kxu5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1805169845]
+position = Vector2(0, 40)
+texture = ExtResource("2_nhcje")
+
+[node name="Base" type="Node2D" parent="." unique_id=736620297]
+unique_name_in_owner = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Base" unique_id=206340744]
+clip_children = 2
+position = Vector2(0, -8)
+texture = ExtResource("2_vdlyq")
+
+[node name="Spiral" type="Sprite2D" parent="Base/Sprite2D2" unique_id=520484544]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.25)
+rotation = -1763.4052
+texture = ExtResource("3_nhcje")
+
+[node name="Sprite2D" type="Sprite2D" parent="Base" unique_id=883083260]
+position = Vector2(0, -8)
+texture = ExtResource("5_ji4v2")
+
+[node name="Label" type="Label" parent="Base" unique_id=1670702822]
+unique_name_in_owner = true
+offset_left = -28.0
+offset_top = -56.0
+offset_right = 28.0
+offset_bottom = 54.0
+label_settings = SubResource("LabelSettings_o4sdu")

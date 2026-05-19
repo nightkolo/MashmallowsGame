@@ -1,0 +1,20 @@
+[gd_resource type="Theme" format=3 uid="uid://c6sw73i0um5ji"]
+
+[ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="1_y26vk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6mdjn"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+
+[resource]
+Button/colors/font_disabled_color = Color(0.87455684, 0.87455684, 0.87455684, 0.75000006)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_outline_color = Color(0.36862746, 0.27058825, 0.3647059, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 8
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_y26vk")
+Button/styles/disabled = SubResource("StyleBoxFlat_6mdjn")
+Button/styles/focus = SubResource("StyleBoxFlat_6mdjn")
+Button/styles/hover = SubResource("StyleBoxFlat_6mdjn")
+Button/styles/normal = SubResource("StyleBoxFlat_6mdjn")
+Button/styles/pressed = SubResource("StyleBoxFlat_6mdjn")

@@ -1,0 +1,270 @@
+[gd_scene format=3 uid="uid://buwssnpn4ltxb"]
+
+[ext_resource type="Texture2D" uid="uid://drcifs86uiqmb" path="res://assets/world/mash-highlighter-1x2.png" id="2_48cmk"]
+[ext_resource type="PackedScene" uid="uid://cdwjmv7lmhqho" path="res://object/game/block_mashed_audio_node.tscn" id="2_grhf2"]
+[ext_resource type="Script" uid="uid://bgc37b0mpxwv3" path="res://object/scripts/block_mashed.gd" id="2_jo7o3"]
+[ext_resource type="Texture2D" uid="uid://du7hfm2logsjq" path="res://assets/objects/block-white-1x2.png" id="2_wfio2"]
+[ext_resource type="Texture2D" uid="uid://dwkdg7wxabl4p" path="res://assets/objects/block-eyes-regular.png" id="3_ka0jd"]
+[ext_resource type="PackedScene" uid="uid://krw76abox8r3" path="res://object/game/block_detector.tscn" id="4_84y5p"]
+[ext_resource type="Texture2D" uid="uid://bkdp3upfs50a2" path="res://assets/objects/block-shade-1x2-01.png" id="5_1seuy"]
+[ext_resource type="Script" uid="uid://bd6gly6surqfe" path="res://object/scripts/block_mash.gd" id="5_p1750"]
+[ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="6_jo6og"]
+[ext_resource type="Script" uid="uid://c2cidbmohm8nw" path="res://object/scripts/flame_detect.gd" id="7_0hq8m"]
+[ext_resource type="Texture2D" uid="uid://28pnv22t5b7d" path="res://assets/objects/block-eyes-angry-black.png" id="8_axj8d"]
+[ext_resource type="Texture2D" uid="uid://cwhqh20gmoa4t" path="res://assets/objects/block-eyes-choco.png" id="9_i6i5v"]
+[ext_resource type="PackedScene" uid="uid://bmu1cdw8x8kxs" path="res://world/effects/player_particles_dust.tscn" id="9_vq6hd"]
+[ext_resource type="PackedScene" uid="uid://df10xqr51prs8" path="res://world/effects/player_particle_right.tscn" id="10_avy6u"]
+[ext_resource type="PackedScene" uid="uid://cbuw1efjfm6wr" path="res://world/effects/player_particle_left.tscn" id="11_kdh0o"]
+[ext_resource type="Texture2D" uid="uid://cyfut2pqoyg2y" path="res://assets/objects/block-eyes-side-eye.png" id="12_kdh0o"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_e3omn"]
+points = PackedVector2Array(-15, -60, 15, -60, 30, -45, 30, 45, 15, 60, -15, 60, -30, 45, -30, -45)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_axj8d"]
+load_path = "res://.godot/imported/block-eyes-closed.png-3f098a97875b32cbda0d0f988693cb56.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jiy0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo6og"]
+size = Vector2(62, 124)
+
+[sub_resource type="Animation" id="Animation_tf56s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ka0jd")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_oksdx"]
+resource_name = "blink"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5, 0.56666666, 1),
+"transitions": PackedFloat32Array(1, 0.5, -2, -2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 8), Vector2(0, -1), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_ka0jd"), ExtResource("6_jo6og"), ExtResource("3_ka0jd")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.23333333, 0.43333337, 0.53333336),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.4, 0.6), Vector2(0.65, 0.35), Vector2(0.4, 0.6), Vector2(0.5, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_avy6u"]
+resource_name = "idle"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.76666665, 0.96666664, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_jo6og"), ExtResource("12_kdh0o"), ExtResource("6_jo6og"), ExtResource("12_kdh0o"), ExtResource("6_jo6og")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.76666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_avy6u"]
+_data = {
+&"RESET": SubResource("Animation_tf56s"),
+&"blink": SubResource("Animation_oksdx"),
+&"idle": SubResource("Animation_avy6u")
+}
+
+[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "mash_block", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed")]
+shape = SubResource("ConvexPolygonShape2D_e3omn")
+script = ExtResource("2_jo7o3")
+build_type = 1
+block_detect = NodePath("BlockDetect")
+mash_block = NodePath("MashBlock")
+dust_particles = NodePath("Dust")
+r_particles = NodePath("R")
+l_particles = NodePath("L")
+audio = NodePath("MashedAudio")
+anim = NodePath("AnimationPlayer")
+node_block_sprites = NodePath("Visual/SpriteNode")
+node_eye_sprites_2 = NodePath("Visual/Node2D")
+node_eye_sprites = NodePath("Visual/Node2D/Eyes")
+sprite_shade = NodePath("Visual/Node2D/Shade")
+sprite_block = NodePath("Visual/SpriteNode/Sprite2D")
+sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
+sprite_eyes_open = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D")
+sprite_eyes_regular = NodePath("Visual/Node2D/Eyes/Regular")
+sprite_eyes_angry = NodePath("Visual/Node2D/Eyes/Angy")
+sprite_eyes_wide = NodePath("Visual/Node2D/Eyes/Wide")
+sprite_eyes_closed = NodePath("Visual/Node2D/Eyes/Closed")
+metadata/_custom_type_script = "uid://bgc37b0mpxwv3"
+
+[node name="MashedAudio" parent="." unique_id=1474038607 instance=ExtResource("2_grhf2")]
+
+[node name="BlockDetect" parent="." unique_id=754251529 instance=ExtResource("4_84y5p")]
+position = Vector2(0, 32)
+
+[node name="Visual" type="Node2D" parent="." unique_id=1903969310]
+
+[node name="SpriteNode" type="Node2D" parent="Visual" unique_id=1755599335]
+position = Vector2(0, 64)
+
+[node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1929578610]
+position = Vector2(0, -64)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_48cmk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/SpriteNode" unique_id=678643639]
+position = Vector2(0, -64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wfio2")
+
+[node name="Node2D" type="Node2D" parent="Visual" unique_id=1206578792]
+
+[node name="Shade" type="Sprite2D" parent="Visual/Node2D" unique_id=1021077654]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("5_1seuy")
+
+[node name="Eyes" type="Node2D" parent="Visual/Node2D" unique_id=119415306]
+position = Vector2(0, 32)
+
+[node name="Regular" type="Node2D" parent="Visual/Node2D/Eyes" unique_id=1793175892]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/Node2D/Eyes/Regular" unique_id=724720804]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ka0jd")
+
+[node name="Angy" type="Sprite2D" parent="Visual/Node2D/Eyes" unique_id=213445395]
+visible = false
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_axj8d")
+
+[node name="Wide" type="Sprite2D" parent="Visual/Node2D/Eyes" unique_id=291937244]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_i6i5v")
+
+[node name="Closed" type="Sprite2D" parent="Visual/Node2D/Eyes" unique_id=584785497]
+visible = false
+scale = Vector2(0.6, 0.6)
+texture = SubResource("CompressedTexture2D_axj8d")
+
+[node name="MashBlock" type="Area2D" parent="." unique_id=652902660]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("5_p1750")
+metadata/_custom_type_script = "uid://bd6gly6surqfe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MashBlock" unique_id=918425020]
+shape = SubResource("RectangleShape2D_jiy0s")
+
+[node name="FlameDetect" type="Area2D" parent="." unique_id=1133100714]
+script = ExtResource("7_0hq8m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameDetect" unique_id=1095662948]
+shape = SubResource("RectangleShape2D_jo6og")
+
+[node name="Dust" parent="." unique_id=1755879273 instance=ExtResource("9_vq6hd")]
+position = Vector2(0, 60)
+emitting = false
+
+[node name="R" parent="." unique_id=585947001 instance=ExtResource("10_avy6u")]
+position = Vector2(0, 60)
+
+[node name="L" parent="." unique_id=531245437 instance=ExtResource("11_kdh0o")]
+position = Vector2(0, 60)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=369605102]
+libraries/ = SubResource("AnimationLibrary_avy6u")

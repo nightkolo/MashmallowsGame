@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bcncw2byps7q1"]
+
+[ext_resource type="Script" uid="uid://cpwsm2i2mtrps" path="res://world/effects/trail.gd" id="1_qxbkl"]
+
+[sub_resource type="Curve" id="Curve_esnir"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_esnir"]
+offsets = PackedFloat32Array(0.0048000216, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Trail" type="Line2D" unique_id=1725777840]
+top_level = true
+z_index = -1
+width = 40.0
+width_curve = SubResource("Curve_esnir")
+gradient = SubResource("Gradient_esnir")
+script = ExtResource("1_qxbkl")

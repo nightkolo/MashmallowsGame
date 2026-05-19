@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bvjtkxteylojf"]
+
+[ext_resource type="Script" uid="uid://6mcpjwt0inx1" path="res://object/scripts/game/order_checker.gd" id="1_va0ry"]
+
+[node name="OrderChecker" type="Node2D" unique_id=516939924]
+script = ExtResource("1_va0ry")
+metadata/_custom_type_script = "uid://6mcpjwt0inx1"

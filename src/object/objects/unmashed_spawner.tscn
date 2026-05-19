@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://daw4dfhjt0aka"]
+
+[ext_resource type="Script" uid="uid://do15hfotdoq5b" path="res://object/scripts/game/unmashed_block_spawner.gd" id="1_5mijl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buv7f"]
+size = Vector2(64, 64)
+
+[node name="UnmashedSpawner" type="Marker2D" unique_id=1761846739 node_paths=PackedStringArray("sprite", "collision_deflector") groups=["Spawner"]]
+gizmo_extents = 64.0
+script = ExtResource("1_5mijl")
+sprite = NodePath("Sprite2D")
+collision_deflector = NodePath("StaticBody2D")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2143307382]
+collision_layer = 8
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=688793227]
+shape = SubResource("RectangleShape2D_buv7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440652921]

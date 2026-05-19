@@ -1,0 +1,45 @@
+[gd_resource type="Theme" format=3 uid="uid://vnjfeobf1xfo"]
+
+[ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="1_6pffn"]
+[ext_resource type="StyleBox" uid="uid://ccle6ntx1bp2a" path="res://core/resources/theme/button_menu.tres" id="1_7w1j3"]
+
+[sub_resource type="FontVariation" id="FontVariation_62mrn"]
+base_font = ExtResource("1_6pffn")
+spacing_glyph = -2
+spacing_space = 2
+
+[resource]
+Button/colors/font_color = Color(1, 1, 0.8808251, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0.17254902, 0.17254902, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 15
+Button/font_sizes/font_size = 32
+Button/fonts/font = SubResource("FontVariation_62mrn")
+Button/styles/disabled = ExtResource("1_7w1j3")
+Button/styles/focus = ExtResource("1_7w1j3")
+Button/styles/hover = ExtResource("1_7w1j3")
+Button/styles/hover_pressed = ExtResource("1_7w1j3")
+Button/styles/normal = ExtResource("1_7w1j3")
+Button/styles/pressed = ExtResource("1_7w1j3")
+Label/colors/font_color = Color(1, 1, 0.75, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.15)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 5
+Label/font_sizes/font_size = 24
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.5)
+RichTextLabel/constants/shadow_offset_x = 3
+RichTextLabel/constants/shadow_offset_y = 3

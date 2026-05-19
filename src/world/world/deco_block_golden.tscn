@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://chrfjxt3c0qf3"]
+
+[ext_resource type="Texture2D" uid="uid://c7ras7ahf6ynu" path="res://assets/world/terrain-deco-star.png" id="1_vvj62"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me5s4"]
+size = Vector2(128, 128)
+
+[node name="DecoBlock" type="StaticBody2D" unique_id=1372033511]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=271610074]
+texture = ExtResource("1_vvj62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2086699916]
+shape = SubResource("RectangleShape2D_me5s4")

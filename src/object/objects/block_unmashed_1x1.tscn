@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://bn6154eu6l5ce"]
+
+[ext_resource type="Script" uid="uid://madv71ijp5i3" path="res://object/scripts/block_unmashed.gd" id="1_n48d1"]
+[ext_resource type="Texture2D" uid="uid://f0pl3v7mtwq5" path="res://assets/world/mash-highlighter.png" id="2_4m1b3"]
+[ext_resource type="Texture2D" uid="uid://dixq1ywr7h82b" path="res://assets/interface/mash-gameplay-prompt.png" id="2_6kpmq"]
+[ext_resource type="Shape2D" uid="uid://crhhqmr3wqyt5" path="res://core/resources/mashed_rectangle_shape_2d.tres" id="2_qkq5r"]
+[ext_resource type="PackedScene" uid="uid://b6wtesrgknlo2" path="res://object/game/block_unmashed_audio_node.tscn" id="2_ynmou"]
+[ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="3_4m1b3"]
+[ext_resource type="Texture2D" uid="uid://bsji6bkbccpc8" path="res://assets/objects/block-white-1x1.png" id="3_atpv5"]
+[ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="3_ugmxi"]
+[ext_resource type="LabelSettings" uid="uid://dohg6g363o0sh" path="res://core/resources/label/prompt_text_label.tres" id="3_ynmou"]
+[ext_resource type="Texture2D" uid="uid://dapafw2ycdflq" path="res://assets/objects/block-shade-1x1-01.png" id="6_ugmxi"]
+[ext_resource type="Script" uid="uid://c2cidbmohm8nw" path="res://object/scripts/flame_detect.gd" id="7_6kpmq"]
+[ext_resource type="PackedScene" uid="uid://b8b1jq0amanoa" path="res://world/particles_z.tscn" id="8_l7hdh"]
+[ext_resource type="Texture2D" uid="uid://dssqi37ffm7ee" path="res://assets/world/particle-marshspiral.png" id="9_siqqs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3xak3"]
+font_size = 64
+font_color = Color(0.40392157, 0.40392157, 0.40392157, 1)
+outline_size = 14
+outline_color = Color(0.40392157, 0.40392157, 0.40392157, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry3tk"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7hdh"]
+size = Vector2(62, 62)
+
+[sub_resource type="Curve" id="Curve_barkj"]
+_data = [Vector2(0, 0.49712896), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ol1ck"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Unmashed" type="CharacterBody2D" unique_id=1597136109 node_paths=PackedStringArray("player_down_detect", "unmashed_top_detect", "audio", "node_mash_prompt", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "particles_spawn")]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_n48d1")
+player_down_detect = NodePath("PlayerBottomDetect")
+unmashed_top_detect = NodePath("UnmashedBlockonTopDetect")
+audio = NodePath("UnmashedAudio")
+node_mash_prompt = NodePath("MashPrompt")
+sprite = NodePath("Visual/SpriteNode/Sprite2D")
+sprite_shade = NodePath("Visual/SpriteNode/Shade")
+sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
+sprite_input = NodePath("Visual/Eyes/Unmashable")
+sprite_node = NodePath("Visual/SpriteNode")
+particles_spawn = NodePath("Particles")
+metadata/_custom_type_script = "uid://madv71ijp5i3"
+
+[node name="UnmashedAudio" parent="." unique_id=1397385759 instance=ExtResource("2_ynmou")]
+
+[node name="MashPrompt" type="Node2D" parent="." unique_id=202597146]
+visible = false
+scale = Vector2(1e-05, 1e-05)
+
+[node name="Label" type="Label" parent="MashPrompt" unique_id=1093342530]
+z_index = 1
+offset_left = -47.0
+offset_top = -134.0
+offset_right = 55.0
+offset_bottom = -78.0
+text = "Mash"
+label_settings = ExtResource("3_ynmou")
+metadata/_edit_use_anchors_ = true
+
+[node name="InputPrompt" parent="MashPrompt" unique_id=2128616327 instance=ExtResource("3_ugmxi")]
+z_index = 1
+position = Vector2(-1, -161)
+character = "X"
+blink_time = 1.0
+blink_interval = 0.0
+
+[node name="Base" parent="MashPrompt/InputPrompt" index="1" unique_id=736620297]
+position = Vector2(0, 3.4969199)
+
+[node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
+rotation = -59679.496
+
+[node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
+text = "X"
+
+[node name="Visual" type="Node2D" parent="." unique_id=846792098]
+
+[node name="SpriteNode" type="Node2D" parent="Visual" unique_id=277771888]
+position = Vector2(0, 35)
+scale = Vector2(1.0084715, 0.9811464)
+
+[node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=690881826]
+position = Vector2(0, -35)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_4m1b3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1558432174]
+self_modulate = Color(0.82665706, 0.82665706, 0.82665706, 1)
+position = Vector2(0, -35)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_atpv5")
+
+[node name="Shade" type="Sprite2D" parent="Visual/SpriteNode" unique_id=679386094]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3)
+position = Vector2(0, -34.80761)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("6_ugmxi")
+
+[node name="Eyes" type="Node2D" parent="Visual" unique_id=808718703]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/Eyes" unique_id=896589209]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_4m1b3")
+
+[node name="Unmashable" type="Sprite2D" parent="Visual/Eyes" unique_id=1109161912]
+unique_name_in_owner = true
+editor_description = "80.0"
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6kpmq")
+
+[node name="Label" type="Label" parent="Visual/Eyes/Unmashable" unique_id=867239080]
+offset_left = -22.0
+offset_top = -42.0
+offset_right = 21.0
+offset_bottom = 46.0
+text = "X"
+label_settings = SubResource("LabelSettings_3xak3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767633492]
+shape = ExtResource("2_qkq5r")
+
+[node name="PlayerBottomDetect" type="ShapeCast2D" parent="." unique_id=990155891]
+shape = SubResource("RectangleShape2D_ry3tk")
+target_position = Vector2(0, 30)
+collision_mask = 2
+
+[node name="UnmashedBlockonTopDetect" type="ShapeCast2D" parent="." unique_id=1800823164]
+shape = SubResource("RectangleShape2D_ry3tk")
+target_position = Vector2(0, -30)
+collision_mask = 8
+
+[node name="FlameDetect" type="Area2D" parent="." unique_id=680330865]
+script = ExtResource("7_6kpmq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameDetect" unique_id=1643844181]
+shape = SubResource("RectangleShape2D_l7hdh")
+
+[node name="Z" parent="." unique_id=2080773523 instance=ExtResource("8_l7hdh")]
+position = Vector2(22, -19)
+
+[node name="Particles" type="CPUParticles2D" parent="." unique_id=1465561876]
+unique_name_in_owner = true
+z_index = 6
+position = Vector2(-3, -1)
+emitting = false
+texture = ExtResource("9_siqqs")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+angular_velocity_min = -300.0
+angular_velocity_max = 500.0
+damping_min = 240.0
+damping_max = 240.0
+scale_amount_curve = SubResource("Curve_barkj")
+color_ramp = SubResource("Gradient_ol1ck")
+
+[editable path="MashPrompt/InputPrompt"]

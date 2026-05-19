@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://vs5datj6ikqy"]
+
+[ext_resource type="Script" uid="uid://madv71ijp5i3" path="res://object/scripts/block_unmashed.gd" id="1_cg17m"]
+[ext_resource type="PackedScene" uid="uid://b6wtesrgknlo2" path="res://object/game/block_unmashed_audio_node.tscn" id="2_1msb7"]
+[ext_resource type="Texture2D" uid="uid://dixq1ywr7h82b" path="res://assets/interface/mash-gameplay-prompt.png" id="2_8qamv"]
+[ext_resource type="Texture2D" uid="uid://du7hfm2logsjq" path="res://assets/objects/block-white-1x2.png" id="2_onbp7"]
+[ext_resource type="Texture2D" uid="uid://drcifs86uiqmb" path="res://assets/world/mash-highlighter-1x2.png" id="2_vrlv6"]
+[ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="3_cg17m"]
+[ext_resource type="Texture2D" uid="uid://bkdp3upfs50a2" path="res://assets/objects/block-shade-1x2-01.png" id="4_bnw4p"]
+[ext_resource type="Script" uid="uid://c2cidbmohm8nw" path="res://object/scripts/flame_detect.gd" id="6_8qamv"]
+[ext_resource type="PackedScene" uid="uid://b8b1jq0amanoa" path="res://world/particles_z.tscn" id="7_gnbv7"]
+[ext_resource type="Texture2D" uid="uid://dssqi37ffm7ee" path="res://assets/world/particle-marshspiral.png" id="8_ssm2y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wqv4d"]
+font_size = 64
+font_color = Color(0.40392157, 0.40392157, 0.40392157, 1)
+outline_size = 14
+outline_color = Color(0.40392157, 0.40392157, 0.40392157, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg17m"]
+size = Vector2(62, 124)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqld8"]
+size = Vector2(63, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqv4d"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnbv7"]
+size = Vector2(62, 124)
+
+[sub_resource type="Curve" id="Curve_bnw4p"]
+_data = [Vector2(0, 0.49712896), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_1msb7"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "unmashed_top_detect", "audio", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "particles_spawn")]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_cg17m")
+build_type = 1
+player_down_detect = NodePath("PlayerBottomDetect")
+unmashed_top_detect = NodePath("UnmashedBlockonTopDetect")
+audio = NodePath("UnmashedAudio")
+sprite = NodePath("Visual/SpriteNode/Sprite2D")
+sprite_shade = NodePath("Visual/SpriteNode/Shade")
+sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
+sprite_input = NodePath("Visual/Eyes/Unmashable")
+sprite_node = NodePath("Visual/SpriteNode")
+particles_spawn = NodePath("Particles")
+metadata/_custom_type_script = "uid://madv71ijp5i3"
+
+[node name="UnmashedAudio" parent="." unique_id=1397385759 instance=ExtResource("2_1msb7")]
+
+[node name="Visual" type="Node2D" parent="." unique_id=91394970]
+
+[node name="SpriteNode" type="Node2D" parent="Visual" unique_id=1466462306]
+position = Vector2(0, 64)
+scale = Vector2(1.0370752, 0.9596936)
+
+[node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1604238858]
+position = Vector2(0, -64)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_vrlv6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/SpriteNode" unique_id=73230102]
+position = Vector2(0, -64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_onbp7")
+
+[node name="Shade" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1733588835]
+visible = false
+self_modulate = Color(1, 1, 1, 0.3)
+position = Vector2(0, -63.50731)
+scale = Vector2(0.45, 0.4799451)
+texture = ExtResource("4_bnw4p")
+
+[node name="Eyes" type="Node2D" parent="Visual" unique_id=774960741]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual/Eyes" unique_id=1096876944]
+position = Vector2(0, 32)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_cg17m")
+
+[node name="Unmashable" type="Sprite2D" parent="Visual/Eyes" unique_id=790824455]
+unique_name_in_owner = true
+editor_description = "80.0"
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_8qamv")
+
+[node name="Label" type="Label" parent="Visual/Eyes/Unmashable" unique_id=1222493017]
+offset_left = -22.0
+offset_top = -42.0
+offset_right = 21.0
+offset_bottom = 46.0
+text = "X"
+label_settings = SubResource("LabelSettings_wqv4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767633492]
+shape = SubResource("RectangleShape2D_cg17m")
+
+[node name="PlayerBottomDetect" type="ShapeCast2D" parent="." unique_id=928000916]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_eqld8")
+target_position = Vector2(0, 30)
+collision_mask = 2
+
+[node name="UnmashedBlockonTopDetect" type="ShapeCast2D" parent="." unique_id=1835517699]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_wqv4d")
+target_position = Vector2(0, -30)
+collision_mask = 8
+
+[node name="FlameDetect" type="Area2D" parent="." unique_id=945737623]
+script = ExtResource("6_8qamv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameDetect" unique_id=79540611]
+shape = SubResource("RectangleShape2D_gnbv7")
+
+[node name="Z" parent="." unique_id=2080773523 instance=ExtResource("7_gnbv7")]
+position = Vector2(32, 16)
+
+[node name="Particles" type="CPUParticles2D" parent="." unique_id=135041744]
+unique_name_in_owner = true
+z_index = 6
+position = Vector2(-3, -1)
+emitting = false
+texture = ExtResource("8_ssm2y")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+angular_velocity_min = -300.0
+angular_velocity_max = 500.0
+damping_min = 240.0
+damping_max = 240.0
+scale_amount_curve = SubResource("Curve_bnw4p")
+color_ramp = SubResource("Gradient_1msb7")

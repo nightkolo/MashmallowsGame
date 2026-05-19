@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://by7noxq7uf4ml"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_e861b"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="2_onxgj"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="3_7t0fi"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_fv03o"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_difyh"]
+[ext_resource type="Texture2D" uid="uid://cidheaemokk" path="res://assets/tilemap/ground-outline-mask.png" id="6_q51q4"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="7_uhyka"]
+[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="8_adaih"]
+[ext_resource type="PackedScene" uid="uid://cys70kcpvkm0y" path="res://world/interface/speech_bubble.tscn" id="9_tnwar"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="9_yoish"]
+[ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="10_u5a7t"]
+[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="11_tsdvr"]
+[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="12_djiyg"]
+
+[sub_resource type="Resource" id="Resource_43sx8"]
+script = ExtResource("11_tsdvr")
+monolog_line = "[shake][font_size=30.0]Mmmm....."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_tnwar"]
+script = ExtResource("11_tsdvr")
+monolog_line = "Next up,
+Here comes the
+[wave amp=7.5 freq=20.0 connected=0][color=yellow]Marshmallow Lady"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_gbm0e"]
+script = ExtResource("12_djiyg")
+monolog_flow = Array[ExtResource("11_tsdvr")]([SubResource("Resource_43sx8"), SubResource("Resource_tnwar")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[node name="Level" type="Node2D" unique_id=1688286197]
+script = ExtResource("1_e861b")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(112, 32)
+anchor_mode = 0
+script = ExtResource("2_onxgj")
+
+[node name="World" parent="." unique_id=1317599791 instance=ExtResource("3_7t0fi")]
+bg_color = Color(0.23137255, 0.23529412, 0.34509805, 1)
+
+[node name="TileMaps" type="Node2D" parent="World" unique_id=1237230088]
+script = ExtResource("4_fv03o")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground" type="TileMapLayer" parent="World/TileMaps" unique_id=462480928]
+tile_set = ExtResource("5_difyh")
+
+[node name="Foreground" type="TileMapLayer" parent="World/TileMaps" unique_id=535445719]
+tile_set = ExtResource("5_difyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TileMaps" unique_id=1770064885]
+clip_children = 1
+texture = ExtResource("6_q51q4")
+centered = false
+
+[node name="Outline" type="TileMapLayer" parent="World/TileMaps/Sprite2D" unique_id=1563137053]
+tile_set = ExtResource("5_difyh")
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("7_uhyka")]
+
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=690408388]
+script = ExtResource("8_adaih")
+metadata/_custom_type_script = "uid://blq670fy1uldv"
+
+[node name="SpeechBubble" parent="World" unique_id=1078381548 instance=ExtResource("9_tnwar")]
+position = Vector2(1056, 496)
+scale = Vector2(1.9, 1.9)
+
+[node name="MonologSystem" type="Node" parent="World" unique_id=2098357230 node_paths=PackedStringArray("speech_bubble")]
+script = ExtResource("10_u5a7t")
+auto_start = false
+flow = SubResource("Resource_gbm0e")
+speech_bubble = NodePath("../SpeechBubble")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("9_yoish")]
+
+[editable path="World/LevelGoal"]

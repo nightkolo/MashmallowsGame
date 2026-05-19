@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b14pn8denw8rg"]
+
+[ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="1_dba1w"]
+[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="2_giqkf"]
+[ext_resource type="Script" uid="uid://coaf2q56w0fhq" path="res://core/resources/game_dialog/monolog_tree.gd" id="3_itehh"]
+[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="4_6pm55"]
+
+[sub_resource type="Resource" id="Resource_qtu10"]
+script = ExtResource("2_giqkf")
+monolog_line = "Hello there"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_ee4bf"]
+script = ExtResource("2_giqkf")
+monolog_line = "Nice"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_fj5cn"]
+script = ExtResource("2_giqkf")
+monolog_line = "You're welcome"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_iy58a"]
+script = ExtResource("3_itehh")
+monolog_path_1 = "Fine"
+monolog_flow_1 = Array[ExtResource("2_giqkf")]([SubResource("Resource_ee4bf"), SubResource("Resource_fj5cn")])
+monolog_path_2 = "OK"
+monolog_flow_2 = Array[ExtResource("2_giqkf")]([null])
+metadata/_custom_type_script = "uid://coaf2q56w0fhq"
+
+[sub_resource type="Resource" id="Resource_6a6wx"]
+script = ExtResource("2_giqkf")
+monolog_line = "Bye bye!!!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_kbped"]
+script = ExtResource("4_6pm55")
+monolog_flow = Array[ExtResource("2_giqkf")]([SubResource("Resource_qtu10"), SubResource("Resource_iy58a"), SubResource("Resource_6a6wx")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[node name="Control" type="Control" unique_id=537810024]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1445686915]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=519169253]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1263533304]
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][tornado radius=0.5 freq=1.0][wave amp=9.0 freq=-5.0]Hello there"
+fit_content = true
+visible_characters = 11
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1407360335]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=722522069]
+visible = false
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1143137023]
+visible = false
+layout_mode = 2
+
+[node name="MonologSystem" type="Node" parent="." unique_id=1079244988 node_paths=PackedStringArray("choice_1", "choice_2")]
+script = ExtResource("1_dba1w")
+flow = SubResource("Resource_kbped")
+choice_1 = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/Button")
+choice_2 = NodePath("../MarginContainer/VBoxContainer/HBoxContainer/Button2")
+metadata/_custom_type_script = "uid://8084qpc74hbe"

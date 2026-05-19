@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cbuw1efjfm6wr"]
+
+[ext_resource type="Texture2D" uid="uid://dejkx0t3by1r5" path="res://assets/world/particle-dust-01.png" id="1_3qldm"]
+
+[sub_resource type="Curve" id="Curve_5gpwc"]
+_data = [Vector2(0, 0.6017544), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="L" type="CPUParticles2D" unique_id=531245437]
+emitting = false
+amount = 1
+texture = ExtResource("1_3qldm")
+one_shot = true
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, -20)
+initial_velocity_min = 360.0
+initial_velocity_max = 360.0
+damping_min = 1100.0
+damping_max = 1100.0
+scale_amount_curve = SubResource("Curve_5gpwc")
+color = Color(1, 1, 1, 0.8)

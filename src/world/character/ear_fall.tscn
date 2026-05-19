@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ojw50ov8sd58"]
+
+[ext_resource type="Texture2D" uid="uid://ragu8x0oo5vx" path="res://assets/character/millie-ear-r.png" id="1_6xtlq"]
+
+[node name="EarFall" type="CPUParticles2D" unique_id=1873157897]
+emitting = false
+amount = 1
+texture = ExtResource("1_6xtlq")
+lifetime = 2.0
+one_shot = true
+direction = Vector2(1, -1)
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+scale_amount_min = 0.4
+scale_amount_max = 0.4

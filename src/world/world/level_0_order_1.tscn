@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://btp302od8x8dp"]
+
+[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="1_sv3es"]
+[ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="2_f5j3n"]
+
+[node name="Order" type="Node2D" unique_id=109960293]
+position = Vector2(0, 32)
+scale = Vector2(0.65, 0.65)
+script = ExtResource("1_sv3es")
+metadata/_custom_type_script = "uid://blq670fy1uldv"
+
+[node name="MashBlockCheckerID" parent="." unique_id=491390326 instance=ExtResource("2_f5j3n")]
+is_mash_type = 99
+
+[node name="MashBlockCheckerID2" parent="." unique_id=872524885 instance=ExtResource("2_f5j3n")]
+position = Vector2(0, 64)
+
+[node name="MashBlockCheckerID3" parent="." unique_id=1557552710 instance=ExtResource("2_f5j3n")]
+position = Vector2(0, 128)
+
+[node name="MashBlockCheckerID4" parent="." unique_id=887978442 instance=ExtResource("2_f5j3n")]
+position = Vector2(0, 192)

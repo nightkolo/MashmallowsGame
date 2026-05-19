@@ -1,0 +1,126 @@
+[gd_scene format=4 uid="uid://tvilthf7ds8q"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_m2cpo"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="2_kj523"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_lipw1"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="3_xampj"]
+[ext_resource type="PackedScene" uid="uid://l52q2l55w3bc" path="res://world/effects/terrain_light.tscn" id="4_16juq"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_xev4b"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_v1y24"]
+[ext_resource type="Texture2D" uid="uid://cidheaemokk" path="res://assets/tilemap/ground-outline-mask.png" id="6_ylwrn"]
+[ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="7_4phys"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="7_c68rt"]
+[ext_resource type="PackedScene" uid="uid://chrfjxt3c0qf3" path="res://world/world/deco_block_golden.tscn" id="8_3xl6e"]
+[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="8_b7r0f"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="9_l42af"]
+[ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="9_rmm20"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="9_xex4j"]
+[ext_resource type="PackedScene" uid="uid://bn6154eu6l5ce" path="res://object/objects/block_unmashed_1x1.tscn" id="11_el6ui"]
+[ext_resource type="PackedScene" uid="uid://vs5datj6ikqy" path="res://object/objects/block_unmashed_1x2.tscn" id="12_7ebvv"]
+
+[node name="Level" type="Node2D" unique_id=1688286197]
+script = ExtResource("1_m2cpo")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_lipw1")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(640, 400)
+script = ExtResource("2_kj523")
+
+[node name="World" parent="." unique_id=1317599791 instance=ExtResource("3_xampj")]
+
+[node name="TerrainLight" parent="World" unique_id=1486142948 instance=ExtResource("4_16juq")]
+position = Vector2(640, 400)
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("4_xev4b")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_map_data = PackedByteArray("AAAHAAsAAAAKAAAAAAAIAAsAAAAKAAAAAAAJAAsAAAAKAAAAAAAKAAsAAAAKAAAAAAAGAAsAAAAGAAEAAAAGAAoAAAALAAAAAAAMAAsAAAALAAAAAAALAAsAAAAKAAAAAAAMAAwAAAALAAMAAAALAAwAAAAJAAMAAAAKAAwAAAAJAAMAAAAJAAwAAAAJAAMAAAAIAAwAAAAJAAMAAAAHAAwAAAAJAAMAAAAGAAwAAAAJAAMAAAAFAAwAAAAJAAMAAAAEAAwAAAAJAAMAAAADAAwAAAAJAAMAAAAEAAsAAAAKAAEAAAAFAAsAAAAKAAEAAAAFAAoAAAAKAAAAAAACAAoAAAAKAAEAAAACAAsAAAAKAAEAAAADAAsAAAAKAAEAAAADAAoAAAAGAAEAAAAEAAoAAAAKAAAAAAACAAwAAAAJAAMAAAALAAUAAAAIAAEAAAAMAAUAAAAKAAEAAAAFAAUAAAALAAMAAAAEAAUAAAAJAAMAAAADAAUAAAAJAAMAAAACAAMAAAAKAAEAAAACAAQAAAAKAAEAAAACAAUAAAAJAAMAAAAFAAQAAAALAAIAAAAEAAQAAAAKAAEAAAADAAMAAAAKAAEAAAAEAAMAAAAKAAEAAAAFAAMAAAALAAIAAAADAAQAAAAKAAEAAAADAAIAAAAKAAEAAAACAAIAAAAKAAEAAAANAAUAAAALAAIAAAAPAAsAAAAIAAEAAAAPAAwAAAAIAAMAAAANAAYAAAALAAIAAAAMAAYAAAAKAAEAAAALAAYAAAAIAAEAAAAQAAgAAAAFAAEAAAAQAAkAAAAKAAEAAAAQAAoAAAAKAAEAAAAQAAsAAAAKAAEAAAARAAsAAAAKAAEAAAARAAwAAAAJAAMAAAAQAAwAAAAJAAMAAAARAAoAAAAKAAEAAAARAAkAAAAKAAEAAAARAAgAAAAKAAEAAAANAAcAAAAHAAIAAAAMAAcAAAAJAAMAAAALAAcAAAAIAAMAAAAFAAEAAAAGAAIAAAATAAQAAAAKAAEAAAATAAUAAAAKAAEAAAATAAYAAAAKAAEAAAATAAIAAAAKAAEAAAATAAEAAAAKAAEAAAASAAIAAAAKAAEAAAARAAIAAAAKAAEAAAARAAEAAAAKAAEAAAASAAEAAAAKAAEAAAASAAcAAAAKAAEAAAASAAgAAAAKAAEAAAASAAkAAAAKAAEAAAASAAoAAAAKAAEAAAASAAsAAAAKAAEAAAASAAwAAAAJAAMAAAATAAwAAAAJAAMAAAATAAsAAAAKAAEAAAATAAoAAAAKAAEAAAATAAkAAAAKAAEAAAATAAgAAAAKAAEAAAATAAcAAAAKAAEAAAAUAAEAAAALAAIAAAAUAAIAAAALAAIAAAAUAAQAAAALAAIAAAAUAAUAAAALAAIAAAAUAAYAAAALAAIAAAAUAAcAAAALAAIAAAAUAAgAAAALAAIAAAAUAAkAAAALAAIAAAAUAAwAAAALAAMAAAAUAAsAAAALAAIAAAAUAAoAAAALAAIAAAAPAAgAAAAIAAAAAAAPAAkAAAAIAAEAAAAPAAoAAAAIAAEAAAARAAcAAAAKAAEAAAARAAYAAAAKAAEAAAARAAUAAAAKAAEAAAARAAQAAAAKAAEAAAASAAQAAAAKAAEAAAASAAUAAAAKAAEAAAASAAYAAAAKAAEAAAAQAAcAAAAIAAEAAAAQAAYAAAAIAAEAAAAQAAUAAAAIAAEAAAANAAQAAAALAAAAAAAQAAQAAAAIAAEAAAAMAAQAAAAKAAAAAAANAAgAAAAAAAEAAAANAAkAAAAAAAIAAAAQAAIAAAAIAAEAAAAQAAEAAAAIAAEAAAALAAQAAAAIAAAAAAAFAAIAAAALAAIAAAAEAAEAAAAKAAEAAAAEAAIAAAAKAAEAAAACAAEAAAAKAAEAAAADAAEAAAAKAAEAAAAEAAAAAAAKAAEAAAADAAAAAAAKAAEAAAACAAAAAAAKAAEAAAAFAAAAAAAKAAEAAAAQAAAAAAAIAAEAAAARAAAAAAAKAAEAAAASAAAAAAAKAAEAAAAUAAAAAAALAAIAAAATAAAAAAAKAAEAAAAQAAMAAAAIAAEAAAARAAMAAAAKAAEAAAASAAMAAAAKAAEAAAATAAMAAAAKAAEAAAAUAAMAAAALAAIAAAADAAkAAAALAAIAAAADAAgAAAALAAIAAAADAAcAAAALAAAAAAACAAcAAAAKAAAAAAACAAgAAAAKAAEAAAACAAkAAAAKAAEAAAAFAP//AAAKAAAAAAAEAP//AAAKAAAAAAADAP//AAAKAAAAAAACAP//AAAKAAAAAAAQAP//AAAIAAAAAAARAP//AAAKAAAAAAASAP//AAAKAAAAAAATAP//AAAKAAAAAAAUAP//AAALAAAAAAAGAAAAAAALAAIAAAAGAAEAAAALAAMAAAAGAP//AAALAAAAAAABAAcAAAAKAAAAAAAAAAcAAAAKAAAAAAD//wcAAAAIAAAAAAD//wgAAAAIAAEAAAD//wkAAAAIAAEAAAD//woAAAAIAAEAAAD//wsAAAAIAAEAAAD//wwAAAAIAAMAAAAAAAwAAAAJAAMAAAABAAwAAAAJAAMAAAAAAAsAAAAKAAEAAAAAAAoAAAAKAAEAAAAAAAkAAAAKAAEAAAAAAAgAAAAKAAEAAAABAAgAAAAKAAEAAAABAAkAAAAKAAEAAAABAAoAAAAKAAEAAAABAAsAAAAKAAEAAAABAAUAAAAJAAMAAAAAAAUAAAAJAAMAAAD//wUAAAAIAAMAAAD//wQAAAAIAAEAAAD//wMAAAAIAAEAAAD//wIAAAAIAAEAAAD//wEAAAAIAAEAAAD//wAAAAAIAAEAAAD/////AAAIAAAAAAAAAP//AAAKAAAAAAABAP//AAAKAAAAAAABAAAAAAAKAAEAAAABAAEAAAAKAAEAAAABAAIAAAAKAAEAAAABAAMAAAAKAAEAAAABAAQAAAAKAAEAAAAAAAQAAAAKAAEAAAAAAAMAAAAKAAEAAAAAAAIAAAAKAAEAAAAAAAEAAAAKAAEAAAAAAAAAAAAKAAEAAAA=")
+tile_set = ExtResource("5_v1y24")
+
+[node name="Foreground" type="TileMapLayer" parent="World/Terrain" unique_id=535445719]
+visible = false
+tile_map_data = PackedByteArray("AAADAAYAAAAAAAMAAAA=")
+tile_set = ExtResource("5_v1y24")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Terrain" unique_id=1770064885]
+clip_children = 1
+texture = ExtResource("6_ylwrn")
+centered = false
+
+[node name="Outline" type="TileMapLayer" parent="World/Terrain/Sprite2D" unique_id=1563137053]
+tile_set = ExtResource("5_v1y24")
+
+[node name="DecoBlock" parent="World/Terrain" unique_id=825592049 instance=ExtResource("7_4phys")]
+position = Vector2(704, 384)
+
+[node name="DecoBlock2" parent="World/Terrain" unique_id=1372033511 instance=ExtResource("8_3xl6e")]
+position = Vector2(896, 0)
+
+[node name="DecoBlock3" parent="World/Terrain" unique_id=1841828170 instance=ExtResource("8_3xl6e")]
+position = Vector2(896, 768)
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("7_c68rt")]
+offset_left = 304.0
+offset_top = 160.0
+offset_right = 304.0
+offset_bottom = 160.0
+
+[node name="LevelGoalBoard" parent="World/LevelGoal/Board" parent_id_path=PackedInt32Array(1756025330, 1651127727) index="0" unique_id=877003082]
+offset_bottom = 480.0
+
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=690408388]
+position = Vector2(0, 80)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("8_b7r0f")
+metadata/_custom_type_script = "uid://blq670fy1uldv"
+
+[node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("9_rmm20")]
+is_mash_type = 99
+
+[node name="MashBlockCheckerID2" parent="World/LevelGoal/Order" unique_id=485123558 instance=ExtResource("9_rmm20")]
+position = Vector2(64, 0)
+is_mash_type = 3
+
+[node name="MashBlockCheckerID3" parent="World/LevelGoal/Order" unique_id=1199926829 instance=ExtResource("9_rmm20")]
+position = Vector2(0, 96)
+is_build_type = 1
+
+[node name="MashBlockCheckerID4" parent="World/LevelGoal/Order" unique_id=1976455151 instance=ExtResource("9_rmm20")]
+position = Vector2(-64, 0)
+is_mash_type = 3
+
+[node name="MashBlockCheckerID5" parent="World/LevelGoal/Order" unique_id=771373852 instance=ExtResource("9_rmm20")]
+position = Vector2(0, 192)
+
+[node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("9_l42af")]
+position = Vector2(992, 544)
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("9_xex4j")]
+position = Vector2(784, 608)
+
+[node name="Unmashed" parent="." unique_id=1597136109 instance=ExtResource("11_el6ui")]
+position = Vector2(928, 656)
+mash_type = 100
+cherry_bomb_strength = 1440.0
+
+[node name="Unmashed5" parent="." unique_id=208536221 instance=ExtResource("11_el6ui")]
+position = Vector2(624, 640)
+mash_type = 3
+
+[node name="Unmashed3" parent="." unique_id=1149247439 instance=ExtResource("11_el6ui")]
+position = Vector2(480, 672)
+
+[node name="Unmashed6" parent="." unique_id=2088310099 instance=ExtResource("11_el6ui")]
+position = Vector2(992, 464)
+mash_type = 3
+
+[node name="Unmashed4" parent="." unique_id=1957847022 instance=ExtResource("12_7ebvv")]
+position = Vector2(352, 560)
+
+[editable path="World/LevelGoal"]

@@ -1,0 +1,312 @@
+[gd_scene format=4 uid="uid://cdonw8jqnas7v"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_65guy"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="2_p6rmu"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="3_34hum"]
+[ext_resource type="Script" uid="uid://gyip8j52cryd" path="res://world/components/intro_component.gd" id="3_tahf2"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_vhkxn"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_1q7iv"]
+[ext_resource type="Texture2D" uid="uid://cidheaemokk" path="res://assets/tilemap/ground-outline-mask.png" id="6_gj3kh"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="7_myogd"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="7_p6rmu"]
+[ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="8_1q7iv"]
+[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="9_gj3kh"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="9_ypncs"]
+[ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="10_1v0uy"]
+[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="10_myogd"]
+[ext_resource type="PackedScene" uid="uid://cys70kcpvkm0y" path="res://world/interface/speech_bubble.tscn" id="11_gj3kh"]
+[ext_resource type="Script" uid="uid://d2gl7vnb88axq" path="res://world/world/monolog_activation_area.gd" id="13_he8rn"]
+[ext_resource type="Script" uid="uid://do15hfotdoq5b" path="res://object/scripts/game/unmashed_block_spawner.gd" id="18_0wisv"]
+
+[sub_resource type="Resource" id="Resource_5a1ex"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 4
+monolog_line = "Mmmmm...."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_0o6nf"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 4
+monolog_line = "Marshmallows..."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_i8e48"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 4
+monolog_line = "Mash All"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_p111g"]
+script = ExtResource("10_myogd")
+monolog_flow = Array[ExtResource("9_gj3kh")]([SubResource("Resource_5a1ex"), SubResource("Resource_0o6nf"), SubResource("Resource_i8e48")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[sub_resource type="Resource" id="Resource_0wisv"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 4
+monolog_line = "Orders..."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_oj4og"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 4
+monolog_line = "Match orders..."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_qtugd"]
+script = ExtResource("10_myogd")
+monolog_flow = Array[ExtResource("9_gj3kh")]([SubResource("Resource_0wisv"), SubResource("Resource_oj4og")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[sub_resource type="Resource" id="Resource_tahf2"]
+script = ExtResource("9_gj3kh")
+monolog_line = "Nice task, what a candidate!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_d8enu"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 2
+monolog_line = "......"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_my08x"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 2
+monolog_line = "You probably don't know who I am"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_xfjp3"]
+script = ExtResource("9_gj3kh")
+monolog_eyes = 2
+monolog_line = "Well... unless you've played this game twice or something"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_8is5q"]
+script = ExtResource("9_gj3kh")
+monolog_eyes = 3
+monolog_line = "I'm Marshmallow Lady, you may address me as Millie"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_mmk00"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 1
+monolog_line = "I'm made out of candy, joy, and eccentricism!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_wbx4n"]
+script = ExtResource("9_gj3kh")
+monolog_eyes = 2
+monolog_line = "I may be sweet, but don't eat me. My candy parts are expired."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_o4sdu"]
+script = ExtResource("9_gj3kh")
+monolog_line = "From what you've shown during the tutorial, you seem THE candidate."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_c4agd"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 3
+monolog_line = "I have selected the perfect hero for the job!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_j16u5"]
+script = ExtResource("9_gj3kh")
+monolog_emotion = 2
+monolog_line = "......"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_jyevi"]
+script = ExtResource("9_gj3kh")
+monolog_line = "I mean, statically speaking..."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_dtp6q"]
+script = ExtResource("9_gj3kh")
+monolog_line = "You were the only one who showed up"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_5jp5s"]
+script = ExtResource("9_gj3kh")
+monolog_eyes = 3
+monolog_line = "Anyway, enough monologuing. Let's get into fulfilling orders!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_dkpg5"]
+script = ExtResource("10_myogd")
+monolog_flow = Array[ExtResource("9_gj3kh")]([SubResource("Resource_tahf2"), SubResource("Resource_d8enu"), SubResource("Resource_my08x"), SubResource("Resource_xfjp3"), SubResource("Resource_8is5q"), SubResource("Resource_mmk00"), SubResource("Resource_wbx4n"), SubResource("Resource_o4sdu"), SubResource("Resource_c4agd"), SubResource("Resource_j16u5"), SubResource("Resource_jyevi"), SubResource("Resource_dtp6q"), SubResource("Resource_5jp5s")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1v0uy"]
+size = Vector2(170, 58)
+
+[sub_resource type="Gradient" id="Gradient_0wisv"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.39770555, 0.46271512)
+colors = PackedColorArray(0, 0, 0, 0, 0.04481694, 0.009396661, 0.05907935, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qtugd"]
+gradient = SubResource("Gradient_0wisv")
+width = 1480
+height = 800
+fill = 2
+fill_from = Vector2(0.38709676, 0.61950845)
+fill_to = Vector2(1, 0.0312596)
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "monolog_system", "NPC", "terrain", "world")]
+editor_description = "BlackOutSprite2D: z_index = 1
+NPC & SpeechBubble: z_index = 2"
+script = ExtResource("1_65guy")
+level_id = 0
+level_goal = NodePath("World/LevelGoal")
+monolog_system = NodePath("MonologSystem3")
+NPC = NodePath("World/NPC")
+terrain = NodePath("World/TileMaps")
+world = NodePath("World")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(640, 400)
+script = ExtResource("2_p6rmu")
+
+[node name="IntroComponent" type="Node" parent="." unique_id=52051890 node_paths=PackedStringArray("cam", "NPC", "level_goal", "terrain", "player", "sprite_black_out", "unmashed_blocks", "monolog_1", "monolog_2", "monolog_area_1", "monolog_area_2", "ground_1", "ground_2")]
+script = ExtResource("3_tahf2")
+cam = NodePath("../Cam")
+NPC = NodePath("../World/NPC")
+level_goal = NodePath("../World/LevelGoal")
+terrain = NodePath("../World/TileMaps")
+player = NodePath("../Player")
+sprite_black_out = NodePath("../BlackOutSprite2D")
+unmashed_blocks = [NodePath("../UnmashedSpawner"), NodePath("../UnmashedSpawner2"), NodePath("../UnmashedSpawner3")]
+monolog_1 = NodePath("../MonologSystem")
+monolog_2 = NodePath("../MonologSystem2")
+monolog_area_1 = NodePath("../MonologArea")
+monolog_area_2 = NodePath("../MonologArea2")
+ground_1 = NodePath("../World/TileMaps/Ground1")
+ground_2 = NodePath("../World/TileMaps/Ground2")
+
+[node name="MonologSystem" type="Node" parent="." unique_id=398158650 node_paths=PackedStringArray("speech_bubble", "character")]
+script = ExtResource("8_1q7iv")
+auto_start = false
+flow = SubResource("Resource_p111g")
+speech_bubble_size = Vector2(250, 100)
+speech_bubble = NodePath("../World/SpeechBubble")
+character = NodePath("../World/NPC")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[node name="MonologSystem2" type="Node" parent="." unique_id=1772842134 node_paths=PackedStringArray("speech_bubble", "character")]
+script = ExtResource("8_1q7iv")
+auto_start = false
+flow = SubResource("Resource_qtugd")
+speech_bubble_size = Vector2(250, 100)
+speech_bubble = NodePath("../World/SpeechBubble")
+character = NodePath("../World/NPC")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[node name="MonologSystem3" type="Node" parent="." unique_id=238947332 node_paths=PackedStringArray("speech_bubble", "character")]
+script = ExtResource("8_1q7iv")
+auto_start = false
+flow = SubResource("Resource_dkpg5")
+speech_bubble = NodePath("../World/SpeechBubble")
+character = NodePath("../World/NPC")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[node name="World" parent="." unique_id=1317599791 instance=ExtResource("3_34hum")]
+bg_color = Color(0.17717299, 0.1553565, 0.19899535, 1)
+
+[node name="TileMaps" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0, 0, 0, 1)
+script = ExtResource("4_vhkxn")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground2" type="TileMapLayer" parent="World/TileMaps" unique_id=462480928]
+tile_map_data = PackedByteArray("AAD//wAAAAAKAAEAAAD//wEAAAAKAAEAAAD//wIAAAAKAAEAAAD//wMAAAAKAAEAAAD//wQAAAAKAAEAAAD//wUAAAAKAAEAAAD//wYAAAAKAAEAAAD//wcAAAAKAAEAAAAAAAAAAAAKAAEAAAAAAAEAAAAKAAEAAAAAAAIAAAAKAAEAAAAAAAMAAAAKAAEAAAAAAAQAAAAGAAIAAAAAAAUAAAALAAIAAAAAAAYAAAALAAIAAAAAAAcAAAAGAAEAAAABAAAAAAALAAIAAAABAAEAAAALAAIAAAABAAIAAAALAAIAAAABAAMAAAALAAIAAAABAAQAAAALAAMAAAABAAcAAAAKAAAAAAACAAcAAAAKAAAAAAADAAcAAAALAAAAAAADAAgAAAALAAIAAAADAAkAAAALAAIAAAADAAoAAAAGAAEAAAADAAsAAAAKAAEAAAADAAwAAAAJAAMAAAAEAAoAAAAKAAAAAAAEAAsAAAAKAAEAAAAEAAwAAAAJAAMAAAAFAAoAAAAFAAEAAAAFAAsAAAAKAAEAAAAFAAwAAAAJAAMAAAAGAAkAAAAKAAAAAAAGAAoAAAAKAAEAAAAGAAsAAAAKAAEAAAAGAAwAAAAJAAMAAAAHAAkAAAAKAAAAAAAHAAoAAAAKAAEAAAAHAAsAAAAKAAEAAAAHAAwAAAAJAAMAAAAIAAkAAAAKAAAAAAAIAAoAAAAKAAEAAAAIAAsAAAAKAAEAAAAIAAwAAAAJAAMAAAAJAAkAAAALAAAAAAAJAAoAAAAGAAEAAAAJAAsAAAAKAAEAAAAJAAwAAAAJAAMAAAAKAAoAAAAKAAAAAAAKAAsAAAAKAAEAAAAKAAwAAAAJAAMAAAALAAoAAAAKAAAAAAALAAsAAAAKAAEAAAALAAwAAAAJAAMAAAAMAAoAAAAKAAAAAAAMAAsAAAAKAAEAAAAMAAwAAAAJAAMAAAANAAoAAAAKAAAAAAANAAsAAAAKAAEAAAANAAwAAAAJAAMAAAAOAAQAAAAIAAAAAAAOAAUAAAAIAAEAAAAOAAoAAAAFAAEAAAAOAAsAAAAKAAEAAAAOAAwAAAAJAAMAAAAPAAQAAAAFAAEAAAAPAAUAAAAKAAEAAAAPAAoAAAAKAAEAAAAPAAsAAAAKAAEAAAAPAAwAAAAJAAMAAAAQAP//AAAKAAAAAAAQAAAAAAAKAAEAAAAQAAEAAAAKAAEAAAAQAAIAAAAKAAEAAAAQAAMAAAAKAAEAAAAQAAQAAAAKAAEAAAAQAAUAAAAKAAEAAAAQAAoAAAAKAAEAAAAQAAsAAAAKAAEAAAAQAAwAAAAJAAMAAAARAP//AAAKAAAAAAARAAAAAAAKAAEAAAARAAEAAAAKAAEAAAARAAIAAAAKAAEAAAARAAMAAAAKAAEAAAARAAQAAAAKAAEAAAARAAUAAAAKAAEAAAARAAYAAAAKAAEAAAARAAcAAAAKAAEAAAARAAgAAAAKAAEAAAARAAkAAAAKAAEAAAARAAoAAAAKAAEAAAARAAsAAAAKAAEAAAARAAwAAAAJAAMAAAASAP//AAAKAAAAAAASAAAAAAAKAAEAAAASAAEAAAAKAAEAAAASAAIAAAAKAAEAAAASAAMAAAAKAAEAAAASAAQAAAAKAAEAAAASAAUAAAAKAAEAAAASAAYAAAAKAAEAAAASAAcAAAAKAAEAAAASAAgAAAAKAAEAAAASAAkAAAAKAAEAAAASAAoAAAAKAAEAAAASAAsAAAAKAAEAAAASAAwAAAAJAAMAAAD+/wAAAAAIAAEAAAD+/wEAAAAIAAEAAAD+/wIAAAAIAAEAAAD+/wMAAAAIAAEAAAD+/wQAAAAIAAEAAAD+/wUAAAAIAAEAAAD+/wYAAAAIAAEAAAD+/wcAAAAIAAEAAAACAAgAAAAFAAIAAAACAAkAAAAIAAEAAAACAAoAAAAIAAEAAAACAAsAAAAIAAEAAAACAAwAAAAIAAMAAAAFAAkAAAAIAAAAAAAPAP//AAAIAAAAAAAPAAAAAAAIAAEAAAAPAAEAAAAIAAEAAAAPAAIAAAAIAAEAAAAPAAMAAAAIAAEAAAAQAAYAAAAKAAEAAAAQAAcAAAAKAAEAAAAQAAgAAAAKAAEAAAAQAAkAAAAKAAEAAAAPAAYAAAAKAAEAAAAPAAcAAAAKAAEAAAAPAAgAAAAKAAEAAAAPAAkAAAAKAAEAAAABAP//AAALAAAAAAAAAP//AAAKAAAAAAD/////AAAKAAAAAAD+////AAAIAAAAAAABAAgAAAAJAAMAAAAAAAgAAAAJAAMAAAD//wgAAAAJAAMAAAD+/wgAAAAIAAMAAAATAAwAAAAJAAMAAAATAAsAAAAKAAEAAAATAAoAAAAKAAEAAAATAAkAAAAKAAEAAAATAAgAAAAKAAEAAAATAAcAAAAKAAEAAAATAAYAAAAKAAEAAAATAAUAAAAKAAEAAAATAAQAAAAKAAEAAAATAAMAAAAKAAEAAAATAAIAAAAKAAEAAAATAAEAAAAKAAEAAAATAAAAAAAKAAEAAAATAP//AAAKAAAAAAAUAP//AAAKAAAAAAAUAAAAAAAKAAEAAAAUAAEAAAAKAAEAAAAUAAIAAAAKAAEAAAAUAAMAAAAKAAEAAAAUAAQAAAAKAAEAAAAUAAUAAAAKAAEAAAAUAAYAAAAKAAEAAAAUAAcAAAAKAAEAAAAUAAgAAAAKAAEAAAAVAAgAAAALAAIAAAAVAAkAAAALAAIAAAAVAAoAAAALAAIAAAAUAAoAAAAKAAEAAAAUAAsAAAAKAAEAAAAUAAwAAAAJAAMAAAAVAAwAAAALAAMAAAAVAAsAAAALAAIAAAAVAAcAAAALAAIAAAAVAAYAAAALAAIAAAAVAAUAAAALAAIAAAAVAAQAAAALAAIAAAAVAAMAAAALAAIAAAAVAAIAAAALAAIAAAAVAAEAAAALAAIAAAAVAAAAAAALAAIAAAAVAP//AAALAAAAAAAUAAkAAAAKAAEAAAAOAAkAAAAIAAEAAAAOAAgAAAAIAAEAAAAOAAcAAAAIAAEAAAAOAAYAAAAIAAEAAAAGAAcAAAAIAAMAAAAGAAYAAAAIAAEAAAAGAAUAAAAIAAAAAAAHAAUAAAAKAAAAAAAIAAUAAAALAAAAAAAIAAYAAAALAAIAAAAIAAcAAAALAAMAAAAHAAcAAAAJAAMAAAAHAAYAAAAKAAEAAAA=")
+enabled = false
+tile_set = ExtResource("5_1q7iv")
+
+[node name="Ground1" type="TileMapLayer" parent="World/TileMaps" unique_id=1289820682]
+tile_map_data = PackedByteArray("AAAJAAkAAAALAAAAAAAIAAkAAAAKAAAAAAAJAAoAAAAGAAEAAAAKAAoAAAAKAAAAAAALAAoAAAAKAAAAAAAMAAoAAAAKAAAAAAANAAoAAAAKAAAAAAAOAAoAAAAFAAEAAAAPAAoAAAAKAAEAAAAPAAkAAAAKAAEAAAAPAAgAAAAKAAEAAAAPAAcAAAAKAAEAAAAPAAYAAAAKAAEAAAAPAAUAAAAKAAEAAAAOAAUAAAAIAAEAAAAOAAQAAAAIAAEAAAAJAAQAAAALAAMAAAAIAAoAAAAKAAEAAAAHAAoAAAAFAAEAAAAGAAoAAAAKAAAAAAAJAAMAAAALAAIAAAAPAAMAAAAKAAEAAAAQAAMAAAAKAAEAAAAQAAQAAAAKAAEAAAAQAAUAAAAKAAEAAAAQAAYAAAAKAAEAAAAQAAcAAAAKAAEAAAAQAAgAAAAKAAEAAAAQAAkAAAAKAAEAAAAQAAoAAAAKAAEAAAAQAAsAAAAKAAEAAAAPAAsAAAAKAAEAAAAOAAsAAAAKAAEAAAANAAsAAAAKAAEAAAAMAAsAAAAKAAEAAAALAAsAAAAKAAEAAAAKAAsAAAAKAAEAAAAHAAsAAAAKAAEAAAAGAAsAAAAKAAEAAAAIAAsAAAAKAAEAAAAJAAsAAAAKAAEAAAAHAAkAAAAIAAAAAAAFAAoAAAAKAAAAAAAEAAoAAAAKAAAAAAADAAoAAAAKAAAAAAADAAsAAAAKAAEAAAAEAAsAAAAKAAEAAAAFAAsAAAAKAAEAAAADAAMAAAAJAAMAAAAIAAQAAAAJAAMAAAAHAAQAAAAIAAMAAAAIAAMAAAAKAAEAAAAHAAMAAAAFAAIAAAAGAAMAAAAJAAMAAAAFAAMAAAAJAAMAAAAEAAMAAAAJAAMAAAAPAAQAAAAKAAEAAAAOAAMAAAAIAAEAAAAOAAIAAAAIAAEAAAAOAAEAAAAIAAEAAAAPAAEAAAAKAAEAAAAPAAIAAAAKAAEAAAAQAAIAAAAKAAEAAAAOAAAAAAAIAAEAAAAPAAAAAAAKAAEAAAAPAP//AAAKAAAAAAAQAP//AAALAAAAAAAQAAAAAAAGAAEAAAARAAAAAAAKAAAAAAAQAAEAAAAKAAEAAAAOAP//AAAIAAAAAAACAAsAAAAKAAEAAAABAAsAAAAKAAEAAAAAAAsAAAAKAAEAAAD//wsAAAAIAAEAAAD//woAAAAIAAEAAAD//wkAAAAIAAEAAAD//wgAAAAIAAEAAAD//wcAAAAIAAEAAAD//wYAAAAIAAEAAAD//wUAAAAIAAEAAAD//wQAAAAIAAEAAAD//wMAAAAIAAEAAAAAAAMAAAAKAAEAAAABAAMAAAAKAAEAAAACAAMAAAAGAAIAAAACAAQAAAALAAIAAAACAAUAAAALAAIAAAACAAYAAAALAAIAAAACAAcAAAALAAIAAAACAAoAAAAGAAEAAAACAAkAAAALAAIAAAACAAgAAAALAAIAAAABAAoAAAAKAAEAAAABAAkAAAAKAAEAAAAAAAkAAAAKAAEAAAAAAAgAAAAKAAEAAAAAAAcAAAAKAAEAAAAAAAYAAAAKAAEAAAAAAAUAAAAKAAEAAAAAAAQAAAAKAAEAAAABAAQAAAAKAAEAAAABAAUAAAAKAAEAAAABAAYAAAAKAAEAAAABAAcAAAAKAAEAAAABAAgAAAAKAAEAAAAAAAoAAAAKAAEAAAD//wwAAAAIAAMAAAAAAAwAAAAJAAMAAAABAAwAAAAJAAMAAAACAAwAAAAJAAMAAAADAAwAAAAJAAMAAAAEAAwAAAAJAAMAAAAFAAwAAAAJAAMAAAAGAAwAAAAJAAMAAAAHAAwAAAAJAAMAAAAIAAwAAAAJAAMAAAAJAAwAAAAJAAMAAAAKAAwAAAAJAAMAAAALAAwAAAAJAAMAAAAMAAwAAAAJAAMAAAANAAwAAAAJAAMAAAAOAAwAAAAJAAMAAAAPAAwAAAAJAAMAAAAQAAwAAAAJAAMAAAARAAwAAAAJAAMAAAASAAwAAAAJAAMAAAATAAwAAAAJAAMAAAATAAsAAAAKAAEAAAATAAoAAAAKAAEAAAATAAkAAAAKAAEAAAATAAgAAAAKAAEAAAATAAcAAAAKAAEAAAATAAYAAAAKAAEAAAATAAUAAAAKAAEAAAATAAQAAAAKAAEAAAATAAMAAAAKAAEAAAATAAIAAAAKAAEAAAATAAEAAAAKAAEAAAATAAAAAAAKAAAAAAASAAAAAAAKAAAAAAASAAEAAAAKAAEAAAASAAIAAAAKAAEAAAASAAMAAAAKAAEAAAASAAQAAAAKAAEAAAASAAUAAAAKAAEAAAASAAYAAAAKAAEAAAASAAcAAAAKAAEAAAASAAgAAAAKAAEAAAASAAsAAAAKAAEAAAARAAsAAAAKAAEAAAARAAoAAAAKAAEAAAARAAkAAAAKAAEAAAARAAgAAAAKAAEAAAARAAcAAAAKAAEAAAARAAYAAAAKAAEAAAARAAUAAAAKAAEAAAARAAQAAAAKAAEAAAARAAMAAAAKAAEAAAARAAIAAAAKAAEAAAARAAEAAAAKAAEAAAASAAoAAAAKAAEAAAASAAkAAAAKAAEAAAAUAAsAAAALAAIAAAAUAAwAAAALAAMAAAAUAAoAAAALAAIAAAAUAAkAAAALAAIAAAAUAAgAAAALAAIAAAAUAAcAAAALAAIAAAAUAAYAAAALAAIAAAAUAAUAAAALAAIAAAAUAAQAAAALAAIAAAAUAAMAAAALAAIAAAAUAAIAAAALAAIAAAAUAAEAAAALAAIAAAAUAAAAAAALAAAAAAAJAAIAAAALAAIAAAAJAAEAAAALAAIAAAAJAAAAAAALAAIAAAAJAP//AAALAAAAAAAIAP//AAAKAAAAAAAHAP//AAAKAAAAAAAGAP//AAAKAAAAAAAFAAAAAAAKAAEAAAAEAAAAAAAKAAEAAAADAAAAAAAKAAEAAAACAAAAAAAKAAEAAAABAAAAAAAKAAEAAAAAAP//AAAKAAAAAAAAAAAAAAAKAAEAAAD//wAAAAAIAAEAAAD/////AAAIAAAAAAAFAP//AAAKAAAAAAAGAAAAAAAKAAEAAAAHAAAAAAAKAAEAAAAIAAAAAAAKAAEAAAAIAAEAAAAKAAEAAAAIAAIAAAAKAAEAAAAHAAIAAAAKAAEAAAAGAAIAAAAKAAEAAAAFAAIAAAAKAAEAAAAFAAEAAAAKAAEAAAAEAAEAAAAKAAEAAAADAAEAAAAKAAEAAAADAAIAAAAKAAEAAAACAAIAAAAKAAEAAAABAAIAAAAKAAEAAAAAAAIAAAAKAAEAAAAAAAEAAAAKAAEAAAD//wEAAAAIAAEAAAD//wIAAAAIAAEAAAAGAAEAAAAKAAEAAAAHAAEAAAAKAAEAAAAEAAIAAAAKAAEAAAACAAEAAAAKAAEAAAABAAEAAAAKAAEAAAABAP//AAAKAAAAAAACAP//AAAKAAAAAAADAP//AAAKAAAAAAAEAP//AAAKAAAAAAAOAAkAAAAIAAEAAAAOAAgAAAAIAAEAAAAOAAcAAAAIAAEAAAAOAAYAAAAIAAEAAAA=")
+tile_set = ExtResource("5_1q7iv")
+
+[node name="Foreground" type="TileMapLayer" parent="World/TileMaps" unique_id=535445719]
+tile_set = ExtResource("5_1q7iv")
+
+[node name="Sprite2D" type="Sprite2D" parent="World/TileMaps" unique_id=1770064885]
+clip_children = 1
+texture = ExtResource("6_gj3kh")
+
+[node name="Outline" type="TileMapLayer" parent="World/TileMaps/Sprite2D" unique_id=1563137053]
+tile_set = ExtResource("5_1q7iv")
+
+[node name="DecoBlock" parent="World/TileMaps" unique_id=825592049 instance=ExtResource("10_1v0uy")]
+position = Vector2(912, 320)
+
+[node name="NPC" parent="World" unique_id=1914110685 instance=ExtResource("7_p6rmu")]
+z_index = 2
+position = Vector2(912, 320)
+scale = Vector2(1.5, 1.5)
+starting_emote = 4
+
+[node name="SpeechBubble" parent="World" unique_id=1078381548 instance=ExtResource("11_gj3kh")]
+z_index = 2
+offset_left = 928.0
+offset_top = 448.0
+offset_right = 928.0
+offset_bottom = 448.0
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("7_myogd")]
+visible = false
+offset_left = 480.0
+offset_top = 320.0
+offset_right = 480.0
+offset_bottom = 320.0
+
+[node name="LevelNumber" parent="World/LevelGoal/Board/LevelGoalBoard/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1756025330, 1835387487) index="0" unique_id=1805443537]
+visible = false
+
+[node name="Star" parent="World/LevelGoal" index="1" unique_id=1640468128]
+visible = false
+position = Vector2(64, 160)
+
+[node name="MonologArea" type="Area2D" parent="." unique_id=1791240758 node_paths=PackedStringArray("monolog_system_to_activate")]
+position = Vector2(1008, 624)
+script = ExtResource("13_he8rn")
+monolog_system_to_activate = NodePath("../MonologSystem")
+metadata/_custom_type_script = "uid://d2gl7vnb88axq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonologArea" unique_id=1522643261]
+position = Vector2(-75, -19)
+shape = SubResource("RectangleShape2D_1v0uy")
+
+[node name="MonologArea2" type="Area2D" parent="." unique_id=1620180510 node_paths=PackedStringArray("monolog_system_to_activate")]
+position = Vector2(1008, 624)
+script = ExtResource("13_he8rn")
+enabled = false
+monolog_system_to_activate = NodePath("../MonologSystem2")
+metadata/_custom_type_script = "uid://d2gl7vnb88axq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonologArea2" unique_id=1804120468]
+position = Vector2(-75, -19)
+shape = SubResource("RectangleShape2D_1v0uy")
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("9_ypncs")]
+position = Vector2(288, 592)
+
+[node name="BlackOutSprite2D" type="Sprite2D" parent="." unique_id=2028581766]
+z_index = 1
+texture = SubResource("GradientTexture2D_qtugd")
+centered = false
+
+[node name="UnmashedSpawner" type="Marker2D" parent="." unique_id=888987414]
+position = Vector2(288, 592)
+script = ExtResource("18_0wisv")
+
+[node name="UnmashedSpawner2" type="Marker2D" parent="." unique_id=453207330]
+position = Vector2(96, 384)
+script = ExtResource("18_0wisv")
+
+[node name="UnmashedSpawner3" type="Marker2D" parent="." unique_id=1879472255]
+position = Vector2(480, 256)
+script = ExtResource("18_0wisv")
+
+[editable path="World/LevelGoal"]

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cecgorw3uld6e"]
+
+[ext_resource type="Script" uid="uid://dtkfbe7igpwhy" path="res://world/effects/terrain_explosion_mark.gd" id="1_r34mv"]
+
+[sub_resource type="Gradient" id="Gradient_i6sx7"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0.85490197, 0, 0, 0, 0.60784316, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3luen"]
+gradient = SubResource("Gradient_i6sx7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.97, 0.5)
+
+[node name="TerrainExplosionMark" type="PointLight2D" unique_id=672837634]
+scale = Vector2(8, 8)
+blend_mode = 2
+range_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_3luen")
+script = ExtResource("1_r34mv")

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cfcuo4j8ahggv"]
+
+[ext_resource type="LabelSettings" uid="uid://dohg6g363o0sh" path="res://core/resources/label/prompt_text_label.tres" id="1_e52r8"]
+[ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="2_qa4e2"]
+[ext_resource type="Texture2D" uid="uid://bjfbkepenqn6d" path="res://assets/interface/input-arrow.png" id="3_4xior"]
+
+[node name="DropNotice" type="Node2D" unique_id=1423274879]
+z_index = 2
+
+[node name="Label" type="Label" parent="." unique_id=1422853036]
+visible = false
+offset_left = -43.0
+offset_top = 109.0
+offset_right = 41.0
+offset_bottom = 159.0
+text = "Drop"
+label_settings = ExtResource("1_e52r8")
+
+[node name="InputPrompt" parent="." unique_id=2128616327 instance=ExtResource("2_qa4e2")]
+position = Vector2(0, 64)
+blink_time = 1.0
+blink_interval = 0.0
+
+[node name="Base" parent="InputPrompt" index="1" unique_id=736620297]
+position = Vector2(0, -2)
+
+[node name="Spiral" parent="InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
+rotation = -6740.3374
+
+[node name="Sprite2D4" type="Sprite2D" parent="InputPrompt/Base" index="3" unique_id=634213864]
+self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+position = Vector2(2, -8)
+rotation = 1.5707964
+texture = ExtResource("3_4xior")
+
+[editable path="InputPrompt"]

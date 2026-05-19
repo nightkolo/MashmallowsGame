@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://dn0g3mnewktgx"]
+
+[ext_resource type="Script" uid="uid://df7yhjs1jmrf2" path="res://interface/interactors/menu_start.gd" id="1_gxkgx"]
+[ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="1_yjfax"]
+[ext_resource type="Texture2D" uid="uid://d0hq1lmt3xe70" path="res://assets/bg/bg-menu-02.png" id="3_0do8i"]
+[ext_resource type="PackedScene" uid="uid://bltj01af7hhkl" path="res://interface/runtime/game_title.tscn" id="4_trhp8"]
+[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="5_fdyts"]
+
+[sub_resource type="Gradient" id="Gradient_trhp8"]
+offsets = PackedFloat32Array(0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fdyts"]
+gradient = SubResource("Gradient_trhp8")
+width = 1280
+height = 800
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_0do8i"]
+offsets = PackedFloat32Array(0.7909516, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_trhp8"]
+gradient = SubResource("Gradient_0do8i")
+width = 612
+height = 612
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Start" type="Control" unique_id=1256811207]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yjfax")
+script = ExtResource("1_gxkgx")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=773865713]
+self_modulate = Color(0.7373294, 0.3491902, 0.5370987, 1)
+texture_repeat = 2
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 800.0
+texture = ExtResource("3_0do8i")
+expand_mode = 1
+
+[node name="Shade" type="Sprite2D" parent="." unique_id=1098441663]
+self_modulate = Color(1, 1, 1, 0.3)
+position = Vector2(640, 400)
+texture = SubResource("GradientTexture2D_fdyts")
+
+[node name="Spotlight" type="Sprite2D" parent="." unique_id=948296120]
+visible = false
+self_modulate = Color(1, 1, 1, 0.15)
+position = Vector2(641, 401)
+texture = SubResource("GradientTexture2D_trhp8")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=613171617]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=176137131]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="GameTitle" parent="MarginContainer/VBoxContainer" unique_id=682979663 instance=ExtResource("4_trhp8")]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="CR2" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1478329229]
+visible = false
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=16.0]Placeholder Logo"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=1154364576]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="CR2" type="RichTextLabel" parent="MarginContainer/VBoxContainer2" unique_id=56905480]
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=24.0][color=#FFFFFFBF]Welcome to the Playtester Beta!
+Controls included in the game page"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Author" type="RichTextLabel" parent="MarginContainer/VBoxContainer2" unique_id=1162470319]
+layout_mode = 2
+bbcode_enabled = true
+text = "v1.0.0-alpha
+[font_size=24.0][color=#FFFFFFBF]A Beta by [color=#FFFFFFFF]Night Kolo
+[color=#FFFFFFBF]Music by [color=#FFFFFFFF]Avizura"
+fit_content = true
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=2099497727]
+layout_mode = 2
+
+[node name="StartBtn" type="Button" parent="MarginContainer/CenterContainer" unique_id=1602128959]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"
+script = ExtResource("5_fdyts")

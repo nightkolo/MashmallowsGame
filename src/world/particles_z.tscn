@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b8b1jq0amanoa"]
+
+[ext_resource type="Texture2D" uid="uid://bvuw0cj7tl8sl" path="res://assets/world/particle-mmm-02.png" id="1_l0xkw"]
+
+[sub_resource type="Curve" id="Curve_fv42t"]
+_data = [Vector2(0, 0.535891), 0.0, 4.15387, 0, 0, Vector2(0.26009, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.508735), -1.16219, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_3lfne"]
+offsets = PackedFloat32Array(0, 0.225, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 0.75, 0.75, 0)
+
+[node name="Z" type="CPUParticles2D" unique_id=2080773523]
+z_index = 1
+amount = 2
+texture = ExtResource("1_l0xkw")
+speed_scale = 0.25
+randomness = 0.13
+direction = Vector2(1, -1)
+spread = 0.0
+gravity = Vector2(24, -24)
+initial_velocity_min = 35.0
+initial_velocity_max = 35.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_fv42t")
+color_ramp = SubResource("Gradient_3lfne")

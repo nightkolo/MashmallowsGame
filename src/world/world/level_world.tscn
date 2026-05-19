@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bl0u0p0mf5g16"]
+
+[ext_resource type="Script" uid="uid://b1852451nlht1" path="res://world/world/level_world.gd" id="1_3o8b6"]
+[ext_resource type="Texture2D" uid="uid://bdtf324svxvse" path="res://assets/bg/bg-level-01.png" id="2_dokrb"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://core/scripts/nodes/tiled_sprite_2d.gd" id="4_t8w17"]
+
+[sub_resource type="Gradient" id="Gradient_x5k3i"]
+offsets = PackedFloat32Array(0.4, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.5)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p3vyk"]
+gradient = SubResource("Gradient_x5k3i")
+width = 1280
+height = 800
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="World" type="Node2D" unique_id=1842092107]
+script = ExtResource("1_3o8b6")
+terrain_color = Color(0.95, 0.95, 0.95, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=305668516]
+layer = -10
+
+[node name="TiledSprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1078230963]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 0.56, 1)
+light_mask = 4
+z_index = -10
+texture_repeat = 2
+position = Vector2(-307.2, 61.44)
+rotation = -0.17453296
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_dokrb")
+centered = false
+region_enabled = true
+region_rect = Rect2(117.81827, 204.06804, 3200, 2000)
+script = ExtResource("4_t8w17")
+animate_scroll = true
+scroll_trajectory = 1.0471975511965976
+metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=137717849]
+position = Vector2(640, 400)
+texture = SubResource("GradientTexture2D_p3vyk")

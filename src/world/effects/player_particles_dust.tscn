@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bmu1cdw8x8kxs"]
+
+[ext_resource type="Texture2D" uid="uid://dejkx0t3by1r5" path="res://assets/world/particle-dust-01.png" id="1_t00tc"]
+
+[sub_resource type="Curve" id="Curve_5gpwc"]
+_data = [Vector2(0.016000003, 0.29298252), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Dust" type="CPUParticles2D" unique_id=1755879273]
+texture = ExtResource("1_t00tc")
+emission_shape = 3
+emission_rect_extents = Vector2(20, 10)
+gravity = Vector2(0, -20)
+scale_amount_curve = SubResource("Curve_5gpwc")
+color = Color(1, 1, 1, 0.8)

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bjp2qrj0a6lh6"]
+
+[ext_resource type="Script" uid="uid://c6lgdr2v8327j" path="res://object/scripts/obj_flame_2d.gd" id="1_qoqfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b145e"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh33e"]
+size = Vector2(65, 65)
+
+[node name="Flame" type="StaticBody2D" unique_id=533155665]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=485559038]
+shape = SubResource("RectangleShape2D_b145e")
+
+[node name="Flame2D" type="Area2D" parent="." unique_id=689227527]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("1_qoqfh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flame2D" unique_id=1004659966]
+shape = SubResource("RectangleShape2D_jh33e")

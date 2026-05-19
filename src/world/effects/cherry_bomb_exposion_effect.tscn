@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://gcwla6d85p1s"]
+
+[ext_resource type="Script" uid="uid://dsfd8iddirfav" path="res://world/effects/cherry_bomb_exposion_effect.gd" id="1_mo1kq"]
+[ext_resource type="Texture2D" uid="uid://dj7yfsib5riy0" path="res://assets/objects/cherry-bomb-01.png" id="2_rl675"]
+
+[sub_resource type="Gradient" id="Gradient_2qopf"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5363129)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mo1kq"]
+gradient = SubResource("Gradient_2qopf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.55, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_mo1kq"]
+offsets = PackedFloat32Array(0, 0.5363129)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rl675"]
+gradient = SubResource("Gradient_mo1kq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.55, 0.5)
+
+[node name="CherryBombExposionEffect" type="Node2D" unique_id=1327674824]
+script = ExtResource("1_mo1kq")
+
+[node name="Cloud" type="Sprite2D" parent="." unique_id=693076128]
+scale = Vector2(10, 1)
+texture = SubResource("GradientTexture2D_mo1kq")
+
+[node name="Cloud2" type="Sprite2D" parent="." unique_id=1399105742]
+visible = false
+scale = Vector2(7, 1)
+texture = SubResource("GradientTexture2D_rl675")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=240689149]
+visible = false
+
+[node name="Bomb" type="Sprite2D" parent="." unique_id=435372315]
+visible = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_rl675")

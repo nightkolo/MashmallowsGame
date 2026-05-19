@@ -1,0 +1,1063 @@
+[gd_scene format=3 uid="uid://e41hr0ovjcl5"]
+
+[ext_resource type="Texture2D" uid="uid://bs8fb1u703u8o" path="res://assets/character/millie-arm-l.png" id="1_7u5cv"]
+[ext_resource type="Script" uid="uid://drwpl7dwf1gl4" path="res://world/character/millie.gd" id="1_jc1j4"]
+[ext_resource type="Texture2D" uid="uid://yo3av5dyvitt" path="res://assets/character/millie-plain-03.png" id="1_u5bgo"]
+[ext_resource type="Texture2D" uid="uid://bdtf324svxvse" path="res://assets/bg/bg-level-01.png" id="2_eavx2"]
+[ext_resource type="Texture2D" uid="uid://c87t45qdghyro" path="res://assets/character/millie-body.png" id="2_tqthd"]
+[ext_resource type="Texture2D" uid="uid://bmawkw612end3" path="res://assets/character/millie-arm-r.png" id="2_yq6py"]
+[ext_resource type="Texture2D" uid="uid://cpopxeugsevk1" path="res://assets/character/millie-back-hair.png" id="3_6pub8"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://core/scripts/nodes/tiled_sprite_2d.gd" id="3_vcxqx"]
+[ext_resource type="Texture2D" uid="uid://dctjj40q7emnp" path="res://assets/character/millie-ear-l.png" id="4_w710h"]
+[ext_resource type="Texture2D" uid="uid://b0s8brfs5ue4n" path="res://assets/character/millie-ear-outline.png" id="5_1y7t3"]
+[ext_resource type="Texture2D" uid="uid://ragu8x0oo5vx" path="res://assets/character/millie-ear-r.png" id="5_6pub8"]
+[ext_resource type="Texture2D" uid="uid://dkqxlqqjyeyr3" path="res://assets/character/millie-head.png" id="6_jc1j4"]
+[ext_resource type="Texture2D" uid="uid://ccvytg5n2yfs" path="res://assets/character/millie-head-outline.png" id="6_ypqpy"]
+[ext_resource type="Texture2D" uid="uid://h0t6u4m653jg" path="res://assets/character/millie-hoodie-heart-01.png" id="7_kf5n4"]
+[ext_resource type="Texture2D" uid="uid://7t228abge681" path="res://assets/character/millie-hoodie-heart-outline.png" id="7_ndqde"]
+[ext_resource type="Texture2D" uid="uid://dj5wbpdju7ypx" path="res://assets/character/millie-arm-l-outline.png" id="8_rwi8i"]
+[ext_resource type="Texture2D" uid="uid://bvusn3wxgyubn" path="res://assets/character/millie-eyes-regular.png" id="9_3q0ev"]
+[ext_resource type="Texture2D" uid="uid://bgrn5t6bsw5jj" path="res://assets/character/millie-arm-r-outline.png" id="9_3tl18"]
+[ext_resource type="Texture2D" uid="uid://dehkwlx04wdtx" path="res://assets/character/hair-outline.png" id="10_ndqde"]
+[ext_resource type="Texture2D" uid="uid://dktq3pek1fe5p" path="res://assets/character/millie-eyes-closed.png" id="10_wbijq"]
+[ext_resource type="Texture2D" uid="uid://btkjav71l7v0t" path="res://assets/character/millie-eyes-half-closed.png" id="11_80abj"]
+[ext_resource type="Texture2D" uid="uid://6ixskkv6m4o0" path="res://assets/character/millie-back-hair-outline.png" id="11_rwi8i"]
+[ext_resource type="Texture2D" uid="uid://qeibb2ornybw" path="res://assets/character/millie-eyes-side-eye.png" id="12_l7gxt"]
+[ext_resource type="Texture2D" uid="uid://cr6ymc8q5n76s" path="res://assets/character/millie-front-hair-outline.png" id="13_3tl18"]
+[ext_resource type="Texture2D" uid="uid://cjolsqy078wbi" path="res://assets/character/millie-eyes-happy.png" id="13_cputi"]
+[ext_resource type="Texture2D" uid="uid://diemu7dls02t2" path="res://assets/character/millie-eyes-blank.png" id="14_w8e22"]
+[ext_resource type="Texture2D" uid="uid://ch1kca0pyltjq" path="res://assets/character/millie-eyes-closed-wide.png" id="15_2rfuc"]
+[ext_resource type="Texture2D" uid="uid://ccmulkum1rrc2" path="res://assets/character/millie-eyes-heart-01.png" id="16_wbijq"]
+[ext_resource type="Texture2D" uid="uid://dn5px40hcq0y6" path="res://assets/character/millie-head-half.png" id="17_3tl18"]
+[ext_resource type="Texture2D" uid="uid://chw471dalgxsc" path="res://assets/character/millie-front-hair-02.png" id="17_80abj"]
+[ext_resource type="Texture2D" uid="uid://cqcbpb076mvkh" path="res://assets/character/millie-marshmallow-hair-02.png" id="18_80abj"]
+[ext_resource type="Texture2D" uid="uid://vf1qudmy2mq4" path="res://assets/character/face-marks-01.png" id="19_80abj"]
+[ext_resource type="Texture2D" uid="uid://babhfu7m3ri0b" path="res://assets/character/millie-hoodie-heart-03.png" id="23_l7gxt"]
+[ext_resource type="AudioStream" uid="uid://ccp7eom2g5qp1" path="res://audio/sounds/millie_expression_bitten.wav" id="34_ljnpu"]
+[ext_resource type="AudioStream" uid="uid://cstf3acb1mn30" path="res://audio/sounds/millie_expression_frustrated.wav" id="35_bcvi4"]
+[ext_resource type="AudioStream" uid="uid://dl7fw6wp8052r" path="res://audio/sounds/millie_expression_regen.wav" id="36_4n6cw"]
+[ext_resource type="AudioStream" uid="uid://brccjwjj1u4qo" path="res://audio/sounds/millie_vocal_01.wav" id="37_85bs0"]
+[ext_resource type="AudioStream" uid="uid://di6olgf113arv" path="res://audio/sounds/millie_vocal_excited.wav" id="38_vason"]
+[ext_resource type="AudioStream" uid="uid://dgoeiyrhapbl2" path="res://audio/sounds/millie_vocal_frustrated.wav" id="39_pn5rf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rwi8i"]
+load_path = "res://.godot/imported/particle-mmm-02.png-201a2ab6811e5648803f31e439d540cd.ctex"
+
+[sub_resource type="Curve" id="Curve_fv42t"]
+_data = [Vector2(0, 0.535891), 0.0, 4.15387, 0, 0, Vector2(0.26009, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.508735), -1.16219, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_3lfne"]
+offsets = PackedFloat32Array(0, 0.225, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 0.75, 0.75, 0)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ndqde"]
+load_path = "res://.godot/imported/millie-eyes-closed.png-ae2afbd9d52337817adea9d68d7b750c.ctex"
+
+[sub_resource type="Animation" id="Animation_jc1j4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body/Head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body/Head/EarL:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Body/Head/EarR:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Body/ArmL:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.08726646]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Body/ArmR:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.08726646]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Skeleton2D/Body:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Skeleton2D/Body/Head/BackHair:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.27925268]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Skeleton2D/Body/Head/Hair:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.05235988]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Skeleton2D/Body:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Skeleton2D/Body:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cputi"]
+resource_name = "arms_idle"
+length = 1.75
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body/ArmL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.05235987755982989, 0.05235987755982989]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body/ArmR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.05235987755982989, -0.05235987755982989]
+}
+
+[sub_resource type="Animation" id="Animation_80abj"]
+resource_name = "back_hair_idle"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body/Head/BackHair:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-5.2154064e-08, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.05235987755982989, 0.05235987755982989]
+}
+
+[sub_resource type="Animation" id="Animation_wbijq"]
+resource_name = "breathing"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1, 0.97), Vector2(1, 1.02)]
+}
+
+[sub_resource type="Animation" id="Animation_qfddb"]
+resource_name = "dance"
+length = 1.5667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.76666665, 1.2666667, 1.5666667),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [-0.03490658503988659, -0.03490658503988659, 0.03490658503988659, 0.03490658503988659, -0.03490658503988659]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.36666667, 0.5, 0.76666665, 0.9, 1.1333333, 1.2666667),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 15), Vector2(0, 0), Vector2(0, 15), Vector2(0, 0), Vector2(0, 15), Vector2(0, 0), Vector2(0, 15)]
+}
+
+[sub_resource type="Animation" id="Animation_w8e22"]
+resource_name = "ears_idle"
+length = 1.75
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body/Head/EarL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 1.75),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 0.15707963267948966]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body/Head/EarR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 1.75),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, -0.15707963267948966]
+}
+
+[sub_resource type="Animation" id="Animation_2rfuc"]
+resource_name = "ears_spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body/Head/EarL:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9999999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.141592653589793, 6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body/Head/EarR:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.03333334, 0.9666666, 1.9666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [6.283185307179586, 3.141592653589793, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l7gxt"]
+resource_name = "front_hair_idle"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body/Head/Hair:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.05235987755982989, 0.05235987755982989]
+}
+
+[sub_resource type="Animation" id="Animation_kf5n4"]
+resource_name = "head_ears_arms_idle"
+length = 1.75
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body/Head:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7333333),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.03490658503988659, -0.03490658503988659]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body/Head/EarL:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7333333),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 0.15707964]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Body/Head/EarR:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.7333333),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, -0.15707964]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Body/ArmL:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.7457843),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.05235987755982989, 0.05235987755982989]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Skeleton2D/Body/ArmR:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.7333333),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.05235987755982989, -0.05235987755982989]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eavx2"]
+_data = {
+&"RESET": SubResource("Animation_jc1j4"),
+&"arms_idle": SubResource("Animation_cputi"),
+&"back_hair_idle": SubResource("Animation_80abj"),
+&"breathing": SubResource("Animation_wbijq"),
+&"dance": SubResource("Animation_qfddb"),
+&"ears_idle": SubResource("Animation_w8e22"),
+&"ears_spin": SubResource("Animation_2rfuc"),
+&"front_hair_idle": SubResource("Animation_l7gxt"),
+&"head_ears_arms_idle": SubResource("Animation_kf5n4")
+}
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_jc1j4"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_kf5n4"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_wbijq"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_l7gxt"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_cputi"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w8e22"]
+animation = &"breathing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eavx2"]
+animation = &"front_hair_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vcxqx"]
+animation = &"back_hair_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3q0ev"]
+animation = &"arms_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wbijq"]
+animation = &"ears_spin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cputi"]
+animation = &"breathing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2rfuc"]
+animation = &"dance"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qfddb"]
+animation = &"ears_spin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_80abj"]
+animation = &"head_ears_arms_idle"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_80abj"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qfddb"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l7gxt"]
+animation = &"ears_idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_80abj"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbijq"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l7gxt"]
+graph_offset = Vector2(893.1146, -310.8811)
+nodes/output/position = Vector2(1980, -380)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_80abj")
+nodes/Animation/position = Vector2(660, 90)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_w8e22")
+"nodes/Animation 2/position" = Vector2(730, 270)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_cputi")
+nodes/Add2/position = Vector2(950, 0)
+"nodes/Add2 3/node" = SubResource("AnimationNodeAdd2_kf5n4")
+"nodes/Add2 3/position" = Vector2(1370, 0)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_jc1j4")
+"nodes/Add2 2/position" = Vector2(1160, 0)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_vcxqx")
+"nodes/Animation 4/position" = Vector2(1130, 270)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_eavx2")
+"nodes/Animation 3/position" = Vector2(920, 270)
+nodes/Neutral2ExpressionBlend2/node = SubResource("AnimationNodeBlend2_wbijq")
+nodes/Neutral2ExpressionBlend2/position = Vector2(1550, -120)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_3q0ev")
+"nodes/Animation 5/position" = Vector2(720, -390)
+"nodes/Add2 4/node" = SubResource("AnimationNodeAdd2_wbijq")
+"nodes/Add2 4/position" = Vector2(1160, -270)
+nodes/EarAnim/node = SubResource("AnimationNodeAnimation_l7gxt")
+nodes/EarAnim/position = Vector2(510, -180)
+nodes/BreathingAdd2/node = SubResource("AnimationNodeAdd2_80abj")
+nodes/BreathingAdd2/position = Vector2(1370, -270)
+"nodes/Animation 7/node" = SubResource("AnimationNodeAnimation_cputi")
+"nodes/Animation 7/position" = Vector2(1160, -470)
+nodes/EarAnimBlend2/node = SubResource("AnimationNodeBlend2_80abj")
+nodes/EarAnimBlend2/position = Vector2(710, -200)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_wbijq")
+"nodes/Animation 6/position" = Vector2(510, -410)
+nodes/DanceBlend2/node = SubResource("AnimationNodeBlend2_qfddb")
+nodes/DanceBlend2/position = Vector2(1830, -390)
+"nodes/Animation 8/node" = SubResource("AnimationNodeAnimation_2rfuc")
+"nodes/Animation 8/position" = Vector2(1480, -450)
+"nodes/Add2 6/node" = SubResource("AnimationNodeAdd2_l7gxt")
+"nodes/Add2 6/position" = Vector2(1650, -530)
+"nodes/Animation 9/node" = SubResource("AnimationNodeAnimation_qfddb")
+"nodes/Animation 9/position" = Vector2(1480, -620)
+node_connections = [&"output", 0, &"DanceBlend2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 3", 0, &"Add2 2", &"Add2 3", 1, &"Animation 4", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"Neutral2ExpressionBlend2", 0, &"BreathingAdd2", &"Neutral2ExpressionBlend2", 1, &"Add2 3", &"Add2 4", 0, &"Animation 5", &"Add2 4", 1, &"EarAnimBlend2", &"BreathingAdd2", 0, &"Add2 4", &"BreathingAdd2", 1, &"Animation 7", &"EarAnimBlend2", 0, &"Animation 6", &"EarAnimBlend2", 1, &"EarAnim", &"DanceBlend2", 0, &"Add2 6", &"DanceBlend2", 1, &"Neutral2ExpressionBlend2", &"Add2 6", 0, &"Animation 9", &"Add2 6", 1, &"Animation 8"]
+
+[node name="Millie" type="Node2D" unique_id=2121837621]
+script = ExtResource("1_jc1j4")
+
+[node name="TiledSprite2D" type="Sprite2D" parent="." unique_id=1651687842]
+visible = false
+self_modulate = Color(0.31711304, 0.42754805, 0.35253903, 1)
+texture_repeat = 2
+position = Vector2(-813.00006, -532.00006)
+rotation = -0.14473331
+scale = Vector2(0.49999997, 0.49999997)
+texture = ExtResource("2_eavx2")
+centered = false
+region_enabled = true
+region_rect = Rect2(10863.327, 18816.768, 3200, 2000)
+script = ExtResource("3_vcxqx")
+animate_scroll = true
+scroll_trajectory = 1.0471975511965976
+metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=157654883]
+visible = false
+self_modulate = Color(1, 1, 1, 0.156)
+position = Vector2(0, -176)
+texture = ExtResource("1_u5bgo")
+metadata/_edit_lock_ = true
+
+[node name="EarFall" type="CPUParticles2D" parent="." unique_id=745930102]
+unique_name_in_owner = true
+position = Vector2(77, -237)
+emitting = false
+amount = 1
+texture = ExtResource("5_6pub8")
+lifetime = 2.0
+one_shot = true
+direction = Vector2(1, -1)
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+scale_amount_min = 0.4
+scale_amount_max = 0.4
+
+[node name="HairFall" type="CPUParticles2D" parent="." unique_id=1693390191]
+unique_name_in_owner = true
+position = Vector2(77, -237)
+emitting = false
+amount = 1
+texture = ExtResource("17_80abj")
+lifetime = 2.0
+one_shot = true
+direction = Vector2(1, -1)
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.4
+scale_amount_max = 0.4
+
+[node name="Z" type="CPUParticles2D" parent="." unique_id=2080773523]
+z_index = 1
+position = Vector2(-102, -245)
+emitting = false
+amount = 2
+texture = SubResource("CompressedTexture2D_rwi8i")
+speed_scale = 0.25
+randomness = 0.13
+direction = Vector2(-1, -1)
+spread = 0.0
+gravity = Vector2(24, -24)
+initial_velocity_min = 70.0
+initial_velocity_max = 70.0
+angular_velocity_min = -25.0
+angular_velocity_max = 25.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_fv42t")
+color_ramp = SubResource("Gradient_3lfne")
+
+[node name="Outline" type="Node2D" parent="." unique_id=1125197068]
+visible = false
+
+[node name="EarL" type="Sprite2D" parent="Outline" unique_id=1920523084]
+show_behind_parent = true
+position = Vector2(-85.307365, -233.73987)
+rotation = 0.10889875
+scale = Vector2(0.4997955, 0.48395982)
+skew = 0.007372141
+texture = ExtResource("5_1y7t3")
+
+[node name="EarR" type="Sprite2D" parent="Outline" unique_id=448522651]
+show_behind_parent = true
+position = Vector2(78.62414, -238.31073)
+rotation = -0.16472048
+scale = Vector2(0.49953863, 0.48422498)
+skew = -0.011026144
+texture = ExtResource("5_1y7t3")
+
+[node name="Head" type="Sprite2D" parent="Outline" unique_id=1006272161]
+position = Vector2(-0.11162392, -127.70967)
+rotation = -0.027003318
+scale = Vector2(0.49998617, 0.48376608)
+skew = -0.001843214
+texture = ExtResource("6_ypqpy")
+offset = Vector2(0, -194)
+
+[node name="Heart" type="Sprite2D" parent="Outline" unique_id=497725396]
+position = Vector2(-94, -155.6028)
+scale = Vector2(0.5, 0.48375458)
+texture = ExtResource("7_ndqde")
+centered = false
+offset = Vector2(9.86, 16.9)
+
+[node name="ArmL" type="Sprite2D" parent="Outline" unique_id=1202992009]
+position = Vector2(-32.999996, -121.906136)
+rotation = 0.03999736
+scale = Vector2(0.49997127, 0.48378137)
+skew = 0.0027282238
+texture = ExtResource("8_rwi8i")
+offset = Vector2(-85, 120)
+
+[node name="ArmR" type="Sprite2D" parent="Outline" unique_id=1580241006]
+position = Vector2(-32.99699, -122.505264)
+rotation = -0.04050582
+scale = Vector2(0.49997032, 0.48378184)
+skew = -0.0027629137
+texture = ExtResource("9_3tl18")
+offset = Vector2(217.41, 136.99)
+
+[node name="Hair" type="Sprite2D" parent="Outline" unique_id=129784328]
+position = Vector2(20.544613, -307.34863)
+rotation = -0.027875481
+scale = Vector2(0.49998537, 0.48376688)
+skew = -0.0019025803
+texture = ExtResource("10_ndqde")
+offset = Vector2(21.86, 68.47)
+
+[node name="BackHair" type="Sprite2D" parent="Outline" unique_id=74909920]
+position = Vector2(60.782604, -159.9831)
+rotation = -0.19199395
+scale = Vector2(0.4993767, 0.4843923)
+skew = -0.012759447
+texture = ExtResource("11_rwi8i")
+centered = false
+offset = Vector2(-25.91, -34.55)
+
+[node name="FrontHair" type="Sprite2D" parent="Outline" unique_id=871314736]
+position = Vector2(51.646896, -304.34418)
+rotation = -0.10405154
+scale = Vector2(0.49981207, 0.4839409)
+skew = -0.0070494413
+texture = ExtResource("13_3tl18")
+offset = Vector2(52.95, 101.82)
+
+[node name="VisualRoot" type="Node2D" parent="." unique_id=1873052466]
+metadata/_edit_lock_ = true
+
+[node name="BodyAnimate" type="Node2D" parent="VisualRoot" unique_id=1167659839]
+unique_name_in_owner = true
+scale = Vector2(1, 0.9946671)
+
+[node name="BodyMain" type="Node2D" parent="VisualRoot/BodyAnimate" unique_id=1516597551]
+scale = Vector2(1, 0.9726964)
+
+[node name="Head" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1967514663]
+position = Vector2(0, -127.999985)
+rotation = -0.02790968
+scale = Vector2(0.99999726, 0.9999972)
+
+[node name="MillieBackHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=221018394]
+position = Vector2(61.80155, -35.64501)
+rotation = -0.17036676
+scale = Vector2(0.4999986, 0.49999854)
+texture = ExtResource("3_6pub8")
+offset = Vector2(61.93763, 68.01831)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieBackHair" unique_id=931040604]
+remote_path = NodePath("../../../../../../Outline/BackHair")
+
+[node name="MillieEarL" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1698998040]
+unique_name_in_owner = true
+position = Vector2(-82.10454, -115.926)
+rotation = 0.14043517
+scale = Vector2(0.49999842, 0.49999833)
+texture = ExtResource("4_w710h")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieEarL" unique_id=2065349746]
+remote_path = NodePath("../../../../../../Outline/EarL")
+
+[node name="MillieEarR" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=24473110]
+unique_name_in_owner = true
+position = Vector2(81.89541, -116.07383)
+rotation = -0.14223798
+scale = Vector2(0.49999845, 0.49999833)
+texture = ExtResource("5_6pub8")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieEarR" unique_id=1780232382]
+remote_path = NodePath("../../../../../../Outline/EarR")
+
+[node name="MillieHead" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1313048426]
+unique_name_in_owner = true
+position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_jc1j4")
+offset = Vector2(0, -194)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieHead" unique_id=1256097333]
+remote_path = NodePath("../../../../../../Outline/Head")
+
+[node name="Blue" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieHead" unique_id=1367496563]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -194.7)
+texture = ExtResource("17_3tl18")
+
+[node name="MillieFrontHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=442689887]
+unique_name_in_owner = true
+position = Vector2(56.83322, -185.05127)
+rotation = -0.079609685
+scale = Vector2(0.4999975, 0.49999744)
+texture = ExtResource("17_80abj")
+offset = Vector2(63, 100.5)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieFrontHair" unique_id=723367456]
+remote_path = NodePath("../../../../../../Outline/FrontHair")
+
+[node name="Eyes" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1267657423]
+unique_name_in_owner = true
+
+[node name="1" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=1599579729]
+unique_name_in_owner = true
+
+[node name="Open" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes/1" unique_id=337184713]
+position = Vector2(0, -69)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_3q0ev")
+
+[node name="Closed" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes/1" unique_id=1210663170]
+visible = false
+position = Vector2(0, -49)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_wbijq")
+
+[node name="2" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=346619400]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -57)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_80abj")
+
+[node name="3" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=1455547345]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -69)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_l7gxt")
+
+[node name="4" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=267026101]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -67)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_cputi")
+
+[node name="5" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=1426369718]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0.1663816, -59.8471)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_w8e22")
+
+[node name="6" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=294966052]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_2rfuc")
+
+[node name="7" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=646350664]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+position = Vector2(0, -60)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("16_wbijq")
+
+[node name="8" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=461547589]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_ndqde")
+
+[node name="MillieMarshmallowHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1676594491]
+unique_name_in_owner = true
+position = Vector2(25.829624, -189.02335)
+rotation = -0.0009014048
+scale = Vector2(0.5, 0.49999997)
+texture = ExtResource("18_80abj")
+offset = Vector2(27, 68.5)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieMarshmallowHair" unique_id=324454142]
+remote_path = NodePath("../../../../../../Outline/Hair")
+
+[node name="NoiseFace" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=271610249]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-65, -149.76918)
+
+[node name="NoiseLine2D" type="Line2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/NoiseFace" unique_id=681840862]
+unique_name_in_owner = true
+points = PackedVector2Array(17.630589, 1.6283761, -14.245006, -7.141075, 16.866127, -3.4233348, 0.6948238, 0.3512608, -2.9699483, 13.654979, 6.5004377, 18.158615, 24.970388, 10.6005)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/NoiseFace" unique_id=671348584]
+self_modulate = Color(1, 1, 1, 0.05)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("19_80abj")
+
+[node name="MillieArmL" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=479821313]
+position = Vector2(-32.999996, -125.999985)
+rotation = 0.041339047
+scale = Vector2(0.49999857, 0.49999854)
+texture = ExtResource("1_7u5cv")
+offset = Vector2(-90, 130)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/MillieArmL" unique_id=733807208]
+remote_path = NodePath("../../../../../Outline/ArmL")
+
+[node name="MillieArmR" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=312520476]
+position = Vector2(32.999996, -125.999985)
+rotation = -0.04186452
+scale = Vector2(0.49999848, 0.49999845)
+texture = ExtResource("2_yq6py")
+offset = Vector2(90, 134)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/MillieArmR" unique_id=1841355274]
+position = Vector2(-131.82689, -6.761688)
+scale = Vector2(0.9999997, 0.9999997)
+remote_path = NodePath("../../../../../Outline/ArmR")
+
+[node name="MillieBody" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1917749629]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tqthd")
+offset = Vector2(0, -128)
+
+[node name="HoodieHeart" type="Polygon2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1576125774]
+unique_name_in_owner = true
+position = Vector2(-94, -160.82825)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_l7gxt")
+polygon = PackedVector2Array(185.68103, -24.989563, 64.238174, 21.673695, 8.924103, 75.063644, 58.734528, 208.85703, 190.21918, 347.14087, 323.72464, 204.30753, 364.25778, 72.47335, 306.84845, 19.723309, 188.72308, 177.79602)
+uv = PackedVector2Array(185.68103, -24.989563, 64.238174, 21.673695, 8.924103, 75.063644, 58.734528, 208.85703, 190.21918, 347.14087, 323.72464, 204.30753, 364.25778, 72.47335, 306.84845, 19.723309, 188.388, 160)
+polygons = [PackedInt32Array(0, 7, 8, 1), PackedInt32Array(7, 6, 5, 8), PackedInt32Array(3, 8, 5, 4), PackedInt32Array(3, 2, 1, 8)]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/HoodieHeart" unique_id=1365716950]
+remote_path = NodePath("../../../../../Outline/Heart")
+
+[node name="MillieHoodieHeart01" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1665343406]
+visible = false
+position = Vector2(0, -88)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_kf5n4")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=364517588]
+visible = false
+
+[node name="Body" type="Bone2D" parent="Skeleton2D" unique_id=2018718298]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body" unique_id=1528981873]
+remote_path = NodePath("../../../VisualRoot/BodyAnimate/BodyMain")
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Body" unique_id=1609304975]
+unique_name_in_owner = true
+position = Vector2(0, -128)
+scale = Vector2(0.9999973, 0.9999973)
+rest = Transform2D(1, 0, 0, 1, 0, -128)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/Head" unique_id=1616108681]
+remote_path = NodePath("../../../../VisualRoot/BodyAnimate/BodyMain/Head")
+
+[node name="EarL" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=1838437302]
+unique_name_in_owner = true
+position = Vector2(-82, -116)
+scale = Vector2(0.49999836, 0.49999836)
+rest = Transform2D(0.5, 0, 0, 0.5, -82, -116)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/Head/EarL" unique_id=1673245376]
+remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/MillieEarL")
+
+[node name="EarR" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=536107048]
+unique_name_in_owner = true
+visible = false
+position = Vector2(82, -116)
+scale = Vector2(0.49999836, 0.49999836)
+rest = Transform2D(0.5, 0, 0, 0.5, 82, -116)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = -4.213459
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/Head/EarR" unique_id=1704400069]
+remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/MillieEarR")
+
+[node name="BackHair" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=1767547658]
+position = Vector2(61.833656, -35.589314)
+rotation = 0.27925268
+scale = Vector2(0.49999854, 0.49999854)
+rest = Transform2D(0.47678345, 0.15059067, -0.15059067, 0.47678345, 61.833656, -35.589314)
+
+[node name="End" type="Bone2D" parent="Skeleton2D/Body/Head/BackHair" unique_id=1127734466]
+position = Vector2(59.69736, 66.87951)
+rest = Transform2D(1, 0, 0, 1, 59.69736, 66.87951)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/Head/BackHair" unique_id=110433603]
+remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/MillieBackHair")
+
+[node name="Hair" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=431350459]
+position = Vector2(57, -185)
+rotation = 0.05235988
+scale = Vector2(0.49999744, 0.49999744)
+rest = Transform2D(0.49931476, -0.02616798, 0.02616798, 0.49931476, 57, -185)
+
+[node name="End" type="Bone2D" parent="Skeleton2D/Body/Head/Hair" unique_id=1542907943]
+position = Vector2(50.000008, 137.99998)
+rest = Transform2D(1, 0, 0, 1, 50.000008, 137.99998)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/Head/Hair" unique_id=1354920920]
+remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/MillieFrontHair")
+
+[node name="Marshmallow" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=212832299]
+position = Vector2(26, -189)
+scale = Vector2(0.5, 0.5)
+rest = Transform2D(0.5, 0, 0, 0.5, 26, -189)
+
+[node name="End" type="Bone2D" parent="Skeleton2D/Body/Head/Marshmallow" unique_id=1986005338]
+position = Vector2(62, 7.9999847)
+rest = Transform2D(1, 0, 0, 1, 62, 7.9999847)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/Head/Marshmallow" unique_id=1742987898]
+remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/MillieMarshmallowHair")
+
+[node name="ArmL" type="Bone2D" parent="Skeleton2D/Body" unique_id=384265428]
+position = Vector2(-33, -126)
+rotation = -0.08726646
+scale = Vector2(0.4999986, 0.4999986)
+rest = Transform2D(0.5, 0, 0, 0.5, -33, -126)
+
+[node name="End" type="Bone2D" parent="Skeleton2D/Body/ArmL" unique_id=786637529]
+position = Vector2(-112, 254)
+rest = Transform2D(1, 0, 0, 1, -112, 254)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/ArmL" unique_id=25343325]
+remote_path = NodePath("../../../../VisualRoot/BodyAnimate/BodyMain/MillieArmL")
+
+[node name="ArmR" type="Bone2D" parent="Skeleton2D/Body" unique_id=1599861962]
+position = Vector2(33, -126)
+rotation = 0.08726646
+scale = Vector2(0.4999985, 0.4999985)
+rest = Transform2D(0.5, 0, 0, 0.5, 33, -126)
+
+[node name="End" type="Bone2D" parent="Skeleton2D/Body/ArmR" unique_id=561759515]
+position = Vector2(104, 254)
+rest = Transform2D(1, 0, 0, 1, 104, 254)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/ArmR" unique_id=348818599]
+remote_path = NodePath("../../../../VisualRoot/BodyAnimate/BodyMain/MillieArmR")
+
+[node name="HoodieHeart" type="Bone2D" parent="Skeleton2D/Body" unique_id=1521686674]
+position = Vector2(1, -87)
+rest = Transform2D(1, 0, 0, 1, 1, -87)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=223001952]
+deterministic = true
+libraries/ = SubResource("AnimationLibrary_eavx2")
+autoplay = &"head_ears_arms_idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=669770318]
+tree_root = SubResource("AnimationNodeBlendTree_l7gxt")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.2
+"parameters/Add2 3/add_amount" = 1.4
+"parameters/Add2 2/add_amount" = 1.4
+parameters/Neutral2ExpressionBlend2/blend_amount = 1.0
+"parameters/Add2 4/add_amount" = 1.0
+parameters/BreathingAdd2/add_amount = 1.0
+parameters/EarAnimBlend2/blend_amount = 1.0
+parameters/DanceBlend2/blend_amount = 1.0
+"parameters/Add2 6/add_amount" = 1.0
+
+[node name="Audio" type="Node" parent="." unique_id=1845055282]
+
+[node name="ExpressionBitten" type="AudioStreamPlayer" parent="Audio" unique_id=543410090]
+unique_name_in_owner = true
+stream = ExtResource("34_ljnpu")
+bus = &"UI"
+
+[node name="ExpressionFrustrated" type="AudioStreamPlayer" parent="Audio" unique_id=1027067741]
+unique_name_in_owner = true
+stream = ExtResource("35_bcvi4")
+volume_db = -10.0
+bus = &"UI"
+
+[node name="ExpressionRegen" type="AudioStreamPlayer" parent="Audio" unique_id=1612289500]
+unique_name_in_owner = true
+stream = ExtResource("36_4n6cw")
+bus = &"UI"
+
+[node name="Vocal01" type="AudioStreamPlayer" parent="Audio" unique_id=258248656]
+unique_name_in_owner = true
+stream = ExtResource("37_85bs0")
+bus = &"UI"
+
+[node name="VocalExcited" type="AudioStreamPlayer" parent="Audio" unique_id=2113629635]
+unique_name_in_owner = true
+stream = ExtResource("38_vason")
+bus = &"UI"
+
+[node name="VocalFrustrated" type="AudioStreamPlayer" parent="Audio" unique_id=1675741444]
+unique_name_in_owner = true
+stream = ExtResource("39_pn5rf")
+bus = &"UI"
