@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dislwat0xshk0" path="res://interface/interactors/menu_start.gd" id="1_gxkgx"]
 [ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="1_yjfax"]
+[ext_resource type="PackedScene" uid="uid://fsb7fmwmcrmh" path="res://interface/menus/level_0_loading_screen.tscn" id="3_0do8i"]
 
 [sub_resource type="Gradient" id="Gradient_fdyts"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -142,3 +143,8 @@ bbcode_enabled = true
 text = "[b][font_size=48.0][color=yellow][shake rate=8.0 level=15 connected=1]Click anywhere to Start"
 fit_content = true
 horizontal_alignment = 1
+
+[node name="Loading" parent="." unique_id=703545399 instance=ExtResource("3_0do8i")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

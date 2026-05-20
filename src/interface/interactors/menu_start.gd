@@ -1,6 +1,7 @@
 extends Control
 
 @onready var start_btn: Sprite2D = %Shade
+@onready var loading: LoadingScreen = %Loading
 @onready var click_anywhere_to_start: RichTextLabel = %Text
 @onready var particles: Array[CPUParticles2D] = [%Particles, %Particles2]
 
@@ -43,5 +44,7 @@ func start_game() -> void:
 		)
 	await particles[0].finished
 
-	get_tree().change_scene_to_file(file)
+	loading.visible = true
+	loading.start_loading()
+	# get_tree().change_scene_to_file("res://interface/menus/level_0_loading_screen.tscn")
 		
