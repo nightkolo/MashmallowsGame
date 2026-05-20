@@ -243,7 +243,7 @@ position = Vector2(0, -66)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt2/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -101048.52
+rotation = -105366.64
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt2/Base" index="3" unique_id=1893349169]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -257,7 +257,7 @@ texture = ExtResource("23_nl2gi")
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(1420007166, 206340744) index="0" unique_id=520484544]
-rotation = -101048.52
+rotation = -105366.64
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt/Base" index="3" unique_id=2138650363]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -272,7 +272,7 @@ position = Vector2(64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt3/Base/Sprite2D2" parent_id_path=PackedInt32Array(823154426, 206340744) index="0" unique_id=520484544]
-rotation = -101048.52
+rotation = -105366.64
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt3/Base" index="3" unique_id=1815677311]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -286,7 +286,7 @@ position = Vector2(-64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt4/Base/Sprite2D2" parent_id_path=PackedInt32Array(1387734507, 206340744) index="0" unique_id=520484544]
-rotation = -101048.52
+rotation = -105366.64
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt4/Base" index="3" unique_id=1257870127]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -397,7 +397,7 @@ offset_right = 871.0
 offset_bottom = 458.0
 
 [node name="TiledSprite2D" parent="Scene2/World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-49733.277, 6.0908314e-12, 4776, 3584)
+region_rect = Rect2(-3210.9756, 3.9323013e-13, 4776, 3584)
 
 [node name="Choice1" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false

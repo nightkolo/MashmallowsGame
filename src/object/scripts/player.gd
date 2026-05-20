@@ -162,11 +162,9 @@ func sleep():
 
 		original_block.set_asleep(self)
 
-	if animator != null:
-		# %PlayerZoomIn.visible = true
-		if animator:
-			animator.anim_tease_zoom_out()
-	
+
+	if animator:
+		animator.anim_tease_zoom_out()
 	# if animator:
 	# 	animator.pause_anim_eye_wobble()
 

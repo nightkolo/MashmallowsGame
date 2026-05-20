@@ -38,6 +38,7 @@ func start_game() -> void:
 	tween.tween_property(click_anywhere_to_start, "scale", Vector2.ZERO, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 	tween.tween_callback(func():
 		for p: CPUParticles2D in particles:
+			p.position = get_viewport().get_visible_rect().size * 0.5
 			p.emitting = true
 		)
 	await particles[0].finished

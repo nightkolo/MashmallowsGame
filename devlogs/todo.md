@@ -47,8 +47,8 @@
       - [x] special node
     - [x] Drop notice
     - [x] BG terrain
-  - [ ] World 1 level redesigns
-    - [ ] Refined level designs
+  - [x] World 1 level redesigns
+    - [x] Refined level designs
       - [x] 1-1 (WIP)
       - [x] 1-2
       - [x] 1-3
@@ -59,7 +59,7 @@
       - [x] 1-8
       - [x] 1-9
       - [x] 1-10
-  - [ ] Refined start screen
+  - [x] Refined start screen
   - [ ] Logo reveal (could be polished)
 
 ## Animation
