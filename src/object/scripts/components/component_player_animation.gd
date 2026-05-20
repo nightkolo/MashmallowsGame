@@ -215,4 +215,4 @@ func anim_zoom_in(spd: float = 1.0, reset: bool = false) -> void:
 		tween_zoom.tween_property(node, "position", node.position.sign() * 640.0, 1.0)
 	
 	await tween_zoom.finished
-	player.node_player_zoom_trans.visible = false
+	# player.node_player_zoom_trans.visible = false

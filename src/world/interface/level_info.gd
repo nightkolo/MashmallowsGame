@@ -66,6 +66,8 @@ func anim_sprite():
 	if show_sprites.is_empty():
 		return
 
+	await get_tree().create_timer(0.25).timeout
+
 	var tween := create_tween().set_parallel(true)
 	
 	for node: Node2D in show_sprites:

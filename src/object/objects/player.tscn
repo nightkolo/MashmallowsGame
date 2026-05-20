@@ -42,17 +42,6 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_81t2s"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4jk3r"]
-gradient = SubResource("Gradient_81t2s")
-width = 700
-height = 700
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
-
 [sub_resource type="Gradient" id="Gradient_822h2"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
@@ -74,11 +63,6 @@ original_block = NodePath("Mashed")
 self_modulate = Color(1, 1, 1, 0.2)
 z_index = -1
 texture = SubResource("GradientTexture2D_s62i3")
-
-[node name="TerrainLight" type="PointLight2D" parent="." unique_id=1262133972]
-energy = 0.4
-range_item_cull_mask = 8
-texture = SubResource("GradientTexture2D_4jk3r")
 
 [node name="PlayerZoomTrans" type="Node2D" parent="." unique_id=1185996982]
 visible = false

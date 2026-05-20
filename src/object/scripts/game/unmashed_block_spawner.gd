@@ -12,6 +12,7 @@ class_name UnmashedSpawner
 @export_group("Customize")
 @export var cherry_bomb_strength: float = 1600.0 
 @export_category("Objects to Assign")
+@export var area: Area2D
 @export var sprite: Sprite2D ## For displaying node in editor
 @export var collision_deflector: StaticBody2D ## For preventing player from being in the spawn location of this spawner
 
@@ -30,15 +31,32 @@ func display_block() -> void:
 
 func _ready() -> void:
 	add_to_group("Spawner")
+	display_block()
 
-	if sprite && !Engine.is_editor_hint():
-		sprite.queue_free()
+	sprite.self_modulate = Color(Color.WHITE, 0.0)
+
+	if area:
+		area.collision_layer = 0
+		area.collision_mask = 2
+
+		area.body_entered.connect(func(_body: Node2D):
+			if sprite:
+				sprite.self_modulate = Color(Color.WHITE, 0.5)
+			)
+		area.body_exited.connect(func(_body: Node2D):
+			if sprite:
+				sprite.self_modulate = Color(Color.WHITE, 0.0)
+			)
 
 
 func _deflect_end() -> void:
 	if collision_deflector:
 		collision_deflector.queue_free()
 		await get_tree().create_timer(0.05).timeout
+
+		if sprite && !Engine.is_editor_hint():
+			sprite.queue_free()
+			sprite = null
 
 
 func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: ## Self-explanatory.

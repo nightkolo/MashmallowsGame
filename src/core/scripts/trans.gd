@@ -35,6 +35,33 @@ func player_zoom_to_scene(scene: String, waittime: float = 0.0, spd: float = 1.0
 	is_transitioning = false
 
 
+func instant_to_scene(scene: String, waittime: float = 0.0, spd: float = 2.4) -> void:
+	if is_transitioning:
+		return 
+	
+	is_transitioning = true
+	($Trans3 as Node2D).visible = true
+	
+	# await get_tree().create_timer(0.1).timeout
+	# anim.play(&"slide_in", -1, spd)
+	# Audio.lower_higher_music(0.4)
+	
+	# await anim.animation_finished
+	
+	# await get_tree().create_timer(waittime).timeout
+	
+	GameLogic.reset_game_logic()
+	
+	get_tree().change_scene_to_file(scene)
+	
+	# anim.play(&"slide_out", -1, spd)
+	
+	# await anim.animation_finished
+	
+	($Trans3 as Node2D).visible = false
+	is_transitioning = false
+
+
 func slide_to_scene(scene: String, waittime: float = 0.0, spd: float = 2.4) -> void:
 	if is_transitioning:
 		return 

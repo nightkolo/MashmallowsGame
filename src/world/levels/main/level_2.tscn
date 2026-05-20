@@ -142,41 +142,48 @@ offset_left = 150.0
 offset_top = 541.0
 offset_right = 190.0
 offset_bottom = 581.0
-level_info = "Remember to[br] press[br] to [color=pink]Unmash[/color]!"
+level_info = " to [color=pink]Unmash[/color]!"
 show_sprites = [NodePath("LabelContainer/InputPrompt")]
 
 [node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
+modulate = Color(1, 1, 1, 0)
 offset_left = 16.0
 offset_top = -16.0
-offset_right = 240.0
-offset_bottom = 112.0
+offset_right = 238.0
+offset_bottom = 85.0
+scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-5013.294, 6.139503e-13, 4776, 3584)
+region_rect = Rect2(-2988.3938, 3.6597437e-13, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
-offset_left = 21.0
-offset_top = -13.0
-offset_right = 261.0
-offset_bottom = 115.0
+offset_left = 74.0
+offset_top = -1.0
+offset_right = 314.0
+offset_bottom = 127.0
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
-text = "[b][font_size=21.0]Remember to[br] press[br] to [color=pink]Unmash[/color]!"
-visible_characters = 30
+text = "[b][font_size=21.0] to [color=pink]Unmash[/color]!"
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="InputPrompt" parent="World/LevelInfo/LabelContainer" index="1" unique_id=2128616327 instance=ExtResource("15_25mdb")]
-position = Vector2(176, 64)
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-8.999996, 36)
 scale = Vector2(0.4, 0.4)
 character = "Z"
 blink_time = 1.0
 blink_interval = 0.0
 
-[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
-position = Vector2(224, 98)
-rotation = -0.12154707
+[node name="InfoSpriteNode" parent="World/LevelInfo" index="2" unique_id=1221176953]
+visible = false
+
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
+position = Vector2(222, 71)
+rotation = 0.09476252
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("4_qsp8v")]
-position = Vector2(800, 544)
+position = Vector2(768, 520)
 
 [node name="UnmashedSpawner4" parent="." unique_id=1761846739 instance=ExtResource("17_03ofq")]
 position = Vector2(480, 608)

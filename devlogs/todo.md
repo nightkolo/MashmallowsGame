@@ -18,24 +18,24 @@
 
 ## Gameplay code
 
-- [ ] Playtester demo 2 (5-20)
+- [x] Playtester demo 2 (5-20)
   - [x] **Transitions**
     - [x] Remove circle transition due to lag
-  - [ ] Intro bugs
+  - [x] Intro bugs
     - [x] Resetting breaks things
     - [x] Nameplate changes
     - [x] Fix bitten masking
     - [x] Choice button theme
     - [x] Spawner Deflector
     - [x] Undo help
-    - [ ] Fix rough transition
-  - [ ] Final touches
-    - [ ] Fix light issue
-    - [ ] Show sprite when touch spawner
-    - [ ] Start screen
-    - [ ] Refine pause screen
-    - [ ] Change 1-2 Info
-    - [ ] Logo reveal after intro
+    - [x] Fix rough transition
+  - [x] Final touches
+    - [x] Show sprite when touch spawner
+    - [x] Start screen
+    - [x] Refine pause screen
+    - [x] Change 1-2 Info
+    - [x] Logo reveal after intro
+    - [x] Turn off dev cheats
   - [x] Blocks
     - [x] Styled press "X" to mash
     - [x] Angry eyed cherry bomb
@@ -60,7 +60,7 @@
       - [x] 1-9
       - [x] 1-10
   - [x] Refined start screen
-  - [ ] Logo reveal (could be polished)
+  - [x] Logo reveal (could be polished)
 
 ## Animation
 - [x] Blocks

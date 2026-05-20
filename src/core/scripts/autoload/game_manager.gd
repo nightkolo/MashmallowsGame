@@ -39,12 +39,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("game_reset"):
 		game_reset.emit()
 		
-	if event.is_action_pressed("debug_next"):
-		if current_level_number != 0:
-			goto_next_level()
+	# if event.is_action_pressed("debug_next"):
+	# 	if current_level_number != 0:
+	# 		goto_next_level()
 	
-	if event.is_action_pressed("debug_prev"):
-		goto_next_level(-1)
+	# if event.is_action_pressed("debug_prev"):
+	# 	goto_next_level(-1)
 
 
 func _ready() -> void:

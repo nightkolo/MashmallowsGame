@@ -1,8 +1,9 @@
 extends Control
 
-@onready var start_btn: Sprite2D = %Shade
+@onready var shade: Sprite2D = %Shade
 @onready var loading: LoadingScreen = %Loading
-@onready var click_anywhere_to_start: RichTextLabel = %Text
+@onready var authors_text: RichTextLabel = %Authors
+@onready var start_text: RichTextLabel = %Text
 @onready var particles: Array[CPUParticles2D] = [%Particles, %Particles2]
 
 var _started: bool = false
@@ -31,18 +32,21 @@ func start_game() -> void:
 
 	Audio.game_start.play()
 
-	click_anywhere_to_start.pivot_offset_ratio = Vector2.ONE * 0.5
+	start_text.pivot_offset_ratio = Vector2.ONE * 0.5
+	authors_text.pivot_offset_ratio = Vector2.ONE * 0.5
 
 	var tween := create_tween().set_parallel(true)
 
-	tween.tween_property(start_btn, "self_modulate", Color(Color.WHITE, 0.0), 0.4)
-	tween.tween_property(click_anywhere_to_start, "scale", Vector2.ZERO, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(shade, "self_modulate", Color(Color.WHITE, 0.0), 0.4)
+	tween.tween_property(start_text, "scale", Vector2.ZERO, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(authors_text, "scale", Vector2.ZERO, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 	tween.tween_callback(func():
 		for p: CPUParticles2D in particles:
 			p.position = get_viewport().get_visible_rect().size * 0.5
 			p.emitting = true
 		)
 	await particles[0].finished
+	# await tween.finished
 
 	loading.visible = true
 	loading.start_loading()

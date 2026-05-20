@@ -36,13 +36,13 @@ func _ready() -> void:
 			t.light_mask = 8
 
 	if camera:
-		# TODO: Fix terrain light issue, use RemoteTransform2D on Player to keep both nodes in same tree.
+		# TODO: Fix terrain light issue, somehow
 		var tl: PointLight2D = terrain_light.instantiate()
 		tl.global_position = camera.global_position
 		tl.scale = Vector2.ONE / (camera.zoom.x / camera.dynamic_effect)
 
 		await get_tree().create_timer(0.1).timeout
-		GameMgr.current_level.add_child.call_deferred(tl)
+		add_child.call_deferred(tl)
 		tl.range_item_cull_mask = 8
 
 	

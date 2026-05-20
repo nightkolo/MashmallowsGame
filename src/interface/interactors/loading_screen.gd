@@ -1,7 +1,7 @@
 extends Control
 class_name LoadingScreen
 var p: Array = []
-var s: String = "res://world/levels/main/level_0.tscn"
+var s: String = Util.LEVEL_FILE_BEGIN + "0" + Util.LEVEL_FILE_END
 var load_status: int
 func _ready() -> void:
 	set_process(false)

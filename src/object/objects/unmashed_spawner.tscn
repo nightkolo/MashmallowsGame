@@ -5,9 +5,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buv7f"]
 size = Vector2(64, 64)
 
-[node name="UnmashedSpawner" type="Marker2D" unique_id=1761846739 node_paths=PackedStringArray("sprite", "collision_deflector") groups=["Spawner"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxo5n"]
+size = Vector2(66, 66)
+
+[node name="UnmashedSpawner" type="Marker2D" unique_id=1761846739 node_paths=PackedStringArray("area", "sprite", "collision_deflector") groups=["Spawner"]]
 gizmo_extents = 64.0
 script = ExtResource("1_5mijl")
+area = NodePath("Area2D")
 sprite = NodePath("Sprite2D")
 collision_deflector = NodePath("StaticBody2D")
 
@@ -19,3 +23,8 @@ collision_mask = 9
 shape = SubResource("RectangleShape2D_buv7f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440652921]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1077280458]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1076226875]
+shape = SubResource("RectangleShape2D_nxo5n")

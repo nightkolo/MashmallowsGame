@@ -150,3 +150,13 @@ visible = false
 [node name="ColorRect" type="ColorRect" parent="Trans2/Node2D" unique_id=1002991023]
 offset_right = 1280.0
 offset_bottom = 800.0
+
+[node name="Trans3" type="Node2D" parent="." unique_id=642743145]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="Trans3" unique_id=649722945]
+
+[node name="ColorRect" type="ColorRect" parent="Trans3/Node2D" unique_id=1972198435]
+offset_right = 1280.0
+offset_bottom = 800.0
+color = Color(0.10980392, 0.03137255, 0.13333334, 1)

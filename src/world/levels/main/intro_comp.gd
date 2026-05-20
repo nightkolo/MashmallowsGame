@@ -5,6 +5,8 @@ class_name IntroComponent2
 @export var player: Player
 @export var camera: Cam
 
+@export var logo: Sprite2D
+
 @export var area_text: Area2D
 @export var node_text: Node2D
 @export var text_1: RichTextLabel
@@ -29,6 +31,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if logo:
+		logo.visible = false
+
 	area_text.body_entered.connect(func(body: Node2D):
 		if body is Player:
 			if tween_area:
@@ -59,8 +64,25 @@ func _ready() -> void:
 	monolog.monolog_finished.connect(func():
 		await get_tree().create_timer(1.5).timeout
 
-		Trans.player_zoom_to_scene(Util.LEVEL_FILE_BEGIN + "1" + Util.LEVEL_FILE_END)
-		# GameMgr.game_end.emit()
+		await player.animator.anim_zoom_in()
+		player.no_move = true
+
+		if logo && camera:
+			logo.scale = Vector2.ZERO
+			logo.global_position = camera.global_position
+			logo.visible = true
+
+			var tween := create_tween()
+			tween.set_trans(Tween.TRANS_BACK)
+			tween.tween_property(logo, "scale", Vector2.ONE, 0.4).set_ease(Tween.EASE_OUT)
+			tween.set_ease(Tween.EASE_IN)
+			tween.tween_property(logo, "scale", Vector2.ZERO, 0.4).set_delay(0.4)
+			await tween.finished
+			logo.visible = false
+
+		Trans.instant_to_scene(Util.LEVEL_FILE_BEGIN + "1" + Util.LEVEL_FILE_END)
+		
+
 	)
 	player.has_waken_up.connect(func():
 		anim_text_popping_up()

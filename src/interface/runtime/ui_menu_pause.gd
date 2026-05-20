@@ -7,6 +7,7 @@ class_name PauseScreen
 
 @onready var resume_btn: Button = %ResumeButton
 @onready var reset_btn: Button = %ResetButton
+@onready var op_btn: Button = %OptionsButton
 @onready var quit_btn: Button = %ReturnButton
 
 @onready var pause_info: RichTextLabel = %PauseInfo
@@ -59,6 +60,12 @@ func _ready() -> void:
 		reset_btn.pressed.connect(func():
 			_gameplay_ui.reset_stage()
 			)
+
+		op_btn.pressed.connect(func():
+			# TODO: Skip til release
+			_gameplay_ui.pause_or_unpause(false)
+			GameMgr.goto_next_level(1)
+		)
 			
 		quit_btn.pressed.connect(func():
 			_gameplay_ui.allow_input = false
