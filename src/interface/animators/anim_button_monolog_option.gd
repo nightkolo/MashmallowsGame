@@ -5,6 +5,7 @@ var tween: Tween
 var col_down: Color = Color(Color.WHITE*0.9, 1.0)
 var col_up: Color = Color(Color.WHITE*1.2, 1.0)
 
+@export var rot: float = 2.5
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -53,17 +54,22 @@ func anim_entered() -> void:
 	
 	self_modulate = col_up
 	pivot_offset = Vector2(0.0, size.y / 2.0)
-	scale = Vector2(1.25, 0.75) * 1.1
+	scale = Vector2(1.25, 0.75) * 1.2
 	
 	if tween:
 		tween.kill()
 		
-	tween = create_tween()
+	tween = create_tween().set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	tween.tween_property(self, "scale", Vector2.ONE * 1.1, dur)
+	tween.tween_property(self, "scale", Vector2.ONE * 1.2, dur)
+	tween.tween_property(self, "rotation_degrees", rot, dur)
 		
 		
 func anim_exited() -> void:
+	if tween:
+		tween.kill()
+
 	self_modulate = col_down
 	pivot_offset = Vector2(0.0 , size.y/2)
 	scale = Vector2.ONE
+	rotation_degrees = 0.0

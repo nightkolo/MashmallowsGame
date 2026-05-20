@@ -1,64 +1,94 @@
-[gd_scene format=3 uid="uid://by7noxq7uf4ml"]
+[gd_scene format=4 uid="uid://by7noxq7uf4ml"]
 
 [ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_e861b"]
 [ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="2_onxgj"]
 [ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="3_7t0fi"]
 [ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_fv03o"]
 [ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_difyh"]
-[ext_resource type="Texture2D" uid="uid://cidheaemokk" path="res://assets/tilemap/ground-outline-mask.png" id="6_q51q4"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="7_uhyka"]
 [ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="8_adaih"]
 [ext_resource type="PackedScene" uid="uid://cys70kcpvkm0y" path="res://world/interface/speech_bubble.tscn" id="9_tnwar"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="9_yoish"]
 [ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="10_u5a7t"]
+[ext_resource type="Script" uid="uid://drojb13rqhkar" path="res://core/resources/game_dialog/monolog_millie.gd" id="11_tnwar"]
 [ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="11_tsdvr"]
 [ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="12_djiyg"]
+[ext_resource type="Script" uid="uid://coaf2q56w0fhq" path="res://core/resources/game_dialog/monolog_tree.gd" id="13_u5a7t"]
+[ext_resource type="Texture2D" uid="uid://cpopxeugsevk1" path="res://assets/character/millie-back-hair.png" id="15_vxju2"]
+[ext_resource type="Texture2D" uid="uid://dctjj40q7emnp" path="res://assets/character/millie-ear-l.png" id="16_5121r"]
+[ext_resource type="Texture2D" uid="uid://ragu8x0oo5vx" path="res://assets/character/millie-ear-r.png" id="17_i2rqx"]
+[ext_resource type="Texture2D" uid="uid://mbuen2hjyg7v" path="res://assets/interface/what.png" id="18_morks"]
+[ext_resource type="Texture2D" uid="uid://chw471dalgxsc" path="res://assets/character/millie-front-hair-02.png" id="20_87ahn"]
+[ext_resource type="Texture2D" uid="uid://bvusn3wxgyubn" path="res://assets/character/millie-eyes-regular.png" id="21_nbkbr"]
+[ext_resource type="Texture2D" uid="uid://dktq3pek1fe5p" path="res://assets/character/millie-eyes-closed.png" id="22_t5ulr"]
+[ext_resource type="Texture2D" uid="uid://btkjav71l7v0t" path="res://assets/character/millie-eyes-half-closed.png" id="23_7wf2m"]
+[ext_resource type="Texture2D" uid="uid://qeibb2ornybw" path="res://assets/character/millie-eyes-side-eye.png" id="24_jb211"]
+[ext_resource type="Texture2D" uid="uid://cjolsqy078wbi" path="res://assets/character/millie-eyes-happy.png" id="25_g1703"]
+[ext_resource type="Texture2D" uid="uid://diemu7dls02t2" path="res://assets/character/millie-eyes-blank.png" id="26_x2qg4"]
+[ext_resource type="Texture2D" uid="uid://ch1kca0pyltjq" path="res://assets/character/millie-eyes-closed-wide.png" id="27_neait"]
+[ext_resource type="Texture2D" uid="uid://ccmulkum1rrc2" path="res://assets/character/millie-eyes-heart-01.png" id="28_odwny"]
+[ext_resource type="Texture2D" uid="uid://cqcbpb076mvkh" path="res://assets/character/millie-marshmallow-hair-02.png" id="29_5skyh"]
+[ext_resource type="Texture2D" uid="uid://c540nsmf5svih" path="res://assets/interface/path78.png" id="29_vxju2"]
+[ext_resource type="Texture2D" uid="uid://vf1qudmy2mq4" path="res://assets/character/face-marks-01.png" id="30_hbgxb"]
+[ext_resource type="Texture2D" uid="uid://bs8fb1u703u8o" path="res://assets/character/millie-arm-l.png" id="31_vpqun"]
+[ext_resource type="Texture2D" uid="uid://bmawkw612end3" path="res://assets/character/millie-arm-r.png" id="32_wdts7"]
+[ext_resource type="Texture2D" uid="uid://c87t45qdghyro" path="res://assets/character/millie-body.png" id="33_ov1xp"]
+[ext_resource type="Texture2D" uid="uid://babhfu7m3ri0b" path="res://assets/character/millie-hoodie-heart-03.png" id="34_o55ai"]
+[ext_resource type="Texture2D" uid="uid://h0t6u4m653jg" path="res://assets/character/millie-hoodie-heart-01.png" id="35_rrmuh"]
 
 [sub_resource type="Resource" id="Resource_43sx8"]
 script = ExtResource("11_tsdvr")
-monolog_line = "[shake][font_size=30.0]Mmmm....."
+monolog_line = "[wave][shake][font_size=30.0]H E Y Y !"
 metadata/_custom_type_script = "uid://c0o6bw7881gjw"
 
-[sub_resource type="Resource" id="Resource_tnwar"]
+[sub_resource type="Resource" id="Resource_u5a7t"]
 script = ExtResource("11_tsdvr")
-monolog_line = "Next up,
-Here comes the
-[wave amp=7.5 freq=20.0 connected=0][color=yellow]Marshmallow Lady"
+monolog_line = "Well....
+This was a tiny test."
 metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_djiyg"]
+script = ExtResource("11_tsdvr")
+monolog_line = "Have fun!
+and stay tuned :)
+- Kolo"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_tsdvr"]
+script = ExtResource("13_u5a7t")
+monolog_path_1 = "This thing!"
+monolog_flow_1 = Array[ExtResource("11_tnwar")]([SubResource("Resource_u5a7t"), SubResource("Resource_djiyg")])
+monolog_path_2 = "Touch grass"
+monolog_line = "Look at this fun [wave amp=7.5 freq=20.0 connected=0][color=yellow]message box![/color][/wave]
+Which potion do you [shake]choose?!?"
+metadata/_custom_type_script = "uid://coaf2q56w0fhq"
 
 [sub_resource type="Resource" id="Resource_gbm0e"]
 script = ExtResource("12_djiyg")
-monolog_flow = Array[ExtResource("11_tsdvr")]([SubResource("Resource_43sx8"), SubResource("Resource_tnwar")])
+monolog_flow = Array[ExtResource("11_tnwar")]([SubResource("Resource_43sx8"), SubResource("Resource_tsdvr")])
 metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x4jgm"]
+load_path = "res://.godot/imported/millie-eyes-closed.png-ae2afbd9d52337817adea9d68d7b750c.ctex"
 
 [node name="Level" type="Node2D" unique_id=1688286197]
 script = ExtResource("1_e861b")
 metadata/_custom_type_script = "uid://5fpkm17tw6kn"
 
 [node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
-position = Vector2(112, 32)
+position = Vector2(559, 236)
 anchor_mode = 0
+zoom = Vector2(2, 2)
 script = ExtResource("2_onxgj")
 
 [node name="World" parent="." unique_id=1317599791 instance=ExtResource("3_7t0fi")]
-bg_color = Color(0.23137255, 0.23529412, 0.34509805, 1)
 
 [node name="TileMaps" type="Node2D" parent="World" unique_id=1237230088]
 script = ExtResource("4_fv03o")
 metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
 
 [node name="Ground" type="TileMapLayer" parent="World/TileMaps" unique_id=462480928]
-tile_set = ExtResource("5_difyh")
-
-[node name="Foreground" type="TileMapLayer" parent="World/TileMaps" unique_id=535445719]
-tile_set = ExtResource("5_difyh")
-
-[node name="Sprite2D" type="Sprite2D" parent="World/TileMaps" unique_id=1770064885]
-clip_children = 1
-texture = ExtResource("6_q51q4")
-centered = false
-
-[node name="Outline" type="TileMapLayer" parent="World/TileMaps/Sprite2D" unique_id=1563137053]
+tile_map_data = PackedByteArray("AAAHAAkAAAAKAAAAAAAIAAkAAAAKAAAAAAAJAAkAAAAKAAAAAAALAAkAAAAKAAAAAAAKAAkAAAAKAAAAAAAMAAkAAAAKAAAAAAANAAkAAAAKAAAAAAAPAAkAAAAKAAAAAAAOAAkAAAAKAAAAAAAQAAkAAAAKAAAAAAARAAkAAAAKAAAAAAASAAkAAAAKAAAAAAATAAkAAAAKAAAAAAAUAAkAAAAKAAAAAAAUAAoAAAAKAAEAAAAVAAoAAAAKAAEAAAAWAAoAAAAKAAEAAAAVAAsAAAAJAAMAAAAVAAkAAAAKAAAAAAAUAAsAAAAJAAMAAAATAAsAAAAJAAMAAAASAAsAAAAJAAMAAAARAAsAAAAJAAMAAAAQAAsAAAAJAAMAAAAPAAsAAAAJAAMAAAAOAAsAAAAJAAMAAAANAAsAAAAJAAMAAAAMAAsAAAAJAAMAAAALAAsAAAAJAAMAAAAKAAsAAAAJAAMAAAAJAAsAAAAJAAMAAAAIAAsAAAAJAAMAAAAHAAsAAAAJAAMAAAAGAAsAAAAJAAMAAAAGAAoAAAAKAAEAAAAHAAoAAAAKAAEAAAAIAAoAAAAKAAEAAAAJAAoAAAAKAAEAAAAKAAoAAAAKAAEAAAALAAoAAAAKAAEAAAAMAAoAAAAKAAEAAAANAAoAAAAKAAEAAAAOAAoAAAAKAAEAAAAPAAoAAAAKAAEAAAAQAAoAAAAKAAEAAAARAAoAAAAKAAEAAAASAAoAAAAKAAEAAAATAAoAAAAKAAEAAAAGAAkAAAAKAAAAAAAFAAkAAAAKAAAAAAAFAAoAAAAKAAEAAAAFAAsAAAAJAAMAAAAEAAsAAAAJAAMAAAAEAAoAAAAKAAEAAAAEAAkAAAAKAAAAAAAWAAkAAAAKAAAAAAAXAAkAAAAKAAAAAAAYAAkAAAAKAAAAAAAZAAkAAAALAAAAAAAZAAoAAAALAAIAAAAZAAsAAAALAAMAAAAYAAsAAAAJAAMAAAAXAAsAAAAJAAMAAAAWAAsAAAAJAAMAAAAXAAoAAAAKAAEAAAAYAAoAAAAKAAEAAAADAAkAAAAIAAAAAAADAAoAAAAIAAEAAAADAAsAAAAIAAMAAAA=")
 tile_set = ExtResource("5_difyh")
 
 [node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("7_uhyka")]
@@ -68,16 +98,251 @@ script = ExtResource("8_adaih")
 metadata/_custom_type_script = "uid://blq670fy1uldv"
 
 [node name="SpeechBubble" parent="World" unique_id=1078381548 instance=ExtResource("9_tnwar")]
-position = Vector2(1056, 496)
-scale = Vector2(1.9, 1.9)
+offset_left = 1022.0
+offset_top = 400.0
+offset_right = 1022.0
+offset_bottom = 400.0
 
-[node name="MonologSystem" type="Node" parent="World" unique_id=2098357230 node_paths=PackedStringArray("speech_bubble")]
+[node name="TiledSprite2D" parent="World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1078381548, 827350809) index="0" unique_id=1380465130]
+region_rect = Rect2(-129645.42, 1.5876592e-11, 4776, 3584)
+
+[node name="Choice1" parent="World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1078381548, 2042871335) index="0" unique_id=1932466959]
+visible = false
+disabled = true
+rot = -2.5
+
+[node name="Choice2" parent="World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1078381548, 2042871335) index="1" unique_id=870054960]
+visible = false
+disabled = true
+
+[node name="MonologSystem" type="Node" parent="World" unique_id=2098357230 node_paths=PackedStringArray("speech_bubble", "choice_1", "choice_2")]
 script = ExtResource("10_u5a7t")
-auto_start = false
+one_time = false
 flow = SubResource("Resource_gbm0e")
 speech_bubble = NodePath("../SpeechBubble")
+choice_1 = NodePath("../SpeechBubble/MonologOptions/Choice1")
+choice_2 = NodePath("../SpeechBubble/MonologOptions/Choice2")
 metadata/_custom_type_script = "uid://8084qpc74hbe"
 
+[node name="VisualRoot" type="Node2D" parent="." unique_id=1486203006]
+visible = false
+position = Vector2(1620, 414)
+
+[node name="BodyAnimate" type="Node2D" parent="VisualRoot" unique_id=995922602]
+unique_name_in_owner = true
+scale = Vector2(1, 0.9946671)
+
+[node name="BodyMain" type="Node2D" parent="VisualRoot/BodyAnimate" unique_id=1083491681]
+scale = Vector2(0.99999994, 1.0093666)
+
+[node name="Head" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1523568180]
+position = Vector2(0, -128.00002)
+rotation = -0.026844542
+scale = Vector2(0.9999974, 0.99999744)
+
+[node name="MillieBackHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1091098704]
+position = Vector2(61.856144, -35.55021)
+rotation = -0.050846215
+scale = Vector2(0.49999845, 0.49999848)
+texture = ExtResource("15_vxju2")
+offset = Vector2(61.93763, 68.01831)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieBackHair" unique_id=1327694088]
+remote_path = NodePath("../../../../../../Outline/BackHair")
+
+[node name="MillieEarL" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=2113938040]
+unique_name_in_owner = true
+position = Vector2(-81.926636, -116.05183)
+rotation = 0.13957237
+scale = Vector2(0.4999983, 0.49999833)
+texture = ExtResource("16_5121r")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieEarL" unique_id=554820755]
+remote_path = NodePath("../../../../../../Outline/EarL")
+
+[node name="MillieEarR" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1045143376]
+unique_name_in_owner = true
+position = Vector2(82.07333, -115.94813)
+rotation = -0.13830774
+scale = Vector2(0.49999833, 0.49999836)
+texture = ExtResource("17_i2rqx")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieEarR" unique_id=756396286]
+remote_path = NodePath("../../../../../../Outline/EarR")
+
+[node name="MillieHead" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1598661759]
+unique_name_in_owner = true
+clip_children = 1
+position = Vector2(4.0755615, 34.494934)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("29_vxju2")
+offset = Vector2(0, -194)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieHead" unique_id=329515562]
+remote_path = NodePath("../../../../../../Outline/Head")
+
+[node name="Blue" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieHead" unique_id=1172862392]
+unique_name_in_owner = true
+position = Vector2(-4.71, -194.7)
+scale = Vector2(1.08, 1.08)
+texture = ExtResource("18_morks")
+
+[node name="MillieFrontHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=473484602]
+unique_name_in_owner = true
+position = Vector2(57.116962, -184.96396)
+rotation = 0.0399109
+scale = Vector2(0.4999974, 0.49999744)
+texture = ExtResource("20_87ahn")
+offset = Vector2(63, 100.5)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieFrontHair" unique_id=340229997]
+remote_path = NodePath("../../../../../../Outline/FrontHair")
+
+[node name="Eyes" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=2049749720]
+unique_name_in_owner = true
+visible = false
+
+[node name="1" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=554175369]
+unique_name_in_owner = true
+
+[node name="Open" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes/1" unique_id=2107047226]
+position = Vector2(0, -69)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("21_nbkbr")
+
+[node name="Closed" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes/1" unique_id=1223148125]
+visible = false
+position = Vector2(0, -49)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_t5ulr")
+
+[node name="2" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=804816323]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -57)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("23_7wf2m")
+
+[node name="3" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=461316470]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -69)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("24_jb211")
+
+[node name="4" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=942298010]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -67)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("25_g1703")
+
+[node name="5" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=968267026]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0.1663816, -59.8471)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26_x2qg4")
+
+[node name="6" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=1927333405]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("27_neait")
+
+[node name="7" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=1295883111]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+position = Vector2(0, -60)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("28_odwny")
+
+[node name="8" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=474768971]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -60)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CompressedTexture2D_x4jgm")
+
+[node name="MillieMarshmallowHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=575277417]
+unique_name_in_owner = true
+position = Vector2(26.119503, -188.98352)
+rotation = 0.0006323066
+scale = Vector2(0.49999997, 0.5)
+texture = ExtResource("29_5skyh")
+offset = Vector2(27, 68.5)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieMarshmallowHair" unique_id=914445442]
+remote_path = NodePath("../../../../../../Outline/Hair")
+
+[node name="NoiseFace" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1411956751]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-65, -149.76918)
+
+[node name="NoiseLine2D" type="Line2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/NoiseFace" unique_id=1006985635]
+unique_name_in_owner = true
+points = PackedVector2Array(17.630589, 1.6283761, -14.245006, -7.141075, 16.866127, -3.4233348, 0.6948238, 0.3512608, -2.9699483, 13.654979, 6.5004377, 18.158615, 24.970388, 10.6005)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/NoiseFace" unique_id=1218133119]
+self_modulate = Color(1, 1, 1, 0.05)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("30_hbgxb")
+
+[node name="MillieArmL" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1693034509]
+position = Vector2(-33.000004, -126.00002)
+rotation = 0.039715312
+scale = Vector2(0.49999863, 0.4999987)
+texture = ExtResource("31_vpqun")
+offset = Vector2(-90, 130)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/MillieArmL" unique_id=630510407]
+remote_path = NodePath("../../../../../Outline/ArmL")
+
+[node name="MillieArmR" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1366961946]
+position = Vector2(33.000004, -126.00002)
+rotation = -0.04026682
+scale = Vector2(0.49999848, 0.4999985)
+texture = ExtResource("32_wdts7")
+offset = Vector2(90, 134)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/MillieArmR" unique_id=874224590]
+position = Vector2(-131.82689, -6.761688)
+scale = Vector2(0.9999997, 0.9999997)
+remote_path = NodePath("../../../../../Outline/ArmR")
+
+[node name="MillieBody" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1588119911]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_ov1xp")
+offset = Vector2(0, -128)
+
+[node name="HoodieHeart" type="Polygon2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1531616682]
+unique_name_in_owner = true
+position = Vector2(-94, -160.82825)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_o55ai")
+polygon = PackedVector2Array(185.68103, -24.989563, 64.238174, 21.673695, 8.924103, 75.063644, 58.734528, 208.85703, 190.21918, 347.14087, 323.72464, 204.30753, 364.25778, 72.47335, 306.84845, 19.723309, 188.72308, 177.79602)
+uv = PackedVector2Array(185.68103, -24.989563, 64.238174, 21.673695, 8.924103, 75.063644, 58.734528, 208.85703, 190.21918, 347.14087, 323.72464, 204.30753, 364.25778, 72.47335, 306.84845, 19.723309, 188.388, 160)
+polygons = [PackedInt32Array(0, 7, 8, 1), PackedInt32Array(7, 6, 5, 8), PackedInt32Array(3, 8, 5, 4), PackedInt32Array(3, 2, 1, 8)]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/HoodieHeart" unique_id=162619750]
+remote_path = NodePath("../../../../../Outline/Heart")
+
+[node name="MillieHoodieHeart01" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=976618127]
+visible = false
+position = Vector2(0, -88)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("35_rrmuh")
+
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("9_yoish")]
+position = Vector2(335, 453)
 
 [editable path="World/LevelGoal"]
+[editable path="World/SpeechBubble"]

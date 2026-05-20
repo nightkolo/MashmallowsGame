@@ -29,6 +29,11 @@
     - [x] Spawner Deflector
     - [x] Undo help
     - [ ] Fix rough transition
+  - [ ] Final touches
+    - [ ] Start screen
+    - [ ] Refine pause screen
+    - [ ] Change 1-2 Info
+    - [ ] Logo reveal after intro
   - [x] Blocks
     - [x] Styled press "X" to mash
     - [x] Angry eyed cherry bomb
