@@ -44,22 +44,29 @@ func set_music(vol: float = original_music_db) -> void:
 	music_stage.volume_db = vol
 	
 
+# var _music_timer: Timer = Timer.new()
+
 func start_music():
 	await get_tree().create_timer(0.1).timeout
 
 	if !GameMgr.current_level.has_started || GameMgr.current_level_number <= 0 || music_stage.playing:
 		return
 
+	music_stage.finished.connect(func():
+		music_stage.play(8.422)
+		)
+
 	if !music_stage.playing:
 		music_stage.volume_db = -80.0
 		
-		music_stage.play()
+		music_stage.play(0.0)
 		
 		if _tween_aud:
 			_tween_aud.kill()
 			
 		_tween_aud = create_tween()
 		_tween_aud.tween_property(music_stage, "volume_db", original_music_db, 1.5)
+	
 
 func stop_music():
 	if music_stage.playing:
@@ -74,6 +81,7 @@ func stop_music():
 		music_stage.stop()
 
 func _ready() -> void:
+	# _music_timer.wait_time = 
 	original_music_db = music_stage.volume_db
 	
 	#if !music_stage.playing:
