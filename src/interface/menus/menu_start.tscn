@@ -1,32 +1,35 @@
-[gd_scene format=3 uid="uid://dn0g3mnewktgx"]
+[gd_scene format=3 uid="uid://cxbpqh6onu3ar"]
 
-[ext_resource type="Script" uid="uid://df7yhjs1jmrf2" path="res://interface/interactors/menu_start.gd" id="1_gxkgx"]
+[ext_resource type="Script" uid="uid://dislwat0xshk0" path="res://interface/interactors/menu_start.gd" id="1_gxkgx"]
 [ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="1_yjfax"]
-[ext_resource type="Texture2D" uid="uid://d0hq1lmt3xe70" path="res://assets/bg/bg-menu-02.png" id="3_0do8i"]
-[ext_resource type="PackedScene" uid="uid://bltj01af7hhkl" path="res://interface/runtime/game_title.tscn" id="4_trhp8"]
-[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="5_fdyts"]
+
+[sub_resource type="Gradient" id="Gradient_fdyts"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lol1l"]
+gradient = SubResource("Gradient_fdyts")
 
 [sub_resource type="Gradient" id="Gradient_trhp8"]
-offsets = PackedFloat32Array(0.5, 1)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fdyts"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yjfax"]
 gradient = SubResource("Gradient_trhp8")
 width = 1280
 height = 800
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="Gradient" id="Gradient_0do8i"]
-offsets = PackedFloat32Array(0.7909516, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yjfax"]
+load_path = "res://.godot/imported/particle-rabbitstar-02.png-e5e1f661cd8a9fa5b2674e30614c35f5.ctex"
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_trhp8"]
-gradient = SubResource("Gradient_0do8i")
-width = 612
-height = 612
-fill = 2
-fill_from = Vector2(0.5, 0.5)
+[sub_resource type="Curve" id="Curve_0do8i"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_yjfax"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Start" type="Control" unique_id=1256811207]
 layout_mode = 3
@@ -39,24 +42,19 @@ theme = ExtResource("1_yjfax")
 script = ExtResource("1_gxkgx")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=773865713]
-self_modulate = Color(0.7373294, 0.3491902, 0.5370987, 1)
+self_modulate = Color(0.10980392, 0.03137255, 0.13333334, 1)
 texture_repeat = 2
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 800.0
-texture = ExtResource("3_0do8i")
+texture = SubResource("GradientTexture2D_lol1l")
 expand_mode = 1
 
 [node name="Shade" type="Sprite2D" parent="." unique_id=1098441663]
+unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0.3)
 position = Vector2(640, 400)
-texture = SubResource("GradientTexture2D_fdyts")
-
-[node name="Spotlight" type="Sprite2D" parent="." unique_id=948296120]
-visible = false
-self_modulate = Color(1, 1, 1, 0.15)
-position = Vector2(641, 401)
-texture = SubResource("GradientTexture2D_trhp8")
+texture = SubResource("GradientTexture2D_yjfax")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=613171617]
 layout_mode = 1
@@ -65,52 +63,82 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=176137131]
-layout_mode = 2
-theme_override_constants/separation = -10
-
-[node name="GameTitle" parent="MarginContainer/VBoxContainer" unique_id=682979663 instance=ExtResource("4_trhp8")]
-layout_mode = 2
-size_flags_vertical = 1
-
-[node name="CR2" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1478329229]
-visible = false
-layout_mode = 2
-bbcode_enabled = true
-text = "[font_size=16.0]Placeholder Logo"
-fit_content = true
-horizontal_alignment = 1
-
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer" unique_id=1154364576]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 
-[node name="CR2" type="RichTextLabel" parent="MarginContainer/VBoxContainer2" unique_id=56905480]
+[node name="Authors" type="RichTextLabel" parent="MarginContainer/VBoxContainer2" unique_id=1162470319]
+visible = false
 layout_mode = 2
+mouse_filter = 2
 bbcode_enabled = true
-text = "[font_size=24.0][color=#FFFFFFBF]Welcome to the Playtester Beta!
-Controls included in the game page"
+text = "v2.0.0-alpha
+[font_size=24.0][color=#FFFFFFBF]A Demo by [color=#FFFFFFFF]Night Kolo
+[color=#FFFFFFBF]Music by [color=#FFFFFFFF]Avizura"
 fit_content = true
 horizontal_alignment = 1
 
-[node name="Author" type="RichTextLabel" parent="MarginContainer/VBoxContainer2" unique_id=1162470319]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=1886644291]
 layout_mode = 2
-bbcode_enabled = true
-text = "v1.0.0-alpha
-[font_size=24.0][color=#FFFFFFBF]A Beta by [color=#FFFFFFFF]Night Kolo
-[color=#FFFFFFBF]Music by [color=#FFFFFFFF]Avizura"
-fit_content = true
+mouse_filter = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=2099497727]
-layout_mode = 2
-
-[node name="StartBtn" type="Button" parent="MarginContainer/CenterContainer" unique_id=1602128959]
+[node name="Text" type="RichTextLabel" parent="MarginContainer/CenterContainer" unique_id=56905480]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(1280, 0)
 layout_mode = 2
-text = "Start"
-script = ExtResource("5_fdyts")
+mouse_filter = 2
+bbcode_enabled = true
+text = "[b][font_size=48.0][color=yellow][shake rate=8.0 level=15 connected=1]Click anywhere to Start"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Particles" type="CPUParticles2D" parent="MarginContainer/CenterContainer" unique_id=1111333392]
+unique_name_in_owner = true
+z_index = 6
+position = Vector2(652, 306)
+emitting = false
+texture = SubResource("CompressedTexture2D_yjfax")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+direction = Vector2(1, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+damping_min = 120.0
+damping_max = 120.0
+scale_amount_curve = SubResource("Curve_0do8i")
+color_ramp = SubResource("Gradient_yjfax")
+
+[node name="Particles2" type="CPUParticles2D" parent="MarginContainer/CenterContainer" unique_id=689596775]
+unique_name_in_owner = true
+z_index = 6
+position = Vector2(652, 306)
+emitting = false
+texture = SubResource("CompressedTexture2D_yjfax")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+direction = Vector2(-1, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 150.0
+initial_velocity_max = 150.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+damping_min = 120.0
+damping_max = 120.0
+scale_amount_curve = SubResource("Curve_0do8i")
+color_ramp = SubResource("Gradient_yjfax")

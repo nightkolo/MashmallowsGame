@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://ctr6ph8bi3wnu" path="res://audio/sounds/game_reset_02.wav" id="9_lo713"]
 [ext_resource type="AudioStream" uid="uid://dbasaqplmrtor" path="res://audio/sounds/game_pause.wav" id="10_2o34p"]
 [ext_resource type="AudioStream" uid="uid://dv13xrx4125mj" path="res://audio/sounds/game_start_01.wav" id="11_fetaq"]
-[ext_resource type="AudioStream" uid="uid://dgi0dgydt3bxl" path="res://audio/sounds/game_start_02.wav" id="12_fetaq"]
 [ext_resource type="AudioStream" uid="uid://dnmoufaarbyrq" path="res://audio/sounds/button_click_01.wav" id="13_bptgd"]
 [ext_resource type="AudioStream" uid="uid://q4nhdfcpj1df" path="res://audio/sounds/button_click_02.wav" id="14_6k8tn"]
 [ext_resource type="AudioStream" uid="uid://dchre6eq6lpma" path="res://audio/sounds/button_click_03.wav" id="15_le1s8"]
@@ -91,7 +90,7 @@ bus = &"UI"
 
 [node name="GameStart" type="AudioStreamPlayer" parent="UI" unique_id=186682741]
 unique_name_in_owner = true
-stream = ExtResource("12_fetaq")
+stream = ExtResource("11_fetaq")
 bus = &"UI"
 
 [node name="UIButtonClick" type="AudioStreamPlayer" parent="UI" unique_id=448444448]

@@ -1,21 +1,46 @@
 extends Control
 
-@onready var start_btn: Button = %StartBtn
-@onready var spotlight: Sprite2D = $Spotlight
+@onready var start_btn: Sprite2D = %Shade
+@onready var click_anywhere_to_start: RichTextLabel = %Text
+@onready var particles: Array[CPUParticles2D] = [%Particles, %Particles2]
+
+var _started: bool = false
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameMgr.menu_entered.emit(GameMgr.Menus.START)
-	
-	start_btn.grab_focus()
-	start_btn.pressed.connect(start_game)
-	
-	var t := create_tween().set_loops()
-	
-	t.tween_property(spotlight, "rotation", -PI, 30.0).as_relative()
-	
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("start_game"):
+		start_game()
 
 
 func start_game() -> void:
-	Trans.slide_to_scene("res://world/levels/level_1.tscn", 0.25)
+	if _started:
+		return
+	
+	var file: String = Util.LEVEL_FILE_BEGIN + "0" + Util.LEVEL_FILE_END
+
+	if !ResourceLoader.exists(file):
+		push_error("First level data not found, cannot start :(")
+		return
+
+	_started = true
+
+	Audio.game_start.play()
+
+	click_anywhere_to_start.pivot_offset_ratio = Vector2.ONE * 0.5
+
+	var tween := create_tween().set_parallel(true)
+
+	tween.tween_property(start_btn, "self_modulate", Color(Color.WHITE, 0.0), 0.4)
+	tween.tween_property(click_anywhere_to_start, "scale", Vector2.ZERO, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
+	tween.tween_callback(func():
+		for p: CPUParticles2D in particles:
+			p.emitting = true
+		)
+	await particles[0].finished
+
+	get_tree().change_scene_to_file(file)
+		

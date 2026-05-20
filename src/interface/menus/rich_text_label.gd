@@ -1,4 +1,4 @@
-extends RichTextLabel
+extends TextureRect
 
 
 

@@ -1,16 +1,13 @@
 [gd_scene format=3 uid="uid://bltj01af7hhkl"]
 
-[ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="1_jctfk"]
+[ext_resource type="Texture2D" uid="uid://dqs6w3nsv1u03" path="res://assets/interface/logo-beta-01.png" id="1_jctfk"]
 [ext_resource type="Script" uid="uid://c45cfhmogpej6" path="res://interface/menus/rich_text_label.gd" id="2_0rudu"]
 
-[sub_resource type="FontVariation" id="FontVariation_q0x3i"]
-base_font = ExtResource("1_jctfk")
-spacing_glyph = -10
-
-[node name="GameTitle" type="RichTextLabel" unique_id=682979663]
-size_flags_vertical = 6
-theme_override_fonts/bold_font = SubResource("FontVariation_q0x3i")
-bbcode_enabled = true
-text = "[center][b][font_size=90.0]Mashmallows"
-fit_content = true
+[node name="GameTitle" type="TextureRect" unique_id=1352535155]
+offset_right = 960.0
+offset_bottom = 177.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_jctfk")
+stretch_mode = 2
 script = ExtResource("2_0rudu")
