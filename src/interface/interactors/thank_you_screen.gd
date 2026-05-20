@@ -6,6 +6,7 @@ extends Control
 func _ready() -> void:
 	GameMgr.menu_entered.emit(GameMgr.Menus.MISC)
 	
+	start_btn.grab_focus()
 	start_btn.pressed.connect(func():
 		get_tree().change_scene_to_file("res://interface/menus/menu_start.tscn")
 		)

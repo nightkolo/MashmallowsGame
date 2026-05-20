@@ -348,7 +348,7 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 				world.add_child(e)
 				e.emitting = true
 				h.emitting = true
-				await get_tree().create_timer(1.0).timeout
+				await get_tree().create_timer(3.0).timeout
 				e.queue_free()
 				h.queue_free()
 			else:

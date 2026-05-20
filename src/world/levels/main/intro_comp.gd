@@ -4,6 +4,7 @@ class_name IntroComponent2
 
 @export var player: Player
 @export var camera: Cam
+@export var player_spawn_pos: Marker2D
 
 @export var logo: Sprite2D
 
@@ -79,6 +80,7 @@ func _ready() -> void:
 			tween.tween_property(logo, "scale", Vector2.ZERO, 0.4).set_delay(0.4)
 			await tween.finished
 			logo.visible = false
+			await get_tree().create_timer(0.1).timeout
 
 		Trans.instant_to_scene(Util.LEVEL_FILE_BEGIN + "1" + Util.LEVEL_FILE_END)
 		
@@ -101,7 +103,11 @@ func _ready() -> void:
 
 		scene_2.position.x -= 1380.0
 
-		player.position = Vector2(390.0, 570.0) 
+		# player.scale = Vector2.ONE * 0.7
+		player.global_position = player_spawn_pos.global_position
+		# var tween := create_tween()
+		# tween.tween_property(player, "scale", Vector2.ONE, 0.2)
+
 		camera.set_process(false)
 		camera.zoom = Vector2.ONE * 1.1
 		# camera.position.x += 100.0
@@ -120,8 +126,8 @@ func _ready() -> void:
 		
 		# TODO remove fixed values
 		if active:
-			tween_cam.tween_property(camera, "position", Vector2(740.0, 424.0), 1.0)
-			tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.2, 1.0)
+			tween_cam.tween_property(camera, "position", Vector2(790.0, 424.0), 1.0)
+			tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.4, 1.0)
 			# tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.2, 1.0)
 		else:
 			tween_cam.tween_property(camera, "position", cam_pos, 1.0)

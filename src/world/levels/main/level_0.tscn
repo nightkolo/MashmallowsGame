@@ -175,10 +175,11 @@ metadata/_custom_type_script = "uid://5fpkm17tw6kn"
 position = Vector2(640, 400)
 script = ExtResource("3_gwvtg")
 
-[node name="Intro" type="Node" parent="." unique_id=29428490 node_paths=PackedStringArray("player", "camera", "logo", "area_text", "node_text", "text_1", "text_2", "scene_1", "scene_2", "level", "monolog")]
+[node name="Intro" type="Node" parent="." unique_id=29428490 node_paths=PackedStringArray("player", "camera", "player_spawn_pos", "logo", "area_text", "node_text", "text_1", "text_2", "scene_1", "scene_2", "level", "monolog")]
 script = ExtResource("4_y72ok")
 player = NodePath("../Player")
 camera = NodePath("../Cam")
+player_spawn_pos = NodePath("../Scene2/Marker2D")
 logo = NodePath("../Logo")
 area_text = NodePath("../Scene1/Area2D")
 node_text = NodePath("../Scene1/Text")
@@ -245,7 +246,7 @@ position = Vector2(0, -66)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt2/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -107976.26
+rotation = -111192.48
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt2/Base" index="3" unique_id=1893349169]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -259,7 +260,7 @@ texture = ExtResource("23_nl2gi")
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(1420007166, 206340744) index="0" unique_id=520484544]
-rotation = -107976.26
+rotation = -111192.48
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt/Base" index="3" unique_id=2138650363]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -274,7 +275,7 @@ position = Vector2(64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt3/Base/Sprite2D2" parent_id_path=PackedInt32Array(823154426, 206340744) index="0" unique_id=520484544]
-rotation = -107976.26
+rotation = -111192.48
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt3/Base" index="3" unique_id=1815677311]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -285,10 +286,10 @@ texture = ExtResource("23_nl2gi")
 position = Vector2(-64, 0)
 
 [node name="Base" parent="Scene1/World/InputPrompt/InputPrompt4" index="1" unique_id=736620297]
-position = Vector2(0, 7.169389)
+position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt4/Base/Sprite2D2" parent_id_path=PackedInt32Array(1387734507, 206340744) index="0" unique_id=520484544]
-rotation = -107976.26
+rotation = -111192.48
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt4/Base" index="3" unique_id=1257870127]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -399,7 +400,7 @@ offset_right = 871.0
 offset_bottom = 458.0
 
 [node name="TiledSprite2D" parent="Scene2/World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-3245.8145, 3.9749595e-13, 4776, 3584)
+region_rect = Rect2(-51201.277, 6.2705067e-12, 4776, 3584)
 
 [node name="Choice1" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false
@@ -423,8 +424,11 @@ metadata/_custom_type_script = "uid://d2gl7vnb88axq"
 position = Vector2(7.5, 0)
 shape = SubResource("RectangleShape2D_5nw2w")
 
+[node name="Marker2D" type="Marker2D" parent="Scene2" unique_id=285747548]
+position = Vector2(364, 416)
+
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("29_owqqn")]
-position = Vector2(900, 585)
+position = Vector2(912, 552)
 start_asleep = true
 
 [node name="Logo" type="Sprite2D" parent="." unique_id=908471044]

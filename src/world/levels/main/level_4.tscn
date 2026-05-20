@@ -119,31 +119,30 @@ attributes = SubResource("Resource_peiti")
 position = Vector2(855, 248)
 
 [node name="LevelInfo" parent="World" unique_id=1741767880 instance=ExtResource("13_mhneg")]
-offset_left = 816.0
+offset_left = 819.0
 offset_top = 424.0
-offset_right = 856.0
+offset_right = 859.0
 offset_bottom = 464.0
-level_info = "[CB] Cherry bombs [color=#ff7f7f][shake]explode[/shake][/color] when [color=pink]Unmashed.[/color] 
-Be gentle, they're overwhelmed."
+level_info = "[CB]Cherry bombs [color=#ff7f7f][shake]explode[/shake][/color] when [color=pink]Unmashed.[/color] "
 
 [node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
-offset_bottom = 176.0
+offset_right = 240.0
+offset_bottom = 120.0
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-55308.668, 6.773264e-12, 4776, 3584)
+region_rect = Rect2(-2723.096, 3.3347703e-13, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 248.0
 offset_bottom = 256.0
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
-text = "[b][font_size=21.0][CB] Cherry bombs [color=#ff7f7f][shake]explode[/shake][/color] when [color=pink]Unmashed.[/color] 
-Be gentle, they're overwhelmed."
-visible_characters = 73
+text = "[b][font_size=21.0][CB]Cherry bombs [color=#ff7f7f][shake]explode[/shake][/color] when [color=pink]Unmashed.[/color] "
+visible_characters = 40
 
 [node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
-position = Vector2(255, 162)
-rotation = -0.107482806
+position = Vector2(240, 90)
+rotation = -0.121761054
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_12cdj")]
 position = Vector2(608, 432)

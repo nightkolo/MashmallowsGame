@@ -30,6 +30,9 @@
     - [x] Undo help
     - [x] Fix rough transition
   - [x] Final touches
+    - [x] Intro scene transition position bugs
+    - [x] Zoom fruther on monolog
+    - [x] 1-4 Info change
     - [x] Show sprite when touch spawner
     - [x] Start screen
     - [x] Refine pause screen
