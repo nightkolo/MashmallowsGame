@@ -30,6 +30,8 @@
     - [x] Undo help
     - [ ] Fix rough transition
   - [ ] Final touches
+    - [ ] Fix light issue
+    - [ ] Show sprite when touch spawner
     - [ ] Start screen
     - [ ] Refine pause screen
     - [ ] Change 1-2 Info
@@ -55,8 +57,8 @@
       - [x] 1-6
       - [x] 1-7
       - [x] 1-8
-      - [ ] 1-9
-      - [ ] 1-10
+      - [x] 1-9
+      - [x] 1-10
   - [ ] Refined start screen
   - [ ] Logo reveal (could be polished)
 
