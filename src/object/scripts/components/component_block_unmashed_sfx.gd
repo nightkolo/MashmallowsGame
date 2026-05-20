@@ -21,7 +21,7 @@ func _ready():
 		)
 		block.player_entered.connect(func(entered: bool):
 			if entered:
-				sleep_sfx.volume_db = -10.0
+				sleep_sfx.volume_db = -14.0
 			else:
 				sleep_sfx.volume_db = -80.0
 			)

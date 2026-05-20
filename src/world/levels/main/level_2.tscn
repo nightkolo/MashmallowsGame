@@ -142,7 +142,7 @@ offset_left = 150.0
 offset_top = 541.0
 offset_right = 190.0
 offset_bottom = 581.0
-level_info = " to [color=pink]Unmash[/color]!"
+level_info = " to [color=pink]Unmash[/color]"
 show_sprites = [NodePath("LabelContainer/InputPrompt")]
 
 [node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
@@ -154,7 +154,7 @@ offset_bottom = 85.0
 scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-8839.958, 1.0825802e-12, 4776, 3584)
+region_rect = Rect2(-14162.848, 1.7344909e-12, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_left = 74.0
@@ -163,7 +163,7 @@ offset_right = 314.0
 offset_bottom = 127.0
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
-text = "[b][font_size=21.0] to [color=pink]Unmash[/color]!"
+text = "[b][font_size=21.0] to [color=pink]Unmash[/color]"
 visible_characters = 0
 visible_ratio = 0.0
 

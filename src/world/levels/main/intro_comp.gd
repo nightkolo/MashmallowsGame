@@ -25,9 +25,9 @@ var tween_area: Tween
 
 var cam_pos: Vector2
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_next"):
-		GameLogic.intro_order_complete.emit()
+# func _unhandled_input(event: InputEvent) -> void:
+# 	if event.is_action_pressed("debug_next"):
+# 		GameLogic.intro_order_complete.emit()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -77,7 +77,7 @@ func _ready() -> void:
 			tween.set_trans(Tween.TRANS_BACK)
 			tween.tween_property(logo, "scale", Vector2.ONE, 0.4).set_ease(Tween.EASE_OUT)
 			tween.set_ease(Tween.EASE_IN)
-			tween.tween_property(logo, "scale", Vector2.ZERO, 0.4).set_delay(0.4)
+			tween.tween_property(logo, "scale", Vector2.ZERO, 0.4).set_delay(0.8)
 			await tween.finished
 			logo.visible = false
 			await get_tree().create_timer(0.1).timeout
@@ -126,7 +126,7 @@ func _ready() -> void:
 		
 		# TODO remove fixed values
 		if active:
-			tween_cam.tween_property(camera, "position", Vector2(790.0, 424.0), 1.0)
+			tween_cam.tween_property(camera, "position", Vector2(750.0, 424.0), 1.0)
 			tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.4, 1.0)
 			# tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.2, 1.0)
 		else:

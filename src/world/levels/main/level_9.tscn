@@ -156,6 +156,7 @@ block_attributes = SubResource("Resource_kvmns")
 [node name="UnmashedSpawner3" parent="." unique_id=202255399 instance=ExtResource("16_180wn")]
 position = Vector2(928, 648)
 block_attributes = SubResource("Resource_180wn")
+cherry_bomb_strength = 1480.0
 
 [node name="UnmashedSpawner4" parent="." unique_id=478485746 instance=ExtResource("16_180wn")]
 position = Vector2(480, 672)
