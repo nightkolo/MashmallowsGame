@@ -10,14 +10,16 @@ Meet "Millie" Marshmallow Lady (and "Ettiko" Bubblegum Guy?)
 
 - **Cherry Bomb**: Special block that explodes upon pressing Z, sending the mashed blocks flying
 - **Switches and Doors**: A switch object that activates block doors when a block is landing on it
+  - **Regular Block**: A block that exists and doesn't do anything besides mashing and platforming help.
 
 ### Second World - "Caramel Core"
+- **Twisted Marshmallows**: Special block that rises in size upon unmashing, elevating the blocks higher. It is 1x1 when mashed, and 1xn when unmashed. Is it a twisted marshmallow.
 - **Flame** and **Golden Marshmallows**: A flame object that toasts marshmallows into golden to meet the specific order with goldens
+
+### Mechanics
+
 - (N/A) **Flying Block**: a special block that flies off upon pressing Z
 - (N/A) **Falling Platform blocks**: Platforms that have count limit on how many block they can hold, past the threshold, the platform will become incollidible.
-
-### Third World - "The Kitchen"
-
 - (N/A) **Butter**: Sticks to walls
 - **Magnet**: Special block that magnetically attracts force fields within focus, it moves the mashed blocks around the level.
 
