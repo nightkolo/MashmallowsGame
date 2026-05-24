@@ -246,10 +246,21 @@ func mash() -> bool: ## Ok O(1)
 	for ray: RayCast2D in block_detect.unmashed_block_detection_rays:
 		ray.force_raycast_update()
 		
-		if !(ray.is_colliding() && ray.get_collider() is Unmashed):
+		if !ray.is_colliding():
 			continue
 
-		var unmashed: Unmashed = ray.get_collider()
+		var obj: Object = ray.get_collider()
+		var unmashed: Unmashed
+		
+		print_debug(obj)
+		if obj is TwistedColliBlock:
+			print_debug(obj as TwistedColliBlock)
+
+			unmashed = (obj as TwistedColliBlock).parent_unmashed
+		elif obj is Unmashed:
+			unmashed = obj as Unmashed
+		else:
+			continue
 
 		if !unmashed.is_mashable():
 			continue

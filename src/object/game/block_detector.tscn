@@ -28,14 +28,14 @@ metadata/_custom_type_script = "uid://blm45b8q7uqt5"
 unique_name_in_owner = true
 enabled = false
 target_position = Vector2(45, 0)
-collision_mask = 8
+collision_mask = 4104
 collide_with_areas = true
 
 [node name="Left" type="RayCast2D" parent="." unique_id=1079650675]
 unique_name_in_owner = true
 enabled = false
 target_position = Vector2(-45, 0)
-collision_mask = 8
+collision_mask = 4104
 
 [node name="Right2" type="RayCast2D" parent="." unique_id=1037801714]
 unique_name_in_owner = true
@@ -43,7 +43,7 @@ visible = false
 position = Vector2(0, -64)
 enabled = false
 target_position = Vector2(45, 0)
-collision_mask = 8
+collision_mask = 4104
 
 [node name="Left2" type="RayCast2D" parent="." unique_id=1695914218]
 unique_name_in_owner = true
@@ -51,13 +51,13 @@ visible = false
 position = Vector2(0, -64)
 enabled = false
 target_position = Vector2(-45, 0)
-collision_mask = 8
+collision_mask = 4104
 
 [node name="Down" type="RayCast2D" parent="." unique_id=553699482]
 unique_name_in_owner = true
 enabled = false
 target_position = Vector2(0, 45)
-collision_mask = 8
+collision_mask = 4104
 
 [node name="GroundRay" type="ShapeCast2D" parent="." unique_id=810734938]
 shape = SubResource("RectangleShape2D_dw56o")

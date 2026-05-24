@@ -117,6 +117,7 @@ func anim_expanding() -> void:
 
 	is_expanding = false
 
+
 func set_golden(value: bool = !is_golden) -> void:
 	is_golden = value
 
@@ -133,7 +134,7 @@ func move_up(strength: float = 10.0) -> void:
 	if top:
 		top.move_up(2.0 * strength)
 		await get_tree().create_timer(0.05).timeout
-	
+ 	
 	position.y -= strength
 
 

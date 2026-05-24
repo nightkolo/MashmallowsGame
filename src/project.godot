@@ -176,6 +176,7 @@ start_game={
 2d_physics/layer_10="Golden"
 2d_physics/layer_11="SoftTerrain"
 2d_physics/layer_12="OneWayPlatform"
+2d_physics/layer_13="UnmashedTwisted"
 
 [physics]
 

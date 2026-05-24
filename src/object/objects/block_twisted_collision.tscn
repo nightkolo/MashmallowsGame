@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bx4riuxwyodmw"]
 
 [ext_resource type="Script" uid="uid://bvqqxldlat8i5" path="res://world/levels/playground/block_twisted.gd" id="1_p35sq"]
+[ext_resource type="Script" uid="uid://deg6bd4paxjlc" path="res://world/levels/playground/block_twisted_animatable_collisions.gd" id="2_8xxo4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvee0"]
 size = Vector2(62, 62)
@@ -11,8 +12,9 @@ bodies = [NodePath("AnimatableBody2D"), NodePath("AnimatableBody2D2"), NodePath(
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=800639809]
 disable_mode = 2
-collision_layer = 8
+collision_layer = 0
 collision_mask = 9
+script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=796999379]
 shape = SubResource("RectangleShape2D_lvee0")
@@ -21,6 +23,7 @@ shape = SubResource("RectangleShape2D_lvee0")
 disable_mode = 2
 collision_layer = 4096
 collision_mask = 9
+script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D2" unique_id=1279636235]
 shape = SubResource("RectangleShape2D_lvee0")
@@ -29,6 +32,7 @@ shape = SubResource("RectangleShape2D_lvee0")
 disable_mode = 2
 collision_layer = 8
 collision_mask = 9
+script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D3" unique_id=1836509003]
 shape = SubResource("RectangleShape2D_lvee0")
@@ -37,6 +41,7 @@ shape = SubResource("RectangleShape2D_lvee0")
 disable_mode = 2
 collision_layer = 8
 collision_mask = 9
+script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D4" unique_id=1848590647]
 shape = SubResource("RectangleShape2D_lvee0")
@@ -45,6 +50,7 @@ shape = SubResource("RectangleShape2D_lvee0")
 disable_mode = 2
 collision_layer = 8
 collision_mask = 9
+script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D5" unique_id=476015981]
 shape = SubResource("RectangleShape2D_lvee0")

@@ -1,19 +1,17 @@
 extends Node2D
 class_name Twisted
 
-@export var bodies: Array[AnimatableBody2D]
+@export var bodies: Array[TwistedColliBlock]
 
-# var parent_unmashed: Unmashed
+#var parent_unmashed: Unmashed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for b: AnimatableBody2D in bodies:
-		b.collision_layer = 4096
-		b.collision_mask = 1 + 8
 		b.position = Vector2.ZERO
 
-	# if get_parent() is Unmashed:
-	# 	parent_unmashed = get_parent() as Unmashed
+	#if get_parent() is Unmashed:
+		#parent_unmashed = get_parent() as Unmashed
 	
 
 
