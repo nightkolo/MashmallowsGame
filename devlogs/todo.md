@@ -33,7 +33,7 @@
 - [ ] Regular block?
 - [ ] World 2 beta 
   - [ ] Mechanics
-    - [ ] Twisted marshmallow
+    - [x] Twisted marshmallow
     - [x] Flame object
     - [x] Golden marshmallow detection
     - [ ] Fully refined core game code

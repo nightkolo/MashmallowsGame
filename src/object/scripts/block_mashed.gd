@@ -272,9 +272,13 @@ func mash() -> bool: ## Ok O(1)
 		
 		collided = true
 		
-		var pos: Vector2 = unmashed.global_position - global_position
+		#var pos: Vector2 = unmashed.global_position - global_position
 		var build: Util.BuildType = unmashed.build_type
-		var unmash_at: Vector2 = get_unmashed_position(pos, build)
+		var unmash_at: Vector2 = get_unmashed_position(
+			unmashed.global_position - global_position,
+			build,
+			unmashed.mash_type
+			)
 		var new_mashed: Mashed = get_mashed_object(build)
 
 
@@ -296,22 +300,32 @@ func mash() -> bool: ## Ok O(1)
 	return collided
 
 
-func get_unmashed_position(found_at: Vector2, type: Util.BuildType) -> Vector2:
+func get_unmashed_position(found_at: Vector2, type: Util.BuildType, p_mash: Util.MashType) -> Vector2:
 	var unmash_at: Vector2
 	
 	match type:
 		
 		Util.BuildType.RECTANGLE:
-			if abs(found_at.y) > abs(found_at.x):
-				unmash_at = Vector2(0, signf(found_at.y))
+			if absf(found_at.y) > absf(found_at.x):
+				unmash_at = Vector2(0.0, signf(found_at.y))
 			else:
-				unmash_at = Vector2(signf(found_at.x) ,minf(0, signf(found_at.y)))
+				unmash_at = Vector2(signf(found_at.x) ,minf(0.0, signf(found_at.y)))
 		
 		Util.BuildType.SQUARE:
-			if abs(found_at.x) > abs(found_at.y):
-				unmash_at = Vector2(signf(found_at.x), 0)
+			if p_mash == Util.MashType.TWISTED:
+				print_debug("Found at: " + str(found_at))
+				print_debug(absf(found_at.x) < Util.BLOCK_SIZE * 0.5)
+				
+				if absf(found_at.x) < Util.BLOCK_SIZE * 0.5:
+					unmash_at = Vector2(0.0, signf(found_at.y))
+				else:
+					unmash_at = Vector2(signf(found_at.x), 0.0)
 			else:
-				unmash_at = Vector2(0, signf(found_at.y))
+				
+				if absf(found_at.x) > absf(found_at.y):
+					unmash_at = Vector2(signf(found_at.x), 0.0)
+				else:
+					unmash_at = Vector2(0.0, signf(found_at.y))
 		
 	return unmash_at
 
