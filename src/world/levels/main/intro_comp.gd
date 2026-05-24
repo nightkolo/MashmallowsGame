@@ -25,9 +25,9 @@ var tween_area: Tween
 
 var cam_pos: Vector2
 
-# func _unhandled_input(event: InputEvent) -> void:
-# 	if event.is_action_pressed("debug_next"):
-# 		GameLogic.intro_order_complete.emit()
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("debug_next"):
+		GameLogic.intro_order_complete.emit()
 
 
 # Called when the node enters the scene tree for the first time.

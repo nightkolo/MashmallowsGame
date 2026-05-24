@@ -9,6 +9,7 @@ enum MashType {
 	PLAYER = 99,
 	CHERRY_BOMB = 100,
 	AIR_CHERRY_BOMB = 101,
+	TWISTED = 102,
 	MISC = 999
 }
 enum BuildType {
@@ -153,6 +154,8 @@ static func get_mash_type_texture(type: MashType, build: BuildType) -> Texture2D
 			return preload("res://assets/objects/block-cherry-bomb.png")
 		MashType.AIR_CHERRY_BOMB:
 			return preload("res://assets/objects/block-cherry-bomb-air.png")
+		MashType.TWISTED:
+			return preload("res://assets/objects/block-twisted-1x1.png")
 
 	var l_name := str(MashType.find_key(type)).to_lower()
 	var build_str := "1x2" if build == BuildType.RECTANGLE else "1x1"

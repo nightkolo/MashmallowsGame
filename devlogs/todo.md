@@ -1,6 +1,6 @@
 # Todo
 
-## 4-20
+## 5-23
 
 - [ ] Walkthrough and Song reveal
 
@@ -23,6 +23,9 @@
     - [ ] Options page?
       - [ ] Walking up inspired (too ahead)
     - [ ] Panel
+- [ ] Theme
+  - [ ] Button anim
+  - [ ] 
 
 ### Gameplay
 
@@ -37,8 +40,14 @@
   - [ ] Beta levels
 - [x] Intro sequence
 
-### Assets and Design
+### Codebase
+- [ ] Save system
+- [ ] NG.io integration tests
 
+### Assets and Design
+- [ ] Promo
+  - [ ] Logo
+  - [ ] Artwork
 - [ ] Level goal
   - [ ] Roasted block
   - [ ] Star eyes

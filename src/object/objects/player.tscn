@@ -50,7 +50,7 @@ gradient = SubResource("Gradient_822h2")
 
 [node name="Player" type="CharacterBody2D" unique_id=1691389058 node_paths=PackedStringArray("animator", "state_machine", "original_block")]
 collision_layer = 2
-collision_mask = 2153
+collision_mask = 6249
 slide_on_ceiling = false
 script = ExtResource("1_4nn7u")
 animator = NodePath("PlayerAnimationComponent")

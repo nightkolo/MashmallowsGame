@@ -9,7 +9,6 @@ signal player_entered(entered: bool)
 # Shared variables with [Mashed]
 var attributes: BlockAttributes
 
-
 @export var tutorial_block: bool = false
 @export var mash_type: Util.MashType:
 	set(value):
@@ -42,13 +41,14 @@ var attributes: BlockAttributes
 @export_group("Variables")
 @export var cherry_bomb_strength: float = 1600.0
 
-@export_group("Object to Assign")
+@export_group("Area casts")
 @export var player_down_detect: ShapeCast2D
 @export var unmashed_top_detect: ShapeCast2D
-@export var audio: UnmashedAudio
-# @onready var colli: CollisionShape2D = $CollisionShape2D
+@export var twisted_marshmallow: Twisted
 
-## For Anim
+@export_group("Audio")
+@export var audio: UnmashedAudio
+@export_group("Sprites")
 @export var node_mash_prompt: Node2D 
 @export var sprite: Sprite2D
 @export var sprite_shade: Sprite2D
@@ -58,23 +58,20 @@ var attributes: BlockAttributes
 @export var particles_spawn: CPUParticles2D 
 
 var was_mashed: bool = false
-# var colli_shape: RectangleShape2D
-
 var is_player_close: bool = false:
 	set(value):
 		player_entered.emit(value)
 		is_player_close = value
-
-#var sprite_input_pos: Vector2
+var is_expanding: bool = false
 
 func _ready() -> void:
 	set_physics_process(true)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
 	anim_sleep()
+
 	if was_mashed:
 		anim_unmashed()
-	#sprite_input_pos = sprite_input.position
 	
 	if !was_mashed:
 		GameLogic.number_of_blocks += 1
@@ -91,24 +88,34 @@ func _ready() -> void:
 		build_type = attributes.build_type
 		is_golden = attributes.is_golden
 
+	print(twisted_marshmallow)
+	print(mash_type == Util.MashType.TWISTED)
+	if twisted_marshmallow && mash_type == Util.MashType.TWISTED:
+		anim_expanding()
+
 	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type, attributes.is_golden)
 	#
-
-
-	GameLogic.player_unmashed.connect(func():
-		pass
-		)
-#
 	if audio:
 		audio.play_spawn_sound()
 	
 	await get_tree().create_timer(0.1).timeout
 	
-	
 	if GameMgr.current_level:
 		sprite_node.visible = GameMgr.current_level.show_unmashed_blocks
 
 
+func is_mashable() -> bool: ## @deprecated
+	return !is_expanding
+
+
+func anim_expanding() -> void:
+	is_expanding = true
+	await get_tree().create_timer(1.0).timeout
+
+	if twisted_marshmallow:
+		await twisted_marshmallow.expand_collision(4.0)
+
+	is_expanding = false
 
 func set_golden(value: bool = !is_golden) -> void:
 	is_golden = value
@@ -130,13 +137,12 @@ func move_up(strength: float = 10.0) -> void:
 	position.y -= strength
 
 
-func is_mashable() -> bool: ## @deprecated
-	return !(unmashed_top_detect.is_colliding() && unmashed_top_detect.get_collider(0) is Unmashed)
-
-
 func is_on_player() -> bool:
-	player_down_detect.force_shapecast_update()
-	return player_down_detect.is_colliding()
+	if player_down_detect:
+		player_down_detect.force_shapecast_update()
+		return player_down_detect.is_colliding()
+	return false
+
 
 var amount_collided_with: int:
 	set(value):
@@ -147,6 +153,7 @@ var _landed: bool
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
+		set_physics_process(false)
 		return
 
 	if !is_on_player() && !is_on_floor():
@@ -166,7 +173,7 @@ func _physics_process(delta: float) -> void:
 
 
 # Anim
-func anim_unmashed():
+func anim_unmashed() -> void:
 	if sprite_node:
 		var dur := 0.1
 		var mag := 7.5
@@ -179,7 +186,7 @@ func anim_unmashed():
 		tween.tween_property(sprite_node, "rotation_degrees", -mag/5.0, dur/2.0)
 		tween.tween_property(sprite_node, "rotation_degrees", 0.0, dur/2.0)
 
-func anim_sleep():
+func anim_sleep() -> void:
 	if sprite_node:
 		var dur := 1.0
 		var tween := create_tween().set_loops()
@@ -198,7 +205,7 @@ var _tween_light: Tween
 
 var cooldown_timer: Timer = Timer.new()
 
-func anim_spawn_particles():
+func anim_spawn_particles() -> void:
 	if particles_spawn:
 		particles_spawn.emitting = true
 	else:

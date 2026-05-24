@@ -60,7 +60,7 @@ metadata/_custom_type_script = "uid://madv71ijp5i3"
 
 [node name="SpriteNode" type="Node2D" parent="Visual" unique_id=1466462306]
 position = Vector2(0, 64)
-scale = Vector2(1.0370752, 0.9596936)
+scale = Vector2(0.95647925, 1.0201405)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1604238858]
 position = Vector2(0, -64)

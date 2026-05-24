@@ -19,12 +19,12 @@ func _ready():
 		block.started_breathing.connect(func():
 			sleep_sfx.play()
 		)
-		block.player_entered.connect(func(entered: bool):
-			if entered:
-				sleep_sfx.volume_db = -14.0
-			else:
-				sleep_sfx.volume_db = -80.0
-			)
+		# block.player_entered.connect(func(entered: bool):
+		# 	if entered:
+		# 		sleep_sfx.volume_db = -14.0
+		# 	else:
+		# 		sleep_sfx.volume_db = -80.0
+		# 	)
 
 func play_spawn_sound() -> void:
 	var sfx: AudioStreamPlayer2D = vocal_sfx.pick_random()

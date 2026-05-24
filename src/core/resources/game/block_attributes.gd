@@ -4,19 +4,19 @@ class_name BlockAttributes
 
 # signal attribute_set()
 
-enum Mash {
-	WHITE = 0,
-	STAR = 1,
-	CHOCO = 2,
-	HEART = 3,
-	PLAYER = 99,
-	CHERRY_BOMB = 100,
-	AIR_CHERRY_BOMB = 101
-}
-enum Build {
-	SQUARE = 0,
-	RECTANGLE = 1
-}
+# enum Mash {
+# 	WHITE = 0,
+# 	STAR = 1,
+# 	CHOCO = 2,
+# 	HEART = 3,
+# 	PLAYER = 99,
+# 	CHERRY_BOMB = 100,
+# 	AIR_CHERRY_BOMB = 101
+# }
+# enum Build {
+# 	SQUARE = 0,
+# 	RECTANGLE = 1
+# }
 
 @export var mash_type: Util.MashType:
 	set(value):

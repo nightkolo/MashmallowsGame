@@ -246,35 +246,41 @@ func mash() -> bool: ## Ok O(1)
 	for ray: RayCast2D in block_detect.unmashed_block_detection_rays:
 		ray.force_raycast_update()
 		
-		if (ray.is_colliding() && ray.get_collider() is Unmashed):
-			var unmashed: Unmashed = ray.get_collider()
-			var top: Unmashed = unmashed.get_top_unmashed()
-			
-			if top:
-				top.move_up(5.0)
-			
-			collided = true
-			
-			var pos: Vector2 = unmashed.global_position - global_position
-			var build: Util.BuildType = unmashed.build_type
-			var unmash_at: Vector2 = get_unmashed_position(pos, build)
-			var new_mashed: Mashed = get_mashed_object(build)
+		if !(ray.is_colliding() && ray.get_collider() is Unmashed):
+			continue
+
+		var unmashed: Unmashed = ray.get_collider()
+
+		if !unmashed.is_mashable():
+			continue
+
+		var top: Unmashed = unmashed.get_top_unmashed()
+		
+		if top:
+			top.move_up(5.0)
+		
+		collided = true
+		
+		var pos: Vector2 = unmashed.global_position - global_position
+		var build: Util.BuildType = unmashed.build_type
+		var unmash_at: Vector2 = get_unmashed_position(pos, build)
+		var new_mashed: Mashed = get_mashed_object(build)
 
 
-			# ATTRIBUTE SYNC
-			new_mashed.position = get_new_mashed_positioning(unmash_at, build, ray)
-			new_mashed.attributes = unmashed.attributes.duplicate(true)
-			new_mashed.cherry_bomb_strength = unmashed.cherry_bomb_strength
-			#
+		# ATTRIBUTE SYNC
+		new_mashed.position = get_new_mashed_positioning(unmash_at, build, ray)
+		new_mashed.attributes = unmashed.attributes.duplicate(true)
+		new_mashed.cherry_bomb_strength = unmashed.cherry_bomb_strength
+		#
+		
+		parent_player.has_mashed.emit(unmash_at, build)
+		unmashed.queue_free()
+		
+		parent_player.add_child(new_mashed)
+		
+		await parent_player.return_position()
 			
-			parent_player.has_mashed.emit(unmash_at, build)
-			unmashed.queue_free()
-			
-			parent_player.add_child(new_mashed)
-			
-			await parent_player.return_position()
-			
-			break
+		break
 		
 	return collided
 
@@ -376,6 +382,8 @@ func anim_awake() -> void:
 	var rand := signf(randf()-0.5)
 	var mag := Util.BLOCK_SIZE * 0.5 * rand
 	node_eye_sprites.position.y += mag * 0.1 * rand
+	if build_type == Util.BuildType.RECTANGLE:
+		node_eye_sprites.position.y -= 30.0
 
 	var t := create_tween()
 	t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)

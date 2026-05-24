@@ -23,8 +23,11 @@ collision_mask = 9
 shape = SubResource("RectangleShape2D_buv7f")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440652921]
+scale = Vector2(0.5, 0.5)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1077280458]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1076226875]
 shape = SubResource("RectangleShape2D_nxo5n")

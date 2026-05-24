@@ -27,13 +27,15 @@ func display_block() -> void:
 	sprite.scale = 0.5 * Vector2.ONE
 
 	sprite.texture = Util.get_mash_type_texture(block_attributes.mash_type, block_attributes.build_type)
+	print_debug(sprite.texture)
 
 
 func _ready() -> void:
 	add_to_group("Spawner")
 	display_block()
 
-	sprite.self_modulate = Color(Color.WHITE, 0.0)
+	if !Engine.is_editor_hint():
+		sprite.self_modulate = Color(Color.WHITE, 0.0)
 
 	if area:
 		area.collision_layer = 0
