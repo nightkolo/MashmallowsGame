@@ -6,12 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvee0"]
 size = Vector2(62, 62)
 
+[sub_resource type="Gradient" id="Gradient_8xxo4"]
+offsets = PackedFloat32Array(0.0018416207, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2j2nq"]
+gradient = SubResource("Gradient_8xxo4")
+
 [node name="Twisted" type="Node2D" unique_id=1615657111 node_paths=PackedStringArray("bodies")]
+position = Vector2(0, -10)
 script = ExtResource("1_p35sq")
 bodies = [NodePath("AnimatableBody2D"), NodePath("AnimatableBody2D2"), NodePath("AnimatableBody2D3"), NodePath("AnimatableBody2D4"), NodePath("AnimatableBody2D5")]
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=800639809]
-disable_mode = 2
 collision_layer = 0
 collision_mask = 9
 script = ExtResource("2_8xxo4")
@@ -19,8 +26,10 @@ script = ExtResource("2_8xxo4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=796999379]
 shape = SubResource("RectangleShape2D_lvee0")
 
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=128397938]
+texture = SubResource("GradientTexture2D_2j2nq")
+
 [node name="AnimatableBody2D2" type="AnimatableBody2D" parent="." unique_id=1816252498]
-disable_mode = 2
 collision_layer = 4096
 collision_mask = 9
 script = ExtResource("2_8xxo4")
@@ -28,8 +37,10 @@ script = ExtResource("2_8xxo4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D2" unique_id=1279636235]
 shape = SubResource("RectangleShape2D_lvee0")
 
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D2" unique_id=441518407]
+texture = SubResource("GradientTexture2D_2j2nq")
+
 [node name="AnimatableBody2D3" type="AnimatableBody2D" parent="." unique_id=327078020]
-disable_mode = 2
 collision_layer = 8
 collision_mask = 9
 script = ExtResource("2_8xxo4")
@@ -37,8 +48,10 @@ script = ExtResource("2_8xxo4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D3" unique_id=1836509003]
 shape = SubResource("RectangleShape2D_lvee0")
 
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D3" unique_id=1568059910]
+texture = SubResource("GradientTexture2D_2j2nq")
+
 [node name="AnimatableBody2D4" type="AnimatableBody2D" parent="." unique_id=1546255635]
-disable_mode = 2
 collision_layer = 8
 collision_mask = 9
 script = ExtResource("2_8xxo4")
@@ -46,11 +59,16 @@ script = ExtResource("2_8xxo4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D4" unique_id=1848590647]
 shape = SubResource("RectangleShape2D_lvee0")
 
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D4" unique_id=866511173]
+texture = SubResource("GradientTexture2D_2j2nq")
+
 [node name="AnimatableBody2D5" type="AnimatableBody2D" parent="." unique_id=1351008727]
-disable_mode = 2
 collision_layer = 8
 collision_mask = 9
 script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D5" unique_id=476015981]
 shape = SubResource("RectangleShape2D_lvee0")
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D5" unique_id=1977000245]
+texture = SubResource("GradientTexture2D_2j2nq")

@@ -40,6 +40,7 @@ var attributes: BlockAttributes
 
 @export_group("Variables")
 @export var cherry_bomb_strength: float = 1600.0
+@export var twisted_strength: float = 5.0
 
 @export_group("Area casts")
 @export var player_down_detect: ShapeCast2D
@@ -56,6 +57,8 @@ var attributes: BlockAttributes
 @export var sprite_input: Sprite2D
 @export var sprite_node: Node2D 
 @export var particles_spawn: CPUParticles2D 
+
+var twisted: PackedScene = preload("res://object/objects/block_twisted_collision.tscn")
 
 var was_mashed: bool = false
 var is_player_close: bool = false:
@@ -88,10 +91,17 @@ func _ready() -> void:
 		build_type = attributes.build_type
 		is_golden = attributes.is_golden
 
-	print(twisted_marshmallow)
-	print(mash_type == Util.MashType.TWISTED)
-	if twisted_marshmallow && mash_type == Util.MashType.TWISTED:
+	#print(twisted_marshmallow)
+	#print(mash_type == Util.MashType.TWISTED)
+	collision_mask = 8
+	if mash_type == Util.MashType.TWISTED:
+		collision_mask = 1 + 8
+		var t: Twisted = twisted.instantiate()
+		add_child(t)
+		twisted_marshmallow = t
 		anim_expanding()
+	else:
+		collision_mask = 1 + 8 + 4096
 
 	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type, attributes.is_golden)
 	#
@@ -113,7 +123,7 @@ func anim_expanding() -> void:
 	await get_tree().create_timer(1.0).timeout
 
 	if twisted_marshmallow:
-		await twisted_marshmallow.expand_collision(4.0)
+		await twisted_marshmallow.expand_collision()
 
 	is_expanding = false
 

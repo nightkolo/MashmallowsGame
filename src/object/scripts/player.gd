@@ -81,8 +81,6 @@ var no_move: bool = false
 # Anim
 var tween_jump: Tween
 
-const CHERRY_BOMB_STRENGTH = 1600.0
-
 var _stopped: bool
 var _landed: bool
 var _pos_before_mash: Vector2
@@ -299,6 +297,7 @@ func unmash() -> void: # -> O(1)
 			var unmashed: Unmashed = get_unmashed_object(old_mashed.build_type)
 			unmashed.global_position = old_mashed.global_position
 			unmashed.attributes = old_mashed.attributes.duplicate(true)
+			unmashed.twisted_strength = old_mashed.twisted_strength
 			unmashed.was_mashed = true
 			#
 

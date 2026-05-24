@@ -55,6 +55,7 @@ var mashed_object: PackedScene = preload("res://object/objects/block_mashed_1x1.
 var mashed_object_1x2: PackedScene = preload("res://object/objects/block_mashed_1x2.tscn")
 
 var cherry_bomb_strength: float
+var twisted_strength: float
 var sprite_original_pos: Vector2
 
 var parent_player: Player
@@ -286,6 +287,7 @@ func mash() -> bool: ## Ok O(1)
 		new_mashed.position = get_new_mashed_positioning(unmash_at, build, ray)
 		new_mashed.attributes = unmashed.attributes.duplicate(true)
 		new_mashed.cherry_bomb_strength = unmashed.cherry_bomb_strength
+		new_mashed.twisted_strength = unmashed.twisted_strength
 		#
 		
 		parent_player.has_mashed.emit(unmash_at, build)
@@ -313,15 +315,11 @@ func get_unmashed_position(found_at: Vector2, type: Util.BuildType, p_mash: Util
 		
 		Util.BuildType.SQUARE:
 			if p_mash == Util.MashType.TWISTED:
-				print_debug("Found at: " + str(found_at))
-				print_debug(absf(found_at.x) < Util.BLOCK_SIZE * 0.5)
-				
 				if absf(found_at.x) < Util.BLOCK_SIZE * 0.5:
 					unmash_at = Vector2(0.0, signf(found_at.y))
 				else:
 					unmash_at = Vector2(signf(found_at.x), 0.0)
 			else:
-				
 				if absf(found_at.x) > absf(found_at.y):
 					unmash_at = Vector2(signf(found_at.x), 0.0)
 				else:

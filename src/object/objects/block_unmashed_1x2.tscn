@@ -40,7 +40,7 @@ colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 
 
 [node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "unmashed_top_detect", "audio", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "particles_spawn")]
 collision_layer = 8
-collision_mask = 9
+collision_mask = 4105
 script = ExtResource("1_cg17m")
 build_type = 1
 player_down_detect = NodePath("PlayerBottomDetect")
@@ -60,7 +60,7 @@ metadata/_custom_type_script = "uid://madv71ijp5i3"
 
 [node name="SpriteNode" type="Node2D" parent="Visual" unique_id=1466462306]
 position = Vector2(0, 64)
-scale = Vector2(0.95647925, 1.0201405)
+scale = Vector2(0.9824722, 1.0006459)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1604238858]
 position = Vector2(0, -64)
