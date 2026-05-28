@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bh0f4dstn2orj"]
+
+[ext_resource type="Script" uid="uid://dqy6fhpwj1tib" path="res://interface/interactors/main_menus_scene.gd" id="1_2rt8a"]
+[ext_resource type="PackedScene" uid="uid://bml6rehgryowp" path="res://interface/menus/menu_title_screen.tscn" id="5_nf347"]
+[ext_resource type="PackedScene" path="res://interface/menus/menu_board_select.tscn" id="6_t1hg8"]
+[ext_resource type="PackedScene" path="res://interface/menus/menu_credits.tscn" id="7_mgwmq"]
+
+[node name="MainMenusScene" type="Control" unique_id=797272118]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2rt8a")
+
+[node name="UICam" type="Camera2D" parent="." unique_id=419004722]
+anchor_mode = 0
+
+[node name="BG" type="CanvasLayer" parent="." unique_id=1241959120]
+process_mode = 3
+layer = -10
+
+[node name="BG" type="ColorRect" parent="BG" unique_id=1868956648]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.1, 0.25, 1)
+
+[node name="TitleScreen" parent="." unique_id=1857705653 instance=ExtResource("5_nf347")]
+visible = false
+
+[node name="MenuStageSelect" parent="." unique_id=214780311 instance=ExtResource("6_t1hg8")]
+visible = false
+
+[node name="MenuCredits" parent="." unique_id=377312525 instance=ExtResource("7_mgwmq")]
+visible = false

@@ -6,7 +6,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameMgr.menu_entered.emit(GameMgr.Menus.START)
+	GameMgr.menu_entered.emit(GameMgr.MenuID.START)
 	
 	start_btn.grab_focus()
 	start_btn.pressed.connect(start_game)

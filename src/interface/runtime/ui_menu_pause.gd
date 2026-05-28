@@ -43,13 +43,13 @@ func _ready() -> void:
 		#anim_bg_blur(visible)
 		
 		if visible:
-			GameMgr.menu_entered.emit(GameMgr.Menus.PAUSE)
+			GameMgr.menu_entered.emit(GameMgr.MenuID.PAUSE)
 			resume_btn.grab_focus()
 			update_options()
 			update_text()
 		else:
 			
-			GameMgr.menu_entered.emit(GameMgr.Menus.RUNTIME)
+			GameMgr.menu_entered.emit(GameMgr.MenuID.RUNTIME)
 		)
 		
 	if _gameplay_ui:
@@ -70,7 +70,7 @@ func _ready() -> void:
 		quit_btn.pressed.connect(func():
 			_gameplay_ui.allow_input = false
 			Util.disable_buttons(btns)
-			GameMgr.menu_entered.emit(GameMgr.Menus.MENUS)
+			GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
 			
 			_gameplay_ui.quit()
 			)

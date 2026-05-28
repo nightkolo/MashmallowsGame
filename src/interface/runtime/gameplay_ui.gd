@@ -27,18 +27,18 @@ func _unhandled_input(event: InputEvent) -> void:
 	if allow_input && !Trans.is_transitioning:
 		
 		if event.is_action_pressed("game_pause"):
-			match GameMgr.current_menu:
+			match GameMgr.current_menu_id:
 				
-				GameMgr.Menus.RUNTIME, GameMgr.Menus.PAUSE:
+				GameMgr.MenuID.RUNTIME, GameMgr.MenuID.PAUSE:
 					if GameLogic.has_won:
 						reset_stage() # for controller input
 					else:
 						pause_or_unpause()
 			
 		if event.is_action_pressed("game_reset"):
-			match GameMgr.current_menu:
+			match GameMgr.current_menu_id:
 				
-				GameMgr.Menus.RUNTIME:
+				GameMgr.MenuID.RUNTIME:
 					reset_stage()
 	
 	
@@ -64,12 +64,12 @@ func pause_or_unpause(pause: bool = !is_game_paused) -> void:
 	is_game_paused = pause
 	
 	if is_game_paused:
-		#GameMgr.menu_entered.emit(GameMgr.Menus.PAUSE)
+		#GameMgr.menu_entered.emit(GameMgr.MenuID.PAUSE)
 		
 		Audio.game_paused.play()
 		Audio.set_music(Audio.original_music_db - 20.0)
 	else:
-		#GameMgr.menu_entered.emit(GameMgr.Menus.RUNTIME)
+		#GameMgr.menu_entered.emit(GameMgr.MenuID.RUNTIME)
 		
 		Audio.game_unpaused.play()
 		Audio.set_music()
@@ -80,7 +80,7 @@ func pause_or_unpause(pause: bool = !is_game_paused) -> void:
 
 
 func quit() -> void:
-	GameMgr.menu_entered.emit(GameMgr.Menus.MENUS)
+	GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
 	
 	return_to_run()
 	Trans.slide_to_scene("res://interface/menus/menu_start.tscn")

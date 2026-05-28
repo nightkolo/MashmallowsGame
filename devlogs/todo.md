@@ -2,7 +2,7 @@
 
 ## 5-23
 
-- [ ] Walkthrough and Song reveal
+- [x] Walkthrough and Song reveal
 
 ### Interface
 
@@ -18,10 +18,7 @@
         - [ ] Blue star (Pass)
       - [ ] Chibi Millie?
     - [ ] Credits and Support
-    - [ ] Options
   - [ ] Pause Menu
-    - [ ] Options page?
-      - [ ] Walking up inspired (too ahead)
     - [ ] Panel
 - [ ] Theme
   - [ ] Button anim

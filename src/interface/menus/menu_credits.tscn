@@ -1,0 +1,326 @@
+[gd_scene format=3 uid="uid://c10b0rndepxjb"]
+
+[ext_resource type="Script" uid="uid://dwvsbxncaj6ma" path="res://interface/interactors/menu_credits.gd" id="1_m2fj4"]
+[ext_resource type="Theme" uid="uid://croyx1o13jqlf" path="res://core/resources/theme/button_menus_menus.tres" id="2_741l2"]
+[ext_resource type="Texture2D" uid="uid://cng4jxrcpfpt4" path="res://assets/interface/speech-bubble.png" id="4_rsma4"]
+[ext_resource type="Script" uid="uid://ccyg5othuwlpx" path="res://interface/animators/anim_button.gd" id="5_xddtm"]
+
+[sub_resource type="FontVariation" id="FontVariation_ljwrp"]
+spacing_top = -4
+spacing_bottom = -4
+
+[sub_resource type="LabelSettings" id="LabelSettings_wo8ij"]
+font = SubResource("FontVariation_ljwrp")
+font_size = 24
+
+[sub_resource type="FontVariation" id="FontVariation_dsutm"]
+spacing_glyph = -1
+spacing_space = 1
+spacing_top = -3
+spacing_bottom = -3
+
+[sub_resource type="LabelSettings" id="LabelSettings_vltc8"]
+font = SubResource("FontVariation_dsutm")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.125)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7nci"]
+font_size = 64
+font_color = Color(1, 1, 0.4, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7l5mp"]
+font_size = 64
+font_color = Color(1, 0.654902, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1tel5"]
+font_size = 28
+font_color = Color(1, 0.654902, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(3, 3)
+
+[node name="MenuCredits" type="CanvasLayer" unique_id=879139940]
+script = ExtResource("1_m2fj4")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1659601083]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.075)
+
+[node name="Main2" type="Node2D" parent="." unique_id=1538326163]
+
+[node name="Messages" type="Node2D" parent="Main2" unique_id=1222953505]
+
+[node name="Msg1" type="NinePatchRect" parent="Main2/Messages" unique_id=854061119]
+visible = false
+self_modulate = Color(1, 0.5, 1, 0.851)
+offset_left = 560.0
+offset_top = 434.0
+offset_right = 862.0
+offset_bottom = 494.0
+pivot_offset = Vector2(0, 24)
+texture = ExtResource("4_rsma4")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Label" type="Label" parent="Main2/Messages/Msg1" unique_id=252408333]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 280.0
+offset_bottom = 44.0
+text = "Thank you for Playing!"
+label_settings = SubResource("LabelSettings_wo8ij")
+horizontal_alignment = 1
+
+[node name="Msg2" type="NinePatchRect" parent="Main2/Messages" unique_id=608831988]
+visible = false
+self_modulate = Color(1, 0.5, 1, 0.851)
+offset_left = 560.0
+offset_top = 404.0
+offset_right = 862.0
+offset_bottom = 494.0
+pivot_offset = Vector2(0, 24)
+texture = ExtResource("4_rsma4")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Label" type="Label" parent="Main2/Messages/Msg2" unique_id=1248494860]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 15.0
+offset_right = 286.0
+offset_bottom = 70.0
+text = "There's 0% chance
+of seeing this message."
+label_settings = SubResource("LabelSettings_wo8ij")
+horizontal_alignment = 1
+
+[node name="Msg3" type="NinePatchRect" parent="Main2/Messages" unique_id=1227949228]
+visible = false
+self_modulate = Color(1, 0.5, 1, 0.851)
+offset_left = 667.0
+offset_top = 434.0
+offset_right = 862.0
+offset_bottom = 494.0
+pivot_offset = Vector2(0, 24)
+texture = ExtResource("4_rsma4")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Label" type="Label" parent="Main2/Messages/Msg3" unique_id=2048240727]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 17.0
+offset_right = 170.0
+offset_bottom = 43.0
+text = "Hi, I'm Poko!"
+label_settings = SubResource("LabelSettings_wo8ij")
+horizontal_alignment = 1
+
+[node name="Msg4" type="NinePatchRect" parent="Main2/Messages" unique_id=3496118]
+visible = false
+self_modulate = Color(1, 0.5, 1, 0.851)
+offset_left = 526.0
+offset_top = 406.0
+offset_right = 862.0
+offset_bottom = 498.0
+pivot_offset = Vector2(0, 24)
+texture = ExtResource("4_rsma4")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Label" type="Label" parent="Main2/Messages/Msg4" unique_id=139357269]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 280.0
+offset_bottom = 44.0
+text = "They should've put
+my name, Poko, up here..."
+label_settings = SubResource("LabelSettings_wo8ij")
+horizontal_alignment = 1
+
+[node name="Msg5" type="NinePatchRect" parent="Main2/Messages" unique_id=1394243458]
+visible = false
+self_modulate = Color(1, 0.5, 1, 0.851)
+offset_left = 560.0
+offset_top = 400.0
+offset_right = 862.0
+offset_bottom = 494.0
+pivot_offset = Vector2(0, 24)
+texture = ExtResource("4_rsma4")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Label" type="Label" parent="Main2/Messages/Msg5" unique_id=572620076]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 280.0
+offset_bottom = 44.0
+text = "Yup,
+still got no mouth..."
+label_settings = SubResource("LabelSettings_wo8ij")
+horizontal_alignment = 1
+
+[node name="Msg6" type="NinePatchRect" parent="Main2/Messages" unique_id=588845958]
+visible = false
+self_modulate = Color(1, 0.5, 1, 0.851)
+offset_left = 560.0
+offset_top = 434.0
+offset_right = 862.0
+offset_bottom = 494.0
+pivot_offset = Vector2(0, 24)
+texture = ExtResource("4_rsma4")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Label" type="Label" parent="Main2/Messages/Msg6" unique_id=1878156334]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 280.0
+offset_bottom = 44.0
+label_settings = SubResource("LabelSettings_wo8ij")
+horizontal_alignment = 1
+
+[node name="Msg7" type="NinePatchRect" parent="Main2/Messages" unique_id=291887658]
+visible = false
+self_modulate = Color(1, 0.5, 1, 0.851)
+offset_left = 560.0
+offset_top = 434.0
+offset_right = 862.0
+offset_bottom = 494.0
+pivot_offset = Vector2(0, 24)
+texture = ExtResource("4_rsma4")
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+
+[node name="Label" type="Label" parent="Main2/Messages/Msg7" unique_id=1841492744]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 18.0
+offset_right = 280.0
+offset_bottom = 44.0
+text = "Msg 7"
+label_settings = SubResource("LabelSettings_wo8ij")
+horizontal_alignment = 1
+
+[node name="Main" type="MarginContainer" parent="." unique_id=361218744]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 125
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main" unique_id=1911157968]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer2" unique_id=1657840639]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Author" type="Label" parent="Main/VBoxContainer2/VBoxContainer" unique_id=1809441215]
+layout_mode = 2
+text = "Programming, Level Design, Game Idea,
+Art & Animation by:"
+label_settings = SubResource("LabelSettings_vltc8")
+
+[node name="Me" type="Label" parent="Main/VBoxContainer2/VBoxContainer" unique_id=1752993225]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Night Kolo"
+label_settings = SubResource("LabelSettings_g7nci")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBoxContainer2" unique_id=590561312]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer" unique_id=1864103473]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Musicby" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=483036799]
+layout_mode = 2
+text = "Music by:"
+label_settings = SubResource("LabelSettings_vltc8")
+
+[node name="Avizura" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=1863276242]
+layout_mode = 2
+text = "Avizura"
+label_settings = SubResource("LabelSettings_7l5mp")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer" unique_id=33664027]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="Thanks" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=1610637979]
+layout_mode = 2
+text = "Special Thanks:"
+label_settings = SubResource("LabelSettings_vltc8")
+
+[node name="Kenney" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=1045408205]
+layout_mode = 2
+text = "Kenney"
+label_settings = SubResource("LabelSettings_1tel5")
+
+[node name="YSY" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=673271639]
+layout_mode = 2
+text = "YoStarYeahya"
+label_settings = SubResource("LabelSettings_1tel5")
+
+[node name="Zach" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=276551009]
+layout_mode = 2
+text = "Zach"
+label_settings = SubResource("LabelSettings_1tel5")
+
+[node name="BackButton" type="Button" parent="Main" unique_id=958684305 groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_741l2")
+text = "Back to Title"
+script = ExtResource("5_xddtm")

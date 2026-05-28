@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://bml6rehgryowp"]
+
+[ext_resource type="Script" uid="uid://5upr1l21e6bs" path="res://interface/interactors/menu_title_screen.gd" id="2_qjgxv"]
+[ext_resource type="Theme" uid="uid://croyx1o13jqlf" path="res://core/resources/theme/button_menus_menus.tres" id="3_qc6yc"]
+[ext_resource type="Script" uid="uid://ccyg5othuwlpx" path="res://interface/animators/anim_button.gd" id="4_ki3e0"]
+[ext_resource type="Script" uid="uid://dpw8xwxo4mbrv" path="res://interface/interactors/audio_options_container.gd" id="5_is32b"]
+[ext_resource type="Script" uid="uid://cm6comiam43nr" path="res://interface/animators/anim_button_icon.gd" id="6_mmakm"]
+[ext_resource type="Texture2D" uid="uid://b4ndvo76fmqy1" path="res://assets/interface/option-sfx.png" id="7_jrgp0"]
+[ext_resource type="Texture2D" uid="uid://73cne5ae0fv5" path="res://assets/interface/option-music.png" id="8_06imj"]
+
+[sub_resource type="FontVariation" id="FontVariation_225m5"]
+spacing_top = -4
+spacing_bottom = -4
+
+[sub_resource type="LabelSettings" id="LabelSettings_de2am"]
+font = SubResource("FontVariation_225m5")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(4, 4)
+
+[node name="TitleScreen" type="CanvasLayer" unique_id=345950914]
+script = ExtResource("2_qjgxv")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1995343040]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.1, 0.25, 1)
+
+[node name="Main" type="MarginContainer" parent="." unique_id=1523618914]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="MarginContainer" type="MarginContainer" parent="Main" unique_id=1670903392]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Main/MarginContainer" unique_id=1397497215]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/MarginContainer/VBoxContainer3" unique_id=371869939]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Main/MarginContainer/VBoxContainer3" unique_id=1117956119]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer2" type="CenterContainer" parent="Main/MarginContainer/VBoxContainer3" unique_id=418607462]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2" unique_id=1288869001]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="StartButton" type="Button" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2" unique_id=452828199 groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../AudioOptions/SFX")
+focus_neighbor_bottom = NodePath("../SelectStageButton")
+theme = ExtResource("3_qc6yc")
+text = "Start"
+script = ExtResource("4_ki3e0")
+
+[node name="SelectStageButton" type="Button" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2" unique_id=485203629 groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../StartButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+theme = ExtResource("3_qc6yc")
+text = "Select Board"
+script = ExtResource("4_ki3e0")
+
+[node name="CreditsButton" type="Button" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2" unique_id=1357317185 groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../SelectStageButton")
+focus_neighbor_bottom = NodePath("../AudioOptions/SFX")
+theme = ExtResource("3_qc6yc")
+text = "Credits"
+script = ExtResource("4_ki3e0")
+
+[node name="AudioOptions" type="HBoxContainer" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2" unique_id=645490318]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 25
+script = ExtResource("5_is32b")
+
+[node name="SFX" type="Button" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2/AudioOptions" unique_id=1999003539 groups=["UIButton"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../CreditsButton")
+focus_neighbor_right = NodePath("../Music")
+focus_neighbor_bottom = NodePath("../../StartButton")
+theme_override_font_sizes/font_size = 28
+text = "
+"
+script = ExtResource("6_mmakm")
+
+[node name="Node2D" type="Node2D" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2/AudioOptions/SFX" unique_id=553068450]
+position = Vector2(25, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2/AudioOptions/SFX/Node2D" unique_id=1024316865]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_jrgp0")
+
+[node name="Music" type="Button" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2/AudioOptions" unique_id=1678485810 groups=["UIButton"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_left = NodePath("../SFX")
+focus_neighbor_top = NodePath("../../CreditsButton")
+focus_neighbor_bottom = NodePath("../../StartButton")
+theme_override_font_sizes/font_size = 28
+script = ExtResource("6_mmakm")
+
+[node name="Node2D" type="Node2D" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2/AudioOptions/Music" unique_id=172274309]
+position = Vector2(25, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="Main/MarginContainer/VBoxContainer3/CenterContainer2/VBoxContainer2/AudioOptions/Music/Node2D" unique_id=1337035546]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_06imj")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main" unique_id=1607425799]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = -5
+
+[node name="CR" type="Label" parent="Main/VBoxContainer2" unique_id=905744711]
+self_modulate = Color(0.15, 0.15, 0.15, 1)
+layout_mode = 2
+text = "© 2025
+Night Kolo"
+label_settings = SubResource("LabelSettings_de2am")
+
+[node name="DemoInfo" type="Label" parent="Main/VBoxContainer2" unique_id=445848840]
+visible = false
+layout_mode = 2
+text = "Alpha 0
+by Night Kolo"
+label_settings = SubResource("LabelSettings_de2am")

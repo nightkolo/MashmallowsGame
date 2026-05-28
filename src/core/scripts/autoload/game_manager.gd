@@ -1,14 +1,20 @@
 extends CanvasLayer
 
 signal level_entered()
-signal menu_entered(menu: Menus)
+signal menu_entered(menu: MenuID)
 signal game_pause_toggled(is_paused: bool)
 signal game_just_ended()
 signal game_end()
 signal game_reset()
 signal monolog_activated(active: bool)
 
-enum Menus {START, PAUSE, MENUS, RUNTIME, MISC}
+enum MenuID {MENUS = 0,
+	PAUSE = 1,
+	WORLD_COMPLETE = 2,
+	START = 3,
+	CREDITS = 4,
+	RUNTIME = 100,
+	MISC = 101}
 
 ## Self-assigned by the Entites
 var current_level_number: int:
@@ -21,7 +27,8 @@ var current_level: Level:
 		current_level = value
 		#current_level.show_dev_ui = true
 var current_level_world: World
-var current_menu: Menus
+var current_menu_id: MenuID
+var current_menu: MainMenusUI
 var current_player: Player
 var current_order_checker: OrderChecker
 var current_NPC: NPCBoard
@@ -50,8 +57,8 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	#Engine.time_scale = 1.0/8.0
 	
-	menu_entered.connect(func(menu: Menus):
-		current_menu = menu
+	menu_entered.connect(func(menu: MenuID):
+		current_menu_id = menu
 		)
 	
 	game_just_ended.connect(func():

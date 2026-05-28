@@ -10,7 +10,7 @@ func _ready() -> void:
 	music_btn.self_modulate = Color(Color.WHITE, 0.0)
 	sfx_btn.self_modulate = Color(Color.WHITE, 0.0)
 	
-	GameMgr.menu_entered.connect(func(_m: GameMgr.Menus):
+	GameMgr.menu_entered.connect(func(_m: GameMgr.MenuID):
 		update_options()
 		)
 	

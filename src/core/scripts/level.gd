@@ -66,7 +66,7 @@ func anim_level_goal():
 func _ready() -> void:
 	GameMgr.current_level = self
 	GameMgr.level_entered.emit()
-	GameMgr.menu_entered.emit(GameMgr.Menus.RUNTIME)
+	GameMgr.menu_entered.emit(GameMgr.MenuID.RUNTIME)
 	
 	# deflect_spawn_blocks()
 	# Vague error: canvas_item_set_draw_index: Parameter "canvas_item" is null.

@@ -10,7 +10,7 @@ var _started: bool = false
 
 
 func _ready() -> void:
-	GameMgr.menu_entered.emit(GameMgr.Menus.START)
+	GameMgr.menu_entered.emit(GameMgr.MenuID.START)
 
 
 func _input(event: InputEvent) -> void:

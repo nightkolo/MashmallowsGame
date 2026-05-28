@@ -14,7 +14,6 @@ spacing_space = 1
 
 [node name="PauseMenu" type="Control" unique_id=1897938556]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,16 +111,17 @@ custom_minimum_size = Vector2(200, 55)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../ResetButton")
-focus_neighbor_bottom = NodePath("../VBoxContainer2/AudioOptions/SFX")
+focus_neighbor_bottom = NodePath("../ReturnButton")
 text = "Skip Level"
 script = ExtResource("5_b1ou4")
 
 [node name="ReturnButton" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer" unique_id=1240758479 groups=["UIButton"]]
 unique_name_in_owner = true
-visible = false
 custom_minimum_size = Vector2(200, 55)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../VBoxContainer2/AudioOptions/SFX")
 text = "Quit"
 script = ExtResource("5_b1ou4")
 
@@ -142,7 +142,7 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Music")
-focus_neighbor_top = NodePath("../../../OptionsButton")
+focus_neighbor_top = NodePath("../../../ReturnButton")
 focus_neighbor_right = NodePath("../Music")
 focus_neighbor_bottom = NodePath("../../../ResumeButton")
 theme_override_font_sizes/font_size = 28
@@ -164,7 +164,7 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../SFX")
-focus_neighbor_top = NodePath("../../../OptionsButton")
+focus_neighbor_top = NodePath("../../../ReturnButton")
 focus_neighbor_right = NodePath("../SFX")
 focus_neighbor_bottom = NodePath("../../../ResumeButton")
 theme_override_font_sizes/font_size = 28

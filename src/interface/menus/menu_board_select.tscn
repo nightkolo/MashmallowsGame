@@ -1,0 +1,428 @@
+[gd_scene format=3 uid="uid://dqdel0n2pkgs7"]
+
+[ext_resource type="Script" uid="uid://c724ckagvnqxd" path="res://interface/interactors/menu_stage_select.gd" id="2_px0gl"]
+[ext_resource type="Script" uid="uid://ccyg5othuwlpx" path="res://interface/animators/anim_button.gd" id="4_4wpgq"]
+[ext_resource type="Theme" uid="uid://croyx1o13jqlf" path="res://core/resources/theme/button_menus_menus.tres" id="5_aeiv1"]
+[ext_resource type="Script" uid="uid://wlfhtc08213x" path="res://interface/animators/anim_button_board_select.gd" id="5_mqg4w"]
+[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="8_8gut0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uodmc"]
+font_size = 48
+font_color = Color(1, 1, 0.6, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4e3ig"]
+font_size = 32
+font_color = Color(1, 0.7, 1, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.568627)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="FontVariation" id="FontVariation_181fw"]
+spacing_top = -5
+spacing_bottom = -5
+
+[sub_resource type="LabelSettings" id="LabelSettings_asqr0"]
+font = SubResource("FontVariation_181fw")
+font_size = 32
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.05)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="FontVariation" id="FontVariation_3r6h2"]
+spacing_top = -5
+spacing_bottom = -5
+
+[sub_resource type="LabelSettings" id="LabelSettings_51x2u"]
+font = SubResource("FontVariation_3r6h2")
+font_size = 24
+outline_size = 7
+outline_color = Color(0.4, 0.4, 0.4, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.05)
+shadow_offset = Vector2(4, 4)
+
+[node name="MenuStageSelect" type="CanvasLayer" unique_id=1346068687]
+script = ExtResource("2_px0gl")
+
+[node name="BG" type="ColorRect" parent="." unique_id=1826843480]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.1, 0.25, 1)
+
+[node name="Main" type="MarginContainer" parent="." unique_id=554819934]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main" unique_id=1750058549]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Main/VBoxContainer" unique_id=2126358403]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Select Board"
+label_settings = SubResource("LabelSettings_uodmc")
+
+[node name="CenterContainer" type="CenterContainer" parent="Main/VBoxContainer" unique_id=1521311746]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="Main/VBoxContainer/CenterContainer" unique_id=2046024803]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2" unique_id=1813029394]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=1416945083]
+layout_mode = 2
+text = "Checkerboard 1"
+label_settings = SubResource("LabelSettings_4e3ig")
+
+[node name="GridContainer" type="GridContainer" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=547389796]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="BtnB1" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1502986502 groups=["UIBoardButton"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB2" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1072888219 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "2"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB3" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=204228006 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "3"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB4" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=328304308 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "4"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB5" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=2034215603 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "5"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB6" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1869839877 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "6"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB7" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=863320501 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "7"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB8" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1962743785 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "8"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB9" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1923496341 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "9"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB10" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1180771468 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "10
+"
+script = ExtResource("5_mqg4w")
+
+[node name="Label2" type="Label" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=1868796527]
+layout_mode = 2
+text = "Checkerboard 2"
+label_settings = SubResource("LabelSettings_4e3ig")
+
+[node name="GridContainer2" type="GridContainer" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=587879148]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="BtnB11" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=1977997047 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "11"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB12" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=601484624 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "12"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB13" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=1991471901 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "13"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB14" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=2061384873 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "14"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB15" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=633671371 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "15"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB16" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=466788034 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "16"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB17" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=1252907532 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "17"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB18" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=57454418 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "18"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB19" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=1041051362 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "19"
+script = ExtResource("5_mqg4w")
+
+[node name="BtnB20" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=2106543352 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "20
+"
+script = ExtResource("5_mqg4w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer" unique_id=1995700969]
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="BackButton" type="Button" parent="Main/VBoxContainer/VBoxContainer" unique_id=604783119 groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../ProgessBtn")
+theme = ExtResource("5_aeiv1")
+text = "Back to Title"
+script = ExtResource("4_4wpgq")
+
+[node name="ProgessBtn" type="Button" parent="Main/VBoxContainer/VBoxContainer" unique_id=566758712 groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../BackButton")
+theme = ExtResource("5_aeiv1")
+text = "Reset Progress"
+script = ExtResource("4_4wpgq")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Main" unique_id=682510857]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = -5
+
+[node name="Copyright" type="RichTextLabel" parent="Main/VBoxContainer3" unique_id=592272313]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font_size=18.0][color=#FFFFFFBF]© 2025 [color=#FFFFFFFF]Night Kolo"
+fit_content = true
+
+[node name="Author" type="RichTextLabel" parent="Main/VBoxContainer3" unique_id=1248921100]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font_size=24.0][color=#FFFFFFBF]A Demo by [color=#FFFFFFFF]Night Kolo"
+fit_content = true
+
+[node name="MusicAuthor" type="RichTextLabel" parent="Main/VBoxContainer3" unique_id=303398665]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font_size=24.0][color=#FFFFFFBF]Music by [color=#FFFFFFFF]Avizura"
+fit_content = true
+
+[node name="ResetPopup" type="Control" parent="." unique_id=702875972]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="ResetPopup" unique_id=1478857273]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.25)
+
+[node name="MarginContainer" type="MarginContainer" parent="ResetPopup" unique_id=1909460403]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ResetPopup/MarginContainer" unique_id=1328764009]
+self_modulate = Color(1, 1, 1, 0.95)
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+region_rect = Rect2(0, 0, 144, 144)
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+
+[node name="Content" type="MarginContainer" parent="ResetPopup/MarginContainer/NinePatchRect" unique_id=1847810854]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResetPopup/MarginContainer/NinePatchRect/Content" unique_id=500550127]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ResetPopup/MarginContainer/NinePatchRect/Content/VBoxContainer" unique_id=1006560658]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Are you sure you want to Reset all your Progress?"
+label_settings = SubResource("LabelSettings_asqr0")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="ResetPopup/MarginContainer/NinePatchRect/Content/VBoxContainer" unique_id=1443249426]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 10
+text = "(You can't undo this)"
+label_settings = SubResource("LabelSettings_51x2u")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResetPopup/MarginContainer/NinePatchRect/Content/VBoxContainer" unique_id=1619074290]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/separation = 40
+
+[node name="YesProgressBtn" type="Button" parent="ResetPopup/MarginContainer/NinePatchRect/Content/VBoxContainer/HBoxContainer" unique_id=1318042357 groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Yes"
+script = ExtResource("8_8gut0")
+
+[node name="NoProgressBtn" type="Button" parent="ResetPopup/MarginContainer/NinePatchRect/Content/VBoxContainer/HBoxContainer" unique_id=1293263228 groups=["UIButton"]]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No
+"
+script = ExtResource("8_8gut0")
+
+[node name="CB1check" type="Node2D" parent="." unique_id=706196724]
+unique_name_in_owner = true
+
+[node name="CB1checkSprite" type="Sprite2D" parent="CB1check" unique_id=921211933]
+unique_name_in_owner = true
+position = Vector2(779, 231)
+scale = Vector2(0.5, 0.5)
+
+[node name="CB2check" type="Node2D" parent="." unique_id=1264738909]
+unique_name_in_owner = true
+
+[node name="CB2checkSprite" type="Sprite2D" parent="CB2check" unique_id=1984460953]
+unique_name_in_owner = true
+position = Vector2(779, 449)
+scale = Vector2(0.5, 0.5)
