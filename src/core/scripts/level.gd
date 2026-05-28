@@ -98,11 +98,11 @@ func _ready() -> void:
 
 
 	if level_id < 0:
-		GameMgr.current_level_number = scene_file_path.to_int()
+		GameMgr.level_id = scene_file_path.to_int()
 	# elif level_id == 0:
 	# 	setup_intro_sequence()
 	else:
-		GameMgr.current_level_number = level_id
+		GameMgr.level_id = level_id
 	
 	if show_dev_ui:
 		var ui := _dev_ui.instantiate()

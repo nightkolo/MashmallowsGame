@@ -77,7 +77,7 @@ func _ready() -> void:
 	
 
 func update_text() -> void:
-	pause_info.text = BBCODE_TXT + PAUSE_INFO_BEGIN + "1-" + str(GameMgr.current_level_number) + PAUSE_INFO_END
+	pause_info.text = BBCODE_TXT + PAUSE_INFO_BEGIN + "1-" + str(GameMgr.level_id) + PAUSE_INFO_END
 
 
 var _t_blur: Tween

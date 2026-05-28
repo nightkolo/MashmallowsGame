@@ -41,7 +41,7 @@ func display_data() -> void:
 func anim_pressed() -> void:
 	var dur := 1.0
 	
-	Audio.ui_button_click.play()
+	#Audio.ui_button_click.play()
 	
 	scale = Vector2(1.2, 0.8)
 	

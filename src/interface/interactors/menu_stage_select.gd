@@ -95,7 +95,7 @@ func goto_level(board_id: int) -> void:
 	Util.disable_buttons(board_btns)
 	Util.disable_buttons(btns)
 	
-	GameLogic.self_destruct()
+	GameLogic.reset_game_logic()
 	
 	if (board_id >= 1 && board_id <= Util.NUMBER_OF_LEVELS):
 		Trans.slide_to_scene(Util.LEVEL_FILE_BEGIN + str(board_id) + Util.LEVEL_FILE_END)

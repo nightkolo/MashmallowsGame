@@ -45,7 +45,7 @@ var _tween_fade_in: Tween
 func _ready() -> void:
 	GameMgr.current_menu = self
 	
-	if GameMgr.current_menu_id == GameMgr.MenuID.CREDITS: # For the game's ending
+	if GameMgr.menu_id == GameMgr.MenuID.CREDITS: # For the game's ending
 		enter_main_menu(MainMenus.CREDITS)
 		
 	else:

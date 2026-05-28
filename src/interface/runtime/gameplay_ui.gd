@@ -27,7 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if allow_input && !Trans.is_transitioning:
 		
 		if event.is_action_pressed("game_pause"):
-			match GameMgr.current_menu_id:
+			match GameMgr.menu_id:
 				
 				GameMgr.MenuID.RUNTIME, GameMgr.MenuID.PAUSE:
 					if GameLogic.has_won:
@@ -36,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 						pause_or_unpause()
 			
 		if event.is_action_pressed("game_reset"):
-			match GameMgr.current_menu_id:
+			match GameMgr.menu_id:
 				
 				GameMgr.MenuID.RUNTIME:
 					reset_stage()
@@ -83,7 +83,7 @@ func quit() -> void:
 	GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
 	
 	return_to_run()
-	Trans.slide_to_scene("res://interface/menus/menu_start.tscn")
+	Trans.slide_to_scene("res://interface/menus/main_menus_scene.tscn")
 
 	
 func reset_stage() -> void:

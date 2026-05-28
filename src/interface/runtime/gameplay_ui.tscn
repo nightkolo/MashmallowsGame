@@ -9,6 +9,7 @@ process_mode = 3
 script = ExtResource("1_po83g")
 
 [node name="PauseMenu" parent="." unique_id=754779589 instance=ExtResource("1_o3ryy")]
+visible = false
 
 [node name="ResetScreen" type="MarginContainer" parent="." unique_id=784061721]
 visible = false

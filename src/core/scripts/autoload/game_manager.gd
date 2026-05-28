@@ -8,31 +8,33 @@ signal game_end()
 signal game_reset()
 signal monolog_activated(active: bool)
 
-enum MenuID {MENUS = 0,
+enum MenuID {
+	MENUS = 0,
 	PAUSE = 1,
 	WORLD_COMPLETE = 2,
 	START = 3,
 	CREDITS = 4,
 	RUNTIME = 100,
-	MISC = 101}
+	MISC = 101
+	}
 
 ## Self-assigned by the Entites
-var current_level_number: int:
+var menu_id: MenuID
+var level_id: int:
 	set(value):
 		if current_level_goal:
 			current_level_goal.level_number_label.text = "1-" + str(value)
-		current_level_number = value
+		level_id = value
 var current_level: Level:
 	set(value):
 		current_level = value
 		#current_level.show_dev_ui = true
-var current_level_world: World
-var current_menu_id: MenuID
-var current_menu: MainMenusUI
+var current_level_world: World ## @deprecated
+var current_menu: MainMenusUI ## @deprecated
 var current_player: Player
 var current_order_checker: OrderChecker
-var current_NPC: NPCBoard
-var current_ui_handler: GameplayUI
+var current_NPC: NPCBoard ## Used for quicker access by [ResetNoticeArea]
+var current_ui_handler: GameplayUI ## @experimental
 var current_level_goal: LevelGoal
 var current_camera: Cam
 
@@ -47,7 +49,7 @@ func _input(event: InputEvent) -> void:
 		game_reset.emit()
 		
 	# if event.is_action_pressed("debug_next"):
-	# 	if current_level_number != 0:
+	# 	if level_id != 0:
 	# 		goto_next_level()
 	
 	# if event.is_action_pressed("debug_prev"):
@@ -58,7 +60,7 @@ func _ready() -> void:
 	#Engine.time_scale = 1.0/8.0
 	
 	menu_entered.connect(func(menu: MenuID):
-		current_menu_id = menu
+		menu_id = menu
 		)
 	
 	game_just_ended.connect(func():
