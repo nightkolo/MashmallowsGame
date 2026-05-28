@@ -26,6 +26,7 @@ Audio="*uid://bmw5xc6xifxkt"
 GameLogic="*uid://cpj5k3pjtv4v2"
 GameMgr="*uid://do5s7j3sonrxq"
 Trans="*uid://bqe6pedspolx4"
+InputPrompts="*uid://c0c8563nf3to3"
 
 [debug]
 

@@ -61,6 +61,14 @@ func _ready() -> void:
 	
 	menu_entered.connect(func(menu: MenuID):
 		menu_id = menu
+		
+		match menu:
+			
+			MenuID.RUNTIME, MenuID.MISC, MenuID.START:
+				InputPrompts.visible = false
+			
+			_:
+				InputPrompts.visible = true
 		)
 	
 	game_just_ended.connect(func():

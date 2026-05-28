@@ -17,11 +17,11 @@ signal entered_cb_2()
 @onready var yes_progress_btn: Button = %YesProgressBtn
 @onready var no_progress_btn: Button = %NoProgressBtn
 
-@onready var cb_1_check: Node2D = %CB1check
-@onready var cb_2_check: Node2D = %CB2check
-
-@onready var cb_1_check_sprite: Sprite2D = %CB1checkSprite
-@onready var cb_2_check_sprite: Sprite2D = %CB2checkSprite
+#@onready var cb_1_check: Node2D = %CB1check
+#@onready var cb_2_check: Node2D = %CB2check
+#
+#@onready var cb_1_check_sprite: Sprite2D = %CB1checkSprite
+#@onready var cb_2_check_sprite: Sprite2D = %CB2checkSprite
 
 var _cb_entered: int = 1
 

@@ -3,7 +3,7 @@ class_name CreditsScreen
 
 @onready var back_btn: Button = %BackButton
 #@onready var chibi_boko: CharacterChibiBoko = $Main2/CharacterChibiBoko
-@onready var messages: Node2D = $Main2/Messages
+#@onready var messages: Node2D = $Main2/Messages
 
 @onready var kolo: Label = %Me ## @experimental
 

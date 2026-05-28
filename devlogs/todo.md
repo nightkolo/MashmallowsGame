@@ -3,21 +3,21 @@
 ## 5-23
 
 - [x] Walkthrough and Song reveal
-
+:
 ### Interface
 
 - [ ] Menu WIPS (Just copy paste some old menu code i made lol) 
-  - [ ] Title Screen
-    - [ ] Continue Button
-    - [ ] Level Select
+  - [x] Title Screen
+    - [x] Continue Button
+    - [x] Level Select
       - [ ] Intro
-      - [ ] Grid Design
+      - [x] Grid Design
       - [ ] Paperclips Info
       - [ ] Star system
         - [ ] Golden star (Best solution)
         - [ ] Blue star (Pass)
       - [ ] Chibi Millie?
-    - [ ] Credits and Support
+    - [x] Credits and Support
   - [ ] Pause Menu
     - [ ] Panel
 - [ ] Theme

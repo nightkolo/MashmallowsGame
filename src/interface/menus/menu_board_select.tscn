@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dqdel0n2pkgs7"]
 
 [ext_resource type="Script" uid="uid://c724ckagvnqxd" path="res://interface/interactors/menu_stage_select.gd" id="2_px0gl"]
+[ext_resource type="Texture2D" uid="uid://dfiar14ds1vey" path="res://assets/interface/ui-panel-base.png" id="3_3h7g0"]
 [ext_resource type="Script" uid="uid://ccyg5othuwlpx" path="res://interface/animators/anim_button.gd" id="4_4wpgq"]
 [ext_resource type="Theme" uid="uid://croyx1o13jqlf" path="res://core/resources/theme/button_menus_menus.tres" id="5_aeiv1"]
 [ext_resource type="Script" uid="uid://wlfhtc08213x" path="res://interface/animators/anim_button_board_select.gd" id="5_mqg4w"]
@@ -8,6 +9,15 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_uodmc"]
 font_size = 48
+font_color = Color(1, 1, 0.6, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3h7g0"]
+font_size = 24
 font_color = Color(1, 1, 0.6, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
@@ -78,36 +88,43 @@ theme_override_constants/margin_bottom = 70
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="Main/VBoxContainer" unique_id=2126358403]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main/VBoxContainer" unique_id=1394175343]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/VBoxContainer2" unique_id=2126358403]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Select Board"
+text = "Select an Order"
 label_settings = SubResource("LabelSettings_uodmc")
 
-[node name="CenterContainer" type="CenterContainer" parent="Main/VBoxContainer" unique_id=1521311746]
+[node name="Label2" type="Label" parent="Main/VBoxContainer/VBoxContainer2" unique_id=685001194]
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Stars: 00 / 00"
+label_settings = SubResource("LabelSettings_3h7g0")
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="Main/VBoxContainer/CenterContainer" unique_id=2046024803]
+[node name="MainContentContainer" type="HBoxContainer" parent="Main/VBoxContainer" unique_id=1710102394]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2" unique_id=1813029394]
+[node name="LevelsContainer" type="VBoxContainer" parent="Main/VBoxContainer/MainContentContainer" unique_id=1813029394]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=1416945083]
+[node name="Label" type="Label" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer" unique_id=1416945083]
 layout_mode = 2
-text = "Checkerboard 1"
+text = "Bakery 1"
 label_settings = SubResource("LabelSettings_4e3ig")
 
-[node name="GridContainer" type="GridContainer" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=547389796]
+[node name="GridContainer" type="GridContainer" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer" unique_id=547389796]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 columns = 5
 
-[node name="BtnB1" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1502986502 groups=["UIBoardButton"]]
+[node name="BtnB1" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=1502986502 groups=["UIBoardButton"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -115,63 +132,63 @@ theme_override_font_sizes/font_size = 32
 text = "1"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB2" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1072888219 groups=["UIBoardButton"]]
+[node name="BtnB2" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=1072888219 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "2"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB3" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=204228006 groups=["UIBoardButton"]]
+[node name="BtnB3" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=204228006 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "3"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB4" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=328304308 groups=["UIBoardButton"]]
+[node name="BtnB4" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=328304308 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "4"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB5" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=2034215603 groups=["UIBoardButton"]]
+[node name="BtnB5" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=2034215603 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "5"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB6" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1869839877 groups=["UIBoardButton"]]
+[node name="BtnB6" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=1869839877 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "6"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB7" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=863320501 groups=["UIBoardButton"]]
+[node name="BtnB7" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=863320501 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "7"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB8" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1962743785 groups=["UIBoardButton"]]
+[node name="BtnB8" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=1962743785 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "8"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB9" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1923496341 groups=["UIBoardButton"]]
+[node name="BtnB9" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=1923496341 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "9"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB10" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer" unique_id=1180771468 groups=["UIBoardButton"]]
+[node name="BtnB10" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer" unique_id=1180771468 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -179,81 +196,81 @@ text = "10
 "
 script = ExtResource("5_mqg4w")
 
-[node name="Label2" type="Label" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=1868796527]
+[node name="Label2" type="Label" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer" unique_id=1868796527]
 layout_mode = 2
-text = "Checkerboard 2"
+text = "Bakery 2"
 label_settings = SubResource("LabelSettings_4e3ig")
 
-[node name="GridContainer2" type="GridContainer" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer" unique_id=587879148]
+[node name="GridContainer2" type="GridContainer" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer" unique_id=587879148]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 columns = 5
 
-[node name="BtnB11" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=1977997047 groups=["UIBoardButton"]]
+[node name="BtnB11" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=1977997047 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "11"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB12" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=601484624 groups=["UIBoardButton"]]
+[node name="BtnB12" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=601484624 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "12"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB13" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=1991471901 groups=["UIBoardButton"]]
+[node name="BtnB13" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=1991471901 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "13"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB14" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=2061384873 groups=["UIBoardButton"]]
+[node name="BtnB14" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=2061384873 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "14"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB15" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=633671371 groups=["UIBoardButton"]]
+[node name="BtnB15" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=633671371 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "15"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB16" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=466788034 groups=["UIBoardButton"]]
+[node name="BtnB16" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=466788034 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "16"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB17" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=1252907532 groups=["UIBoardButton"]]
+[node name="BtnB17" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=1252907532 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "17"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB18" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=57454418 groups=["UIBoardButton"]]
+[node name="BtnB18" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=57454418 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "18"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB19" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=1041051362 groups=["UIBoardButton"]]
+[node name="BtnB19" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=1041051362 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "19"
 script = ExtResource("5_mqg4w")
 
-[node name="BtnB20" type="Button" parent="Main/VBoxContainer/CenterContainer/VBoxContainer2/VBoxContainer/GridContainer2" unique_id=2106543352 groups=["UIBoardButton"]]
+[node name="BtnB20" type="Button" parent="Main/VBoxContainer/MainContentContainer/LevelsContainer/GridContainer2" unique_id=2106543352 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
@@ -261,7 +278,16 @@ text = "20
 "
 script = ExtResource("5_mqg4w")
 
+[node name="CenterContainer2" type="CenterContainer" parent="Main/VBoxContainer/MainContentContainer" unique_id=1614091918]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer/MainContentContainer/CenterContainer2" unique_id=514625462]
+layout_mode = 2
+texture = ExtResource("3_3h7g0")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer" unique_id=1995700969]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = -5
 
@@ -282,38 +308,6 @@ focus_neighbor_top = NodePath("../BackButton")
 theme = ExtResource("5_aeiv1")
 text = "Reset Progress"
 script = ExtResource("4_4wpgq")
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="Main" unique_id=682510857]
-visible = false
-layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
-theme_override_constants/separation = -5
-
-[node name="Copyright" type="RichTextLabel" parent="Main/VBoxContainer3" unique_id=592272313]
-visible = false
-layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
-bbcode_enabled = true
-text = "[font_size=18.0][color=#FFFFFFBF]© 2025 [color=#FFFFFFFF]Night Kolo"
-fit_content = true
-
-[node name="Author" type="RichTextLabel" parent="Main/VBoxContainer3" unique_id=1248921100]
-layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
-bbcode_enabled = true
-text = "[font_size=24.0][color=#FFFFFFBF]A Demo by [color=#FFFFFFFF]Night Kolo"
-fit_content = true
-
-[node name="MusicAuthor" type="RichTextLabel" parent="Main/VBoxContainer3" unique_id=303398665]
-layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
-bbcode_enabled = true
-text = "[font_size=24.0][color=#FFFFFFBF]Music by [color=#FFFFFFFF]Avizura"
-fit_content = true
 
 [node name="ResetPopup" type="Control" parent="." unique_id=702875972]
 unique_name_in_owner = true
@@ -410,19 +404,3 @@ layout_mode = 2
 text = "No
 "
 script = ExtResource("8_8gut0")
-
-[node name="CB1check" type="Node2D" parent="." unique_id=706196724]
-unique_name_in_owner = true
-
-[node name="CB1checkSprite" type="Sprite2D" parent="CB1check" unique_id=921211933]
-unique_name_in_owner = true
-position = Vector2(779, 231)
-scale = Vector2(0.5, 0.5)
-
-[node name="CB2check" type="Node2D" parent="." unique_id=1264738909]
-unique_name_in_owner = true
-
-[node name="CB2checkSprite" type="Sprite2D" parent="CB2check" unique_id=1984460953]
-unique_name_in_owner = true
-position = Vector2(779, 449)
-scale = Vector2(0.5, 0.5)
