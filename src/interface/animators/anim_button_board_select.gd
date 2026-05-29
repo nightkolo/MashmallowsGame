@@ -3,7 +3,11 @@ class_name BoardSelectButton
 
 var tween: Tween
 var board_id: int = 0
-#@onready var bcheck: Node2D = $Bcheck
+
+
+@onready var bcheck: Node2D = $Node2D/Bcheck
+@onready var bcheck_2: Node2D = $Node2D/Bcheck2
+@onready var node_2d: Node2D = $Node2D
 
 
 func _ready() -> void:
@@ -14,6 +18,9 @@ func _ready() -> void:
 	self.add_to_group("UIBoardButton")
 	
 	pivot_offset = size / 2.0
+	node_2d.scale = Vector2.ONE * 0.75
+	
+	node_2d.position = Vector2.ONE * 7.5
 	
 	pressed.connect(anim_pressed)
 	mouse_entered.connect(anim_entered)
@@ -27,15 +34,15 @@ func display_data() -> void:
 	
 	var board_num: String = str(board_id)
 
-	#if !GameData.runtime_data.has(board_num):
-		#push_warning("Cannot display data. Key %s not found in GameData.runtime_data." % board_num)
-		#return
-	#
-	#if !(board_id >= 0 && board_id <= GameUtil.NUMBER_OF_BOARDS):
-		#push_warning("Cannot display data. Key %s is out of bounds from GameUtil.NUMBER_OF_BOARDS." % board_num)
-		#return
-	#
-	#bcheck.visible = GameData.runtime_data[board_num]["completed"] == true
+	if !GameData.runtime_data.has(board_num):
+		push_warning("Cannot display data. Key %s not found in GameData.runtime_data." % board_num)
+		return
+	
+	if !(board_id >= 0 && board_id <= Util.NUMBER_OF_LEVELS):
+		push_warning("Cannot display data. Key %s is out of bounds from GameUtil.NUMBER_OF_LEVELS." % board_num)
+		return
+	
+	bcheck.visible = GameData.runtime_data[board_num]["completed"] == true
 
 
 func anim_pressed() -> void:

@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://wlfhtc08213x" path="res://interface/animators/anim_button_board_select.gd" id="5_mqg4w"]
 [ext_resource type="LabelSettings" uid="uid://k3pavelek3ma" path="res://core/resources/label/bakery_label_sets.tres" id="6_16r33"]
 [ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="8_8gut0"]
+[ext_resource type="Texture2D" uid="uid://34wayfvqlvrp" path="res://assets/interface/order-star-01.png" id="8_16r33"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uodmc"]
 font_size = 48
@@ -174,12 +175,34 @@ theme_override_font_sizes/font_size = 32
 text = "1"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB1" unique_id=401647795]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB1/Node2D" unique_id=163613745]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB1/Node2D" unique_id=1589550146]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB2" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=1857071892 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "2"
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB2" unique_id=576324141]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB2/Node2D" unique_id=596829733]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB2/Node2D" unique_id=948095074]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="BtnB3" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=1940589612 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
@@ -188,12 +211,34 @@ theme_override_font_sizes/font_size = 32
 text = "3"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB3" unique_id=2011759476]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB3/Node2D" unique_id=773474501]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB3/Node2D" unique_id=1571221795]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB4" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=296034847 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "4"
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB4" unique_id=2027427674]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB4/Node2D" unique_id=575878042]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB4/Node2D" unique_id=1722740858]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="BtnB5" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=897696030 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
@@ -202,12 +247,34 @@ theme_override_font_sizes/font_size = 32
 text = "5"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB5" unique_id=2137502257]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB5/Node2D" unique_id=185975174]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB5/Node2D" unique_id=751444234]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB6" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=1930004534 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "6"
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB6" unique_id=396132877]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB6/Node2D" unique_id=1530133097]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB6/Node2D" unique_id=1815216178]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="BtnB7" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=237079022 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
@@ -216,12 +283,34 @@ theme_override_font_sizes/font_size = 32
 text = "7"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB7" unique_id=693594149]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB7/Node2D" unique_id=301950890]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB7/Node2D" unique_id=199905614]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB8" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=352884340 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "8"
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB8" unique_id=617710920]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB8/Node2D" unique_id=791309795]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB8/Node2D" unique_id=377186055]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="BtnB9" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=103818545 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
@@ -230,6 +319,17 @@ theme_override_font_sizes/font_size = 32
 text = "9"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB9" unique_id=1764289071]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB9/Node2D" unique_id=1653944277]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB9/Node2D" unique_id=1675212508]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB10" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=978539612 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -237,6 +337,17 @@ theme_override_font_sizes/font_size = 32
 text = "10
 "
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB10" unique_id=1230399467]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB10/Node2D" unique_id=627913087]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer/BtnB10/Node2D" unique_id=653541440]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="Panel2" type="NinePatchRect" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer" unique_id=360143600 groups=["UILevelPanel"]]
 unique_name_in_owner = true
@@ -280,12 +391,34 @@ theme_override_font_sizes/font_size = 32
 text = "11"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB11" unique_id=1331453733]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB11/Node2D" unique_id=1773651356]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB11/Node2D" unique_id=1838184203]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB12" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1339200119 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "12"
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB12" unique_id=814668248]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB12/Node2D" unique_id=1610125606]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB12/Node2D" unique_id=1295634589]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="BtnB13" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1954209722 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
@@ -294,12 +427,34 @@ theme_override_font_sizes/font_size = 32
 text = "13"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB13" unique_id=1444760039]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB13/Node2D" unique_id=1018294395]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB13/Node2D" unique_id=606739053]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB14" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=950442699 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "14"
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB14" unique_id=800457155]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB14/Node2D" unique_id=79608281]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB14/Node2D" unique_id=1572772061]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="BtnB15" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=954976332 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
@@ -308,12 +463,34 @@ theme_override_font_sizes/font_size = 32
 text = "15"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB15" unique_id=1800822940]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB15/Node2D" unique_id=2056551594]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB15/Node2D" unique_id=528446510]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB16" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=395189608 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "16"
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB16" unique_id=1443978344]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB16/Node2D" unique_id=1289016464]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB16/Node2D" unique_id=452180920]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="BtnB17" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=793437376 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
@@ -322,12 +499,34 @@ theme_override_font_sizes/font_size = 32
 text = "17"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB17" unique_id=1447740819]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB17/Node2D" unique_id=1830850733]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB17/Node2D" unique_id=1437085757]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB18" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1742154560 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "18"
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB18" unique_id=1041513440]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB18/Node2D" unique_id=102717533]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB18/Node2D" unique_id=826093465]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="BtnB19" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1135432084 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
@@ -336,6 +535,17 @@ theme_override_font_sizes/font_size = 32
 text = "19"
 script = ExtResource("5_mqg4w")
 
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB19" unique_id=379324448]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB19/Node2D" unique_id=33336580]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB19/Node2D" unique_id=1372231148]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
 [node name="BtnB20" type="Button" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=7036554 groups=["UIBoardButton"]]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
@@ -343,6 +553,17 @@ theme_override_font_sizes/font_size = 32
 text = "20
 "
 script = ExtResource("5_mqg4w")
+
+[node name="Node2D" type="Node2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB20" unique_id=1569333988]
+
+[node name="Bcheck" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB20/Node2D" unique_id=493026892]
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
+
+[node name="Bcheck2" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer/BtnB20/Node2D" unique_id=373471204]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_16r33")
 
 [node name="Right" type="CenterContainer" parent="Main/VBoxContainer/MainContentContainer" unique_id=1614091918]
 layout_mode = 2
