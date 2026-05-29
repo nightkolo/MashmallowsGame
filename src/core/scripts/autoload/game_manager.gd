@@ -6,6 +6,10 @@ signal game_pause_toggled(is_paused: bool)
 signal game_just_ended()
 signal game_end()
 signal game_reset()
+
+signal game_data_saved()
+signal game_data_loaded()
+
 signal monolog_activated(active: bool)
 
 enum MenuID {
@@ -43,6 +47,8 @@ var is_monolog_active: bool
 ## Level Begin
 # Variables self-assigned
 
+var saver_loader: SaverLoader = SaverLoader.new()
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("game_reset"):
@@ -57,7 +63,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	#Engine.time_scale = 1.0/8.0
+	add_child(saver_loader)
+	
+	load_game_data()
 	
 	menu_entered.connect(func(menu: MenuID):
 		menu_id = menu
@@ -85,6 +93,19 @@ func _ready() -> void:
 		#GameLogic.reset_game_logic()
 		#get_tree().reload_current_scene()
 		)
+
+func reset_game_data() -> void:
+	saver_loader.new_game()
+	saver_loader.new_game_medals()
+
+
+func save_game_data() -> void:
+	saver_loader.save_game()
+
+
+func load_game_data() -> void:
+	saver_loader.load_game()
+	
 
 func reset_game() -> void:
 	GameLogic.reset_game_logic()

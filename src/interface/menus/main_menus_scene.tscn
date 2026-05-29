@@ -39,10 +39,11 @@ position = Vector2(640, 400)
 rotation = -0.3926991
 texture = ExtResource("2_fmvdq")
 region_enabled = true
-region_rect = Rect2(7081.8047, 8308.04, 1620, 1250)
+region_rect = Rect2(9839.187, 4177.1655, 1620, 1250)
 script = ExtResource("3_bqa5v")
 animate_scroll = true
 scroll_trajectory = 0.4014257279586958
+scroll_speed = 25.0
 metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
 
 [node name="TitleScreen" parent="." unique_id=1857705653 instance=ExtResource("5_nf347")]

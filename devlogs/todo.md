@@ -22,7 +22,8 @@
     - [ ] Panel
 - [ ] Theme
   - [ ] Button anim
-  - [ ] 
+  - [ ] BG
+    - [ ] Animated
 
 ### Gameplay
 

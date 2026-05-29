@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://k3pavelek3ma"]
+
+[ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="1_ixm2u"]
+
+[resource]
+font = ExtResource("1_ixm2u")
+font_size = 46
+outline_size = 16
+outline_color = Color(0.23031491, 0.23031494, 0.23031494, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.5)

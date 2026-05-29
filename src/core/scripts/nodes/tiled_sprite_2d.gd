@@ -38,7 +38,12 @@ func _validate_property(property: Dictionary):
 		
 var _init_size: Vector2
 var _init_node_size: Vector2
-var _pos: Vector2
+var _pos: Vector2:
+	set(value):
+		var p := pow(2.0, 64.0)
+		if value.x > p || value.y > p:
+			_pos = Vector2.ZERO
+		_pos = value
 
 
 func _animate_scroll(delta: float) -> void:

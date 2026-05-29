@@ -1,0 +1,261 @@
+[gd_scene format=3 uid="uid://1vrmioe2j4uo"]
+
+[ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="1_f2wk2"]
+[ext_resource type="Script" uid="uid://b56ncd7kv6qx8" path="res://interface/menus/level_select_test.gd" id="2_kcin6"]
+[ext_resource type="Texture2D" uid="uid://dfiar14ds1vey" path="res://assets/interface/ui-panel-base.png" id="3_2ja0i"]
+[ext_resource type="Script" uid="uid://wlfhtc08213x" path="res://interface/animators/anim_button_board_select.gd" id="4_2ja0i"]
+[ext_resource type="StyleBox" uid="uid://jl6gu2e3xalf" path="res://core/resources/theme/button_level_stylebox.tres" id="4_xar00"]
+[ext_resource type="LabelSettings" uid="uid://k3pavelek3ma" path="res://core/resources/label/bakery_label_sets.tres" id="5_fdtpa"]
+
+[sub_resource type="Theme" id="Theme_fdtpa"]
+Button/styles/disabled = ExtResource("4_xar00")
+Button/styles/focus = ExtResource("4_xar00")
+Button/styles/hover = ExtResource("4_xar00")
+Button/styles/normal = ExtResource("4_xar00")
+Button/styles/pressed = ExtResource("4_xar00")
+
+[sub_resource type="Theme" id="Theme_xar00"]
+Button/styles/normal = ExtResource("4_xar00")
+
+[node name="LevelSelectTest" type="Control" unique_id=1272284374]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f2wk2")
+
+[node name="Main" type="MarginContainer" parent="." unique_id=1189159777]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_kcin6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main" unique_id=497128869]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_fdtpa")
+theme_override_constants/separation = -10
+alignment = 2
+
+[node name="Panel" type="NinePatchRect" parent="Main/VBoxContainer" unique_id=1278450585 groups=["UILevelPanel"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(555, 328)
+layout_mode = 2
+texture = ExtResource("3_2ja0i")
+region_rect = Rect2(0, 0, 288, 291)
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 59
+
+[node name="LevelContainer1" type="MarginContainer" parent="Main/VBoxContainer/Panel" unique_id=33163907 groups=["UILevelPanelContainer"]]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 505.0
+offset_bottom = 210.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/Panel/LevelContainer1" unique_id=557808617]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer" unique_id=920214176]
+layout_mode = 2
+text = "Bakery 1"
+label_settings = ExtResource("5_fdtpa")
+
+[node name="GridContainer" type="GridContainer" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer" unique_id=1252168400]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="BtnB1" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=1191359483 groups=["UIBoardButton"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme = SubResource("Theme_xar00")
+theme_override_font_sizes/font_size = 32
+text = "1"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB2" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=1812949026 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "2"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB3" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=1002536404 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "3"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB4" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=591222072 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "4"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB5" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=562764245 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "5"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB6" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=358516373 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "6"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB7" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=571673118 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "7"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB8" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=1365560968 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "8"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB9" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=184727669 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "9"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB10" type="Button" parent="Main/VBoxContainer/Panel/LevelContainer1/VBoxContainer/GridContainer" unique_id=1234642243 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "10
+"
+script = ExtResource("4_2ja0i")
+
+[node name="Panel2" type="NinePatchRect" parent="Main/VBoxContainer" unique_id=1103119836 groups=["UILevelPanel"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(555, 328)
+layout_mode = 2
+texture = ExtResource("3_2ja0i")
+region_rect = Rect2(0, 0, 288, 291)
+patch_margin_left = 56
+patch_margin_top = 64
+patch_margin_right = 56
+patch_margin_bottom = 59
+
+[node name="LevelContainer2" type="MarginContainer" parent="Main/VBoxContainer/Panel2" unique_id=1882380793 groups=["UILevelPanelContainer"]]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 505.0
+offset_bottom = 210.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer/Panel2/LevelContainer2" unique_id=225210202]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer" unique_id=1216177570]
+layout_mode = 2
+text = "Bakery 2"
+label_settings = ExtResource("5_fdtpa")
+
+[node name="GridContainer" type="GridContainer" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer" unique_id=2082066257]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="BtnB11" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1403001921 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "11"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB12" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1748036270 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "12"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB13" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=587189971 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "13"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB14" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1388716173 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "14"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB15" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=635320926 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "15"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB16" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1209676183 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "16"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB17" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1651058151 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "17"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB18" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1328557859 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "18"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB19" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1106118282 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "19"
+script = ExtResource("4_2ja0i")
+
+[node name="BtnB20" type="Button" parent="Main/VBoxContainer/Panel2/LevelContainer2/VBoxContainer/GridContainer" unique_id=1057633548 groups=["UIBoardButton"]]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "20
+"
+script = ExtResource("4_2ja0i")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=450742315]
+position = Vector2(0, 400)

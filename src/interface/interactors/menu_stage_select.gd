@@ -15,7 +15,10 @@ signal entered_cb_2()
 @onready var reset_popup: Control = %ResetPopup
 @onready var progess_btn: Button = %ProgessBtn
 @onready var yes_progress_btn: Button = %YesProgressBtn
+
 @onready var no_progress_btn: Button = %NoProgressBtn
+
+@onready var star_count_label: Label = %StarCountLabel
 
 #@onready var cb_1_check: Node2D = %CB1check
 #@onready var cb_2_check: Node2D = %CB2check

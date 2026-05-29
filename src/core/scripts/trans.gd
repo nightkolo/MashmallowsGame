@@ -6,6 +6,11 @@ extends CanvasLayer
 var is_transitioning: bool
 
 
+
+func _ready() -> void:
+	layer = 10
+
+
 func player_zoom_to_scene(scene: String, waittime: float = 0.0, spd: float = 1.0) -> void:
 	if is_transitioning:
 		return 
