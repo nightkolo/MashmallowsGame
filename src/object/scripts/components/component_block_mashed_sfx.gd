@@ -9,8 +9,9 @@ func _ready():
 		var block: Mashed = get_parent() as Mashed
 
 		block.attribute_set.connect(func():
-			if block.parent_player.child_blocks.size() == 1:
-				return
+			if block.parent_player:
+				if block.parent_player.child_blocks.size() == 1:
+					return
 
 			match block.attributes.mash_type:
 
@@ -25,4 +26,3 @@ func _ready():
 func play_mashed_vocal_sfx():
 	var sfx: AudioStreamPlayer2D = vocal_sfx.pick_random()
 	sfx.play()
-

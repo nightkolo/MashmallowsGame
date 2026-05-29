@@ -52,6 +52,8 @@ signal check_finished()
 @onready var cherry_bomb_air_timer: Timer = %CherryBombAirTimer
 @onready var idle_timer: Timer = %IdleTimer
 @onready var mashed: Mashed = $Mashed
+#@onready var mashed_nodes: Node2D = $MashedNodes
+
 @onready var node_player_zoom_trans: Node2D = $PlayerZoomTrans
 @onready var trans_nodes: Array[Sprite2D] = [%TransR,%TransL,%TransD,%TransU]
 # @onready var sprite_player_zoom_in: Sprite2D = %PlayerZoomIn
@@ -67,7 +69,33 @@ var flown_deceleration: float = deceleration / 3.2
 var input_direction: float
 var input_y: float
 
-var child_blocks: Array[Mashed] # Stack data structure
+#var posses: Array[Dictionary] = [ ## Template
+	#{"mash": Util.MashType.WHITE, "pos": Vector2.ZERO},
+	#{"mash": Util.MashType.HEART, "pos": Vector2.ZERO}
+#]
+
+var blocks_pos: Array[Dictionary] = []
+var child_blocks: Array[Mashed] = [] # Stack data structure
+		
+func push_child_block(block: Mashed) -> void:
+	child_blocks.append(block)
+
+	blocks_pos.append({
+		"mash": block.mash_type,
+		"pos": Vector2(
+			block.position.x / Util.BLOCK_SIZE,
+			block.position.y / Util.BLOCK_SIZE
+		)
+	})
+	print_debug(blocks_pos)
+
+
+func pop_child_block() -> Mashed:
+	blocks_pos.pop_back()
+	print_debug(blocks_pos)
+	return child_blocks.pop_back()
+
+
 var new_child_blocks: Array[Mashed] # Stack data structure
 
 var is_sleeping: bool:
@@ -291,7 +319,7 @@ func unmash() -> void: # -> O(1)
 			
 			has_unmashed.emit()
 			
-			child_blocks.pop_back()
+			pop_child_block()
 
 			# ATTRIBUTE SYNC
 			var unmashed: Unmashed = get_unmashed_object(old_mashed.build_type)
@@ -330,7 +358,7 @@ func _handle_cherry_bomb(old_mashed: Mashed) -> void:
 	
 	await get_tree().create_timer(time).timeout
 	
-	child_blocks.pop_back()
+	pop_child_block()
 	
 	explode(push_to, stre)
 	Input.start_joy_vibration(0, 0.25, 0.85, 0.025)
@@ -560,7 +588,7 @@ func _check_child_blocks() -> void:
 	for i in range(1, new_child_blocks.size()):
 		if new_child_blocks[i].position == new_child_blocks[0].position:
 			new_child_blocks[i].queue_free()
-			child_blocks.pop_back()
+			pop_child_block()
 			
 	new_child_blocks.clear()
 	_has_mashed = false

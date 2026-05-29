@@ -142,6 +142,19 @@ func _ready() -> void:
 	
 	anim_awake()
 
+	# Shared with [Unmashed]
+	if attributes == null:
+		attributes = BlockAttributes.new()
+
+		attributes.mash_type = mash_type
+		attributes.build_type = build_type
+		attributes.is_golden = is_golden
+	else:
+		mash_type = attributes.mash_type
+		build_type = attributes.build_type
+		is_golden = attributes.is_golden
+
+	
 
 	if get_parent() is Player:
 		parent_player = get_parent()
@@ -170,7 +183,7 @@ func _ready() -> void:
 		node_block_sprites.visible = parent_player.show_blocks
 		
 		if parent_player.auto_assign_child_blocks:
-			parent_player.child_blocks.append(self)
+			parent_player.push_child_block(self)
 		
 		parent_player.new_child_blocks.append(self)
 
@@ -195,18 +208,6 @@ func _ready() -> void:
 					current_trail = null
 				)
 	
-	# Shared with [Unmashed]
-	if attributes == null:
-		attributes = BlockAttributes.new()
-
-		attributes.mash_type = mash_type
-		attributes.build_type = build_type
-		attributes.is_golden = is_golden
-	else:
-		mash_type = attributes.mash_type
-		build_type = attributes.build_type
-		is_golden = attributes.is_golden
-
 	attribute_set.emit()
 
 	GameLogic.setup_mash(sprite_block, attributes.mash_type, attributes.build_type, attributes.is_golden)
@@ -253,7 +254,7 @@ func mash() -> bool: ## Ok O(1)
 		var obj: Object = ray.get_collider()
 		var unmashed: Unmashed
 		
-		print_debug(obj)
+		#print_debug(obj)
 		if obj is TwistedColliBlock:
 			print_debug(obj as TwistedColliBlock)
 

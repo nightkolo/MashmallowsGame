@@ -43,6 +43,13 @@
 - [ ] NG.io integration tests
 
 ### Assets and Design
+- [ ] Interface
+  - [ ] Stars
+    - [ ] Complete
+    - [ ] Uncomplete
+  - [ ] Bakery levels panel
+  - [ ] BG elements
+  - [ ] Input prompts bar
 - [ ] Promo
   - [ ] Logo
   - [ ] Artwork

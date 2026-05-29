@@ -295,3 +295,5 @@ blink_interval = 0.0
 [node name="Z" parent="." unique_id=2080773523 instance=ExtResource("25_33vi3")]
 position = Vector2(22, -19)
 emitting = false
+
+[node name="Node2D" type="Node2D" parent="." unique_id=392171179]
