@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bh0f4dstn2orj"]
 
 [ext_resource type="Script" uid="uid://dqy6fhpwj1tib" path="res://interface/interactors/main_menus_scene.gd" id="1_2rt8a"]
+[ext_resource type="Texture2D" uid="uid://bdtf324svxvse" path="res://assets/bg/bg-level-01.png" id="2_fmvdq"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://core/scripts/nodes/tiled_sprite_2d.gd" id="3_bqa5v"]
 [ext_resource type="PackedScene" uid="uid://bml6rehgryowp" path="res://interface/menus/menu_title_screen.tscn" id="5_nf347"]
 [ext_resource type="PackedScene" uid="uid://dqdel0n2pkgs7" path="res://interface/menus/menu_board_select.tscn" id="6_t1hg8"]
 [ext_resource type="PackedScene" uid="uid://c10b0rndepxjb" path="res://interface/menus/menu_credits.tscn" id="7_mgwmq"]
@@ -22,12 +24,26 @@ process_mode = 3
 layer = -10
 
 [node name="BG" type="ColorRect" parent="BG" unique_id=1868956648]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.22906628, 0.22639936, 7.219613e-08, 1)
+
+[node name="TiledSprite2D" type="Sprite2D" parent="BG" unique_id=1739332519]
+self_modulate = Color(0.22906628, 0.22639936, 7.219613e-08, 1)
+texture_repeat = 2
+position = Vector2(640, 400)
+rotation = -0.3926991
+texture = ExtResource("2_fmvdq")
+region_enabled = true
+region_rect = Rect2(7081.8047, 8308.04, 1620, 1250)
+script = ExtResource("3_bqa5v")
+animate_scroll = true
+scroll_trajectory = 0.4014257279586958
+metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
 
 [node name="TitleScreen" parent="." unique_id=1857705653 instance=ExtResource("5_nf347")]
 visible = false
