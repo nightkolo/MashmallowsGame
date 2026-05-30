@@ -12,6 +12,20 @@
 [ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="8_8gut0"]
 [ext_resource type="Texture2D" uid="uid://34wayfvqlvrp" path="res://assets/interface/order-star-01.png" id="8_16r33"]
 
+[sub_resource type="Theme" id="Theme_xji4h"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0.174626, 0.17462596, 0.17462596, 1)
+Button/constants/outline_size = 16
+Button/fonts/font = ExtResource("3_rncj0")
+Button/styles/disabled = ExtResource("4_rncj0")
+Button/styles/focus = ExtResource("4_rncj0")
+Button/styles/hover = ExtResource("4_rncj0")
+Button/styles/normal = ExtResource("4_rncj0")
+Button/styles/pressed = ExtResource("4_rncj0")
+
+[sub_resource type="Theme" id="Theme_fa2nb"]
+Button/styles/normal = ExtResource("4_rncj0")
+
 [sub_resource type="LabelSettings" id="LabelSettings_uodmc"]
 font_size = 48
 font_color = Color(1, 1, 0.6, 1)
@@ -29,20 +43,6 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.25)
 shadow_offset = Vector2(4, 4)
-
-[sub_resource type="Theme" id="Theme_xji4h"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(0.174626, 0.17462596, 0.17462596, 1)
-Button/constants/outline_size = 16
-Button/fonts/font = ExtResource("3_rncj0")
-Button/styles/disabled = ExtResource("4_rncj0")
-Button/styles/focus = ExtResource("4_rncj0")
-Button/styles/hover = ExtResource("4_rncj0")
-Button/styles/normal = ExtResource("4_rncj0")
-Button/styles/pressed = ExtResource("4_rncj0")
-
-[sub_resource type="Theme" id="Theme_fa2nb"]
-Button/styles/normal = ExtResource("4_rncj0")
 
 [sub_resource type="FontVariation" id="FontVariation_181fw"]
 spacing_top = -5
@@ -86,41 +86,26 @@ color = Color(0.25, 0.1, 0.25, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -75.5
+offset_bottom = 75.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 70
+theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 70
+theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main" unique_id=1750058549]
 layout_mode = 2
 theme_override_constants/separation = 15
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Main/VBoxContainer" unique_id=1394175343]
-layout_mode = 2
-theme_override_constants/separation = -10
-
-[node name="Label" type="Label" parent="Main/VBoxContainer/VBoxContainer2" unique_id=2126358403]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Select an Order"
-label_settings = SubResource("LabelSettings_uodmc")
-
-[node name="StarCountLabel" type="Label" parent="Main/VBoxContainer/VBoxContainer2" unique_id=685001194]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "S: 00 / 00"
-label_settings = SubResource("LabelSettings_3h7g0")
+alignment = 1
 
 [node name="MainContentContainer" type="HBoxContainer" parent="Main/VBoxContainer" unique_id=1710102394]
 layout_mode = 2
 
 [node name="Left" type="MarginContainer" parent="Main/VBoxContainer/MainContentContainer" unique_id=386378161]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("3_76a2q")
 
@@ -589,6 +574,62 @@ script = ExtResource("4_4wpgq")
 
 [node name="ProgessBtn" type="Button" parent="Main/VBoxContainer/VBoxContainer" unique_id=566758712 groups=["UIButton"]]
 unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../BackButton")
+theme = ExtResource("5_aeiv1")
+text = "Reset Progress"
+script = ExtResource("4_4wpgq")
+
+[node name="Main3" type="MarginContainer" parent="." unique_id=8114426]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main3" unique_id=859614799]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main3/VBoxContainer" unique_id=830437638]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Label" type="Label" parent="Main3/VBoxContainer/VBoxContainer2" unique_id=163252701]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Select an Order"
+label_settings = SubResource("LabelSettings_uodmc")
+
+[node name="StarCountLabel" type="Label" parent="Main3/VBoxContainer/VBoxContainer2" unique_id=421245116]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "S: 00 / 00"
+label_settings = SubResource("LabelSettings_3h7g0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main3/VBoxContainer" unique_id=1557046328]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = -5
+
+[node name="BackButton" type="Button" parent="Main3/VBoxContainer/VBoxContainer" unique_id=1288502432 groups=["UIButton"]]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_bottom = NodePath("../ProgessBtn")
+theme = ExtResource("5_aeiv1")
+text = "Back to Title"
+script = ExtResource("4_4wpgq")
+
+[node name="ProgessBtn" type="Button" parent="Main3/VBoxContainer/VBoxContainer" unique_id=763724687 groups=["UIButton"]]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../BackButton")

@@ -5,21 +5,20 @@ var tween: Tween
 var board_id: int = 0
 
 
-@onready var bcheck: Node2D = $Node2D/Bcheck
-@onready var bcheck_2: Node2D = $Node2D/Bcheck2
+@onready var com_star: Node2D = $Node2D/Bcheck
+@onready var uncom_star: Node2D = $Node2D/Bcheck2
 @onready var node_2d: Node2D = $Node2D
 
 
 func _ready() -> void:
 	display_data()
 	
-	#GameMgr.game_data_saved.connect(display_data)
+	GameMgr.game_data_saved.connect(display_data)
 	
 	self.add_to_group("UIBoardButton")
 	
 	pivot_offset = size / 2.0
 	node_2d.scale = Vector2.ONE * 0.75
-	
 	node_2d.position = Vector2.ONE * 7.5
 	
 	pressed.connect(anim_pressed)
@@ -42,7 +41,8 @@ func display_data() -> void:
 		push_warning("Cannot display data. Key %s is out of bounds from GameUtil.NUMBER_OF_LEVELS." % board_num)
 		return
 	
-	bcheck.visible = GameData.runtime_data[board_num]["completed"] == true
+	com_star.visible = GameData.runtime_data[board_num]["completed"] == true
+	uncom_star.visible = GameData.runtime_data[board_num]["completed"] == false
 
 
 func anim_pressed() -> void:

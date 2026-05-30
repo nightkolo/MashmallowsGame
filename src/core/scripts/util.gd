@@ -21,6 +21,8 @@ const MASH_WAIT_TIME = 0.5
 const ORDER_COMPLETE_WAIT_TIME = 1.0
 
 const NUMBER_OF_LEVELS = 20
+
+const NUMBER_OF_WORLDS = 2
 const LEVEL_FILE_BEGIN = "res://world/levels/main/level_"
 const LEVEL_FILE_END = ".tscn"
 

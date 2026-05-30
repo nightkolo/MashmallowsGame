@@ -8,6 +8,7 @@ signal entered_cb_2()
 #@export var texture_checkerboard_uncomplete_checkmark: Texture = preload("res://assets/interface/checkerboard-uncomplete-checkmark-01.png")
 
 @onready var board_btns: Array[Node] = get_tree().get_nodes_in_group("UIBoardButton")
+@onready var main: MarginContainer = $Main
 
 @onready var back_btn: Button = %BackButton
 @onready var btn_b_1: Button = %BtnB1
@@ -19,6 +20,7 @@ signal entered_cb_2()
 @onready var no_progress_btn: Button = %NoProgressBtn
 
 @onready var star_count_label: Label = %StarCountLabel
+@onready var left: LevelPanel = %Left
 
 #@onready var cb_1_check: Node2D = %CB1check
 #@onready var cb_2_check: Node2D = %CB2check
@@ -30,7 +32,7 @@ var _cb_entered: int = 1
 
 
 func _ready() -> void:
-	#display_data()
+	display_data()
 	
 	#### Reset popup
 	progess_btn.pressed.connect(func():
@@ -61,10 +63,18 @@ func _ready() -> void:
 	is_showing.connect(func():
 		btn_b_1.grab_focus()
 		
-		#display_data()
+		left.bakery_panel_entered(0)
+		
+		display_data()
 		
 		for board_btn: BoardSelectButton in board_btns:
 			board_btn.display_data()
+		
+		#await get_tree().create_timer(0.2).timeout
+		#left.anim_levels_panel(left.lvl_panels[0])
+		##left.anim_levels_panel(left.lvl_panels[0])
+		
+
 		)
 	
 	back_btn.pressed.connect(func():
@@ -87,6 +97,11 @@ func _ready() -> void:
 			board_btn.mouse_entered.connect(_cb_2_entered)
 		
 	btn_b_1.grab_focus()
+	left.bakery_panel_entered(0)
+	#var tween := create_tween()
+	#tween.tween_property(main, "size", main.get_viewport_rect().size, 1.0)
+	main.set_deferred("size", main.get_viewport_rect().size)
+	
 
 
 func goto_level(board_id: int) -> void:
@@ -109,7 +124,7 @@ func goto_level(board_id: int) -> void:
 		Util.disable_buttons(btns, false)
 
 
-#func display_data() -> void:
+func display_data() -> void:
 	#if !GameData.runtime_data.has("101"):
 		#push_warning("Cannot display data. Key 101 not found in GameData.runtime_data.")
 		#return
@@ -117,7 +132,9 @@ func goto_level(board_id: int) -> void:
 	#if !GameData.runtime_data.has("102"):
 		#push_warning("Cannot display data. Key 102 not found in GameData.runtime_data.")
 		#return
-		#
+	
+	star_count_label.text = "Starred: %s / 20" % GameData.get_star_count()
+	
 	#if GameData.runtime_data["101"]["completed"] == true:
 		#cb_1_check_sprite.texture = texture_checkerboard_complete_checkmark
 	#else:

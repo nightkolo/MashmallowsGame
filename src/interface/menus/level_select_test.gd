@@ -1,4 +1,5 @@
 extends MarginContainer
+class_name LevelPanel
 
 signal entered_cb_1()
 signal entered_cb_2()
@@ -18,7 +19,7 @@ signal entered_cb_2()
 
 
 
-func _bakery_panel_entered(i: int) -> void:
+func bakery_panel_entered(i: int) -> void:
 	print_debug("Bakery %s entered" % i)
 	
 	anim_levels_panel(lvl_panels[i])
@@ -35,21 +36,22 @@ func _ready() -> void:
 			
 		var index := floori((board_num - 1.0) / 10.0)
 		
-		board_btn.focus_entered.connect(_bakery_panel_entered.bind(index))
-		board_btn.mouse_entered.connect(_bakery_panel_entered.bind(index))
+		board_btn.focus_entered.connect(bakery_panel_entered.bind(index))
+		board_btn.mouse_entered.connect(bakery_panel_entered.bind(index))
 		
 	%BtnB1.grab_focus()
+	bakery_panel_entered(0)
 	
 	
 var _panel_tween: Tween
-var _last_control: NinePatchRect = null
+#var _last_control: NinePatchRect = null
 
 
 func anim_levels_panel(control: NinePatchRect) -> void:
-	if lvl_panels.is_empty() || control == _last_control:
+	if lvl_panels.is_empty():
 		return
 		
-	_last_control = control
+	#_last_control = control
 	
 	if _panel_tween:
 		_panel_tween.kill()
@@ -63,7 +65,7 @@ func anim_levels_panel(control: NinePatchRect) -> void:
 	_panel_tween = create_tween().set_parallel(true)
 	_panel_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	
-	_panel_tween.tween_property(self, "position:y", -1 * (control.position.y - 50.0), dur)
+	_panel_tween.tween_property(self, "position:y", -1 * (control.position.y - 250.0), dur)
 	
 	for p: NinePatchRect in lvl_panels:
 		p.pivot_offset_ratio = Vector2(0.0, 0.5)

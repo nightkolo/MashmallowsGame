@@ -14,7 +14,7 @@
       - [x] Grid Design
       - [ ] Paperclips Info
       - [ ] Star system
-        - [ ] Golden star (Best solution)
+        - [x] Golden star (Best solution)
         - [ ] Blue star (Pass)
       - [ ] Chibi Millie?
     - [x] Credits and Support
@@ -35,6 +35,7 @@
     - [x] Flame object
     - [x] Golden marshmallow detection
     - [ ] Fully refined core game code
+      - [ ] Centralized orders
   - [ ] Beta levels
 - [x] Intro sequence
 

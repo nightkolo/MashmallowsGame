@@ -1,4 +1,11 @@
 class_name GameData extends Node
+static func get_star_count() -> int:
+	var c: int = 0
+	for i in range(1, Util.NUMBER_OF_LEVELS):
+		if runtime_data[str(i)]["completed"] == true:
+			c += 1
+	return c
+	
 static var runtime_data: Dictionary = {
 	"first_session": true,
 	"101": {

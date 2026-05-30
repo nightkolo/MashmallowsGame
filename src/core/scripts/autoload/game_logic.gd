@@ -85,6 +85,7 @@ func level_won():
 
 
 ## 0.05s waittime
+# TODO: Rework game logic
 func check_order_completion() -> void: # Ok -> O(n), Worst case -> O(n^2)
 	if GameMgr.current_order_checker == null || GameMgr.current_level.ignore_order:
 		return

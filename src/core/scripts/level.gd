@@ -8,13 +8,13 @@ class_name Level
 @export var spawn_anim_time: float = 0.75
 @export var set_for_each: bool = false
 @export var spawn_anim_time_each: float = 0.0
+@export var save_stats: bool = true
 @export_group("Miscellaneous")
 @export var show_dev_ui: bool = false ## @experimental
 @export var show_unmashed_blocks: bool = true 
 @export var auto_spawn_unmashed_blocks: bool = true
 @export var ignore_order: bool = false
 @export var no_progression: bool = false
-
 @export_category("Objects to Assign")
 @export var level_goal: LevelGoal
 @export var level_info: LevelInfo
@@ -31,6 +31,7 @@ var _dev_ui: PackedScene = preload("res://interface/menus/dev_ui.tscn")
 
 @onready var spawners: Array = get_tree().get_nodes_in_group("Spawner")
 
+var saver_loader: SaverLoader
 
 func anim_level():
 	has_started = true
@@ -97,7 +98,16 @@ func _ready() -> void:
 		push_warning("player not assigned")
 
 
+	if save_stats:
+		if !ignore_order:
+			GameMgr.game_just_ended.connect(store_stats)
+		
+		var SL: SaverLoader = SaverLoader.new()
+		add_child(SL)
+		saver_loader = SL
+
 	if level_id < 0:
+		level_id = scene_file_path.to_int()
 		GameMgr.level_id = scene_file_path.to_int()
 	# elif level_id == 0:
 	# 	setup_intro_sequence()
@@ -110,3 +120,54 @@ func _ready() -> void:
 		GameMgr.current_level.add_child(ui)
 		GameMgr.current_level.move_child(ui, 0)
 	
+
+#var save_stats: bool
+
+func store_stats() -> void:
+	if !save_stats:
+		return
+		
+	if saver_loader == null:
+		push_warning("Cannot save data. saver_loader not assigned.")
+		return
+	
+	var board_num: String = str(level_id)
+	var world_num: int = int((level_id - 1)/ 10.0) + 1
+	var checkerboard_num: String = "10" + str(world_num)
+	
+	if !GameData.runtime_data.has(board_num):
+		push_error("Cannot save data. Key %s not found in GameData.runtime_data." % board_num)
+		return
+	
+	if !GameData.runtime_data.has(checkerboard_num):
+		push_error("Cannot save data. Key %s not found in GameData.runtime_data." % checkerboard_num)
+		return
+	
+	#if _moves_counted < GameData.runtime_data[board_num]["move_count"]:
+		#GameData.runtime_data[board_num]["move_count"] = _moves_counted
+	
+	if GameData.runtime_data[board_num]["completed"] == false:
+		GameData.runtime_data[board_num]["completed"] = true
+	
+	if GameData.runtime_data[checkerboard_num]["completed"] == false:
+		GameData.runtime_data[checkerboard_num]["completed"] = _check_cb_progression(world_num)
+	
+	saver_loader.save_game()
+
+
+func _check_cb_progression(cb: int) -> bool:
+	var begin: int = 1 + ((cb - 1) * 10)
+	var end: int = 11 + ((cb - 1) * 10)
+	
+	var completed: int = 0
+	
+	for i: int in range(begin, end):
+		if !GameData.runtime_data.has(str(i)):
+			push_warning("Cannot read data for _check_cb_progression. Key %s not found in GameData.runtime_data." % str(i))
+			return false
+			
+		if GameData.runtime_data[str(i)]["completed"] == true:
+			completed += 1
+	
+	@warning_ignore("integer_division")
+	return completed == 10
