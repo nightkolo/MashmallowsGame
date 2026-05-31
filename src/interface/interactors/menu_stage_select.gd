@@ -28,7 +28,14 @@ signal entered_cb_2()
 #@onready var cb_1_check_sprite: Sprite2D = %CB1checkSprite
 #@onready var cb_2_check_sprite: Sprite2D = %CB2checkSprite
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("game_tutorial"):
+		goto_level(0)
+		
+
 var _cb_entered: int = 1
+
+
 
 
 func _ready() -> void:
@@ -62,6 +69,8 @@ func _ready() -> void:
 	
 	is_showing.connect(func():
 		btn_b_1.grab_focus()
+		
+		GameMgr.menu_entered.emit(GameMgr.MenuID.LEVEL_SELECT)
 		
 		left.bakery_panel_entered(0)
 		
@@ -115,7 +124,7 @@ func goto_level(board_id: int) -> void:
 	
 	GameLogic.reset_game_logic()
 	
-	if (board_id >= 1 && board_id <= Util.NUMBER_OF_LEVELS):
+	if (board_id >= 0 && board_id <= Util.NUMBER_OF_LEVELS):
 		Trans.slide_to_scene(Util.LEVEL_FILE_BEGIN + str(board_id) + Util.LEVEL_FILE_END)
 
 	else:

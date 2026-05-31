@@ -27,39 +27,82 @@ layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InputPromptPanel/MarginContainer" unique_id=219861616]
+[node name="InputContainer" type="HBoxContainer" parent="InputPromptPanel/MarginContainer" unique_id=219861616]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Input" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/HBoxContainer" unique_id=783214576]
+[node name="Move" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=939218903]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/HBoxContainer/Input" unique_id=84704031]
+[node name="a" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Move" unique_id=815839804]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/HBoxContainer/Input" unique_id=1721193607]
-layout_mode = 2
-text = "[Enter] Select"
-label_settings = SubResource("LabelSettings_tggsk")
-
-[node name="Input2" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/HBoxContainer" unique_id=271247948]
+[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Move/a" unique_id=392784325]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/HBoxContainer/Input2" unique_id=1424475734]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/HBoxContainer/Input2" unique_id=1679529204]
+[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/InputContainer/Move/a" unique_id=1716347747]
 layout_mode = 2
 text = "[Arrow] Move"
 label_settings = SubResource("LabelSettings_tggsk")
 
-[node name="Input3" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/HBoxContainer" unique_id=296210501]
+[node name="Select" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=385449077]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/HBoxContainer/Input3" unique_id=831831497]
+[node name="a" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Select" unique_id=1844297699]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/HBoxContainer/Input3" unique_id=1404131170]
+[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Select/a" unique_id=209372300]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/InputContainer/Select/a" unique_id=1867729868]
+layout_mode = 2
+text = "[Enter] Select"
+label_settings = SubResource("LabelSettings_tggsk")
+
+[node name="SelectButton" type="Button" parent="InputPromptPanel/MarginContainer/InputContainer/Select" unique_id=1765205462]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Back" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=652794191]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="a" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Back" unique_id=296210501]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Back/a" unique_id=831831497]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/InputContainer/Back/a" unique_id=1404131170]
 layout_mode = 2
 text = "[Esc] Back"
 label_settings = SubResource("LabelSettings_tggsk")
+
+[node name="BackButton" type="Button" parent="InputPromptPanel/MarginContainer/InputContainer/Back" unique_id=1260855235]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Tutorial" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=655207681]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="a" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial" unique_id=1340318490]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial/a" unique_id=238983785]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial/a" unique_id=971106341]
+layout_mode = 2
+text = "[E] Play Tutorial"
+label_settings = SubResource("LabelSettings_tggsk")
+
+[node name="TutButton" type="Button" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial" unique_id=85818886]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1

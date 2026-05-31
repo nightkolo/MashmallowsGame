@@ -17,7 +17,9 @@ enum MenuID {
 	PAUSE = 1,
 	WORLD_COMPLETE = 2,
 	START = 3,
-	CREDITS = 4,
+	TITLE = 4,
+	LEVEL_SELECT = 5,
+	CREDITS = 6,
 	RUNTIME = 100,
 	MISC = 101
 	}
@@ -35,7 +37,6 @@ var level_id: int = 0:
 		await get_tree().create_timer(1.0).timeout
 		
 		save_game_data()
-		
 
 # Self-assigned by the Entites
 var current_level: Level
@@ -76,13 +77,34 @@ func _ready() -> void:
 	menu_entered.connect(func(menu: MenuID):
 		menu_id = menu
 		
+		InputPrompts.select_inputs.visible = false
+		InputPrompts.move_inputs.visible = false
+		InputPrompts.back_inputs.visible = false
+		InputPrompts.tutorial_inputs.visible = false
+		
 		match menu:
-			
-			MenuID.RUNTIME, MenuID.MISC, MenuID.START:
+			MenuID.RUNTIME, MenuID.MISC:
 				InputPrompts.visible = false
-			
-			_:
+				
+			MenuID.WORLD_COMPLETE:
 				InputPrompts.visible = true
+				InputPrompts.select_inputs.visible = true
+				
+			MenuID.TITLE, MenuID.PAUSE:
+				InputPrompts.visible = true
+				InputPrompts.select_inputs.visible = true
+				InputPrompts.move_inputs.visible = true
+			
+			MenuID.LEVEL_SELECT:
+				InputPrompts.visible = true
+				InputPrompts.select_inputs.visible = true
+				InputPrompts.move_inputs.visible = true
+				InputPrompts.back_inputs.visible = true
+				InputPrompts.tutorial_inputs.visible = true
+				
+			MenuID.CREDITS:
+				InputPrompts.visible = true
+				InputPrompts.back_inputs.visible = true
 		)
 	
 	game_just_ended.connect(func():

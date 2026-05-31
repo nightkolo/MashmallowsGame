@@ -11,7 +11,7 @@ class_name CreditsScreen
 func _ready() -> void:
 	back_btn.grab_focus()
 	
-	#is_showing.connect(func():
+	is_showing.connect(func():
 		#for node: Node in messages.get_children():
 			#node.visible = false
 		#
@@ -30,8 +30,11 @@ func _ready() -> void:
 			#
 			#open_random_message()
 		
-		#back_btn.grab_focus()
-		#)
+		back_btn.grab_focus()
+		
+		GameMgr.menu_entered.emit(GameMgr.MenuID.CREDITS)
+		
+		)
 	
 	back_btn.pressed.connect(func():
 		GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)

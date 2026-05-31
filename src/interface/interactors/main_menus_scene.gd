@@ -50,18 +50,18 @@ func _ready() -> void:
 		
 	else:
 		enter_main_menu(MainMenus.TITLE)
-		GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
+		#GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
 	
 	menu_title.start_btn.grab_focus()
 	
 	menu_title.select_board_btn_pressed.connect(func():
 		enter_main_menu(MainMenus.BOARD_SELECT)
-		GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
+		#GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
 		)
 	
 	menu_title.credits_btn_pressed.connect(func():
 		enter_main_menu(MainMenus.CREDITS)
-		GameMgr.menu_entered.emit(GameMgr.MenuID.CREDITS)
+		#GameMgr.menu_entered.emit(GameMgr.MenuID.CREDITS)
 		
 		#_unlock_credits_medal()
 		)
@@ -69,7 +69,7 @@ func _ready() -> void:
 	for menu: MainMenu in menus:
 		menu.back_button_pressed.connect(func():
 			enter_main_menu(MainMenus.TITLE)
-			GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
+			#GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
 			
 			menu_board_select.reset_popup.visible = false
 		)

@@ -16,6 +16,8 @@ func _ready() -> void:
 	is_showing.connect(func():
 		start_btn.grab_focus()
 		
+		GameMgr.menu_entered.emit(GameMgr.MenuID.TITLE)
+		
 		if GameData.runtime_data.has("last_level"):
 			var lvl_num: int = GameData.runtime_data["last_level"]
 			
