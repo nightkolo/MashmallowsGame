@@ -129,16 +129,22 @@ func update_completion_prec(perc: float) -> void:
 			if !p.emitting:
 				p.emitting = true
 		
-		tween_prec.set_trans(Tween.TRANS_BACK)
+		#tween_prec.set_trans(Tween.TRANS_BACK)
 		prec_grad.gradient.set_offset(1, 0.15)
-		star_node_2.scale = Vector2(1.8, 0.6)
+		star_node_2.scale = Vector2(2.0, 0.5)
+		star_no_win.self_modulate = Color(Color.WHITE * 4.0)
 	
 	tween_prec.tween_property(prec_grad.gradient,
 	"offsets",
-	PackedFloat32Array([0.125, lerpf(0.15, 0.9, perc)]),
+	PackedFloat32Array(
+		[
+			0.0,
+			maxf(0.125, lerpf(0.15, 0.9, perc))
+			]
+		),
 	0.5)
-	
-	tween_prec.tween_property(star_node_2, "scale", Vector2.ONE, 0.4)
+	tween_prec.tween_property(star_no_win, "self_modulate", Color(Color.WHITE, 1.0), 0.4)
+	tween_prec.tween_property(star_node_2, "scale", Vector2.ONE, 0.4).set_trans(Tween.TRANS_BACK)
 	
 	
 	
