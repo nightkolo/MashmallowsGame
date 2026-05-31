@@ -1,3 +1,4 @@
+## @deprecated: Use [LevelOrder]
 @tool
 extends Node2D
 class_name Order

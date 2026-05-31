@@ -97,8 +97,6 @@ func check_order_completion() -> void:
 	var order_code: Array[Dictionary] = current_level_order_object.order_code
 	var player_code: Array[Dictionary] = GameMgr.current_player.player_blocks_code
 	
-	print_debug(order_code)
-	print_debug(player_code)
  	# Worst case -> O(n * m)
 	# n = order_code.size(), m = player_code.size()
 	for o_entry: Dictionary in order_code:

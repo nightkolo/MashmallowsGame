@@ -6,6 +6,7 @@ class_name LevelOrder
 @export_tool_button("Create order code") var update_code_ = update_code
 
 var mash_block_checker_ids: Array[MashBlockCheckerID]
+@export var use_level_data: bool = false ## @experimental
 @export var order_code: Array[Dictionary]
 
 
@@ -42,14 +43,14 @@ func update_look() -> void:
 func _ready() -> void:
 	GameLogic.current_level_order_object = self
 	
+	# Wait for assignment
 	await get_tree().create_timer(0.1).timeout
 	
 	order_code.clear()
 		
-		
 	for id: MashBlockCheckerID in mash_block_checker_ids:
 		Util.set_block_code(order_code, id.attributes, id)
 	
-	#for o: Dictionary in order_code:
-		#print_debug(o)
+	for o: Dictionary in order_code:
+		print_debug(o)
 	

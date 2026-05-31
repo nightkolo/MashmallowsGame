@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btp302od8x8dp"]
 
-[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="1_sv3es"]
+[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/level_order_old.gd" id="1_sv3es"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="2_f5j3n"]
 
 [node name="Order" type="Node2D" unique_id=109960293]

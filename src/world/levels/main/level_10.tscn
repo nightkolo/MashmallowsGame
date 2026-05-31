@@ -9,10 +9,10 @@
 [ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_40ahn"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="7_qylky"]
 [ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="8_aqv8b"]
-[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="8_ktaru"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="9_aqv8b"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="9_qylky"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="10_n03s7"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_shjcp"]
 [ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/door.gd" id="12_nv3uj"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="13_n58ur"]
 [ext_resource type="PackedScene" uid="uid://djgv45k3n5ibr" path="res://object/objects/obj_switch.tscn" id="14_qylky"]
@@ -112,11 +112,11 @@ offset_bottom = 416.0
 [node name="Star" parent="World/LevelGoal" index="1" unique_id=1640468128]
 position = Vector2(80, 176)
 
-[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=690408388]
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=984277017]
 position = Vector2(10, 85)
 scale = Vector2(0.7, 0.7)
-script = ExtResource("8_ktaru")
-metadata/_custom_type_script = "uid://blq670fy1uldv"
+script = ExtResource("10_shjcp")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("9_qylky")]
 attributes = SubResource("Resource_shjcp")

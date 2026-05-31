@@ -7,12 +7,12 @@
 [ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="3_6incp"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="4_yl7iw"]
 [ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_rvyxd"]
-[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="5_uhirg"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="6_8nnkv"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="7_dkqsk"]
 [ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_eqd5o"]
 [ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="8_eqd5o"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="9_5rg4y"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_eqd5o"]
 [ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="15_482qv"]
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="16_1p5om"]
 
@@ -94,11 +94,11 @@ offset_top = 288.0
 offset_right = 640.0
 offset_bottom = 288.0
 
-[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=1905020875]
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=573939108]
 position = Vector2(-23, 87)
 scale = Vector2(0.75, 0.75)
-script = ExtResource("5_uhirg")
-metadata/_custom_type_script = "uid://blq670fy1uldv"
+script = ExtResource("10_eqd5o")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("6_8nnkv")]
 attributes = SubResource("Resource_6m42i")

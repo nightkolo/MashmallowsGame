@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_nxq3k"]
 [ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_8nfcc"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="6_x8wid"]
-[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="7_t5n8i"]
+[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/level_order_old.gd" id="7_t5n8i"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="8_xg2d0"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="9_1ee2h"]
 [ext_resource type="PackedScene" uid="uid://bjp2qrj0a6lh6" path="res://object/objects/obj_flame.tscn" id="10_awbdq"]

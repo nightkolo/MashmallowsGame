@@ -1,3 +1,4 @@
+## @deprecated
 ## Checks a single [MashBlock] in [Mashed] 
 extends Area2D
 class_name MashBlockChecker

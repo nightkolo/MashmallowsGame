@@ -22,21 +22,19 @@ enum MenuID {
 	MISC = 101
 	}
 
-## Self-assigned by the Entites
 var menu_id: MenuID
 var level_id: int:
 	set(value):
 		if current_level_goal:
 			current_level_goal.level_number_label.text = "1-" + str(value)
 		level_id = value
-var current_level: Level:
-	set(value):
-		current_level = value
-		#current_level.show_dev_ui = true
+
+# Self-assigned by the Entites
+var current_level: Level
 var current_level_world: World ## @deprecated
 var current_menu: MainMenusUI ## @deprecated
 var current_player: Player
-var current_order_checker: OrderChecker
+var current_order_checker: OrderChecker ## @deprecated
 var current_NPC: NPCBoard ## Used for quicker access by [ResetNoticeArea]
 var current_ui_handler: GameplayUI ## @experimental
 var current_level_goal: LevelGoal

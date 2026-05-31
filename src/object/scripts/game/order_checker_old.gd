@@ -1,3 +1,4 @@
+## @deprecated
 ## Check if all [BlockMashChecker]s are satisfied
 ## Gameplay check actor
 extends Node2D

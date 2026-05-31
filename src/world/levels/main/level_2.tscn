@@ -8,10 +8,10 @@
 [ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="4_brxtv"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="4_nt80m"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="4_qsp8v"]
-[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="5_brxtv"]
 [ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="8_25mdb"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="9_brxtv"]
 [ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="9_y6dxq"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_ab80u"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="10_rvqfo"]
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="13_25mdb"]
 [ext_resource type="PackedScene" uid="uid://ck1gettgytye7" path="res://world/interface/level_info.tscn" id="14_8syfh"]
@@ -107,11 +107,11 @@ offset_bottom = 448.0
 [node name="Star" parent="World/LevelGoal" index="1" unique_id=1640468128]
 position = Vector2(80, 192)
 
-[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=1167522552]
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=1199319507]
 position = Vector2(25, 83)
 scale = Vector2(0.7, 0.7)
-script = ExtResource("5_brxtv")
-metadata/_custom_type_script = "uid://blq670fy1uldv"
+script = ExtResource("10_ab80u")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("9_brxtv")]
 attributes = SubResource("Resource_y6dxq")
@@ -154,7 +154,7 @@ offset_bottom = 85.0
 scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-24984.193, 3.0599403e-12, 4776, 3584)
+region_rect = Rect2(-6951.6436, 8.513375e-13, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_left = 74.0

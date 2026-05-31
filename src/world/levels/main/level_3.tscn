@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_wh0m8"]
 [ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="8_5nq5i"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="8_yi12a"]
-[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="9_gbmha"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_5nq5i"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="10_jddar"]
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="11_8ibhb"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="12_2ys3n"]
@@ -105,11 +105,11 @@ offset_top = 320.0
 offset_right = 608.0
 offset_bottom = 320.0
 
-[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=690408388]
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=1394060222]
 position = Vector2(25, 86)
 scale = Vector2(0.75, 0.75)
-script = ExtResource("9_gbmha")
-metadata/_custom_type_script = "uid://blq670fy1uldv"
+script = ExtResource("10_5nq5i")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("10_jddar")]
 attributes = SubResource("Resource_1o0fm")

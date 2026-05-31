@@ -54,7 +54,7 @@ const bg_w2: Array[Color] = [
 ]
 
 static func set_block_code(arr: Array[Dictionary], block: BlockAttributes, node: Node2D) -> void:
-	arr.clear()
+	#arr.clear()
 	arr.append({
 		"type": block.mash_type,
 		"pos": Vector2(

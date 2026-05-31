@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_0ispv"]
 [ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="7_4wsov"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="8_xt2o7"]
-[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/order.gd" id="9_beuva"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_1owjf"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="10_05se8"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="11_12cdj"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="11_eb4x1"]
@@ -98,11 +98,11 @@ offset_top = 240.0
 offset_right = 640.0
 offset_bottom = 240.0
 
-[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=690408388]
+[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=313750364]
 position = Vector2(25, 88)
 scale = Vector2(0.75, 0.75)
-script = ExtResource("9_beuva")
-metadata/_custom_type_script = "uid://blq670fy1uldv"
+script = ExtResource("10_1owjf")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("10_05se8")]
 attributes = SubResource("Resource_bj6vw")
@@ -126,11 +126,13 @@ offset_bottom = 464.0
 level_info = "[CB]Cherry bombs [color=#ff7f7f][shake]explode[/shake][/color] when [color=pink]Unmashed.[/color] "
 
 [node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
+modulate = Color(1, 1, 1, 0)
 offset_right = 240.0
 offset_bottom = 120.0
+scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-2723.096, 3.3347703e-13, 4776, 3584)
+region_rect = Rect2(-346.35278, 4.2415964e-14, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 248.0
@@ -138,9 +140,13 @@ offset_bottom = 256.0
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
 text = "[b][font_size=21.0][CB]Cherry bombs [color=#ff7f7f][shake]explode[/shake][/color] when [color=pink]Unmashed.[/color] "
-visible_characters = 40
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
+[node name="InfoSpriteNode" parent="World/LevelInfo" index="2" unique_id=1221176953]
+visible = false
+
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
 position = Vector2(240, 90)
 rotation = -0.121761054
 
