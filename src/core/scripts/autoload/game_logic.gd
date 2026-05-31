@@ -31,6 +31,7 @@ var completion_percentage: float:
 			completion_percentage_updated.emit(value)
 		completion_percentage = value
 
+var current_level_order_object: LevelOrder
 var order_check_ori_pos: Vector2
 
 var amount_satisfied: int = 1
@@ -84,22 +85,48 @@ func level_won():
 	print("Game over.")
 
 
-## 0.05s waittime
-# TODO: Rework game logic
-func check_order_completion() -> void: # Ok -> O(n), Worst case -> O(n^2)
-	if GameMgr.current_order_checker == null || GameMgr.current_level.ignore_order:
+func check_order_completion() -> void:
+	if current_level_order_object == null || GameMgr.current_level.ignore_order:
 		return
 	
 	print_debug("Checking...")
 
+	amount_satisfied = 0
 	is_checking_order_match = true
-	GameMgr.current_order_checker.global_position = GameMgr.current_player.position
 	
-	await get_tree().create_timer(0.05).timeout
+	var order_code: Array[Dictionary] = current_level_order_object.order_code
+	var player_code: Array[Dictionary] = GameMgr.current_player.player_blocks_code
 	
-	amount_satisfied = GameMgr.current_order_checker.check_satisfaction_full()
-	
+	print_debug(order_code)
+	print_debug(player_code)
+ 	# Worst case -> O(n * m)
+	# n = order_code.size(), m = player_code.size()
+	for o_entry: Dictionary in order_code:
+		var id_node: MashBlockCheckerID = o_entry["ref"] as MashBlockCheckerID
+		
+		if id_node == null:
+			continue
+		
+		var match_found: bool = false
+		
+		for p_entry: Dictionary in player_code:
+			if o_entry["type"] != p_entry["type"]:
+				continue
+			
+			if o_entry["pos"] != p_entry["pos"]:
+				continue
+				
+			# Match found
+			match_found = true
+			break
+		
+		id_node.anim_satisfied(match_found)
+		if match_found:
+			amount_satisfied += 1
+
 	completion_percentage = (float(amount_satisfied - 1.0) / number_of_order_blocks)
+	
+	print_debug("completion_percentage: %s" % completion_percentage )
 	
 	if amount_satisfied > last_amount_satisfied:
 		order_gain.emit(amount_satisfied)
@@ -107,12 +134,42 @@ func check_order_completion() -> void: # Ok -> O(n), Worst case -> O(n^2)
 		order_loss.emit()
 	
 	last_amount_satisfied = amount_satisfied
-
 	
 	if amount_satisfied - 1 == number_of_order_blocks:
 		order_met()
 	
 	order_checked.emit()
+
+
+## 0.05s waittime
+# TODO: Rework game logic
+#func check_order_completion() -> void: # Ok -> O(n), Worst case -> O(n^2)
+	#if GameMgr.current_order_checker == null || GameMgr.current_level.ignore_order:
+		#return
+	#
+	#print_debug("Checking...")
+#
+	#is_checking_order_match = true
+	#GameMgr.current_order_checker.global_position = GameMgr.current_player.position
+	#
+	#await get_tree().create_timer(0.05).timeout
+	#
+	#amount_satisfied = GameMgr.current_order_checker.check_satisfaction_full()
+	#
+	#completion_percentage = (float(amount_satisfied - 1.0) / number_of_order_blocks)
+	#
+	#if amount_satisfied > last_amount_satisfied:
+		#order_gain.emit(amount_satisfied)
+	#elif amount_satisfied < last_amount_satisfied:
+		#order_loss.emit()
+	#
+	#last_amount_satisfied = amount_satisfied
+#
+	#
+	#if amount_satisfied - 1 == number_of_order_blocks:
+		#order_met()
+	#
+	#order_checked.emit()
 	
 	
 func setup_mash_block(sprite: Sprite2D, type: Util.MashType, build: Util.BuildType = Util.BuildType.SQUARE) -> void:

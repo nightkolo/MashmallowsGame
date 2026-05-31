@@ -15,8 +15,8 @@ func _ready() -> void:
 			GameLogic.number_of_order_blocks += 1
 			is_satisfied = false
 
-		if get_parent() is Order:
-			(get_parent() as Order).mash_block_checker_ids.append(self)
+		if get_parent() is LevelOrder:
+			(get_parent() as LevelOrder).mash_block_checker_ids.append(self)
 		
 		if attributes.is_golden:
 			$Sprite2D.self_modulate = Color(Color.WHITE * 0.5,1.0)

@@ -70,29 +70,29 @@ var input_direction: float
 var input_y: float
 
 #var posses: Array[Dictionary] = [ ## Template
-	#{"mash": Util.MashType.WHITE, "pos": Vector2.ZERO},
-	#{"mash": Util.MashType.HEART, "pos": Vector2.ZERO}
+	#{"type": Util.MashType.WHITE, "pos": Vector2.ZERO},
+	#{"type": Util.MashType.HEART, "pos": Vector2.ZERO}
 #]
 
-var blocks_pos: Array[Dictionary] = []
+var player_blocks_code: Array[Dictionary] = []
 var child_blocks: Array[Mashed] = [] # Stack data structure
 		
 func push_child_block(block: Mashed) -> void:
 	child_blocks.append(block)
 
-	blocks_pos.append({
-		"mash": block.mash_type,
+	player_blocks_code.append({
+		"type": block.mash_type,
 		"pos": Vector2(
 			block.position.x / Util.BLOCK_SIZE,
 			block.position.y / Util.BLOCK_SIZE
 		)
 	})
-	print_debug(blocks_pos)
+	#print_debug(player_blocks_code)
 
 
 func pop_child_block() -> Mashed:
-	blocks_pos.pop_back()
-	print_debug(blocks_pos)
+	player_blocks_code.pop_back()
+	#print_debug(player_blocks_code)
 	return child_blocks.pop_back()
 
 
@@ -296,8 +296,6 @@ func unmash() -> void: # -> O(1)
 	if !can_unmash():
 		return
 	
-	GameLogic.player_unmashed.emit()
-	
 	var old_mashed: Mashed = child_blocks[-1]
 	_pos_before_mash = position
 	
@@ -338,6 +336,8 @@ func unmash() -> void: # -> O(1)
 			await get_tree().create_timer(0.025).timeout
 			
 			Input.start_joy_vibration(0, 0.2, 0.0, 0.025)
+
+	GameLogic.player_unmashed.emit()
 
 
 func _handle_cherry_bomb(old_mashed: Mashed) -> void:

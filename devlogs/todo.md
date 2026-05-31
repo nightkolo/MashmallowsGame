@@ -6,18 +6,23 @@
 :
 ### Interface
 
-- [ ] Menu WIPS (Just copy paste some old menu code i made lol) 
-  - [x] Title Screen
-    - [x] Continue Button
-    - [x] Level Select
+- [ ] Menu
+  - [ ] Animated BG
+  - [ ] 
+  - [ ] Title Screen
+    - [ ] Continue Button
+    - [ ] Level Select
       - [ ] Intro
       - [x] Grid Design
-      - [ ] Paperclips Info
       - [ ] Star system
         - [x] Golden star (Best solution)
         - [ ] Blue star (Pass)
+        - [ ] Animated star
       - [ ] Chibi Millie?
-    - [x] Credits and Support
+    - [ ]] Credits and Support
+    - [ ] Fix input bar
+      - [ ] Animated
+      - [ ] Dynamic
   - [ ] Pause Menu
     - [ ] Panel
 - [ ] Theme
@@ -40,7 +45,8 @@
 - [x] Intro sequence
 
 ### Codebase
-- [ ] Save system
+- [x] Save system
+- [x] Improved game logic
 - [ ] NG.io integration tests
 
 ### Assets and Design

@@ -133,7 +133,7 @@ func display_data() -> void:
 		#push_warning("Cannot display data. Key 102 not found in GameData.runtime_data.")
 		#return
 	
-	star_count_label.text = "Starred: %s / 20" % GameData.get_star_count()
+	star_count_label.text = "Orders met: %s / %s" % [GameData.get_star_count(), Util.NUMBER_OF_LEVELS]
 	
 	#if GameData.runtime_data["101"]["completed"] == true:
 		#cb_1_check_sprite.texture = texture_checkerboard_complete_checkmark

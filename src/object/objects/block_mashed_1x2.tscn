@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bkdp3upfs50a2" path="res://assets/objects/block-shade-1x2-01.png" id="5_1seuy"]
 [ext_resource type="Script" uid="uid://bd6gly6surqfe" path="res://object/scripts/block_mash.gd" id="5_p1750"]
 [ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="6_jo6og"]
-[ext_resource type="Script" uid="uid://c2cidbmohm8nw" path="res://object/scripts/flame_detect.gd" id="7_0hq8m"]
 [ext_resource type="Texture2D" uid="uid://28pnv22t5b7d" path="res://assets/objects/block-eyes-angry-black.png" id="8_axj8d"]
 [ext_resource type="Texture2D" uid="uid://cwhqh20gmoa4t" path="res://assets/objects/block-eyes-choco.png" id="9_i6i5v"]
 [ext_resource type="PackedScene" uid="uid://bmu1cdw8x8kxs" path="res://world/effects/player_particles_dust.tscn" id="9_vq6hd"]
@@ -251,7 +250,6 @@ metadata/_custom_type_script = "uid://bd6gly6surqfe"
 shape = SubResource("RectangleShape2D_jiy0s")
 
 [node name="FlameDetect" type="Area2D" parent="." unique_id=1133100714]
-script = ExtResource("7_0hq8m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlameDetect" unique_id=1095662948]
 shape = SubResource("RectangleShape2D_jo6og")

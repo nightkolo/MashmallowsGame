@@ -53,6 +53,18 @@ const bg_w2: Array[Color] = [
 	Color(1.0, 0.767, 1.0, 1.0)
 ]
 
+static func set_block_code(arr: Array[Dictionary], block: BlockAttributes, node: Node2D) -> void:
+	arr.clear()
+	arr.append({
+		"type": block.mash_type,
+		"pos": Vector2(
+			node.position.x / Util.BLOCK_SIZE,
+			node.position.y / Util.BLOCK_SIZE
+		),
+		"ref": node
+	})
+	
+
 static func get_bg_color_set(p_set: World.BGcolors) -> Color:
 	var col: Color
 	## TODO: Make selectable variants
