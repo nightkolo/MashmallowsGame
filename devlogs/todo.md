@@ -22,7 +22,7 @@
     - [ ]] Credits and Support
     - [ ] Fix input bar
       - [ ] Animated
-      - [ ] Dynamic
+      - [x] Dynamic
   - [ ] Pause Menu
     - [ ] Panel
 - [ ] Theme

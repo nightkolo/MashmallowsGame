@@ -1,63 +1,87 @@
 class_name LevelData extends Node
+
+## Manually updated
 static var order_data: Dictionary = {
 	"1": {
-		"completed": false
-	},
-	"2": {
-		"completed": false
-	},
-	"3": {
-		"completed": false
-	},
-	"4": {
-		"completed": false
-	},
-	"5": {
-		"completed": false
-	},
-	"6": {
-		"completed": false
-	},
-	"7": {
-		"completed": false
-	},
-	"8": {
-		"completed": false
-	},
-	"9": {
-		"completed": false
+		"order_code": [
+			{
+				"pos": {
+					"x": -1.0,
+					"y": 0.0
+				},
+				"type": 0
+			},
+			{
+				"pos": {
+					"x": 1.0,
+					"y": 0.0
+				},
+				"type": 0
+			},
+			{
+				"pos": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"type": 99
+			}
+		]
 	},
 	"10": {
-		"completed": false
+		"order_code": []
 	},
 	"11": {
-		"completed": false
+		"order_code": []
 	},
 	"12": {
-		"completed": false
+		"order_code": []
 	},
 	"13": {
-		"completed": false
+		"order_code": []
 	},
 	"14": {
-		"completed": false
+		"order_code": []
 	},
 	"15": {
-		"completed": false
+		"order_code": []
 	},
 	"16": {
-		"completed": false
+		"order_code": []
 	},
 	"17": {
-		"completed": false
+		"order_code": []
 	},
 	"18": {
-		"completed": false
+		"order_code": []
 	},
 	"19": {
-		"completed": false
+		"order_code": []
+	},
+	"2": {
+		"order_code": []
 	},
 	"20": {
-		"completed": false
+		"order_code": []
+	},
+	"3": {
+		"order_code": []
+	},
+	"4": {
+		"order_code": []
+	},
+	"5": {
+		"order_code": []
+	},
+	"6": {
+		"order_code": []
+	},
+	"7": {
+		"order_code": []
+	},
+	"8": {
+		"order_code": []
+	},
+	"9": {
+		"order_code": []
 	}
 }

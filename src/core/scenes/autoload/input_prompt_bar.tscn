@@ -32,6 +32,26 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 50
 
+[node name="Back" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=652794191]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="a" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Back" unique_id=296210501]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Back/a" unique_id=831831497]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/InputContainer/Back/a" unique_id=1404131170]
+layout_mode = 2
+text = "[Esc] Back"
+label_settings = SubResource("LabelSettings_tggsk")
+
+[node name="BackButton" type="Button" parent="InputPromptPanel/MarginContainer/InputContainer/Back" unique_id=1260855235]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
 [node name="Move" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=939218903]
 unique_name_in_owner = true
 layout_mode = 2
@@ -63,26 +83,6 @@ text = "[Enter] Select"
 label_settings = SubResource("LabelSettings_tggsk")
 
 [node name="SelectButton" type="Button" parent="InputPromptPanel/MarginContainer/InputContainer/Select" unique_id=1765205462]
-unique_name_in_owner = true
-layout_mode = 2
-mouse_filter = 1
-
-[node name="Back" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=652794191]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="a" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Back" unique_id=296210501]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Back/a" unique_id=831831497]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/InputContainer/Back/a" unique_id=1404131170]
-layout_mode = 2
-text = "[Esc] Back"
-label_settings = SubResource("LabelSettings_tggsk")
-
-[node name="BackButton" type="Button" parent="InputPromptPanel/MarginContainer/InputContainer/Back" unique_id=1260855235]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1

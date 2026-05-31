@@ -5,6 +5,20 @@ signal game_saved()
 signal game_loaded()
 
 const SAVE_LOCATION = "user://savedata.json"
+const LEVEL_SAVE_LOCATION = "user://level_data.json"
+
+
+func save_level_data() -> void:
+	print("adding level data...")
+	
+	var file: FileAccess = FileAccess.open(LEVEL_SAVE_LOCATION, FileAccess.WRITE)
+	var json: String = JSON.stringify(LevelData.order_data)
+	
+	file.store_line(json)
+
+	file.close()
+	
+	print("level data successfully added! :D")
 
 
 func save_game() -> void:
