@@ -10,7 +10,7 @@
   - [ ] Animated BG
   - [ ] 
   - [ ] Title Screen
-    - [ ] Continue Button
+    - [x] Continue Button
     - [ ] Level Select
       - [ ] Intro
       - [x] Grid Design

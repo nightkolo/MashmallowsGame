@@ -4,6 +4,7 @@ class_name Level
 
 #@export_group("Dev options")
 @export var level_id: int = -1
+@export var bakery_id: int = -1
 # @export var adjust_spawn_anim_fixed_time: bool = true
 @export var spawn_anim_time: float = 0.75
 @export var set_for_each: bool = false
@@ -108,11 +109,15 @@ func _ready() -> void:
 
 	if level_id < 0:
 		level_id = scene_file_path.to_int()
-		GameMgr.level_id = scene_file_path.to_int()
+		bakery_id = Util.get_bakery_number(level_id)
+		
+		GameMgr.level_id = level_id
+		GameMgr.bakery_id = bakery_id
 	# elif level_id == 0:
 	# 	setup_intro_sequence()
 	else:
 		GameMgr.level_id = level_id
+		GameMgr.bakery_id = bakery_id
 	
 	if show_dev_ui:
 		var ui := _dev_ui.instantiate()

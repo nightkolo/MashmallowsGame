@@ -23,11 +23,19 @@ enum MenuID {
 	}
 
 var menu_id: MenuID
-var level_id: int:
+var bakery_id: int = 0
+var level_id: int = 0:
 	set(value):
+		GameData.runtime_data["last_level"] = value
+		
 		if current_level_goal:
 			current_level_goal.level_number_label.text = "1-" + str(value)
 		level_id = value
+		
+		await get_tree().create_timer(1.0).timeout
+		
+		save_game_data()
+		
 
 # Self-assigned by the Entites
 var current_level: Level

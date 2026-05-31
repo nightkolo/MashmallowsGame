@@ -8,6 +8,7 @@ static func get_star_count() -> int:
 	
 static var runtime_data: Dictionary = {
 	"first_session": true,
+	"last_level": 0,
 	"101": {
 		"completed": false
 	},
@@ -133,6 +134,7 @@ const DEFAULT_MEDAL_DATA = {
 }
 const DEFAULT_GAME_DATA = {
 	"first_session": true,
+	"last_level": 0,
 	"101": {
 		"completed": false
 	},

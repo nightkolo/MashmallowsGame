@@ -8,7 +8,7 @@
 [ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="5_ulyey"]
 [ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_2q5lf"]
 [ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="7_ulyey"]
-[ext_resource type="Script" uid="uid://blq670fy1uldv" path="res://object/scripts/game/level_order_old.gd" id="8_j81xe"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="9_l0o7d"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="9_qvykx"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="9_vingo"]
 
@@ -44,9 +44,9 @@ metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
 
 [node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("7_ulyey")]
 
-[node name="Order" type="Node2D" parent="World/LevelGoal" unique_id=690408388]
-script = ExtResource("8_j81xe")
-metadata/_custom_type_script = "uid://blq670fy1uldv"
+[node name="LevelOrder" type="Node2D" parent="World/LevelGoal" unique_id=989048369]
+script = ExtResource("9_l0o7d")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("9_vingo")]
 

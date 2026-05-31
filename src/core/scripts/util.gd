@@ -53,6 +53,10 @@ const bg_w2: Array[Color] = [
 	Color(1.0, 0.767, 1.0, 1.0)
 ]
 
+static func get_bakery_number(lvl_id: int) -> int:
+	return 1 + int(float(lvl_id - 1.0) / 10.0)
+
+
 static func set_block_code(arr: Array[Dictionary], block: BlockAttributes, node: Node2D) -> void:
 	#arr.clear()
 	arr.append({
