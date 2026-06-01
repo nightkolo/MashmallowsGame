@@ -7,8 +7,8 @@
 ### Interface
 
 - [ ] Menu
-  - [ ] Animated BG
-  - [ ] 
+  - [x] Animated BG
+  - [ ] Spinning tiles
   - [ ] Title Screen
     - [x] Continue Button
     - [ ] Level Select
@@ -19,7 +19,7 @@
         - [ ] Blue star (Pass)
         - [ ] Animated star
       - [ ] Chibi Millie?
-    - [ ]] Credits and Support
+    - [ ] Credits and Support
     - [ ] Fix input bar
       - [ ] Animated
       - [x] Dynamic
@@ -27,8 +27,8 @@
     - [ ] Panel
 - [ ] Theme
   - [ ] Button anim
-  - [ ] BG
-    - [ ] Animated
+  - [x] BG
+    - [x] Animated
 
 ### Gameplay
 
@@ -39,8 +39,8 @@
     - [x] Twisted marshmallow
     - [x] Flame object
     - [x] Golden marshmallow detection
-    - [ ] Fully refined core game code
-      - [ ] Centralized orders
+    - [x] Fully refined core game code
+      - [x] Centralized orders
   - [ ] Beta levels
 - [x] Intro sequence
 

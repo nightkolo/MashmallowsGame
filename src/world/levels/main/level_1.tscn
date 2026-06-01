@@ -36,7 +36,6 @@ metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "level_info", "player")]
 script = ExtResource("1_7cx1p")
-level_id = 1
 level_goal = NodePath("World/LevelGoal")
 level_info = NodePath("World/LevelInfo")
 player = NodePath("Player")
@@ -131,7 +130,7 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-1741.3331, 2.1324824e-13, 4776, 3584)
+region_rect = Rect2(-17127.97, 2.0977731e-12, 4776, 3584)
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" parent_id_path=PackedInt32Array(1741767880, 7455025) index="0" unique_id=587048025]
 visible_characters = 0

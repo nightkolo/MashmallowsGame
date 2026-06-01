@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dwkdg7wxabl4p" path="res://assets/objects/block-eyes-regular.png" id="3_ka0jd"]
 [ext_resource type="PackedScene" uid="uid://krw76abox8r3" path="res://object/game/block_detector.tscn" id="4_84y5p"]
 [ext_resource type="Texture2D" uid="uid://bkdp3upfs50a2" path="res://assets/objects/block-shade-1x2-01.png" id="5_1seuy"]
-[ext_resource type="Script" uid="uid://bd6gly6surqfe" path="res://object/scripts/block_mash.gd" id="5_p1750"]
 [ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="6_jo6og"]
 [ext_resource type="Texture2D" uid="uid://28pnv22t5b7d" path="res://assets/objects/block-eyes-angry-black.png" id="8_axj8d"]
 [ext_resource type="Texture2D" uid="uid://cwhqh20gmoa4t" path="res://assets/objects/block-eyes-choco.png" id="9_i6i5v"]
@@ -21,8 +20,6 @@ points = PackedVector2Array(-15, -60, 15, -60, 30, -45, 30, 45, 15, 60, -15, 60,
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_axj8d"]
 load_path = "res://.godot/imported/block-eyes-closed.png-3f098a97875b32cbda0d0f988693cb56.ctex"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jiy0s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jo6og"]
 size = Vector2(62, 124)
@@ -164,12 +161,11 @@ _data = {
 &"idle": SubResource("Animation_avy6u")
 }
 
-[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "mash_block", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed")]
+[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed")]
 shape = SubResource("ConvexPolygonShape2D_e3omn")
 script = ExtResource("2_jo7o3")
 build_type = 1
 block_detect = NodePath("BlockDetect")
-mash_block = NodePath("MashBlock")
 dust_particles = NodePath("Dust")
 r_particles = NodePath("R")
 l_particles = NodePath("L")
@@ -239,15 +235,6 @@ texture = ExtResource("9_i6i5v")
 visible = false
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CompressedTexture2D_axj8d")
-
-[node name="MashBlock" type="Area2D" parent="." unique_id=652902660]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("5_p1750")
-metadata/_custom_type_script = "uid://bd6gly6surqfe"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MashBlock" unique_id=918425020]
-shape = SubResource("RectangleShape2D_jiy0s")
 
 [node name="FlameDetect" type="Area2D" parent="." unique_id=1133100714]
 

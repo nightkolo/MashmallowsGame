@@ -25,7 +25,7 @@ var attributes: BlockAttributes
 ##
 @export_category("Objects to assign")
 @export var block_detect: BlockDetector
-@export var mash_block: MashBlock
+#@export var mash_block: MashBlock
 @export var dust_particles: CPUParticles2D
 @export var r_particles: CPUParticles2D
 @export var l_particles: CPUParticles2D
@@ -226,7 +226,7 @@ func _ready() -> void:
 				sprite_eyes_regular.visible = true
 	#
 
-	mash_block.mash_type = mash_type
+	#mash_block.mash_type = mash_type
 
 	await get_tree().create_timer(Util.MASH_WAIT_TIME).timeout
 	

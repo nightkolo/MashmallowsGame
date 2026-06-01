@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yivkpt02m4ox"]
 
-[ext_resource type="Script" uid="uid://bspkwd50fdkqc" path="res://object/scripts/game/mash_block_checker.gd" id="1_euh6i"]
+[ext_resource type="Script" uid="uid://bspkwd50fdkqc" path="res://object/scripts/game/mash_block_checker_old.gd" id="1_euh6i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sk5k4"]
 

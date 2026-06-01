@@ -42,7 +42,7 @@ func update_global_code() -> void:
 	
 	for entry in order_code:
 		arr.append({
-			"type": entry["type"],
+			"type": entry["type"].as_int(),
 			"pos": {
 				"x": entry["pos"].x,
 				"y": entry["pos"].y

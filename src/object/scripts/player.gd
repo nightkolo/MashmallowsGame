@@ -87,7 +87,9 @@ func push_child_block(block: Mashed) -> void:
 			block.position.y / Util.BLOCK_SIZE
 		)
 	})
-	#print_debug(player_blocks_code)
+	
+	GameLogic.player_mashed.emit()
+	print_debug(player_blocks_code)
 
 
 func pop_child_block() -> Mashed:
@@ -160,7 +162,6 @@ func _ready() -> void:
 		Input.start_joy_vibration(0, 0.4, 0.0, 0.025)
 		
 		if !_has_mashed:
-			GameLogic.player_mashed.emit()
 			_has_mashed = true
 		
 		await get_tree().create_timer(0.025).timeout

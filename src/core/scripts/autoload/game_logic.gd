@@ -1,7 +1,7 @@
 # Game Logic
 extends Node
 
-signal ready_to_check()
+signal ready_to_check() ## @deprecated: Use [signal player_mashed]
 signal player_mashed()
 signal player_unmashed()
 signal player_touched_flame()
@@ -54,8 +54,8 @@ func reset_game_logic() -> void:
 
 
 func _ready() -> void:
-	ready_to_check.connect(check_order_completion)
-	# player_mashed.connect(check_order_completion)
+	# ready_to_check.connect(check_order_completion)
+	player_mashed.connect(check_order_completion)
 	player_unmashed.connect(check_order_completion)
 	player_touched_flame.connect(func():
 		# await get_tree().create_timer(0.1).timeout
@@ -80,15 +80,19 @@ func order_met() -> void:
 	has_won = true
 
 
-func level_won():
+func level_won() -> void:
 	has_won = true
 	print("Game over.")
 
 
 func check_order_completion() -> void:
-	if current_level_order_object == null || GameMgr.current_level.ignore_order:
+	if current_level_order_object == null || GameMgr.current_player == null:
 		return
 	
+	if GameMgr.current_level:
+		if GameMgr.current_level.ignore_order:
+			return
+			
 	print_debug("Checking...")
 
 	amount_satisfied = 0
@@ -124,8 +128,6 @@ func check_order_completion() -> void:
 
 	completion_percentage = (float(amount_satisfied - 1.0) / number_of_order_blocks)
 	
-	print_debug("completion_percentage: %s" % completion_percentage )
-	
 	if amount_satisfied > last_amount_satisfied:
 		order_gain.emit(amount_satisfied)
 	elif amount_satisfied < last_amount_satisfied:
@@ -138,37 +140,6 @@ func check_order_completion() -> void:
 	
 	order_checked.emit()
 
-
-## 0.05s waittime
-# TODO: Rework game logic
-#func check_order_completion() -> void: # Ok -> O(n), Worst case -> O(n^2)
-	#if GameMgr.current_order_checker == null || GameMgr.current_level.ignore_order:
-		#return
-	#
-	#print_debug("Checking...")
-#
-	#is_checking_order_match = true
-	#GameMgr.current_order_checker.global_position = GameMgr.current_player.position
-	#
-	#await get_tree().create_timer(0.05).timeout
-	#
-	#amount_satisfied = GameMgr.current_order_checker.check_satisfaction_full()
-	#
-	#completion_percentage = (float(amount_satisfied - 1.0) / number_of_order_blocks)
-	#
-	#if amount_satisfied > last_amount_satisfied:
-		#order_gain.emit(amount_satisfied)
-	#elif amount_satisfied < last_amount_satisfied:
-		#order_loss.emit()
-	#
-	#last_amount_satisfied = amount_satisfied
-#
-	#
-	#if amount_satisfied - 1 == number_of_order_blocks:
-		#order_met()
-	#
-	#order_checked.emit()
-	
 	
 func setup_mash_block(sprite: Sprite2D, type: Util.MashType, build: Util.BuildType = Util.BuildType.SQUARE) -> void:
 	sprite.texture = Util.get_order_block_texture(type, build)

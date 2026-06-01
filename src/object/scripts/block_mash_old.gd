@@ -1,3 +1,4 @@
+## @deprecated
 ## Mash block in [Mashed]
 extends Area2D
 class_name MashBlock
