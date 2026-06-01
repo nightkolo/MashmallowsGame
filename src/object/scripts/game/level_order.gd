@@ -42,7 +42,7 @@ func update_global_code() -> void:
 	
 	for entry in order_code:
 		arr.append({
-			"type": entry["type"].as_int(),
+			"type": entry["type"],
 			"pos": {
 				"x": entry["pos"].x,
 				"y": entry["pos"].y
@@ -64,6 +64,8 @@ func update_code() -> void:
 			return
 		
 		Util.set_block_code(order_code, id.attributes, id)
+	
+	GameLogic.current_level_order_object = self
 
 
 func update_look() -> void:
@@ -89,7 +91,6 @@ func update_look() -> void:
 
 
 func _ready() -> void:
-	GameLogic.current_level_order_object = self
 	
 	# Wait for assignment
 	await get_tree().create_timer(0.1).timeout
@@ -99,6 +100,8 @@ func _ready() -> void:
 	for id: MashBlockCheckerID in mash_block_checker_ids:
 		Util.set_block_code(order_code, id.attributes, id)
 	
-	for o: Dictionary in order_code:
-		print_debug(o)
+	#for o: Dictionary in order_code:
+		#print_debug(o)
+		
+	GameLogic.current_level_order_object = self
 	

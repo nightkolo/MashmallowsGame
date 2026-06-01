@@ -49,6 +49,12 @@
 - [x] Improved game logic
 - [ ] NG.io integration tests
 
+### Animation
+- [ ] Interface
+  - [ ] Button anim
+  - [ ] Interface anim
+  - [ ] Input bar anim
+
 ### Assets and Design
 - [ ] Interface
   - [ ] Stars
@@ -60,9 +66,13 @@
 - [ ] Promo
   - [ ] Logo
   - [ ] Artwork
+    - [ ] Bakery complete
+    - [ ] Credits
 - [ ] Level goal
   - [ ] Roasted block
   - [ ] Star eyes
+  - [ ] Order block
+    - [ ] Twisted
 - [ ] Objects
   - [ ] Twisted marshmallows
   - [ ] Flame

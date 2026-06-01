@@ -31,11 +31,17 @@ var completion_percentage: float:
 			completion_percentage_updated.emit(value)
 		completion_percentage = value
 
-var current_level_order_object: LevelOrder
+var current_level_order_object: LevelOrder:
+	set(value):
+		current_order_code = value.order_code
+		current_level_order_object = value
+		
 var order_check_ori_pos: Vector2
 
 var amount_satisfied: int = 1
 var last_amount_satisfied: int = 1
+
+var current_order_code: Array[Dictionary] = []
 
 ## TODO: Analyze execution structure, minimize race conditions
 
@@ -86,7 +92,7 @@ func level_won() -> void:
 
 
 func check_order_completion() -> void:
-	if current_level_order_object == null || GameMgr.current_player == null:
+	if current_level_order_object == null || GameMgr.current_player == null || current_order_code.is_empty():
 		return
 	
 	if GameMgr.current_level:
@@ -98,12 +104,11 @@ func check_order_completion() -> void:
 	amount_satisfied = 0
 	is_checking_order_match = true
 	
-	var order_code: Array[Dictionary] = current_level_order_object.order_code
-	var player_code: Array[Dictionary] = GameMgr.current_player.player_blocks_code
+	var current_player_code: Array[Dictionary] = GameMgr.current_player.player_blocks_code
 	
  	# Worst case -> O(n * m)
-	# n = order_code.size(), m = player_code.size()
-	for o_entry: Dictionary in order_code:
+	# n = current_order_code.size(), m = current_player_code.size()
+	for o_entry: Dictionary in current_order_code:
 		var id_node: MashBlockCheckerID = o_entry["ref"] as MashBlockCheckerID
 		
 		if id_node == null:
@@ -111,7 +116,7 @@ func check_order_completion() -> void:
 		
 		var match_found: bool = false
 		
-		for p_entry: Dictionary in player_code:
+		for p_entry: Dictionary in current_player_code:
 			if o_entry["type"] != p_entry["type"]:
 				continue
 			

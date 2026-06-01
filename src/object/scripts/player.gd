@@ -13,6 +13,7 @@ signal has_idled() ## Emits when player enters [IdleState]
 signal has_waken_up()
 signal has_touched_flame()
 signal has_landed(strength: float)
+signal has_touched_ceiling()
 signal cherry_bomb_activated()
 signal cherry_bomb_exploded()
 signal is_running() ## Emits when player is in [RunState] at full [member speed] after accelerating.
@@ -147,6 +148,9 @@ func _ready() -> void:
 	anim_idle_animation()
 
 	## EVENTS
+	has_touched_ceiling.connect(func():
+		print("has_touched_ceiling")
+		)
 	has_landed.connect(func(strength: float):
 		var s := strength / 80.0
 		
@@ -464,6 +468,14 @@ func jump() -> void:
 	
 	state_machine.change_state("AirState", {"jumped": true, "falling": false})
 
+## Returns true if the player on a unmashed block (including [TwistedColliBlock]).
+func is_on_block() -> bool:
+	for block: Mashed in child_blocks:
+		if block.is_on_block():
+			return true
+	return false
+	
+	
 ## Returns true if the player on ground tilemap, and not other unmashed blocks
 func is_on_ground() -> bool:
 	for block: Mashed in child_blocks:
@@ -527,6 +539,8 @@ func _move(delta: float) -> void:
 
 
 var _run: bool
+var _ceiling: bool
+
 func is_running_full() -> bool:
 	return absf(velocity.x) == speed
 
@@ -544,6 +558,13 @@ func _state() -> void:
 
 	elif velocity.x != 0.0:
 		_stopped = false
+
+	if !_ceiling && is_on_ceiling():
+		has_touched_ceiling.emit()
+		_ceiling = true
+		
+	elif is_on_floor():
+		_ceiling = false
 
 	if !_landed && is_on_floor():
 		has_landed.emit(abs(_last_velocity_y / 100.0))
@@ -577,6 +598,8 @@ func _physics_process(delta: float) -> void:
 		_move(delta)
 	_state()
 	_animate(delta)
+	
+	#print(is_on_ceiling())
 	
 
 func _check_child_blocks() -> void:

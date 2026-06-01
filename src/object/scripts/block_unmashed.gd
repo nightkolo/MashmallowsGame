@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 signal has_landed(strength: float)
 signal started_breathing()
+signal started_expanding()
 signal player_entered(entered: bool)
 
 # Shared variables with [Mashed]
@@ -44,7 +45,7 @@ var attributes: BlockAttributes
 
 @export_group("Area casts")
 @export var player_down_detect: ShapeCast2D
-@export var unmashed_top_detect: ShapeCast2D
+@export var top_detect: ShapeCast2D
 @export var twisted_marshmallow: Twisted
 
 @export_group("Audio")
@@ -66,6 +67,7 @@ var is_player_close: bool = false:
 		player_entered.emit(value)
 		is_player_close = value
 var is_expanding: bool = false
+
 
 func _ready() -> void:
 	set_physics_process(true)
@@ -93,10 +95,11 @@ func _ready() -> void:
 
 	#print(twisted_marshmallow)
 	#print(mash_type == Util.MashType.TWISTED)
-	collision_mask = 8
+	#collision_mask = 8
 	if mash_type == Util.MashType.TWISTED:
 		collision_mask = 1 + 8
 		var t: Twisted = twisted.instantiate()
+		t.position = Vector2.ZERO
 		add_child(t)
 		twisted_marshmallow = t
 		anim_expanding()
@@ -117,14 +120,30 @@ func _ready() -> void:
 func is_mashable() -> bool: ## @deprecated
 	return !is_expanding
 
+const EXPAND_TIME = 0.5
+const WAIT_TIME_BEFORE_EXPAND = 1.0
 
 func anim_expanding() -> void:
+	if twisted_marshmallow == null:
+		return
+
 	is_expanding = true
-	await get_tree().create_timer(1.0).timeout
+	
+	twisted_marshmallow.position = Vector2.ZERO
+	for b: TwistedColliBlock in twisted_marshmallow.bodies:
+		b.position = Vector2.ZERO
+	
+	await get_tree().create_timer(0.2).timeout
+	
+	if !is_player_on_top():
+		await get_tree().create_timer(WAIT_TIME_BEFORE_EXPAND).timeout
+	
+	started_expanding.emit()
 
-	if twisted_marshmallow:
-		await twisted_marshmallow.expand_collision()
-
+	twisted_marshmallow.expand_collision(twisted_marshmallow.twisted_strength, EXPAND_TIME)
+	
+	await get_tree().create_timer(EXPAND_TIME).timeout
+	
 	is_expanding = false
 
 
@@ -133,8 +152,10 @@ func set_golden(value: bool = !is_golden) -> void:
 
 
 func get_top_unmashed() -> Unmashed:
-	if unmashed_top_detect.is_colliding():
-		return unmashed_top_detect.get_collider(0) as Unmashed
+	if top_detect:
+		if top_detect.is_colliding():
+			if top_detect.get_collider(0) is Unmashed:
+				return top_detect.get_collider(0) as Unmashed
 	
 	return null
 
@@ -146,6 +167,14 @@ func move_up(strength: float = 10.0) -> void:
 		await get_tree().create_timer(0.05).timeout
  	
 	position.y -= strength
+
+
+func is_player_on_top() -> bool:
+	if top_detect:
+		top_detect.force_shapecast_update()
+		if top_detect.is_colliding():
+			return top_detect.get_collider(0) is Player
+	return false
 
 
 func is_on_player() -> bool:

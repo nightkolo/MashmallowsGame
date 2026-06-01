@@ -14,6 +14,7 @@
 
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
 script = ExtResource("1_eyte8")
+ignore_order = true
 no_progression = true
 level_goal = NodePath("World/LevelGoal")
 player = NodePath("Player")
@@ -43,9 +44,14 @@ script = ExtResource("7_2q5lf")
 metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
 
 [node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("7_ulyey")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Board" parent="World/LevelGoal" index="0" unique_id=1651127727]
+metadata/_edit_use_anchors_ = true
 
 [node name="LevelOrder" type="Node2D" parent="World/LevelGoal" unique_id=989048369]
 script = ExtResource("9_l0o7d")
+order_code = Array[Dictionary]([])
 metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("9_vingo")]

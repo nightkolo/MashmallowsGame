@@ -97,7 +97,7 @@ func is_on_wall() -> bool: # -> O(1)
 	return false
 
 
-# Returns true if the mashed mash_block on a unmashed mash_block.
+# Returns true if the [Mashed] mash_block on a [Unmashed] (including [TwistedColliBlock]).
 func is_on_block() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.blocks_ray
 	
