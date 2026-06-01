@@ -142,6 +142,10 @@ static func get_order_block_texture(type: MashType, build: BuildType, satisfied:
 		return preload("res://assets/interface/order-player.png")
 
 	var l_name := str(MashType.find_key(type)).to_lower()
+	
+	if l_name == "twisted":
+		return load("res://assets/objects/block-twisted-1x1.png")
+	
 	var build_str := "1x2" if build == BuildType.RECTANGLE else "1x1"
 	var color_suffix := "" if satisfied else "-grey"
 

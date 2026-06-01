@@ -3,57 +3,6 @@
 ## 5-23
 
 - [x] Walkthrough and Song reveal
-:
-### Interface
-
-- [ ] Menu
-  - [x] Animated BG
-  - [ ] Spinning tiles
-  - [ ] Title Screen
-    - [x] Continue Button
-    - [ ] Level Select
-      - [ ] Intro
-      - [x] Grid Design
-      - [ ] Star system
-        - [x] Golden star (Best solution)
-        - [ ] Blue star (Pass)
-        - [ ] Animated star
-      - [ ] Chibi Millie?
-    - [ ] Credits and Support
-    - [ ] Fix input bar
-      - [ ] Animated
-      - [x] Dynamic
-  - [ ] Pause Menu
-    - [ ] Panel
-- [ ] Theme
-  - [ ] Button anim
-  - [x] BG
-    - [x] Animated
-
-### Gameplay
-
-- [x] One way platform
-- [ ] Regular block?
-- [ ] World 2 beta 
-  - [ ] Mechanics
-    - [x] Twisted marshmallow
-    - [x] Flame object
-    - [x] Golden marshmallow detection
-    - [x] Fully refined core game code
-      - [x] Centralized orders
-  - [ ] Beta levels
-- [x] Intro sequence
-
-### Codebase
-- [x] Save system
-- [x] Improved game logic
-- [ ] NG.io integration tests
-
-### Animation
-- [ ] Interface
-  - [ ] Button anim
-  - [ ] Interface anim
-  - [ ] Input bar anim
 
 ### Assets and Design
 - [ ] Interface
@@ -83,6 +32,57 @@
       - [ ] Pop sprite
       - [ ] Popped
     - [ ] Button
+
+### Interface
+
+- [ ] Menu
+  - [x] Animated BG
+  - [ ] Spinning tiles
+  - [ ] Title Screen
+    - [x] Continue Button
+    - [ ] Level Select
+      - [ ] Intro
+      - [x] Grid Design
+      - [ ] Star system
+        - [x] Golden star (Best solution)
+        - [ ] Blue star (Pass)
+        - [ ] Animated star
+      - [ ] Chibi Millie?
+    - [ ] Credits and Support
+    - [ ] Fix input bar
+      - [ ] Animated
+      - [x] Dynamic
+  - [ ] Pause Menu
+    - [ ] Panel
+- [ ] Theme
+  - [ ] Button anim
+  - [x] BG
+    - [x] Animated
+
+### Animation
+- [ ] Interface
+  - [ ] Button anim
+  - [ ] Interface anim
+  - [ ] Input bar anim
+
+### Gameplay
+
+- [x] One way platform
+- [ ] Regular block?
+- [ ] World 2 beta 
+  - [ ] Mechanics
+    - [x] Twisted marshmallow
+    - [ ] Flame object
+    - [ ] Golden marshmallow detection
+    - [x] Fully refined core game code
+      - [x] Centralized orders
+  - [x] Beta levels
+- [x] Intro sequence
+
+### Codebase
+- [x] Save system
+- [x] Improved game logic
+- [ ] NG.io integration tests
 
 # Audio
 
