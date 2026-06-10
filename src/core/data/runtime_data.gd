@@ -7,74 +7,74 @@ static func get_star_count() -> int:
 	return c
 	
 static var runtime_data: Dictionary = {
-	"first_session": true,
-	"last_level": 0,
-	"101": {
-		"completed": false
-	},
-	"102": {
-		"completed": false
-	},
 	"1": {
 		"completed": false
 	},
-	"2": {
+  "10": {
 		"completed": false
 	},
-	"3": {
+  "101": {
 		"completed": false
 	},
-	"4": {
+  "102": {
 		"completed": false
 	},
-	"5": {
+  "11": {
 		"completed": false
 	},
-	"6": {
+  "12": {
 		"completed": false
 	},
-	"7": {
+  "13": {
 		"completed": false
 	},
-	"8": {
+  "14": {
 		"completed": false
 	},
-	"9": {
+  "15": {
 		"completed": false
 	},
-	"10": {
+  "16": {
 		"completed": false
 	},
-	"11": {
+  "17": {
 		"completed": false
 	},
-	"12": {
+  "18": {
 		"completed": false
 	},
-	"13": {
+  "19": {
 		"completed": false
 	},
-	"14": {
+  "2": {
 		"completed": false
 	},
-	"15": {
+  "20": {
 		"completed": false
 	},
-	"16": {
+  "3": {
 		"completed": false
 	},
-	"17": {
+  "4": {
 		"completed": false
 	},
-	"18": {
+  "5": {
 		"completed": false
 	},
-	"19": {
+  "6": {
 		"completed": false
 	},
-	"20": {
+  "7": {
 		"completed": false
-	}
+	},
+  "8": {
+		"completed": false
+	},
+  "9": {
+		"completed": false
+	},
+  "first_session": true,
+  "last_level": 0
 }
 static var medal_data: Dictionary = {
 	# NOTE: HARD-CODED, DO NOT MODIFY UNLESS YOU KNOW WHAT YOU'RE DOING.
@@ -133,73 +133,73 @@ const DEFAULT_MEDAL_DATA = {
 	"halls": false
 }
 const DEFAULT_GAME_DATA = {
-	"first_session": true,
-	"last_level": 0,
-	"101": {
-		"completed": false
-	},
-	"102": {
-		"completed": false
-	},
 	"1": {
 		"completed": false
 	},
-	"2": {
+  "10": {
 		"completed": false
 	},
-	"3": {
+  "101": {
 		"completed": false
 	},
-	"4": {
+  "102": {
 		"completed": false
 	},
-	"5": {
+  "11": {
 		"completed": false
 	},
-	"6": {
+  "12": {
 		"completed": false
 	},
-	"7": {
+  "13": {
 		"completed": false
 	},
-	"8": {
+  "14": {
 		"completed": false
 	},
-	"9": {
+  "15": {
 		"completed": false
 	},
-	"10": {
+  "16": {
 		"completed": false
 	},
-	"11": {
+  "17": {
 		"completed": false
 	},
-	"12": {
+  "18": {
 		"completed": false
 	},
-	"13": {
+  "19": {
 		"completed": false
 	},
-	"14": {
+  "2": {
 		"completed": false
 	},
-	"15": {
+  "20": {
 		"completed": false
 	},
-	"16": {
+  "3": {
 		"completed": false
 	},
-	"17": {
+  "4": {
 		"completed": false
 	},
-	"18": {
+  "5": {
 		"completed": false
 	},
-	"19": {
+  "6": {
 		"completed": false
 	},
-	"20": {
+  "7": {
 		"completed": false
-	}
+	},
+  "8": {
+		"completed": false
+	},
+  "9": {
+		"completed": false
+	},
+  "first_session": true,
+  "last_level": 0
 }
 # Dear data miners, be nice with the data :)

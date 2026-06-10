@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="3_ugmxi"]
 [ext_resource type="LabelSettings" uid="uid://dohg6g363o0sh" path="res://core/resources/label/prompt_text_label.tres" id="3_ynmou"]
 [ext_resource type="Texture2D" uid="uid://dapafw2ycdflq" path="res://assets/objects/block-shade-1x1-01.png" id="6_ugmxi"]
-[ext_resource type="Script" uid="uid://c2cidbmohm8nw" path="res://object/scripts/flame_detect.gd" id="7_6kpmq"]
 [ext_resource type="PackedScene" uid="uid://b8b1jq0amanoa" path="res://world/particles_z.tscn" id="8_l7hdh"]
 [ext_resource type="Texture2D" uid="uid://dssqi37ffm7ee" path="res://assets/world/particle-marshspiral.png" id="9_siqqs"]
 
@@ -34,9 +33,6 @@ size = Vector2(60, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynmou"]
 size = Vector2(60, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7hdh"]
-size = Vector2(62, 62)
 
 [node name="Unmashed" type="CharacterBody2D" unique_id=1597136109 node_paths=PackedStringArray("player_down_detect", "top_detect", "audio", "node_mash_prompt", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "particles_spawn")]
 collision_layer = 8
@@ -81,7 +77,7 @@ blink_interval = 0.0
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -65531.484
+rotation = -65933.08
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"
@@ -90,7 +86,7 @@ text = "X"
 
 [node name="SpriteNode" type="Node2D" parent="Visual" unique_id=277771888]
 position = Vector2(0, 35)
-scale = Vector2(0.9562671, 1.0202997)
+scale = Vector2(0.9672523, 1.0120608)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=690881826]
 position = Vector2(0, -35)
@@ -167,11 +163,5 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_ynmou")
 target_position = Vector2(0, -30)
 collision_mask = 10
-
-[node name="FlameDetect" type="Area2D" parent="." unique_id=680330865]
-script = ExtResource("7_6kpmq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameDetect" unique_id=1643844181]
-shape = SubResource("RectangleShape2D_l7hdh")
 
 [editable path="MashPrompt/InputPrompt"]

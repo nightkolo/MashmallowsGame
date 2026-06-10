@@ -17,11 +17,11 @@ var attributes: BlockAttributes
 			attributes.is_golden = value
 		if !is_node_ready():
 			return
-		# if value:
-		# 	sprite_block.self_modulate = Color(Color.WHITE * 0.5,1.0)
-		# elif !value:
-		# 	sprite_block.self_modulate = Color(Color.WHITE)
-		# $Golden/Colli.set_deferred("disabled", !value)
+		if value:
+			sprite_block.self_modulate = Color(Color.WHITE * 0.5,1.0)
+		elif !value:
+			sprite_block.self_modulate = Color(Color.WHITE)
+		#$Golden/Colli.set_deferred("disabled", !value)
 ##
 @export_category("Objects to assign")
 @export var block_detect: BlockDetector

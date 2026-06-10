@@ -18,6 +18,7 @@ enum MainMenus {
 @onready var menu_title: TitleScreen = $TitleScreen
 @onready var menu_credits: CreditsScreen = $MenuCredits
 @onready var menu_board_select: BoardSelectScreen = $MenuStageSelect
+@onready var tiled_sprite_2d: TiledSprite2D = $BG/TiledSprite2D
 
 #### Juice
 
@@ -44,6 +45,13 @@ var _tween_fade_in: Tween
 
 func _ready() -> void:
 	GameMgr.current_menu = self
+	
+	menu_board_select.left.entered_cb_1.connect(func():
+		pass
+		)
+	menu_board_select.left.entered_cb_2.connect(func():
+		pass
+		)
 	
 	if GameMgr.menu_id == GameMgr.MenuID.CREDITS: # For the game's ending
 		enter_main_menu(MainMenus.CREDITS)

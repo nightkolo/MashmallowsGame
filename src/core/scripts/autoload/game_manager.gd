@@ -73,6 +73,7 @@ func _ready() -> void:
 	add_child(saver_loader)
 	
 	load_game_data()
+	saver_loader.save_level_data()
 	
 	menu_entered.connect(func(menu: MenuID):
 		menu_id = menu

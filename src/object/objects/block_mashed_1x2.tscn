@@ -21,9 +21,6 @@ points = PackedVector2Array(-15, -60, 15, -60, 30, -45, 30, 45, 15, 60, -15, 60,
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_axj8d"]
 load_path = "res://.godot/imported/block-eyes-closed.png-3f098a97875b32cbda0d0f988693cb56.ctex"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo6og"]
-size = Vector2(62, 124)
-
 [sub_resource type="Animation" id="Animation_tf56s"]
 length = 0.001
 tracks/0/type = "value"
@@ -235,11 +232,6 @@ texture = ExtResource("9_i6i5v")
 visible = false
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CompressedTexture2D_axj8d")
-
-[node name="FlameDetect" type="Area2D" parent="." unique_id=1133100714]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameDetect" unique_id=1095662948]
-shape = SubResource("RectangleShape2D_jo6og")
 
 [node name="Dust" parent="." unique_id=1755879273 instance=ExtResource("9_vq6hd")]
 position = Vector2(0, 60)

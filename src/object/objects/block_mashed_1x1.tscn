@@ -14,15 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://df10xqr51prs8" path="res://world/effects/player_particle_right.tscn" id="10_5pu8n"]
 [ext_resource type="PackedScene" uid="uid://cbuw1efjfm6wr" path="res://world/effects/player_particle_left.tscn" id="11_tf56s"]
 [ext_resource type="Texture2D" uid="uid://cyfut2pqoyg2y" path="res://assets/objects/block-eyes-side-eye.png" id="12_tf56s"]
+[ext_resource type="Script" uid="uid://djc4fnfevxutu" path="res://object/objects/area_2d.gd" id="15_vl5dm"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ry2ml"]
 points = PackedVector2Array(-15, -30, 15, -30, 30, -15, 30, 15, 15, 30, -15, 30, -30, 15, -30, -15)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5pu8n"]
 load_path = "res://.godot/imported/block-eyes-closed.png-3f098a97875b32cbda0d0f988693cb56.ctex"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ry2ml"]
-size = Vector2(62, 62)
 
 [sub_resource type="Animation" id="Animation_tf56s"]
 length = 0.001
@@ -161,6 +159,9 @@ _data = {
 &"idle": SubResource("Animation_5pu8n")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0uj8"]
+size = Vector2(70, 70)
+
 [node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed")]
 shape = SubResource("ConvexPolygonShape2D_ry2ml")
 script = ExtResource("2_lydfl")
@@ -234,13 +235,8 @@ visible = false
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CompressedTexture2D_5pu8n")
 
-[node name="FlameDetect" type="Area2D" parent="." unique_id=1382732736]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameDetect" unique_id=632267599]
-shape = SubResource("RectangleShape2D_ry2ml")
-
 [node name="Golden" type="AnimatableBody2D" parent="." unique_id=1799239994]
-collision_layer = 512
+collision_layer = 1024
 collision_mask = 1024
 
 [node name="Colli" type="CollisionShape2D" parent="Golden" unique_id=652459658]
@@ -261,3 +257,11 @@ position = Vector2(0, 30)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=407392182]
 libraries/ = SubResource("AnimationLibrary_1dnrr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1503619745]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("15_vl5dm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=562665356]
+shape = SubResource("RectangleShape2D_k0uj8")

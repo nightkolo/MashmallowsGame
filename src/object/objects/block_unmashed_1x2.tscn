@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://drcifs86uiqmb" path="res://assets/world/mash-highlighter-1x2.png" id="2_vrlv6"]
 [ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="3_cg17m"]
 [ext_resource type="Texture2D" uid="uid://bkdp3upfs50a2" path="res://assets/objects/block-shade-1x2-01.png" id="4_bnw4p"]
-[ext_resource type="Script" uid="uid://c2cidbmohm8nw" path="res://object/scripts/flame_detect.gd" id="6_8qamv"]
 [ext_resource type="PackedScene" uid="uid://b8b1jq0amanoa" path="res://world/particles_z.tscn" id="7_gnbv7"]
 [ext_resource type="Texture2D" uid="uid://dssqi37ffm7ee" path="res://assets/world/particle-marshspiral.png" id="8_ssm2y"]
 
@@ -26,9 +25,6 @@ size = Vector2(63, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqv4d"]
 size = Vector2(60, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnbv7"]
-size = Vector2(62, 124)
-
 [sub_resource type="Curve" id="Curve_bnw4p"]
 _data = [Vector2(0, 0.49712896), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -38,13 +34,12 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "unmashed_top_detect", "audio", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "particles_spawn")]
+[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "audio", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "particles_spawn")]
 collision_layer = 8
 collision_mask = 4105
 script = ExtResource("1_cg17m")
 build_type = 1
 player_down_detect = NodePath("PlayerBottomDetect")
-unmashed_top_detect = NodePath("UnmashedBlockonTopDetect")
 audio = NodePath("UnmashedAudio")
 sprite = NodePath("Visual/SpriteNode/Sprite2D")
 sprite_shade = NodePath("Visual/SpriteNode/Shade")
@@ -60,7 +55,7 @@ metadata/_custom_type_script = "uid://madv71ijp5i3"
 
 [node name="SpriteNode" type="Node2D" parent="Visual" unique_id=1466462306]
 position = Vector2(0, 64)
-scale = Vector2(0.9824722, 1.0006459)
+scale = Vector2(0.9986608, 0.9885044)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1604238858]
 position = Vector2(0, -64)
@@ -115,12 +110,6 @@ position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_wqv4d")
 target_position = Vector2(0, -30)
 collision_mask = 8
-
-[node name="FlameDetect" type="Area2D" parent="." unique_id=945737623]
-script = ExtResource("6_8qamv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameDetect" unique_id=79540611]
-shape = SubResource("RectangleShape2D_gnbv7")
 
 [node name="Z" parent="." unique_id=2080773523 instance=ExtResource("7_gnbv7")]
 position = Vector2(32, 16)

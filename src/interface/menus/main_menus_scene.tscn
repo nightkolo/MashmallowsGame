@@ -30,16 +30,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.22906628, 0.22639936, 7.219613e-08, 1)
+color = Color(0.44672376, 0.32086813, 0, 1)
 
 [node name="TiledSprite2D" type="Sprite2D" parent="BG" unique_id=1739332519]
-self_modulate = Color(0.22906628, 0.22639936, 7.219613e-08, 1)
+self_modulate = Color(0.32086813, 0.32086813, 0, 1)
 texture_repeat = 2
 position = Vector2(640, 400)
 rotation = -0.3926991
 texture = ExtResource("2_fmvdq")
 region_enabled = true
-region_rect = Rect2(72.93601, 30.959536, 1620, 1250)
+region_rect = Rect2(4069.9778, 1727.6985, 1620, 1250)
 script = ExtResource("3_bqa5v")
 animate_scroll = true
 scroll_trajectory = 0.4014257279586958

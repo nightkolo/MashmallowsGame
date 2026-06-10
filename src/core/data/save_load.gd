@@ -4,7 +4,7 @@ class_name SaverLoader
 signal game_saved()
 signal game_loaded()
 
-const SAVE_LOCATION = "user://savedata.json"
+const SAVE_LOCATION = "user://save_data.json"
 const LEVEL_SAVE_LOCATION = "user://level_data.json"
 
 

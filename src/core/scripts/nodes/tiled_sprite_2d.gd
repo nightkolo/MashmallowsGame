@@ -57,4 +57,5 @@ func _animate_scroll(delta: float) -> void:
 
 
 func _process(delta: float) -> void:
-	_animate_scroll(delta)
+	if animate_scroll:
+		_animate_scroll(delta)

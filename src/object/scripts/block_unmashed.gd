@@ -121,7 +121,7 @@ func is_mashable() -> bool: ## @deprecated
 	return !is_expanding
 
 const EXPAND_TIME = 0.5
-const WAIT_TIME_BEFORE_EXPAND = 1.0
+const WAIT_TIME_BEFORE_EXPAND = 0.75
 
 func anim_expanding() -> void:
 	if twisted_marshmallow == null:
@@ -135,8 +135,8 @@ func anim_expanding() -> void:
 	
 	await get_tree().create_timer(0.2).timeout
 	
-	if !is_player_on_top():
-		await get_tree().create_timer(WAIT_TIME_BEFORE_EXPAND).timeout
+	#if !is_player_on_top():
+	await get_tree().create_timer(WAIT_TIME_BEFORE_EXPAND).timeout
 	
 	started_expanding.emit()
 
@@ -266,9 +266,10 @@ func anim_spawn_particles() -> void:
 var _tween_prompt: Tween
 
 func anim_highlight(p_mash: bool) -> void:
-	var can_mash: bool = true
+	if mash_type == Util.MashType.TWISTED:
+		return
 	
-			
+	var can_mash: bool = true
 
 	if GameMgr.current_player:
 		can_mash = GameMgr.current_player.can_perform_mash()

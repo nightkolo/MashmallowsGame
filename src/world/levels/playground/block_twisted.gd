@@ -3,6 +3,8 @@ class_name Twisted
 
 @export var bodies: Array[TwistedColliBlock]
 @export var player: Player
+@export var twisted_mask_gradient: Texture
+@export var twisted_mask: Sprite2D
 
 var parent_unmashed: Unmashed
 var twisted_strength: float
@@ -21,6 +23,11 @@ func _ready() -> void:
 			await get_tree().create_timer(0.1).timeout
 			twisted_strength = parent_unmashed.twisted_strength
 	
+	
+	if twisted_mask_gradient:
+		(twisted_mask_gradient as GradientTexture2D).height = 64
+		twisted_mask.visible = true
+		
 	if player == null:
 		await get_tree().create_timer(0.1).timeout
 		player = GameMgr.current_player
@@ -29,40 +36,39 @@ func _ready() -> void:
 var expand_tween: Tween
 
 func start_stop_expansion() -> void:
-	if player == null:
-		return
-		
 	player.has_touched_ceiling.connect(_on_ceiling_touched)
 
 func cancel_stop_expansion() -> void:
-	if player == null:
-		return
-		
 	if player.has_touched_ceiling.is_connected(_on_ceiling_touched):
 		player.has_touched_ceiling.disconnect(_on_ceiling_touched)
 
 func _on_ceiling_touched() -> void:
-	if player == null:
-		return
-	var cond := player.is_on_block()
-	print_debug(cond)
-	if expand_tween && cond:
+	if expand_tween && player.is_on_block():
 		expand_tween.kill()
+		
+		(twisted_mask_gradient as GradientTexture2D).height -= 20
+		
+		for b: TwistedColliBlock in bodies:
+			b.position.y = minf(0.0, b.position.y + 20.0)
 
 
 func expand_collision(strength: float = twisted_strength, p_dur: float = 0.5) -> void:
 	if parent_unmashed.mash_type != Util.MashType.TWISTED:
 		return
 	
-	start_stop_expansion()
+	if player:
+		start_stop_expansion()
 	
 	print_debug("expanding...")
 
 	#var dur := p_dur
 	var l_strength := strength / bodies.size()
+	
 	if expand_tween:
 		expand_tween.kill()
 	expand_tween = create_tween().set_parallel(true)
+
+	
 
 	for i in range(bodies.size()):
 		#bodies[i].position = Vector2.ZERO
@@ -70,12 +76,16 @@ func expand_collision(strength: float = twisted_strength, p_dur: float = 0.5) ->
 		
 		#print_debug(bodies[i].position.y)
 		
-		var pos_to: float =  (i * Util.BLOCK_SIZE * -1 * l_strength)
+		var pos_to: float =  (-i * Util.BLOCK_SIZE * l_strength)
 		
 		#print_debug(pos_to)
 		
 		expand_tween.tween_property(bodies[i], "position:y", pos_to, p_dur).from(0.0)
-		
+	
+	#print_debug(s)
+	expand_tween.tween_property(twisted_mask_gradient as GradientTexture2D, "height", int(Util.BLOCK_SIZE * strength) ,p_dur )
+	
+	
 	await expand_tween.finished
 	cancel_stop_expansion()
 		# tween.tween_property(bodies[i], "position:y", 0.0, dur / 2.0).set_delay(dur / 2.0)

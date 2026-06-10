@@ -40,9 +40,10 @@ func update_global_code() -> void:
 	
 	var arr: Array[Dictionary] = []
 	
-	for entry in order_code:
+	for entry: Dictionary in order_code:
 		arr.append({
 			"type": entry["type"],
+			"build": entry["build"],
 			"pos": {
 				"x": entry["pos"].x,
 				"y": entry["pos"].y
@@ -65,7 +66,7 @@ func update_code() -> void:
 		
 		Util.set_block_code(order_code, id.attributes, id)
 	
-	GameLogic.current_level_order_object = self
+	#GameLogic.current_level_order_object = self
 
 
 func update_look() -> void:

@@ -1,22 +1,19 @@
 [gd_scene format=3 uid="uid://bx4riuxwyodmw"]
 
 [ext_resource type="Script" uid="uid://bvqqxldlat8i5" path="res://world/levels/playground/block_twisted.gd" id="1_p35sq"]
+[ext_resource type="Texture2D" uid="uid://dg568jue416lr" path="res://core/resources/game/twisted_marshmallow_texture.tres" id="2_7yu03"]
 [ext_resource type="Script" uid="uid://deg6bd4paxjlc" path="res://world/levels/playground/block_twisted_animatable_collisions.gd" id="2_8xxo4"]
+[ext_resource type="Texture2D" uid="uid://di0gtwsbffgjt" path="res://assets/objects/block-twisted-1xAny.png" id="3_2j2nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvee0"]
 size = Vector2(62, 62)
 
-[sub_resource type="Gradient" id="Gradient_8xxo4"]
-offsets = PackedFloat32Array(0.0018416207, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2j2nq"]
-gradient = SubResource("Gradient_8xxo4")
-
-[node name="Twisted" type="Node2D" unique_id=1615657111 node_paths=PackedStringArray("bodies")]
+[node name="Twisted" type="Node2D" unique_id=1615657111 node_paths=PackedStringArray("bodies", "twisted_mask")]
 position = Vector2(0, -10)
 script = ExtResource("1_p35sq")
 bodies = [NodePath("AnimatableBody2D"), NodePath("AnimatableBody2D2"), NodePath("AnimatableBody2D3"), NodePath("AnimatableBody2D4"), NodePath("AnimatableBody2D5")]
+twisted_mask_gradient = ExtResource("2_7yu03")
+twisted_mask = NodePath("TwistedMask")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=800639809]
 collision_layer = 0
@@ -27,9 +24,6 @@ script = ExtResource("2_8xxo4")
 shape = SubResource("RectangleShape2D_lvee0")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" unique_id=128397938]
-texture = SubResource("GradientTexture2D_2j2nq")
-
 [node name="AnimatableBody2D2" type="AnimatableBody2D" parent="." unique_id=1816252498]
 collision_layer = 4096
 collision_mask = 9
@@ -38,9 +32,6 @@ script = ExtResource("2_8xxo4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D2" unique_id=1279636235]
 shape = SubResource("RectangleShape2D_lvee0")
 disabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D2" unique_id=441518407]
-texture = SubResource("GradientTexture2D_2j2nq")
 
 [node name="AnimatableBody2D3" type="AnimatableBody2D" parent="." unique_id=327078020]
 collision_layer = 8
@@ -51,9 +42,6 @@ script = ExtResource("2_8xxo4")
 shape = SubResource("RectangleShape2D_lvee0")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D3" unique_id=1568059910]
-texture = SubResource("GradientTexture2D_2j2nq")
-
 [node name="AnimatableBody2D4" type="AnimatableBody2D" parent="." unique_id=1546255635]
 collision_layer = 8
 collision_mask = 9
@@ -62,9 +50,6 @@ script = ExtResource("2_8xxo4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D4" unique_id=1848590647]
 shape = SubResource("RectangleShape2D_lvee0")
 disabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D4" unique_id=866511173]
-texture = SubResource("GradientTexture2D_2j2nq")
 
 [node name="AnimatableBody2D5" type="AnimatableBody2D" parent="." unique_id=1351008727]
 collision_layer = 8
@@ -75,5 +60,15 @@ script = ExtResource("2_8xxo4")
 shape = SubResource("RectangleShape2D_lvee0")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D5" unique_id=1977000245]
-texture = SubResource("GradientTexture2D_2j2nq")
+[node name="TwistedMask" type="Sprite2D" parent="." unique_id=1899553787]
+visible = false
+clip_children = 1
+position = Vector2(37, 32)
+scale = Vector2(-1, -1)
+texture = ExtResource("2_7yu03")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="TwistedMask" unique_id=1044857695]
+position = Vector2(37, 175)
+scale = Vector2(-0.5, -0.5)
+texture = ExtResource("3_2j2nq")

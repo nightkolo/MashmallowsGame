@@ -1,37 +1,58 @@
 # Todo
 
-## 5-23
+## 6-9 (Deadline 6-15)
 
 - [x] Walkthrough and Song reveal
 
+### Bugs
+- [ ] Twisted marshmallows
+  - [ ] Clipping through terrain
+  - [x] Player crush
+  - [x] No stopping on quick expansion
+- [ ] Roasted
+  - [ ] 
+
 ### Assets and Design
 - [ ] Interface
-  - [ ] Stars
-    - [ ] Complete
-    - [ ] Uncomplete
-  - [ ] Bakery levels panel
+  - [x] Stars
+    - [ ] Bakery Complete
+    - [x] Complete
+  - [x] Bakery levels panel
+  - [x] Level button theme
+    - [x] Entered
+    - [x] Exited
+  - [x] Animated arrow
+  - [x] Lower opacity
   - [ ] BG elements
-  - [ ] Input prompts bar
+  - [x] Input prompts bar
 - [ ] Promo
   - [ ] Logo
   - [ ] Artwork
     - [ ] Bakery complete
     - [ ] Credits
+- [ ] Objects
+  - [ ] Twisted marshmallows
+    - [x] implementation
+    - [ ] recolor
+    - [ ] icon  
+    - [ ] sihlouette
+    - [ ] line
+  - [x] Flame
+  - [x] Flamed block design
+  - [ ] Bubblegate
+    - [ ] Bubbles
+      - [x] Open
+      - [ ] Pop sprite
+      - [ ] Popped
+    - [x] Eyes
+      - [x] Open
+      - [x] Closed
+    - [x] Button
 - [ ] Level goal
   - [ ] Roasted block
   - [ ] Star eyes
   - [ ] Order block
     - [ ] Twisted
-- [ ] Objects
-  - [ ] Twisted marshmallows
-  - [ ] Flame
-  - [ ] Flamed block design
-  - [ ] Bubblegate
-    - [ ] Bubbles
-      - [ ] Open
-      - [ ] Pop sprite
-      - [ ] Popped
-    - [ ] Button
 
 ### Interface
 
@@ -41,21 +62,20 @@
   - [ ] Title Screen
     - [x] Continue Button
     - [ ] Level Select
-      - [ ] Intro
+      - [x] Intro
+      - [x] Order previews
       - [x] Grid Design
       - [ ] Star system
         - [x] Golden star (Best solution)
-        - [ ] Blue star (Pass)
         - [ ] Animated star
-      - [ ] Chibi Millie?
-    - [ ] Credits and Support
-    - [ ] Fix input bar
-      - [ ] Animated
+    - [x] Credits and Support
+    - [x] Fix input bar
+      - [x] Animated
       - [x] Dynamic
   - [ ] Pause Menu
     - [ ] Panel
-- [ ] Theme
-  - [ ] Button anim
+- [x] Theme
+  - [x] Button
   - [x] BG
     - [x] Animated
 
@@ -63,13 +83,15 @@
 - [ ] Interface
   - [ ] Button anim
   - [ ] Interface anim
+    - [ ] Star anim
+    - [ ] Order preview
   - [ ] Input bar anim
 
 ### Gameplay
 
 - [x] One way platform
 - [ ] Regular block?
-- [ ] World 2 beta 
+- [ ] Bakery 2 beta 
   - [ ] Mechanics
     - [x] Twisted marshmallow
     - [ ] Flame object

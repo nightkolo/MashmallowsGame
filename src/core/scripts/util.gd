@@ -61,6 +61,7 @@ static func set_block_code(arr: Array[Dictionary], block: BlockAttributes, node:
 	#arr.clear()
 	arr.append({
 		"type": block.mash_type,
+		"build": block.build_type,
 		"pos": Vector2(
 			node.position.x / Util.BLOCK_SIZE,
 			node.position.y / Util.BLOCK_SIZE

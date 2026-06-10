@@ -4,9 +4,10 @@ class_name LevelPanel
 signal entered_cb_1()
 signal entered_cb_2()
 
+@export var order_preview: UIOrderPreview
 
-@onready var panel_1: NinePatchRect = %Panel
-@onready var panel_2: NinePatchRect = %Panel2
+@onready var panel_1: BakeryPanel = %Panel
+@onready var panel_2: BakeryPanel = %Panel2
 #@onready var marker_2d: Marker2D = $Marker2D
 #@onready var main_container: MarginContainer = %Main
 
@@ -19,10 +20,17 @@ signal entered_cb_2()
 
 
 
-func bakery_panel_entered(i: int) -> void:
-	print_debug("Bakery %s entered" % i)
+func bakery_panel_entered(bakery_num: int, lvl_num: int = 0) -> void:
+	#print_debug("Bakery %s entered" % i)
+	if order_preview:
+		print_debug(lvl_num)
+		order_preview.current_level_focussed = lvl_num
 	
-	anim_levels_panel(lvl_panels[i])
+	for p: BakeryPanel in lvl_panels:
+		p.is_active = false
+	
+	anim_levels_panel(lvl_panels[bakery_num])
+	(lvl_panels[bakery_num] as BakeryPanel).is_active = true
 
 
 func _ready() -> void:
@@ -32,15 +40,15 @@ func _ready() -> void:
 		lvl_panels[i].custom_minimum_size = lvl_panel_containers[i].size
 		
 	for board_btn: BoardSelectButton in board_btns:
-		var board_num := board_btn.name.to_int()
+		var lvl_num := board_btn.name.to_int()
 			
-		var index := floori((board_num - 1.0) / 10.0)
+		var bakery_num := floori((lvl_num - 1.0) / 10.0)
 		
-		board_btn.focus_entered.connect(bakery_panel_entered.bind(index))
-		board_btn.mouse_entered.connect(bakery_panel_entered.bind(index))
+		board_btn.focus_entered.connect(bakery_panel_entered.bind(bakery_num, lvl_num))
+		board_btn.mouse_entered.connect(bakery_panel_entered.bind(bakery_num, lvl_num))
 		
 	%BtnB1.grab_focus()
-	bakery_panel_entered(0)
+	bakery_panel_entered(0, 1)
 	
 	
 var _panel_tween: Tween
