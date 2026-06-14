@@ -34,7 +34,7 @@ size = Vector2(60, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynmou"]
 size = Vector2(60, 20)
 
-[node name="Unmashed" type="CharacterBody2D" unique_id=1597136109 node_paths=PackedStringArray("player_down_detect", "top_detect", "audio", "node_mash_prompt", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "particles_spawn")]
+[node name="Unmashed" type="CharacterBody2D" unique_id=1597136109 node_paths=PackedStringArray("player_down_detect", "top_detect", "audio", "node_mash_prompt", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node", "particles_spawn")]
 collision_layer = 8
 collision_mask = 4105
 script = ExtResource("1_n48d1")
@@ -47,6 +47,7 @@ sprite_shade = NodePath("Visual/SpriteNode/Shade")
 sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
 sprite_input = NodePath("Visual/Eyes/Unmashable")
 sprite_node = NodePath("Visual/SpriteNode")
+eyes_node = NodePath("Visual/Eyes")
 particles_spawn = NodePath("Visual/Particles")
 metadata/_custom_type_script = "uid://madv71ijp5i3"
 
@@ -77,7 +78,7 @@ blink_interval = 0.0
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -65933.08
+rotation = -66534.52
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"
@@ -86,7 +87,7 @@ text = "X"
 
 [node name="SpriteNode" type="Node2D" parent="Visual" unique_id=277771888]
 position = Vector2(0, 35)
-scale = Vector2(0.9672523, 1.0120608)
+scale = Vector2(0.95273685, 1.0229473)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=690881826]
 position = Vector2(0, -35)

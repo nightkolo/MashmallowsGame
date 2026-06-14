@@ -9,16 +9,24 @@
   - [ ] Clipping through terrain
   - [x] Player crush
   - [x] No stopping on quick expansion
-- [ ] Roasted
-  - [ ] 
 
 ### Assets and Design
 - [ ] Interface
   - [ ] BG special
   - [ ] BG elements
-  - [x] Stars
+  - [ ] Stars
     - [ ] Bakery Complete
     - [x] Complete
+- [ ] Promo
+  - [ ] Logo
+  - [ ] Artwork
+    - [ ] Bakery complete
+    - [ ] Credits
+- [ ] Level goal
+  - [ ] Roasted block
+  - [ ] Star eyes
+  - [x] Order block
+    - [x] Twisted
   - [x] Bakery levels panel
   - [x] Level button theme
     - [x] Entered
@@ -27,12 +35,7 @@
   - [x] Lower opacity
   - [ ] BG elements
   - [x] Input prompts bar
-- [ ] Promo
-  - [ ] Logo
-  - [ ] Artwork
-    - [ ] Bakery complete
-    - [ ] Credits
-- [ ] Objects
+- [x] Objects
   - [x] Regular blocks
   - [x] Twisted marshmallows
     - [x] icon  
@@ -49,11 +52,6 @@
       - [x] Open
       - [x] Closed
     - [x] Button
-- [ ] Level goal
-  - [ ] Roasted block
-  - [ ] Star eyes
-  - [x] Order block
-    - [x] Twisted
 
 ### Interface
 
@@ -62,10 +60,10 @@
   - [ ] Artwork
   - [ ] Bakery complete checkmark
   - [ ] Anim
-- [ ] Title Screen
-  - [ ] Level Select
-    - [ ] Star system
-      - [ ] Animated star
+- [x] Title Screen
+  - [x] Level Select
+    - [x] Star system
+      - [x] Animated star
       - [x] Golden star (Best solution)
   - [x] Continue Button
     - [x] Intro
@@ -87,7 +85,7 @@
 ### Animation
 - [ ] Interface
   - [ ] Interface anim
-    - [ ] Star anim
+    - [x] Star anim
     - [ ] Order preview anim
   - [x] Button anim
   - [x] Input bar anim
@@ -95,7 +93,7 @@
 ### Gameplay
 
 - [x] One way platform
-- [ ] Regular block?
+- [x] Regular block?
 - [ ] Bakery 2 beta 
   - [ ] Mechanics
     - [ ] Flame object

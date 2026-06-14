@@ -52,6 +52,11 @@ script = ExtResource("12_ptjpe")
 mash_type = 3
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
+[sub_resource type="Resource" id="Resource_rqlvs"]
+script = ExtResource("12_ptjpe")
+mash_type = 999
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "level_info", "player")]
 script = ExtResource("1_53aih")
 save_stats = false
@@ -149,7 +154,7 @@ offset_bottom = 120.0
 scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-22749.92, 2.7862842e-12, 4776, 3584)
+region_rect = Rect2(-25155.121, 3.0807188e-12, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 272.0
@@ -183,6 +188,10 @@ block_attributes = SubResource("Resource_gegs0")
 [node name="UnmashedSpawner3" parent="." unique_id=1512262256 instance=ExtResource("16_djaxc")]
 position = Vector2(664, 224)
 block_attributes = SubResource("Resource_nrchv")
+
+[node name="UnmashedSpawner4" parent="." unique_id=1625982578 instance=ExtResource("16_djaxc")]
+position = Vector2(416, 280)
+block_attributes = SubResource("Resource_rqlvs")
 
 [editable path="World/LevelGoal"]
 [editable path="World/LevelInfo"]

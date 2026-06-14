@@ -34,7 +34,7 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "audio", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "particles_spawn")]
+[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "audio", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node", "particles_spawn")]
 collision_layer = 8
 collision_mask = 4105
 script = ExtResource("1_cg17m")
@@ -46,6 +46,7 @@ sprite_shade = NodePath("Visual/SpriteNode/Shade")
 sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
 sprite_input = NodePath("Visual/Eyes/Unmashable")
 sprite_node = NodePath("Visual/SpriteNode")
+eyes_node = NodePath("Visual/Eyes")
 particles_spawn = NodePath("Particles")
 metadata/_custom_type_script = "uid://madv71ijp5i3"
 
@@ -55,7 +56,7 @@ metadata/_custom_type_script = "uid://madv71ijp5i3"
 
 [node name="SpriteNode" type="Node2D" parent="Visual" unique_id=1466462306]
 position = Vector2(0, 64)
-scale = Vector2(0.9986608, 0.9885044)
+scale = Vector2(0.9584988, 1.0186259)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1604238858]
 position = Vector2(0, -64)

@@ -154,7 +154,7 @@ func _ready() -> void:
 		build_type = attributes.build_type
 		is_golden = attributes.is_golden
 
-	
+	node_eye_sprites_2.visible = mash_type != Util.MashType.MISC
 
 	if get_parent() is Player:
 		parent_player = get_parent()

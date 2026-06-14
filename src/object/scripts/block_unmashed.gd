@@ -57,6 +57,7 @@ var attributes: BlockAttributes
 @export var sprite_highlight: Sprite2D
 @export var sprite_input: Sprite2D
 @export var sprite_node: Node2D 
+@export var eyes_node: Node2D 
 @export var particles_spawn: CPUParticles2D 
 
 var twisted: PackedScene = preload("res://object/objects/block_twisted_collision.tscn")
@@ -101,10 +102,13 @@ func _ready() -> void:
 		var t: Twisted = twisted.instantiate()
 		t.position = Vector2.ZERO
 		add_child(t)
+		move_child(t, 0)
 		twisted_marshmallow = t
 		anim_expanding()
 	else:
 		collision_mask = 1 + 8 + 4096
+
+	eyes_node.visible = mash_type != Util.MashType.MISC
 
 	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type, attributes.is_golden)
 	#
@@ -113,9 +117,10 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.1).timeout
 	
-	if GameMgr.current_level:
+	if mash_type == Util.MashType.TWISTED:
+		sprite_node.visible = false
+	elif GameMgr.current_level:
 		sprite_node.visible = GameMgr.current_level.show_unmashed_blocks
-
 
 func is_mashable() -> bool: ## @deprecated
 	return !is_expanding

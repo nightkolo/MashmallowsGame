@@ -61,9 +61,51 @@ func display_data() -> void:
 		sprite.scale = 0.75 * Vector2.ONE
 		node.add_child(sprite)
 		self.add_child(node)
+		anim_star()
 	#com_star.visible = GameData.runtime_data[board_num]["completed"] == true
 	#uncom_star.visible = GameData.runtime_data[board_num]["completed"] == false
 
+func anim_star() -> void:
+	anim_star_pulse()
+	anim_star_rot()
+	var spd := 0.25
+	
+	var l_tween := create_tween().set_loops()
+	
+	l_tween.set_parallel(true)
+	l_tween.set_ease(Tween.EASE_OUT)
+	
+	l_tween.tween_callback(anim_star_pulse)
+	l_tween.tween_property(node, "position:y", -10.0, spd * 0.2)
+	l_tween.tween_property(node, "scale", Vector2(0.8, 1.2), spd * 0.6)
+	l_tween.chain().tween_property(node, "position:y", 0.0, spd * 0.35).set_trans(Tween.TRANS_SINE)
+	
+	l_tween.chain().tween_property(node, "scale", Vector2.ONE, 1.0).set_trans(Tween.TRANS_ELASTIC)
+	#l_tween.tween_callback(func():
+		#if randf() < 1.0 / 4.0:
+			#anim_star_rot()
+		#)
+	l_tween.tween_interval(1.0)
+
+func anim_star_rot():
+	var dir := signf(randf() - 0.5)
+	
+	var l_tween_2 := create_tween().set_loops()
+	l_tween_2.set_ease(Tween.EASE_OUT_IN)
+	l_tween_2.tween_property(node, "rotation_degrees", dir * 5.5, 1.0).set_ease(Tween.EASE_OUT_IN)
+	l_tween_2.tween_property(node, "rotation_degrees", dir * -5.5, 1.0).set_ease(Tween.EASE_OUT_IN)
+
+var l_tween_3: Tween
+
+func anim_star_pulse():
+	if l_tween_3:
+		l_tween_3.kill()
+		
+	l_tween_3 = create_tween()
+	
+	l_tween_3.tween_property(node, "modulate", Color(Color.WHITE * 2.0), 0.1)
+	l_tween_3.tween_property(node, "modulate", Color(Color.WHITE, 1.0), 0.6)
+	
 
 func anim_pressed() -> void:
 	var dur := 1.0
