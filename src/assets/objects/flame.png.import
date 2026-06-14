@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8xel52c778wp"
-path="res://.godot/imported/block-twisted-1x1.png-82c7699a65f49157d43dd549f29e03d0.ctex"
+uid="uid://chwlxcy3mll2s"
+path="res://.godot/imported/flame.png-b7a6e236c738beca9e6236ba41a174d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/block-twisted-1x1.png"
-dest_files=["res://.godot/imported/block-twisted-1x1.png-82c7699a65f49157d43dd549f29e03d0.ctex"]
+source_file="res://assets/objects/flame.png"
+dest_files=["res://.godot/imported/flame.png-b7a6e236c738beca9e6236ba41a174d7.ctex"]
 
 [params]
 

@@ -40,11 +40,11 @@
     - [x] recolor
   - [x] Flame
   - [x] Flamed block design
-  - [ ] Bubblegate
-    - [ ] Bubbles
+  - [x] Bubblegate
+    - [x] Bubbles
       - [x] Open
-      - [ ] Pop sprite
-      - [ ] Popped
+      - [x] Pop sprite
+      - [x] Popped
     - [x] Eyes
       - [x] Open
       - [x] Closed
@@ -52,24 +52,29 @@
 - [ ] Level goal
   - [ ] Roasted block
   - [ ] Star eyes
-  - [ ] Order block
-    - [ ] Twisted
+  - [x] Order block
+    - [x] Twisted
 
 ### Interface
 
-  - [ ] Title Screen
-    - [ ] Level Select
-      - [ ] Star system
-        - [ ] Animated star
-        - [x] Golden star (Best solution)
-    - [x] Continue Button
-      - [x] Intro
-      - [x] Order previews
-      - [x] Grid Design
-    - [x] Credits and Support
-    - [x] Fix input bar
-      - [x] Animated
-      - [x] Dynamic
+- [ ] Bakery complete
+  - [ ] Design
+  - [ ] Artwork
+  - [ ] Bakery complete checkmark
+  - [ ] Anim
+- [ ] Title Screen
+  - [ ] Level Select
+    - [ ] Star system
+      - [ ] Animated star
+      - [x] Golden star (Best solution)
+  - [x] Continue Button
+    - [x] Intro
+    - [x] Order previews
+    - [x] Grid Design
+  - [x] Credits and Support
+  - [x] Fix input bar
+    - [x] Animated
+    - [x] Dynamic
 - [x] Menu
   - [x] Animated BG
   - [x] Pause Menu

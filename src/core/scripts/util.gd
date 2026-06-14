@@ -143,9 +143,9 @@ static func get_order_block_texture(type: MashType, build: BuildType, satisfied:
 		return preload("res://assets/interface/order-player.png")
 
 	var l_name := str(MashType.find_key(type)).to_lower()
-	
-	if l_name == "twisted":
-		return load("res://assets/objects/block-twisted-1x1.png")
+	#
+	#if l_name == "twisted":
+		#return load("res://assets/objects/block-twisted-1x1.png")
 	
 	var build_str := "1x2" if build == BuildType.RECTANGLE else "1x1"
 	var color_suffix := "" if satisfied else "-grey"
@@ -157,16 +157,16 @@ static func get_order_block_texture(type: MashType, build: BuildType, satisfied:
 	return load(path)
 
 
-static func get_mash_type_shade_texture(type: MashType, build: BuildType) -> Texture2D:
-
-	var l_num := "02" if type == MashType.HEART else "01"
-	var build_str := "1x2" if build == BuildType.RECTANGLE else "1x1"
-
-	var path := "res://assets/objects/block-shade-%s-%s.png" % [
-		build_str, l_num
-	]
-
-	return load(path)
+#static func get_mash_type_shade_texture(type: MashType, build: BuildType) -> Texture2D:
+#
+	#var l_num := "02" if type == MashType.HEART else "01"
+	#var build_str := "1x2" if build == BuildType.RECTANGLE else "1x1"
+#
+	#var path := "res://assets/objects/block-shade-%s-%s.png" % [
+		#build_str, l_num
+	#]
+#
+	#return load(path)
 
 static func get_mash_type_texture(type: MashType, build: BuildType) -> Texture2D:
 	# Special cases first (they break the pattern)
@@ -178,7 +178,7 @@ static func get_mash_type_texture(type: MashType, build: BuildType) -> Texture2D
 		MashType.AIR_CHERRY_BOMB:
 			return preload("res://assets/objects/block-cherry-bomb-air.png")
 		MashType.TWISTED:
-			return preload("res://assets/objects/block-twisted-1x1.png")
+			return preload("res://assets/interface/order-twisted-1x1.png")
 
 	var l_name := str(MashType.find_key(type)).to_lower()
 	var build_str := "1x2" if build == BuildType.RECTANGLE else "1x1"

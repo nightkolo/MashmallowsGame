@@ -15,7 +15,7 @@ var attributes: BlockAttributes
 	set(value):
 		if is_node_ready():
 			sprite.texture = Util.get_mash_type_texture(value, build_type)
-			sprite_shade.texture = Util.get_mash_type_shade_texture(value, build_type)
+			#sprite_shade.texture = Util.get_mash_type_shade_texture(value, build_type)
 		if attributes:
 			attributes.mash_type = value
 		mash_type = value
