@@ -2,11 +2,24 @@
 
 [ext_resource type="Script" uid="uid://dyrhspudi6l5j" path="res://interface/runtime/ui_menu_pause.gd" id="1_e5gcu"]
 [ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="1_x2cp5"]
+[ext_resource type="Texture2D" uid="uid://cxvh8xb1jrys0" path="res://assets/interface/tile-01.png" id="2_ytqxl"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://core/scripts/nodes/tiled_sprite_2d.gd" id="3_o07dq"]
 [ext_resource type="PackedScene" uid="uid://bltj01af7hhkl" path="res://interface/runtime/game_title.tscn" id="4_ckd5b"]
 [ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="5_b1ou4"]
 [ext_resource type="Script" uid="uid://dpw8xwxo4mbrv" path="res://interface/interactors/audio_options_container.gd" id="9_ksf64"]
 [ext_resource type="Texture2D" uid="uid://b4ndvo76fmqy1" path="res://assets/interface/option-sfx.png" id="9_usxwo"]
 [ext_resource type="Texture2D" uid="uid://73cne5ae0fv5" path="res://assets/interface/option-music.png" id="10_u8yhx"]
+
+[sub_resource type="Gradient" id="Gradient_ytqxl"]
+offsets = PackedFloat32Array(0.16348195, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o07dq"]
+gradient = SubResource("Gradient_ytqxl")
+width = 1580
+height = 800
+fill = 1
+fill_from = Vector2(0.49415693, 0.6594324)
 
 [sub_resource type="FontVariation" id="FontVariation_q0gsl"]
 spacing_glyph = -2
@@ -23,14 +36,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e5gcu")
 
-[node name="BG2" type="ColorRect" parent="." unique_id=312090760]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.5)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=281541891]
+clip_children = 2
+position = Vector2(640, 400)
+texture = SubResource("GradientTexture2D_o07dq")
+
+[node name="TiledSprite2D" type="Sprite2D" parent="Sprite2D" unique_id=683109769]
+self_modulate = Color(1, 1, 1, 0.254)
+texture_repeat = 2
+position = Vector2(-11, 1)
+texture = ExtResource("2_ytqxl")
+region_enabled = true
+region_rect = Rect2(0, 0, 1580, 800)
+script = ExtResource("3_o07dq")
+animate_scroll = true
+scroll_trajectory = 3.141592653589793
+metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
 
 [node name="BG" type="ColorRect" parent="." unique_id=1979856892]
 layout_mode = 1
@@ -39,6 +60,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
 
 [node name="PauseMenuAgain" type="MarginContainer" parent="." unique_id=210506977]
 layout_mode = 1
@@ -178,16 +200,3 @@ position = Vector2(25, 25)
 self_modulate = Color(1, 1, 0.735357, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_u8yhx")
-
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1128378327]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=355929016]
-layout_mode = 2

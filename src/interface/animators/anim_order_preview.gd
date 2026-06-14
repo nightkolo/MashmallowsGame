@@ -93,5 +93,5 @@ func repos(oc: Array):
 func _ready() -> void:
 	var s: Vector2 = (get_parent() as Control).size
 	
-	position = Vector2(300.0, 350.0)
+	position = Vector2(300.0, 410.0)
 	scale = Vector2.ONE * 1.5

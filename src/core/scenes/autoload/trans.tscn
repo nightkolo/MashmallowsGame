@@ -123,6 +123,7 @@ _data = {
 }
 
 [node name="Trans" type="CanvasLayer" unique_id=99184853]
+layer = 3
 script = ExtResource("1_otbg6")
 
 [node name="Anim" type="AnimationPlayer" parent="." unique_id=1208150388]

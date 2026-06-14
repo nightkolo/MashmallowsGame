@@ -25,7 +25,8 @@ func _ready() -> void:
 	
 	
 	if twisted_mask_gradient:
-		(twisted_mask_gradient as GradientTexture2D).height = 64
+		twisted_mask.texture = twisted_mask_gradient.duplicate(true)
+		(twisted_mask.texture as GradientTexture2D).height = 64
 		twisted_mask.visible = true
 		
 	if player == null:
@@ -46,7 +47,7 @@ func _on_ceiling_touched() -> void:
 	if expand_tween && player.is_on_block():
 		expand_tween.kill()
 		
-		(twisted_mask_gradient as GradientTexture2D).height -= 20
+		(twisted_mask.texture as GradientTexture2D).height -= 20
 		
 		for b: TwistedColliBlock in bodies:
 			b.position.y = minf(0.0, b.position.y + 20.0)
@@ -76,14 +77,14 @@ func expand_collision(strength: float = twisted_strength, p_dur: float = 0.5) ->
 		
 		#print_debug(bodies[i].position.y)
 		
-		var pos_to: float =  (-i * Util.BLOCK_SIZE * l_strength)
+		var pos_to: float =  (-i * Util.BLOCK_SIZE * l_strength * 0.95)
 		
 		#print_debug(pos_to)
 		
 		expand_tween.tween_property(bodies[i], "position:y", pos_to, p_dur).from(0.0)
 	
 	#print_debug(s)
-	expand_tween.tween_property(twisted_mask_gradient as GradientTexture2D, "height", int(Util.BLOCK_SIZE * strength) ,p_dur )
+	expand_tween.tween_property(twisted_mask.texture as GradientTexture2D, "height", int(Util.BLOCK_SIZE * strength) ,p_dur )
 	
 	
 	await expand_tween.finished

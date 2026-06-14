@@ -14,6 +14,8 @@
 
 ### Assets and Design
 - [ ] Interface
+  - [ ] BG special
+  - [ ] BG elements
   - [x] Stars
     - [ ] Bakery Complete
     - [x] Complete
@@ -31,12 +33,11 @@
     - [ ] Bakery complete
     - [ ] Credits
 - [ ] Objects
-  - [ ] Twisted marshmallows
+  - [x] Regular blocks
+  - [x] Twisted marshmallows
+    - [x] icon  
     - [x] implementation
-    - [ ] recolor
-    - [ ] icon  
-    - [ ] sihlouette
-    - [ ] line
+    - [x] recolor
   - [x] Flame
   - [x] Flamed block design
   - [ ] Bubblegate
@@ -56,24 +57,23 @@
 
 ### Interface
 
-- [ ] Menu
-  - [x] Animated BG
-  - [ ] Spinning tiles
   - [ ] Title Screen
-    - [x] Continue Button
     - [ ] Level Select
+      - [ ] Star system
+        - [ ] Animated star
+        - [x] Golden star (Best solution)
+    - [x] Continue Button
       - [x] Intro
       - [x] Order previews
       - [x] Grid Design
-      - [ ] Star system
-        - [x] Golden star (Best solution)
-        - [ ] Animated star
     - [x] Credits and Support
     - [x] Fix input bar
       - [x] Animated
       - [x] Dynamic
-  - [ ] Pause Menu
-    - [ ] Panel
+- [x] Menu
+  - [x] Animated BG
+  - [x] Pause Menu
+    - [x] BG
 - [x] Theme
   - [x] Button
   - [x] BG
@@ -81,11 +81,11 @@
 
 ### Animation
 - [ ] Interface
-  - [ ] Button anim
   - [ ] Interface anim
     - [ ] Star anim
-    - [ ] Order preview
-  - [ ] Input bar anim
+    - [ ] Order preview anim
+  - [x] Button anim
+  - [x] Input bar anim
 
 ### Gameplay
 
@@ -93,12 +93,14 @@
 - [ ] Regular block?
 - [ ] Bakery 2 beta 
   - [ ] Mechanics
-    - [x] Twisted marshmallow
     - [ ] Flame object
     - [ ] Golden marshmallow detection
+    - [ ] Hazards
+    - [x] Twisted marshmallow
     - [x] Fully refined core game code
       - [x] Centralized orders
   - [x] Beta levels
+    - [ ] 
 - [x] Intro sequence
 
 ### Codebase

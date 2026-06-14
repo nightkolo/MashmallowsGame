@@ -81,10 +81,14 @@ func anim_pressed() -> void:
 
 
 func anim_entered() -> void:
-	var dur := 0.75
-	var scale_to := Vector2.ONE * 1.15
+	var dur := 1.0
+	var scale_to := Vector2.ONE * 1.2
+	
+	scale = Vector2.ZERO
+	self.rotation_degrees = randf_range(20.0,45.0) * signf(randf() - 0.5)
 	
 	play_aud()
+	
 	
 	self_modulate = Color(Color.WHITE*1.2)
 	
@@ -94,6 +98,7 @@ func anim_entered() -> void:
 	tween = create_tween().set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(self, "scale", scale_to, dur).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self,"rotation_degrees",0.0,dur * 0.6)
 	
 		
 func play_aud() -> void:
@@ -110,6 +115,7 @@ func anim_exited() -> void:
 	var dur := 0.75
 	
 	self_modulate = Color(Color.WHITE*1.0)
+	self.rotation_degrees = 0.0
 	
 	if tween:
 		tween.kill()

@@ -9,7 +9,7 @@ var col_up: Color = Color(Color.WHITE*1.2, 1.0)
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
-	pivot_offset_ratio = Vector2.ONE * 0.5
+	pivot_offset = size / 2.0
 	self_modulate = col_down
 	#size_flags_horizontal = SizeFlags.SIZE_SHRINK_CENTER
 	
@@ -43,26 +43,26 @@ func anim_pressed() -> void:
 		tween.kill()
 		
 	tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(self, "scale", Vector2.ONE, dur)
 
 
 func anim_entered() -> void:
-	var dur := 1.0
+	var dur := 1.25
 	Audio.ui_button_hover.play()
 	
 	self_modulate = col_up
 	pivot_offset = Vector2(0.0, size.y / 2.0)
-	scale = Vector2(1.25, 0.75)
+	scale = Vector2(1.4, 0.6)
 	
 	if tween:
 		tween.kill()
 		
 	tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(self, "scale", Vector2.ONE, dur)
 		
 		
 func anim_exited() -> void:
-	self_modulate = col_down
+	self_modulate = Color(Color.WHITE*0.8, 1.0)
 	pivot_offset = Vector2(0.0 , size.y/2)

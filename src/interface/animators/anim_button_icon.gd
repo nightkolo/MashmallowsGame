@@ -30,7 +30,7 @@ func anim_pressed() -> void:
 
 func anim_entered() -> void:
 	var dur := 1.0
-	var scale_to := 1.2
+	var scale_to := 1.5
 	
 	Audio.ui_button_hover.play()
 	

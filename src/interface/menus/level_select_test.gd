@@ -64,7 +64,7 @@ func anim_levels_panel(control: NinePatchRect) -> void:
 	if _panel_tween:
 		_panel_tween.kill()
 	
-	var dur := 0.25
+	var dur := 1.0
 	var scal := 0.75
 	var s := get_viewport_rect().size.y
 	
@@ -73,13 +73,13 @@ func anim_levels_panel(control: NinePatchRect) -> void:
 	_panel_tween = create_tween().set_parallel(true)
 	_panel_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	
-	_panel_tween.tween_property(self, "position:y", -1 * (control.position.y - 250.0), dur)
+	_panel_tween.tween_property(self, "position:y", -1 * (control.position.y - 250.0), dur / 2.0)
 	
 	for p: NinePatchRect in lvl_panels:
 		p.pivot_offset_ratio = Vector2(0.0, 0.5)
 		
 		if p == control:
-			_panel_tween.tween_property(p, "scale", Vector2.ONE, dur).set_trans(Tween.TRANS_BACK)
+			_panel_tween.tween_property(p, "scale", Vector2.ONE, dur).set_trans(Tween.TRANS_ELASTIC)
 			_panel_tween.tween_property(p, "modulate", Color(Color.WHITE, 1.0), dur)
 			continue
 		
