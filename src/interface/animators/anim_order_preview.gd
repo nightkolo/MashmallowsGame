@@ -4,26 +4,52 @@ class_name UIOrderPreview
 var current_level_focussed: int = 0:
 	set(value):
 		print_debug(value)
-		read_level_data(value)
+		read_level_data_and_update(value)
 		current_level_focussed = value
 
+var tween: Tween
 
-func read_level_data(p_lvl: int):
+var last_dir: Vector2
+var current_pos: Vector2
+
+func anim_preview():
+	if center_sprite == null:
+		return
+	center_sprite.visible = true
+	
+	if tween:
+		tween.kill()
+	
+	tween = create_tween().set_parallel(true)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	
+	tween.tween_property(center_sprite, "position", current_pos, 0.5).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(center_sprite, "scale", Vector2.ONE, 1.2)
+	
+func read_level_data_and_update(p_lvl: int) -> int:
 	var lvl: String = str(p_lvl)
 	
 	if !LevelData.order_data.has(lvl):
-		return
+		return 1 # Failed
 	
 	for child: Node in get_children():
 		child.queue_free()
 	
 	var oc: Array = LevelData.order_data[lvl]["order_code"]
 	
+	await get_tree().create_timer(0.1).timeout # Process frame
 	
-	await get_tree().create_timer(0.1).timeout
-	repos(oc)
-	
+	reposition_sprites(oc)
+	if center_sprite:
+		center_sprite.visible = false
+		center_sprite.scale = Vector2(
+			1.0 + (last_dir.y * 0.75 * signf(randf() - 0.5)),
+			1.0 + (last_dir.x * 0.75 * signf(randf() - 0.5))
+		)
 	add_preview_sprites(oc, lvl)
+	anim_preview()
+	
+	return 0 # OK
 
 func add_preview_sprites(oc: Array, p_lvl: String):
 	if oc.is_empty():
@@ -31,11 +57,13 @@ func add_preview_sprites(oc: Array, p_lvl: String):
 	
 	var stat: bool = GameData.runtime_data[p_lvl]["completed"]
 	
-
 	for entry: Dictionary in oc:
 		var sprite := Sprite2D.new()
 		sprite.texture = Util.get_order_block_texture(entry["type"], entry["build"], stat)
-		sprite.position = Util.BLOCK_SIZE * Vector2( entry["pos"]["x"], entry["pos"]["y"] )
+		sprite.position = Util.BLOCK_SIZE * Vector2(
+			entry["pos"]["x"],
+			entry["pos"]["y"]
+			)
 		sprite.scale = Vector2.ONE * 0.5
 		center_sprite.add_child(sprite)
 
@@ -43,18 +71,18 @@ func add_preview_sprites(oc: Array, p_lvl: String):
 var center_sprite: Sprite2D
 #
 ## TODO memory leak if get_children() array contains non-Node2D.
-func repos(oc: Array):
+func reposition_sprites(order_code: Array):
 	#var children: Array[Node] = get_children()
 	
-	if oc.is_empty():
+	if order_code.is_empty():
 		return
 	
-	var max_x: float = oc[0]["pos"]["x"]
-	var min_x: float = oc[0]["pos"]["x"]
-	var max_y: float = oc[0]["pos"]["y"]
-	var min_y: float = oc[0]["pos"]["y"]
+	var max_x: float = order_code[0]["pos"]["x"]
+	var min_x: float = order_code[0]["pos"]["x"]
+	var max_y: float = order_code[0]["pos"]["y"]
+	var min_y: float = order_code[0]["pos"]["y"]
 	
-	for entry: Dictionary in oc:
+	for entry: Dictionary in order_code:
 		var pos: Vector2 = Vector2(entry["pos"]["x"], entry["pos"]["y"])
 		
 		if pos.x > max_x:
@@ -77,16 +105,16 @@ func repos(oc: Array):
 		center_sprite = Sprite2D.new()
 		add_child(center_sprite)
 		
-	var l_repos: Vector2 = (origin * Util.BLOCK_SIZE) + (Util.BLOCK_SIZE * length * 0.5)
-	center_sprite.position = -l_repos
-	center_sprite.texture = preload("res://assets/world/particle_circle_01.png")
+	current_pos = -1 * ((origin * Util.BLOCK_SIZE) + (Util.BLOCK_SIZE * length * 0.5))
+	center_sprite.position = current_pos + (last_dir * 150.0)
+	#center_sprite.texture = preload("res://assets/world/particle_circle_01.png")
 	
-	print_debug("current_level_focussed: %s" % current_level_focussed)
-	print_debug("max_x: %s" % max_x)
-	print_debug("min_x: %s" % min_x)
-	print_debug("max_y: %s" % max_y)
-	print_debug("min_y: %s" % min_y)
-	print_debug("l_repos: %s" % l_repos)
+	#print_debug("current_level_forder_codeussed: %s" % current_level_focussed)
+	#print_debug("max_x: %s" % max_x)
+	#print_debug("min_x: %s" % min_x)
+	#print_debug("max_y: %s" % max_y)
+	#print_debug("min_y: %s" % min_y)
+	#print_debug("l_repos: %s" % l_repos)
 	
 	#center_sprite.position = Vector2.ZERO
 

@@ -3,6 +3,7 @@ class_name LevelPanel
 
 signal entered_cb_1()
 signal entered_cb_2()
+signal input_direction(dir: Vector2)
 
 @export var order_preview: UIOrderPreview
 
@@ -18,7 +19,17 @@ signal entered_cb_2()
 @onready var lvl_panels: Array[Node] = get_tree().get_nodes_in_group("UILevelPanel")
 @onready var lvl_panel_containers: Array[Node] = get_tree().get_nodes_in_group("UILevelPanelContainer")
 
+func _input(event: InputEvent) -> void:
+	var direction := Input.get_vector(
+		"ui_left",
+		"ui_right",
+		"ui_up",
+		"ui_down"
+	)
 
+	if direction != Vector2.ZERO:
+		input_direction.emit(direction)
+		
 
 func bakery_panel_entered(bakery_num: int, lvl_num: int = 0) -> void:
 	#print_debug("Bakery %s entered" % i)
@@ -35,6 +46,10 @@ func bakery_panel_entered(bakery_num: int, lvl_num: int = 0) -> void:
 
 func _ready() -> void:
 	
+	input_direction.connect(func(dir: Vector2):
+		if order_preview:
+			order_preview.last_dir = dir
+		)
 	#for p: MarginContainer in lvl_panel_containers:
 	for i in range(lvl_panel_containers.size()):
 		lvl_panels[i].custom_minimum_size = lvl_panel_containers[i].size

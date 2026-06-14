@@ -88,7 +88,7 @@ func anim_star() -> void:
 	l_tween.tween_interval(1.0)
 
 func anim_star_rot():
-	var dir := signf(randf() - 0.5)
+	var dir := 1.0 if board_id % 2 == 0 else -1.0 
 	
 	var l_tween_2 := create_tween().set_loops()
 	l_tween_2.set_ease(Tween.EASE_OUT_IN)
@@ -127,7 +127,8 @@ func anim_entered() -> void:
 	var scale_to := Vector2.ONE * 1.2
 	
 	scale = Vector2.ZERO
-	self.rotation_degrees = randf_range(20.0,45.0) * signf(randf() - 0.5)
+	self.rotation_degrees = randf_range(45.0,65.0) * signf(randf() - 0.5)
+	#self.skew = randf_range(45.0,65.0) * signf(randf() - 0.5)
 	
 	play_aud()
 	
@@ -141,6 +142,7 @@ func anim_entered() -> void:
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(self, "scale", scale_to, dur).set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(self,"rotation_degrees",0.0,dur * 0.6)
+	#tween.tween_property(self,"skew",0.0,dur * 0.6)
 	
 		
 func play_aud() -> void:

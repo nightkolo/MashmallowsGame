@@ -83,10 +83,10 @@
     - [x] Animated
 
 ### Animation
-- [ ] Interface
-  - [ ] Interface anim
+- [x] Interface
+  - [x] Interface anim
     - [x] Star anim
-    - [ ] Order preview anim
+    - [x] Order preview anim
   - [x] Button anim
   - [x] Input bar anim
 
