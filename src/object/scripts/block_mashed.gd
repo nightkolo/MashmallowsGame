@@ -75,7 +75,7 @@ func can_mash() -> bool:
 	return block_detect.is_colliding()
 
 
-# Returns true if the mashed mash_block on ground tilemap/sticky platform, not other unmashed blocks
+# Returns true if the mashed block on ground tilemap/sticky platform, not other unmashed blocks
 func is_on_ground() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.ground_ray
 	
@@ -87,19 +87,20 @@ func is_on_ground() -> bool: # -> O(1)
 	return false
 
 
-# Returns true if the mashed mash_block only on sticky platform
-func is_on_sticky_platform() -> bool: # -> O(1)
+## Returns true if the mashed block only on a sticky platform.
+## [Param ignore_game_logic] ignores game logic. Normally, if it's a golden (roasted) marshmallow,
+## it won't be stuck in the sticky platform.
+func is_on_sticky_platform(ignore_game_logic: bool = false) -> bool: # -> O(1)
+	if is_golden && !ignore_game_logic:
+		return false # Golden marshmallows don't stick.
+		
 	var ray: ShapeCast2D = block_detect.ground_ray
 	
 	ray.force_shapecast_update()
 	
 	if ray.is_colliding():
-		var colli := ray.get_collider(0)
-		print_debug(colli)
-		if colli is StickyPlatform:
-			return true
-		#if ray.get_collider(0) is StickyPlatform:
-			#return true
+		if ray.get_collider(0) is StickyPlatform:
+			return true # Found sticky platform
 		
 	return false
 

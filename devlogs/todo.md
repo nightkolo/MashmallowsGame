@@ -16,9 +16,9 @@
 - [x] Regular block?
 - [ ] Bakery 2 beta 
   - [ ] Mechanics
-    - [ ] Flame object
+    - [x] Flame object
     - [ ] Golden marshmallow detection
-    - [ ] Hazards
+    - [x] Caramel platform
     - [x] Twisted marshmallow
     - [x] Fully refined core game code
       - [x] Centralized orders
