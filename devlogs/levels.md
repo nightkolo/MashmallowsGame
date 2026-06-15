@@ -15,6 +15,7 @@ Meet "Millie" Marshmallow Lady (and "Ettiko" Bubblegum Guy?)
 ### Second World - "Caramel Core"
 - **Twisted Marshmallows**: Special block that rises in size upon unmashing, elevating the blocks higher. It is 1x1 when mashed, and 1xn when unmashed. Is it a twisted marshmallow.
 - **Flame** and **Golden Marshmallows**: A flame object that toasts marshmallows into golden to meet the specific order with goldens
+- Hazard: Caramel: A hazard that gets marshmallows stuck if touched, except golden marshmallows
 
 ### Mechanics
 

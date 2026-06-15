@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bjp2qrj0a6lh6"]
 
+[ext_resource type="Script" uid="uid://bwkaykjreych3" path="res://object/scripts/obj_flame.gd" id="1_06vru"]
 [ext_resource type="Script" uid="uid://c6lgdr2v8327j" path="res://object/scripts/obj_flame_2d.gd" id="1_qoqfh"]
+[ext_resource type="Texture2D" uid="uid://dde8etsa4b6ax" path="res://assets/objects/flame-block.png" id="2_le64c"]
+[ext_resource type="Texture2D" uid="uid://chwlxcy3mll2s" path="res://assets/objects/flame.png" id="3_5l2vt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b145e"]
 size = Vector2(64, 64)
@@ -9,6 +12,7 @@ size = Vector2(64, 64)
 size = Vector2(65, 65)
 
 [node name="Flame" type="StaticBody2D" unique_id=533155665]
+script = ExtResource("1_06vru")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=485559038]
 shape = SubResource("RectangleShape2D_b145e")
@@ -20,3 +24,13 @@ script = ExtResource("1_qoqfh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flame2D" unique_id=1004659966]
 shape = SubResource("RectangleShape2D_jh33e")
+
+[node name="Object" type="Sprite2D" parent="." unique_id=758971236]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_le64c")
+
+[node name="Flame" type="Sprite2D" parent="." unique_id=1337192647]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_5l2vt")

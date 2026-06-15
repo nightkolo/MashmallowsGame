@@ -84,9 +84,6 @@ func _ready() -> void:
 		InputPrompts.tutorial_inputs.visible = false
 		
 		match menu:
-			MenuID.RUNTIME, MenuID.MISC:
-				InputPrompts.visible = false
-				
 			MenuID.WORLD_COMPLETE:
 				InputPrompts.visible = true
 				InputPrompts.select_inputs.visible = true
@@ -106,6 +103,9 @@ func _ready() -> void:
 			MenuID.CREDITS:
 				InputPrompts.visible = true
 				InputPrompts.back_inputs.visible = true
+				
+			_:
+				InputPrompts.visible = false
 		)
 	
 	game_just_ended.connect(func():

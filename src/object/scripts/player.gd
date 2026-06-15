@@ -75,6 +75,7 @@ var input_y: float
 	#{"type": Util.MashType.HEART, "pos": Vector2.ZERO}
 #]
 
+var is_sticky_platform_present: bool = false
 var player_blocks_code: Array[Dictionary] = []
 var child_blocks: Array[Mashed] = [] # Stack data structure
 		
@@ -460,10 +461,12 @@ func jump() -> void:
 			audio.sfx_jump_mult.play()
 		else:
 			audio.sfx_jump_single.play()
-		
+	
 	has_jumpped.emit()
 	
-	velocity.y = -jump_height
+	var strength := -jump_height * 0.65 if is_on_sticky_platform() else -jump_height
+	
+	velocity.y = strength
 	move_and_slide()
 	
 	state_machine.change_state("AirState", {"jumped": true, "falling": false})
@@ -477,9 +480,22 @@ func is_on_block() -> bool:
 	
 	
 ## Returns true if the player on ground tilemap, and not other unmashed blocks
-func is_on_ground() -> bool:
+## -> Worst case, O(n)
+func is_on_ground() -> bool: 
 	for block: Mashed in child_blocks:
 		if block.is_on_ground():
+			return true
+	return false
+
+
+## Returns true if the player on stiky platform only.
+## -> Worst case, O(n)
+func is_on_sticky_platform() -> bool:
+	if !is_sticky_platform_present:
+		return false
+	
+	for block: Mashed in child_blocks:
+		if block.is_on_sticky_platform():
 			return true
 	return false
 

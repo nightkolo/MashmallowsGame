@@ -75,7 +75,7 @@ func can_mash() -> bool:
 	return block_detect.is_colliding()
 
 
-# Returns true if the mashed mash_block on ground tilemap, not other unmashed blocks
+# Returns true if the mashed mash_block on ground tilemap/sticky platform, not other unmashed blocks
 func is_on_ground() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.ground_ray
 	
@@ -85,6 +85,24 @@ func is_on_ground() -> bool: # -> O(1)
 		return true
 		
 	return false
+
+
+# Returns true if the mashed mash_block only on sticky platform
+func is_on_sticky_platform() -> bool: # -> O(1)
+	var ray: ShapeCast2D = block_detect.ground_ray
+	
+	ray.force_shapecast_update()
+	
+	if ray.is_colliding():
+		var colli := ray.get_collider(0)
+		print_debug(colli)
+		if colli is StickyPlatform:
+			return true
+		#if ray.get_collider(0) is StickyPlatform:
+			#return true
+		
+	return false
+
 
 func is_on_wall() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.wall_ray

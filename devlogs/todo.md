@@ -10,10 +10,25 @@
   - [x] Player crush
   - [x] No stopping on quick expansion
 
+### Gameplay
+
+- [x] One way platform
+- [x] Regular block?
+- [ ] Bakery 2 beta 
+  - [ ] Mechanics
+    - [ ] Flame object
+    - [ ] Golden marshmallow detection
+    - [ ] Hazards
+    - [x] Twisted marshmallow
+    - [x] Fully refined core game code
+      - [x] Centralized orders
+  - [x] Beta levels
+    - [ ] Flames and Hazards
+    - [x] Twisted
+- [x] Intro sequence
+
 ### Assets and Design
 - [ ] Interface
-  - [ ] BG special
-  - [ ] BG elements
   - [ ] Stars
     - [ ] Bakery Complete
     - [x] Complete
@@ -33,9 +48,9 @@
     - [x] Exited
   - [x] Animated arrow
   - [x] Lower opacity
-  - [ ] BG elements
   - [x] Input prompts bar
-- [x] Objects
+- [ ] Objects
+  - [ ] Golden blocks
   - [x] Regular blocks
   - [x] Twisted marshmallows
     - [x] icon  
@@ -89,22 +104,6 @@
     - [x] Order preview anim
   - [x] Button anim
   - [x] Input bar anim
-
-### Gameplay
-
-- [x] One way platform
-- [x] Regular block?
-- [ ] Bakery 2 beta 
-  - [ ] Mechanics
-    - [ ] Flame object
-    - [ ] Golden marshmallow detection
-    - [ ] Hazards
-    - [x] Twisted marshmallow
-    - [x] Fully refined core game code
-      - [x] Centralized orders
-  - [x] Beta levels
-    - [ ] 
-- [x] Intro sequence
 
 ### Codebase
 - [x] Save system

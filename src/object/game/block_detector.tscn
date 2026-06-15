@@ -62,7 +62,7 @@ collision_mask = 4104
 [node name="GroundRay" type="ShapeCast2D" parent="." unique_id=810734938]
 shape = SubResource("RectangleShape2D_dw56o")
 target_position = Vector2(0, 35)
-collision_mask = 2113
+collision_mask = 10305
 
 [node name="WallRay" type="ShapeCast2D" parent="." unique_id=80293009]
 shape = SubResource("RectangleShape2D_jws23")
