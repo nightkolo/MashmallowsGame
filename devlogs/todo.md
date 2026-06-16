@@ -4,12 +4,6 @@
 
 - [x] Walkthrough and Song reveal
 
-### Bugs
-- [ ] Twisted marshmallows
-  - [ ] Clipping through terrain
-  - [x] Player crush
-  - [x] No stopping on quick expansion
-
 ### Gameplay
 
 - [x] One way platform
@@ -23,34 +17,14 @@
     - [x] Fully refined core game code
       - [x] Centralized orders
   - [x] Beta levels
-    - [ ] Flames and Hazards
+    - [ ] Flames and Sticky ground
     - [x] Twisted
 - [x] Intro sequence
 
 ### Assets and Design
-- [ ] Interface
-  - [ ] Stars
-    - [ ] Bakery Complete
-    - [x] Complete
-- [ ] Promo
-  - [ ] Logo
-  - [ ] Artwork
-    - [ ] Bakery complete
-    - [ ] Credits
-- [ ] Level goal
-  - [ ] Roasted block
-  - [ ] Star eyes
-  - [x] Order block
-    - [x] Twisted
-  - [x] Bakery levels panel
-  - [x] Level button theme
-    - [x] Entered
-    - [x] Exited
-  - [x] Animated arrow
-  - [x] Lower opacity
-  - [x] Input prompts bar
 - [ ] Objects
   - [ ] Golden blocks
+  - [ ] Caramel ground
   - [x] Regular blocks
   - [x] Twisted marshmallows
     - [x] icon  
@@ -67,6 +41,16 @@
       - [x] Open
       - [x] Closed
     - [x] Button
+- [x] Level goal
+  - [x] Order block
+    - [x] Twisted
+  - [x] Bakery levels panel
+  - [x] Level button theme
+    - [x] Entered
+    - [x] Exited
+  - [x] Animated arrow
+  - [x] Lower opacity
+  - [x] Input prompts bar
 
 ### Interface
 
@@ -98,6 +82,11 @@
     - [x] Animated
 
 ### Animation
+
+- [ ] Objects
+  - [ ] Bubblegate
+  - [ ] Button
+
 - [x] Interface
   - [x] Interface anim
     - [x] Star anim
@@ -132,3 +121,23 @@
   - [ ] Bob
   - [ ] Inflate
   - [ ] Collide
+
+# Roadmap
+
+### Bugs
+- [ ] Twisted marshmallows
+  - [ ] Clipping through terrain
+  - [x] Player crush
+  - [x] No stopping on quick expansion
+
+
+### Assets and Design
+- [ ] Interface
+  - [ ] Stars
+    - [ ] Bakery Complete
+    - [x] Complete
+- [ ] Promo
+  - [x] Logo
+  - [ ] Artwork
+    - [ ] Bakery complete
+    - [ ] Credits

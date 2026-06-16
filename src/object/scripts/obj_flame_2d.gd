@@ -20,6 +20,5 @@ func _ready() -> void:
 
 func anim_out() -> void:
 	parent_flame_obj.stop_anim_flame()
-	
 	parent_flame_obj.stop_anim_spin()
 	queue_free()

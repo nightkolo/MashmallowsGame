@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://df6x4rle15ggl" path="res://object/scripts/obj_door_block.gd" id="1_4ro5p"]
 [ext_resource type="Texture2D" uid="uid://go8uyqlyu4om" path="res://assets/objects/switch-block-01.png" id="2_qwysj"]
 [ext_resource type="Texture2D" uid="uid://m4hvd47o100j" path="res://assets/objects/switch-block-head-cross.png" id="3_08wc7"]
+[ext_resource type="Texture2D" uid="uid://t6iy1xteem31" path="res://assets/objects/bubblegate-inflators.png" id="4_r5iui"]
+[ext_resource type="Texture2D" uid="uid://ciqp5qihnxtq8" path="res://assets/objects/bubblegate-1x1.png" id="5_8apu4"]
+[ext_resource type="Texture2D" uid="uid://chvoj8uckfus4" path="res://assets/objects/bubblegate-eyes-reg.png" id="6_4dssy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivh0c"]
 size = Vector2(64, 64)
@@ -12,6 +15,7 @@ shape = SubResource("RectangleShape2D_ivh0c")
 script = ExtResource("1_4ro5p")
 
 [node name="Sprite" type="Node2D" parent="." unique_id=1034581289]
+visible = false
 
 [node name="Block" type="Sprite2D" parent="Sprite" unique_id=1597353883]
 scale = Vector2(0.5, 0.5)
@@ -20,3 +24,20 @@ texture = ExtResource("2_qwysj")
 [node name="Cross" type="Sprite2D" parent="Sprite" unique_id=880943711]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_08wc7")
+
+[node name="Sprite2" type="Node2D" parent="." unique_id=1095150530]
+
+[node name="Inflators" type="Sprite2D" parent="Sprite2" unique_id=1838665577]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_r5iui")
+
+[node name="Bubble" type="Sprite2D" parent="Sprite2" unique_id=1647854435]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_8apu4")
+
+[node name="Eye" type="Sprite2D" parent="Sprite2" unique_id=522342511]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_4dssy")

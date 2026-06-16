@@ -22,6 +22,7 @@ func stop_anim_flame() -> void:
 		tween_flame.kill()
 	sprite_flame.self_modulate = Color(Color.GRAY, 1.0)
 
+
 func anim_spin() -> void:
 	stop_anim_spin()
 	

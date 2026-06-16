@@ -1,0 +1,118 @@
+[gd_scene format=4 uid="uid://cjn40j80rlojp"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_p58l3"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_5uewl"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_oa22h"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="4_d80uc"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_k1wt2"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="6_sd1ao"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_hl327"]
+[ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="8_x26of"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="9_ggs5e"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_u4x3t"]
+[ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="12_sxnq8"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="13_8qnrd"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="15_toxgl"]
+[ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="16_ugchy"]
+
+[sub_resource type="Resource" id="Resource_3xx1n"]
+script = ExtResource("12_sxnq8")
+mash_type = 102
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_gegs0"]
+script = ExtResource("12_sxnq8")
+mash_type = 3
+build_type = 1
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_nrchv"]
+script = ExtResource("12_sxnq8")
+mash_type = 3
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
+script = ExtResource("1_p58l3")
+save_stats = false
+no_progression = true
+level_goal = NodePath("World/LevelGoal")
+player = NodePath("Player")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_5uewl")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(632, 392)
+zoom = Vector2(1.1, 1.1)
+script = ExtResource("3_oa22h")
+
+[node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_d80uc")]
+bg_color_set = 1
+terrain = NodePath("Terrain")
+camera = NodePath("../Cam")
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("5_k1wt2")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World/Terrain" unique_id=1056697468]
+visible = false
+tile_map_data = PackedByteArray("AAAPAAgAAgAAAAEAAAAQAAgAAgABAAEAAAAPAAkAAgAAAAEAAAAQAAkAAgABAAEAAAARAAkAAgAAAAEAAAASAAkAAgABAAEAAAARAAgAAgAAAAEAAAASAAgAAgABAAEAAAATAAgAAgAAAAEAAAAUAAgAAgABAAEAAAATAAkAAgAAAAEAAAAUAAkAAgABAAEAAAAJAAgAAgAAAAEAAAAKAAgAAgABAAEAAAAJAAkAAgAAAAEAAAAKAAkAAgABAAEAAAAHAAkAAgABAAEAAAAIAAkAAgABAAEAAAAHAAgAAgABAAEAAAAIAAgAAgABAAEAAAAGAAgAAgAAAAEAAAAGAAkAAgAAAAEAAAAFAAwAAgAAAAEAAAAGAAwAAgABAAEAAAALAAwAAgAAAAEAAAAMAAwAAgABAAEAAAAJAAAAAgAAAAEAAAAJAAEAAgAAAAEAAAAJAAIAAgAAAAEAAAAJAAMAAgAAAAEAAAAPAAQAAgAAAAEAAAAQAAQAAgABAAEAAAA=")
+tile_set = ExtResource("6_sd1ao")
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_map_data = PackedByteArray("AAAHAAoAAAAKAAEAAAAIAAoAAAAGAAEAAAAHAAYAAAAKAAAAAAAEAAoAAAALAAAAAAADAAoAAAAKAAAAAAACAAoAAAAKAAAAAAABAAcAAAAGAAIAAAABAAYAAAAKAAEAAAABAAUAAAAKAAEAAAABAAQAAAAKAAEAAAABAAMAAAAKAAAAAAAAAAMAAAAKAAAAAAAAAAQAAAAKAAEAAAAAAAUAAAAKAAEAAAAAAAYAAAAKAAEAAAAAAAcAAAAKAAEAAAABAAoAAAAGAAEAAAABAAsAAAAKAAEAAAAAAAoAAAAKAAEAAAAAAAgAAAAKAAEAAAD//wUAAAAIAAEAAAD//wQAAAAIAAEAAAD//wMAAAAFAAAAAAD//wYAAAAIAAEAAAD//wcAAAAIAAEAAAD//wgAAAAIAAEAAAD//wkAAAAIAAEAAAD//woAAAAIAAEAAAD//wsAAAAIAAEAAAAAAAsAAAAKAAEAAAAAAAwAAAAJAAMAAAABAAwAAAAJAAMAAAACAAwAAAAJAAMAAAADAAwAAAAJAAMAAAAEAAwAAAAJAAMAAAAHAAwAAAAJAAMAAAAIAAwAAAAJAAMAAAAJAAwAAAAJAAMAAAAKAAwAAAALAAMAAAANAAwAAAAIAAMAAAAOAAwAAAAJAAMAAAAOAAsAAAAKAAEAAAANAAsAAAAIAAEAAAAKAAsAAAALAAIAAAAJAAsAAAAKAAEAAAAIAAsAAAAKAAEAAAAHAAsAAAAKAAEAAAAEAAsAAAAGAAEAAAADAAsAAAAKAAEAAAACAAsAAAAKAAEAAAD//wwAAAAIAAMAAAAJAAMAAAAGAAIAAAAJAAIAAAAGAAEAAAARAAoAAAAKAAAAAAAQAAoAAAAKAAAAAAAPAAoAAAAKAAAAAAAOAAoAAAAKAAAAAAAPAAsAAAAKAAEAAAAQAAsAAAAKAAEAAAAQAAwAAAAJAAMAAAARAAwAAAAJAAMAAAAPAAwAAAAJAAMAAAARAAsAAAAKAAEAAAASAAcAAAAJAAMAAAASAAYAAAAKAAEAAAATAAMAAAAIAAMAAAAUAAQAAAAAAAEAAAAUAAMAAAAHAAIAAAAUAAUAAAAHAAEAAAAUAAcAAAALAAMAAAAUAAYAAAALAAIAAAAUAAoAAAALAAAAAAAUAAsAAAALAAIAAAAUAAwAAAALAAMAAAATAAwAAAAJAAMAAAASAAwAAAAJAAMAAAASAAsAAAAKAAEAAAATAAsAAAAKAAEAAAATAAoAAAAKAAAAAAASAAoAAAAKAAAAAAATAAYAAAAKAAEAAAATAAUAAAAKAAAAAAAIAAMAAAAIAAEAAAAIAAIAAAAFAAIAAAAIAAEAAAAKAAEAAAAJAAEAAAALAAIAAAAJAAAAAAALAAIAAAAIAAAAAAAKAAEAAAAKAAoAAAALAAAAAAAJAAoAAAAKAAAAAAANAAoAAAAIAAAAAAAPAAcAAAAKAAAAAAAQAAYAAAAIAAEAAAAQAAcAAAAFAAEAAAAEAAcAAAALAAMAAAAEAAYAAAALAAIAAAAGAAcAAAAIAAEAAAAGAAYAAAAIAAAAAAAHAAcAAAAKAAEAAAADAAYAAAAKAAEAAAACAAYAAAAKAAEAAAAIAAcAAAAGAAEAAAAHAAEAAAAFAAEAAAAHAAAAAAAIAAEAAAAPAAEAAAAAAAIAAAAPAAAAAAAEAAIAAAAQAAAAAAAJAAMAAAAPAP//AAAIAAAAAAAQAP//AAAKAAAAAAAJAP//AAALAAAAAAAIAP//AAAKAAAAAAAHAP//AAAIAAAAAAADAAcAAAAJAAMAAAACAAcAAAAJAAMAAAARAAAAAAAJAAMAAAARAAcAAAAGAAIAAAARAAYAAAAKAAEAAAASAAAAAAAJAAMAAAATAAAAAAAFAAIAAAATAAEAAAAIAAEAAAATAAIAAAAIAAEAAAARAP//AAAKAAAAAAASAP//AAAKAAAAAAATAP//AAAKAAAAAAAUAAEAAAALAAIAAAAUAAIAAAALAAIAAAAUAP//AAALAAAAAAAUAAAAAAALAAIAAAD+/wMAAAABAAIAAAD+/wIAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wAAAAAAAAEAAAD+////AAAAAAAAAAATAAcAAAAJAAMAAAAAAAkAAAAKAAEAAAABAAgAAAALAAIAAAABAAkAAAALAAIAAAAEAAUAAAALAAIAAAAEAAQAAAALAAIAAAADAAMAAAAFAAEAAAACAAMAAAAKAAAAAAACAAQAAAAKAAEAAAACAAUAAAAKAAEAAAADAAUAAAAKAAEAAAADAAQAAAAKAAEAAAAGAAoAAAAIAAEAAAAGAAkAAAAIAAEAAAAGAAgAAAAIAAEAAAAHAAgAAAAKAAEAAAAIAAkAAAALAAIAAAAGAAsAAAAFAAEAAAAFAAsAAAAKAAAAAAAFAAwAAAAJAAMAAAAGAAwAAAAJAAMAAAAHAAkAAAAKAAEAAAAIAAgAAAAGAAIAAAAIAAYAAAALAAAAAAAEAAIAAAAGAAIAAAAEAAMAAAALAAIAAAADAAIAAAAIAAEAAAADAAEAAAAIAAAAAAAJAAgAAAAJAAMAAAAKAAgAAAAJAAMAAAALAAgAAAAJAAMAAAAMAAgAAAAJAAMAAAANAAgAAAAJAAMAAAAOAAgAAAAJAAMAAAAPAAgAAAAJAAMAAAAQAAgAAAAJAAMAAAARAAgAAAALAAMAAAAKAAMAAAALAAMAAAAJAAcAAAAKAAAAAAAKAAcAAAAKAAAAAAALAAcAAAAKAAAAAAANAAcAAAAKAAAAAAAMAAcAAAAKAAAAAAAOAAcAAAAKAAAAAAAKAAIAAAALAAAAAAAQAAUAAAAIAAAAAAARAAUAAAAKAAAAAAASAAUAAAAKAAAAAAAFAAIAAAAJAAMAAAAHAAIAAAAJAAMAAAAGAAIAAAAJAAMAAAAGAAEAAAAKAAAAAAAFAAEAAAAKAAAAAAAEAAEAAAAKAAAAAAAIAAQAAAAIAAMAAAAJAAQAAAALAAMAAAA=")
+tile_set = ExtResource("6_sd1ao")
+
+[node name="WorldBlocks" type="Node2D" parent="World" unique_id=960871053]
+script = ExtResource("7_hl327")
+metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
+
+[node name="DecoBlock2" parent="World/WorldBlocks" unique_id=588638633 instance=ExtResource("8_x26of")]
+position = Vector2(768, 712)
+
+[node name="DecoBlock3" parent="World/WorldBlocks" unique_id=289986492 instance=ExtResource("8_x26of")]
+position = Vector2(896, 576)
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("9_ggs5e")]
+offset_left = 600.0
+offset_top = 472.0
+offset_right = 600.0
+offset_bottom = 472.0
+
+[node name="LevelGoalBoard" parent="World/LevelGoal/Board" parent_id_path=PackedInt32Array(1756025330, 1651127727) index="0" unique_id=877003082]
+offset_bottom = 496.0
+
+[node name="LevelOrder" type="Node2D" parent="World/LevelGoal" unique_id=989048369]
+position = Vector2(-24.000004, 88)
+scale = Vector2(0.8, 0.8)
+script = ExtResource("10_u4x3t")
+level_id_to_modify = 101
+metadata/_custom_type_script = "uid://5cfma5ft813q"
+
+[node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("13_8qnrd")]
+position = Vector2(48, 152)
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("15_toxgl")]
+position = Vector2(192, 576)
+
+[node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("16_ugchy")]
+position = Vector2(352, 608)
+gizmo_extents = 256.0
+block_attributes = SubResource("Resource_3xx1n")
+
+[node name="UnmashedSpawner2" parent="." unique_id=118528793 instance=ExtResource("16_ugchy")]
+position = Vector2(672, 56)
+block_attributes = SubResource("Resource_gegs0")
+
+[node name="UnmashedSpawner3" parent="." unique_id=1512262256 instance=ExtResource("16_ugchy")]
+position = Vector2(544, 352)
+block_attributes = SubResource("Resource_nrchv")
+
+[node name="UnmashedSpawner4" parent="." unique_id=302945294 instance=ExtResource("16_ugchy")]
+position = Vector2(840, 408)
+block_attributes = SubResource("Resource_nrchv")
+
+[editable path="World/LevelGoal"]

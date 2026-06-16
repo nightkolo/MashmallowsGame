@@ -14,5 +14,5 @@ func interact(open: bool) -> void:
 	is_openned = open
 	
 	for block: DoorBlock in door_blocks:
-		block.is_activated = open
+		block.activate(open)
 		#col.disabled = open
