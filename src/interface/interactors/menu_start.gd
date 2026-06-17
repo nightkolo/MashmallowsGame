@@ -8,9 +8,21 @@ extends Control
 
 var _started: bool = false
 
+var version: String = ProjectSettings.get_setting("application/config/version")
+var release: String = ""
+var author_info: String = "[color=#FFFFFF5A]v%s[br][font_size=24.0][color=#FFFFFF]A %s by [color=yellow]Night Kolo
+[color=#FFFFFF]Original Music by [color=yellow]Avizura"
+
 
 func _ready() -> void:
 	GameMgr.menu_entered.emit(GameMgr.MenuID.START)
+	
+	if version.find("alpha"):
+		release = "Demo"
+	else:
+		release = "Game"
+		
+	authors_text.text = author_info % [version, release]
 
 
 func _input(event: InputEvent) -> void:

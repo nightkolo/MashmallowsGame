@@ -14,9 +14,9 @@ script = ExtResource("1_xbd11")
 metadata/_custom_type_script = "uid://dj330fftlpvf6"
 
 [node name="Head" type="Sprite2D" parent="." unique_id=400262420]
-position = Vector2(0, -13.82)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_f3jwt")
+offset = Vector2(0, -25)
 
 [node name="Base" type="Sprite2D" parent="." unique_id=2118330992]
 scale = Vector2(0.5, 0.5)

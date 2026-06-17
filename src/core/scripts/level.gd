@@ -112,13 +112,14 @@ func _ready() -> void:
 		level_id = scene_file_path.to_int()
 		bakery_id = Util.get_bakery_number(level_id)
 		
-		GameMgr.level_id = level_id
+		#print_debug(bakery_id)
 		GameMgr.bakery_id = bakery_id
+		GameMgr.level_id = level_id
 	# elif level_id == 0:
 	# 	setup_intro_sequence()
 	else:
-		GameMgr.level_id = level_id
 		GameMgr.bakery_id = bakery_id
+		GameMgr.level_id = level_id
 	
 	if show_dev_ui:
 		var ui := _dev_ui.instantiate()

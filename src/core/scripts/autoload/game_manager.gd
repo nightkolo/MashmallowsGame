@@ -30,8 +30,8 @@ var level_id: int = 0:
 	set(value):
 		GameData.runtime_data["last_level"] = value
 		
-		if current_level_goal:
-			current_level_goal.level_number_label.text = "1-" + str(value)
+		#if current_level_goal:
+			#current_level_goal.level_number_label.text = "%s-%s" % [bakery_id, value]
 		level_id = value
 		
 		await get_tree().create_timer(1.0).timeout

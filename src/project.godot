@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mashmallows"
-config/version="Fetus"
+config/version="3.0.0-alpha"
 run/main_scene="uid://bh0f4dstn2orj"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"

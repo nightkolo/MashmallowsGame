@@ -25,6 +25,8 @@ var _tween: Tween
 
 
 func anim_spawn() -> void:
+	level_number_label.text = "%s-%s" % [GameMgr.bakery_id, GameMgr.level_id]
+	
 	var dur := 0.75
 	var mag := 0.7
 	particles_1.emitting = true
@@ -76,6 +78,8 @@ func _ready() -> void:
 		)
 	
 	anim_idle(star_node, star_node_2)
+	
+	#await get_tree().create_timer(0)
 
 
 func anim_complete() -> void:
