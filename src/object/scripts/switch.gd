@@ -28,6 +28,9 @@ func interact(switch_on: bool = !is_activated) -> void:
 
 	
 func _try_interact(_body: Node2D) -> void:
+	if GameMgr.current_player:
+		if GameMgr.current_player.velocity.is_equal_approx(Vector2.ZERO):
+			return
 	interact(get_overlapping_bodies().size() > 0)
 
 var tween_psuh: Tween

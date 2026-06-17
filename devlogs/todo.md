@@ -5,18 +5,24 @@
 ### Assets and Design
 - [ ] Level Info
   - [ ] Icons
-    - [ ] Marshmallows
-    - [ ] Cherry bombs
+    - [x] Marshmallows
+    - [x] Cherry bombs
     - [ ] Bubblegate
     - [ ] Buttons
 
 ### Codebase
 - [ ] Input prompts
   - [ ] Kenney
+    - [x] Keyboard
+      - [x] Esc
+      - [x] Move (Arrow keys)
+      - [x] Enter
+      - [x] E
+    - [ ] Controller (Generic)
 
 ### Animation
 - [ ] Bubblegate
-  - [ ] Activation system
+  - [x] Activation system
   - [ ] Idle animation
   - [ ] AnimationPlayer 
 - [ ] Twisted Marshmallow
@@ -46,4 +52,7 @@
   - [ ] Credits Screen
   - [ ] Level selector screen
 - [ ] Promo
+  - [ ] Game theme
+  - [ ] Game desc.
+  - [ ] Screenshots
   - [ ] Beta game poster
