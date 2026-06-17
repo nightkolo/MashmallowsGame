@@ -24,7 +24,8 @@
 - [ ] Bubblegate
   - [x] Activation system
   - [ ] Idle animation
-  - [ ] AnimationPlayer 
+  - [x] Interact aniamtions
+  - [x] AnimationPlayer 
 - [ ] Twisted Marshmallow
 
 ### Audio

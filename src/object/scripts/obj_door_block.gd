@@ -11,6 +11,7 @@ class_name DoorBlock
 @onready var sprite_inflators: Sprite2D = %Inflators
 @onready var sprite_bubble: Sprite2D = %Bubble
 @onready var sprite_eye: Sprite2D = %Eye
+@onready var area_2d: Area2D = $Area2D
 
 var is_activated: bool:
 	get:
@@ -22,12 +23,34 @@ var is_activated: bool:
 #var is_popping: bool
 
 
+var tween_squish: Tween
 
 func _ready() -> void:
-	pass
-	#if get_parent() is Door:
-		#(get_parent() as Door).door_blocks.append(self)
-		#
+	
+	area_2d.body_exited.connect(func(body: Node2D):
+		#if body is Node2D:
+		if tween_squish:
+			tween_squish.kill()
+		
+		tween_squish = create_tween()
+		tween_squish.tween_property(sprite_node, "scale", Vector2.ONE, 1.25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+		)
+	area_2d.body_entered.connect(func(body: Node2D):
+		#if body is Player:
+		var p: Node2D = body as Node2D
+		
+		var offset: Vector2 = p.global_position - global_position
+
+		if tween_squish:
+			tween_squish.kill()
+		
+		tween_squish = create_tween()
+		if abs(offset.x) > abs(offset.y):
+			tween_squish.tween_property(sprite_node, "scale", Vector2(0.8, 1.0), 0.1)
+		else:
+			tween_squish.tween_property(sprite_node, "scale", Vector2(1.0, 0.8), 0.1)
+
+		)
 		
 		
 
@@ -102,8 +125,6 @@ var tween_regen: Tween
 
 func anim_regen() -> void:
 	
-	#if is_popping || is_activated:
-	
 	cancel_anim_pop()
 	
 	sprite_bubble.scale = Vector2.ZERO
@@ -130,9 +151,4 @@ func anim_regen() -> void:
 		)
 		
 		
-	#sprite_bubble.self_modulate = Color(Color.WHITE, 1.0)
-	#sprite_bubble.scale = Vector2.ONE * 0.5
-	#
-	#sprite_eye.self_modulate = Color(Color.WHITE, 1.0)
-	#sprite_eye.scale = Vector2.ONE * 0.5
 	
