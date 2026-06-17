@@ -12,7 +12,7 @@ func _ready() -> void:
 		if node is DoorBlock:
 			door_blocks.append(node as DoorBlock)
 	
-	timer.wait_time = 0.25
+	timer.wait_time = 0.125
 	add_child(timer)
 	timer.timeout.connect(func():
 		print_debug("Timer timeout")
