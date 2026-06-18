@@ -6,6 +6,7 @@ signal game_pause_toggled(is_paused: bool)
 @onready var pause_screen: PauseScreen = $PauseMenu
 @onready var reset_btn: Button = %ResetButton
 @onready var reset_screen: MarginContainer = $ResetScreen
+@onready var checkerboard_complete_screen: CBCompleteScreen = $CheckerboardCompleteScreen
 
 var allow_input: bool = true
 var is_game_paused: bool = false:
@@ -21,6 +22,12 @@ const BBCODE_TXT_NO_MOTION = "
 [outline_size=8][outline_color=#3f3f3f][color=#ffffff][center][font_size=37]"
 
 #var _tween: Tween
+func the_checkerboard_has_been_checkered() -> void:
+	#is_game_paused = true
+	#game_pause_toggled.emit(true)
+	if GameMgr.current_player:
+		GameMgr.current_player.no_move = true
+	checkerboard_complete_screen.open()
 
 
 func _unhandled_input(event: InputEvent) -> void:

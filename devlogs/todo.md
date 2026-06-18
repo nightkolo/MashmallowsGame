@@ -40,7 +40,7 @@
 
 ### Short demo (6-19)
 - [ ] Bugfixes and additions
-  - [ ] Bakery complete screen (Beta)
+  - [x] Bakery complete screen (Beta)
   - [ ] Cutsene silliness
   - [ ] Level redesigns
     - [ ] 1-6

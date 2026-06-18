@@ -40,7 +40,7 @@ texture_repeat = 2
 position = Vector2(960, -3)
 texture = ExtResource("2_y6jnm")
 region_enabled = true
-region_rect = Rect2(-23081.965, 0, 1920, 50)
+region_rect = Rect2(-130.44286, 0, 1920, 50)
 region_filter_clip_enabled = true
 script = ExtResource("2_5qwaw")
 animate_scroll = true
@@ -53,7 +53,7 @@ texture_repeat = 2
 position = Vector2(960, 2)
 texture = ExtResource("2_y6jnm")
 region_enabled = true
-region_rect = Rect2(34619.07, 0, 1920, 50)
+region_rect = Rect2(195.66386, 0, 1920, 50)
 region_filter_clip_enabled = true
 script = ExtResource("2_5qwaw")
 animate_scroll = true
@@ -154,7 +154,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/InputContainer/Select/HBoxContainer" unique_id=1867729868]
 layout_mode = 2
-text = "Select"
+text = "OK"
 label_settings = SubResource("LabelSettings_tggsk")
 
 [node name="SelectButton" type="Button" parent="InputPromptPanel/MarginContainer/InputContainer/Select" unique_id=1765205462]

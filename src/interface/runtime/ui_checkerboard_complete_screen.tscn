@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://b2xy2qdv8rd36"]
+
+[ext_resource type="Script" uid="uid://c8yt1ml8b0g85" path="res://interface/runtime/ui_checkerboard_complete_screen.gd" id="1_j5ytb"]
+[ext_resource type="Texture2D" uid="uid://vclivsn8ttbk" path="res://assets/interface/ui-panel.png" id="2_rf5y8"]
+[ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="3_ydyc1"]
+[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="5_e55ww"]
+[ext_resource type="Texture2D" uid="uid://bi0m57ukxlo41" path="res://assets/world/effect-shine-large.png" id="6_xnr1t"]
+[ext_resource type="Texture2D" uid="uid://cq3e383r2otus" path="res://assets/world/particle-rabbitstar-02.png" id="8_2d8hq"]
+
+[sub_resource type="FontVariation" id="FontVariation_vproy"]
+spacing_glyph = -2
+spacing_space = 1
+
+[sub_resource type="FontVariation" id="FontVariation_mq48q"]
+spacing_glyph = -1
+spacing_space = 1
+
+[sub_resource type="Curve" id="Curve_2begt"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.25), 0.0, 0.0, 0, 0, Vector2(0.365455, 0.688977), 0.0, 0.0, 0, 0, Vector2(1, 0.5), -0.397193, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_tsa2b"]
+offsets = PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.792683, 1)
+colors = PackedColorArray(1, 1, 0.45098, 1, 1, 1, 1, 1, 1, 1, 0.45098, 1, 1, 1, 1, 1, 1, 1, 0.45098, 1, 1, 1, 1, 1, 1, 1, 0.45098, 1, 1, 1, 1, 1, 1, 1, 0.45098, 1, 1, 1, 1, 1, 1, 1, 0.45098, 1, 1, 0.839865, 0.994651, 0)
+
+[sub_resource type="Curve" id="Curve_v4q4e"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_1xoux"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45)
+colors = PackedColorArray(1, 1, 0.5, 1, 1, 1, 1, 1, 1, 1, 0.501961, 1, 1, 1, 1, 1, 1, 1, 0.501961, 1, 1, 1, 1, 1, 1, 1, 0.501961, 1, 1, 1, 1, 1, 1, 1, 0.501961, 1, 1, 1, 1, 1)
+
+[node name="CheckerboardCompleteScreen" type="Control" unique_id=1222027231]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j5ytb")
+
+[node name="BG" type="ColorRect" parent="." unique_id=296617475]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.25)
+
+[node name="Panel" type="NinePatchRect" parent="." unique_id=370675253]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.95)
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 0
+offset_left = 415.0
+offset_top = 300.0
+offset_right = 865.0
+offset_bottom = 700.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture = ExtResource("2_rf5y8")
+region_rect = Rect2(0, 0, 144, 144)
+patch_margin_left = 48
+patch_margin_top = 48
+patch_margin_right = 48
+patch_margin_bottom = 48
+
+[node name="Main" type="MarginContainer" parent="." unique_id=1830294922]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ydyc1")
+
+[node name="Content" type="MarginContainer" parent="Main" unique_id=1323990352]
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Content" unique_id=2101910785]
+layout_mode = 2
+
+[node name="CBCompleteInfo" type="RichTextLabel" parent="Main/Content/VBoxContainer" unique_id=2007766003]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_vproy")
+bbcode_enabled = true
+text = "
+[center][font_size=40][wave amp=20.0 freq=2.0][tornado radius=2.5 freq=4.0]Checkerboard 0 Complete"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/Content/VBoxContainer" unique_id=2102955221]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 10
+
+[node name="NextButton" type="Button" parent="Main/Content/VBoxContainer/VBoxContainer" unique_id=1402413699 groups=["UIButton"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("FontVariation_mq48q")
+text = "Next"
+script = ExtResource("5_e55ww")
+
+[node name="TextureNodes" type="Node2D" parent="." unique_id=509070268]
+unique_name_in_owner = true
+
+[node name="Particles3" type="CPUParticles2D" parent="TextureNodes" unique_id=1228752181]
+unique_name_in_owner = true
+position = Vector2(0, -61)
+emitting = false
+amount = 20
+texture = ExtResource("8_2d8hq")
+lifetime = 3.0
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(480, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 490)
+initial_velocity_max = 200.0
+angular_velocity_min = 200.0
+angular_velocity_max = 200.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+damping_min = 200.0
+damping_max = 240.0
+scale_amount_curve = SubResource("Curve_2begt")
+color_ramp = SubResource("Gradient_tsa2b")
+
+[node name="Shine1" type="Sprite2D" parent="TextureNodes" unique_id=857684094]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(0.5, 1, 0.5, 0.5)
+position = Vector2(0, 488)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("6_xnr1t")
+
+[node name="Shine2" type="Sprite2D" parent="TextureNodes" unique_id=1576983114]
+unique_name_in_owner = true
+visible = false
+self_modulate = Color(0.5, 1, 0.5, 0.5)
+position = Vector2(0, 488)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("6_xnr1t")
+
+[node name="TextureNode1" type="Node2D" parent="." unique_id=1473059919]
+unique_name_in_owner = true
+position = Vector2(640, 488)
+
+[node name="Particles" type="CPUParticles2D" parent="TextureNode1" unique_id=1292886224]
+unique_name_in_owner = true
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+initial_velocity_min = 250.0
+initial_velocity_max = 1100.0
+damping_min = 120.0
+damping_max = 120.0
+scale_amount_curve = SubResource("Curve_v4q4e")
+color_ramp = SubResource("Gradient_1xoux")
+
+[node name="Particles2" type="CPUParticles2D" parent="TextureNode1" unique_id=1520008604]
+unique_name_in_owner = true
+emitting = false
+amount = 32
+texture = ExtResource("8_2d8hq")
+lifetime = 11.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(30, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, 280)
+initial_velocity_min = 60.0
+initial_velocity_max = 1100.0
+angular_velocity_min = 200.0
+angular_velocity_max = 200.0
+damping_min = 200.0
+damping_max = 240.0
+scale_amount_curve = SubResource("Curve_2begt")
+color_ramp = SubResource("Gradient_tsa2b")
+
+[node name="TextureNode2" type="Node2D" parent="TextureNode1" unique_id=1328376491]
+unique_name_in_owner = true
+
+[node name="Texture" type="Sprite2D" parent="TextureNode1/TextureNode2" unique_id=171541962]
+unique_name_in_owner = true
+scale = Vector2(0.45, 0.45)
+
+[node name="TextureButton" type="Button" parent="TextureNode1/TextureNode2/Texture" unique_id=1705131599]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -171.0
+offset_top = -176.0
+offset_right = 147.0
+offset_bottom = 169.0

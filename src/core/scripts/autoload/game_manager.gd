@@ -114,7 +114,7 @@ func _ready() -> void:
 		game_end.emit()
 		)
 	
-	game_end.connect(goto_next_level)
+	game_end.connect(stage_complete)
 		
 	game_reset.connect(func():
 		Trans.reset_level()
@@ -122,6 +122,18 @@ func _ready() -> void:
 		#GameLogic.reset_game_logic()
 		#get_tree().reload_current_scene()
 		)
+
+func stage_complete() -> void:
+	@warning_ignore("integer_division")
+	if level_id / bakery_id == 10:
+		checkerboard_complete()
+	else:
+		goto_next_level()
+
+
+func checkerboard_complete() -> void:
+	if current_ui_handler:
+		current_ui_handler.the_checkerboard_has_been_checkered()
 
 func reset_game_data() -> void:
 	saver_loader.new_game()
@@ -141,19 +153,29 @@ func reset_game() -> void:
 	get_tree().reload_current_scene()
 
 
-func goto_next_level(strength: int = 1) -> void:
-	if !current_level:
-		return
+func goto_next_checkerboard() -> void:
+	goto_next_level(1, true)
 	
-	if current_level.no_progression:
-		return
+	if level_id + 1 <= Util.NUMBER_OF_LEVELS:
+		await get_tree().create_timer(1.5).timeout
+		Audio.set_music()
+		
+
+
+func goto_next_level(strength: int = 1, force_progression: bool = false) -> void:
+	if !force_progression:
+		if !current_level:
+			return
+		
+		if current_level.no_progression:
+			return
 	
 	print_debug("Moving to next level")
 
 	var next_lvl_id := current_level.scene_file_path.to_int() + strength
 	var next_lvl_path := Util.LEVEL_FILE_BEGIN + str(next_lvl_id) + Util.LEVEL_FILE_END
 	
-	if next_lvl_id <= Util.NUMBER_OF_LEVELS: 
+	if next_lvl_id <= Util.NUMBER_OF_DEMO_LEVELS: 
 	
 		if ResourceLoader.exists(next_lvl_path):
 			Trans.slide_to_next_stage(next_lvl_path)

@@ -20,6 +20,7 @@ enum BuildType {
 const MASH_WAIT_TIME = 0.5
 const ORDER_COMPLETE_WAIT_TIME = 1.0
 
+const NUMBER_OF_DEMO_LEVELS = 10
 const NUMBER_OF_LEVELS = 20
 
 const NUMBER_OF_WORLDS = 2

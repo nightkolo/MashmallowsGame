@@ -5,10 +5,9 @@ signal switch_activated(is_on: bool)
 
 @export var door_to_interact_with: Door
 
-@onready var sprite_head: Sprite2D = $Head ## Placeholder
+@onready var sprite_head: Sprite2D = $Head
 
 var is_activated: bool
-
 var interact_timer: Timer = Timer.new()
 
 
