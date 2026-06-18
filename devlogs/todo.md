@@ -21,9 +21,9 @@
     - [ ] Controller (Generic)
 
 ### Animation
-- [ ] Bubblegate
+- [x] Bubblegate
   - [x] Activation system
-  - [ ] Idle animation
+  - [x] Idle animation
   - [x] Interact aniamtions
   - [x] AnimationPlayer 
 - [ ] Twisted Marshmallow
@@ -38,7 +38,7 @@
     - [ ] Released
     - [ ] Unmashed on Button
 
-### Short demo
+### Short demo (6-19)
 - [ ] Bugfixes and additions
   - [ ] Bakery complete screen (Beta)
   - [ ] Cutsene silliness

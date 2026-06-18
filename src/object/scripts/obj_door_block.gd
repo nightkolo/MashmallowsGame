@@ -17,15 +17,29 @@ var is_activated: bool:
 	get:
 		return is_activated
 	set(value):
-		#if value != is_activated:
-			#activate(value)
 		is_activated = value
-#var is_popping: bool
 
+var t_wobble: Tween
+
+func anim_eye_wobble(dur: float = 0.5, mag: float = 3.0) -> void:
+	if t_wobble:
+		t_wobble.kill()
+
+	#var mag := 10.0
+	#var extra := Util.BLOCK_SIZE * 0.5 if attributes.build_type == Util.BuildType.RECTANGLE else 0.0
+
+	sprite_eye.position.y = (mag * 0.5)
+
+	t_wobble = create_tween().set_loops()
+	t_wobble.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+
+	t_wobble.tween_property(sprite_eye, "position:y", -mag, dur)
+	t_wobble.tween_property(sprite_eye, "position:y", mag, dur)
 
 var tween_squish: Tween
 
 func _ready() -> void:
+	anim_eye_wobble()
 	
 	area_2d.body_exited.connect(func(body: Node2D):
 		#if body is Node2D:
@@ -33,7 +47,7 @@ func _ready() -> void:
 			tween_squish.kill()
 		
 		tween_squish = create_tween()
-		tween_squish.tween_property(sprite_node, "scale", Vector2.ONE, 1.25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+		tween_squish.tween_property(sprite_bubble, "scale", Vector2.ONE * 0.5, 1.25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		)
 	area_2d.body_entered.connect(func(body: Node2D):
 		#if body is Player:
@@ -46,9 +60,9 @@ func _ready() -> void:
 		
 		tween_squish = create_tween()
 		if abs(offset.x) > abs(offset.y):
-			tween_squish.tween_property(sprite_node, "scale", Vector2(0.8, 1.0), 0.1)
+			tween_squish.tween_property(sprite_bubble, "scale", Vector2(0.8, 1.0) * 0.5, 0.1)
 		else:
-			tween_squish.tween_property(sprite_node, "scale", Vector2(1.0, 0.8), 0.1)
+			tween_squish.tween_property(sprite_bubble, "scale", Vector2(1.0, 0.8) * 0.5, 0.1)
 
 		)
 		
@@ -93,6 +107,7 @@ func anim_pop() -> void:
 	pop_sprite = Sprite2D.new()
 	pop_sprite.texture = [pop_text_1, pop_text_2].pick_random()
 	pop_sprite.scale = Vector2.ZERO
+	pop_sprite.rotation = randf() * TAU
 	add_child(pop_sprite)
 
 	sprite_eye.texture = eye_text_closed

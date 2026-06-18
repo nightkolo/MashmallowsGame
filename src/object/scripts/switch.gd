@@ -9,10 +9,26 @@ signal switch_activated(is_on: bool)
 
 var is_activated: bool
 
+var interact_timer: Timer = Timer.new()
+
 
 func _ready() -> void:
-	body_entered.connect(_try_interact)
-	body_exited.connect(_try_interact)
+	interact_timer.wait_time = 0.05
+	interact_timer.one_shot = true
+	add_child(interact_timer)
+	
+	interact_timer.timeout.connect(_try_interact)
+	
+	body_entered.connect(start_timer)
+	body_exited.connect(start_timer)
+
+
+func start_timer(_body: Node2D) -> void:
+	if interact_timer.is_stopped():
+		interact_timer.start()
+	else:
+		interact_timer.stop()
+		interact_timer.start()
 
 
 func interact(switch_on: bool = !is_activated) -> void:
@@ -27,11 +43,9 @@ func interact(switch_on: bool = !is_activated) -> void:
 	anim_psuh()
 
 	
-func _try_interact(_body: Node2D) -> void:
-	#if GameMgr.current_player:
-		#if GameMgr.current_player.velocity.is_equal_approx(Vector2.ZERO):
-			#return
+func _try_interact() -> void:
 	interact(get_overlapping_bodies().size() > 0)
+
 
 var tween_psuh: Tween
 

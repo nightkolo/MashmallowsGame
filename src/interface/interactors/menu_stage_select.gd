@@ -77,7 +77,7 @@ func _ready() -> void:
 		display_data()
 		
 		for board_btn: BoardSelectButton in board_btns:
-			board_btn.display_data()
+			board_btn.display_data_once()
 		
 		#await get_tree().create_timer(0.2).timeout
 		#left.anim_levels_panel(left.lvl_panels[0])

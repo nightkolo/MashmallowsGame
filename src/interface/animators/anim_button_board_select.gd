@@ -13,9 +13,9 @@ var com_texture: Texture = preload("res://assets/interface/level-star-com.png")
 var uncom_texture: Texture = preload("res://assets/interface/level-star-uncom.png")
 
 func _ready() -> void:
-	display_data()
+	display_data_once()
 	
-	GameMgr.game_data_saved.connect(display_data)
+	GameMgr.game_data_saved.connect(display_data_once)
 	
 	#com_star.texture = com_texture
 
@@ -38,7 +38,7 @@ func _ready() -> void:
 
 var node: Node2D
 
-func display_data() -> void:
+func display_data_once() -> void:
 	board_id = self.name.to_int()
 	
 	var board_num: String = str(board_id)
@@ -61,11 +61,16 @@ func display_data() -> void:
 		sprite.scale = 0.75 * Vector2.ONE
 		node.add_child(sprite)
 		self.add_child(node)
+	
+	#await get_tree().process_frame
 		anim_star()
 	#com_star.visible = GameData.runtime_data[board_num]["completed"] == true
 	#uncom_star.visible = GameData.runtime_data[board_num]["completed"] == false
 
 func anim_star() -> void:
+	if node == null:
+		return
+	
 	anim_star_pulse()
 	anim_star_rot()
 	var spd := 0.25
