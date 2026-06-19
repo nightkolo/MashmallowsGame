@@ -46,12 +46,12 @@
   - [x] Disable animations
 
 ### Short demo (6-19)
-- [ ] Bugfixes and additions
+- [x] Bugfixes and additions
   - [x] Cutsene silliness
-  - [ ] Level data saving
-  - [ ] Proper bakery complete assets
+  - [x] Level data saving
+  - [x] Proper bakery complete assets
 - [ ] Menus
-  - [ ] Credits transition
+  - [x] Credits transition
   - [ ] Credits Screen
   - [ ] Level selector screen
 - [ ] Promo

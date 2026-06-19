@@ -2,7 +2,7 @@ extends Control
 class_name CBCompleteScreen
 
 @export var asset_star: Texture2D = preload("res://assets/interface/rabbitstar-yellow.png")
-@export var asset_checkmark: Texture2D = preload("res://assets/interface/bakery-complete-plain.png")
+@export var asset_checkmark: Texture2D = preload("res://assets/interface/bakery-com-02.png")
 
 @onready var bg: ColorRect = $BG
 @onready var node_texture_1: Node2D = %TextureNode1
@@ -19,7 +19,7 @@ var tween_texture_hover: Tween
 var tween_texture_pulse: Tween
 
 var _gameplay_ui: GameplayUI
-var _final_texture_scale: Vector2 = Vector2.ONE * 0.45
+var _final_texture_scale: Vector2 = Vector2.ONE * 0.9
 
 const _INFO_BEGIN = "Bakery "
 const _INFO_END = " Complete!"

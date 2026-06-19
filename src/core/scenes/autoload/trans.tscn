@@ -140,7 +140,7 @@ color = Color(0, 0, 0, 1)
 [node name="Down" type="ColorRect" parent="Trans1" unique_id=604253936]
 offset_top = 800.0
 offset_right = 1280.0
-offset_bottom = 1200.0
+offset_bottom = 1200.0005
 color = Color(0, 0, 0, 1)
 
 [node name="Trans2" type="Node2D" parent="." unique_id=1222399744]

@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="3_ydyc1"]
 [ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="5_e55ww"]
 [ext_resource type="Texture2D" uid="uid://bi0m57ukxlo41" path="res://assets/world/effect-shine-large.png" id="6_xnr1t"]
+[ext_resource type="Texture2D" uid="uid://dsjwciajy7agj" path="res://assets/interface/bakery-com-02.png" id="7_b2xu0"]
 [ext_resource type="Texture2D" uid="uid://cq3e383r2otus" path="res://assets/world/particle-rabbitstar-02.png" id="8_2d8hq"]
 
 [sub_resource type="FontVariation" id="FontVariation_vproy"]
@@ -203,7 +204,9 @@ unique_name_in_owner = true
 
 [node name="Texture" type="Sprite2D" parent="TextureNode1/TextureNode2" unique_id=171541962]
 unique_name_in_owner = true
-scale = Vector2(0.45, 0.45)
+self_modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("7_b2xu0")
 
 [node name="TextureButton" type="Button" parent="TextureNode1/TextureNode2/Texture" unique_id=1705131599]
 unique_name_in_owner = true

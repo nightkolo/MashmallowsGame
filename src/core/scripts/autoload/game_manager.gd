@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node
 
 signal level_entered()
 signal menu_entered(menu: MenuID)
@@ -135,7 +135,7 @@ func checkerboard_complete() -> void:
 
 func reset_game_data() -> void:
 	saver_loader.new_game()
-	saver_loader.new_game_medals()
+	#saver_loader.new_game_medals()
 
 
 func save_game_data() -> void:
@@ -180,7 +180,8 @@ func goto_next_level(strength: int = 1, force_progression: bool = false) -> void
 		else:
 			push_error("Level file missing: " + next_lvl_path)
 	else:
-		Trans.slide_to_scene("res://interface/menus/thank_you_screen.tscn")
+		Trans.slide_to_credits(0.8)
+		#Trans.slide_to_scene("res://interface/menus/thank_you_screen.tscn")
 		game_has_ended = true
 
 # Config

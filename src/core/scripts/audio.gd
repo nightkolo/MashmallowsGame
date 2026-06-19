@@ -1,7 +1,9 @@
 extends Node
 
-@onready var music_stage: AudioStreamPlayer = %MusicStage
+#@onready var SFX_BUS_ID: int = AudioServer.get_bus_index("SFX")
+@onready var UISound_BUS_ID: int = AudioServer.get_bus_index("UI")
 
+@onready var music_stage: AudioStreamPlayer = %MusicStage
 
 @onready var order_loss: AudioStreamPlayer = %OrderLoss
 @onready var order_lost: AudioStreamPlayer = %OrderLost
@@ -38,6 +40,19 @@ func lower_higher_music(dur: float = 1.0, low: float = 15.0) -> void:
 	
 	tween.tween_property(music_stage, "volume_db", original_music_db-low, dur)
 	tween.tween_property(music_stage, "volume_db", original_music_db, dur).set_delay(dur)
+
+func lower_music(dur: float = 1.0, low: float = 15.0) -> void:
+	var tween = create_tween()
+	
+	tween.tween_property(music_stage, "volume_db", original_music_db-low, dur)
+	#tween.tween_property(music_stage, "volume_db", original_music_db, dur).set_delay(dur)
+
+
+
+func off_on_ui_sound(dur: float = 1.0) -> void:
+	AudioServer.set_bus_mute(UISound_BUS_ID, true)
+	await get_tree().create_timer(dur).timeout
+	AudioServer.set_bus_mute(UISound_BUS_ID, false)
 
 
 func set_music(vol: float = original_music_db) -> void:
@@ -101,7 +116,7 @@ func _ready() -> void:
 		
 		match entered:
 			
-			GameMgr.MenuID.PAUSE, GameMgr.MenuID.RUNTIME:
+			GameMgr.MenuID.PAUSE, GameMgr.MenuID.WORLD_COMPLETE, GameMgr.MenuID.RUNTIME:
 				start_music()
 			
 			_:
