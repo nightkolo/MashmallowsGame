@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwvsbxncaj6ma" path="res://interface/interactors/menu_credits.gd" id="1_m2fj4"]
 [ext_resource type="Theme" uid="uid://croyx1o13jqlf" path="res://core/resources/theme/button_menus_menus.tres" id="2_741l2"]
+[ext_resource type="Texture2D" uid="uid://efywy8b53885" path="res://assets/interface/logo-night-kolo.png" id="2_sng62"]
 [ext_resource type="Script" uid="uid://ccyg5othuwlpx" path="res://interface/animators/anim_button.gd" id="5_xddtm"]
 
 [sub_resource type="FontVariation" id="FontVariation_dsutm"]
@@ -12,7 +13,7 @@ spacing_bottom = -3
 
 [sub_resource type="LabelSettings" id="LabelSettings_vltc8"]
 font = SubResource("FontVariation_dsutm")
-font_size = 24
+font_size = 28
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 6
@@ -36,6 +37,15 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.5)
 shadow_offset = Vector2(6, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sng62"]
+font_size = 28
+font_color = Color(1, 1, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1tel5"]
 font_size = 28
@@ -65,73 +75,120 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 125
+theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Main" unique_id=1911157968]
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer2" unique_id=1657840639]
+[node name="Label" type="RichTextLabel" parent="Main/VBoxContainer2" unique_id=297281300]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=22.0][outline_size=5.0]Thank you for playing this short demo of [b]Mashmallows[/b]! 
+
+I've been [b]solo developing[/b] this game on a virtually tiny budget, and it currently [b]does not have a steam page[/b]. If you'd like to support the game's development, you can [b]donate on Ko-fi (ko-fi.com/kolo)[/b] or simply [b]share the game and tell your friends about it![/b]
+Any amount will guarantee your name in the game and my bedroom walls!
+
+Be sure to follow me on X/Twitter [b]@_nightkolo_[/b], or Instagram [b]@nightkolo[/b], or join my [b]Community Discord[/b] for updates and more stuff like this! I also like to do digital art!
+[b]All links are on the game page[/b], thank you again for your support."
+fit_content = true
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Main/VBoxContainer2" unique_id=1262425056]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Authors" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer2" unique_id=1657840639]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer2/Authors" unique_id=371668748]
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="Author" type="Label" parent="Main/VBoxContainer2/VBoxContainer" unique_id=1809441215]
+[node name="Author" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer" unique_id=1809441215]
 layout_mode = 2
 text = "A Game by:"
 label_settings = SubResource("LabelSettings_vltc8")
+horizontal_alignment = 1
 
-[node name="Me" type="Label" parent="Main/VBoxContainer2/VBoxContainer" unique_id=1752993225]
+[node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer" unique_id=845417924]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_sng62")
+stretch_mode = 2
+
+[node name="Me" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer" unique_id=1752993225]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Night Kolo"
 label_settings = SubResource("LabelSettings_g7nci")
+horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Main/VBoxContainer2" unique_id=590561312]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer2/Authors" unique_id=1864103473]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_override_constants/separation = -10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer" unique_id=1864103473]
+[node name="Musicby" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer2" unique_id=483036799]
 layout_mode = 2
-theme_override_constants/separation = -5
-
-[node name="Musicby" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=483036799]
-layout_mode = 2
-text = "Music composed by:"
+text = "Original music composed by:"
 label_settings = SubResource("LabelSettings_vltc8")
+horizontal_alignment = 1
 
-[node name="Avizura" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer2" unique_id=1863276242]
+[node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer2" unique_id=60361666]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_sng62")
+
+[node name="Avizura" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer2" unique_id=1863276242]
 layout_mode = 2
 text = "Avizura"
 label_settings = SubResource("LabelSettings_7l5mp")
+horizontal_alignment = 1
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer" unique_id=33664027]
-visible = false
+[node name="Others" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer2" unique_id=33664027]
+custom_minimum_size = Vector2(440, 0)
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="Thanks" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=1610637979]
+[node name="Thanks" type="RichTextLabel" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=1501437307]
 layout_mode = 2
-text = "Special Thanks:"
-label_settings = SubResource("LabelSettings_vltc8")
+bbcode_enabled = true
+text = "[font_size=24.0][outline_size=5.0][color=#ffa7ff]Special Thanks[/color] and
+[color=yellow]People who supported on Ko-fi so far[/color]:"
+fit_content = true
+horizontal_alignment = 1
 
-[node name="Kenney" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=1045408205]
+[node name="Scout" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=673271639]
+layout_mode = 2
+text = "Scout (Starsfordia)"
+label_settings = SubResource("LabelSettings_sng62")
+horizontal_alignment = 1
+
+[node name="Thanks3" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=549026694]
+layout_mode = 2
+text = "Avizura"
+label_settings = SubResource("LabelSettings_1tel5")
+horizontal_alignment = 1
+
+[node name="Thanks1" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=1045408205]
+layout_mode = 2
+text = "Zapsplat"
+label_settings = SubResource("LabelSettings_1tel5")
+horizontal_alignment = 1
+
+[node name="Thanks2" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=1820827681]
 layout_mode = 2
 text = "Kenney"
 label_settings = SubResource("LabelSettings_1tel5")
-
-[node name="YSY" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=673271639]
-layout_mode = 2
-text = "YoStarYeahya"
-label_settings = SubResource("LabelSettings_1tel5")
-
-[node name="Zach" type="Label" parent="Main/VBoxContainer2/HBoxContainer/VBoxContainer3" unique_id=276551009]
-layout_mode = 2
-text = "Zach"
-label_settings = SubResource("LabelSettings_1tel5")
+horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="Main" unique_id=958684305 groups=["UIButton"]]
 unique_name_in_owner = true

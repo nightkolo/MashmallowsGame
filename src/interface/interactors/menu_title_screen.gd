@@ -9,9 +9,18 @@ signal credits_btn_pressed()
 @onready var select_stage_btn: Button = %SelectStageButton
 @onready var credits_btn: Button = %CreditsButton
 
+@onready var author_text: RichTextLabel = %Authors
+
+var version: String = ProjectSettings.get_setting("application/config/version")
+var version_text: String = "[color=#FFFFFF5A]v%s
+[color=#FFFFFFFF][font_size=20.0]© 2026 Night Kolo"
+
 
 func _ready() -> void:
 	start_btn.grab_focus()
+	
+	author_text.text = version_text % version
+
 	
 	is_showing.connect(func():
 		start_btn.grab_focus()

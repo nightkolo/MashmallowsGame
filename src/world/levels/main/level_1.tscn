@@ -85,6 +85,7 @@ position = Vector2(0, 96)
 scale = Vector2(0.75, 0.75)
 script = ExtResource("10_4yclh")
 level_id_to_modify = 1
+order_code = Array[Dictionary]([])
 metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("6_qxy0u")]
@@ -106,19 +107,18 @@ offset_left = 896.0
 offset_top = 464.0
 offset_right = 936.0
 offset_bottom = 504.0
-level_info = "Mash the [color=#00000000][M][M][/color][color=yellow]Marshmallows[/color] to fulfill the order!"
+level_info = "Mash the [color=#00000000][M][/color][color=yellow]Marshmallows[/color] to fulfill the order!"
 show_sprites = [NodePath("Sprite2D")]
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-4860.277, 5.9523746e-13, 4776, 3584)
+region_rect = Rect2(-661.0788, 8.0958176e-14, 4776, 3584)
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" parent_id_path=PackedInt32Array(1741767880, 7455025) index="0" unique_id=587048025]
-text = "[b][font_size=21.0]Mash the [color=#00000000][M][M][/color][color=yellow]Marshmallows[/color] to fulfill the order!"
-visible_characters = 49
+text = "[b][font_size=21.0]Mash the [color=#00000000][M][/color][color=yellow]Marshmallows[/color] to fulfill the order!"
 
 [node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
 position = Vector2(255, 105)
-rotation = 0.084126376
+rotation = 0.17379108
 
 [node name="Sprite2D" type="Sprite2D" parent="World/LevelInfo" unique_id=1128299013]
 position = Vector2(36, 59)

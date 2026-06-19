@@ -26,8 +26,9 @@ var tween_area: Tween
 var cam_pos: Vector2
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("debug_next"):
-		GameLogic.intro_order_complete.emit()
+	pass
+	#if event.is_action_pressed("debug_next"):
+		#GameLogic.intro_order_complete.emit()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -67,6 +68,9 @@ func _ready() -> void:
 
 		await player.animator.anim_zoom_in()
 		player.no_move = true
+
+		if GameData.runtime_data.has("first_session"):
+			GameData.runtime_data["first_session"] = false
 
 		if logo && camera:
 			logo.scale = Vector2.ZERO

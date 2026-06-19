@@ -83,7 +83,7 @@ size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../SelectStageButton")
 focus_neighbor_bottom = NodePath("../AudioOptions/SFX")
 theme = ExtResource("3_qc6yc")
-text = "Credits & Support♥"
+text = "Credits & Support<3"
 script = ExtResource("4_ki3e0")
 
 [node name="AudioOptions" type="HBoxContainer" parent="Main/HBoxContainer/VBoxContainer2" unique_id=645490318]

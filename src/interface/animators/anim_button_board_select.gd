@@ -97,8 +97,8 @@ func anim_star_rot():
 	
 	var l_tween_2 := create_tween().set_loops()
 	l_tween_2.set_ease(Tween.EASE_OUT_IN)
-	#l_tween_2.tween_property(node, "rotation_degrees", dir * 5.5, 1.0).set_ease(Tween.EASE_OUT_IN)
-	#l_tween_2.tween_property(node, "rotation_degrees", dir * -5.5, 1.0).set_ease(Tween.EASE_OUT_IN)
+	l_tween_2.tween_property(node, "rotation_degrees", dir * 5.5, 1.0).set_ease(Tween.EASE_OUT_IN)
+	l_tween_2.tween_property(node, "rotation_degrees", dir * -5.5, 1.0).set_ease(Tween.EASE_OUT_IN)
 
 var l_tween_3: Tween
 

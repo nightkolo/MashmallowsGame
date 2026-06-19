@@ -162,7 +162,7 @@ texture = SubResource("GradientTexture2D_geqfq")
 
 [node name="Spiral" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/Mask" unique_id=2031043576]
 self_modulate = Color(0, 0, 0, 0.1)
-rotation = 2.7445762
+rotation = 4.7403746
 scale = Vector2(1.46, 1.46)
 texture = ExtResource("6_vb2kv")
 
@@ -300,7 +300,7 @@ texture = SubResource("GradientTexture2D_geqfq")
 
 [node name="Spiral" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/Mask" unique_id=905675411]
 self_modulate = Color(0, 0, 0, 0.1)
-rotation = 2.7445762
+rotation = 4.7403746
 scale = Vector2(1.46, 1.46)
 texture = ExtResource("6_vb2kv")
 
@@ -319,7 +319,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer" unique_id=1018616397]
 layout_mode = 2
-text = "Bakery 2"
+text = "Coming Soon..."
 label_settings = ExtResource("6_16r33")
 
 [node name="GridContainer" type="GridContainer" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/LevelContainer2/VBoxContainer" unique_id=1203745477]
@@ -332,6 +332,7 @@ columns = 5
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "11"
 script = ExtResource("5_mqg4w")
 
@@ -339,6 +340,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "12"
 script = ExtResource("5_mqg4w")
 
@@ -346,6 +348,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "13"
 script = ExtResource("5_mqg4w")
 
@@ -353,6 +356,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "14"
 script = ExtResource("5_mqg4w")
 
@@ -360,6 +364,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "15"
 script = ExtResource("5_mqg4w")
 
@@ -367,6 +372,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "16"
 script = ExtResource("5_mqg4w")
 
@@ -374,6 +380,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "17"
 script = ExtResource("5_mqg4w")
 
@@ -381,6 +388,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "18"
 script = ExtResource("5_mqg4w")
 
@@ -388,6 +396,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "19"
 script = ExtResource("5_mqg4w")
 
@@ -395,6 +404,7 @@ script = ExtResource("5_mqg4w")
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "20
 "
 script = ExtResource("5_mqg4w")
@@ -427,7 +437,7 @@ texture = SubResource("GradientTexture2D_geqfq")
 
 [node name="Spiral" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel3/Mask" unique_id=986465139]
 self_modulate = Color(0, 0, 0, 0.2)
-rotation = 2.7445762
+rotation = 4.7403746
 scale = Vector2(1.46, 1.46)
 texture = ExtResource("6_vb2kv")
 

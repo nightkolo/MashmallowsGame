@@ -36,12 +36,12 @@ grow_vertical = 0
 layout_mode = 2
 
 [node name="TiledSprite2D2" type="Sprite2D" parent="InputPromptPanel" unique_id=47341575]
-self_modulate = Color(0.5370987, 0, 0.5370987, 1)
+self_modulate = Color(0, 0, 0, 1)
 texture_repeat = 2
 position = Vector2(960, -3)
 texture = ExtResource("2_y6jnm")
 region_enabled = true
-region_rect = Rect2(-2816.4143, 0, 1920, 50)
+region_rect = Rect2(-149.2001, 0, 1920, 50)
 region_filter_clip_enabled = true
 script = ExtResource("2_5qwaw")
 animate_scroll = true
@@ -54,7 +54,7 @@ texture_repeat = 2
 position = Vector2(960, 2)
 texture = ExtResource("2_y6jnm")
 region_enabled = true
-region_rect = Rect2(4224.662, 0, 1920, 50)
+region_rect = Rect2(223.80013, 0, 1920, 50)
 region_filter_clip_enabled = true
 script = ExtResource("2_5qwaw")
 animate_scroll = true

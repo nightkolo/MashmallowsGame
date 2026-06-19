@@ -185,7 +185,7 @@ custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[b][font_size=48.0][color=yellow][shake rate=8.0 level=15 connected=1]Click anywhere to Start"
+text = "[b][font_size=48.0][color=yellow][shake rate=16.0 level=15 connected=1]Click anywhere to Start"
 fit_content = true
 horizontal_alignment = 1
 

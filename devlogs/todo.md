@@ -27,11 +27,11 @@
 
 ### Codebase
 - [ ] Input prompts
-  - [ ] Kenney
+  - [x] Kenney
     - [x] Keyboard
       - [x] Esc
       - [x] Move (Arrow keys)
-      - [ ] Enter
+      - [x] Enter
       - [x] E
     - [ ] Controller (Generic)
 
@@ -46,19 +46,22 @@
   - [x] Disable animations
 
 ### Short demo (6-19)
+- [ ] Promo
+  - [ ] Beta game poster
+  - [ ] Game icon
+  - [ ] Screenshots
+  - [ ] Game theme
+  - [ ] Game desc.
+  - [ ] Insta and YT videos
+  - [ ] X post
 - [x] Bugfixes and additions
   - [x] Cutsene silliness
   - [x] Level data saving
   - [x] Proper bakery complete assets
-- [ ] Menus
+- [x] Menus
   - [x] Credits transition
-  - [ ] Credits Screen
-  - [ ] Level selector screen
-- [ ] Promo
-  - [ ] Game theme
-  - [ ] Game desc.
-  - [ ] Screenshots
-  - [ ] Beta game poster
+  - [x] Credits Screen
+  - [x] Level selector screen
   - [x] Bakery complete screen (Beta)
   - [x] Level redesigns
     - [x] 1-6
