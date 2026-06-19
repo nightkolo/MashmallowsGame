@@ -7,20 +7,23 @@ class_name MashedAudio
 func _ready():
 	if get_parent() is Mashed:
 		var block: Mashed = get_parent() as Mashed
+		
+		await get_tree().create_timer(0.2).timeout
+		
+		if block.mash_type != Util.MashType.MISC:
+			block.attribute_set.connect(func():
+				if block.parent_player:
+					if block.parent_player.child_blocks.size() == 1:
+						return
 
-		block.attribute_set.connect(func():
-			if block.parent_player:
-				if block.parent_player.child_blocks.size() == 1:
-					return
+				match block.attributes.mash_type:
 
-			match block.attributes.mash_type:
+					Util.MashType.CHERRY_BOMB, Util.MashType.AIR_CHERRY_BOMB:
+						vocal_cb_sfx.play()
 
-				Util.MashType.CHERRY_BOMB, Util.MashType.AIR_CHERRY_BOMB:
-					vocal_cb_sfx.play()
-
-				_:
-					play_mashed_vocal_sfx()
-		)
+					_:
+						play_mashed_vocal_sfx()
+			)
 
 
 func play_mashed_vocal_sfx():

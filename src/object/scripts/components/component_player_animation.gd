@@ -99,7 +99,7 @@ func anim_land(strength: float = 1.0) -> void:
 		block.node_block_sprites.position.y = ori
 		
 		if block.is_on_ground() || block.is_on_block():
-			if block.attributes.build_type == Util.BuildType.RECTANGLE:
+			if block.build_type == Util.BuildType.RECTANGLE:
 				mag = mag / 2.0
 			_tween_land.tween_property(block.node_block_sprites,"scale",Vector2(1.0 + mag,1.0 - mag),0.07)
 			_tween_land.tween_property(block.node_block_sprites,"scale",Vector2(1.0,1.0),dur).set_trans(Tween.TRANS_ELASTIC).set_delay(0.07)

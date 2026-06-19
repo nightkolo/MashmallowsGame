@@ -159,7 +159,6 @@ func _ready() -> void:
 			parent_player.audio.sfx_unmash_exit.play()
 		)
 	
-	anim_awake()
 
 	# Shared with [Unmashed]
 	if attributes == null:
@@ -173,6 +172,9 @@ func _ready() -> void:
 		build_type = attributes.build_type
 		is_golden = attributes.is_golden
 
+	if mash_type != Util.MashType.MISC:
+		anim_awake()
+		
 	node_eye_sprites_2.visible = mash_type != Util.MashType.MISC
 
 	if get_parent() is Player:
@@ -206,13 +208,13 @@ func _ready() -> void:
 		
 		parent_player.new_child_blocks.append(self)
 
-		## TRAIL
-		if mark:
+		if mark && mash_type != Util.MashType.MISC:
 			var m := mark.instantiate()
 			m.global_position = global_position + (Vector2.RIGHT * Util.BLOCK_SIZE * 0.5)
 			if GameMgr.current_level:
 				GameMgr.current_level.add_child(m)
 
+		## TRAIL
 		if parent_player.show_trail:
 			parent_player.has_jumpped.connect(func():
 				if current_trail == null && is_on_ground():

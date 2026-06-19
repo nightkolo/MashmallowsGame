@@ -50,6 +50,10 @@ var attributes: BlockAttributes
 
 @export_group("Audio")
 @export var audio: UnmashedAudio
+@export_group("Nodes")
+@export var particles_spawn: CPUParticles2D 
+@export var particles_z: CPUParticles2D 
+
 @export_group("Sprites")
 @export var node_mash_prompt: Node2D 
 @export var sprite: Sprite2D
@@ -58,7 +62,6 @@ var attributes: BlockAttributes
 @export var sprite_input: Sprite2D
 @export var sprite_node: Node2D 
 @export var eyes_node: Node2D 
-@export var particles_spawn: CPUParticles2D 
 
 var twisted: PackedScene = preload("res://object/objects/block_twisted_collision.tscn")
 
@@ -74,7 +77,6 @@ func _ready() -> void:
 	set_physics_process(true)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
-	anim_sleep()
 
 	if was_mashed:
 		anim_unmashed()
@@ -108,12 +110,18 @@ func _ready() -> void:
 	else:
 		collision_mask = 1 + 8 + 4096
 
+	if mash_type != Util.MashType.MISC:
+		anim_sleep()
+		particles_z.emitting = true
+		if audio:
+			audio.play_spawn_sound()
+	else:
+		sprite_node.scale = Vector2.ONE
+		
 	eyes_node.visible = mash_type != Util.MashType.MISC
 
 	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type, attributes.is_golden)
 	#
-	if audio:
-		audio.play_spawn_sound()
 	
 	await get_tree().create_timer(0.1).timeout
 	
