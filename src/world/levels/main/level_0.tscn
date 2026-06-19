@@ -5,11 +5,7 @@
 [ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_gwvtg"]
 [ext_resource type="Script" uid="uid://b3301uyw5i1iv" path="res://world/levels/main/intro_comp.gd" id="4_y72ok"]
 [ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="5_vp58q"]
-[ext_resource type="Script" uid="uid://drojb13rqhkar" path="res://core/resources/game_dialog/monolog_millie.gd" id="6_dlprc"]
-[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="7_uo10l"]
-[ext_resource type="Script" uid="uid://bsf7yi865jfdq" path="res://core/resources/game_dialog/monolog_animation.gd" id="8_ioh1j"]
-[ext_resource type="Script" uid="uid://coaf2q56w0fhq" path="res://core/resources/game_dialog/monolog_tree.gd" id="9_dnfhd"]
-[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="10_j75gc"]
+[ext_resource type="Resource" uid="uid://di3vbxq70xysm" path="res://core/resources/game_dialog/monolog_intro.tres" id="6_vperl"]
 [ext_resource type="AudioStream" uid="uid://cti38do6a3qct" path="res://audio/sounds/speech_generic.wav" id="11_pp181"]
 [ext_resource type="AudioStream" uid="uid://doutjfd6vfo3s" path="res://audio/sounds/speech_ka.wav" id="12_17l4c"]
 [ext_resource type="AudioStream" uid="uid://bgtyfv4mukx" path="res://audio/sounds/speech_ke.wav" id="13_kqy10"]
@@ -30,120 +26,6 @@
 [ext_resource type="Script" uid="uid://d2gl7vnb88axq" path="res://world/world/monolog_activation_area.gd" id="28_y4i7q"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="29_owqqn"]
 [ext_resource type="Texture2D" uid="uid://c7iku6srfd18x" path="res://assets/interface/logo-beta-02.png" id="30_l728u"]
-
-[sub_resource type="Resource" id="Resource_0o6nf"]
-script = ExtResource("7_uo10l")
-monolog_line = "Nice task, what a candidate!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_p111g"]
-script = ExtResource("7_uo10l")
-monolog_emotion = 2
-monolog_line = "......"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_d8enu"]
-script = ExtResource("7_uo10l")
-monolog_emotion = 2
-monolog_line = "You probably don't know who I am"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_my08x"]
-script = ExtResource("7_uo10l")
-monolog_eyes = 2
-monolog_line = "Well... unless you've played this game twice or something"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_8is5q"]
-script = ExtResource("7_uo10l")
-monolog_line = "I'm Marshmallow Lady, you may address me as Millie"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_mmk00"]
-script = ExtResource("7_uo10l")
-monolog_eyes = 3
-monolog_line = "I'm made out of candy, joy, and eccentricism!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_wbx4n"]
-script = ExtResource("8_ioh1j")
-animate_expression = 5
-metadata/_custom_type_script = "uid://bsf7yi865jfdq"
-
-[sub_resource type="Resource" id="Resource_o4sdu"]
-script = ExtResource("7_uo10l")
-monolog_emotion = 5
-monolog_line = "AAAAAAAAA!!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_c4agd"]
-script = ExtResource("7_uo10l")
-monolog_emotion = 5
-monolog_line = "You-.. You bit me!!!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_j16u5"]
-script = ExtResource("7_uo10l")
-monolog_emotion = 5
-monolog_line = "What have you done?!?!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_dtp6q"]
-script = ExtResource("7_uo10l")
-monolog_emotion = 5
-monolog_line = "The pain! The pain is too much!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_5jp5s"]
-script = ExtResource("7_uo10l")
-monolog_emotion = 5
-monolog_line = "AAAAAAAA"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_dkpg5"]
-script = ExtResource("8_ioh1j")
-metadata/_custom_type_script = "uid://bsf7yi865jfdq"
-
-[sub_resource type="Resource" id="Resource_i8e48"]
-script = ExtResource("7_uo10l")
-monolog_line = "Alright, you're lucky I can regenerate."
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_oj4og"]
-script = ExtResource("7_uo10l")
-monolog_eyes = 3
-monolog_line = "WHY THANK YOU!!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_1x2i2"]
-script = ExtResource("7_uo10l")
-monolog_eyes = 2
-monolog_line = "Do you know how many people chose the latter option?"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_3q136"]
-script = ExtResource("7_uo10l")
-monolog_line = "They really want a piece of me, huh"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_jyevi"]
-script = ExtResource("9_dnfhd")
-monolog_path_1 = "Eat her anyway"
-monolog_flow_1 = Array[ExtResource("6_dlprc")]([SubResource("Resource_wbx4n"), SubResource("Resource_o4sdu"), SubResource("Resource_c4agd"), SubResource("Resource_j16u5"), SubResource("Resource_dtp6q"), SubResource("Resource_5jp5s"), SubResource("Resource_dkpg5"), SubResource("Resource_i8e48")])
-monolog_path_2 = "Got it"
-monolog_flow_2 = Array[ExtResource("6_dlprc")]([SubResource("Resource_oj4og"), SubResource("Resource_1x2i2"), SubResource("Resource_3q136")])
-monolog_line = "I may be sweet, but don't eat me. My candy parts are expired."
-metadata/_custom_type_script = "uid://coaf2q56w0fhq"
-
-[sub_resource type="Resource" id="Resource_2vsxg"]
-script = ExtResource("7_uo10l")
-monolog_line = " Anyway, enough monologuing. Let's get into fulfilling orders!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_xfjp3"]
-script = ExtResource("10_j75gc")
-monolog_flow = Array[ExtResource("6_dlprc")]([SubResource("Resource_0o6nf"), SubResource("Resource_p111g"), SubResource("Resource_d8enu"), SubResource("Resource_my08x"), SubResource("Resource_8is5q"), SubResource("Resource_mmk00"), SubResource("Resource_jyevi"), SubResource("Resource_2vsxg")])
-metadata/_custom_type_script = "uid://bdvhnubwffufv"
 
 [sub_resource type="LabelSettings" id="LabelSettings_dr7fv"]
 font_size = 32
@@ -194,7 +76,7 @@ monolog = NodePath("../MonologSystem")
 script = ExtResource("5_vp58q")
 auto_start = false
 reveal_name_at = 4
-flow = SubResource("Resource_xfjp3")
+flow = ExtResource("6_vperl")
 speech_bubble = NodePath("../Scene2/World/SpeechBubble")
 character = NodePath("../Scene2/World/NPC")
 speech_generic = ExtResource("11_pp181")
@@ -246,7 +128,7 @@ position = Vector2(0, -66)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt2/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -113586.016
+rotation = -116995.32
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt2/Base" index="3" unique_id=1893349169]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -260,7 +142,7 @@ texture = ExtResource("23_nl2gi")
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(1420007166, 206340744) index="0" unique_id=520484544]
-rotation = -113586.016
+rotation = -116995.32
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt/Base" index="3" unique_id=2138650363]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -275,7 +157,7 @@ position = Vector2(64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt3/Base/Sprite2D2" parent_id_path=PackedInt32Array(823154426, 206340744) index="0" unique_id=520484544]
-rotation = -113586.016
+rotation = -116995.32
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt3/Base" index="3" unique_id=1815677311]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -289,7 +171,7 @@ position = Vector2(-64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt4/Base/Sprite2D2" parent_id_path=PackedInt32Array(1387734507, 206340744) index="0" unique_id=520484544]
-rotation = -113586.016
+rotation = -116995.32
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt4/Base" index="3" unique_id=1257870127]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -400,7 +282,7 @@ offset_right = 871.0
 offset_bottom = 458.0
 
 [node name="TiledSprite2D" parent="Scene2/World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-11701.251, 1.4330095e-12, 4776, 3584)
+region_rect = Rect2(-49096.004, 6.0127866e-12, 4776, 3584)
 
 [node name="Choice1" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false

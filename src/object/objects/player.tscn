@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://dfki70h17wv8g" path="res://audio/sfx/block_unmashed_exited.wav" id="20_uls5r"]
 [ext_resource type="AudioStream" uid="uid://b6u4rrm7g5qkn" path="res://audio/sfx/player_stretch_01.wav" id="21_822h2"]
 [ext_resource type="AudioStream" uid="uid://c1ft78ncmebur" path="res://audio/sfx/player_mash_01.wav" id="22_xerq1"]
+[ext_resource type="AudioStream" uid="uid://bjo4yqongb0bc" path="res://audio/sfx/switch_hit.ogg" id="23_djp6n"]
 [ext_resource type="AudioStream" uid="uid://dpnhafwpo760x" path="res://audio/sfx/player_slide_01.wav" id="24_dosag"]
 [ext_resource type="PackedScene" uid="uid://b8b1jq0amanoa" path="res://world/particles_z.tscn" id="25_33vi3"]
 [ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="28_5xn7n"]
@@ -220,6 +221,12 @@ bus = &"Gameplay"
 stream = ExtResource("21_822h2")
 panning_strength = 2.0
 bus = &"Gameplay"
+
+[node name="Drop" type="AudioStreamPlayer2D" parent="Audio" unique_id=1626471049]
+stream = ExtResource("23_djp6n")
+volume_db = 5.0
+panning_strength = 5.0
+bus = &"SFX"
 
 [node name="Timers" type="Node" parent="." unique_id=1381808234]
 

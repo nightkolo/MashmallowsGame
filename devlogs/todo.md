@@ -23,7 +23,7 @@
   - [x] Twisted
     - [x] Notice
     - [x] Rise
-- [ ] Implementation
+- [x] Implementation
 
 ### Codebase
 - [ ] Input prompts
@@ -36,18 +36,18 @@
     - [ ] Controller (Generic)
 
 ### Animation
+- [ ] Twisted Marshmallow
 - [x] Bubblegate
   - [x] Activation system
   - [x] Idle animation
   - [x] Interact aniamtions
   - [x] AnimationPlayer 
-- [ ] Twisted Marshmallow
-- [ ] Regular block
-  - [ ] Disable animations
+- [x] Regular block
+  - [x] Disable animations
 
 ### Short demo (6-19)
 - [ ] Bugfixes and additions
-  - [ ] Cutsene silliness
+  - [x] Cutsene silliness
   - [ ] Level data saving
   - [ ] Proper bakery complete assets
 - [ ] Menus

@@ -1,0 +1,122 @@
+[gd_resource type="Resource" script_class="MonologFlow" format=3 uid="uid://di3vbxq70xysm"]
+
+[ext_resource type="Script" uid="uid://drojb13rqhkar" path="res://core/resources/game_dialog/monolog_millie.gd" id="1_kaeyv"]
+[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="2_mnqud"]
+[ext_resource type="Script" uid="uid://bsf7yi865jfdq" path="res://core/resources/game_dialog/monolog_animation.gd" id="3_1t061"]
+[ext_resource type="Script" uid="uid://coaf2q56w0fhq" path="res://core/resources/game_dialog/monolog_tree.gd" id="4_1fcbv"]
+[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="5_xx4qm"]
+
+[sub_resource type="Resource" id="Resource_0o6nf"]
+script = ExtResource("2_mnqud")
+monolog_line = "Nice task, what a candidate!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_p111g"]
+script = ExtResource("2_mnqud")
+monolog_emotion = 2
+monolog_line = "......"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_d8enu"]
+script = ExtResource("2_mnqud")
+monolog_emotion = 2
+monolog_line = "You probably don't know who I am"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_my08x"]
+script = ExtResource("2_mnqud")
+monolog_eyes = 2
+monolog_line = "Well... unless you've played this game twice or something"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_8is5q"]
+script = ExtResource("2_mnqud")
+monolog_line = "I'm Marshmallow Lady, you may address me as Millie"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_mmk00"]
+script = ExtResource("2_mnqud")
+monolog_eyes = 3
+monolog_line = "I'm made out of candy, joy, and eccentricism!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_wbx4n"]
+script = ExtResource("3_1t061")
+animate_expression = 5
+metadata/_custom_type_script = "uid://bsf7yi865jfdq"
+
+[sub_resource type="Resource" id="Resource_o4sdu"]
+script = ExtResource("2_mnqud")
+monolog_emotion = 5
+monolog_line = "AAAAAAAAA!!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_c4agd"]
+script = ExtResource("2_mnqud")
+monolog_emotion = 5
+monolog_line = "You-.. You bit me!!!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_j16u5"]
+script = ExtResource("2_mnqud")
+monolog_emotion = 5
+monolog_line = "What have you done?!?!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_dtp6q"]
+script = ExtResource("2_mnqud")
+monolog_emotion = 5
+monolog_line = "The pain! The pain is too much!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_5jp5s"]
+script = ExtResource("2_mnqud")
+monolog_emotion = 5
+monolog_line = "AAAAAAAA"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_dkpg5"]
+script = ExtResource("3_1t061")
+metadata/_custom_type_script = "uid://bsf7yi865jfdq"
+
+[sub_resource type="Resource" id="Resource_i8e48"]
+script = ExtResource("2_mnqud")
+monolog_line = "Alright, you're lucky I can regenerate."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_oj4og"]
+script = ExtResource("2_mnqud")
+monolog_eyes = 3
+monolog_line = "WHY THANK YOU!!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_1x2i2"]
+script = ExtResource("2_mnqud")
+monolog_eyes = 2
+monolog_line = "Do you know how many people chose the latter option?"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_3q136"]
+script = ExtResource("2_mnqud")
+monolog_line = "They really want a piece of me, huh"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_jyevi"]
+script = ExtResource("4_1fcbv")
+monolog_path_1 = "Eat her anyway"
+monolog_flow_1 = Array[ExtResource("1_kaeyv")]([SubResource("Resource_wbx4n"), SubResource("Resource_o4sdu"), SubResource("Resource_c4agd"), SubResource("Resource_j16u5"), SubResource("Resource_dtp6q"), SubResource("Resource_5jp5s"), SubResource("Resource_dkpg5"), SubResource("Resource_i8e48")])
+monolog_path_2 = "Got it"
+monolog_flow_2 = Array[ExtResource("1_kaeyv")]([SubResource("Resource_oj4og"), SubResource("Resource_1x2i2"), SubResource("Resource_3q136")])
+monolog_line = "I may be sweet, but don't eat me. My candy parts are expired."
+metadata/_custom_type_script = "uid://coaf2q56w0fhq"
+
+[sub_resource type="Resource" id="Resource_2vsxg"]
+script = ExtResource("2_mnqud")
+monolog_emotion = 1
+monolog_line = " Anyway, enough monologuing. Let's get into fulfilling orders!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[resource]
+script = ExtResource("5_xx4qm")
+monolog_flow = Array[ExtResource("1_kaeyv")]([SubResource("Resource_0o6nf"), SubResource("Resource_p111g"), SubResource("Resource_d8enu"), SubResource("Resource_my08x"), SubResource("Resource_8is5q"), SubResource("Resource_mmk00"), SubResource("Resource_jyevi"), SubResource("Resource_2vsxg")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"

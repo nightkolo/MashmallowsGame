@@ -6,6 +6,8 @@ signal switch_activated(is_on: bool)
 @export var door_to_interact_with: Door
 
 @onready var sprite_head: Sprite2D = $Head
+@onready var drop: AudioStreamPlayer2D = $Audio/Drop
+@onready var lift: AudioStreamPlayer2D = $Audio/Lift
 
 var is_activated: bool
 var interact_timer: Timer = Timer.new()
@@ -55,6 +57,8 @@ func anim_psuh():
 	tween_psuh= create_tween()
 	
 	if is_activated:
+		drop.play()
 		tween_psuh.tween_property(sprite_head, "scale:y", 0.1, 0.1)
 	else:
+		lift.play()
 		tween_psuh.tween_property(sprite_head, "scale:y", 0.5, 0.3)

@@ -30,8 +30,6 @@ var level_id: int = 0:
 	set(value):
 		GameData.runtime_data["last_level"] = value
 		
-		#if current_level_goal:
-			#current_level_goal.level_number_label.text = "%s-%s" % [bakery_id, value]
 		level_id = value
 		
 		await get_tree().create_timer(1.0).timeout
@@ -61,12 +59,12 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("game_reset"):
 		game_reset.emit()
 		
-	# if event.is_action_pressed("debug_next"):
-	# 	if level_id != 0:
-	# 		goto_next_level()
+	if event.is_action_pressed("debug_next"):
+		if level_id != 0:
+			goto_next_level()
 	
-	# if event.is_action_pressed("debug_prev"):
-	# 	goto_next_level(-1)
+	if event.is_action_pressed("debug_prev"):
+		goto_next_level(-1)
 
 
 func _ready() -> void:

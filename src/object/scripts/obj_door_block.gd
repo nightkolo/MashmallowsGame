@@ -12,6 +12,9 @@ class_name DoorBlock
 @onready var sprite_bubble: Sprite2D = %Bubble
 @onready var sprite_eye: Sprite2D = %Eye
 @onready var area_2d: Area2D = $Area2D
+@onready var open_sfx: Array[AudioStreamPlayer2D] = [%Open01, %Open02, %Open03]
+@onready var close_sfx: Array[AudioStreamPlayer2D] = [%Close01, %Close02]
+
 
 var is_activated: bool:
 	get:
@@ -101,6 +104,8 @@ func anim_pop() -> void:
 	if !is_activated:
 		return
 	
+	var sfx : AudioStreamPlayer2D= open_sfx.pick_random()
+	sfx.play()
 	#is_popping = true
 	
 	cancel_anim_pop()
@@ -142,6 +147,10 @@ func anim_regen() -> void:
 	
 	cancel_anim_pop()
 	
+	
+	var sfx : AudioStreamPlayer2D = close_sfx.pick_random()
+	sfx.play()
+	
 	sprite_bubble.scale = Vector2.ZERO
 	sprite_bubble.self_modulate = Color.WHITE
 	
@@ -164,6 +173,6 @@ func anim_regen() -> void:
 		if pop_sprite != null:
 			pop_sprite.queue_free()
 		)
-		
+	
 		
 	

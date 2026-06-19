@@ -96,13 +96,14 @@ func _ready() -> void:
 	### MILLIE EXPRESSION UPDATE
 	if character:
 		character_emotion_set.connect(func(is_em: Millie.Expressions, is_eye: Millie.Eyes):
+			var m: Millie = character.millie
 			
 			if is_em == Millie.Expressions.NEUTRAL:
-				character.millie.expression = is_em
-				character.millie.eyes = is_eye
+				m.expression = is_em
+				m.eyes = is_eye
 				
 			else:
-				character.millie.expression = is_em
+				m.expression = is_em
 			)
 	##
 	
@@ -253,7 +254,10 @@ func move_to_next_branching_line():
 
 var _choice_flow_1: Array[MillieMonolog]
 var _choice_flow_2: Array[MillieMonolog]
-var is_animation_line: bool
+var is_animation_line: bool:
+	set(value):
+		character.millie.is_animation_line = value
+		is_animation_line = value
 
 func move_to_next_line():
 	if flow == null:
@@ -351,7 +355,9 @@ func stop() -> void:
 		Audio.monolog_off.play()
 
 		monolog_finished.emit()
-	
+
+		character_emotion_set.emit(Millie.Expressions.NEUTRAL, Millie.Eyes.REGULAR)
+		
 		speech_bubble.label.text = ""
 		_current_line_index = 0
 		is_monolog_active = false

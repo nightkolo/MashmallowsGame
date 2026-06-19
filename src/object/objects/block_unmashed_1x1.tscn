@@ -79,7 +79,7 @@ blink_interval = 0.0
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -67290.83
+rotation = -67636.586
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"
@@ -88,7 +88,6 @@ text = "X"
 
 [node name="SpriteNode" type="Node2D" parent="Visual" unique_id=277771888]
 position = Vector2(0, 35)
-scale = Vector2(1.0416162, 0.95628786)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=690881826]
 position = Vector2(0, -35)
@@ -160,7 +159,7 @@ shape = ExtResource("2_qkq5r")
 [node name="PlayerBottomDetect" type="ShapeCast2D" parent="." unique_id=990155891]
 shape = SubResource("RectangleShape2D_ry3tk")
 target_position = Vector2(0, 30)
-collision_mask = 2
+collision_mask = 34
 
 [node name="TopDetect" type="ShapeCast2D" parent="." unique_id=1800823164]
 shape = SubResource("RectangleShape2D_ynmou")

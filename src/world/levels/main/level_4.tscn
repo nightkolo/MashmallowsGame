@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="11_12cdj"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="11_eb4x1"]
 [ext_resource type="PackedScene" uid="uid://ck1gettgytye7" path="res://world/interface/level_info.tscn" id="13_mhneg"]
-[ext_resource type="Texture2D" uid="uid://dj7yfsib5riy0" path="res://assets/objects/cherry-bomb-01.png" id="15_354dw"]
+[ext_resource type="Texture2D" uid="uid://b2v2ca263l3x2" path="res://assets/interface/info-icon-cherry-bomb.png" id="15_354dw"]
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="17_1c02f"]
 [ext_resource type="Script" uid="uid://b1ywqitlocj3y" path="res://object/scripts/one_way_platform.gd" id="18_1c02f"]
 [ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="18_1owjf"]
@@ -133,7 +133,7 @@ offset_right = 240.0
 offset_bottom = 120.0
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-3127.0452, 3.8294872e-13, 4776, 3584)
+region_rect = Rect2(-1130.457, 1.3843905e-13, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 248.0
@@ -141,15 +141,15 @@ offset_bottom = 256.0
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
 text = "[b][font_size=21.0][color=#00000000][CB][/color]Cherry bombs [color=#ff7f7f][shake]explode[/shake][/color] when [color=pink]Unmashed.[/color] "
-visible_characters = 36
+visible_characters = 40
 
 [node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
 position = Vector2(240, 90)
-rotation = 0.17420629
+rotation = 0.14410228
 
 [node name="Sprite2D" type="Sprite2D" parent="World/LevelInfo" unique_id=1482451094]
 position = Vector2(42, 30)
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("15_354dw")
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_12cdj")]

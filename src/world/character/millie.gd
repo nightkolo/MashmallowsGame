@@ -44,7 +44,8 @@ enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES
 		if expression == Expressions.BITTEN && value != Expressions.BITTEN:
 			%ExpressionRegen.play()
 		
-		anim_expression(value, Eyes.REGULAR, true)
+		print_debug("is_animation_line: %s" % is_animation_line)
+		anim_expression(value, Eyes.REGULAR, true, is_animation_line)
 		expression = value
 @export var eyes: Eyes:
 	set(value):
@@ -83,6 +84,8 @@ enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES
 @onready var body: Node2D = %BodyAnimate
 @onready var hoodie_heart: Polygon2D = %HoodieHeart
 @onready var blue_face: Sprite2D = %Blue
+
+var is_animation_line: bool = false
 
 var current_poly: PackedVector2Array
 var poly_middle_point: Vector2 = Vector2(186.769, 160)
@@ -283,7 +286,7 @@ func anim_bounce(delay: float, p_expression : Expressions = expression, strength
 	
 	return l_poly
 
-func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eyes.REGULAR, bounce: bool = true) -> void:
+func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eyes.REGULAR, bounce: bool = true, animated: bool = false) -> void:
 	var heart_eyes := %"7"
 	var ear_l := %EarL
 	var ear_r := %EarR
@@ -395,6 +398,9 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 		
 		_:
 			eyes = p_eyes
+	
+	if animated:
+		return
 	
 	await get_tree().create_timer(delay-0.01).timeout
 	

@@ -19,6 +19,9 @@ signal cherry_bomb_exploded()
 
 signal completion_percentage_updated(perc: float)
 
+
+var current_door: Door
+
 var is_checking_order_match: bool = false
 var has_won: bool = false
 var is_stuck: bool = false
@@ -52,6 +55,8 @@ func reset_game_logic() -> void:
 	completion_percentage = 0.0
 	last_amount_satisfied = 1
 	amount_satisfied = 1
+	
+	current_door = null
 	
 	is_stuck = false
 	has_won = false

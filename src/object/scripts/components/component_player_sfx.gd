@@ -17,6 +17,7 @@ class_name PlayerAudio
 @onready var laugh: AudioStreamPlayer2D = $Laugh
 @onready var squash: AudioStreamPlayer2D = $Squash
 @onready var stretch: AudioStreamPlayer2D = $Stretch
+@onready var drop: AudioStreamPlayer2D = $Drop
 
 @onready var land_sfx: Array[AudioStreamPlayer2D] = [$Land01, $Land02, $Land03, $Land04]
 
@@ -31,6 +32,10 @@ func _ready() -> void:
 		
 	player.has_unmashed.connect(func():
 		unmash_01.play()
+		
+		#if GameLogic.current_door:
+			#if GameLogic.current_door.is_open:
+				#drop.play()
 		)
 	player.has_landed.connect(func(strength: float):
 		var sfx: AudioStreamPlayer2D = land_sfx.pick_random()

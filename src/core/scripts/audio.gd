@@ -57,15 +57,16 @@ func start_music():
 		)
 
 	if !music_stage.playing:
-		music_stage.volume_db = -80.0
-		
+		music_stage.volume_db = original_music_db
+		#music_stage.volume_db = -80.0
+		#
 		music_stage.play(0.0)
-		
-		if _tween_aud:
-			_tween_aud.kill()
-			
-		_tween_aud = create_tween()
-		_tween_aud.tween_property(music_stage, "volume_db", original_music_db, 1.5)
+		#
+		#if _tween_aud:
+			#_tween_aud.kill()
+			#
+		#_tween_aud = create_tween()
+		#_tween_aud.tween_property(music_stage, "volume_db", original_music_db, 1.5)
 	
 
 func stop_music():

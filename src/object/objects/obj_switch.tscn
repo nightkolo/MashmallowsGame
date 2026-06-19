@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dj330fftlpvf6" path="res://object/scripts/switch.gd" id="1_xbd11"]
 [ext_resource type="Texture2D" uid="uid://ptrycg6vxx8o" path="res://assets/objects/switch-base.png" id="2_eiu2u"]
 [ext_resource type="Texture2D" uid="uid://cqywemxa6mc65" path="res://assets/objects/switch-head.png" id="2_f3jwt"]
+[ext_resource type="AudioStream" uid="uid://dlayd52rye4u3" path="res://audio/sfx/button_block_lift.ogg" id="4_nt7n1"]
+[ext_resource type="AudioStream" uid="uid://bjo4yqongb0bc" path="res://audio/sfx/switch_hit.ogg" id="5_j3rvl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjq8i"]
 size = Vector2(42, 16)
@@ -27,3 +29,15 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_sjq8i")
 
 [node name="Audio" type="Node2D" parent="." unique_id=330845784]
+
+[node name="Lift" type="AudioStreamPlayer2D" parent="Audio" unique_id=1189347394]
+stream = ExtResource("4_nt7n1")
+volume_db = 5.0
+panning_strength = 5.0
+bus = &"SFX"
+
+[node name="Drop" type="AudioStreamPlayer2D" parent="Audio" unique_id=51733627]
+stream = ExtResource("5_j3rvl")
+volume_db = 5.0
+panning_strength = 5.0
+bus = &"SFX"

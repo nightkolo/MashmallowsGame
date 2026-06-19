@@ -90,7 +90,7 @@ func anim_sprite():
 
 	await get_tree().create_timer(0.25).timeout
 
-	var tween := create_tween().set_parallel(true)
+	var tween := create_tween()
 	
 	for node: Node2D in show_sprites:
 		tween.tween_property(node, "modulate", Color(Color.WHITE, 1.0), 1.0)
