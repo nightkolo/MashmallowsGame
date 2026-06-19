@@ -32,6 +32,10 @@ var displayed_text: String
 var _letter_show_timer: Timer = Timer.new()
 var is_showing_text: bool
 
+var area: Area2D = Area2D.new()
+var colli: CollisionShape2D = CollisionShape2D.new()
+var tween_fade: Tween
+
 func _ready() -> void:
 	_letter_show_timer.one_shot = true
 	add_child(_letter_show_timer)
@@ -49,7 +53,25 @@ func _ready() -> void:
 		is_showing_text = false
 		)
 	
-	# start()
+	colli.shape = RectangleShape2D.new()
+	(colli.shape as RectangleShape2D).size = bubble.size
+	area.add_child(colli)
+	area.collision_layer = 0
+	area.collision_mask = 2 # Player layer
+	area.position = bubble.size * 0.5
+	add_child(area)
+	area.body_entered.connect(func(_nody: Node2D):
+		if tween_fade:
+			tween_fade.kill()
+		tween_fade = create_tween()
+		tween_fade.tween_property(self, "modulate", Color(Color.WHITE, 0.5), 0.2)
+		)
+	area.body_exited.connect(func(_nody: Node2D):
+		if tween_fade:
+			tween_fade.kill()
+		tween_fade = create_tween()
+		tween_fade.tween_property(self, "modulate", Color(Color.WHITE, 1.0), 0.2)
+		)
 		
 
 func start() -> void:

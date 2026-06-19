@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://brsfo6035wd4s" path="res://assets/interface/keyboard_enter.png" id="9_gadxj"]
 [ext_resource type="Texture2D" uid="uid://dgai0ah1h3fis" path="res://assets/interface/switch_button_a.png" id="10_5lo0q"]
 [ext_resource type="Texture2D" uid="uid://ucw8eevksdks" path="res://assets/interface/switch_button_y.png" id="11_5t1hg"]
+[ext_resource type="Texture2D" uid="uid://c26ksk5as56yc" path="res://assets/interface/keyboard_e.png" id="12_4spx7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tggsk"]
 font_size = 24
@@ -40,7 +41,7 @@ texture_repeat = 2
 position = Vector2(960, -3)
 texture = ExtResource("2_y6jnm")
 region_enabled = true
-region_rect = Rect2(-130.44286, 0, 1920, 50)
+region_rect = Rect2(-2816.4143, 0, 1920, 50)
 region_filter_clip_enabled = true
 script = ExtResource("2_5qwaw")
 animate_scroll = true
@@ -53,7 +54,7 @@ texture_repeat = 2
 position = Vector2(960, 2)
 texture = ExtResource("2_y6jnm")
 region_enabled = true
-region_rect = Rect2(195.66386, 0, 1920, 50)
+region_rect = Rect2(4224.662, 0, 1920, 50)
 region_filter_clip_enabled = true
 script = ExtResource("2_5qwaw")
 animate_scroll = true
@@ -170,18 +171,18 @@ script = ExtResource("4_bxr3d")
 [node name="HBoxContainer" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial" unique_id=1340318490]
 layout_mode = 2
 
-[node name="Keyboard" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial/HBoxContainer" unique_id=1772014387]
+[node name="Controller" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial/HBoxContainer" unique_id=1772014387]
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
 texture = ExtResource("11_5t1hg")
 expand_mode = 1
 
-[node name="Controller" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial/HBoxContainer" unique_id=2023816502]
+[node name="Keyboard" type="TextureRect" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial/HBoxContainer" unique_id=2023816502]
 self_modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(55, 55)
 layout_mode = 2
-texture = ExtResource("10_5lo0q")
+texture = ExtResource("12_4spx7")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial/HBoxContainer" unique_id=971106341]

@@ -12,7 +12,7 @@
 
 [sub_resource type="Gradient" id="Gradient_ytqxl"]
 offsets = PackedFloat32Array(0.16348195, 1)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 0.35000002, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_o07dq"]
 gradient = SubResource("Gradient_ytqxl")
@@ -54,13 +54,14 @@ scroll_trajectory = 3.141592653589793
 metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
 
 [node name="BG" type="ColorRect" parent="." unique_id=1979856892]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.5)
+color = Color(0, 0, 0, 1)
 
 [node name="PauseMenuAgain" type="MarginContainer" parent="." unique_id=210506977]
 layout_mode = 1
