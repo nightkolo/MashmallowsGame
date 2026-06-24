@@ -2,10 +2,8 @@
 extends Node2D
 class_name Level
 
-#@export_group("Dev options")
 @export var level_id: int = -1
 @export var bakery_id: int = -1
-# @export var adjust_spawn_anim_fixed_time: bool = true
 @export var spawn_anim_time: float = 0.75
 @export var set_for_each: bool = false
 @export var spawn_anim_time_each: float = 0.0
@@ -20,50 +18,14 @@ class_name Level
 @export var level_goal: LevelGoal
 @export var level_info: LevelInfo
 @export var player: Player
-# @export var terrain: Terrain
-# @export var world: World
-
-# var is_intro_order: bool = false
-var intro_order: Order
-var has_started: bool = true
-
-
-var _dev_ui: PackedScene = preload("res://interface/menus/dev_ui.tscn")
-
 
 @onready var spawners: Array = get_tree().get_nodes_in_group("Spawner")
 
+var intro_order: Order
 var saver_loader: SaverLoader
+var has_started: bool = true
 
-func anim_level():
-	has_started = true
-	Audio.start_music()
-	
-	if auto_spawn_unmashed_blocks:
-		await spawn_blocks()
-	
-	
-	if level_info:
-		level_info.start()
-
-	if level_goal:
-		level_goal.visible = true
-		anim_level_goal()
-
-
-func deflect_spawn_blocks():
-	for spawn: UnmashedSpawner in spawners:
-		spawn.deflect()
-
-
-func spawn_blocks(p_spawn_speed: float = spawn_anim_time_each):
-	for spawn: UnmashedSpawner in spawners:
-		await spawn.spawn(-1, p_spawn_speed)
-
-
-func anim_level_goal():
-	level_goal.anim_wobble()
-	level_goal.anim_spawn()
+var _dev_ui: PackedScene = preload("res://interface/menus/dev_ui.tscn")
 
 
 func _ready() -> void:
@@ -128,7 +90,35 @@ func _ready() -> void:
 		GameMgr.current_level.move_child(ui, 0)
 	
 
-#var save_stats: bool
+func spawn_blocks(p_spawn_speed: float = spawn_anim_time_each) -> void:
+	for spawn: UnmashedSpawner in spawners:
+		await spawn.spawn(-1, p_spawn_speed)
+
+
+func deflect_spawn_blocks() -> void:
+	for spawn: UnmashedSpawner in spawners:
+		spawn.deflect()
+		
+		
+func anim_level() -> void:
+	has_started = true
+	Audio.start_music()
+	
+	if auto_spawn_unmashed_blocks:
+		await spawn_blocks()
+	
+	if level_info:
+		level_info.start()
+
+	if level_goal:
+		level_goal.visible = true
+		anim_level_goal()
+
+
+func anim_level_goal() -> void:
+	level_goal.anim_wobble()
+	level_goal.anim_spawn()
+
 
 func store_stats() -> void:
 	if !save_stats:
@@ -149,9 +139,6 @@ func store_stats() -> void:
 	if !GameData.runtime_data.has(checkerboard_num):
 		push_error("Cannot save data. Key %s not found in GameData.runtime_data." % checkerboard_num)
 		return
-	
-	#if _moves_counted < GameData.runtime_data[board_num]["move_count"]:
-		#GameData.runtime_data[board_num]["move_count"] = _moves_counted
 	
 	if GameData.runtime_data[board_num]["completed"] == false:
 		GameData.runtime_data[board_num]["completed"] = true

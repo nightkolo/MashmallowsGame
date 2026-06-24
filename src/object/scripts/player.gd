@@ -360,7 +360,7 @@ func _handle_cherry_bomb(old_mashed: Mashed) -> void:
 	
 	old_mashed.cherry_bomb_activated.emit(push_to)
 	
-	var time := Util.CHERRY_BOMB_WAITTIME if old_mashed.mash_type == Util.MashType.CHERRY_BOMB else 0.0
+	var time := Util.CHERRY_BOMB_WAITTIME_BEFORE_EXPLODING if old_mashed.mash_type == Util.MashType.CHERRY_BOMB else 0.0
 	
 	await get_tree().create_timer(time).timeout
 	
@@ -540,7 +540,7 @@ func _move(delta: float) -> void:
 		else:
 			jump_window_timer.start()
 		
-		if (!is_on_floor() && !is_on_ground() && Util.is_equal_approx_custom(velocity_position_based.y, 0.0, 1.0)):
+		if (!is_on_floor() && !is_on_ground() && Math.is_equal_approx_custom(velocity_position_based.y, 0.0, 1.0)):
 			jump()
 			
 	## If the player in on the floor and within the jump window/jump buffer timer, then jump

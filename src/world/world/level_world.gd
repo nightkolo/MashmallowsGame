@@ -27,8 +27,6 @@ var terrain_light: PackedScene = preload("res://world/effects/terrain_light.tscn
 
 
 func _ready() -> void:
-	GameMgr.current_level_world = self
-	
 	if terrain:
 		terrain.modulate = terrain_color
 		var t: TileMapLayer = terrain.get_child(0) as TileMapLayer

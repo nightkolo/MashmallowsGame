@@ -44,7 +44,7 @@ var _tween_fade_in: Tween
 
 
 func _ready() -> void:
-	GameMgr.current_menu = self
+	# GameMgr.current_menu = selfs
 	
 	menu_board_select.left.entered_cb_1.connect(func():
 		pass

@@ -2,6 +2,17 @@ extends Node
 class_name Math
 
 
+
+## Returns true if two Vector2s are approximately equal within a tolerance.
+static func is_equal_approx_vec2(a: Vector2, b: Vector2, tolerance: float = 0.0001) -> bool:
+	return a.distance_to(b) <= tolerance
+
+
+## Returns true if two floats are approximately equal within a tolerance.
+static func is_equal_approx_custom(a: float, b: float, tolerance: float = 0.0001) -> bool:
+	return abs(a - b) <= tolerance
+	
+
 ## Maps a Vector2 value from one range (input space) to another (output space).
 ##
 ## This performs a linear remapping:

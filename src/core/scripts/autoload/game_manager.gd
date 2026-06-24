@@ -38,17 +38,14 @@ var level_id: int = 0:
 
 # Self-assigned by the Entites
 var current_level: Level
-var current_level_world: World ## @deprecated
-var current_menu: MainMenusUI ## @deprecated
 var current_player: Player
-var current_order_checker: OrderChecker ## @deprecated
 var current_NPC: NPCBoard ## Used for quicker access by [ResetNoticeArea]
 var current_ui_handler: GameplayUI ## @experimental
 var current_level_goal: LevelGoal
 var current_camera: Cam
 
 var game_has_ended: bool
-var is_monolog_active: bool
+#var is_monolog_active: bool
 ## Level Begin
 # Variables self-assigned
 
@@ -107,12 +104,12 @@ func _ready() -> void:
 		)
 	
 	game_just_ended.connect(func():
-		await get_tree().create_timer(Util.ORDER_COMPLETE_WAIT_TIME).timeout
+		await get_tree().create_timer(Util.ORDER_COMPLETE_WAIT_TIME_BEFORE_TRANSITION).timeout
 		
 		game_end.emit()
 		)
 	
-	game_end.connect(stage_complete)
+	game_end.connect(order_complete)
 		
 	game_reset.connect(func():
 		Trans.reset_level()
@@ -121,17 +118,18 @@ func _ready() -> void:
 		#get_tree().reload_current_scene()
 		)
 
-func stage_complete() -> void:
+func order_complete() -> void:
 	@warning_ignore("integer_division")
 	if level_id / bakery_id == 10:
-		checkerboard_complete()
+		bakery_complete()
 	else:
 		goto_next_level()
 
 
-func checkerboard_complete() -> void:
+func bakery_complete() -> void:
 	if current_ui_handler:
 		current_ui_handler.the_checkerboard_has_been_checkered()
+
 
 func reset_game_data() -> void:
 	saver_loader.new_game()
@@ -161,7 +159,7 @@ func goto_next_checkerboard() -> void:
 
 
 func goto_next_level(strength: int = 1, force_progression: bool = false) -> void:
-	if !force_progression:
+	if !force_progression && !OS.has_feature("web"):
 		if !current_level:
 			return
 		
@@ -179,16 +177,15 @@ func goto_next_level(strength: int = 1, force_progression: bool = false) -> void
 			Trans.slide_to_next_stage(next_lvl_path)
 		else:
 			push_error("Level file missing: " + next_lvl_path)
+			
 	else:
 		Trans.slide_to_credits(0.8)
 		#Trans.slide_to_scene("res://interface/menus/thank_you_screen.tscn")
 		game_has_ended = true
 
 # Config
-
 @onready var SFX_BUS_ID: int = AudioServer.get_bus_index("SFX")
 @onready var Music_BUS_ID: int = AudioServer.get_bus_index("Music")
-
 
 var _game_sfx_muted: bool = false:
 	get:
@@ -217,5 +214,4 @@ func set_game_music_muted(value: bool) -> void:
 
 func get_game_music_muted_setting() -> bool:
 	return _game_music_muted
-
 ##

@@ -29,7 +29,7 @@ func _ready() -> void:
 			attributes.is_golden = flamed
 		)
 
-		GameLogic.ready_to_check.emit()
+		# GameLogic.ready_to_check.emit()
 
 
 func is_match(att: BlockAttributes) -> bool:

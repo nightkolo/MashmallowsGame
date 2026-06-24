@@ -14,7 +14,7 @@ class_name BlockDetector
 		unmash_detection_rays_length = value
 		
 		for ray: RayCast2D in [%Right, %Left, %Right2, %Left2, %Down]:
-			var dir := Util.get_direction(ray.name)
+			var dir := Math.get_direction(ray.name)
 			
 			ray.target_position = value * dir
 		

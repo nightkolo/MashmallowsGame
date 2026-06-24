@@ -249,7 +249,7 @@ func _ready() -> void:
 
 	#mash_block.mash_type = mash_type
 
-	await get_tree().create_timer(Util.MASH_WAIT_TIME).timeout
+	# await get_tree().create_timer(Util.MASH_WAIT_TIME).timeout
 	
 	anim_blinking()
 
@@ -480,9 +480,9 @@ func anim_explode(at_pos: Vector2) -> void:
 	if mash_type == Util.MashType.CHERRY_BOMB:
 		# Anim start
 		var tween := create_tween()
-		tween.tween_property(sprite_block, "scale", Vector2.ONE * 0.125, Util.CHERRY_BOMB_WAITTIME)
+		tween.tween_property(sprite_block, "scale", Vector2.ONE * 0.125, Util.CHERRY_BOMB_WAITTIME_BEFORE_EXPLODING)
 		
-		await get_tree().create_timer(Util.CHERRY_BOMB_WAITTIME).timeout
+		await get_tree().create_timer(Util.CHERRY_BOMB_WAITTIME_BEFORE_EXPLODING).timeout
 	
 	ex.position = global_position + (-at_pos * Util.BLOCK_SIZE * 0.5)
 	ex.pos_at = at_pos

@@ -35,11 +35,13 @@ var original_music_db: float
 
 var _tween_aud: Tween
 
+
 func lower_higher_music(dur: float = 1.0, low: float = 15.0) -> void:
 	var tween = create_tween()
 	
 	tween.tween_property(music_stage, "volume_db", original_music_db-low, dur)
 	tween.tween_property(music_stage, "volume_db", original_music_db, dur).set_delay(dur)
+
 
 func lower_music(dur: float = 1.0, low: float = 15.0) -> void:
 	var tween = create_tween()
@@ -97,7 +99,6 @@ func stop_music():
 		music_stage.stop()
 
 func _ready() -> void:
-	# _music_timer.wait_time = 
 	original_music_db = music_stage.volume_db
 	
 	#if !music_stage.playing:
@@ -144,10 +145,10 @@ func _ready() -> void:
 		)
 
 
-
-func play_click_cound():
+func play_click_cound() -> void:
 	var sfx : AudioStreamPlayer = ui_button_clicks.pick_random()
 	sfx.play()
+
 
 var _reset_sound: bool
 

@@ -108,7 +108,6 @@ position = Vector2(7.9999995, 87.99999)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("10_shjcp")
 level_id_to_modify = 10
-order_code = Array[Dictionary]([])
 metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/LevelOrder" unique_id=491390326 instance=ExtResource("9_qylky")]

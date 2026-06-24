@@ -41,7 +41,7 @@ func shake(strength: float, fade: float):
 
 func _process(delta: float) -> void:
 	if GameMgr.current_player && dynamic_cam:
-		position = Util.map_range(
+		position = Math.map_range(
 			GameMgr.current_player.global_position,
 			p_min,
 			p_max,

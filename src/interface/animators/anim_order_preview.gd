@@ -3,14 +3,16 @@ class_name UIOrderPreview
 
 var current_level_focussed: int = 0:
 	set(value):
-		print_debug(value)
-		read_level_data_and_update(value)
 		current_level_focussed = value
+		#print_debug(value)
+		_try_update()
 
 var tween: Tween
 
 var last_dir: Vector2
 var current_pos: Vector2
+
+var timer: Timer = Timer.new()
 
 func anim_preview():
 	if center_sprite == null:
@@ -25,7 +27,18 @@ func anim_preview():
 	
 	tween.tween_property(center_sprite, "position", current_pos, 0.5).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(center_sprite, "scale", Vector2.ONE, 1.2)
+
+
+func _try_update():
+	if timer == null || !timer.is_inside_tree():
+		return
 	
+	if !timer.is_stopped():
+		timer.stop()
+
+	timer.start()
+	
+
 func read_level_data_and_update(p_lvl: int) -> int:
 	var lvl: String = str(p_lvl)
 	
@@ -33,7 +46,8 @@ func read_level_data_and_update(p_lvl: int) -> int:
 		return 1 # Failed
 	
 	for child: Node in get_children():
-		child.queue_free()
+		if child is Sprite2D:
+			child.queue_free()
 	
 	var oc: Array = LevelData.order_data[lvl]["order_code"]
 	
@@ -43,8 +57,8 @@ func read_level_data_and_update(p_lvl: int) -> int:
 	if center_sprite:
 		center_sprite.visible = false
 		center_sprite.scale = Vector2(
-			1.0 + (last_dir.y * 0.75 * signf(randf() - 0.5)),
-			1.0 + (last_dir.x * 0.75 * signf(randf() - 0.5))
+			1.0 + (last_dir.y * 0.25 * signf(randf() - 0.5)),
+			1.0 + (last_dir.x * 0.25 * signf(randf() - 0.5))
 		)
 	add_preview_sprites(oc, lvl)
 	anim_preview()
@@ -123,3 +137,13 @@ func _ready() -> void:
 	
 	position = Vector2(300.0, 410.0)
 	scale = Vector2.ONE * 1.5
+	
+	timer.wait_time = 0.15
+	timer.one_shot = true
+	add_child(timer)
+	
+	timer.timeout.connect(func():
+		read_level_data_and_update(current_level_focussed)
+		)
+	
+	

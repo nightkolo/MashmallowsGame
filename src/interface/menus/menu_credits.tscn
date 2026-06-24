@@ -83,14 +83,16 @@ theme_override_constants/margin_bottom = 100
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/separation = 50
 
 [node name="Label" type="RichTextLabel" parent="Main/VBoxContainer2" unique_id=297281300]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
+theme_override_constants/line_separation = -4
 bbcode_enabled = true
 text = "[font_size=22.0][outline_size=5.0]Thank you for playing this short demo of [b]Mashmallows[/b]! 
 
-I've been [b]solo developing[/b] this game on a virtually tiny budget, and it currently [b]does not have a steam page[/b]. If you'd like to support the game's development, you can [b]donate on Ko-fi (ko-fi.com/kolo)[/b] or simply [b]share the game and tell your friends about it![/b]
+I've been [b]solo developing[/b] this game on a virtually tiny budget. If you'd like to support the game's development, you can simply [b]share the game and tell your friends about it[/b] or [b]donate on Ko-fi! (ko-fi.com/kolo)[/b]
 Any amount will guarantee your name in the game and my bedroom walls!
 
 Be sure to follow me on X/Twitter [b]@_nightkolo_[/b], or Instagram [b]@nightkolo[/b], or join my [b]Community Discord[/b] for updates and more stuff like this! I also like to do digital art!
@@ -160,9 +162,10 @@ theme_override_constants/separation = -5
 
 [node name="Thanks" type="RichTextLabel" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=1501437307]
 layout_mode = 2
+theme_override_constants/line_separation = -10
 bbcode_enabled = true
 text = "[font_size=24.0][outline_size=5.0][color=#ffa7ff]Special Thanks[/color] and
-[color=yellow]People who supported on Ko-fi so far[/color]:"
+[color=yellow]People who supported so far[/color]:"
 fit_content = true
 horizontal_alignment = 1
 

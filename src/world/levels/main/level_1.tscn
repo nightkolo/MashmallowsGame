@@ -85,7 +85,6 @@ position = Vector2(0, 96)
 scale = Vector2(0.75, 0.75)
 script = ExtResource("10_4yclh")
 level_id_to_modify = 1
-order_code = Array[Dictionary]([])
 metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/Order" unique_id=491390326 instance=ExtResource("6_qxy0u")]
@@ -110,17 +109,27 @@ offset_bottom = 504.0
 level_info = "Mash the [color=#00000000][M][/color][color=yellow]Marshmallows[/color] to fulfill the order!"
 show_sprites = [NodePath("Sprite2D")]
 
+[node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.5, 0.5)
+
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-661.0788, 8.0958176e-14, 4776, 3584)
+region_rect = Rect2(-58773.36, 7.19795e-12, 4776, 3584)
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" parent_id_path=PackedInt32Array(1741767880, 7455025) index="0" unique_id=587048025]
 text = "[b][font_size=21.0]Mash the [color=#00000000][M][/color][color=yellow]Marshmallows[/color] to fulfill the order!"
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
+[node name="InfoSpriteNode" parent="World/LevelInfo" index="2" unique_id=1221176953]
+visible = false
+
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
 position = Vector2(255, 105)
 rotation = 0.17379108
 
 [node name="Sprite2D" type="Sprite2D" parent="World/LevelInfo" unique_id=1128299013]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(36, 59)
 rotation = 0.1972222
 scale = Vector2(0.55, 0.55)
@@ -133,7 +142,16 @@ gizmo_extents = 15.0
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("4_hdw51")]
 position = Vector2(432, 144)
+animate = null
 start_asleep = true
+auto_assign_child_blocks = null
+speed = null
+acceleration = null
+deceleration = null
+jump_height = null
+show_trail = null
+show_blocks = null
+show_light = null
 
 [node name="UnmashedSpawner3" parent="." unique_id=1761846739 instance=ExtResource("17_fvjdg")]
 position = Vector2(480, 480)

@@ -13,6 +13,7 @@ extends CanvasLayer
 
 @onready var buttons: Array[Button] = [%SelectButton, %BackButton, %TutButton]
 
+
 func _ready() -> void:
 	for btn: Button in buttons:
 		btn.self_modulate = Color(Color.WHITE, 0.0)
@@ -33,15 +34,12 @@ func _ready() -> void:
 		Input.parse_input_event(event)
 		)
 	back_button.pressed.connect(func():
-		#Input.parse_input_event("game_cancel")
 		var event = InputEventAction.new()
 		event.action = "game_cancel"
 		event.pressed = true
 		Input.parse_input_event(event)
-		#print("back...")
 		)
 	tut_button.pressed.connect(func():
-		#Input.parse_input_event("game_tutorial")
 		var event = InputEventAction.new()
 		event.action = "game_tutorial"
 		event.pressed = true

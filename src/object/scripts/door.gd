@@ -11,7 +11,7 @@ var next_block_index: int = 0
 
 
 func _ready() -> void:
-	GameLogic.current_door = self
+	# GameLogic.current_door = self
 	
 	for child: Node in get_children():
 		if child is DoorBlock:

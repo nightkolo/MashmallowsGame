@@ -11,7 +11,7 @@ var _started: bool = false
 var version: String = ProjectSettings.get_setting("application/config/version")
 var release: String = ""
 var author_info: String = "[color=#FFFFFF5A]v%s[br][font_size=24.0][color=#FFFFFF]A %s by [color=yellow]Night Kolo
-[color=#FFFFFF]Original Music by [color=yellow]Avizura"
+[color=#FFFFFF]Music by [color=yellow]Avizura"
 
 
 func _ready() -> void:

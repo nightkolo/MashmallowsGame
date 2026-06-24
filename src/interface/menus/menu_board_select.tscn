@@ -161,8 +161,8 @@ position = Vector2(275, 162.5)
 texture = SubResource("GradientTexture2D_geqfq")
 
 [node name="Spiral" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel/Mask" unique_id=2031043576]
-self_modulate = Color(0, 0, 0, 0.1)
-rotation = 4.7403746
+self_modulate = Color(0, 0, 0, 0.2)
+rotation = 0.88062024
 scale = Vector2(1.46, 1.46)
 texture = ExtResource("6_vb2kv")
 
@@ -299,8 +299,8 @@ position = Vector2(275, 162.5)
 texture = SubResource("GradientTexture2D_geqfq")
 
 [node name="Spiral" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel2/Mask" unique_id=905675411]
-self_modulate = Color(0, 0, 0, 0.1)
-rotation = 4.7403746
+self_modulate = Color(0, 0, 0, 0.2)
+rotation = 0.88062024
 scale = Vector2(1.46, 1.46)
 texture = ExtResource("6_vb2kv")
 
@@ -437,7 +437,7 @@ texture = SubResource("GradientTexture2D_geqfq")
 
 [node name="Spiral" type="Sprite2D" parent="Main/VBoxContainer/MainContentContainer/Left/VBoxContainer/Panel3/Mask" unique_id=986465139]
 self_modulate = Color(0, 0, 0, 0.2)
-rotation = 4.7403746
+rotation = 0.88062024
 scale = Vector2(1.46, 1.46)
 texture = ExtResource("6_vb2kv")
 

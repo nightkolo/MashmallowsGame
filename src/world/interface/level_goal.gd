@@ -114,42 +114,48 @@ func anim_idle(node: Node2D, sprite: Node2D) -> void:
 
 # TODO Clean-up
 func update_completion_prec(perc: float) -> void:
-	#perc_label.text = str(Util.round_to_dec(perc * 100.0, 2)) + "%"
-	
-	
+	var old_perc := _current_order_precent
 	_current_order_precent = perc
-	
+
 	if tween_prec:
 		tween_prec.kill()
-	
+
 	tween_prec = create_tween().set_parallel(true)
 	tween_prec.set_ease(Tween.EASE_OUT)
-	
-	if perc < _current_order_precent:
+
+	var decreasing := perc < old_perc
+
+	if decreasing:
 		star_node_2.scale = Vector2(0.6, 1.8)
 		tween_prec.set_trans(Tween.TRANS_LINEAR)
 	else:
 		for p: CPUParticles2D in [%ParticlesStar, %ParticlesStar2]:
-			if !p.emitting:
+			if not p.emitting:
 				p.emitting = true
-		
-		#tween_prec.set_trans(Tween.TRANS_BACK)
+
 		prec_grad.gradient.set_offset(1, 0.15)
 		star_node_2.scale = Vector2(2.0, 0.5)
 		star_no_win.self_modulate = Color(Color.WHITE * 4.0)
-	
-	tween_prec.tween_property(prec_grad.gradient,
-	"offsets",
-	PackedFloat32Array(
-		[
-			0.0,
-			maxf(0.125, lerpf(0.15, 0.9, perc))
-			]
-		),
-	0.5)
-	tween_prec.tween_property(star_no_win, "self_modulate", Color(Color.WHITE, 1.0), 0.4)
-	tween_prec.tween_property(star_node_2, "scale", Vector2.ONE, 0.4).set_trans(Tween.TRANS_BACK)
-	
-	
-	
-	
+
+	var target_offset := maxf(0.125, lerpf(0.15, 0.9, perc))
+
+	tween_prec.tween_property(
+		prec_grad.gradient,
+		"offsets",
+		PackedFloat32Array([0.0, target_offset]),
+		0.5
+	)
+
+	tween_prec.tween_property(
+		star_no_win,
+		"self_modulate",
+		Color(Color.WHITE, 1.0),
+		0.4
+	)
+
+	tween_prec.tween_property(
+		star_node_2,
+		"scale",
+		Vector2.ONE,
+		0.4
+	).set_trans(Tween.TRANS_BACK)

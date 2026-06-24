@@ -10,8 +10,8 @@ var order_blocks: Array[Node]
 func _ready() -> void:
 	visible = true
 	
-	GameMgr.current_order_checker = self
-	GameLogic.order_check_ori_pos = global_position
+	# GameMgr.current_order_checker = self
+	# GameLogic.order_check_ori_pos = global_position
 
 
 ## Returns the number of satisfied order blocks.

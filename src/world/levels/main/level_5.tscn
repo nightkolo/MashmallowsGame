@@ -44,10 +44,9 @@ script = ExtResource("16_1p5om")
 mash_type = 2
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
-[node name="Level" type="Node2D" unique_id=2026468441 node_paths=PackedStringArray("level_goal", "level_info", "player")]
+[node name="Level" type="Node2D" unique_id=2026468441 node_paths=PackedStringArray("level_goal", "player")]
 script = ExtResource("1_o77g4")
 level_goal = NodePath("World/LevelGoal")
-level_info = NodePath("")
 player = NodePath("Player")
 metadata/_custom_type_script = "uid://5fpkm17tw6kn"
 

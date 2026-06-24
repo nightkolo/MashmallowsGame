@@ -185,7 +185,7 @@ func _anim_texture_landed() -> void:
 	bg.color = Color(Color.WHITE, 1.0)
 	node_texture_2.scale = -Vector2.ONE * 0.25
 	
-	#Audio.checkerboard_complete.play()
+	#Audio.bakery_complete.play()
 	(%Particles as CPUParticles2D).emitting = true
 	(%Particles2 as CPUParticles2D).emitting = true
 	(%Particles3 as CPUParticles2D).emitting = true
