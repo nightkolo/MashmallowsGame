@@ -22,16 +22,32 @@ func _ready() -> void:
 		if visible:
 			await get_tree().create_timer(0.1).timeout
 			twisted_strength = parent_unmashed.twisted_strength
-	
-	
+		
+			
 	if twisted_mask_gradient:
 		twisted_mask.texture = twisted_mask_gradient.duplicate(true)
 		(twisted_mask.texture as GradientTexture2D).height = 64
 		twisted_mask.visible = true
 		
+	if parent_unmashed:
+		
+		if !parent_unmashed.was_mashed:
+			await get_tree().create_timer(0.1).timeout
+			var l_strength := twisted_strength / bodies.size()
+			
+			for i in range(bodies.size()):
+
+				var pos_to: float =  (-i * Util.BLOCK_SIZE * l_strength * 0.95)
+				bodies[i].position = Vector2(0.0, pos_to)
+				#print_debug(bodies[i].position)
+			
+			(twisted_mask.texture as GradientTexture2D).height = int(Util.BLOCK_SIZE * twisted_strength)
+	
 	if player == null:
 		await get_tree().create_timer(0.1).timeout
 		player = GameMgr.current_player
+		
+	start_stop_expansion()
 
 
 var expand_tween: Tween
@@ -44,6 +60,9 @@ func cancel_stop_expansion() -> void:
 		player.has_touched_ceiling.disconnect(_on_ceiling_touched)
 
 func _on_ceiling_touched() -> void:
+	if player == null:
+		return
+	
 	if expand_tween && player.is_on_block():
 		expand_tween.kill()
 		
@@ -54,13 +73,14 @@ func _on_ceiling_touched() -> void:
 
 
 func expand_collision(strength: float = twisted_strength, p_dur: float = 0.5) -> void:
-	if parent_unmashed.mash_type != Util.MashType.TWISTED:
+	if parent_unmashed.mash_type != Util.MashType.TWISTED || player == null || parent_unmashed == null:
 		return
 	
-	if player:
-		start_stop_expansion()
+	if !parent_unmashed.was_mashed:
+		return
+		
 	
-	print_debug("expanding...")
+	print_debug(strength)
 
 	#var dur := p_dur
 	var l_strength := strength / bodies.size()
@@ -69,7 +89,8 @@ func expand_collision(strength: float = twisted_strength, p_dur: float = 0.5) ->
 		expand_tween.kill()
 	expand_tween = create_tween().set_parallel(true)
 
-	
+	if player.is_on_block(true):
+		player.position.y -= Util.BLOCK_SIZE
 
 	for i in range(bodies.size()):
 		#bodies[i].position = Vector2.ZERO

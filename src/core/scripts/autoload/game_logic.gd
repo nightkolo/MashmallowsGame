@@ -1,7 +1,6 @@
 # Game Logic
 extends Node
 
-# signal ready_to_check() ## @deprecated: Use [signal player_mashed]
 # To avoid player null checks
 signal player_mashed() 
 signal player_unmashed() 

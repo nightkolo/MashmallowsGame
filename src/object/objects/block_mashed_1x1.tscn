@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://df10xqr51prs8" path="res://world/effects/player_particle_right.tscn" id="10_5pu8n"]
 [ext_resource type="PackedScene" uid="uid://cbuw1efjfm6wr" path="res://world/effects/player_particle_left.tscn" id="11_tf56s"]
 [ext_resource type="Texture2D" uid="uid://cyfut2pqoyg2y" path="res://assets/objects/block-eyes-side-eye.png" id="12_tf56s"]
-[ext_resource type="Script" uid="uid://djc4fnfevxutu" path="res://object/objects/area_2d.gd" id="15_vl5dm"]
+[ext_resource type="Script" uid="uid://djc4fnfevxutu" path="res://object/scripts/flame_detect.gd" id="15_vl5dm"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ry2ml"]
 points = PackedVector2Array(-15, -30, 15, -30, 30, -15, 30, 15, 15, 30, -15, 30, -30, 15, -30, -15)

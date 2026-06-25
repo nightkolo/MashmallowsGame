@@ -67,6 +67,7 @@ func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: #
 	unmashed.attributes = block_attributes
 	unmashed.tutorial_block = tutorial_block
 	unmashed.cherry_bomb_strength = cherry_bomb_strength
+	print_debug(twisted_strength)
 	unmashed.twisted_strength = twisted_strength
 	unmashed.was_mashed = false
 	

@@ -153,7 +153,8 @@ func anim_expanding() -> void:
 	
 	started_expanding.emit()
 
-	twisted_marshmallow.expand_collision(twisted_marshmallow.twisted_strength, EXPAND_TIME)
+	print_debug(twisted_strength)
+	twisted_marshmallow.expand_collision(twisted_strength, EXPAND_TIME)
 	
 	await get_tree().create_timer(EXPAND_TIME).timeout
 	

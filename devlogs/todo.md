@@ -15,6 +15,10 @@
 - [ ] 
 
 ### Gameplay
+- [ ] Gameplay improvements
+  - [ ] Regen System
+    - [ ] Cherry Bombs
+    - [ ] Twisted blocks
 - [ ] Bakery 2
   - [ ] Level structure
     - [ ] 1-3

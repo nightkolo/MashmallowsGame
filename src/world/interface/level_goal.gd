@@ -78,8 +78,6 @@ func _ready() -> void:
 		)
 	
 	anim_idle(star_node, star_node_2)
-	
-	#await get_tree().create_timer(0)
 
 
 func anim_complete() -> void:
@@ -90,6 +88,7 @@ func anim_complete() -> void:
 	var tween = create_tween()
 	
 	tween.tween_property(%Particles, "self_modulate", Color(Color.WHITE, 0.0), 0.5).set_delay(0.5)
+
 
 var tween_prec: Tween
 
@@ -112,9 +111,8 @@ func anim_idle(node: Node2D, sprite: Node2D) -> void:
 	tween_b.tween_property(sprite,"rotation", deg_to_rad(mag_rot / 2.0), dur_rot)
 
 
-# TODO Clean-up
 func update_completion_prec(perc: float) -> void:
-	var old_perc := _current_order_precent
+	var is_decreasing := perc < _current_order_precent
 	_current_order_precent = perc
 
 	if tween_prec:
@@ -123,9 +121,7 @@ func update_completion_prec(perc: float) -> void:
 	tween_prec = create_tween().set_parallel(true)
 	tween_prec.set_ease(Tween.EASE_OUT)
 
-	var decreasing := perc < old_perc
-
-	if decreasing:
+	if is_decreasing:
 		star_node_2.scale = Vector2(0.6, 1.8)
 		tween_prec.set_trans(Tween.TRANS_LINEAR)
 	else:
@@ -137,12 +133,13 @@ func update_completion_prec(perc: float) -> void:
 		star_node_2.scale = Vector2(2.0, 0.5)
 		star_no_win.self_modulate = Color(Color.WHITE * 4.0)
 
-	var target_offset := maxf(0.125, lerpf(0.15, 0.9, perc))
-
 	tween_prec.tween_property(
 		prec_grad.gradient,
 		"offsets",
-		PackedFloat32Array([0.0, target_offset]),
+		PackedFloat32Array([
+			0.0,
+			maxf(0.125, lerpf(0.15, 0.9, perc))
+			]),
 		0.5
 	)
 

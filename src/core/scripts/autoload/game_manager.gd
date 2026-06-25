@@ -171,7 +171,7 @@ func goto_next_level(strength: int = 1, force_progression: bool = false) -> void
 	var next_lvl_id := current_level.scene_file_path.to_int() + strength
 	var next_lvl_path := Util.LEVEL_FILE_BEGIN + str(next_lvl_id) + Util.LEVEL_FILE_END
 	
-	if next_lvl_id <= Util.NUMBER_OF_DEMO_LEVELS: 
+	if next_lvl_id <= Util.NUMBER_OF_LEVELS: 
 	
 		if ResourceLoader.exists(next_lvl_path):
 			Trans.slide_to_next_stage(next_lvl_path)

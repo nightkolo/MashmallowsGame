@@ -26,14 +26,14 @@ func _ready() -> void:
 		start_btn.grab_focus()
 		#
 		GameMgr.menu_entered.emit(GameMgr.MenuID.TITLE)
-		#
-		#if GameData.runtime_data.has("last_level"):
-			#var lvl_num: int = GameData.runtime_data["last_level"]
-			#
-			#if lvl_num == 0:
-				#start_btn.text = "Start"
-			#else:
-				#start_btn.text = "Continue %s-%s" % [Util.get_bakery_number(lvl_num), int(lvl_num)]
+		
+		if GameData.runtime_data.has("last_level"):
+			var lvl_num: int = GameData.runtime_data["last_level"]
+			
+			if lvl_num == 0:
+				start_btn.text = "Start"
+			else:
+				start_btn.text = "Continue %s-%s" % [Util.get_bakery_number(lvl_num), int(lvl_num)]
 		)
 	
 	start_btn.pressed.connect(continue_game)
@@ -42,10 +42,10 @@ func _ready() -> void:
 	
 	print_debug(GameData.runtime_data)
 	if GameData.runtime_data.has("last_level"):
-		#start_btn.text = "Continue 1-%s" % GameData.runtime_data["last_level"]
+		start_btn.text = "Continue 1-%s" % GameData.runtime_data["last_level"]
 		#GameData.runtime_data
 		
-		start_btn.text = "Start"
+		#start_btn.text = "Start"
 
 
 func goto_select_board() -> void:
@@ -57,27 +57,27 @@ func goto_credits() -> void:
 
 
 func continue_game() -> void:
-	#GameMgr.self_destruct()
-	#GameLogic.self_destruct()
-	#if !GameData.runtime_data.has("last_level"):
-		#return
-		#
-	#var lvl: String = Util.LEVEL_FILE_BEGIN + str(int(GameData.runtime_data["last_level"])) + Util.LEVEL_FILE_END 
-	#
-	#print("Going to %s" % lvl)
-	#
-	#if FileAccess.file_exists(lvl):
-		#_disable_buttons(btns)
-		#
-		#await get_tree().create_timer(0.25).timeout
-		#
-		#Trans.slide_to_scene(lvl)
-	
-	_disable_buttons(btns)
+	GameMgr.self_destruct()
+	GameLogic.self_destruct()
+	if !GameData.runtime_data.has("last_level"): 
+		return
 		
-	await get_tree().create_timer(0.25).timeout
+	var lvl: String = Util.LEVEL_FILE_BEGIN + str(int(GameData.runtime_data["last_level"])) + Util.LEVEL_FILE_END 
 	
-	Trans.slide_to_scene(Util.LEVEL_FILE_BEGIN + "0" + Util.LEVEL_FILE_END)
+	print("Going to %s" % lvl)
+	
+	if FileAccess.file_exists(lvl):
+		_disable_buttons(btns)
+		
+		await get_tree().create_timer(0.25).timeout
+		
+		Trans.slide_to_scene(lvl)
+	
+	#_disable_buttons(btns)
+		
+	#await get_tree().create_timer(0.25).timeout
+	
+	#Trans.slide_to_scene(Util.LEVEL_FILE_BEGIN + "0" + Util.LEVEL_FILE_END)
 
 
 func _disable_buttons(p_btns: Array[Node], disable: bool = true) -> void:

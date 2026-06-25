@@ -472,9 +472,17 @@ func jump() -> void:
 	state_machine.change_state("AirState", {"jumped": true, "falling": false})
 
 ## Returns true if the player on a unmashed block (including [TwistedColliBlock]).
-func is_on_block() -> bool:
+func is_on_block(twisted_only: bool = false) -> bool:
+	var cond: bool = twisted_only
+	
 	for block: Mashed in child_blocks:
-		if block.is_on_block():
+		if cond:
+			var obj: Node2D = block.block_detect.blocks_ray.get_collider(0)
+			
+			if obj is Unmashed:
+				if (obj as Unmashed).mash_type == Util.MashType.TWISTED:
+					return true
+		elif block.is_on_block():
 			return true
 	return false
 	
