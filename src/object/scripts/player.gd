@@ -151,7 +151,8 @@ func _ready() -> void:
 		child.node_block_sprites.visible = show_blocks
 	
 	if start_asleep:
-		set_active(false)
+		is_active = false
+		sleep()
 	anim_idle_animation()
 
 	## EVENTS
@@ -194,15 +195,17 @@ func _ready() -> void:
 func set_active(active: bool = !is_active) -> void:
 	is_active = active
 	
-	if active:
-		sleep()
+	if !active:
+		sleep(false)
 	else:
-		wake_up()
+		wake_up(false)
 
 
 func sleep(animate_zoom: bool = true):
 	is_sleeping = true
 	#is_active = true
+	print_debug(original_block)
+	
 	if original_block:
 		original_block.is_original = true
 
@@ -222,13 +225,17 @@ func wake_up(animate_zoom: bool = true):
 	#is_active = false
 	has_waken_up.emit()
 
+	if original_block && !animate_zoom:
+		original_block.set_asleep(self, true)
+
 	if animator && animate_zoom:
 		animator.anim_zoom_out()
 
 		has_mashed.emit(Vector2.ZERO, original_block.attributes.build_type)
-		original_block.anim_awake()
-		if original_block.audio:
-			original_block.audio.play_mashed_vocal_sfx()
+		if original_block:
+			original_block.anim_awake()
+			if original_block.audio:
+				original_block.audio.play_mashed_vocal_sfx()
 		animator.anim_eye_wobble()
 
 
@@ -264,11 +271,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_mash"):
 		mash_child_blocks()
 
-		if start_asleep && is_active:
-			set_active(true)
+		if start_asleep && !is_active:
+			is_active = true
+			wake_up()
 	
 	if event.is_action_pressed("move_active"):
-		is_active = !is_active
+		set_active()
 	
 	if event.is_action_pressed("move_unmash"):
 		unmash()

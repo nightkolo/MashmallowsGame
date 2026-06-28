@@ -146,8 +146,8 @@ func set_asleep(player: Player, role_swapped: bool = false) -> void:
 			anim_highlight(false)
 		)
 	else:
-		sprite_eyes_closed.visible = player.is_active
-		sprite_eyes_open.visible = !player.is_active
+		sprite_eyes_closed.visible = !player.is_active
+		sprite_eyes_open.visible = player.is_active
 
 
 func _ready() -> void:
@@ -278,9 +278,21 @@ func mash() -> bool: ## Ok O(1)
 
 		var obj: Object = ray.get_collider()
 		var unmashed: Unmashed
+		#var player: Player
 		
 		#print_debug(obj)
-		if obj is TwistedColliBlock:
+		if obj is Player:
+			var p: Player = obj as Player
+			
+			if p.dubbleganger || !p.is_active:
+				parent_player.set_active(p.is_active)
+				p.set_active(!p.is_active)
+			
+			collided = true
+			
+			break
+				
+		elif obj is TwistedColliBlock:
 			unmashed = (obj as TwistedColliBlock).parent_unmashed
 		elif obj is Unmashed:
 			unmashed = obj as Unmashed
