@@ -110,7 +110,7 @@ var new_child_blocks: Array[Mashed] # Stack data structure
 
 var is_sleeping: bool:
 	set(value):
-		particles_m.emitting = value
+		
 		is_sleeping = value
 var is_exploding: bool
 
@@ -202,7 +202,8 @@ func set_active(active: bool = !is_active) -> void:
 
 
 func sleep(animate_zoom: bool = true):
-	is_sleeping = true
+	if particles_m:
+		particles_m.emitting = true
 	#is_active = true
 	print_debug(original_block)
 	
@@ -220,7 +221,8 @@ func sleep(animate_zoom: bool = true):
 
 
 func wake_up(animate_zoom: bool = true):
-	is_sleeping = false
+	if particles_m:
+		particles_m.emitting = false
 	mash_notice.visible = false
 	#is_active = false
 	has_waken_up.emit()
@@ -292,6 +294,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func drop() -> void:
+	if !is_active:
+		return
+		
 	animator.anim_down(true)
 	position.y += 10.0
 
@@ -300,7 +305,7 @@ func mash_child_blocks() -> void: ## Ok -> O(n)
 	if !can_perform_mash():
 		return
 
-	if input_y > 0.0:
+	if input_y > 0.0 || !is_active:
 		return
 	
 	var blocks: Array[Mashed] = child_blocks.duplicate(true) # To avoid infinite recursion
@@ -426,8 +431,9 @@ func get_unmashed_object(type: Util.BuildType) -> Unmashed:
 func is_being_flown() -> bool:
 	return cherry_bomb_air_timer.time_left > 0.0
 
-
+## Checks if can perform mash, regardless of [member is_active]
 func can_perform_mash() -> bool:
+	#print_debug("is_active: %s" % is_active)
 	return !(
 		child_blocks[-1].mash_type == Util.MashType.CHERRY_BOMB ||
 		child_blocks[-1].mash_type == Util.MashType.AIR_CHERRY_BOMB
@@ -445,7 +451,7 @@ func can_one_child_block_mash() -> bool:
 	
 		
 func can_unmash() -> bool:
-	return child_blocks.size() > 1 && !is_exploding && !GameLogic.has_won && !(input_y > 0.0)
+	return is_active && child_blocks.size() > 1 && !is_exploding && !GameLogic.has_won && !(input_y > 0.0)
 
 
 func return_position() -> void:

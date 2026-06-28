@@ -281,21 +281,12 @@ func mash() -> bool: ## Ok O(1)
 		#var player: Player
 		
 		#print_debug(obj)
-		if obj is Player:
-			var p: Player = obj as Player
-			
-			if p.dubbleganger || !p.is_active:
-				parent_player.set_active(p.is_active)
-				p.set_active(!p.is_active)
-			
-			collided = true
-			
-			break
 				
-		elif obj is TwistedColliBlock:
+		if obj is TwistedColliBlock:
 			unmashed = (obj as TwistedColliBlock).parent_unmashed
 		elif obj is Unmashed:
 			unmashed = obj as Unmashed
+
 		else:
 			continue
 
