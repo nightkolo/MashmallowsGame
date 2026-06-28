@@ -38,7 +38,7 @@ var level_id: int = 0:
 
 # Self-assigned by the Entites
 var current_level: Level
-var current_player: Player
+var current_main_player: Player
 var current_NPC: NPCBoard ## Used for quicker access by [ResetNoticeArea]
 var current_ui_handler: GameplayUI ## @experimental
 var current_level_goal: LevelGoal

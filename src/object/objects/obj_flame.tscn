@@ -8,9 +8,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b145e"]
 size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh33e"]
-size = Vector2(65, 65)
-
 [node name="Flame" type="StaticBody2D" unique_id=533155665]
 script = ExtResource("1_06vru")
 
@@ -18,12 +15,13 @@ script = ExtResource("1_06vru")
 shape = SubResource("RectangleShape2D_b145e")
 
 [node name="Flame2D" type="Area2D" parent="." unique_id=689227527]
+position = Vector2(0, -8)
 collision_layer = 256
 collision_mask = 0
 script = ExtResource("1_qoqfh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Flame2D" unique_id=1004659966]
-shape = SubResource("RectangleShape2D_jh33e")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Flame2D" unique_id=1951418974]
+polygon = PackedVector2Array(-8, -32, 8, -32, 8, 0, 40, 0, 40, 16, 8, 16, 8, 48, -8, 48, -8, 16, -40, 16, -40, 0, -8, 0)
 
 [node name="Object" type="Sprite2D" parent="." unique_id=758971236]
 unique_name_in_owner = true

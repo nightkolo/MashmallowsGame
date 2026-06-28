@@ -33,7 +33,7 @@ var parent_block: Mashed
 func is_colliding() -> bool:
 	for ray: RayCast2D in unmashed_block_detection_rays:
 		ray.force_raycast_update()
-		if ray.get_collider() is Unmashed || ray.get_collider() is TwistedColliBlock:
+		if ray.get_collider() is Unmashed || ray.get_collider() is TwistedColliBlock || ray.get_collider() is Player:
 			return true
 	return false
 

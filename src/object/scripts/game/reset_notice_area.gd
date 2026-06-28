@@ -62,6 +62,6 @@ func got_stuck() -> void:
 	GameLogic.is_stuck = true
 	GameMgr.current_NPC.millie.expression = Millie.Expressions.FRUSTRATED
 							
-	GameMgr.current_player.show_reset_notice()
+	GameMgr.current_main_player.show_reset_notice()
 	
 	

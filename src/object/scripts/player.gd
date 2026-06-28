@@ -23,10 +23,14 @@ signal has_stopped() ## Emits when player full stops ([code]velocity == 0.0[/cod
 signal check_finished()
 
 @export var animate: bool = true
+@export var dubbleganger: bool = false:
+	set(value):
+		set_active(!value)
+		dubbleganger = value
 @export var start_asleep: bool = false:
 	set(value):
 		start_asleep = value
-		no_move = value
+		is_active = !value
 @export var auto_assign_child_blocks: bool = true
 @export_group("Movement Variables")
 @export_range(-600.0, 600.0, 1.0, "or_greater", "or_less") var speed: float = 450.0
@@ -75,7 +79,9 @@ var input_y: float
 	#{"type": Util.MashType.HEART, "pos": Vector2.ZERO}
 #]
 
-var is_sticky_platform_present: bool = false
+
+var is_active: bool = true
+#var is_sticky_platform_present: bool = false
 var player_blocks_code: Array[Dictionary] = []
 var child_blocks: Array[Mashed] = [] # Stack data structure
 		
@@ -108,7 +114,7 @@ var is_sleeping: bool:
 		is_sleeping = value
 var is_exploding: bool
 
-var no_move: bool = false
+#var is_active: bool = false
 
 # Anim
 var tween_jump: Tween
@@ -136,7 +142,7 @@ func show_reset_notice(wait: float = 4.0) -> void:
 
 
 func _ready() -> void:
-	GameMgr.current_player = self
+	GameMgr.current_main_player = self
 	
 	if original_block:
 		original_block.is_original = true
@@ -145,7 +151,7 @@ func _ready() -> void:
 		child.node_block_sprites.visible = show_blocks
 	
 	if start_asleep:
-		sleep()
+		set_active(false)
 	anim_idle_animation()
 
 	## EVENTS
@@ -185,29 +191,38 @@ func _ready() -> void:
 	new_child_blocks.clear()
 
 
-func sleep():
+func set_active(active: bool = !is_active) -> void:
+	is_active = active
+	
+	if active:
+		sleep()
+	else:
+		wake_up()
+
+
+func sleep(animate_zoom: bool = true):
 	is_sleeping = true
-	mash_notice.visible = true
-	no_move = true
+	#is_active = true
 	if original_block:
 		original_block.is_original = true
 
-		original_block.set_asleep(self)
-
-
-	if animator:
-		animator.anim_tease_zoom_out()
+		original_block.set_asleep(self, !animate_zoom)
+	
+	if animate_zoom:
+		mash_notice.visible = true
+		if animator:
+			animator.anim_tease_zoom_out()
 	# if animator:
 	# 	animator.pause_anim_eye_wobble()
 
 
-func wake_up():
+func wake_up(animate_zoom: bool = true):
 	is_sleeping = false
 	mash_notice.visible = false
-	no_move = false
+	#is_active = false
 	has_waken_up.emit()
 
-	if animator != null:
+	if animator && animate_zoom:
 		animator.anim_zoom_out()
 
 		has_mashed.emit(Vector2.ZERO, original_block.attributes.build_type)
@@ -249,8 +264,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_mash"):
 		mash_child_blocks()
 
-		if start_asleep && no_move:
-			wake_up()
+		if start_asleep && is_active:
+			set_active(true)
+	
+	if event.is_action_pressed("move_active"):
+		is_active = !is_active
 	
 	if event.is_action_pressed("move_unmash"):
 		unmash()
@@ -464,9 +482,9 @@ func jump() -> void:
 	
 	has_jumpped.emit()
 	
-	var strength := -jump_height * 0.65 if is_on_sticky_platform() else -jump_height
+	#var strength := -jump_height * 0.65 if is_on_sticky_platform() else -jump_height
 	
-	velocity.y = strength
+	velocity.y = -jump_height
 	move_and_slide()
 	
 	state_machine.change_state("AirState", {"jumped": true, "falling": false})
@@ -498,14 +516,15 @@ func is_on_ground() -> bool:
 
 ## Returns true if the player on stiky platform only.
 ## -> Worst case, O(n)
-func is_on_sticky_platform() -> bool:
-	if !is_sticky_platform_present:
-		return false
-	
-	for block: Mashed in child_blocks:
-		if block.is_on_sticky_platform():
-			return true
-	return false
+## @experimental
+#func is_on_sticky_platform() -> bool:
+	#if !is_sticky_platform_present:
+		#return false
+	#
+	#for block: Mashed in child_blocks:
+		#if block.is_on_sticky_platform():
+			#return true
+	#return false
 
 
 var _prev_position: Vector2
@@ -525,7 +544,6 @@ func _move(delta: float) -> void:
 	if !is_on_floor():
 		velocity += get_gravity() * delta
 		
-	
 	var was_on_floor = is_on_floor()
 	
 	_last_velocity_y = velocity.y
@@ -542,7 +560,7 @@ func _move(delta: float) -> void:
 		state_machine.change_state("AirState", {"jumped": false, "falling": true})
 	
 	
-	if !no_move && Input.is_action_just_pressed("move_jump"):
+	if is_active && Input.is_action_just_pressed("move_jump"):
 		if coyote_jump_timer.time_left > 0.0:
 			jump()
 		else:
@@ -556,9 +574,12 @@ func _move(delta: float) -> void:
 	if is_on_floor() && !jump_window_timer.is_stopped():
 		jump()
 		
-	input_direction = Input.get_axis("move_left", "move_right") if !no_move else 0.0
-	input_y = Input.get_axis("move_up", "move_down") if !no_move else 0.0
-
+	if !is_active:
+		input_direction = 0.0
+		input_y = 0.0
+	else:
+		input_direction = Input.get_axis("move_left", "move_right")
+		input_y = Input.get_axis("move_up", "move_down")
 
 
 

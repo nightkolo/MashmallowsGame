@@ -63,7 +63,7 @@ metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("10_30ol3")]
 
-[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_y600v")]
+[node name="Player" parent="." unique_id=1591390161 instance=ExtResource("11_y600v")]
 position = Vector2(240, 448)
 
 [node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("12_2e8ch")]

@@ -8,7 +8,7 @@
     - [x] Game manager
     - [x] Game Logic
     - [x] Utils
-  - [ ] Levels and worlds
+  - [x] Levels and worlds
     - [x] Level code
     - [x] World nodes
   - [ ] Objects
@@ -19,14 +19,17 @@
   - [ ] Regen System
     - [ ] Cherry Bombs
     - [ ] Twisted blocks
+  - [ ] Twisted
+    - [ ] A billion bugs
+      - [ ] 
 - [ ] Bakery 2
   - [ ] Level structure
-    - [ ] 1-3
+    - [x] 1-3
     - [ ] 4-6
     - [ ] 7-9
     - [ ] 10
   - [ ] Mechanics introduced
-    - [ ] Twisted
+    - [x] Twisted
     - [ ] Flame
     - [ ] Caramel Floor
 
@@ -34,6 +37,9 @@
 ### Assets and Design
 - [ ] Promo
   - [ ] Game artwork
+  - [ ] Game trailer
+- [ ] Project
+  - [ ] Email Avizura about OST
 - [ ] API
   - [ ] Medals
 - [ ] Artwork

@@ -285,8 +285,8 @@ func anim_highlight(p_mash: bool) -> void:
 	
 	var can_mash: bool = true
 
-	if GameMgr.current_player:
-		can_mash = GameMgr.current_player.can_perform_mash()
+	if GameMgr.current_main_player:
+		can_mash = GameMgr.current_main_player.can_perform_mash()
 		sprite_input.visible = !can_mash
 	
 	is_player_close = p_mash

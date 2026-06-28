@@ -7,6 +7,6 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.1).timeout
 	
-	if GameMgr.current_player:
-		GameMgr.current_player.is_sticky_platform_present = true
+	if GameMgr.current_main_player:
+		GameMgr.current_main_player.is_sticky_platform_present = true
 		

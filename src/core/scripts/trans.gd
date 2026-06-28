@@ -21,7 +21,7 @@ func player_zoom_to_scene(scene: String, waittime: float = 0.0, spd: float = 1.0
 	# anim.play(&"slide_in", -1, spd)
 	Audio.lower_higher_music(0.4 * (2.0 - spd))
 	
-	await GameMgr.current_player.animator.anim_zoom_in(spd, true)
+	await GameMgr.current_main_player.animator.anim_zoom_in(spd, true)
 
 	# await anim.animation_finished
 	
@@ -33,7 +33,7 @@ func player_zoom_to_scene(scene: String, waittime: float = 0.0, spd: float = 1.0
 	GameLogic.reset_game_logic()
 	# anim.play(&"slide_out", -1, spd)
 	
-	# await GameMgr.current_player.animator.anim_zoom_out(spd, true)
+	# await GameMgr.current_main_player.animator.anim_zoom_out(spd, true)
 	# await anim.animation_finished
 	
 	# ($Trans1 as Node2D).visible = false

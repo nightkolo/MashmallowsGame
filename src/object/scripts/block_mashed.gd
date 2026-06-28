@@ -134,16 +134,20 @@ func set_golden(value: bool = !is_golden) -> void:
 	parent_player.has_touched_flame.emit()
 
 
-func set_asleep(player: Player) -> void:
-	sprite_eyes_closed.visible = player.start_asleep
-	sprite_eyes_open.visible = !player.start_asleep
-	anim_highlight(true)
+func set_asleep(player: Player, role_swapped: bool = false) -> void:
+	if !role_swapped:
+		sprite_eyes_closed.visible = player.start_asleep
+		sprite_eyes_open.visible = !player.start_asleep
+		anim_highlight(true)
 
-	player.has_waken_up.connect(func():
-		sprite_eyes_closed.visible = false
-		sprite_eyes_open.visible = true
-		anim_highlight(false)
-	)
+		player.has_waken_up.connect(func():
+			sprite_eyes_closed.visible = false
+			sprite_eyes_open.visible = true
+			anim_highlight(false)
+		)
+	else:
+		sprite_eyes_closed.visible = player.is_active
+		sprite_eyes_open.visible = !player.is_active
 
 
 func _ready() -> void:
@@ -277,8 +281,6 @@ func mash() -> bool: ## Ok O(1)
 		
 		#print_debug(obj)
 		if obj is TwistedColliBlock:
-			print_debug(obj as TwistedColliBlock)
-
 			unmashed = (obj as TwistedColliBlock).parent_unmashed
 		elif obj is Unmashed:
 			unmashed = obj as Unmashed
@@ -295,6 +297,8 @@ func mash() -> bool: ## Ok O(1)
 		
 		collided = true
 		
+		print_debug(unmashed.mash_type == Util.MashType.PLAYER)
+		
 		#var pos: Vector2 = unmashed.global_position - global_position
 		var build: Util.BuildType = unmashed.build_type
 		var unmash_at: Vector2 = get_unmashed_position(
@@ -303,7 +307,7 @@ func mash() -> bool: ## Ok O(1)
 			unmashed.mash_type
 			)
 		var new_mashed: Mashed = get_mashed_object(build)
-
+		
 
 		# ATTRIBUTE SYNC
 		new_mashed.position = get_new_mashed_positioning(unmash_at, build, ray)

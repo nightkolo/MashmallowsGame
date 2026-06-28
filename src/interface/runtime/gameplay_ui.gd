@@ -25,8 +25,8 @@ const BBCODE_TXT_NO_MOTION = "
 func the_checkerboard_has_been_checkered() -> void:
 	#is_game_paused = true
 	#game_pause_toggled.emit(true)
-	if GameMgr.current_player:
-		GameMgr.current_player.no_move = true
+	if GameMgr.current_main_player:
+		GameMgr.current_main_player.no_move = true
 	checkerboard_complete_screen.open()
 
 

@@ -54,8 +54,8 @@ var is_monolog_active: bool = false:
 		GameMgr.monolog_activated.emit(value)
 		
 		if disable_player_control:
-			if GameMgr.current_player:
-				GameMgr.current_player.no_move = value
+			if GameMgr.current_main_player:
+				GameMgr.current_main_player.no_move = value
 		
 		is_monolog_active = value
 var can_advance_line: bool = false
