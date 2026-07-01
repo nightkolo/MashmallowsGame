@@ -99,6 +99,8 @@ texture = SubResource("GradientTexture2D_5xn7n")
 
 [node name="Mashed" parent="." unique_id=499008387 instance=ExtResource("2_2147m")]
 mash_type = 99
+build_type = null
+is_golden = null
 
 [node name="Audio" type="Node2D" parent="." unique_id=117140185 node_paths=PackedStringArray("sfx_jump_single", "sfx_jump_mult", "sfx_jump_heavy", "slide_sfx", "fall_sfx", "sfx_unmash_enter", "sfx_unmash_exit")]
 script = ExtResource("8_vhdde")

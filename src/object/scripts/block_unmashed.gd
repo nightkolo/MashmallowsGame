@@ -165,6 +165,7 @@ func set_golden(value: bool = !is_golden) -> void:
 	is_golden = value
 
 
+## TODO Add to Player
 func get_top_unmashed() -> Unmashed:
 	if top_detect:
 		if top_detect.is_colliding():

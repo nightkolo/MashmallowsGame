@@ -81,12 +81,8 @@ func is_on_player() -> bool:
 	ray.force_shapecast_update()
 	
 	if ray.is_colliding():
-		#var count: int = ray.get_collision_count()
-		
 		var colli: Node2D = ray.get_collider(ray.get_collision_count() - 1)
 		
-		print_debug(colli)
-		print_debug(ray.get_collision_count())
 		if colli is Player && colli != parent_player:
 			return true
 		
@@ -141,7 +137,10 @@ func is_on_block() -> bool: # -> O(1)
 	
 	ray.force_shapecast_update()
 	if ray.is_colliding():
-		return true
+		var colli: Node2D = ray.get_collider(ray.get_collision_count() - 1)
+		
+		if colli is Unmashed || colli is TwistedColliBlock:
+			return true
 		
 	return false
 
