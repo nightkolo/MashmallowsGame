@@ -26,7 +26,7 @@ func physics_update(delta: float) -> void:
 	## Jump logic and platform fall is handled globally in player code
 
 	# Start running
-	if player.input_direction != 0.0:
+	if player.input_x != 0.0:
 		state_machine.change_state("RunState")
 		return
 

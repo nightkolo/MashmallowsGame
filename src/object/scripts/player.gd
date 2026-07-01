@@ -11,7 +11,7 @@ signal has_idled() ## Emits when player enters [IdleState]
 
 # GAMEPLAY EVENTS
 signal has_waken_up()
-signal has_touched_flame()
+signal has_touched_flame() ## @deprecated
 signal has_landed(strength: float)
 signal has_touched_ceiling()
 signal cherry_bomb_activated()
@@ -20,7 +20,7 @@ signal is_running() ## Emits when player is in [RunState] at full [member speed]
 signal has_stopped() ## Emits when player full stops ([code]velocity == 0.0[/code]), regardless of state. (i.e. hits wall)
 
 # LOGIC
-signal check_finished()
+signal check_finished() ## @deprecated
 
 @export var animate: bool = true
 @export var dubbleganger: bool = false:
@@ -56,38 +56,52 @@ signal check_finished()
 @onready var coyote_jump_timer: Timer = %CoyoteJumpTimer
 @onready var cherry_bomb_air_timer: Timer = %CherryBombAirTimer
 @onready var idle_timer: Timer = %IdleTimer
-@onready var mashed: Mashed = $Mashed
+@onready var mash_timer: Timer = %MashTimer
+#@onready var mashed: Mashed = $Mashed
 #@onready var mashed_nodes: Node2D = $MashedNodes
 
+# For PlayerAnimationComponent
 @onready var node_player_zoom_trans: Node2D = $PlayerZoomTrans
 @onready var trans_nodes: Array[Sprite2D] = [%TransR,%TransL,%TransD,%TransU]
 # @onready var sprite_player_zoom_in: Sprite2D = %PlayerZoomIn
 @onready var reset_notice: Node2D = $ResetNotice
 @onready var mash_notice: Node2D = $MashNotice
 @onready var particles_m: CPUParticles2D = $Z
+
+# Preloaded Scenes
 var unmashed_object: PackedScene = preload("res://object/objects/block_unmashed_1x1.tscn")
 var unmashed_object_1x2: PackedScene = preload("res://object/objects/block_unmashed_1x2.tscn")
 
+# Movement variables
 var stop_deceleration: float = deceleration * 4.0
 var air_deceleration: float = deceleration / 1.25
 var flown_deceleration: float = deceleration / 3.2
-var input_direction: float
+#
+
+# State
+var input_x: float
 var input_y: float
-
-#var posses: Array[Dictionary] = [ ## Template
-	#{"type": Util.MashType.WHITE, "pos": Vector2.ZERO},
-	#{"type": Util.MashType.HEART, "pos": Vector2.ZERO}
-#]
-
-
 var is_active: bool = true
-#var is_sticky_platform_present: bool = false
+var is_exploding: bool ## Is during Cherry Bomb explosion animation
 var player_blocks_code: Array[Dictionary] = []
 var child_blocks: Array[Mashed] = [] # Stack data structure
-		
-func push_child_block(block: Mashed) -> void:
-	child_blocks.append(block)
+var new_child_blocks: Array[Mashed] # Temporary Stack data structure
+#
 
+var _stopped: bool
+var _landed: bool
+var _pos_before_mash: Vector2
+var _has_mashed: bool
+var _last_velocity_y: float = 0.0
+
+
+## Performs a Mash (Push) to a [Mashed] block, and pushes to the [member child_blocks] Stack.
+func push_block(block: Mashed) -> void:
+	child_blocks.append(block)
+	
+	if dubbleganger:
+		return
+		
 	player_blocks_code.append({
 		"type": block.mash_type,
 		"pos": Vector2(
@@ -97,35 +111,12 @@ func push_child_block(block: Mashed) -> void:
 	})
 	
 	GameLogic.player_mashed.emit()
-	print_debug(player_blocks_code)
 
 
-func pop_child_block() -> Mashed:
+## Performs an Unmash (Pop) to the [member child_blocks] Stack.
+func pop_block() -> Mashed:
 	player_blocks_code.pop_back()
-	#print_debug(player_blocks_code)
 	return child_blocks.pop_back()
-
-
-var new_child_blocks: Array[Mashed] # Stack data structure
-
-var is_sleeping: bool:
-	set(value):
-		
-		is_sleeping = value
-var is_exploding: bool
-
-#var is_active: bool = false
-
-# Anim
-var tween_jump: Tween
-
-var _stopped: bool
-var _landed: bool
-var _pos_before_mash: Vector2
-var _has_mashed: bool
-var _last_velocity_y: float = 0.0
-
-
 
 
 func show_reset_notice(wait: float = 4.0) -> void:
@@ -142,8 +133,9 @@ func show_reset_notice(wait: float = 4.0) -> void:
 
 
 func _ready() -> void:
-	GameMgr.current_main_player = self
-	
+	if !dubbleganger:
+		GameMgr.current_main_player = self
+		
 	if original_block:
 		original_block.is_original = true
 
@@ -153,6 +145,7 @@ func _ready() -> void:
 	if start_asleep:
 		is_active = false
 		sleep()
+		
 	anim_idle_animation()
 
 	## EVENTS
@@ -192,16 +185,41 @@ func _ready() -> void:
 	new_child_blocks.clear()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("move_mash"):
+		mash_child_blocks()
+
+		if start_asleep && !is_active:
+			is_active = true
+			wake_up()
+	#
+	#if event.is_action_pressed("move_active"):
+		#set_active()
+	#
+	if event.is_action_pressed("move_unmash"):
+		unmash()
+		
+	if event.is_action_released("move_jump"):
+		Input.stop_joy_vibration(0)
+
+	if event.is_action_pressed("move_down"):
+		drop()
+
+	if event.is_action_released("move_down"):
+		animator.anim_down(false, true)
+
+
 func set_active(active: bool = !is_active) -> void:
 	is_active = active
 	
 	if !active:
 		sleep(false)
 	else:
+		mash_timer.start()
 		wake_up(false)
 
 
-func sleep(animate_zoom: bool = true):
+func sleep(animate_zoom: bool = true) -> void:
 	if particles_m:
 		particles_m.emitting = true
 	#is_active = true
@@ -220,7 +238,7 @@ func sleep(animate_zoom: bool = true):
 	# 	animator.pause_anim_eye_wobble()
 
 
-func wake_up(animate_zoom: bool = true):
+func wake_up(animate_zoom: bool = true) -> void:
 	if particles_m:
 		particles_m.emitting = false
 	mash_notice.visible = false
@@ -241,7 +259,7 @@ func wake_up(animate_zoom: bool = true):
 		animator.anim_eye_wobble()
 
 
-func anim_idle_animation():
+func anim_idle_animation() -> void:
 	idle_timer.start()
 	state_machine.player_state_changed.connect(func(state: State):
 		if !(state is IdleState):
@@ -269,43 +287,14 @@ func anim_idle_animation():
 		)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_mash"):
-		mash_child_blocks()
-
-		if start_asleep && !is_active:
-			is_active = true
-			wake_up()
-	
-	if event.is_action_pressed("move_active"):
-		set_active()
-	
-	if event.is_action_pressed("move_unmash"):
-		unmash()
-		
-	if event.is_action_released("move_jump"):
-		Input.stop_joy_vibration(0)
-
-	if event.is_action_pressed("move_down"):
-		drop()
-
-	if event.is_action_released("move_down"):
-		animator.anim_down(false, true)
-
-
-func drop() -> void:
-	if !is_active:
-		return
-		
-	animator.anim_down(true)
-	position.y += 10.0
+#var mash_timer: Timer = Timer.new()
 
 
 func mash_child_blocks() -> void: ## Ok -> O(n)
 	if !can_perform_mash():
 		return
 
-	if input_y > 0.0 || !is_active:
+	if input_y > 0.0 || !is_active || !mash_timer.is_stopped():
 		return
 	
 	var blocks: Array[Mashed] = child_blocks.duplicate(true) # To avoid infinite recursion
@@ -354,7 +343,7 @@ func unmash() -> void: # -> O(1)
 			
 			has_unmashed.emit()
 			
-			pop_child_block()
+			pop_block()
 
 			# ATTRIBUTE SYNC
 			var unmashed: Unmashed = get_unmashed_object(old_mashed.build_type)
@@ -395,7 +384,7 @@ func _handle_cherry_bomb(old_mashed: Mashed) -> void:
 	
 	await get_tree().create_timer(time).timeout
 	
-	pop_child_block()
+	pop_block()
 	
 	explode(push_to, stre)
 	Input.start_joy_vibration(0, 0.25, 0.85, 0.025)
@@ -470,6 +459,7 @@ func is_tall_block_mashed() -> bool:
 	
 	return false
 
+
 func stop_jump_sfx() -> void:
 	if audio.sfx_jump_single.playing:
 		audio.sfx_jump_single.stop()
@@ -477,6 +467,22 @@ func stop_jump_sfx() -> void:
 		audio.sfx_jump_mult.stop()
 	if audio.sfx_jump_heavy.playing:
 		audio.sfx_jump_heavy.stop()
+
+
+var is_hanging: bool = false
+
+func hang() -> void:
+	position.y -= 10.0
+	velocity.x = 0.0
+	is_hanging = true
+
+
+func drop() -> void:
+	if !is_active:
+		return
+		
+	animator.anim_down(true)
+	position.y += 10.0
 
 
 func jump() -> void:
@@ -509,7 +515,12 @@ func is_on_block(twisted_only: bool = false) -> bool:
 	
 	for block: Mashed in child_blocks:
 		if cond:
-			var obj: Node2D = block.block_detect.blocks_ray.get_collider(0)
+			var ray: ShapeCast2D = block.block_detect.blocks_ray
+			
+			if !ray.is_colliding():
+				continue
+			
+			var obj: Node2D = ray.get_collider(0)
 			
 			if obj is Unmashed:
 				if (obj as Unmashed).mash_type == Util.MashType.TWISTED:
@@ -554,9 +565,23 @@ func get_position_based_velocity(global_pos: Vector2, delta: float) -> Vector2:
 	return vel
 
 
+func is_on_player() -> bool:
+	for block: Mashed in child_blocks:
+		if block.is_on_player():
+			return true
+	return false
+
+
+
 func _move(delta: float) -> void:
-	if !is_on_floor():
+	if !is_on_floor() && !is_hanging:
 		velocity += get_gravity() * delta
+	elif is_hanging:
+		var res: bool = is_on_player()
+		print_debug(res)
+		if !res:
+			is_hanging = false
+			
 		
 	var was_on_floor = is_on_floor()
 	
@@ -589,10 +614,10 @@ func _move(delta: float) -> void:
 		jump()
 		
 	if !is_active:
-		input_direction = 0.0
+		input_x = 0.0
 		input_y = 0.0
 	else:
-		input_direction = Input.get_axis("move_left", "move_right")
+		input_x = Input.get_axis("move_left", "move_right")
 		input_y = Input.get_axis("move_up", "move_down")
 
 
@@ -632,11 +657,12 @@ func _state() -> void:
 	if !is_on_floor():
 		_landed = false
 		
-	if is_on_ceiling() && tween_jump:
-		tween_jump.kill()
-		
-		for block: Mashed in child_blocks:
-			block.sprite_block.scale = Vector2.ONE * 0.5
+	if animator:
+		if is_on_ceiling() && animator.tween_jump:
+			animator.tween_jump.kill()
+			
+			for block: Mashed in child_blocks:
+				block.sprite_block.scale = Vector2.ONE * 0.5
 
 
 func _animate(delta: float) -> void:
@@ -647,7 +673,7 @@ func _animate(delta: float) -> void:
 			var node: Node2D = block.node_eye_sprites
 			var move_y := input_y * 12.0 if (input_y != 0.0) && is_on_floor() else minf(12.0, velocity_position_based.y / 50.0)
 			node.position = Vector2(
-				move_toward(node.position.x, input_direction * 6.0, delta * 100.0),
+				move_toward(node.position.x, input_x * 6.0, delta * 100.0),
 				move_toward(node.position.y, move_y, delta * 200.0)
 			) 
 
@@ -671,7 +697,7 @@ func _check_child_blocks() -> void:
 	for i in range(1, new_child_blocks.size()):
 		if new_child_blocks[i].position == new_child_blocks[0].position:
 			new_child_blocks[i].queue_free()
-			pop_child_block()
+			pop_block()
 			
 	new_child_blocks.clear()
 	_has_mashed = false

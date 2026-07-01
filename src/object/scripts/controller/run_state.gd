@@ -28,7 +28,7 @@ func physics_update(delta: float) -> void:
 	## SLIDE AUDIO
 	player.audio.slide_sfx.volume_db = minf(5.0, (absf(player.velocity.x) / (player.speed / 40.0)) - 30.0)
 	# print(minf(2.0, (absf(player.velocity.x) / (player.speed / 40.0)) - 30.0))
-	var dir := player.input_direction
+	var dir := player.input_x
 
 	if dir == 0.0:
 		state_machine.change_state("IdleState")

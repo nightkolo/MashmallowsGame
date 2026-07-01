@@ -32,8 +32,10 @@ func pause_anim_eye_wobble():
 				block.node_eye_sprites_2.position.y = 0.0
 			
 
+var tween_jump: Tween
+
 func anim_eye_wobble():
-	if player.is_sleeping:
+	if !player.is_active:
 		return
 
 	for block: Mashed in player.child_blocks:
@@ -112,19 +114,19 @@ func anim_jump() -> void:
 	if !player.animate:
 		return
 	
-	if player.tween_jump:
-		player.tween_jump.kill()
+	if tween_jump:
+		tween_jump.kill()
 		
-	player.tween_jump = get_tree().create_tween().set_parallel()
+	tween_jump = get_tree().create_tween().set_parallel()
 	
-	player.tween_jump.set_ease(Tween.EASE_OUT)
+	tween_jump.set_ease(Tween.EASE_OUT)
 	
 	for block: Mashed in player.child_blocks:
 		if block.is_on_ground():
-			player.tween_jump.tween_property(block.sprite_block, "scale", Vector2(0.875, 1.25) * 0.5, 0.1)
-			player.tween_jump.tween_property(block.sprite_block, "scale", Vector2.ONE * 0.5, 0.6).set_trans(Tween.TRANS_SINE).set_delay(0.1)
+			tween_jump.tween_property(block.sprite_block, "scale", Vector2(0.875, 1.25) * 0.5, 0.1)
+			tween_jump.tween_property(block.sprite_block, "scale", Vector2.ONE * 0.5, 0.6).set_trans(Tween.TRANS_SINE).set_delay(0.1)
 		else:
-			player.tween_jump.tween_property(block.sprite_block, "scale", Vector2.ONE*0.5, 1.0)
+			tween_jump.tween_property(block.sprite_block, "scale", Vector2.ONE*0.5, 1.0)
 
 
 

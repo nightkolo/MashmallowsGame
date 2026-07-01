@@ -19,9 +19,6 @@
   - [ ] Regen System
     - [ ] Cherry Bombs
     - [ ] Twisted blocks
-  - [ ] Twisted
-    - [ ] A billion bugs
-      - [ ] 
 - [ ] Bakery 2
   - [ ] Level structure
     - [x] 1-3
@@ -30,11 +27,26 @@
     - [ ] 10
   - [ ] Mechanics introduced
     - [x] Twisted
-    - [ ] Flame
+    - [ ] Dubblegänger
     - [ ] Caramel Floor
 
 
+### Bugs
+  - [ ] Twisted
+    - [ ] Highlight system
+    - [ ] Visual indicator
+    - [ ] Smoother transition
+  - [ ] Bubblegate
+    - [ ] Interact animation
+  - [ ] Dubble
+    - [ ] Camera focus
+    - [ ] Highlight system
+    - [ ] Sleep anim
+
 ### Assets and Design
+- [ ] DG
+  - [ ] Design
+  - [ ] 
 - [ ] Promo
   - [ ] Game artwork
   - [ ] Game trailer

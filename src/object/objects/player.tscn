@@ -248,6 +248,11 @@ one_shot = true
 unique_name_in_owner = true
 wait_time = 15.0
 
+[node name="MashTimer" type="Timer" parent="Timers" unique_id=2131348310]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
 [node name="StateMachine" type="Node" parent="." unique_id=1326447240 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_q8hb4")
 initial_state = NodePath("AirState")

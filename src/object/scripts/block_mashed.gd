@@ -75,6 +75,24 @@ func can_mash() -> bool:
 	return block_detect.is_colliding()
 
 
+func is_on_player() -> bool:
+	var ray: ShapeCast2D = block_detect.blocks_ray
+	
+	ray.force_shapecast_update()
+	
+	if ray.is_colliding():
+		#var count: int = ray.get_collision_count()
+		
+		var colli: Node2D = ray.get_collider(ray.get_collision_count() - 1)
+		
+		print_debug(colli)
+		print_debug(ray.get_collision_count())
+		if colli is Player && colli != parent_player:
+			return true
+		
+	return false
+
+
 # Returns true if the mashed block on ground tilemap/sticky platform, not other unmashed blocks
 func is_on_ground() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.ground_ray
@@ -90,19 +108,20 @@ func is_on_ground() -> bool: # -> O(1)
 ## Returns true if the mashed block only on a sticky platform.
 ## [Param ignore_game_logic] ignores game logic. Normally, if it's a golden (roasted) marshmallow,
 ## it won't be stuck in the sticky platform.
-func is_on_sticky_platform(ignore_game_logic: bool = false) -> bool: # -> O(1)
-	if is_golden && !ignore_game_logic:
-		return false # Golden marshmallows don't stick.
-		
-	var ray: ShapeCast2D = block_detect.ground_ray
-	
-	ray.force_shapecast_update()
-	
-	if ray.is_colliding():
-		if ray.get_collider(0) is StickyPlatform:
-			return true # Found sticky platform
-		
-	return false
+## @deprecated
+#func is_on_sticky_platform(ignore_game_logic: bool = false) -> bool: # -> O(1)
+	#if is_golden && !ignore_game_logic:
+		#return false # Golden marshmallows don't stick.
+		#
+	#var ray: ShapeCast2D = block_detect.ground_ray
+	#
+	#ray.force_shapecast_update()
+	#
+	#if ray.is_colliding():
+		#if ray.get_collider(0) is StickyPlatform:
+			#return true # Found sticky platform
+		#
+	#return false
 
 
 func is_on_wall() -> bool: # -> O(1)
@@ -116,7 +135,7 @@ func is_on_wall() -> bool: # -> O(1)
 	return false
 
 
-# Returns true if the [Mashed] mash_block on a [Unmashed] (including [TwistedColliBlock]).
+# Returns true if the [Mashed] mash_block on a [Unmashed] (including [TwistedColliBlock] and [Player]).
 func is_on_block() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.blocks_ray
 	
@@ -208,7 +227,7 @@ func _ready() -> void:
 		node_block_sprites.visible = parent_player.show_blocks
 		
 		if parent_player.auto_assign_child_blocks:
-			parent_player.push_child_block(self)
+			parent_player.push_block(self)
 		
 		parent_player.new_child_blocks.append(self)
 
@@ -270,6 +289,41 @@ func mash() -> bool: ## Ok O(1)
 	if mash_type == Util.MashType.CHERRY_BOMB:
 		return false
 	
+	var dubbles: Array = block_detect.dubbleganger_detect_1x1.get_overlapping_bodies()
+	
+	# TODO remove debug lines
+	print_debug(dubbles)
+	
+	for p: Player in dubbles:
+		if p != parent_player:
+			print_debug("NO MATCH: %s != %s" % [p, parent_player])
+			
+			var active: bool = p.is_active
+			
+			
+			#func move_up(strength: float = 10.0) -> void:
+				#var top: Unmashed = get_top_unmashed()
+				#if top:
+					#top.move_up(2.0 * strength)
+					#await get_tree().create_timer(0.05).timeout
+			 	#
+				#position.y -= strength
+			
+			if !active || p.dubbleganger:
+				print_debug("Dubble: %s" % p.global_position)
+				print_debug("Self: %s" % global_position)
+				
+				if p.global_position.y > global_position.y + (0.5 * Util.BLOCK_SIZE):
+					parent_player.hang()
+				
+				print_debug("EXCHANGED: %s" % p)
+				p.set_active(!active)
+				parent_player.set_active(active)
+				
+			return true
+		else:
+			print_debug("MATCH: %s == %s" % [p, parent_player])
+	
 	for ray: RayCast2D in block_detect.unmashed_block_detection_rays:
 		ray.force_raycast_update()
 		
@@ -279,14 +333,11 @@ func mash() -> bool: ## Ok O(1)
 		var obj: Object = ray.get_collider()
 		var unmashed: Unmashed
 		#var player: Player
-		
-		#print_debug(obj)
-				
+			
 		if obj is TwistedColliBlock:
 			unmashed = (obj as TwistedColliBlock).parent_unmashed
 		elif obj is Unmashed:
 			unmashed = obj as Unmashed
-
 		else:
 			continue
 
@@ -300,7 +351,7 @@ func mash() -> bool: ## Ok O(1)
 		
 		collided = true
 		
-		print_debug(unmashed.mash_type == Util.MashType.PLAYER)
+		#print_debug(unmashed.mash_type == Util.MashType.PLAYER)
 		
 		#var pos: Vector2 = unmashed.global_position - global_position
 		var build: Util.BuildType = unmashed.build_type

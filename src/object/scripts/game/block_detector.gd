@@ -24,6 +24,7 @@ class_name BlockDetector
 @onready var unmashed_block_detection_rays: Array[RayCast2D] = [$Down, $Right, $Left]
 @onready var cherry_bomb_rays: Array[RayCast2D] = [$CherryBombRays/Up, $CherryBombRays/Right, $CherryBombRays/Left]
 
+@onready var dubbleganger_detect_1x1: Area2D = $DubblegangerDetect1x1
 @onready var unmashed_block_detect_1x1: Area2D = $UnmashedBlockDetect1x1
 @onready var unmashed_block_detect_1x2: Area2D = $UnmashedBlockDetect1x2
 

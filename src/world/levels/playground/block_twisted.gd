@@ -90,7 +90,7 @@ func expand_collision(strength: float = twisted_strength, p_dur: float = 0.5) ->
 	expand_tween = create_tween().set_parallel(true)
 
 	if player.is_on_block(true):
-		player.position.y -= Util.BLOCK_SIZE
+		player.position.y -= Util.BLOCK_SIZE * 0.25
 
 	for i in range(bodies.size()):
 		#bodies[i].position = Vector2.ZERO

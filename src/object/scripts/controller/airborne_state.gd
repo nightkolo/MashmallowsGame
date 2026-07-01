@@ -36,7 +36,7 @@ func physics_update(delta: float) -> void:
 		
 		player.velocity.y = player.velocity.y / 4.0
 	
-	var dir := player.input_direction
+	var dir := player.input_x
 	
 	if player.is_on_floor():
 		if player.is_being_flown():

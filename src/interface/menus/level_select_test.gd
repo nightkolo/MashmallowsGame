@@ -3,7 +3,7 @@ class_name LevelPanel
 
 signal entered_cb_1()
 signal entered_cb_2()
-signal input_direction(dir: Vector2)
+signal input_x(dir: Vector2)
 
 @export var order_preview: UIOrderPreview
 
@@ -28,7 +28,7 @@ func _input(event: InputEvent) -> void:
 	)
 
 	if direction != Vector2.ZERO:
-		input_direction.emit(direction)
+		input_x.emit(direction)
 		
 
 func bakery_panel_entered(bakery_num: int, lvl_num: int = 0) -> void:
@@ -46,7 +46,7 @@ func bakery_panel_entered(bakery_num: int, lvl_num: int = 0) -> void:
 
 func _ready() -> void:
 	
-	input_direction.connect(func(dir: Vector2):
+	input_x.connect(func(dir: Vector2):
 		if order_preview:
 			order_preview.last_dir = dir
 		)
