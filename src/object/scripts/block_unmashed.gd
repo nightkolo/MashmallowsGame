@@ -282,9 +282,6 @@ func anim_spawn_particles() -> void:
 var _tween_prompt: Tween
 
 func anim_highlight(p_mash: bool) -> void:
-	if mash_type == Util.MashType.TWISTED:
-		return
-	
 	var can_mash: bool = true
 
 	if GameMgr.current_main_player:
@@ -298,6 +295,8 @@ func anim_highlight(p_mash: bool) -> void:
 		
 	_tween_light = get_tree().create_tween().set_parallel()
 	
+	# TODO FIx highlight system
+	print_debug("Can mash: %s" % p_mash)
 	
 	if p_mash:
 		if tutorial_block && node_mash_prompt:

@@ -12,11 +12,7 @@ var parent_unmashed: Unmashed
 var twisted_strength: float
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#for b: TwistedColliBlock in bodies:
-		#b.position = Vector2(0.0, 0.0)
-
 	if get_parent() is Unmashed:
 		parent_unmashed = get_parent() as Unmashed
 		

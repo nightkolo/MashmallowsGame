@@ -34,7 +34,7 @@
   - [ ] Twisted
     - [ ] Highlight system
     - [ ] Visual indicator
-    - [ ] Smoother transition
+    - [x] Smoother transition
   - [ ] Bubblegate
     - [ ] Fix interact animation
   - [ ] Dubble
