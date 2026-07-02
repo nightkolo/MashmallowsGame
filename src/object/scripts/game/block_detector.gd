@@ -31,6 +31,11 @@ class_name BlockDetector
 var parent_block: Mashed
 
 
+func update_index(moving_toward: String):
+	
+	pass
+
+
 func is_colliding() -> bool:
 	for ray: RayCast2D in unmashed_block_detection_rays:
 		ray.force_raycast_update()

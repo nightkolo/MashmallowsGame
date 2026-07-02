@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="8_5eqd3"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="9_40qa3"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="9_kk2ik"]
-[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/door.gd" id="9_vsqe1"]
+[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/node_door.gd" id="9_vsqe1"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="10_kk2ik"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="10_pgaxt"]
 [ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_xpgxn"]

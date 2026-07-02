@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bvjtkxteylojf" path="res://object/game/order_checker.tscn" id="7_st48t"]
 [ext_resource type="PackedScene" uid="uid://yivkpt02m4ox" path="res://object/game/mash_block_checker.tscn" id="8_dfn7m"]
 [ext_resource type="Texture2D" uid="uid://34wayfvqlvrp" path="res://assets/interface/order-star-01.png" id="8_ymk4h"]
-[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/door.gd" id="9_q0wsq"]
+[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/node_door.gd" id="9_q0wsq"]
 [ext_resource type="Texture2D" uid="uid://cex7p2po0vf0o" path="res://assets/interface/star-order-02.png" id="9_st48t"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="10_q0wsq"]
 [ext_resource type="PackedScene" uid="uid://djgv45k3n5ibr" path="res://object/objects/obj_switch.tscn" id="10_st48t"]

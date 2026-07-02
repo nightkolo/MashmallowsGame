@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djgv45k3n5ibr"]
 
-[ext_resource type="Script" uid="uid://dj330fftlpvf6" path="res://object/scripts/switch.gd" id="1_xbd11"]
+[ext_resource type="Script" uid="uid://dj330fftlpvf6" path="res://object/scripts/obj_switch.gd" id="1_xbd11"]
 [ext_resource type="Texture2D" uid="uid://ptrycg6vxx8o" path="res://assets/objects/switch-base.png" id="2_eiu2u"]
 [ext_resource type="Texture2D" uid="uid://cqywemxa6mc65" path="res://assets/objects/switch-head.png" id="2_f3jwt"]
 [ext_resource type="AudioStream" uid="uid://dlayd52rye4u3" path="res://audio/sfx/button_block_lift.ogg" id="4_nt7n1"]

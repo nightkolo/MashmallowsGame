@@ -506,9 +506,9 @@ func anim_highlight(p_mash: bool) -> void:
 			p_mash = false
 		
 		if p_mash:
-			parent_player.audio_listener.make_current()
+			parent_player.audio.listener.make_current()
 		else:
-			parent_player.audio_listener.clear_current()
+			parent_player.audio.listener.clear_current()
 	
 	unmashed_block_entered = p_mash
 	

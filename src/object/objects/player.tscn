@@ -58,44 +58,51 @@ animator = NodePath("PlayerAnimationComponent")
 state_machine = NodePath("StateMachine")
 original_block = NodePath("Mashed")
 
-[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1616398743]
+[node name="StateMachine" type="Node" parent="." unique_id=1326447240 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_q8hb4")
+initial_state = NodePath("AirState")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=301866769]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=73227345]
+script = ExtResource("5_q8hb4")
+
+[node name="RunState" type="Node" parent="StateMachine" unique_id=2067635367]
+script = ExtResource("5_2rlf8")
+
+[node name="AirState" type="Node" parent="StateMachine" unique_id=2062112355]
+script = ExtResource("5_ksjmp")
+
+[node name="Timers" type="Node" parent="." unique_id=1381808234]
+
+[node name="JumpBufferTimer" type="Timer" parent="Timers" unique_id=2097318703]
+unique_name_in_owner = true
+wait_time = 0.12
+one_shot = true
+
+[node name="CoyoteJumpTimer" type="Timer" parent="Timers" unique_id=2022613437]
+unique_name_in_owner = true
+wait_time = 0.12
+one_shot = true
+
+[node name="CherryBombAirTimer" type="Timer" parent="Timers" unique_id=1702203392]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="Timers" unique_id=1918497938]
+unique_name_in_owner = true
+wait_time = 15.0
+
+[node name="MashTimer" type="Timer" parent="Timers" unique_id=2131348310]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[node name="PlayerAnimationComponent" type="Node" parent="." unique_id=896765118]
+script = ExtResource("3_h5uus")
+
+[node name="Light" type="Sprite2D" parent="." unique_id=301866769]
 self_modulate = Color(1, 1, 1, 0.2)
 z_index = -1
 texture = SubResource("GradientTexture2D_s62i3")
-
-[node name="PlayerZoomTrans" type="Node2D" parent="." unique_id=1185996982]
-visible = false
-modulate = Color(0.10980392, 0.03137255, 0.13333334, 1)
-
-[node name="TransR" type="Sprite2D" parent="PlayerZoomTrans" unique_id=269819542]
-unique_name_in_owner = true
-z_index = 1
-position = Vector2(640, 0)
-scale = Vector2(20, 20)
-texture = SubResource("GradientTexture2D_5xn7n")
-
-[node name="TransD" type="Sprite2D" parent="PlayerZoomTrans" unique_id=81169215]
-unique_name_in_owner = true
-z_index = 1
-position = Vector2(0, 640)
-scale = Vector2(40, 20)
-texture = SubResource("GradientTexture2D_5xn7n")
-
-[node name="TransU" type="Sprite2D" parent="PlayerZoomTrans" unique_id=344042313]
-unique_name_in_owner = true
-z_index = 1
-position = Vector2(0, -640)
-scale = Vector2(40, 20)
-texture = SubResource("GradientTexture2D_5xn7n")
-
-[node name="TransL" type="Sprite2D" parent="PlayerZoomTrans" unique_id=12802473]
-unique_name_in_owner = true
-z_index = 1
-position = Vector2(-640, 0)
-scale = Vector2(20, 20)
-texture = SubResource("GradientTexture2D_5xn7n")
 
 [node name="Mashed" parent="." unique_id=499008387 instance=ExtResource("2_2147m")]
 mash_type = 99
@@ -111,6 +118,8 @@ slide_sfx = NodePath("Slide01")
 fall_sfx = NodePath("Fall01")
 sfx_unmash_enter = NodePath("UnmashEnter")
 sfx_unmash_exit = NodePath("UnmashExit")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Audio" unique_id=1616398743]
 
 [node name="Fall01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1357927000]
 stream = ExtResource("11_33vi3")
@@ -230,46 +239,37 @@ volume_db = 5.0
 panning_strength = 5.0
 bus = &"SFX"
 
-[node name="Timers" type="Node" parent="." unique_id=1381808234]
+[node name="PlayerZoomTrans" type="Node2D" parent="." unique_id=1185996982]
+visible = false
+modulate = Color(0.10980392, 0.03137255, 0.13333334, 1)
 
-[node name="JumpBufferTimer" type="Timer" parent="Timers" unique_id=2097318703]
+[node name="TransR" type="Sprite2D" parent="PlayerZoomTrans" unique_id=269819542]
 unique_name_in_owner = true
-wait_time = 0.12
-one_shot = true
+z_index = 1
+position = Vector2(640, 0)
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture2D_5xn7n")
 
-[node name="CoyoteJumpTimer" type="Timer" parent="Timers" unique_id=2022613437]
+[node name="TransD" type="Sprite2D" parent="PlayerZoomTrans" unique_id=81169215]
 unique_name_in_owner = true
-wait_time = 0.12
-one_shot = true
+z_index = 1
+position = Vector2(0, 640)
+scale = Vector2(40, 20)
+texture = SubResource("GradientTexture2D_5xn7n")
 
-[node name="CherryBombAirTimer" type="Timer" parent="Timers" unique_id=1702203392]
+[node name="TransU" type="Sprite2D" parent="PlayerZoomTrans" unique_id=344042313]
 unique_name_in_owner = true
-one_shot = true
+z_index = 1
+position = Vector2(0, -640)
+scale = Vector2(40, 20)
+texture = SubResource("GradientTexture2D_5xn7n")
 
-[node name="IdleTimer" type="Timer" parent="Timers" unique_id=1918497938]
+[node name="TransL" type="Sprite2D" parent="PlayerZoomTrans" unique_id=12802473]
 unique_name_in_owner = true
-wait_time = 15.0
-
-[node name="MashTimer" type="Timer" parent="Timers" unique_id=2131348310]
-unique_name_in_owner = true
-wait_time = 0.5
-one_shot = true
-
-[node name="StateMachine" type="Node" parent="." unique_id=1326447240 node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_q8hb4")
-initial_state = NodePath("AirState")
-
-[node name="IdleState" type="Node" parent="StateMachine" unique_id=73227345]
-script = ExtResource("5_q8hb4")
-
-[node name="RunState" type="Node" parent="StateMachine" unique_id=2067635367]
-script = ExtResource("5_2rlf8")
-
-[node name="AirState" type="Node" parent="StateMachine" unique_id=2062112355]
-script = ExtResource("5_ksjmp")
-
-[node name="PlayerAnimationComponent" type="Node" parent="." unique_id=896765118]
-script = ExtResource("3_h5uus")
+z_index = 1
+position = Vector2(-640, 0)
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture2D_5xn7n")
 
 [node name="MashNotice" type="Node2D" parent="." unique_id=290957168]
 visible = false
@@ -309,5 +309,3 @@ blink_interval = 0.0
 [node name="Z" parent="." unique_id=2080773523 instance=ExtResource("25_33vi3")]
 position = Vector2(22, -19)
 emitting = false
-
-[node name="Node2D" type="Node2D" parent="." unique_id=392171179]

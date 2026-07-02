@@ -1,3 +1,5 @@
+## @deprecated
+
 extends Area2D
 class_name Flame2D
 

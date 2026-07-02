@@ -58,7 +58,11 @@ The collectibles could be 4x4 large, that would present a movement challenge to 
 - 1-9, Difficult
 - 1-10 Mix
 
-- 2-1, Flame intro
+- 2-1, Twisted
 - 2-2, Flame tech
-- 2-4, Platform
-- 
+- 2-3, Twisted + Bubblegate
+- 2-4, Dubble
+- 2-5, Dubble
+- 2-6, Leapfrog
+- 2-8, 
+- 2-10, 

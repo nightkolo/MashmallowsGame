@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ck1gettgytye7" path="res://world/interface/level_info.tscn" id="14_ws5kl"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="15_a56q5"]
 [ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="16_tvcas"]
-[ext_resource type="Script" uid="uid://c6lgdr2v8327j" path="res://object/scripts/obj_flame_2d.gd" id="17_scpxr"]
+[ext_resource type="Script" uid="uid://c6lgdr2v8327j" path="res://object/scripts/node_flame_2d.gd" id="17_scpxr"]
 
 [sub_resource type="Resource" id="Resource_pi4l1"]
 script = ExtResource("12_toou5")

@@ -1,4 +1,3 @@
-## Under construction
 class_name Player
 extends CharacterBody2D
 
@@ -11,7 +10,6 @@ signal has_idled() ## Emits when player enters [IdleState]
 
 # GAMEPLAY EVENTS
 signal has_waken_up()
-signal has_touched_flame() ## @deprecated
 signal has_landed(strength: float)
 signal has_touched_ceiling()
 signal cherry_bomb_activated()
@@ -40,10 +38,6 @@ signal check_finished() ## @deprecated
 @export_group("Appearance")
 @export var show_trail: bool = true
 @export var show_blocks: bool = true
-@export var show_light: bool = true:
-	set(value):
-		$TerrainLight.enabled = value
-		show_light = value
 
 @export_category("Objects to Assign")
 @export var animator: PlayerAnimationComponent
@@ -51,19 +45,15 @@ signal check_finished() ## @deprecated
 @export var original_block: Mashed
 
 @onready var audio: PlayerAudio = $Audio
-@onready var audio_listener: AudioListener2D = $AudioListener2D
 @onready var jump_window_timer: Timer = %JumpBufferTimer
 @onready var coyote_jump_timer: Timer = %CoyoteJumpTimer
 @onready var cherry_bomb_air_timer: Timer = %CherryBombAirTimer
 @onready var idle_timer: Timer = %IdleTimer
 @onready var mash_timer: Timer = %MashTimer
-#@onready var mashed: Mashed = $Mashed
-#@onready var mashed_nodes: Node2D = $MashedNodes
 
 # For PlayerAnimationComponent
 @onready var node_player_zoom_trans: Node2D = $PlayerZoomTrans
 @onready var trans_nodes: Array[Sprite2D] = [%TransR,%TransL,%TransD,%TransU]
-# @onready var sprite_player_zoom_in: Sprite2D = %PlayerZoomIn
 @onready var reset_notice: Node2D = $ResetNotice
 @onready var mash_notice: Node2D = $MashNotice
 @onready var particles_m: CPUParticles2D = $Z
@@ -76,7 +66,6 @@ var unmashed_object_1x2: PackedScene = preload("res://object/objects/block_unmas
 var stop_deceleration: float = deceleration * 4.0
 var air_deceleration: float = deceleration / 1.25
 var flown_deceleration: float = deceleration / 3.2
-#
 
 # State
 var input_x: float
@@ -86,7 +75,6 @@ var is_exploding: bool ## Is during Cherry Bomb explosion animation
 var player_blocks_code: Array[Dictionary] = []
 var child_blocks: Array[Mashed] = [] # Stack data structure
 var new_child_blocks: Array[Mashed] # Temporary Stack data structure
-#
 
 var _stopped: bool
 var _landed: bool
@@ -135,6 +123,9 @@ func show_reset_notice(wait: float = 4.0) -> void:
 func _ready() -> void:
 	if !dubbleganger:
 		GameMgr.current_main_player = self
+		GameMgr.current_player = self
+	else:
+		self_modulate = Color(Color.WHITE * 0.75, 1.0)
 		
 	if original_block:
 		original_block.is_original = true
@@ -159,6 +150,10 @@ func _ready() -> void:
 
 		if input_y > 0.0:
 			animator.anim_down(true, true)
+			
+		#print_debug("%s is_on_player(): %s" % [self, is_on_player()])
+		if is_on_player() && !is_active:
+			hang()
 		)
 	has_jumpped.connect(func():
 		Input.start_joy_vibration(0, 0.05, 0.0, 0.1)
@@ -175,9 +170,6 @@ func _ready() -> void:
 		await get_tree().create_timer(0.01).timeout
 		Input.start_joy_vibration(0, 0.0, 0.5, 0.025)
 		)
-	has_touched_flame.connect(func():
-		GameLogic.player_touched_flame.emit()
-	)
 	cherry_bomb_activated.connect(func():
 		cherry_bomb_air_timer.start()
 		)
@@ -192,10 +184,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if start_asleep && !is_active:
 			is_active = true
 			wake_up()
-	#
-	#if event.is_action_pressed("move_active"):
-		#set_active()
-	#
+
 	if event.is_action_pressed("move_unmash"):
 		unmash()
 		
@@ -215,6 +204,7 @@ func set_active(active: bool = !is_active) -> void:
 	if !active:
 		sleep(false)
 	else:
+		GameMgr.current_player = self
 		mash_timer.start()
 		wake_up(false)
 
@@ -420,9 +410,9 @@ func get_unmashed_object(type: Util.BuildType) -> Unmashed:
 func is_being_flown() -> bool:
 	return cherry_bomb_air_timer.time_left > 0.0
 
+
 ## Checks if can perform mash, regardless of [member is_active]
 func can_perform_mash() -> bool:
-	#print_debug("is_active: %s" % is_active)
 	return !(
 		child_blocks[-1].mash_type == Util.MashType.CHERRY_BOMB ||
 		child_blocks[-1].mash_type == Util.MashType.AIR_CHERRY_BOMB
@@ -510,22 +500,22 @@ func jump() -> void:
 	state_machine.change_state("AirState", {"jumped": true, "falling": false})
 
 ## Returns true if the player on a unmashed block (including [TwistedColliBlock]).
-func is_on_block(twisted_only: bool = false) -> bool:
-	var cond: bool = twisted_only
+func is_on_block() -> bool:
+	#var cond: bool = twisted_only
 	
 	for block: Mashed in child_blocks:
-		if cond:
-			var ray: ShapeCast2D = block.block_detect.blocks_ray
-			
-			if !ray.is_colliding():
-				continue
-			
-			var obj: Node2D = ray.get_collider(0)
-			
-			if obj is Unmashed:
-				if (obj as Unmashed).mash_type == Util.MashType.TWISTED:
-					return true
-		elif block.is_on_block():
+		#if cond:
+			#var ray: ShapeCast2D = block.block_detect.blocks_ray
+			#
+			#if !ray.is_colliding():
+				#continue
+			#
+			#var obj: Node2D = ray.get_collider(0)
+			#
+			#if obj is Unmashed:
+				#if (obj as Unmashed).mash_type == Util.MashType.TWISTED:
+					#return true
+		if block.is_on_block():
 			return true
 	return false
 	

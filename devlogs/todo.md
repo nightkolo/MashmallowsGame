@@ -22,13 +22,12 @@
 - [ ] Bakery 2
   - [ ] Level structure
     - [x] 1-3
-    - [ ] 4-6
+    - [x] 4-6
     - [ ] 7-9
     - [ ] 10
   - [ ] Mechanics introduced
     - [x] Twisted
-    - [ ] Dubblegänger
-    - [ ] Caramel Floor
+    - [x] Dubblegänger
 
 
 ### Bugs
@@ -37,14 +36,14 @@
     - [ ] Visual indicator
     - [ ] Smoother transition
   - [ ] Bubblegate
-    - [ ] Interact animation
+    - [ ] Fix interact animation
   - [ ] Dubble
-    - [ ] Camera focus
+    - [x] Camera focus
     - [ ] Highlight system
     - [ ] Sleep anim
 
 ### Assets and Design
-- [ ] DG
+- [ ] BG
   - [ ] Design
   - [ ] 
 - [ ] Promo
@@ -61,7 +60,10 @@
 
 
 ### Audio
-- [ ] Bruh
+- [ ] Twisted
+  - [ ] Alert
+  - [ ] Rising
+  - [ ] 
 
 
 ### Codebase

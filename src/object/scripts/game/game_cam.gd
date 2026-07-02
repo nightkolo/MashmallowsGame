@@ -40,9 +40,10 @@ func shake(strength: float, fade: float):
 
 
 func _process(delta: float) -> void:
-	if GameMgr.current_main_player && dynamic_cam:
+	var p: Player = GameMgr.current_player
+	if p && dynamic_cam:
 		position = Math.map_range(
-			GameMgr.current_main_player.global_position,
+			p.global_position,
 			p_min,
 			p_max,
 			cam_min,

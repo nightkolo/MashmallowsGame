@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bx4riuxwyodmw"]
 
-[ext_resource type="Script" uid="uid://bvqqxldlat8i5" path="res://world/levels/playground/block_twisted.gd" id="1_p35sq"]
+[ext_resource type="Script" uid="uid://bvqqxldlat8i5" path="res://object/scripts/block_twisted.gd" id="1_p35sq"]
 [ext_resource type="Texture2D" uid="uid://dg568jue416lr" path="res://core/resources/game/twisted_marshmallow_texture.tres" id="2_7yu03"]
-[ext_resource type="Script" uid="uid://deg6bd4paxjlc" path="res://world/levels/playground/block_twisted_animatable_collisions.gd" id="2_8xxo4"]
+[ext_resource type="Script" uid="uid://deg6bd4paxjlc" path="res://object/scripts/block_twisted_animatable_collisions.gd" id="2_8xxo4"]
 [ext_resource type="Texture2D" uid="uid://di0gtwsbffgjt" path="res://assets/objects/block-twisted-1xAny.png" id="3_2j2nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvee0"]
@@ -15,56 +15,11 @@ bodies = [NodePath("AnimatableBody2D"), NodePath("AnimatableBody2D2"), NodePath(
 twisted_mask_gradient = ExtResource("2_7yu03")
 twisted_mask = NodePath("TwistedMask")
 
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=800639809]
-collision_layer = 0
-collision_mask = 9
-script = ExtResource("2_8xxo4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=796999379]
-shape = SubResource("RectangleShape2D_lvee0")
-disabled = true
-
-[node name="AnimatableBody2D2" type="AnimatableBody2D" parent="." unique_id=1816252498]
-collision_layer = 4096
-collision_mask = 9
-script = ExtResource("2_8xxo4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D2" unique_id=1279636235]
-shape = SubResource("RectangleShape2D_lvee0")
-disabled = true
-
-[node name="AnimatableBody2D3" type="AnimatableBody2D" parent="." unique_id=327078020]
-collision_layer = 8
-collision_mask = 9
-script = ExtResource("2_8xxo4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D3" unique_id=1836509003]
-shape = SubResource("RectangleShape2D_lvee0")
-disabled = true
-
-[node name="AnimatableBody2D4" type="AnimatableBody2D" parent="." unique_id=1546255635]
-collision_layer = 8
-collision_mask = 9
-script = ExtResource("2_8xxo4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D4" unique_id=1848590647]
-shape = SubResource("RectangleShape2D_lvee0")
-disabled = true
-
-[node name="AnimatableBody2D5" type="AnimatableBody2D" parent="." unique_id=1351008727]
-collision_layer = 8
-collision_mask = 9
-script = ExtResource("2_8xxo4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D5" unique_id=476015981]
-shape = SubResource("RectangleShape2D_lvee0")
-disabled = true
-
 [node name="TwistedMask" type="Sprite2D" parent="." unique_id=1899553787]
 visible = false
 clip_children = 1
 position = Vector2(37, 32)
-scale = Vector2(-1, -1)
+rotation = 3.1415925
 texture = ExtResource("2_7yu03")
 centered = false
 
@@ -72,3 +27,51 @@ centered = false
 position = Vector2(37, 175)
 scale = Vector2(-0.5, -0.5)
 texture = ExtResource("3_2j2nq")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=800639809]
+collision_layer = 0
+collision_mask = 9
+script = ExtResource("2_8xxo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=796999379]
+shape = SubResource("RectangleShape2D_lvee0")
+
+[node name="AnimatableBody2D2" type="AnimatableBody2D" parent="." unique_id=1816252498]
+position = Vector2(0, -64)
+collision_layer = 4096
+collision_mask = 9
+script = ExtResource("2_8xxo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D2" unique_id=1279636235]
+shape = SubResource("RectangleShape2D_lvee0")
+
+[node name="AnimatableBody2D3" type="AnimatableBody2D" parent="." unique_id=327078020]
+position = Vector2(0, -128)
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("2_8xxo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D3" unique_id=1836509003]
+shape = SubResource("RectangleShape2D_lvee0")
+
+[node name="AnimatableBody2D4" type="AnimatableBody2D" parent="." unique_id=1546255635]
+position = Vector2(0, -192)
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("2_8xxo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D4" unique_id=1848590647]
+shape = SubResource("RectangleShape2D_lvee0")
+
+[node name="AnimatableBody2D5" type="AnimatableBody2D" parent="." unique_id=1351008727]
+position = Vector2(0, -256)
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("2_8xxo4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D5" unique_id=476015981]
+shape = SubResource("RectangleShape2D_lvee0")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1719686623]
+target_position = Vector2(0, -50)
+collision_mask = 4106

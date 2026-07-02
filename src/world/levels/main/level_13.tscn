@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="12_ttc7x"]
 [ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="13_c7yal"]
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="14_xefue"]
-[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/door.gd" id="15_7l7t8"]
+[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/node_door.gd" id="15_7l7t8"]
 [ext_resource type="PackedScene" uid="uid://djgv45k3n5ibr" path="res://object/objects/obj_switch.tscn" id="16_7l7t8"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="16_kbegu"]
 

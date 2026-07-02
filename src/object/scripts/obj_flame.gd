@@ -1,3 +1,4 @@
+## @deprecated
 extends StaticBody2D
 class_name FlameBody2D
 

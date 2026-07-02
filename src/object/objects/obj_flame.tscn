@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bjp2qrj0a6lh6"]
 
 [ext_resource type="Script" uid="uid://bwkaykjreych3" path="res://object/scripts/obj_flame.gd" id="1_06vru"]
-[ext_resource type="Script" uid="uid://c6lgdr2v8327j" path="res://object/scripts/obj_flame_2d.gd" id="1_qoqfh"]
+[ext_resource type="Script" uid="uid://c6lgdr2v8327j" path="res://object/scripts/node_flame_2d.gd" id="1_qoqfh"]
 [ext_resource type="Texture2D" uid="uid://dde8etsa4b6ax" path="res://assets/objects/flame-block.png" id="2_le64c"]
 [ext_resource type="Texture2D" uid="uid://chwlxcy3mll2s" path="res://assets/objects/flame.png" id="3_5l2vt"]
 

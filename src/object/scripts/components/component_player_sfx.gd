@@ -9,6 +9,8 @@ class_name PlayerAudio
 @export var sfx_unmash_enter: AudioStreamPlayer2D
 @export var sfx_unmash_exit: AudioStreamPlayer2D
 
+@onready var listener: AudioListener2D = $AudioListener2D
+
 @onready var land_hard_01: AudioStreamPlayer2D = $LandHard01
 @onready var mash_01: AudioStreamPlayer2D = $Mash01
 @onready var mash_02: AudioStreamPlayer2D = $Mash03

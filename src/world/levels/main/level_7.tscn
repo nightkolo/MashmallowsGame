@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_a7cap"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="10_dfn7m"]
 [ext_resource type="PackedScene" uid="uid://djgv45k3n5ibr" path="res://object/objects/obj_switch.tscn" id="10_wreli"]
-[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/door.gd" id="11_ymk4h"]
+[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/node_door.gd" id="11_ymk4h"]
 [ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="12_plji1"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="12_st48t"]
 [ext_resource type="PackedScene" uid="uid://ck1gettgytye7" path="res://world/interface/level_info.tscn" id="14_a7cap"]

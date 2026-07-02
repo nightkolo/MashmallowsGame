@@ -206,6 +206,7 @@ var amount_collided_with: int:
 
 var _landed: bool
 
+# TODO hanging mid-air
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		set_physics_process(false)

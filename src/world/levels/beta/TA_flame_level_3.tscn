@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="13_c6fs6"]
 [ext_resource type="PackedScene" uid="uid://bjp2qrj0a6lh6" path="res://object/objects/obj_flame.tscn" id="14_awqtn"]
 [ext_resource type="Script" uid="uid://bb0yeghjnhcsy" path="res://world/levels/beta/sticky_platform.gd" id="15_mf15t"]
-[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/door.gd" id="16_l7phh"]
+[ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/node_door.gd" id="16_l7phh"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="17_ski5w"]
 [ext_resource type="PackedScene" uid="uid://djgv45k3n5ibr" path="res://object/objects/obj_switch.tscn" id="18_p3kwf"]
 
