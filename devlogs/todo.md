@@ -1,6 +1,6 @@
 # Todo
 
-## 6-16 (Deadline 6-19)
+## 7-1 (Deadline 7-10)
 
 ### Codebase
 - [ ] Codebase cleanup
@@ -32,8 +32,8 @@
 
 ### Bugs
   - [ ] Twisted
-    - [ ] Highlight system
-    - [ ] Visual indicator
+    - [x] Highlight system
+    - [x] Visual indicator
     - [x] Smoother transition
   - [ ] Bubblegate
     - [ ] Fix interact animation
@@ -41,36 +41,41 @@
     - [x] Camera focus
     - [ ] Highlight system
     - [ ] Sleep anim
+    - [-] Audio dependency
 
 ### Assets and Design
-- [ ] BG
-  - [ ] Design
-  - [ ] 
-- [ ] Promo
-  - [ ] Game artwork
-  - [ ] Game trailer
-- [ ] Project
-  - [ ] Email Avizura about OST
-- [ ] API
-  - [ ] Medals
 - [ ] Artwork
   - [ ] Checkmark
   - [ ] Bakery complete
+- [ ] Promo
+  - [ ] Game artwork
+  - [ ] Game trailer
+- [ ] API
+  - [ ] Medals
+- [ ] Project
+  - [ ] Email Avizura about OST
 - [ ] Objects
+
+### Animation
+- [ ] Mashing
+  - [ ] Mash particles
+- [ ] Twisted Marshmallow
+  - [ ] Match assets colors
+- [ ] Dubbleganger
+  - [ ] Switch
+  - [ ] Active
+  - [ ] Inactive
 
 
 ### Audio
-- [ ] Twisted
-  - [ ] Alert
-  - [ ] Rising
-  - [ ] 
+- [x] Twisted
+  - [x] Alert
+  - [x] Rising
+- [ ] Implementation
 
 
 ### Codebase
 - [ ] Input prompts
     - [ ] Controller (Generic)
 
-
-### Animation
-- [ ] Twisted Marshmallow
 

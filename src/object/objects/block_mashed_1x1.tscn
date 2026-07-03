@@ -195,7 +195,7 @@ position = Vector2(0, 32)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/BlockSprites" unique_id=374561367]
 position = Vector2(0, -32)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_7kr8c")
 
 [node name="Block" type="Sprite2D" parent="Visual/BlockSprites" unique_id=678643639]

@@ -109,7 +109,7 @@ static func get_mash_type_texture(type: MashType, build: BuildType) -> Texture2D
 		MashType.AIR_CHERRY_BOMB:
 			return preload("res://assets/objects/block-cherry-bomb-air.png")
 		MashType.TWISTED:
-			return preload("res://assets/interface/order-twisted-1x1.png")
+			return preload("res://assets/objects/block-twisted-1x1.png")
 
 	var l_name := str(MashType.find_key(type)).to_lower()
 	var build_str := "1x2" if build == BuildType.RECTANGLE else "1x1"

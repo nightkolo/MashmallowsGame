@@ -98,18 +98,11 @@ func _ready() -> void:
 
 	#print(twisted_marshmallow)
 	#print(mash_type == Util.MashType.TWISTED)
-	#collision_mask = 8
+		#collision_mask = 8
+	
 	if mash_type == Util.MashType.TWISTED:
-		collision_mask = 1 + 8
-		var t: Twisted = twisted.instantiate()
-		t.position = Vector2.ZERO
-		add_child(t)
-		move_child(t, 0)
-		twisted_marshmallow = t
-		anim_expanding()
-	else:
-		collision_mask = 1 + 8 + 4096
-
+		sprite_highlight.visible = false
+	
 	if mash_type != Util.MashType.MISC:
 		anim_sleep()
 		particles_z.emitting = true
@@ -122,15 +115,32 @@ func _ready() -> void:
 
 	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type, attributes.is_golden)
 	#
+	spawn_twisted()
 	
-	await get_tree().create_timer(0.1).timeout
+	if was_mashed:
+		await anim_unmashed_finished
 	
 	if mash_type == Util.MashType.TWISTED:
 		sprite_node.visible = false
 	elif GameMgr.current_level:
 		sprite_node.visible = GameMgr.current_level.show_unmashed_blocks
 
-func is_mashable() -> bool: ## @deprecated
+
+func spawn_twisted():
+	if mash_type == Util.MashType.TWISTED:
+		collision_mask = 1 + 8
+		var t: Twisted = twisted.instantiate()
+		t.position = Vector2.ZERO
+		if was_mashed:
+			await anim_unmashed_finished
+		add_child(t)
+		move_child(t, 0)
+		twisted_marshmallow = t
+		anim_expanding()
+	else:
+		collision_mask = 1 + 8 + 4096
+
+func is_mashable() -> bool:
 	return !is_expanding
 
 const EXPAND_TIME = 0.5
@@ -146,9 +156,9 @@ func anim_expanding() -> void:
 	for b: TwistedColliBlock in twisted_marshmallow.bodies:
 		b.position = Vector2.ZERO
 	
-	await get_tree().create_timer(0.2).timeout
+	if was_mashed:
+		twisted_marshmallow.anim_indicator(WAIT_TIME_BEFORE_EXPAND)
 	
-	#if !is_player_on_top():
 	await get_tree().create_timer(WAIT_TIME_BEFORE_EXPAND).timeout
 	
 	started_expanding.emit()
@@ -202,7 +212,13 @@ func is_on_player() -> bool:
 var amount_collided_with: int:
 	set(value):
 		amount_collided_with = value
-		anim_highlight(amount_collided_with > 0)
+		var collidied: bool = amount_collided_with > 0
+		
+		anim_highlight(collidied)
+		
+		if twisted_marshmallow:
+			twisted_marshmallow.anim_highlight(collidied)
+		
 
 var _landed: bool
 
@@ -227,6 +243,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
+signal anim_unmashed_finished()
 
 # Anim
 func anim_unmashed() -> void:
@@ -241,6 +258,10 @@ func anim_unmashed() -> void:
 		tween.tween_property(sprite_node, "rotation_degrees", mag/(5.0/2.0), dur/2.0)
 		tween.tween_property(sprite_node, "rotation_degrees", -mag/5.0, dur/2.0)
 		tween.tween_property(sprite_node, "rotation_degrees", 0.0, dur/2.0)
+		await tween.finished
+		anim_unmashed_finished.emit()
+	else:
+		anim_unmashed_finished.emit()
 
 func anim_sleep() -> void:
 	if sprite_node:
@@ -307,11 +328,11 @@ func anim_highlight(p_mash: bool) -> void:
 			_tween_prompt.tween_property(node_mash_prompt, "scale", Vector2.ONE, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 
 		#sprite_input.visible = true
-		sprite_highlight.visible = true
+		#sprite_highlight.visible = true
 		if can_mash:
 			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52, 0.1)
 		else:
-			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.4, 0.1)
+			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
 		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE), 0.1)
 		
 	else:
@@ -323,10 +344,10 @@ func anim_highlight(p_mash: bool) -> void:
 			_tween_prompt.tween_property(node_mash_prompt, "scale", Vector2.ONE * 0.0, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 
 		if can_mash:
-			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.4, 0.1)
+			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
 		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE, 0.0), 0.1)
 		await _tween_light.finished
-		sprite_highlight.visible = false
+		#sprite_highlight.visible = false
 		if node_mash_prompt:
 			node_mash_prompt.visible = false
 		#sprite_input.visible = false

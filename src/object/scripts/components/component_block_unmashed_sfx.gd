@@ -21,7 +21,10 @@ func _ready():
 			sleep_sfx.play()
 		)
 		block.player_entered.connect(func(entered: bool):
-			if entered:
+			if GameMgr.current_main_player == null:
+				return
+			
+			if entered && GameMgr.current_main_player.is_active:
 				sleep_sfx.volume_db = -14.0
 			else:
 				sleep_sfx.volume_db = -80.0

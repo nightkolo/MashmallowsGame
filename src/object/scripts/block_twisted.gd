@@ -1,12 +1,15 @@
 extends Node2D
 class_name Twisted
 
-@onready var ray_cast: RayCast2D = $RayCast2D
 
 @export var bodies: Array[TwistedColliBlock]
 @export var player: Player
 @export var twisted_mask_gradient: Texture
 @export var twisted_mask: Sprite2D
+
+@onready var ray_cast: RayCast2D = $RayCast2D
+@onready var sprite_unmashable: Sprite2D = %Unmashable
+@onready var sprite_mashable: Sprite2D = %Mashable
 
 var parent_unmashed: Unmashed
 var twisted_strength: float
@@ -44,7 +47,35 @@ func _ready() -> void:
 		player = GameMgr.current_main_player
 		
 	start_stop_expansion()
+
+
+func anim_indicator(dur: float) -> void:
+	var t:= create_tween().set_loops(3)
 	
+	sprite_mashable.visible = true
+	sprite_unmashable.visible = true
+	
+	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 1.0), dur * 0.05)
+	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 0.0), dur * 0.25)
+	
+	var t_b := create_tween().set_loops(3)
+	
+	t_b.tween_property(twisted_mask, "position:y", (Util.BLOCK_SIZE * 0.5) - 3.0, dur * 0.05)
+	t_b.tween_property(twisted_mask, "position:y", Util.BLOCK_SIZE * 0.5, dur * 0.25)
+
+
+
+
+func anim_highlight(close: bool) -> void:
+	if parent_unmashed == null:
+		return
+		
+	if close && parent_unmashed.is_mashable():
+		sprite_mashable.visible = true
+	else:
+		sprite_mashable.visible = false
+		
+
 	
 func anim_show() -> void:
 	var t:= create_tween()

@@ -290,8 +290,6 @@ func mash() -> bool: ## Ok O(1)
 	
 	var dubbles: Array = block_detect.dubbleganger_detect_1x1.get_overlapping_bodies()
 	
-	# TODO remove debug lines
-	print_debug(dubbles)
 	
 	for p: Player in dubbles:
 		if p != parent_player:
@@ -519,7 +517,7 @@ func anim_highlight(p_mash: bool) -> void:
 	if p_mash:
 		_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52, 0.1)
 	else:
-		_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.4, 0.1)
+		_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
 		await _tween_light.finished
 		
 		

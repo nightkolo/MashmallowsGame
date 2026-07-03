@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dg568jue416lr" path="res://core/resources/game/twisted_marshmallow_texture.tres" id="2_7yu03"]
 [ext_resource type="Script" uid="uid://deg6bd4paxjlc" path="res://object/scripts/block_twisted_animatable_collisions.gd" id="2_8xxo4"]
 [ext_resource type="Texture2D" uid="uid://di0gtwsbffgjt" path="res://assets/objects/block-twisted-1xAny.png" id="3_2j2nq"]
+[ext_resource type="Texture2D" uid="uid://bhfflnx828xex" path="res://assets/objects/block-twisted-1xAny-mashable.png" id="4_gw6md"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvee0"]
 size = Vector2(64, 64)
@@ -16,17 +17,24 @@ twisted_mask_gradient = ExtResource("2_7yu03")
 twisted_mask = NodePath("TwistedMask")
 
 [node name="TwistedMask" type="Sprite2D" parent="." unique_id=1899553787]
-visible = false
 clip_children = 1
 position = Vector2(37, 32)
 rotation = 3.1415925
 texture = ExtResource("2_7yu03")
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="TwistedMask" unique_id=1044857695]
+[node name="Unmashable" type="Sprite2D" parent="TwistedMask" unique_id=1044857695]
+unique_name_in_owner = true
 position = Vector2(37, 175)
 scale = Vector2(-0.5, -0.5)
 texture = ExtResource("3_2j2nq")
+
+[node name="Mashable" type="Sprite2D" parent="TwistedMask" unique_id=1830368332]
+unique_name_in_owner = true
+visible = false
+position = Vector2(37, 175)
+scale = Vector2(-0.5, -0.5)
+texture = ExtResource("4_gw6md")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=800639809]
 collision_layer = 4096

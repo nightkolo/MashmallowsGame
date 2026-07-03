@@ -72,6 +72,7 @@ var input_x: float
 var input_y: float
 var is_active: bool = true
 var is_exploding: bool ## Is during Cherry Bomb explosion animation
+var is_hanging: bool = false
 var player_blocks_code: Array[Dictionary] = []
 var child_blocks: Array[Mashed] = [] # Stack data structure
 var new_child_blocks: Array[Mashed] # Temporary Stack data structure
@@ -121,12 +122,8 @@ func show_reset_notice(wait: float = 4.0) -> void:
 
 
 func _ready() -> void:
-	if !dubbleganger:
-		GameMgr.current_main_player = self
-		GameMgr.current_player = self
-	else:
-		self_modulate = Color(Color.WHITE * 0.75, 1.0)
-		
+	_ready_dubbleganger()
+	
 	if original_block:
 		original_block.is_original = true
 
@@ -140,9 +137,7 @@ func _ready() -> void:
 	anim_idle_animation()
 
 	## EVENTS
-	has_touched_ceiling.connect(func():
-		print("has_touched_ceiling")
-		)
+	# TODO
 	has_landed.connect(func(strength: float):
 		var s := strength / 80.0
 		
@@ -175,6 +170,16 @@ func _ready() -> void:
 		)
 	
 	new_child_blocks.clear()
+
+
+func _ready_dubbleganger() -> void:
+	if !dubbleganger:
+		GameMgr.current_main_player = self
+		GameMgr.current_player = self
+	else:
+		self_modulate = Color(Color.WHITE * 0.75, 1.0)
+	
+	set_active(!dubbleganger)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -275,10 +280,7 @@ func anim_idle_animation() -> void:
 			block.anim.play("RESET")
 			block.is_idle_animating = false
 		)
-
-
-#var mash_timer: Timer = Timer.new()
-
+		
 
 func mash_child_blocks() -> void: ## Ok -> O(n)
 	if !can_perform_mash():
@@ -297,15 +299,6 @@ func mash_child_blocks() -> void: ## Ok -> O(n)
 			animator.anim_down(false, true)
 			
 			break
-
-
-func is_colliding() -> bool:
-	for block: Mashed in child_blocks:
-		if block.block_detect.is_colliding():
-			return true
-			
-	return false
-
 
 
 func unmash() -> void: # -> O(1)
@@ -407,6 +400,14 @@ func get_unmashed_object(type: Util.BuildType) -> Unmashed:
 			return null
 
 
+func is_colliding() -> bool:
+	for block: Mashed in child_blocks:
+		if block.block_detect.is_colliding():
+			return true
+			
+	return false
+	
+
 func is_being_flown() -> bool:
 	return cherry_bomb_air_timer.time_left > 0.0
 
@@ -433,12 +434,6 @@ func can_unmash() -> bool:
 	return is_active && child_blocks.size() > 1 && !is_exploding && !GameLogic.has_won && !(input_y > 0.0)
 
 
-func return_position() -> void:
-	await get_tree().create_timer(0.01).timeout
-	
-	position = _pos_before_mash
-
-
 func is_tall_block_mashed() -> bool:
 	if child_blocks.size() == 1:
 		return false
@@ -448,6 +443,12 @@ func is_tall_block_mashed() -> bool:
 			return true
 	
 	return false
+	
+	
+func return_position() -> void:
+	await get_tree().create_timer(0.01).timeout
+	
+	position = _pos_before_mash
 
 
 func stop_jump_sfx() -> void:
@@ -458,8 +459,6 @@ func stop_jump_sfx() -> void:
 	if audio.sfx_jump_heavy.playing:
 		audio.sfx_jump_heavy.stop()
 
-
-var is_hanging: bool = false
 
 func hang() -> void:
 	position.y -= 10.0
@@ -491,9 +490,6 @@ func jump() -> void:
 			audio.sfx_jump_single.play()
 	
 	has_jumpped.emit()
-	
-	#var strength := -jump_height * 0.65 if is_on_sticky_platform() else -jump_height
-	
 	velocity.y = -jump_height
 	move_and_slide()
 	
@@ -501,24 +497,10 @@ func jump() -> void:
 
 ## Returns true if the player on a unmashed block (including [TwistedColliBlock]).
 func is_on_block() -> bool:
-	#var cond: bool = twisted_only
-	
 	for block: Mashed in child_blocks:
-		#if cond:
-			#var ray: ShapeCast2D = block.block_detect.blocks_ray
-			#
-			#if !ray.is_colliding():
-				#continue
-			#
-			#var obj: Node2D = ray.get_collider(0)
-			#
-			#if obj is Unmashed:
-				#if (obj as Unmashed).mash_type == Util.MashType.TWISTED:
-					#return true
 		if block.is_on_block():
 			return true
 	return false
-	
 	
 ## Returns true if the player on ground tilemap, and not other unmashed blocks
 ## -> Worst case, O(n)
@@ -529,19 +511,13 @@ func is_on_ground() -> bool:
 	return false
 
 
-## Returns true if the player on stiky platform only.
-## -> Worst case, O(n)
-## @experimental
-#func is_on_sticky_platform() -> bool:
-	#if !is_sticky_platform_present:
-		#return false
-	#
-	#for block: Mashed in child_blocks:
-		#if block.is_on_sticky_platform():
-			#return true
-	#return false
+func is_on_player() -> bool:
+	for block: Mashed in child_blocks:
+		if block.is_on_player():
+			return true
+	return false
 
-
+# MOVE
 var _prev_position: Vector2
 var velocity_position_based: Vector2
 
@@ -553,26 +529,17 @@ func get_position_based_velocity(global_pos: Vector2, delta: float) -> Vector2:
 	var vel := (global_pos - _prev_position) / delta
 	_prev_position = global_pos
 	return vel
-
-
-func is_on_player() -> bool:
-	for block: Mashed in child_blocks:
-		if block.is_on_player():
-			return true
-	return false
-
-
+#
 
 func _move(delta: float) -> void:
+	# Apply gravity if player is not on floor and is not hanging
+	# Otherwise, if hanging (on top of a dappelganger) wait til is not
 	if !is_on_floor() && !is_hanging:
 		velocity += get_gravity() * delta
 	elif is_hanging:
-		var res: bool = is_on_player()
-		print_debug(res)
-		if !res:
+		if !is_on_player():
 			is_hanging = false
 			
-		
 	var was_on_floor = is_on_floor()
 	
 	_last_velocity_y = velocity.y
@@ -588,7 +555,6 @@ func _move(delta: float) -> void:
 		
 		state_machine.change_state("AirState", {"jumped": false, "falling": true})
 	
-	
 	if is_active && Input.is_action_just_pressed("move_jump"):
 		if coyote_jump_timer.time_left > 0.0:
 			jump()
@@ -599,7 +565,6 @@ func _move(delta: float) -> void:
 			jump()
 			
 	## If the player in on the floor and within the jump window/jump buffer timer, then jump
-	## The player is stuck
 	if is_on_floor() && !jump_window_timer.is_stopped():
 		jump()
 		
@@ -611,61 +576,74 @@ func _move(delta: float) -> void:
 		input_y = Input.get_axis("move_up", "move_down")
 
 
-
+# STATE
 var _run: bool
 var _ceiling: bool
 
 func is_running_full() -> bool:
 	return absf(velocity.x) == speed
+#
+
 
 func _state() -> void:
-	# var stop := is_equal_approx(velocity.x, 0.0)
-
+	# Run call
 	if state_machine.current_state is RunState && is_running_full() && !_run:
 		is_running.emit()
 		_run = true
 
-	if (velocity.x == 0.0) && !_stopped:
+	if velocity.x == 0.0 && !_stopped:
 		has_stopped.emit()
 		_stopped = true
 		_run = false
-
 	elif velocity.x != 0.0:
 		_stopped = false
-
+	#
+	
+	# Ceiling call
 	if !_ceiling && is_on_ceiling():
 		has_touched_ceiling.emit()
 		_ceiling = true
-		
 	elif is_on_floor():
 		_ceiling = false
-
+	#
+	
+	# Land call
 	if !_landed && is_on_floor():
 		has_landed.emit(abs(_last_velocity_y / 100.0))
 		_landed = true
 		
 	if !is_on_floor():
 		_landed = false
+	# 
+	
+	# Ceiling hit
+	if animator == null:
+		return
 		
-	if animator:
-		if is_on_ceiling() && animator.tween_jump:
-			animator.tween_jump.kill()
-			
-			for block: Mashed in child_blocks:
-				block.sprite_block.scale = Vector2.ONE * 0.5
+	if is_on_ceiling() && animator.tween_jump:
+		animator.tween_jump.kill()
+		
+		for block: Mashed in child_blocks:
+			block.sprite_block.scale = Vector2.ONE * 0.5
 
 
 func _animate(delta: float) -> void:
-	# TODO: Refactor
-	
+	var target_x := input_x * 6.0
+	var target_y := 0.0
+
+	if input_y != 0.0 && is_on_floor():
+		target_y = input_y * 12.0
+	else:
+		target_y = minf(12.0, velocity_position_based.y / 50.0)
+
 	for block: Mashed in child_blocks:
-		if block:
-			var node: Node2D = block.node_eye_sprites
-			var move_y := input_y * 12.0 if (input_y != 0.0) && is_on_floor() else minf(12.0, velocity_position_based.y / 50.0)
-			node.position = Vector2(
-				move_toward(node.position.x, input_x * 6.0, delta * 100.0),
-				move_toward(node.position.y, move_y, delta * 200.0)
-			) 
+		if block == null:
+			continue
+
+		var node: Node2D = block.node_eye_sprites
+
+		node.position.x = move_toward(node.position.x, target_x, delta * 100.0)
+		node.position.y = move_toward(node.position.y, target_y, delta * 200.0)
 
 
 func _physics_process(delta: float) -> void:
@@ -674,15 +652,10 @@ func _physics_process(delta: float) -> void:
 	_state()
 	_animate(delta)
 	
-	#print(is_on_ceiling())
-	
 
 func _check_child_blocks() -> void:
 	if new_child_blocks.is_empty():
 		return
-	
-	# TODO: Fix for 1x2 blocks
-	# There's issues probably
 	
 	for i in range(1, new_child_blocks.size()):
 		if new_child_blocks[i].position == new_child_blocks[0].position:

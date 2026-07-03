@@ -76,10 +76,10 @@ blink_time = 1.0
 blink_interval = 0.0
 
 [node name="Base" parent="MashPrompt/InputPrompt" index="1" unique_id=736620297]
-position = Vector2(0, -2)
+position = Vector2(0, 0.37536)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -68908.07
+rotation = -69726.45
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"
@@ -90,6 +90,7 @@ text = "X"
 position = Vector2(0, 35)
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=690881826]
+unique_name_in_owner = true
 position = Vector2(0, -35)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_4m1b3")
