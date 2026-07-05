@@ -342,9 +342,12 @@ func mash() -> bool: ## Ok O(1)
 			continue
 
 		var top: Unmashed = unmashed.get_top_unmashed()
-		
 		if top:
 			top.move_up(5.0)
+		
+		var u: UnmashedSpawner = unmashed.unmashed_spawner as UnmashedSpawner
+		if u:
+			u.has_been_taken = true
 		
 		collided = true
 		

@@ -20,6 +20,8 @@ class_name UnmashedSpawner
 var unmashed_object: PackedScene = preload("res://object/objects/block_unmashed_1x1.tscn")
 var unmashed_object_1x2: PackedScene = preload("res://object/objects/block_unmashed_1x2.tscn")
 
+var has_been_taken: bool = false
+
 
 func display_block() -> void:
 	if sprite == null:
@@ -33,6 +35,12 @@ func display_block() -> void:
 func _ready() -> void:
 	add_to_group("Spawner")
 	display_block()
+
+
+	var type: Util.MashType = block_attributes.mash_type
+	
+	if type == Util.MashType.CHERRY_BOMB || type == Util.MashType.AIR_CHERRY_BOMB:
+		GameMgr.current_player.cherry_bomb_exploded.connect(regen)
 
 	if !Engine.is_editor_hint():
 		sprite.self_modulate = Color(Color.WHITE, 0.0)
@@ -61,14 +69,20 @@ func _deflect_end() -> void:
 			sprite = null
 
 
+func regen() -> void:
+	spawn()
+	
+	has_been_taken = false
+
+
 func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: ## Self-explanatory.
 	var unmashed: Unmashed = _get_unmashed_object(block_attributes.build_type)
 	unmashed.global_position = global_position
 	unmashed.attributes = block_attributes
 	unmashed.tutorial_block = tutorial_block
 	unmashed.cherry_bomb_strength = cherry_bomb_strength
-	print_debug(twisted_strength)
 	unmashed.twisted_strength = twisted_strength
+	unmashed.unmashed_spawner = self
 	unmashed.was_mashed = false
 	
 	await _deflect_end()

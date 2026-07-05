@@ -65,6 +65,7 @@ var attributes: BlockAttributes
 
 var twisted: PackedScene = preload("res://object/objects/block_twisted_collision.tscn")
 
+var unmashed_spawner: Node
 var was_mashed: bool = false
 var is_player_close: bool = false:
 	set(value):
