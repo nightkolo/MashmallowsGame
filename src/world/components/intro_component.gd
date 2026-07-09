@@ -26,14 +26,14 @@ func setup():
 	await get_tree().create_timer(0.1).timeout
 	player.sprite_player_zoom_in.visible = true
 	(player.sprite_player_zoom_in.texture as GradientTexture2D).fill_to = Vector2(0.5, 0.501)
-	player.no_move = true
+	player.is_active = true
 	NPC.millie.visual_root.modulate = Color(Color.WHITE * 0.2, 1.0)
 	#NPC.board.modulate = Color(Color.WHITE * 0.75, 1.0)
 	NPC.millie.show_outline = true
 	
 	await get_tree().create_timer(1.0).timeout
 	player.animator.anim_tease_zoom_out()
-	player.no_move = false
+	player.is_active = false
 
 
 func set_monolog() -> void:

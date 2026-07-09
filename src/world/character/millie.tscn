@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c87t45qdghyro" path="res://assets/character/millie-body.png" id="2_tqthd"]
 [ext_resource type="Texture2D" uid="uid://bmawkw612end3" path="res://assets/character/millie-arm-r.png" id="2_yq6py"]
 [ext_resource type="Texture2D" uid="uid://cpopxeugsevk1" path="res://assets/character/millie-back-hair.png" id="3_6pub8"]
-[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://core/scripts/nodes/tiled_sprite_2d.gd" id="3_vcxqx"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://object/scripts/node_tiled_sprite_2d.gd" id="3_vcxqx"]
 [ext_resource type="Texture2D" uid="uid://dctjj40q7emnp" path="res://assets/character/millie-ear-l.png" id="4_w710h"]
 [ext_resource type="Texture2D" uid="uid://b0s8brfs5ue4n" path="res://assets/character/millie-ear-outline.png" id="5_1y7t3"]
 [ext_resource type="Texture2D" uid="uid://ragu8x0oo5vx" path="res://assets/character/millie-ear-r.png" id="5_6pub8"]

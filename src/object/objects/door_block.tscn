@@ -13,8 +13,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivh0c"]
 size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5iui"]
-size = Vector2(70, 70)
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_qu61c"]
+length = 40.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_iexf5"]
+length = 40.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_3idpj"]
+length = 40.0
+
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_lgyk2"]
+length = 40.0
 
 [node name="DoorBlock" type="CollisionShape2D" unique_id=1732091715]
 shape = SubResource("RectangleShape2D_ivh0c")
@@ -37,12 +46,50 @@ unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_4dssy")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=234659310]
+[node name="Down" type="Area2D" parent="." unique_id=1530081352]
+position = Vector2(0, 1)
 collision_layer = 0
 collision_mask = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=859384282]
-shape = SubResource("RectangleShape2D_r5iui")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down" unique_id=962200862]
+rotation = 0.2617994
+shape = SubResource("SeparationRayShape2D_qu61c")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Down" unique_id=472200053]
+rotation = -0.2617994
+shape = SubResource("SeparationRayShape2D_qu61c")
+
+[node name="Up" type="Area2D" parent="." unique_id=2115994512]
+position = Vector2(0, -1)
+rotation = 3.1415927
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up" unique_id=2093903352]
+rotation = 0.2617994
+shape = SubResource("SeparationRayShape2D_iexf5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Up" unique_id=513568710]
+rotation = -0.2617994
+shape = SubResource("SeparationRayShape2D_iexf5")
+
+[node name="Right" type="Area2D" parent="." unique_id=1272439641]
+position = Vector2(1, 0)
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right" unique_id=1499612281]
+rotation = -1.5707964
+shape = SubResource("SeparationRayShape2D_3idpj")
+
+[node name="Left" type="Area2D" parent="." unique_id=1469704738]
+position = Vector2(-1, 0)
+rotation = 1.5707964
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=757950327]
+shape = SubResource("SeparationRayShape2D_lgyk2")
 
 [node name="Close" type="Node2D" parent="." unique_id=1023223676]
 

@@ -26,7 +26,7 @@ func the_checkerboard_has_been_checkered() -> void:
 	#is_game_paused = true
 	#game_pause_toggled.emit(true)
 	if GameMgr.current_main_player:
-		GameMgr.current_main_player.no_move = true
+		GameMgr.current_main_player.is_active = false
 	checkerboard_complete_screen.open()
 
 

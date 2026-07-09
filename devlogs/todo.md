@@ -3,7 +3,7 @@
 ## 7-1 (Deadline 7-10)
 
 ### Codebase
-- [ ] Codebase cleanup
+- [x] Codebase cleanup
   - [x] Core code
     - [x] Game manager
     - [x] Game Logic
@@ -11,60 +11,65 @@
   - [x] Levels and worlds
     - [x] Level code
     - [x] World nodes
-  - [ ] Objects
-- [ ] 
 
 ### Gameplay
 - [ ] Gameplay improvements
-  - [ ] Regen System
-    - [ ] Cherry Bombs
-    - [ ] Twisted blocks
+  - [x] Regen System
+    - [x] Cherry Bombs
+  - [ ] Bakery complete screen animation
+  - [ ] Bakery transtioins
 - [ ] Bakery 2
   - [ ] Level structure
     - [x] 1-3
     - [x] 4-6
     - [ ] 7-9
     - [ ] 10
-  - [ ] Mechanics introduced
+  - [x] Mechanics introduced
     - [x] Twisted
     - [x] Dubblegänger
 
 
 ### Bugs
-  - [ ] Twisted
+  - [x] Twisted
     - [x] Highlight system
     - [x] Visual indicator
     - [x] Smoother transition
-  - [ ] Bubblegate
-    - [ ] Fix interact animation
+  - [x] Bubblegate
+    - [x] Fix interact animation
   - [ ] Dubble
     - [x] Camera focus
     - [ ] Highlight system
     - [ ] Sleep anim
     - [-] Audio dependency
+  - [ ] Intro
+    - [ ] Rewrites
 
 ### Assets and Design
 - [ ] Artwork
-  - [ ] Checkmark
+  - [x] Checkmark
+  - [x] Ribbon
   - [ ] Bakery complete
 - [ ] Promo
+  - [ ] Game section
   - [ ] Game artwork
-  - [ ] Game trailer
+  - [ ] Game trailer layout
+- [x] Objects
+  - [x] Dubble outline
 - [ ] API
+  - [ ] Medal ideas
   - [ ] Medals
 - [ ] Project
   - [ ] Email Avizura about OST
-- [ ] Objects
 
 ### Animation
 - [ ] Mashing
   - [ ] Mash particles
-- [ ] Twisted Marshmallow
-  - [ ] Match assets colors
 - [ ] Dubbleganger
   - [ ] Switch
   - [ ] Active
   - [ ] Inactive
+- [x] Twisted Marshmallow
+  - [x] Match assets colors
 
 
 ### Audio
@@ -73,6 +78,11 @@
   - [x] Rising
 - [ ] Implementation
 
+
+# Roadmap
+
+
+- [ ] Bakery complete anim
 
 ### Codebase
 - [ ] Input prompts

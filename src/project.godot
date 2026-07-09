@@ -14,7 +14,7 @@ config/name="Mashmallows"
 config/version="3.0.2-alpha"
 run/main_scene="uid://cxbpqh6onu3ar"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://dd1alylox6etu"
 
 [audio]
 

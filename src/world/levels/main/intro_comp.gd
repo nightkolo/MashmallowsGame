@@ -67,7 +67,7 @@ func _ready() -> void:
 		await get_tree().create_timer(1.5).timeout
 
 		await player.animator.anim_zoom_in()
-		player.no_move = true
+		player.is_active = true
 
 		if GameData.runtime_data.has("first_session"):
 			GameData.runtime_data["first_session"] = false

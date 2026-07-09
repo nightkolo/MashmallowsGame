@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdgcvmm6phosi" path="res://assets/interface/speech-bubble-01.png" id="2_4dudd"]
 [ext_resource type="Texture2D" uid="uid://cxvh8xb1jrys0" path="res://assets/interface/tile-01.png" id="3_3nxva"]
 [ext_resource type="Script" uid="uid://fxlkx3uku371" path="res://world/interface/anim_monolog_arrow.gd" id="4_3nxva"]
-[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://core/scripts/nodes/tiled_sprite_2d.gd" id="4_q7ypm"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://object/scripts/node_tiled_sprite_2d.gd" id="4_q7ypm"]
 [ext_resource type="Texture2D" uid="uid://cgq0uf5sbuc4y" path="res://assets/interface/spiral-01.png" id="5_2u6u0"]
 [ext_resource type="Texture2D" uid="uid://dijxm1mx3uc6k" path="res://assets/interface/speech-bubble-02.png" id="5_lioc5"]
 [ext_resource type="Texture2D" uid="uid://c7j8xf8pbj1lw" path="res://assets/interface/monolog-arrows-01.png" id="7_3nxva"]

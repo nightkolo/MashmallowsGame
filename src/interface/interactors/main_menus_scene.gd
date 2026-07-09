@@ -259,7 +259,7 @@ func _reset_tween_fade_in() -> void:
 
 #func _apply_ui_juice() -> void:
 	## NOTE: This is all very hacky code.
-	#bokobody.no_move = false
+	#bokobody.is_active = false
 	#
 	#_setup_bokobody()
 	#

@@ -11,9 +11,11 @@ class_name DoorBlock
 @onready var sprite_inflators: Sprite2D = %Inflators
 @onready var sprite_bubble: Sprite2D = %Bubble
 @onready var sprite_eye: Sprite2D = %Eye
-@onready var area_2d: Area2D = $Area2D
+#@onready var area_2d: Area2D = $Area2D
 @onready var open_sfx: Array[AudioStreamPlayer2D] = [%Open01, %Open02, %Open03]
 @onready var close_sfx: Array[AudioStreamPlayer2D] = [%Close01, %Close02]
+
+@onready var detector_rays: Array[Area2D] = [$Down, $Up, $Right, $Left]
 
 
 var is_activated: bool:
@@ -44,31 +46,35 @@ var tween_squish: Tween
 func _ready() -> void:
 	anim_eye_wobble()
 	
-	area_2d.body_exited.connect(func(body: Node2D):
-		#if body is Node2D:
-		if tween_squish:
-			tween_squish.kill()
-		
-		tween_squish = create_tween()
-		tween_squish.tween_property(sprite_bubble, "scale", Vector2.ONE * 0.5, 1.25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-		)
-	area_2d.body_entered.connect(func(body: Node2D):
-		#if body is Player:
-		var p: Node2D = body as Node2D
-		
-		var offset: Vector2 = p.global_position - global_position
+	for area: Area2D in detector_rays:
+		area.body_entered.connect(func(body: Node2D):
+			anim_body_entered(area.position.sign())
+			)
+		area.body_exited.connect(func(_body: Node2D):
+			#for in_area: Area2D in detector_rays:
+				#print_debug("%s: %s" % [self, in_area.get_overlapping_bodies()])
+			anim_body_exited()
+			)
 
-		if tween_squish:
-			tween_squish.kill()
-		
-		tween_squish = create_tween()
-		if abs(offset.x) > abs(offset.y):
-			tween_squish.tween_property(sprite_bubble, "scale", Vector2(0.8, 1.0) * 0.5, 0.1)
-		else:
-			tween_squish.tween_property(sprite_bubble, "scale", Vector2(1.0, 0.8) * 0.5, 0.1)
+func anim_body_entered(dir: Vector2) -> void:
+	var offset: Vector2 = dir
 
-		)
-		
+	if tween_squish:
+		tween_squish.kill()
+	
+	tween_squish = create_tween()
+	if abs(offset.x) > abs(offset.y):
+		tween_squish.tween_property(sprite_bubble, "scale", Vector2(0.8, 1.0) * 0.5, 0.1)
+	else:
+		tween_squish.tween_property(sprite_bubble, "scale", Vector2(1.0, 0.8) * 0.5, 0.1)
+
+
+func anim_body_exited() -> void:
+	if tween_squish:
+		tween_squish.kill()
+	
+	tween_squish = create_tween()
+	tween_squish.tween_property(sprite_bubble, "scale", Vector2.ONE * 0.5, 1.25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		
 
 func activate(p_activate: bool) -> void:
