@@ -38,7 +38,8 @@
     - [x] Fix interact animation
   - [ ] Dubble
     - [x] Camera focus
-    - [ ] Highlight system
+    - [x] Highlight system
+    - [ ] Hat
     - [ ] Sleep anim
     - [-] Audio dependency
   - [ ] Intro

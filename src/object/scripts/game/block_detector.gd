@@ -47,6 +47,8 @@ func is_colliding() -> bool:
 
 func notify_highlight_state(unmashed_block_detected: Node2D, entered: int):
 	
+	print_debug(unmashed_block_detected)
+	
 	parent_block.anim_highlight(is_colliding())
 	if unmashed_block_detected is Unmashed:
 		#parent_block.anim_highlight(is_colliding())
@@ -56,6 +58,11 @@ func notify_highlight_state(unmashed_block_detected: Node2D, entered: int):
 		#
 	elif unmashed_block_detected is TwistedColliBlock:
 		(unmashed_block_detected as TwistedColliBlock).parent_unmashed.amount_collided_with += entered
+	
+	elif unmashed_block_detected is Player:
+		parent_block.anim_highlight(entered > 0)
+	
+	
 
 
 func _ready() -> void:
@@ -86,5 +93,3 @@ func _ready() -> void:
 				# Signal connect
 				unmashed_block_detect_1x1.body_entered.connect(notify_highlight_state.bind(1))
 				unmashed_block_detect_1x1.body_exited.connect(notify_highlight_state.bind(-1))
-			
-			

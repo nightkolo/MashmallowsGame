@@ -9,6 +9,7 @@ signal has_moved() ## Emits when player enters [RunState]
 signal has_idled() ## Emits when player enters [IdleState]
 
 # GAMEPLAY EVENTS
+signal active_state_changed(is_active: bool)
 signal has_waken_up()
 signal has_landed(strength: float)
 signal has_touched_ceiling()
@@ -70,7 +71,10 @@ var flown_deceleration: float = deceleration / 3.2
 # State
 var input_x: float
 var input_y: float
-var is_active: bool = true
+var is_active: bool = true:
+	set(value):
+		active_state_changed.emit(value)
+		is_active = value
 var is_exploding: bool ## Is during Cherry Bomb explosion animation
 var is_hanging: bool = false
 var player_blocks_code: Array[Dictionary] = []
