@@ -17,6 +17,8 @@ signal cherry_bomb_activated()
 signal cherry_bomb_exploded()
 signal is_running() ## Emits when player is in [RunState] at full [member speed] after accelerating.
 signal has_stopped() ## Emits when player full stops ([code]velocity == 0.0[/code]), regardless of state. (i.e. hits wall)
+signal move_state_changed(direction: float)
+signal is_emoting(on: bool)
 
 # LOGIC
 signal check_finished() ## @deprecated
@@ -473,7 +475,7 @@ func hang() -> void:
 func drop() -> void:
 	if !is_active:
 		return
-		
+	
 	animator.anim_down(true)
 	position.y += 10.0
 
@@ -589,6 +591,8 @@ func is_running_full() -> bool:
 #
 
 
+var velo: float
+
 func _state() -> void:
 	# Run call
 	if state_machine.current_state is RunState && is_running_full() && !_run:
@@ -601,6 +605,13 @@ func _state() -> void:
 		_run = false
 	elif velocity.x != 0.0:
 		_stopped = false
+	
+	var sx := signf(velocity.x)
+	
+	if sx != velo:
+		move_state_changed.emit(sx)
+	
+	velo = sx
 	#
 	
 	# Ceiling call

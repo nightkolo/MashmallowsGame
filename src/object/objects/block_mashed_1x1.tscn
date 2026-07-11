@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dwkdg7wxabl4p" path="res://assets/objects/block-eyes-regular.png" id="4_lydfl"]
 [ext_resource type="Texture2D" uid="uid://dapafw2ycdflq" path="res://assets/objects/block-shade-1x1-01.png" id="5_oksdx"]
 [ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="6_w6yib"]
+[ext_resource type="Texture2D" uid="uid://c0wtl7hbr0g4f" path="res://assets/objects/hat-01.png" id="7_k0uj8"]
 [ext_resource type="Texture2D" uid="uid://28pnv22t5b7d" path="res://assets/objects/block-eyes-angry-black.png" id="8_k0uj8"]
 [ext_resource type="PackedScene" uid="uid://bmu1cdw8x8kxs" path="res://world/effects/player_particles_dust.tscn" id="9_5gpwc"]
 [ext_resource type="Texture2D" uid="uid://cwhqh20gmoa4t" path="res://assets/objects/block-eyes-choco.png" id="9_q7goy"]
@@ -162,7 +163,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0uj8"]
 size = Vector2(70, 70)
 
-[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed")]
+[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "node_hat", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_hat", "sprite_eyes_wide", "sprite_eyes_closed")]
 shape = SubResource("ConvexPolygonShape2D_ry2ml")
 script = ExtResource("2_lydfl")
 block_detect = NodePath("BlockDetect")
@@ -174,12 +175,14 @@ anim = NodePath("AnimationPlayer")
 node_block_sprites = NodePath("Visual/BlockSprites")
 node_eye_sprites_2 = NodePath("Visual/Node2D")
 node_eye_sprites = NodePath("Visual/Node2D/EyeSprites")
+node_hat = NodePath("Visual/Hat")
 sprite_shade = NodePath("Visual/BlockSprites/Shade")
 sprite_block = NodePath("Visual/BlockSprites/Block")
 sprite_highlight = NodePath("Visual/BlockSprites/Highlight")
 sprite_eyes_open = NodePath("Visual/Node2D/EyeSprites/Regular/Open")
 sprite_eyes_regular = NodePath("Visual/Node2D/EyeSprites/Regular")
 sprite_eyes_angry = NodePath("Visual/Node2D/EyeSprites/Angy")
+sprite_hat = NodePath("Visual/Hat/Hat")
 sprite_eyes_wide = NodePath("Visual/Node2D/EyeSprites/Wide")
 sprite_eyes_closed = NodePath("Visual/Node2D/EyeSprites/Closed")
 metadata/_custom_type_script = "uid://bgc37b0mpxwv3"
@@ -209,6 +212,14 @@ self_modulate = Color(1, 1, 1, 0.3)
 position = Vector2(0, -32)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("5_oksdx")
+
+[node name="Hat" type="Node2D" parent="Visual" unique_id=889274517]
+position = Vector2(0, -24)
+
+[node name="Hat" type="Sprite2D" parent="Visual/Hat" unique_id=1408309154]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_k0uj8")
+offset = Vector2(0, -50)
 
 [node name="Node2D" type="Node2D" parent="Visual" unique_id=1446058277]
 
@@ -252,8 +263,6 @@ position = Vector2(0, 30)
 
 [node name="L" parent="." unique_id=531245437 instance=ExtResource("11_tf56s")]
 position = Vector2(0, 30)
-
-[node name="Node2D" type="Node2D" parent="." unique_id=76952978]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=407392182]
 libraries/ = SubResource("AnimationLibrary_1dnrr")

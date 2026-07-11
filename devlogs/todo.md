@@ -14,10 +14,10 @@
 
 ### Gameplay
 - [ ] Gameplay improvements
+  - [ ] Bakery complete screen animation
   - [x] Regen System
     - [x] Cherry Bombs
-  - [ ] Bakery complete screen animation
-  - [ ] Bakery transtioins
+  - [x] Bakery transtioins
 - [ ] Bakery 2
   - [ ] Level structure
     - [x] 1-3
@@ -33,13 +33,13 @@
   - [ ] Dubble
     - [x] Camera focus
     - [x] Highlight system
-    - [ ] Hat
-    - [ ] Sleep anim
+    - [x] Hat
+    - [x] Sleep anim
     - [-] Audio dependency
   - [ ] Intro
     - [ ] Rewrites
-  - [x] Twisted
-    - [x] Highlight system
+  - [ ] Twisted
+    - [ ] Highlight system
     - [x] Visual indicator
     - [x] Smoother transition
   - [x] Bubblegate

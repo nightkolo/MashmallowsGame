@@ -38,12 +38,15 @@ var attributes: BlockAttributes
 @export var node_block_sprites: Node2D # node_block_sprites
 @export var node_eye_sprites_2: Node2D # node_eye_sprites
 @export var node_eye_sprites: Node2D # node_eye_sprites
+@export var node_hat: Node2D
 @export var sprite_shade: Sprite2D
 @export var sprite_block: Sprite2D  # sprite_block
 @export var sprite_highlight: Sprite2D
 @export var sprite_eyes_open: Sprite2D #sprite_eyes_open
 @export var sprite_eyes_regular: Node2D
 @export var sprite_eyes_angry: Sprite2D
+
+@export var sprite_hat: Sprite2D
 @export var sprite_eyes_wide: Sprite2D
 @export var sprite_eyes_closed: Sprite2D # sprite_eyes_closed
 # @export var idle_timer: Timer
@@ -168,6 +171,9 @@ func set_asleep(player: Player, role_swapped: bool = false) -> void:
 		sprite_eyes_open.visible = player.is_active
 
 
+var hat_tween: Tween
+var hat_land_tween: Tween
+
 func _ready() -> void:
 	_original_pos = position
 	sprite_original_pos = node_block_sprites.position
@@ -201,6 +207,50 @@ func _ready() -> void:
 
 	if get_parent() is Player:
 		parent_player = get_parent()
+		
+		var is_dubble := parent_player.dubbleganger && is_original
+		
+		sprite_hat.visible = is_dubble
+		# Animation
+		if is_dubble:
+			parent_player.is_emoting.connect(func(input: bool):
+				if is_on_ground() || is_on_block():
+					var mag: float = 0.4 if input else 0.0
+					var dur: float = 1.0 if !input else 0.8
+					if hat_tween:
+						hat_tween.kill()
+					hat_tween = create_tween()
+					hat_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+					hat_tween.tween_property(sprite_hat,"position:y",(mag * 60.0),dur)
+				else:
+					sprite_hat.position.y = 0.0
+				)
+			parent_player.move_state_changed.connect(func(dir: float):
+				if hat_tween:
+					hat_tween.kill()
+				hat_tween = create_tween()
+				hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir, 0.125 + (absf(dir) * 0.25))
+				)
+			parent_player.has_jumpped.connect(func():
+				if hat_land_tween:
+					hat_land_tween.kill()
+				hat_land_tween = create_tween().set_parallel()
+				hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
+				)
+			parent_player.has_landed.connect(func(strengh: float):
+				if hat_land_tween:
+					hat_land_tween.kill()
+				var s := strengh / 25.0
+				hat_land_tween = create_tween().set_parallel()
+				hat_land_tween.set_ease(Tween.EASE_OUT)
+				hat_land_tween.tween_property(node_hat, "scale", Vector2(1.0 + s, 1.0 - s), 0.1)
+				hat_land_tween.tween_property(node_hat, "position:y", -25.0 + (strengh * 2.0), 0.1)
+				hat_land_tween.set_trans(Tween.TRANS_ELASTIC)
+				hat_land_tween.chain().tween_property(node_hat, "scale:y", 1.0, 1.0)
+				hat_land_tween.tween_property(node_hat, "scale:x", 1.0, 1.0).set_delay(1.0 / 13.33)
+				hat_land_tween.tween_property(node_hat, "position:y", -25.0, 1.0)
+				)
+		#
 		
 		parent_player.state_machine.player_state_changed.connect(func(state: State):
 			if parent_player.is_running_full() && state is RunState && is_on_ground():

@@ -50,6 +50,8 @@ func anim_down(input: bool, ignore_state: bool = false) -> void:
 	if !player.animate || (player.state_machine.current_state is AirState && !ignore_state): 
 		return
 
+	player.is_emoting.emit(input)
+
 	var mag: float = 0.4 if input else 0.0
 	var dur: float = 1.0 if !input else 0.8
 
