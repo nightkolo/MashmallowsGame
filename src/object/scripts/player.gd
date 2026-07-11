@@ -217,7 +217,7 @@ func set_active(active: bool = !is_active) -> void:
 	else:
 		GameMgr.current_player = self
 		mash_timer.start()
-		wake_up(false)
+		wake_up(false, false)
 
 
 func sleep(animate_zoom: bool = true) -> void:
@@ -239,12 +239,13 @@ func sleep(animate_zoom: bool = true) -> void:
 	# 	animator.pause_anim_eye_wobble()
 
 
-func wake_up(animate_zoom: bool = true) -> void:
+func wake_up(animate_zoom: bool = true, call_signal: bool = true) -> void:
 	if particles_m:
 		particles_m.emitting = false
 	mash_notice.visible = false
 	#is_active = false
-	has_waken_up.emit()
+	if call_signal:
+		has_waken_up.emit()
 
 	if original_block && !animate_zoom:
 		original_block.set_asleep(self, true)

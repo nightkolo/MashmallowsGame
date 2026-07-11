@@ -40,13 +40,8 @@ func is_colliding() -> bool:
 	for ray: RayCast2D in unmashed_block_detection_rays:
 		ray.force_raycast_update()
 		var colli: Node2D = ray.get_collider()
-		#var has_player: bool = count_player && colli is Player
-		
 		if colli is Unmashed || colli is TwistedColliBlock:
 			return true
-		#elif colli is Player:
-			#if !(colli as Player).dubbleganger:
-				#return true
 	return false
 
 

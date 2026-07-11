@@ -36,10 +36,10 @@
     - [x] Highlight system
     - [x] Hat
     - [x] Sleep anim
-  - [ ] Intro
-    - [ ] Fix Rewrites
-  - [ ] Twisted
-    - [ ] Highlight system
+  - [x] Intro
+    - [x] Fix Rewrites
+  - [x] Twisted
+    - [x] Highlight system
     - [x] Visual indicator
     - [x] Smoother transition
   - [x] Bubblegate
