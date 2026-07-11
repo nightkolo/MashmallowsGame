@@ -214,6 +214,7 @@ scale = Vector2(0.45, 0.45)
 texture = ExtResource("5_oksdx")
 
 [node name="Hat" type="Node2D" parent="Visual" unique_id=889274517]
+visible = false
 position = Vector2(0, -24)
 
 [node name="Hat" type="Sprite2D" parent="Visual/Hat" unique_id=1408309154]

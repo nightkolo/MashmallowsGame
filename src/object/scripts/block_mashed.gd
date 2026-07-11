@@ -210,9 +210,10 @@ func _ready() -> void:
 		
 		var is_dubble := parent_player.dubbleganger && is_original
 		
-		sprite_hat.visible = is_dubble
+		if sprite_hat:
+			sprite_hat.visible = is_dubble
 		# Animation
-		if is_dubble:
+		if is_dubble && sprite_hat:
 			parent_player.is_emoting.connect(func(input: bool):
 				if is_on_ground() || is_on_block():
 					var mag: float = 0.4 if input else 0.0
@@ -225,18 +226,21 @@ func _ready() -> void:
 				else:
 					sprite_hat.position.y = 0.0
 				)
+				
 			parent_player.move_state_changed.connect(func(dir: float):
 				if hat_tween:
 					hat_tween.kill()
 				hat_tween = create_tween()
 				hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir, 0.125 + (absf(dir) * 0.25))
 				)
+				
 			parent_player.has_jumpped.connect(func():
 				if hat_land_tween:
 					hat_land_tween.kill()
 				hat_land_tween = create_tween().set_parallel()
 				hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
 				)
+				
 			parent_player.has_landed.connect(func(strengh: float):
 				if hat_land_tween:
 					hat_land_tween.kill()
@@ -562,6 +566,8 @@ func anim_highlight(p_mash: bool) -> void:
 			parent_player.audio.listener.clear_current()
 	
 	unmashed_block_entered = p_mash
+	
+	print_debug(parent_player, p_mash)
 	
 	if _tween_light:
 		_tween_light.kill()

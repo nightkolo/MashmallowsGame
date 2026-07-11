@@ -31,13 +31,13 @@
 
 ### Bugs
   - [ ] Dubble
+    - [ ] Audio dependency
     - [x] Camera focus
     - [x] Highlight system
     - [x] Hat
     - [x] Sleep anim
-    - [-] Audio dependency
   - [ ] Intro
-    - [ ] Rewrites
+    - [ ] Fix Rewrites
   - [ ] Twisted
     - [ ] Highlight system
     - [x] Visual indicator

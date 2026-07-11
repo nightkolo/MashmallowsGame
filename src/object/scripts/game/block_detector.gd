@@ -39,15 +39,21 @@ func update_index(moving_toward: String):
 func is_colliding() -> bool:
 	for ray: RayCast2D in unmashed_block_detection_rays:
 		ray.force_raycast_update()
-		if ray.get_collider() is Unmashed || ray.get_collider() is TwistedColliBlock || ray.get_collider() is Player:
+		var colli: Node2D = ray.get_collider()
+		#var has_player: bool = count_player && colli is Player
+		
+		if colli is Unmashed || colli is TwistedColliBlock:
 			return true
+		#elif colli is Player:
+			#if !(colli as Player).dubbleganger:
+				#return true
 	return false
 
 
 
 func notify_highlight_state(unmashed_block_detected: Node2D, entered: int):
 	
-	print_debug(unmashed_block_detected)
+	#print_debug("Highlight state notified: %s %s" % [unmashed_block_detected, entered])
 	
 	parent_block.anim_highlight(is_colliding())
 	if unmashed_block_detected is Unmashed:
@@ -60,7 +66,11 @@ func notify_highlight_state(unmashed_block_detected: Node2D, entered: int):
 		(unmashed_block_detected as TwistedColliBlock).parent_unmashed.amount_collided_with += entered
 	
 	elif unmashed_block_detected is Player:
-		parent_block.anim_highlight(entered > 0)
+		var p: Player = (unmashed_block_detected as Player)
+		
+		if !p.is_active:
+			p.original_block.anim_highlight(entered > 0)
+			parent_block.anim_highlight(entered > 0)
 	
 	
 

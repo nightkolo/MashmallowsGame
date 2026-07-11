@@ -69,7 +69,9 @@ func anim_indicator(dur: float) -> void:
 func anim_highlight(close: bool) -> void:
 	if parent_unmashed == null:
 		return
-		
+	
+	sprite_mashable.self_modulate = Color(Color.WHITE, 1.0)
+	
 	if close && parent_unmashed.is_mashable():
 		sprite_mashable.visible = true
 	else:
