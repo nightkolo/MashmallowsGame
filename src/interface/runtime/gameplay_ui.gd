@@ -6,7 +6,7 @@ signal game_pause_toggled(is_paused: bool)
 @onready var pause_screen: PauseScreen = $PauseMenu
 @onready var reset_btn: Button = %ResetButton
 @onready var reset_screen: MarginContainer = $ResetScreen
-@onready var checkerboard_complete_screen: CBCompleteScreen = $CheckerboardCompleteScreen
+@onready var checkerboard_complete_screen: CompleteScreen = $CheckerboardCompleteScreen
 
 var allow_input: bool = true
 var is_game_paused: bool = false:

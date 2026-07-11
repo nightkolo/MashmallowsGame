@@ -30,12 +30,6 @@
 
 
 ### Bugs
-  - [x] Twisted
-    - [x] Highlight system
-    - [x] Visual indicator
-    - [x] Smoother transition
-  - [x] Bubblegate
-    - [x] Fix interact animation
   - [ ] Dubble
     - [x] Camera focus
     - [x] Highlight system
@@ -44,18 +38,25 @@
     - [-] Audio dependency
   - [ ] Intro
     - [ ] Rewrites
+  - [x] Twisted
+    - [x] Highlight system
+    - [x] Visual indicator
+    - [x] Smoother transition
+  - [x] Bubblegate
+    - [x] Fix interact animation
 
 ### Assets and Design
 - [ ] Artwork
   - [x] Checkmark
   - [x] Ribbon
   - [ ] Bakery complete
+- [x] Objects
+  - [x] Dubble outline
+  - [ ] Dubble indicator
 - [ ] Promo
   - [ ] Game section
   - [ ] Game artwork
   - [ ] Game trailer layout
-- [x] Objects
-  - [x] Dubble outline
 - [ ] API
   - [ ] Medal ideas
   - [ ] Medals

@@ -1,17 +1,18 @@
 extends Control
-class_name CBCompleteScreen
+class_name CompleteScreen
 
 @export var asset_star: Texture2D = preload("res://assets/interface/rabbitstar-yellow.png")
-@export var asset_checkmark: Texture2D = preload("res://assets/interface/bakery-com-02.png")
+@export var asset_checkmark: Texture2D = preload("res://assets/interface/lollipop-02.png")
 
 @onready var bg: ColorRect = $BG
 @onready var node_texture_1: Node2D = %TextureNode1
 @onready var node_texture_2: Node2D = %TextureNode2
 @onready var texture_nodes: Node2D = %TextureNodes
 @onready var texture: Sprite2D = %Texture
+@onready var texture_2: Sprite2D = %Texture2
 @onready var panel: NinePatchRect = %Panel
 
-@onready var cb_complete_info: RichTextLabel = %CBCompleteInfo
+#@onready var cb_complete_info: RichTextLabel = %RichTextLabel
 @onready var next_btn: Button = %NextButton
 
 var tween_texture_idle: Tween
@@ -19,10 +20,10 @@ var tween_texture_hover: Tween
 var tween_texture_pulse: Tween
 
 var _gameplay_ui: GameplayUI
-var _final_texture_scale: Vector2 = Vector2.ONE * 0.9
+var _final_texture_scale: Vector2 = Vector2.ONE * 0.5
 
-const _INFO_BEGIN = "Bakery "
-const _INFO_END = " Complete!"
+#const _INFO_BEGIN = "Bakery "
+#const _INFO_END = " Complete!"
 
 
 func _ready() -> void:
@@ -36,6 +37,8 @@ func _ready() -> void:
 	
 	for node: Node2D in [texture_nodes, node_texture_1]:
 		node.position.x = screen_size.x * 0.5
+	
+	next_btn.visible = false
 	
 	if get_parent() is GameplayUI:
 		_gameplay_ui = get_parent() as GameplayUI
@@ -58,7 +61,13 @@ func _ready() -> void:
 		GameMgr.goto_next_checkerboard()
 		)
 		
-	(%TextureButton as Button).pressed.connect(anim_click)
+	#(%TextureButton as Button).pressed.connect(anim_click)
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_click"):
+		next_btn.visible = true
+		next_btn.grab_focus()
 
 
 #func _process(_delta: float) -> void:
@@ -75,10 +84,11 @@ func open() -> void:
 
 
 func update_text() -> void:
+	pass
 	#if GameMgr.get_reduce_motion_setting():
 		#cb_complete_info.text = GameplayUI.BBCODE_TXT_NO_MOTION + _INFO_BEGIN + str(GameMgr.checkerboard_id) + _INFO_END
 	#else:
-	cb_complete_info.text = GameplayUI.BBCODE_TXT + _INFO_BEGIN + str(GameMgr.bakery_id) + _INFO_END
+	#cb_complete_info.text = GameplayUI.BBCODE_TXT + _INFO_BEGIN + str(GameMgr.bakery_id) + _INFO_END
 		
 
 func anim_shine() -> void:
@@ -123,6 +133,8 @@ func anim_click() -> void:
 
 
 func anim_open() -> void:
+	texture_2.visible = false
+	
 	anim_texture_spinning()
 	
 	var dur := 2.25
@@ -181,6 +193,7 @@ func _anim_texture_landed() -> void:
 	var dur_bg := 0.5
 	var delay_bg := 0.1
 	
+	texture_2.visible = true
 	texture.texture = asset_checkmark
 	bg.color = Color(Color.WHITE, 1.0)
 	node_texture_2.scale = -Vector2.ONE * 0.25
@@ -194,7 +207,7 @@ func _anim_texture_landed() -> void:
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
 	
 	tween.tween_property(node_texture_2, "scale", Vector2.ONE, dur_pop).set_trans(Tween.TRANS_ELASTIC)
-	tween.tween_property(bg, "color", Color(Color.WHITE, 0.2), dur_bg).set_delay(delay_bg)
+	tween.tween_property(bg, "color", Color(Color.BLACK, 0.25), dur_bg).set_delay(delay_bg)
 	
 	anim_texture_idle()
 	anim_shine()

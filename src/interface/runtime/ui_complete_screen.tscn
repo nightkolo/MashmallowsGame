@@ -1,12 +1,28 @@
 [gd_scene format=3 uid="uid://b2xy2qdv8rd36"]
 
-[ext_resource type="Script" uid="uid://c8yt1ml8b0g85" path="res://interface/runtime/ui_checkerboard_complete_screen.gd" id="1_j5ytb"]
-[ext_resource type="Texture2D" uid="uid://vclivsn8ttbk" path="res://assets/interface/ui-panel.png" id="2_rf5y8"]
-[ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="3_ydyc1"]
-[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="5_e55ww"]
-[ext_resource type="Texture2D" uid="uid://bi0m57ukxlo41" path="res://assets/world/effect-shine-large.png" id="6_xnr1t"]
-[ext_resource type="Texture2D" uid="uid://dsjwciajy7agj" path="res://assets/interface/bakery-com-02.png" id="7_b2xu0"]
-[ext_resource type="Texture2D" uid="uid://cq3e383r2otus" path="res://assets/world/particle-rabbitstar-02.png" id="8_2d8hq"]
+[ext_resource type="Script" uid="uid://c8yt1ml8b0g85" path="res://interface/runtime/ui_complete_screen.gd" id="1_se1px"]
+[ext_resource type="Texture2D" uid="uid://cxvh8xb1jrys0" path="res://assets/interface/tile-01.png" id="2_nnv04"]
+[ext_resource type="Texture2D" uid="uid://vclivsn8ttbk" path="res://assets/interface/ui-panel.png" id="2_q06uw"]
+[ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://object/scripts/node_tiled_sprite_2d.gd" id="3_f8sg2"]
+[ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="3_pdo3c"]
+[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="4_5mm1k"]
+[ext_resource type="Texture2D" uid="uid://cq3e383r2otus" path="res://assets/world/particle-rabbitstar-02.png" id="5_nnv04"]
+[ext_resource type="Texture2D" uid="uid://bi0m57ukxlo41" path="res://assets/world/effect-shine-large.png" id="6_f8sg2"]
+[ext_resource type="Texture2D" uid="uid://be7r2uavwa5aq" path="res://assets/interface/stick-02.png" id="7_q06uw"]
+[ext_resource type="Texture2D" uid="uid://bxr6puql72rqi" path="res://assets/interface/lollipop-02.png" id="7_se1px"]
+[ext_resource type="LabelSettings" uid="uid://biveh1g52dl6r" path="res://core/resources/label/level_number_label.tres" id="8_5mm1k"]
+[ext_resource type="Texture2D" uid="uid://dssqi37ffm7ee" path="res://assets/world/particle-marshspiral.png" id="10_f8sg2"]
+
+[sub_resource type="Gradient" id="Gradient_ytqxl"]
+offsets = PackedFloat32Array(0.16348195, 1)
+colors = PackedColorArray(0, 0, 0, 0.35000002, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dfij4"]
+gradient = SubResource("Gradient_ytqxl")
+width = 1580
+height = 800
+fill = 1
+fill_from = Vector2(0.49415693, 0.6594324)
 
 [sub_resource type="FontVariation" id="FontVariation_vproy"]
 spacing_glyph = -2
@@ -35,14 +51,31 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45)
 colors = PackedColorArray(1, 1, 0.5, 1, 1, 1, 1, 1, 1, 1, 0.501961, 1, 1, 1, 1, 1, 1, 1, 0.501961, 1, 1, 1, 1, 1, 1, 1, 0.501961, 1, 1, 1, 1, 1, 1, 1, 0.501961, 1, 1, 1, 1, 1)
 
-[node name="CheckerboardCompleteScreen" type="Control" unique_id=1222027231]
+[node name="CompleteScreen" type="Control" unique_id=1222027231]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_j5ytb")
+script = ExtResource("1_se1px")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823329362]
+clip_children = 2
+position = Vector2(640, 400)
+texture = SubResource("GradientTexture2D_dfij4")
+
+[node name="TiledSprite2D" type="Sprite2D" parent="Sprite2D" unique_id=315953314]
+self_modulate = Color(1, 1, 1, 0.254)
+texture_repeat = 2
+position = Vector2(-11, 1)
+texture = ExtResource("2_nnv04")
+region_enabled = true
+region_rect = Rect2(-33533.242, 4.106091e-12, 1580, 800)
+script = ExtResource("3_f8sg2")
+animate_scroll = true
+scroll_trajectory = 3.141592653589793
+metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
 
 [node name="BG" type="ColorRect" parent="." unique_id=296617475]
 layout_mode = 1
@@ -51,10 +84,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0.25)
+color = Color(0, 0, 0, 0.2509804)
 
 [node name="Panel" type="NinePatchRect" parent="." unique_id=370675253]
 unique_name_in_owner = true
+visible = false
 self_modulate = Color(1, 1, 1, 0.95)
 custom_minimum_size = Vector2(450, 400)
 layout_mode = 0
@@ -64,7 +98,7 @@ offset_right = 865.0
 offset_bottom = 700.0
 size_flags_horizontal = 4
 size_flags_vertical = 8
-texture = ExtResource("2_rf5y8")
+texture = ExtResource("2_q06uw")
 region_rect = Rect2(0, 0, 144, 144)
 patch_margin_left = 48
 patch_margin_top = 48
@@ -78,43 +112,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_ydyc1")
+theme = ExtResource("3_pdo3c")
 
 [node name="Content" type="MarginContainer" parent="Main" unique_id=1323990352]
-custom_minimum_size = Vector2(450, 400)
+custom_minimum_size = Vector2(450, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 18
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 35
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 18
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main/Content" unique_id=2101910785]
 layout_mode = 2
 
-[node name="CBCompleteInfo" type="RichTextLabel" parent="Main/Content/VBoxContainer" unique_id=2007766003]
+[node name="RichTextLabel" type="RichTextLabel" parent="Main/Content/VBoxContainer" unique_id=2007766003]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/normal_font = SubResource("FontVariation_vproy")
 bbcode_enabled = true
-text = "
-[center][font_size=40][wave amp=20.0 freq=2.0][tornado radius=2.5 freq=4.0]Checkerboard 0 Complete"
+text = "[center][font_size=50][wave amp=20.0 freq=2.0][tornado radius=2.5 freq=4.0]You Got a Lollipop!"
 fit_content = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Main/Content/VBoxContainer" unique_id=2102955221]
+[node name="VBoxContainer" type="VBoxContainer" parent="Main" unique_id=2102955221]
+custom_minimum_size = Vector2(200, 375)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 10
 theme_override_constants/separation = 10
 
-[node name="NextButton" type="Button" parent="Main/Content/VBoxContainer/VBoxContainer" unique_id=1402413699 groups=["UIButton"]]
+[node name="NextButton" type="Button" parent="Main/VBoxContainer" unique_id=1402413699 groups=["UIButton"]]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 55)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 10
+focus_mode = 1
 theme_override_fonts/font = SubResource("FontVariation_mq48q")
 text = "Next"
-script = ExtResource("5_e55ww")
+script = ExtResource("4_5mm1k")
 
 [node name="TextureNodes" type="Node2D" parent="." unique_id=509070268]
 unique_name_in_owner = true
@@ -122,9 +159,8 @@ unique_name_in_owner = true
 [node name="Particles3" type="CPUParticles2D" parent="TextureNodes" unique_id=1228752181]
 unique_name_in_owner = true
 position = Vector2(0, -61)
-emitting = false
 amount = 20
-texture = ExtResource("8_2d8hq")
+texture = ExtResource("5_nnv04")
 lifetime = 3.0
 speed_scale = 0.5
 emission_shape = 3
@@ -143,28 +179,39 @@ color_ramp = SubResource("Gradient_tsa2b")
 
 [node name="Shine1" type="Sprite2D" parent="TextureNodes" unique_id=857684094]
 unique_name_in_owner = true
-visible = false
 self_modulate = Color(0.5, 1, 0.5, 0.5)
-position = Vector2(0, 488)
+position = Vector2(0, 440)
 scale = Vector2(0.45, 0.45)
-texture = ExtResource("6_xnr1t")
+texture = ExtResource("6_f8sg2")
 
 [node name="Shine2" type="Sprite2D" parent="TextureNodes" unique_id=1576983114]
 unique_name_in_owner = true
-visible = false
 self_modulate = Color(0.5, 1, 0.5, 0.5)
-position = Vector2(0, 488)
+position = Vector2(0, 440)
 scale = Vector2(0.45, 0.45)
-texture = ExtResource("6_xnr1t")
+texture = ExtResource("6_f8sg2")
+
+[node name="Node2D" type="Node2D" parent="TextureNodes" unique_id=22873954]
+position = Vector2(0, 631)
+scale = Vector2(0.5, 0.5)
+
+[node name="Label" type="Label" parent="TextureNodes/Node2D" unique_id=1109633314]
+offset_left = -401.5
+offset_top = -76.0
+offset_right = 401.5
+offset_bottom = 23.0
+text = "First Bakery Complete!"
+label_settings = ExtResource("8_5mm1k")
 
 [node name="TextureNode1" type="Node2D" parent="." unique_id=1473059919]
 unique_name_in_owner = true
-position = Vector2(640, 488)
+position = Vector2(640, 440)
 
 [node name="Particles" type="CPUParticles2D" parent="TextureNode1" unique_id=1292886224]
 unique_name_in_owner = true
 emitting = false
 amount = 16
+texture = ExtResource("10_f8sg2")
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
@@ -182,7 +229,7 @@ color_ramp = SubResource("Gradient_1xoux")
 unique_name_in_owner = true
 emitting = false
 amount = 32
-texture = ExtResource("8_2d8hq")
+texture = ExtResource("5_nnv04")
 lifetime = 11.0
 one_shot = true
 explosiveness = 1.0
@@ -202,16 +249,14 @@ color_ramp = SubResource("Gradient_tsa2b")
 [node name="TextureNode2" type="Node2D" parent="TextureNode1" unique_id=1328376491]
 unique_name_in_owner = true
 
-[node name="Texture" type="Sprite2D" parent="TextureNode1/TextureNode2" unique_id=171541962]
-unique_name_in_owner = true
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("7_b2xu0")
-
-[node name="TextureButton" type="Button" parent="TextureNode1/TextureNode2/Texture" unique_id=1705131599]
+[node name="Texture2" type="Sprite2D" parent="TextureNode1/TextureNode2" unique_id=846979091]
 unique_name_in_owner = true
 visible = false
-self_modulate = Color(1, 1, 1, 0)
-offset_left = -171.0
-offset_top = -176.0
-offset_right = 147.0
-offset_bottom = 169.0
+position = Vector2(33, 89)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_q06uw")
+
+[node name="Texture" type="Sprite2D" parent="TextureNode1/TextureNode2" unique_id=171541962]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_se1px")
