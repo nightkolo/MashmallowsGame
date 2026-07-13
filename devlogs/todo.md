@@ -1,6 +1,6 @@
 # Todo
 
-## 7-1 (Deadline 7-10)
+## 7-1 (Deadline 7-20)
 
 ### Codebase
 - [x] Codebase cleanup
@@ -14,6 +14,7 @@
 
 ### Gameplay
 - [ ] Gameplay improvements
+  - [ ] Mash direction revamps
   - [ ] Bakery complete screen animation
   - [x] Regen System
     - [x] Cherry Bombs
@@ -27,11 +28,34 @@
   - [x] Mechanics introduced
     - [x] Twisted
     - [x] Dubblegänger
+- [ ] Outro Sequence
+  - [ ] Monologue
+
+
+### Assets and Design
+- [ ] API
+  - [ ] Medal ideas
+  - [ ] Medals
+- [ ] Promo
+  - [ ] Game section
+  - [ ] Game artwork
+  - [ ] Game trailer layout
+- [ ] Project
+  - [ ] Email Avizura about OST
+- [ ] Artwork
+  - [x] Lollipop
+  - [ ] Circular Ribbon
+  - [ ] Text
+  - [ ] Bakery complete
+- [x] Objects
+  - [x] Dubble outline
+  - [x] Dubble indicator
 
 
 ### Bugs
   - [ ] Dubble
     - [ ] Audio dependency
+    - [ ] Emote animation
     - [x] Camera focus
     - [x] Highlight system
     - [x] Hat
@@ -44,24 +68,6 @@
     - [x] Smoother transition
   - [x] Bubblegate
     - [x] Fix interact animation
-
-### Assets and Design
-- [ ] Artwork
-  - [x] Checkmark
-  - [x] Ribbon
-  - [ ] Bakery complete
-- [x] Objects
-  - [x] Dubble outline
-  - [ ] Dubble indicator
-- [ ] Promo
-  - [ ] Game section
-  - [ ] Game artwork
-  - [ ] Game trailer layout
-- [ ] API
-  - [ ] Medal ideas
-  - [ ] Medals
-- [ ] Project
-  - [ ] Email Avizura about OST
 
 ### Animation
 - [ ] Mashing

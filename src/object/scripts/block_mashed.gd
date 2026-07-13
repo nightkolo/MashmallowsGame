@@ -181,6 +181,9 @@ func _ready() -> void:
 	cherry_bomb_activated.connect(anim_explode)
 	
 	mashable_state_changed.connect(func(p_can_mash: bool):
+		if parent_player.audio == null:
+			return
+			
 		if p_can_mash:
 			parent_player.audio.sfx_unmash_enter.play()
 		else:
@@ -211,50 +214,50 @@ func _ready() -> void:
 		var is_dubble := parent_player.dubbleganger && is_original
 		
 		if sprite_hat:
-			sprite_hat.visible = is_dubble
-		# Animation
-		if is_dubble && sprite_hat:
-			parent_player.is_emoting.connect(func(input: bool):
-				if is_on_ground() || is_on_block():
-					var mag: float = 0.4 if input else 0.0
-					var dur: float = 1.0 if !input else 0.8
+			node_hat.visible = is_dubble
+			# Animation
+			if is_dubble:
+				parent_player.is_emoting.connect(func(input: bool):
+					if is_on_ground() || is_on_block():
+						var mag: float = 0.4 if input else 0.0
+						var dur: float = 1.0 if !input else 0.8
+						if hat_tween:
+							hat_tween.kill()
+						hat_tween = create_tween()
+						hat_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+						hat_tween.tween_property(sprite_hat,"position:y",(mag * 60.0),dur)
+					else:
+						sprite_hat.position.y = 0.0
+					)
+					
+				parent_player.move_state_changed.connect(func(dir: float):
 					if hat_tween:
 						hat_tween.kill()
 					hat_tween = create_tween()
-					hat_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-					hat_tween.tween_property(sprite_hat,"position:y",(mag * 60.0),dur)
-				else:
-					sprite_hat.position.y = 0.0
-				)
-				
-			parent_player.move_state_changed.connect(func(dir: float):
-				if hat_tween:
-					hat_tween.kill()
-				hat_tween = create_tween()
-				hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir, 0.125 + (absf(dir) * 0.25))
-				)
-				
-			parent_player.has_jumpped.connect(func():
-				if hat_land_tween:
-					hat_land_tween.kill()
-				hat_land_tween = create_tween().set_parallel()
-				hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
-				)
-				
-			parent_player.has_landed.connect(func(strengh: float):
-				if hat_land_tween:
-					hat_land_tween.kill()
-				var s := strengh / 25.0
-				hat_land_tween = create_tween().set_parallel()
-				hat_land_tween.set_ease(Tween.EASE_OUT)
-				hat_land_tween.tween_property(node_hat, "scale", Vector2(1.0 + s, 1.0 - s), 0.1)
-				hat_land_tween.tween_property(node_hat, "position:y", -25.0 + (strengh * 2.0), 0.1)
-				hat_land_tween.set_trans(Tween.TRANS_ELASTIC)
-				hat_land_tween.chain().tween_property(node_hat, "scale:y", 1.0, 1.0)
-				hat_land_tween.tween_property(node_hat, "scale:x", 1.0, 1.0).set_delay(1.0 / 13.33)
-				hat_land_tween.tween_property(node_hat, "position:y", -25.0, 1.0)
-				)
-		#
+					hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir, 0.125 + (absf(dir) * 0.25))
+					)
+					
+				parent_player.has_jumpped.connect(func():
+					if hat_land_tween:
+						hat_land_tween.kill()
+					hat_land_tween = create_tween().set_parallel()
+					hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
+					)
+					
+				parent_player.has_landed.connect(func(strengh: float):
+					if hat_land_tween:
+						hat_land_tween.kill()
+					var s := strengh / 25.0
+					hat_land_tween = create_tween().set_parallel()
+					hat_land_tween.set_ease(Tween.EASE_OUT)
+					hat_land_tween.tween_property(node_hat, "scale", Vector2(1.0 + s, 1.0 - s), 0.1)
+					hat_land_tween.tween_property(node_hat, "position:y", -25.0 + (strengh * 2.0), 0.1)
+					hat_land_tween.set_trans(Tween.TRANS_ELASTIC)
+					hat_land_tween.chain().tween_property(node_hat, "scale:y", 1.0, 1.0)
+					hat_land_tween.tween_property(node_hat, "scale:x", 1.0, 1.0).set_delay(1.0 / 13.33)
+					hat_land_tween.tween_property(node_hat, "position:y", -25.0, 1.0)
+					)
+			#
 		
 		parent_player.state_machine.player_state_changed.connect(func(state: State):
 			if parent_player.is_running_full() && state is RunState && is_on_ground():
@@ -572,7 +575,7 @@ func anim_highlight(p_mash: bool) -> void:
 	if _tween_light:
 		_tween_light.kill()
 		
-	_tween_light = get_tree().create_tween()
+	_tween_light = create_tween()
 	if p_mash:
 		_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52, 0.1)
 	else:

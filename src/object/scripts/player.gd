@@ -24,10 +24,13 @@ signal is_emoting(on: bool)
 signal check_finished() ## @deprecated
 
 @export var animate: bool = true
+## Turns [Player] into a dubbleganger (dappel-ganger) entity.
 @export var dubbleganger: bool = false:
 	set(value):
 		set_active(!value)
 		dubbleganger = value
+## Starts this [Player] instance's [member is_active] to [code]true[/code]. Only one instance should have this on to work appropriately.
+@export var start_active: bool = false
 @export var start_asleep: bool = false:
 	set(value):
 		start_asleep = value
@@ -182,10 +185,15 @@ func _ready_dubbleganger() -> void:
 	if !dubbleganger:
 		GameMgr.current_main_player = self
 		GameMgr.current_player = self
-	else:
-		self_modulate = Color(Color.WHITE * 0.75, 1.0)
+			
 	
-	set_active(!dubbleganger)
+	if start_active:
+		set_active(true)
+		
+		if dubbleganger:
+			GameMgr.current_main_player.set_active(false)
+	else:
+		set_active(!dubbleganger)
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -1,0 +1,176 @@
+[gd_scene format=4 uid="uid://54bl4vhpeljn"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_iucok"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_06ab8"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_c3ooy"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="4_ftkrj"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_ykjeo"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="6_uhlhl"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_4ot4m"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="8_fu2cp"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="9_hk28e"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="10_h6wgn"]
+[ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="10_ny7ri"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="11_v4r8d"]
+[ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="12_pn5ma"]
+[ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="13_ny7ri"]
+
+[sub_resource type="Resource" id="Resource_fkexq"]
+script = ExtResource("13_ny7ri")
+mash_type = 99
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_o72on"]
+script = ExtResource("13_ny7ri")
+mash_type = 1
+build_type = 1
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_x7dbe"]
+script = ExtResource("13_ny7ri")
+mash_type = 1
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_ny7ri"]
+script = ExtResource("13_ny7ri")
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_xr5xb"]
+script = ExtResource("13_ny7ri")
+mash_type = 1
+build_type = 1
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_kc42n"]
+script = ExtResource("13_ny7ri")
+mash_type = 1
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_pn5ma"]
+script = ExtResource("13_ny7ri")
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
+script = ExtResource("1_iucok")
+no_progression = true
+level_goal = NodePath("World/LevelGoal")
+player = NodePath("Player")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_06ab8")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(640, 400)
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("3_c3ooy")
+
+[node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_ftkrj")]
+bg_color_set = 1
+terrain = NodePath("Terrain")
+camera = NodePath("../Cam")
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("5_ykjeo")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World/Terrain" unique_id=889963347]
+tile_map_data = PackedByteArray("AAAJAAcAAgAAAAEAAAAKAAcAAgABAAEAAAAJAAgAAgAAAAEAAAAKAAgAAgABAAEAAAAJAAkAAgAAAAEAAAAKAAkAAgABAAEAAAAJAAMAAgAAAAEAAAAKAAMAAgABAAEAAAAJAAQAAgAAAAEAAAAKAAQAAgABAAEAAAAJAAUAAgAAAAEAAAAKAAUAAgABAAEAAAAJAAYAAgAAAAEAAAAKAAYAAgABAAEAAAAEAAQAAgAAAAEAAAAFAAQAAgAAAAEAAAACAAMAAgAAAAEAAAADAAMAAgABAAEAAAACAAIAAgAAAAEAAAADAAIAAgABAAEAAAAEAAIAAgAAAAEAAAAFAAIAAgABAAEAAAAEAAMAAgAAAAEAAAAFAAMAAgABAAEAAAALAAkAAgAAAAEAAAAMAAkAAgABAAEAAAALAAgAAgAAAAEAAAAMAAgAAgABAAEAAAALAAcAAgAAAAEAAAAMAAcAAgABAAEAAAALAAYAAgAAAAEAAAAMAAYAAgABAAEAAAANAAkAAgAAAAEAAAAOAAkAAgABAAEAAAANAAYAAgAAAAEAAAAOAAYAAgABAAEAAAANAAcAAgAAAAEAAAAOAAcAAgABAAEAAAANAAgAAgAAAAEAAAAOAAgAAgABAAEAAAAHAAkAAgABAAEAAAAIAAkAAgABAAEAAAAFAAgAAgAAAAEAAAAGAAgAAgAAAAEAAAAFAAcAAgAAAAEAAAAGAAcAAgAAAAEAAAAFAAYAAgAAAAEAAAAGAAYAAgAAAAEAAAAFAAUAAgABAAEAAAAGAAUAAgAAAAEAAAAGAAQAAgAAAAEAAAAHAAQAAgABAAEAAAAIAAQAAgABAAEAAAAHAAMAAgABAAEAAAAIAAMAAgABAAEAAAAHAAIAAgABAAEAAAAIAAIAAgABAAEAAAAGAAIAAgAAAAEAAAAGAAMAAgAAAAEAAAAHAAUAAgAAAAEAAAAHAAYAAgAAAAEAAAAHAAcAAgAAAAEAAAAHAAgAAgAAAAEAAAAGAAkAAgAAAAEAAAAIAAgAAgABAAEAAAAIAAcAAgABAAEAAAAIAAYAAgABAAEAAAAIAAUAAgABAAEAAAAEAAUAAgAAAAEAAAA=")
+tile_set = ExtResource("6_uhlhl")
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_map_data = PackedByteArray("AAACAAYAAAAKAAEAAAACAAcAAAAKAAEAAAACAAgAAAAKAAEAAAACAAkAAAAKAAEAAAADAAYAAAAGAAEAAAADAAcAAAAKAAEAAAADAAgAAAAKAAEAAAADAAkAAAAKAAEAAAAEAAYAAAAKAAAAAAAEAAcAAAAKAAEAAAAEAAgAAAAKAAEAAAAEAAkAAAAKAAEAAAAFAAYAAAALAAAAAAAFAAcAAAALAAIAAAAFAAgAAAALAAIAAAAFAAkAAAALAAIAAAAPAAYAAAAKAAEAAAAPAAcAAAAKAAEAAAAPAAgAAAAKAAEAAAAPAAkAAAAKAAEAAAACAAoAAAAKAAEAAAADAAoAAAAKAAEAAAAEAAoAAAAKAAEAAAAFAAoAAAAGAAEAAAAGAAoAAAAKAAAAAAAHAAoAAAAKAAAAAAAIAAoAAAAKAAAAAAAJAAoAAAAKAAAAAAAKAAoAAAAKAAAAAAALAAoAAAAKAAAAAAAMAAoAAAAKAAAAAAANAAoAAAAKAAAAAAAOAAoAAAAFAAEAAAAPAAoAAAAKAAEAAAADAAUAAAALAAIAAAACAAUAAAAKAAEAAAABAAUAAAAIAAEAAAAQAAYAAAAKAAEAAAARAAYAAAAKAAEAAAARAAcAAAAKAAEAAAARAAgAAAAKAAEAAAARAAkAAAAKAAEAAAAQAAkAAAAKAAEAAAAQAAgAAAAKAAEAAAAQAAcAAAAKAAEAAAAQAAoAAAAKAAEAAAARAAoAAAAKAAEAAAAOAAcAAAAIAAEAAAAOAAgAAAAIAAEAAAAOAAkAAAAIAAEAAAAJAAUAAAAEAAEAAAAIAAQAAAABAAMAAAAJAAQAAAADAAAAAAACAAEAAAAKAAEAAAACAAAAAAAKAAAAAAAMAAUAAAACAAMAAAANAAUAAAACAAMAAAADAAQAAAALAAIAAAACAAQAAAAKAAEAAAABAAQAAAAFAAIAAAADAAIAAAALAAIAAAACAAIAAAAKAAEAAAACAAMAAAAKAAEAAAAAAAQAAAAIAAMAAAAAAAMAAAAIAAAAAAABAAMAAAAFAAEAAAADAAMAAAALAAIAAAABAAIAAAAIAAEAAAAKAAUAAAAKAAAAAAALAAUAAAAGAAAAAAAJAAIAAAAIAAMAAAAKAAIAAAALAAMAAAAKAAEAAAALAAIAAAAKAAAAAAALAAAAAAAJAAAAAAAKAAAAAAAIAAAAAAAKAAAAAAAHAAAAAAAKAAAAAAAGAAAAAAAKAAAAAAAFAAAAAAAKAAAAAAAEAAAAAAAKAAAAAAADAAAAAAAKAAAAAAADAAEAAAAGAAIAAAAEAAEAAAAJAAMAAAAFAAEAAAAJAAMAAAAGAAEAAAAJAAMAAAAHAAEAAAAJAAMAAAAIAAEAAAAJAAMAAAAJAAEAAAAFAAIAAAAOAAYAAAAIAAEAAAAOAAUAAAAFAAAAAAAPAAUAAAAKAAAAAAAQAAUAAAAKAAAAAAARAAUAAAAKAAAAAAAKAAYAAAAJAAMAAAARAAsAAAAJAAMAAAAQAAsAAAAJAAMAAAAPAAsAAAAJAAMAAAAOAAsAAAAJAAMAAAAMAAsAAAAJAAMAAAANAAsAAAAJAAMAAAALAAsAAAAJAAMAAAAKAAsAAAAJAAMAAAAJAAsAAAAJAAMAAAAIAAsAAAAJAAMAAAAHAAsAAAAJAAMAAAAGAAsAAAAJAAMAAAAFAAsAAAAJAAMAAAAEAAsAAAAJAAMAAAADAAsAAAAJAAMAAAACAAsAAAAJAAMAAAABAAsAAAAIAAMAAAABAAoAAAAIAAEAAAABAAkAAAAIAAEAAAABAAgAAAAIAAEAAAABAAcAAAAIAAEAAAABAAYAAAAIAAEAAAASAAUAAAALAAAAAAASAAYAAAALAAIAAAASAAcAAAALAAIAAAASAAgAAAALAAIAAAASAAkAAAALAAIAAAASAAoAAAALAAIAAAASAAsAAAALAAMAAAABAAEAAAAIAAEAAAABAAAAAAAIAAAAAAATAAQAAAAAAAIAAAATAAMAAAAAAAEAAAATAAIAAAAAAAEAAAATAAEAAAAAAAEAAAATAAAAAAAAAAAAAAALAAYAAAALAAMAAAAJAAYAAAAIAAMAAAA=")
+tile_set = ExtResource("6_uhlhl")
+
+[node name="WorldBlocks" type="Node2D" parent="World" unique_id=960871053]
+script = ExtResource("7_4ot4m")
+metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("8_fu2cp")]
+offset_left = 288.0
+offset_top = 400.0
+offset_right = 288.0
+offset_bottom = 400.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Board" parent="World/LevelGoal" index="0" unique_id=1651127727]
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelGoalBoard" parent="World/LevelGoal/Board" index="0" unique_id=877003082]
+offset_right = 320.0
+offset_bottom = 368.0
+
+[node name="LevelOrder" type="Node2D" parent="World/LevelGoal" unique_id=989048369]
+position = Vector2(-56, 80)
+scale = Vector2(0.65, 0.65)
+script = ExtResource("9_hk28e")
+order_code = Array[Dictionary]([{
+"build": 0,
+"pos": Vector2(0, 0),
+"ref": Object(Node2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://object/scripts/game/mash_block_checker_id.gd"),"sprite":Object(Sprite2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://assets/interface/order-player.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+,"attributes":SubResource("Resource_fkexq"),"is_satisfied":true,"tween_anim":null)
+,
+"type": 99
+}, {
+"build": 1,
+"pos": Vector2(1, 0.5),
+"ref": Object(Node2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(64, 32),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://object/scripts/game/mash_block_checker_id.gd"),"sprite":Object(Sprite2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://assets/interface/order-star-1x2-grey.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+,"attributes":SubResource("Resource_o72on"),"is_satisfied":true,"tween_anim":null)
+,
+"type": 1
+}, {
+"build": 0,
+"pos": Vector2(2, 1),
+"ref": Object(Node2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(128, 64),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://object/scripts/game/mash_block_checker_id.gd"),"sprite":Object(Sprite2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://assets/interface/order-star-1x1-grey.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+,"attributes":SubResource("Resource_x7dbe"),"is_satisfied":true,"tween_anim":null)
+,
+"type": 1
+}, {
+"build": 0,
+"pos": Vector2(3, 1),
+"ref": Object(Node2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(192, 64),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://object/scripts/game/mash_block_checker_id.gd"),"sprite":Object(Sprite2D,"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":Resource("res://assets/interface/order-white-1x1-grey.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+,"attributes":SubResource("Resource_ny7ri"),"is_satisfied":true,"tween_anim":null)
+,
+"type": 0
+}])
+metadata/_custom_type_script = "uid://5cfma5ft813q"
+
+[node name="MashBlockCheckerID" parent="World/LevelGoal/LevelOrder" unique_id=491390326 instance=ExtResource("10_ny7ri")]
+attributes = SubResource("Resource_fkexq")
+
+[node name="MashBlockCheckerID2" parent="World/LevelGoal/LevelOrder" unique_id=1992793839 instance=ExtResource("10_ny7ri")]
+position = Vector2(64, 32)
+attributes = SubResource("Resource_o72on")
+
+[node name="MashBlockCheckerID3" parent="World/LevelGoal/LevelOrder" unique_id=1546796165 instance=ExtResource("10_ny7ri")]
+position = Vector2(128, 64)
+attributes = SubResource("Resource_x7dbe")
+
+[node name="MashBlockCheckerID4" parent="World/LevelGoal/LevelOrder" unique_id=1656737608 instance=ExtResource("10_ny7ri")]
+position = Vector2(192, 64)
+attributes = SubResource("Resource_ny7ri")
+
+[node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("10_h6wgn")]
+position = Vector2(904, 376)
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_v4r8d")]
+position = Vector2(432, 496)
+
+[node name="Player2" parent="." unique_id=811617374 instance=ExtResource("11_v4r8d")]
+position = Vector2(608, 552)
+dubbleganger = true
+
+[node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("12_pn5ma")]
+position = Vector2(864, 544)
+block_attributes = SubResource("Resource_xr5xb")
+
+[node name="UnmashedSpawner2" parent="." unique_id=555290492 instance=ExtResource("12_pn5ma")]
+position = Vector2(288, 216)
+block_attributes = SubResource("Resource_kc42n")
+
+[node name="UnmashedSpawner3" parent="." unique_id=52643210 instance=ExtResource("12_pn5ma")]
+position = Vector2(888, 320)
+block_attributes = SubResource("Resource_pn5ma")
+
+[editable path="World/LevelGoal"]
