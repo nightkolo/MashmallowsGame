@@ -573,8 +573,6 @@ func anim_highlight(p_mash: bool) -> void:
 	
 	unmashed_block_entered = p_mash
 	
-	print_debug(parent_player, p_mash)
-	
 	if _tween_light:
 		_tween_light.kill()
 		

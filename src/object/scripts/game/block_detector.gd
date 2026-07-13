@@ -28,55 +28,18 @@ class_name BlockDetector
 @onready var unmashed_block_detect_1x1: Area2D = $UnmashedBlockDetect1x1
 @onready var unmashed_block_detect_1x2: Area2D = $UnmashedBlockDetect1x2
 
+@onready var right: RayCast2D = %Right
+@onready var left: RayCast2D = %Left
+@onready var right_2: RayCast2D = %Right2
+@onready var left_2: RayCast2D = %Left2
+@onready var down: RayCast2D = %Down
+
 var parent_block: Mashed
-
-
-func update_index(moving_toward: String):
-	pass
-	# Get moving direction
-	# linear search array for direction
-	# pop
-	# push front
-
-
-func is_colliding() -> bool:
-	for ray: RayCast2D in unmashed_block_detection_rays:
-		ray.force_raycast_update()
-		var colli: Node2D = ray.get_collider()
-		if colli is Unmashed || colli is TwistedColliBlock:
-			return true
-	return false
-
-
-
-func notify_highlight_state(unmashed_block_detected: Node2D, entered: int):
-	
-	#print_debug("Highlight state notified: %s %s" % [unmashed_block_detected, entered])
-	
-	parent_block.anim_highlight(is_colliding())
-	if unmashed_block_detected is Unmashed:
-		#parent_block.anim_highlight(is_colliding())
-
-		# NOTE: Critical section, increment solution for Unmashed.anim_highlight function call
-		(unmashed_block_detected as Unmashed).amount_collided_with += entered
-		#
-	elif unmashed_block_detected is TwistedColliBlock:
-		(unmashed_block_detected as TwistedColliBlock).parent_unmashed.amount_collided_with += entered
-	
-	elif unmashed_block_detected is Player:
-		var p: Player = (unmashed_block_detected as Player)
-		
-		if !p.is_active:
-			p.original_block.anim_highlight(entered > 0)
-			parent_block.anim_highlight(entered > 0)
-	
-	
 
 
 func _ready() -> void:
 	if get_parent() is Mashed:
 		parent_block = get_parent()
-		
 		
 		if notify_mash_highlight:
 			GameLogic.player_mashed.connect(func():
@@ -103,7 +66,67 @@ func _ready() -> void:
 				unmashed_block_detect_1x1.body_entered.connect(notify_highlight_state.bind(1))
 				unmashed_block_detect_1x1.body_exited.connect(notify_highlight_state.bind(-1))
 		
-		await get_tree().create_timer(0.1).timeout
-		parent_block.parent_player.move_state_changed.connect(func(dir: Vector2):
-			print_debug(dir)
+		await get_tree().create_timer(0.2).timeout
+		parent_block.parent_player.move_state_changed.connect(update_unmashed_direction_arrow_index)
+
+
+# Ok -> O(n)
+func update_unmashed_direction_arrow_index(moving_toward: Vector2) -> void: 
+	if moving_toward == Vector2.ZERO || !is_colliding(true):
+		return
+	
+	var dir: Vector2
+	
+	if absf(moving_toward.x) > 0.0:
+		dir = Vector2(moving_toward.x, 0.0)
+	elif absf(moving_toward.y) > 0.0:
+		dir = Vector2.DOWN
+	
+	var n: int = unmashed_block_detection_rays.size() # Either 3 or 5
+	
+	for i in n:
+		if (unmashed_block_detection_rays[i] as RayCast2D).target_position.sign() != dir:
+			continue
+		
+		if i > 0:
+			unmashed_block_detection_rays.push_front(
+				unmashed_block_detection_rays.pop_at(i) as RayCast2D
 			)
+		
+		if n == 3: # Does not include an extra node to check
+			break
+
+
+# Ok -> O(n)
+func is_colliding(quick_check: bool = false) -> bool:
+	for ray: RayCast2D in unmashed_block_detection_rays:
+		if quick_check:
+			if ray.is_colliding():
+				return true
+			continue
+				
+		ray.force_raycast_update()
+		
+		var colli: Node2D = ray.get_collider()
+		if colli is Unmashed || colli is TwistedColliBlock:
+			return true
+	return false
+
+
+
+func notify_highlight_state(unmashed_block_detected: Node2D, entered: int):
+	parent_block.anim_highlight(is_colliding())
+	
+	if unmashed_block_detected is Unmashed:
+		# NOTE: Critical section, increment solution for Unmashed.anim_highlight function call
+		(unmashed_block_detected as Unmashed).amount_collided_with += entered
+		#
+	elif unmashed_block_detected is TwistedColliBlock:
+		(unmashed_block_detected as TwistedColliBlock).parent_unmashed.amount_collided_with += entered
+	
+	elif unmashed_block_detected is Player:
+		var p: Player = (unmashed_block_detected as Player)
+		
+		if !p.is_active:
+			p.original_block.anim_highlight(entered > 0)
+			parent_block.anim_highlight(entered > 0)

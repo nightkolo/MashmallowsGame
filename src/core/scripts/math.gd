@@ -45,3 +45,15 @@ static func get_direction(dir: String) -> Vector2:
 		return Vector2.RIGHT
 	
 	return Vector2.ZERO
+
+static func get_direction_string(dir: Vector2) -> String:
+	if Vector2.UP:
+		return "Up"
+	elif Vector2.DOWN:
+		return "Down"
+	elif Vector2.LEFT:
+		return "Left"
+	elif Vector2.RIGHT:
+		return "Right"
+	
+	return "Center"
