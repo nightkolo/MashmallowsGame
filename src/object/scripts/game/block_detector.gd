@@ -28,12 +28,6 @@ class_name BlockDetector
 @onready var unmashed_block_detect_1x1: Area2D = $UnmashedBlockDetect1x1
 @onready var unmashed_block_detect_1x2: Area2D = $UnmashedBlockDetect1x2
 
-@onready var right: RayCast2D = %Right
-@onready var left: RayCast2D = %Left
-@onready var right_2: RayCast2D = %Right2
-@onready var left_2: RayCast2D = %Left2
-@onready var down: RayCast2D = %Down
-
 var parent_block: Mashed
 
 

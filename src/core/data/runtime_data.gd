@@ -77,32 +77,7 @@ static var runtime_data: Dictionary = {
   "last_level": 0
 }
 static var medal_data: Dictionary = {
-	# NOTE: HARD-CODED, DO NOT MODIFY UNLESS YOU KNOW WHAT YOU'RE DOING.
-	
-	# TODO: Possible issues with save data when versioning
-	
-	# Progression
-	"wake": false,
-	"cb1_comp": false,
-	"cb2_comp": false,
-	"game_comp": false,
-	
-	# Board-specific
-	"4_1": false,
-	"5_1": false,
-	"6_1": false,
-	"14_1": false,
-	"15_1": false,
-	"20_1": false,
-	
-	# Stats
-	"200moves": false,
-	"600moves": false,
-	
-	# Misc
-	"poke": false,
-	"curiosity": false,
-	"halls": false
+
 }
 const DEFAULT_MEDAL_DATA = {
 	# NOTE: HARD-CODED, DO NOT MODIFY UNLESS YOU KNOW WHAT YOU'RE DOING.
@@ -110,27 +85,20 @@ const DEFAULT_MEDAL_DATA = {
 	# TODO: Possible issues with save data when versioning
 	
 	# Progression
-	"wake": false,
-	"cb1_comp": false,
-	"cb2_comp": false,
-	"game_comp": false,
+	"bitten": false, # You Menace...
+	"safe": false, # Good Ending
+	"b1_comp": false, # First Bakery Complete!
+	"b2_comp": false, # Second Bakery Complete!
+	"game_comp": false, # Marshmallow Lady Approves
 	
-	# Board-specific
-	"4_1": false,
-	"5_1": false,
-	"6_1": false,
-	"14_1": false,
-	"15_1": false,
-	"20_1": false,
+	# Level-specific
+	"2_16": false, # Trespassing
 	
 	# Stats
-	"200moves": false,
-	"600moves": false,
+	"50squat": false # 
 	
 	# Misc
-	"poke": false,
-	"curiosity": false,
-	"halls": false
+	
 }
 const DEFAULT_GAME_DATA = {
 	"1": {

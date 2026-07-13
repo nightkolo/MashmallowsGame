@@ -14,8 +14,8 @@
 
 ### Gameplay
 - [ ] Gameplay improvements
-  - [ ] Mash direction revamps
   - [ ] Bakery complete screen animation
+  - [x] Mash direction revamps
   - [x] Regen System
     - [x] Cherry Bombs
   - [x] Bakery transtioins
@@ -34,12 +34,13 @@
 
 ### Assets and Design
 - [ ] API
+  - [ ] API testing and saving
   - [ ] Medal ideas
   - [ ] Medals
 - [ ] Promo
+  - [ ] Game trailer layout
   - [ ] Game section
   - [ ] Game artwork
-  - [ ] Game trailer layout
 - [ ] Project
   - [ ] Email Avizura about OST
 - [ ] Artwork
