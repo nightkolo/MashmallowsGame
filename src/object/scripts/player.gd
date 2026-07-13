@@ -17,7 +17,7 @@ signal cherry_bomb_activated()
 signal cherry_bomb_exploded()
 signal is_running() ## Emits when player is in [RunState] at full [member speed] after accelerating.
 signal has_stopped() ## Emits when player full stops ([code]velocity == 0.0[/code]), regardless of state. (i.e. hits wall)
-signal move_state_changed(direction: float)
+signal move_state_changed(direction: Vector2)
 signal is_emoting(on: bool)
 
 # LOGIC
@@ -74,8 +74,16 @@ var air_deceleration: float = deceleration / 1.25
 var flown_deceleration: float = deceleration / 3.2
 
 # State
-var input_x: float
-var input_y: float
+var input_x: float:
+	set(value):
+		if value != input_x:
+			move_state_changed.emit(Vector2(value, input_y))
+		input_x = value
+var input_y: float:
+	set(value):
+		if value != input_y:
+			move_state_changed.emit(Vector2(input_x, value))
+		input_y = value
 var is_active: bool = true:
 	set(value):
 		active_state_changed.emit(value)
@@ -600,7 +608,7 @@ func is_running_full() -> bool:
 #
 
 
-var velo: float
+#var velo: float
 
 func _state() -> void:
 	# Run call
@@ -615,12 +623,12 @@ func _state() -> void:
 	elif velocity.x != 0.0:
 		_stopped = false
 	
-	var sx := signf(velocity.x)
-	
-	if sx != velo:
-		move_state_changed.emit(sx)
-	
-	velo = sx
+	#var sx := signf(velocity.x)
+	#
+	#if sx != velo:
+		#move_state_changed.emit(sx)
+	#
+	#velo = sx
 	#
 	
 	# Ceiling call

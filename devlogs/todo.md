@@ -70,9 +70,12 @@
     - [x] Fix interact animation
 
 ### Animation
+- [ ] Level
+  - [ ] Start visual bug	
 - [ ] Mashing
   - [ ] Mash particles
 - [ ] Dubbleganger
+  - [ ] See-through
   - [ ] Switch
   - [ ] Active
   - [ ] Inactive

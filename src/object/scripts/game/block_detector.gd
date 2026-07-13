@@ -32,8 +32,11 @@ var parent_block: Mashed
 
 
 func update_index(moving_toward: String):
-	
 	pass
+	# Get moving direction
+	# linear search array for direction
+	# pop
+	# push front
 
 
 func is_colliding() -> bool:
@@ -74,6 +77,7 @@ func _ready() -> void:
 	if get_parent() is Mashed:
 		parent_block = get_parent()
 		
+		
 		if notify_mash_highlight:
 			GameLogic.player_mashed.connect(func():
 				await get_tree().create_timer(0.1).timeout
@@ -98,3 +102,8 @@ func _ready() -> void:
 				# Signal connect
 				unmashed_block_detect_1x1.body_entered.connect(notify_highlight_state.bind(1))
 				unmashed_block_detect_1x1.body_exited.connect(notify_highlight_state.bind(-1))
+		
+		await get_tree().create_timer(0.1).timeout
+		parent_block.parent_player.move_state_changed.connect(func(dir: Vector2):
+			print_debug(dir)
+			)

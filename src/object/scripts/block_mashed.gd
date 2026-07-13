@@ -230,11 +230,14 @@ func _ready() -> void:
 						sprite_hat.position.y = 0.0
 					)
 					
-				parent_player.move_state_changed.connect(func(dir: float):
+				parent_player.move_state_changed.connect(func(dir: Vector2):
+					#if absf(dir.y) > 0.0:
+						#return
+						#
 					if hat_tween:
 						hat_tween.kill()
 					hat_tween = create_tween()
-					hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir, 0.125 + (absf(dir) * 0.25))
+					hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir.x, 0.125 + (absf(dir.x) * 0.25))
 					)
 					
 				parent_player.has_jumpped.connect(func():
