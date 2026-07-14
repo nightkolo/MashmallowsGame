@@ -140,10 +140,6 @@ func setup_mash_block(sprite: Sprite2D, type: Util.MashType, build: Util.BuildTy
 	sprite.texture = Util.get_order_block_texture(type, build)
 	
 
-func setup_mash(sprite: Sprite2D, type: Util.MashType, build: Util.BuildType = Util.BuildType.SQUARE, golden: bool = false) -> void:
+func setup_mash(sprite: Sprite2D, type: Util.MashType, build: Util.BuildType = Util.BuildType.SQUARE) -> void:
 	sprite.texture = Util.get_mash_type_texture(type, build)
-	if golden:
-		sprite.self_modulate = Color(Color.WHITE * 0.5,1.0)
-	else:
-		sprite.self_modulate = Color(Color.WHITE)
 	

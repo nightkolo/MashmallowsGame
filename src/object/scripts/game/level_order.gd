@@ -85,11 +85,6 @@ func update_look() -> void:
 		if !id.is_node_ready():
 			continue
 
-		if id.attributes.is_golden:
-			sprite.self_modulate = Color(Color.WHITE * 0.5,1.0)
-		elif !id.attributes.is_golden:
-			sprite.self_modulate = Color(Color.WHITE)
-
 
 func _ready() -> void:
 	

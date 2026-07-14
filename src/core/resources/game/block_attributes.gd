@@ -30,12 +30,3 @@ class_name BlockAttributes
 		# if is_node_ready():
 		# 	$Visual/SpriteNode/Sprite2D.texture = Util.get_mash_type_texture(mash_type, value)
 		build_type = value
-@export var is_golden: bool = false:
-	set(value):
-		# attribute_set.emit()
-		is_golden = value
-		# if is_node_ready():
-		# 	if value:
-		# 		$Visual/SpriteNode/Sprite2D.self_modulate = Color(Color.WHITE * 0.5,1.0)
-		# 	elif !value:
-		# 		$Visual/SpriteNode/Sprite2D.self_modulate = Color(Color.WHITE)

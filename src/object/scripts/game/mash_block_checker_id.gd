@@ -17,11 +17,6 @@ func _ready() -> void:
 
 		if get_parent() is LevelOrder:
 			(get_parent() as LevelOrder).mash_block_checker_ids.append(self)
-		
-		if attributes.is_golden:
-			$Sprite2D.self_modulate = Color(Color.WHITE * 0.5,1.0)
-		else:
-			$Sprite2D.self_modulate = Color(Color.WHITE)
 
 
 var is_satisfied: bool = true

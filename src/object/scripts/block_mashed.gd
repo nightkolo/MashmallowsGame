@@ -3,25 +3,12 @@ extends CollisionShape2D
 
 signal mashable_state_changed(can_mash: bool)
 signal cherry_bomb_activated(at_pos: Vector2)
-signal has_touched_flame(flamed: bool)
 signal attribute_set()
 
 ## Shared variables with [Unmashed]
 var attributes: BlockAttributes
 @export var mash_type: Util.MashType
 @export var build_type: Util.BuildType
-@export var is_golden: bool = false:
-	set(value):
-		is_golden = value
-		if attributes:
-			attributes.is_golden = value
-		if !is_node_ready():
-			return
-		if value:
-			sprite_block.self_modulate = Color(Color.WHITE * 0.5,1.0)
-		elif !value:
-			sprite_block.self_modulate = Color(Color.WHITE)
-		#$Golden/Colli.set_deferred("disabled", !value)
 ##
 @export_category("Objects to assign")
 @export var block_detect: BlockDetector
@@ -148,13 +135,6 @@ func is_on_block() -> bool: # -> O(1)
 	return false
 
 
-func set_golden(value: bool = !is_golden) -> void:
-	is_golden = value
-
-	has_touched_flame.emit(value)
-	parent_player.has_touched_flame.emit()
-
-
 func set_asleep(player: Player, role_swapped: bool = false) -> void:
 	if !role_swapped:
 		sprite_eyes_closed.visible = player.start_asleep
@@ -197,11 +177,9 @@ func _ready() -> void:
 
 		attributes.mash_type = mash_type
 		attributes.build_type = build_type
-		attributes.is_golden = is_golden
 	else:
 		mash_type = attributes.mash_type
 		build_type = attributes.build_type
-		is_golden = attributes.is_golden
 
 	if mash_type != Util.MashType.MISC:
 		anim_awake()
@@ -313,7 +291,7 @@ func _ready() -> void:
 	
 	attribute_set.emit()
 
-	GameLogic.setup_mash(sprite_block, attributes.mash_type, attributes.build_type, attributes.is_golden)
+	GameLogic.setup_mash(sprite_block, attributes.mash_type, attributes.build_type)
 	# if sprite_shade:
 	# 	sprite_shade.texture = Util.get_mash_type_shade_texture(mash_type, build_type)
 	if sprite_eyes_regular && sprite_eyes_wide && sprite_eyes_angry:

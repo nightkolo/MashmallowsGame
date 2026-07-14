@@ -27,17 +27,6 @@ var attributes: BlockAttributes
 		if attributes:
 			attributes.build_type = value
 		build_type = value
-@export var is_golden: bool = false:
-	set(value):
-		is_golden = value
-		if attributes:
-			attributes.is_golden = value
-		if is_node_ready():
-			if value:
-				sprite.self_modulate = Color(Color.WHITE * 0.5,1.0)
-			elif !value:
-				sprite.self_modulate = Color(Color.WHITE)
-#
 
 @export_group("Variables")
 @export var cherry_bomb_strength: float = 1600.0
@@ -92,18 +81,14 @@ func _ready() -> void:
 
 		attributes.mash_type = mash_type
 		attributes.build_type = build_type
-		attributes.is_golden = is_golden
 	else:
 		mash_type = attributes.mash_type
 		build_type = attributes.build_type
-		is_golden = attributes.is_golden
 
-	#print(twisted_marshmallow)
-	#print(mash_type == Util.MashType.TWISTED)
-		#collision_mask = 8
 	
 	if mash_type == Util.MashType.TWISTED:
 		sprite_highlight.visible = false
+		
 		if colli:
 			colli.shape = colli.shape.duplicate() as RectangleShape2D
 	
@@ -117,7 +102,7 @@ func _ready() -> void:
 		
 	eyes_node.visible = mash_type != Util.MashType.MISC
 
-	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type, attributes.is_golden)
+	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type)
 	#
 	spawn_twisted()
 	
@@ -189,11 +174,6 @@ func anim_expanding() -> void:
 	await tween_expand.finished
 	
 	is_expanding = false
-
-
-func set_golden(value: bool = !is_golden) -> void:
-	is_golden = value
-
 
 ## TODO Add to Player
 func get_top_unmashed() -> Unmashed:
