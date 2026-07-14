@@ -35,7 +35,6 @@ var attributes: BlockAttributes
 @export_group("Area casts")
 @export var player_down_detect: ShapeCast2D
 @export var top_detect: ShapeCast2D
-#@export var twisted_marshmallow: Twisted
 
 @export_group("Audio")
 @export var audio: UnmashedAudio
@@ -47,13 +46,12 @@ var attributes: BlockAttributes
 @export_group("Sprites")
 @export var node_mash_prompt: Node2D 
 @export var sprite: Sprite2D
-@export var sprite_shade: Sprite2D
+@export var twisted_mask: Sprite2D
+@export var sprite_mashable: Sprite2D
 @export var sprite_highlight: Sprite2D
 @export var sprite_input: Sprite2D
 @export var sprite_node: Node2D 
 @export var eyes_node: Node2D 
-
-#var twisted: PackedScene = preload("res://object/objects/block_twisted_collision.tscn")
 
 var unmashed_spawner: Node
 var was_mashed: bool = false
@@ -68,7 +66,6 @@ func _ready() -> void:
 	set_physics_process(true)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
-
 	if was_mashed:
 		anim_unmashed()
 	
@@ -84,22 +81,30 @@ func _ready() -> void:
 	else:
 		mash_type = attributes.mash_type
 		build_type = attributes.build_type
-
 	
 	if mash_type == Util.MashType.TWISTED:
+		sprite.visible = false
 		sprite_highlight.visible = false
+		twisted_mask.visible = true
 		
 		if colli:
 			colli.shape = colli.shape.duplicate() as RectangleShape2D
+			
+			print_debug(twisted_mask.position)
+			
+			if twisted_mask:
+				twisted_mask.texture = twisted_mask.texture.duplicate() as GradientTexture2D
 	
-	if mash_type != Util.MashType.MISC:
-		anim_sleep()
+	if mash_type == Util.MashType.MISC:
+		sprite_node.scale = Vector2.ONE
+	else:
 		particles_z.emitting = true
 		if audio:
 			audio.play_spawn_sound()
-	else:
-		sprite_node.scale = Vector2.ONE
 		
+		if mash_type != Util.MashType.TWISTED:
+			anim_sleep()
+			
 	eyes_node.visible = mash_type != Util.MashType.MISC
 
 	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type)
@@ -109,22 +114,13 @@ func _ready() -> void:
 	if was_mashed:
 		await anim_unmashed_finished
 	
-	if mash_type == Util.MashType.TWISTED:
-		sprite_node.visible = false
-	elif GameMgr.current_level:
+	if GameMgr.current_level:
 		sprite_node.visible = GameMgr.current_level.show_unmashed_blocks
 
 
 func spawn_twisted():
 	if mash_type == Util.MashType.TWISTED:
 		collision_mask = 1 + 8
-		#var t: Twisted = twisted.instantiate()
-		#t.position = Vector2.ZERO
-		#if was_mashed:
-			#await anim_unmashed_finished
-		#add_child(t)
-		#move_child(t, 0)
-		#twisted_marshmallow = t
 		anim_expanding()
 	else:
 		collision_mask = 1 + 8 + 4096
@@ -138,42 +134,80 @@ const WAIT_TIME_BEFORE_EXPAND = 0.75
 var tween_expand: Tween
 
 func anim_expanding() -> void:
-	if colli == null:
+	if colli == null || twisted_mask == null:
 		return
 
 	is_expanding = true
 	
-	# TODO duplicate shape before-hand
-	
-	# create tween
-	# move to pos_to, on twisted_strength
-	# set conditions
+	# TODO Handle collisions during expansion
 	
 	started_expanding.emit()
 	
 	if tween_expand:
 		tween_expand.kill()
 	
-	tween_expand = create_tween()
+	tween_expand = create_tween().set_parallel(true)
 	
-	#var pos_to: float = twisted_strength * Util.BLOCK_SIZE
+	var pos_to: float = twisted_strength * Util.BLOCK_SIZE
 	
 	tween_expand.tween_property(
 		colli.shape as RectangleShape2D,
 		"size:y",
-		twisted_strength * Util.BLOCK_SIZE,
+		pos_to,
 		EXPAND_TIME
 		).set_delay(WAIT_TIME_BEFORE_EXPAND)
+	tween_expand.tween_property(
+		twisted_mask.texture as GradientTexture2D,
+		"height",
+		pos_to,
+		EXPAND_TIME).set_delay(WAIT_TIME_BEFORE_EXPAND)
+	tween_expand.tween_property(
+		twisted_mask,
+		"position:y",
+		pos_to * 0.375,
+		EXPAND_TIME).set_delay(WAIT_TIME_BEFORE_EXPAND)
+	tween_expand.tween_property(
+		eyes_node,
+		"position:y",
+		pos_to * 0.375,
+		EXPAND_TIME).set_delay(WAIT_TIME_BEFORE_EXPAND)
 	
 	
 	if was_mashed:
-		# anim indicator
-		pass
-		#twisted_marshmallow.anim_indicator(WAIT_TIME_BEFORE_EXPAND)
-	
+		anim_indicator(WAIT_TIME_BEFORE_EXPAND)
+
 	await tween_expand.finished
 	
 	is_expanding = false
+
+
+func anim_indicator(dur: float) -> void:
+	var t:= create_tween().set_loops(3)
+	
+	sprite_mashable.visible = true
+	
+	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 1.0), dur * 0.05)
+	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 0.0), dur * 0.25)
+	
+	var t_b := create_tween().set_loops(3)
+	
+	t_b.tween_property(twisted_mask, "position:y", (Util.BLOCK_SIZE * 0.5) - 3.0, dur * 0.05)
+	t_b.tween_property(twisted_mask, "position:y", Util.BLOCK_SIZE * 0.5, dur * 0.25)
+
+
+
+
+#func anim_highlight(close: bool) -> void:
+	#if parent_unmashed == null:
+		#return
+	#
+	#sprite_mashable.self_modulate = Color(Color.WHITE, 1.0)
+	#
+	#if close && parent_unmashed.is_mashable():
+		#sprite_mashable.visible = true
+	#else:
+		#sprite_mashable.visible = false
+
 
 ## TODO Add to Player
 func get_top_unmashed() -> Unmashed:
@@ -302,52 +336,55 @@ func anim_spawn_particles() -> void:
 
 var _tween_prompt: Tween
 
-func anim_highlight(p_mash: bool) -> void:
+func anim_highlight(p_highlight: bool) -> void:
 	var can_mash: bool = true
 
 	if GameMgr.current_main_player:
 		can_mash = GameMgr.current_main_player.can_perform_mash()
 		sprite_input.visible = !can_mash
 	
-	is_player_close = p_mash
+	is_player_close = p_highlight
 	
 	if _tween_light:
 		_tween_light.kill()
 		
 	_tween_light = get_tree().create_tween().set_parallel()
 	
-	# TODO FIx highlight system
-	print_debug("Can mash: %s" % p_mash)
+	sprite_mashable.self_modulate = Color(Color.WHITE, 1.0)
 	
-	if p_mash:
+	if p_highlight:
 		if tutorial_block && node_mash_prompt:
 			node_mash_prompt.visible = true
+			
 			if _tween_prompt:
 				_tween_prompt.kill()
 			_tween_prompt = create_tween()
 			_tween_prompt.tween_property(node_mash_prompt, "scale", Vector2.ONE, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-
-		#sprite_input.visible = true
-		#sprite_highlight.visible = true
+		
 		if can_mash:
+			sprite_mashable.visible = true
 			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52, 0.1)
 		else:
+			sprite_mashable.visible = false
 			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
-		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE), 0.1)
 		
-	else:
+		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE), 0.1)
 
+	else:
 		if tutorial_block && node_mash_prompt:
 			if _tween_prompt:
 				_tween_prompt.kill()
+				
 			_tween_prompt = create_tween()
 			_tween_prompt.tween_property(node_mash_prompt, "scale", Vector2.ONE * 0.0, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 
 		if can_mash:
+			sprite_mashable.visible = false
 			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
+		
 		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE, 0.0), 0.1)
+		
 		await _tween_light.finished
-		#sprite_highlight.visible = false
+		
 		if node_mash_prompt:
 			node_mash_prompt.visible = false
-		#sprite_input.visible = false

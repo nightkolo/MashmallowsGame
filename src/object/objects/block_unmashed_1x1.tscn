@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bsji6bkbccpc8" path="res://assets/objects/block-white-1x1.png" id="3_atpv5"]
 [ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="3_ugmxi"]
 [ext_resource type="LabelSettings" uid="uid://dohg6g363o0sh" path="res://core/resources/label/prompt_text_label.tres" id="3_ynmou"]
-[ext_resource type="Texture2D" uid="uid://dapafw2ycdflq" path="res://assets/objects/block-shade-1x1-01.png" id="6_ugmxi"]
 [ext_resource type="Texture2D" uid="uid://dg568jue416lr" path="res://core/resources/game/twisted_marshmallow_texture.tres" id="8_csu64"]
 [ext_resource type="PackedScene" uid="uid://b8b1jq0amanoa" path="res://world/particles_z.tscn" id="8_l7hdh"]
 [ext_resource type="Texture2D" uid="uid://di0gtwsbffgjt" path="res://assets/objects/block-twisted-1xAny.png" id="9_qnklu"]
@@ -37,7 +36,7 @@ size = Vector2(60, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynmou"]
 size = Vector2(60, 20)
 
-[node name="Unmashed" type="CharacterBody2D" unique_id=1597136109 node_paths=PackedStringArray("player_down_detect", "top_detect", "audio", "colli", "particles_spawn", "particles_z", "node_mash_prompt", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node")]
+[node name="Unmashed" type="CharacterBody2D" unique_id=1597136109 node_paths=PackedStringArray("player_down_detect", "top_detect", "audio", "colli", "particles_spawn", "particles_z", "node_mash_prompt", "sprite", "twisted_mask", "sprite_mashable", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node")]
 collision_layer = 8
 collision_mask = 4105
 script = ExtResource("1_n48d1")
@@ -46,10 +45,11 @@ top_detect = NodePath("TopDetect")
 audio = NodePath("UnmashedAudio")
 colli = NodePath("CollisionShape2D")
 particles_spawn = NodePath("Visual/Particles")
-particles_z = NodePath("Visual/Z")
+particles_z = NodePath("Visual/Eyes/Z")
 node_mash_prompt = NodePath("MashPrompt")
 sprite = NodePath("Visual/SpriteNode/Sprite2D")
-sprite_shade = NodePath("Visual/SpriteNode/Shade")
+twisted_mask = NodePath("Visual/SpriteNode/TwistedMask")
+sprite_mashable = NodePath("Visual/SpriteNode/TwistedMask/Mashable")
 sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
 sprite_input = NodePath("Visual/Eyes/Unmashable")
 sprite_node = NodePath("Visual/SpriteNode")
@@ -83,7 +83,7 @@ blink_interval = 0.0
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -71857.65
+rotation = -74021.66
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"
@@ -105,26 +105,19 @@ position = Vector2(0, -35)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_atpv5")
 
-[node name="Shade" type="Sprite2D" parent="Visual/SpriteNode" unique_id=679386094]
-visible = false
-self_modulate = Color(1, 1, 1, 0.3)
-position = Vector2(0, -34.80761)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("6_ugmxi")
-
-[node name="TwistedMask" type="Sprite2D" parent="Visual" unique_id=1318203794]
+[node name="TwistedMask" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1318203794]
 clip_children = 1
-position = Vector2(37, 32)
+position = Vector2(37, -3)
 rotation = 3.1415925
 texture = ExtResource("8_csu64")
 centered = false
 
-[node name="Unmashable" type="Sprite2D" parent="Visual/TwistedMask" unique_id=809734488]
+[node name="Unmashable" type="Sprite2D" parent="Visual/SpriteNode/TwistedMask" unique_id=809734488]
 position = Vector2(37, 175)
 scale = Vector2(-0.5, -0.5)
 texture = ExtResource("9_qnklu")
 
-[node name="Mashable" type="Sprite2D" parent="Visual/TwistedMask" unique_id=802992350]
+[node name="Mashable" type="Sprite2D" parent="Visual/SpriteNode/TwistedMask" unique_id=802992350]
 unique_name_in_owner = true
 visible = false
 position = Vector2(37, 175)
@@ -132,6 +125,10 @@ scale = Vector2(-0.5, -0.5)
 texture = ExtResource("10_uaxf7")
 
 [node name="Eyes" type="Node2D" parent="Visual" unique_id=808718703]
+
+[node name="Z" parent="Visual/Eyes" unique_id=2080773523 instance=ExtResource("8_l7hdh")]
+position = Vector2(22, -19)
+emitting = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual/Eyes" unique_id=896589209]
 scale = Vector2(0.6, 0.6)
@@ -151,10 +148,6 @@ offset_right = 21.0
 offset_bottom = 46.0
 text = "X"
 label_settings = SubResource("LabelSettings_3xak3")
-
-[node name="Z" parent="Visual" unique_id=2080773523 instance=ExtResource("8_l7hdh")]
-position = Vector2(22, -19)
-emitting = false
 
 [node name="Particles" type="CPUParticles2D" parent="Visual" unique_id=1465561876]
 unique_name_in_owner = true
