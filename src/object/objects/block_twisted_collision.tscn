@@ -37,17 +37,19 @@ scale = Vector2(-0.5, -0.5)
 texture = ExtResource("4_gw6md")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=800639809]
-collision_layer = 4096
-collision_mask = 9
+visible = false
+collision_layer = 0
+collision_mask = 4105
 script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=796999379]
 shape = SubResource("RectangleShape2D_lvee0")
+disabled = true
 
 [node name="AnimatableBody2D2" type="AnimatableBody2D" parent="." unique_id=1816252498]
 position = Vector2(0, -64)
-collision_layer = 4096
-collision_mask = 9
+collision_layer = 0
+collision_mask = 4105
 script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D2" unique_id=1279636235]
@@ -55,8 +57,8 @@ shape = SubResource("RectangleShape2D_lvee0")
 
 [node name="AnimatableBody2D3" type="AnimatableBody2D" parent="." unique_id=327078020]
 position = Vector2(0, -128)
-collision_layer = 4096
-collision_mask = 9
+collision_layer = 0
+collision_mask = 4105
 script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D3" unique_id=1836509003]
@@ -64,8 +66,8 @@ shape = SubResource("RectangleShape2D_lvee0")
 
 [node name="AnimatableBody2D4" type="AnimatableBody2D" parent="." unique_id=1546255635]
 position = Vector2(0, -192)
-collision_layer = 4096
-collision_mask = 9
+collision_layer = 0
+collision_mask = 4105
 script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D4" unique_id=1848590647]
@@ -73,8 +75,8 @@ shape = SubResource("RectangleShape2D_lvee0")
 
 [node name="AnimatableBody2D5" type="AnimatableBody2D" parent="." unique_id=1351008727]
 position = Vector2(0, -256)
-collision_layer = 4096
-collision_mask = 9
+collision_layer = 0
+collision_mask = 4105
 script = ExtResource("2_8xxo4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D5" unique_id=476015981]

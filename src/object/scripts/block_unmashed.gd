@@ -46,11 +46,12 @@ var attributes: BlockAttributes
 @export_group("Area casts")
 @export var player_down_detect: ShapeCast2D
 @export var top_detect: ShapeCast2D
-@export var twisted_marshmallow: Twisted
+#@export var twisted_marshmallow: Twisted
 
 @export_group("Audio")
 @export var audio: UnmashedAudio
 @export_group("Nodes")
+@export var colli: CollisionShape2D 
 @export var particles_spawn: CPUParticles2D 
 @export var particles_z: CPUParticles2D 
 
@@ -63,7 +64,7 @@ var attributes: BlockAttributes
 @export var sprite_node: Node2D 
 @export var eyes_node: Node2D 
 
-var twisted: PackedScene = preload("res://object/objects/block_twisted_collision.tscn")
+#var twisted: PackedScene = preload("res://object/objects/block_twisted_collision.tscn")
 
 var unmashed_spawner: Node
 var was_mashed: bool = false
@@ -103,6 +104,8 @@ func _ready() -> void:
 	
 	if mash_type == Util.MashType.TWISTED:
 		sprite_highlight.visible = false
+		if colli:
+			colli.shape = colli.shape.duplicate() as RectangleShape2D
 	
 	if mash_type != Util.MashType.MISC:
 		anim_sleep()
@@ -130,13 +133,13 @@ func _ready() -> void:
 func spawn_twisted():
 	if mash_type == Util.MashType.TWISTED:
 		collision_mask = 1 + 8
-		var t: Twisted = twisted.instantiate()
-		t.position = Vector2.ZERO
-		if was_mashed:
-			await anim_unmashed_finished
-		add_child(t)
-		move_child(t, 0)
-		twisted_marshmallow = t
+		#var t: Twisted = twisted.instantiate()
+		#t.position = Vector2.ZERO
+		#if was_mashed:
+			#await anim_unmashed_finished
+		#add_child(t)
+		#move_child(t, 0)
+		#twisted_marshmallow = t
 		anim_expanding()
 	else:
 		collision_mask = 1 + 8 + 4096
@@ -147,27 +150,43 @@ func is_mashable() -> bool:
 const EXPAND_TIME = 0.5
 const WAIT_TIME_BEFORE_EXPAND = 0.75
 
+var tween_expand: Tween
+
 func anim_expanding() -> void:
-	if twisted_marshmallow == null:
+	if colli == null:
 		return
 
 	is_expanding = true
 	
-	twisted_marshmallow.position = Vector2.ZERO
-	for b: TwistedColliBlock in twisted_marshmallow.bodies:
-		b.position = Vector2.ZERO
+	# TODO duplicate shape before-hand
 	
-	if was_mashed:
-		twisted_marshmallow.anim_indicator(WAIT_TIME_BEFORE_EXPAND)
-	
-	await get_tree().create_timer(WAIT_TIME_BEFORE_EXPAND).timeout
+	# create tween
+	# move to pos_to, on twisted_strength
+	# set conditions
 	
 	started_expanding.emit()
-
-	print_debug(twisted_strength)
-	twisted_marshmallow.expand_collision(twisted_strength, EXPAND_TIME)
 	
-	await get_tree().create_timer(EXPAND_TIME).timeout
+	if tween_expand:
+		tween_expand.kill()
+	
+	tween_expand = create_tween()
+	
+	#var pos_to: float = twisted_strength * Util.BLOCK_SIZE
+	
+	tween_expand.tween_property(
+		colli.shape as RectangleShape2D,
+		"size:y",
+		twisted_strength * Util.BLOCK_SIZE,
+		EXPAND_TIME
+		).set_delay(WAIT_TIME_BEFORE_EXPAND)
+	
+	
+	if was_mashed:
+		# anim indicator
+		pass
+		#twisted_marshmallow.anim_indicator(WAIT_TIME_BEFORE_EXPAND)
+	
+	await tween_expand.finished
 	
 	is_expanding = false
 
@@ -217,8 +236,8 @@ var amount_collided_with: int:
 		
 		anim_highlight(collidied)
 		
-		if twisted_marshmallow:
-			twisted_marshmallow.anim_highlight(collidied)
+		#if twisted_marshmallow:
+			#twisted_marshmallow.anim_highlight(collidied)
 		
 
 var _landed: bool

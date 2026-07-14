@@ -113,7 +113,6 @@ offset_bottom = 560.0
 position = Vector2(-24, 80)
 scale = Vector2(0.75, 0.75)
 script = ExtResource("10_xjesv")
-order_code = Array[Dictionary]([])
 metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="MashBlockCheckerID" parent="World/LevelGoal/LevelOrder" unique_id=491390326 instance=ExtResource("11_evln4")]

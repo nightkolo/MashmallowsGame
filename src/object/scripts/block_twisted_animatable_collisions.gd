@@ -11,7 +11,7 @@ func _ready() -> void:
 			parent_unmashed = get_parent().get_parent() as Unmashed
 	
 	collision_layer = 4096
-	collision_mask = 1 + 8
+	collision_mask = 1 + 8 + 4096
 
 	if parent_unmashed:
 		if parent_unmashed.was_mashed:

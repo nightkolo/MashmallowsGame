@@ -193,7 +193,9 @@ func _ready_dubbleganger() -> void:
 	if !dubbleganger:
 		GameMgr.current_main_player = self
 		GameMgr.current_player = self
-			
+	else:
+		acceleration = acceleration * 2.0
+		jump_height += 200.0
 	
 	if start_active:
 		set_active(true)

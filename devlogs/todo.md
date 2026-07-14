@@ -20,20 +20,21 @@
     - [x] Cherry Bombs
   - [x] Bakery transtioins
 - [ ] Bakery 2
-  - [ ] Level structure
+  - [ ] **Level structure**
     - [x] 1-3
-    - [x] 4-6
-    - [ ] 7-9
+    - [x] 4-7
+    - [ ] 8-9
     - [ ] 10
   - [x] Mechanics introduced
     - [x] Twisted
     - [x] Dubblegänger
+    - [ ] Hat only blocks
 - [ ] Outro Sequence
   - [ ] Monologue
 
 
 ### Assets and Design
-- [ ] API
+- [ ] **API**
   - [ ] API testing and saving
   - [ ] Medal ideas
   - [ ] Medals
@@ -57,6 +58,7 @@
   - [ ] Dubble
     - [ ] Audio dependency
     - [ ] Emote animation
+    - [ ] Auto-moving on X when is_hanging = true
     - [x] Camera focus
     - [x] Highlight system
     - [x] Hat
