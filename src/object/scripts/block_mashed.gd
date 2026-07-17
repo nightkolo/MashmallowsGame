@@ -290,30 +290,34 @@ func _ready_parent_dependencies() -> void:
 				current_trail.trail_enabled = false
 				current_trail = null
 			)
-
-
-func mash() -> bool: ## Ok O(1)
+			
+			
+func mash() -> bool: 
 	if mash_type == Util.MashType.CHERRY_BOMB || mash_type == Util.MashType.AIR_CHERRY_BOMB:
 		return false
 
-	# Mash to a dubbleganger
+	# Mash to a dubbleganger (Only one can exist)
+	# Ok -> O(1)
 	for p: Player in block_detect.dubbleganger_detect_1x1.get_overlapping_bodies():
-		if p == parent_player:
+		if !(p is Player) || p == parent_player:
 			continue
 			
 		var active: bool = p.is_active
 		
 		if !active || p.dubbleganger:
 			if p.global_position.y > global_position.y + (0.5 * Util.BLOCK_SIZE):
-				continue
+				break
 				
 			p.set_active(!active)
 			parent_player.set_active(active)
 			
-		return true
+			return true
+		break
 	#
 	
 	# Mash to a block
+	# Ok -> O(1)
+	# block_detect.unmashed_block_detection_rays.size() fixed to 3 or 5
 	var collided: bool = false
 	
 	for ray: RayCast2D in block_detect.unmashed_block_detection_rays:

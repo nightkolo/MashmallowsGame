@@ -32,9 +32,12 @@
 - [ ] Outro Sequence
   - [ ] Monologue
 
+Me when I decide to fix bugs and manage to discover more bugs
+
 ### Bugs
   - [ ] Twisted
     - [ ] Collision handling
+    - [ ] Level 16
     - [x] Visual bug
     - [x] Fix Rewrites
     - [x] Highlight system
@@ -43,7 +46,7 @@
   - [ ] Dubble
     - [ ] Audio dependency
     - [ ] Emote animation
-    - [ ] Auto-moving on X when is_hanging = true
+    - [x] Auto-moving on X when is_hanging = true
     - [x] Camera focus
     - [x] Highlight system
     - [x] Hat
