@@ -121,7 +121,7 @@ func is_on_wall() -> bool: # -> O(1)
 	return false
 
 
-# Returns true if the [Mashed] mash_block on a [Unmashed] (including [TwistedColliBlock] and [Player]).
+# Returns true if the [Mashed] mash_block on a [Unmashed].
 func is_on_block() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.blocks_ray
 	
@@ -129,7 +129,7 @@ func is_on_block() -> bool: # -> O(1)
 	if ray.is_colliding():
 		var colli: Node2D = ray.get_collider(ray.get_collision_count() - 1)
 		
-		if colli is Unmashed || colli is TwistedColliBlock:
+		if colli is Unmashed:
 			return true
 		
 	return false

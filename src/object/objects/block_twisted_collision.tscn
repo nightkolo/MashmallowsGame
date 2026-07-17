@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bx4riuxwyodmw"]
 
-[ext_resource type="Script" uid="uid://bvqqxldlat8i5" path="res://object/scripts/block_twisted.gd" id="1_p35sq"]
+[ext_resource type="Script" uid="uid://bvqqxldlat8i5" path="res://object/scripts/block_twisted_old.gd" id="1_p35sq"]
 [ext_resource type="Texture2D" uid="uid://dg568jue416lr" path="res://core/resources/game/twisted_marshmallow_texture.tres" id="2_7yu03"]
-[ext_resource type="Script" uid="uid://deg6bd4paxjlc" path="res://object/scripts/block_twisted_animatable_collisions.gd" id="2_8xxo4"]
+[ext_resource type="Script" uid="uid://deg6bd4paxjlc" path="res://object/scripts/block_twisted_animatable_collisions_old.gd" id="2_8xxo4"]
 [ext_resource type="Texture2D" uid="uid://di0gtwsbffgjt" path="res://assets/objects/block-twisted-1xAny.png" id="3_2j2nq"]
 [ext_resource type="Texture2D" uid="uid://bhfflnx828xex" path="res://assets/objects/block-twisted-1xAny-mashable.png" id="4_gw6md"]
 

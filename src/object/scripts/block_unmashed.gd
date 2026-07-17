@@ -7,15 +7,11 @@ signal started_breathing()
 signal started_expanding()
 signal player_entered(entered: bool)
 
-# Shared variables with [Mashed]
-var attributes: BlockAttributes
-
 @export var tutorial_block: bool = false
 @export var mash_type: Util.MashType:
 	set(value):
 		if is_node_ready():
 			sprite.texture = Util.get_mash_type_texture(value, build_type)
-			#sprite_shade.texture = Util.get_mash_type_shade_texture(value, build_type)
 		if attributes:
 			attributes.mash_type = value
 		mash_type = value
@@ -23,7 +19,6 @@ var attributes: BlockAttributes
 	set(value):
 		if is_node_ready():
 			sprite.texture = Util.get_mash_type_texture(mash_type, value)
-		
 		if attributes:
 			attributes.build_type = value
 		build_type = value
@@ -53,6 +48,7 @@ var attributes: BlockAttributes
 @export var sprite_node: Node2D 
 @export var eyes_node: Node2D 
 
+var attributes: BlockAttributes
 var unmashed_spawner: Node
 var was_mashed: bool = false
 var is_player_close: bool = false:
@@ -81,6 +77,7 @@ func _ready() -> void:
 	else:
 		mash_type = attributes.mash_type
 		build_type = attributes.build_type
+	#
 	
 	if mash_type == Util.MashType.TWISTED:
 		sprite.visible = false
@@ -108,8 +105,8 @@ func _ready() -> void:
 	eyes_node.visible = mash_type != Util.MashType.MISC
 
 	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type)
-	#
-	spawn_twisted()
+	
+	_ready_twisted()
 	
 	if was_mashed:
 		await anim_unmashed_finished
@@ -118,28 +115,59 @@ func _ready() -> void:
 		sprite_node.visible = GameMgr.current_level.show_unmashed_blocks
 
 
-func spawn_twisted():
+func _ready_twisted() -> void:
 	if mash_type == Util.MashType.TWISTED:
 		collision_mask = 1 + 8
 		anim_expanding()
 	else:
 		collision_mask = 1 + 8 + 4096
 
+
 func is_mashable() -> bool:
 	return !is_expanding
 
-const EXPAND_TIME = 0.5
-const WAIT_TIME_BEFORE_EXPAND = 0.75
 
 var tween_expand: Tween
+
+func start_stop_expansion() -> void:
+	GameMgr.current_player.has_touched_ceiling.connect(_on_ceiling_touched)
+
+
+func cancel_stop_expansion() -> void:
+	var p: Player = GameMgr.current_player
+	
+	if p.has_touched_ceiling.is_connected(_on_ceiling_touched):
+		p.has_touched_ceiling.disconnect(_on_ceiling_touched)
+
+
+func _on_ceiling_touched() -> void:
+	var p: Player = GameMgr.current_player
+	
+	if p == null:
+		return
+	
+	if p.is_on_block():
+		stop_expanding()
+
+
+func stop_expanding() -> void:
+	if tween_expand && is_expanding:
+		tween_expand.kill()
+		
+		(twisted_mask.texture as GradientTexture2D).height -= 10
+		(colli.shape as RectangleShape2D).size.y -= 20.0
+		
+		is_expanding = false
+
 
 func anim_expanding() -> void:
 	if colli == null || twisted_mask == null:
 		return
+	
+	const EXPAND_TIME = 0.5
+	const WAIT_TIME_BEFORE_EXPAND = 0.75
 
 	is_expanding = true
-	
-	# TODO Handle collisions during expansion
 	
 	started_expanding.emit()
 	
@@ -150,63 +178,35 @@ func anim_expanding() -> void:
 	
 	var pos_to: float = twisted_strength * Util.BLOCK_SIZE
 	
-	tween_expand.tween_property(
-		colli.shape as RectangleShape2D,
-		"size:y",
-		pos_to,
-		EXPAND_TIME
+	tween_expand.tween_callback(func():
+		start_stop_expansion()
 		).set_delay(WAIT_TIME_BEFORE_EXPAND)
-	tween_expand.tween_property(
-		twisted_mask.texture as GradientTexture2D,
-		"height",
-		pos_to,
-		EXPAND_TIME).set_delay(WAIT_TIME_BEFORE_EXPAND)
-	tween_expand.tween_property(
-		twisted_mask,
-		"position:y",
-		pos_to * 0.375,
-		EXPAND_TIME).set_delay(WAIT_TIME_BEFORE_EXPAND)
-	tween_expand.tween_property(
-		eyes_node,
-		"position:y",
-		pos_to * 0.375,
-		EXPAND_TIME).set_delay(WAIT_TIME_BEFORE_EXPAND)
-	
+	tween_expand.chain().tween_property(colli.shape as RectangleShape2D,"size:y",pos_to,EXPAND_TIME)
+	tween_expand.tween_property(twisted_mask.texture as GradientTexture2D,"height",pos_to,EXPAND_TIME)
+	tween_expand.tween_property(twisted_mask,"position:y",pos_to * 0.375,EXPAND_TIME)
+	tween_expand.tween_property(eyes_node,"position:y",pos_to * 0.375,EXPAND_TIME)
 	
 	if was_mashed:
-		anim_indicator(WAIT_TIME_BEFORE_EXPAND)
+		anim_expanding_indicator(WAIT_TIME_BEFORE_EXPAND)
 
 	await tween_expand.finished
 	
+	cancel_stop_expansion()
 	is_expanding = false
 
 
-func anim_indicator(dur: float) -> void:
+func anim_expanding_indicator(dur: float) -> void:
 	var t:= create_tween().set_loops(3)
 	
 	sprite_mashable.visible = true
 	
-	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 1.0), dur * 0.05)
-	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 0.0), dur * 0.25)
+	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 1.0), dur * 0.06)
+	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 0.0), dur * 0.27)
 	
 	var t_b := create_tween().set_loops(3)
 	
-	t_b.tween_property(twisted_mask, "position:y", (Util.BLOCK_SIZE * 0.5) - 3.0, dur * 0.05)
-	t_b.tween_property(twisted_mask, "position:y", Util.BLOCK_SIZE * 0.5, dur * 0.25)
-
-
-
-
-#func anim_highlight(close: bool) -> void:
-	#if parent_unmashed == null:
-		#return
-	#
-	#sprite_mashable.self_modulate = Color(Color.WHITE, 1.0)
-	#
-	#if close && parent_unmashed.is_mashable():
-		#sprite_mashable.visible = true
-	#else:
-		#sprite_mashable.visible = false
+	t_b.tween_property(twisted_mask, "position:y", (Util.BLOCK_SIZE * 0.5) - 3.0, dur * 0.06)
+	t_b.tween_property(twisted_mask, "position:y", Util.BLOCK_SIZE * 0.5, dur * 0.27)
 
 
 ## TODO Add to Player
@@ -250,10 +250,6 @@ var amount_collided_with: int:
 		
 		anim_highlight(collidied)
 		
-		#if twisted_marshmallow:
-			#twisted_marshmallow.anim_highlight(collidied)
-		
-
 var _landed: bool
 
 # TODO hanging mid-air
@@ -273,7 +269,11 @@ func _physics_process(delta: float) -> void:
 		
 	if !is_on_floor():
 		_landed = false
-
+	var l_ceil: bool = is_on_ceiling()
+	print_debug(l_ceil)
+	if is_expanding && l_ceil:
+		stop_expanding()
+	
 	move_and_slide()
 
 

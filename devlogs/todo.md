@@ -32,12 +32,33 @@
 - [ ] Outro Sequence
   - [ ] Monologue
 
+### Bugs
+  - [ ] Twisted
+    - [ ] Visual bug
+    - [x] Collision handling
+    - [x] Fix Rewrites
+    - [x] Highlight system
+    - [x] Visual indicator
+    - [x] Smoother transition
+  - [ ] Dubble
+    - [ ] Audio dependency
+    - [ ] Emote animation
+    - [ ] Auto-moving on X when is_hanging = true
+    - [x] Camera focus
+    - [x] Highlight system
+    - [x] Hat
+    - [x] Sleep anim
+  - [x] Intro
+  - [x] Bubblegate
+    - [x] Fix interact animation
 
-### Assets and Design
+### Codebase
 - [ ] **API**
-  - [ ] API testing and saving
   - [ ] Medal ideas
   - [ ] Medals
+  - [x] API testing and saving
+
+### Assets and Design
 - [ ] Promo
   - [ ] Game trailer layout
   - [ ] Game section
@@ -54,23 +75,6 @@
   - [x] Dubble indicator
 
 
-### Bugs
-  - [ ] Dubble
-    - [ ] Audio dependency
-    - [ ] Emote animation
-    - [ ] Auto-moving on X when is_hanging = true
-    - [x] Camera focus
-    - [x] Highlight system
-    - [x] Hat
-    - [x] Sleep anim
-  - [x] Intro
-    - [x] Fix Rewrites
-  - [x] Twisted
-    - [x] Highlight system
-    - [x] Visual indicator
-    - [x] Smoother transition
-  - [x] Bubblegate
-    - [x] Fix interact animation
 
 ### Animation
 - [ ] Level

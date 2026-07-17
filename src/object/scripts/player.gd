@@ -521,6 +521,8 @@ func jump() -> void:
 	state_machine.change_state("AirState", {"jumped": true, "falling": false})
 
 ## Returns true if the player on a unmashed block (including [TwistedColliBlock]).
+## [br]
+## O(n)
 func is_on_block() -> bool:
 	for block: Mashed in child_blocks:
 		if block.is_on_block():

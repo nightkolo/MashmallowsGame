@@ -80,8 +80,6 @@ static var medal_data: Dictionary = {
 
 }
 const DEFAULT_MEDAL_DATA = {
-	# NOTE: HARD-CODED, DO NOT MODIFY UNLESS YOU KNOW WHAT YOU'RE DOING.
-	
 	# TODO: Possible issues with save data when versioning
 	
 	# Progression

@@ -56,6 +56,9 @@ sprite_node = NodePath("Visual/SpriteNode")
 eyes_node = NodePath("Visual/Eyes")
 metadata/_custom_type_script = "uid://madv71ijp5i3"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767633492]
+shape = ExtResource("2_qkq5r")
+
 [node name="UnmashedAudio" parent="." unique_id=1397385759 instance=ExtResource("2_ynmou")]
 
 [node name="MashPrompt" type="Node2D" parent="." unique_id=202597146]
@@ -83,7 +86,7 @@ blink_interval = 0.0
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -74021.66
+rotation = -77705.14
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"
@@ -106,6 +109,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_atpv5")
 
 [node name="TwistedMask" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1318203794]
+visible = false
 clip_children = 1
 position = Vector2(37, -3)
 rotation = 3.1415925
@@ -169,9 +173,6 @@ damping_min = 240.0
 damping_max = 240.0
 scale_amount_curve = SubResource("Curve_barkj")
 color_ramp = SubResource("Gradient_ol1ck")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767633492]
-shape = ExtResource("2_qkq5r")
 
 [node name="PlayerBottomDetect" type="ShapeCast2D" parent="." unique_id=990155891]
 shape = SubResource("RectangleShape2D_ry3tk")

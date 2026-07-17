@@ -1,3 +1,4 @@
+## @deprecated
 extends AnimatableBody2D
 class_name TwistedColliBlock
 
@@ -19,4 +20,5 @@ func _ready() -> void:
 			
 			parent_unmashed.started_expanding.connect(func():
 				colli.set_deferred("disabled", parent_unmashed.mash_type != Util.MashType.TWISTED)
+
 				)
