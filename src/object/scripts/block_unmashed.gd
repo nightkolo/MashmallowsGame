@@ -149,13 +149,13 @@ func _on_ceiling_touched() -> void:
 	if p.is_on_block():
 		stop_expanding()
 
-
-func stop_expanding() -> void:
+# TODO Add raycast based collision checking
+func stop_expanding(pushback: float = 20.0) -> void:
 	if tween_expand && is_expanding:
 		tween_expand.kill()
 		
-		(twisted_mask.texture as GradientTexture2D).height -= 10
-		(colli.shape as RectangleShape2D).size.y -= 20.0
+		(twisted_mask.texture as GradientTexture2D).height -= int(pushback)
+		(colli.shape as RectangleShape2D).size.y -= pushback
 		
 		is_expanding = false
 
@@ -196,6 +196,7 @@ func anim_expanding() -> void:
 
 
 func anim_expanding_indicator(dur: float) -> void:
+	var p: float = twisted_mask.position.y
 	var t:= create_tween().set_loops(3)
 	
 	sprite_mashable.visible = true
@@ -205,8 +206,8 @@ func anim_expanding_indicator(dur: float) -> void:
 	
 	var t_b := create_tween().set_loops(3)
 	
-	t_b.tween_property(twisted_mask, "position:y", (Util.BLOCK_SIZE * 0.5) - 3.0, dur * 0.06)
-	t_b.tween_property(twisted_mask, "position:y", Util.BLOCK_SIZE * 0.5, dur * 0.27)
+	t_b.tween_property(twisted_mask, "position:y", p - 3.0, dur * 0.06)
+	t_b.tween_property(twisted_mask, "position:y", p, dur * 0.27)
 
 
 ## TODO Add to Player
@@ -272,7 +273,7 @@ func _physics_process(delta: float) -> void:
 	var l_ceil: bool = is_on_ceiling()
 	print_debug(l_ceil)
 	if is_expanding && l_ceil:
-		stop_expanding()
+		stop_expanding(40.0)
 	
 	move_and_slide()
 
