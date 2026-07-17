@@ -321,43 +321,28 @@ func _ready() -> void:
 		
 
 func mash() -> bool: ## Ok O(1)
-	var collided: bool = false
-	
-	if mash_type == Util.MashType.CHERRY_BOMB:
+	if mash_type == Util.MashType.CHERRY_BOMB || mash_type == Util.MashType.AIR_CHERRY_BOMB:
 		return false
-	
-	var dubbles: Array = block_detect.dubbleganger_detect_1x1.get_overlapping_bodies()
-	
-	
-	for p: Player in dubbles:
-		if p != parent_player:
-			print_debug("NO MATCH: %s != %s" % [p, parent_player])
+
+	# Mash to a dubbleganger
+	for p: Player in block_detect.dubbleganger_detect_1x1.get_overlapping_bodies():
+		if p == parent_player:
+			continue
 			
-			var active: bool = p.is_active
-			
-			
-			#func move_up(strength: float = 10.0) -> void:
-				#var top: Unmashed = get_top_unmashed()
-				#if top:
-					#top.move_up(2.0 * strength)
-					#await get_tree().create_timer(0.05).timeout
-			 	#
-				#position.y -= strength
-			
-			if !active || p.dubbleganger:
-				print_debug("Dubble: %s" % p.global_position)
-				print_debug("Self: %s" % global_position)
+		var active: bool = p.is_active
+		
+		if !active || p.dubbleganger:
+			if p.global_position.y > global_position.y + (0.5 * Util.BLOCK_SIZE):
+				continue
 				
-				if p.global_position.y > global_position.y + (0.5 * Util.BLOCK_SIZE):
-					parent_player.hang()
-				
-				print_debug("EXCHANGED: %s" % p)
-				p.set_active(!active)
-				parent_player.set_active(active)
-				
-			return true
-		else:
-			print_debug("MATCH: %s == %s" % [p, parent_player])
+			p.set_active(!active)
+			parent_player.set_active(active)
+			
+		return true
+	#
+	
+	# Mash to a block
+	var collided: bool = false
 	
 	for ray: RayCast2D in block_detect.unmashed_block_detection_rays:
 		ray.force_raycast_update()
@@ -366,32 +351,26 @@ func mash() -> bool: ## Ok O(1)
 			continue
 
 		var obj: Object = ray.get_collider()
-		var unmashed: Unmashed
-		#var player: Player
 			
-		if obj is TwistedColliBlock:
-			unmashed = (obj as TwistedColliBlock).parent_unmashed
-		elif obj is Unmashed:
-			unmashed = obj as Unmashed
-		else:
+		if !(obj is Unmashed):
 			continue
+			
+		var unmashed: Unmashed = obj as Unmashed
 
 		if !unmashed.is_mashable():
 			continue
-
-		var top: Unmashed = unmashed.get_top_unmashed()
-		if top:
-			top.move_up(5.0)
-		
-		var u: UnmashedSpawner = unmashed.unmashed_spawner as UnmashedSpawner
-		if u:
-			u.has_been_taken = true
 		
 		collided = true
+
+		var block_on_top: Unmashed = unmashed.get_top_unmashed()
+		var spawner: UnmashedSpawner = unmashed.unmashed_spawner as UnmashedSpawner
 		
-		#print_debug(unmashed.mash_type == Util.MashType.PLAYER)
+		if block_on_top:
+			block_on_top.move_up(5.0)
 		
-		#var pos: Vector2 = unmashed.global_position - global_position
+		if spawner:
+			spawner.has_been_taken = true
+		
 		var build: Util.BuildType = unmashed.build_type
 		var unmash_at: Vector2 = get_unmashed_position(
 			unmashed.global_position - global_position,
@@ -400,7 +379,6 @@ func mash() -> bool: ## Ok O(1)
 			)
 		var new_mashed: Mashed = get_mashed_object(build)
 		
-
 		# ATTRIBUTE SYNC
 		new_mashed.position = get_new_mashed_positioning(unmash_at, build, ray)
 		new_mashed.attributes = unmashed.attributes.duplicate(true)

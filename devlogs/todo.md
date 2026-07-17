@@ -34,8 +34,8 @@
 
 ### Bugs
   - [ ] Twisted
-    - [ ] Visual bug
-    - [x] Collision handling
+    - [ ] Collision handling
+    - [x] Visual bug
     - [x] Fix Rewrites
     - [x] Highlight system
     - [x] Visual indicator

@@ -34,7 +34,7 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "audio", "particles_spawn", "particles_z", "sprite", "sprite_shade", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node")]
+[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "audio", "particles_spawn", "particles_z", "sprite", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node")]
 collision_layer = 8
 collision_mask = 4105
 script = ExtResource("1_cg17m")
@@ -44,7 +44,6 @@ audio = NodePath("UnmashedAudio")
 particles_spawn = NodePath("Particles")
 particles_z = NodePath("Z")
 sprite = NodePath("Visual/SpriteNode/Sprite2D")
-sprite_shade = NodePath("Visual/SpriteNode/Shade")
 sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
 sprite_input = NodePath("Visual/Eyes/Unmashable")
 sprite_node = NodePath("Visual/SpriteNode")

@@ -351,7 +351,8 @@ func anim_highlight(p_highlight: bool) -> void:
 		
 	_tween_light = get_tree().create_tween().set_parallel()
 	
-	sprite_mashable.self_modulate = Color(Color.WHITE, 1.0)
+	if sprite_mashable:
+		sprite_mashable.self_modulate = Color(Color.WHITE, 1.0)
 	
 	if p_highlight:
 		if tutorial_block && node_mash_prompt:
@@ -363,10 +364,12 @@ func anim_highlight(p_highlight: bool) -> void:
 			_tween_prompt.tween_property(node_mash_prompt, "scale", Vector2.ONE, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		
 		if can_mash:
-			sprite_mashable.visible = true
+			if sprite_mashable:
+				sprite_mashable.visible = true
 			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52, 0.1)
 		else:
-			sprite_mashable.visible = false
+			if sprite_mashable:
+				sprite_mashable.visible = false
 			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
 		
 		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE), 0.1)
@@ -380,7 +383,8 @@ func anim_highlight(p_highlight: bool) -> void:
 			_tween_prompt.tween_property(node_mash_prompt, "scale", Vector2.ONE * 0.0, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 
 		if can_mash:
-			sprite_mashable.visible = false
+			if sprite_mashable:
+				sprite_mashable.visible = false
 			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
 		
 		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE, 0.0), 0.1)
