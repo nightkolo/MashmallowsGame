@@ -20,7 +20,6 @@ class_name BlockDetector
 		
 @onready var ground_ray: ShapeCast2D = $GroundRay
 @onready var blocks_ray: ShapeCast2D = $BlocksRay
-@onready var wall_ray: ShapeCast2D = $WallRay
 @onready var unmashed_block_detection_rays: Array[RayCast2D] = [$Down, $Right, $Left]
 @onready var cherry_bomb_rays: Array[RayCast2D] = [$CherryBombRays/Up, $CherryBombRays/Right, $CherryBombRays/Left]
 

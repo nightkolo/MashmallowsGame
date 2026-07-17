@@ -5,7 +5,7 @@ func _ready() -> void:
 	anim()
 
 
-func anim():
+func anim() -> void:
 	scale = Vector2(1.0, 0.0)
 	var tween := create_tween().set_parallel(true)
 
@@ -19,13 +19,13 @@ func anim():
 	await get_tree().create_timer(2.0).timeout
 	queue_free()
 
-func anim_slide():
+func anim_slide() -> void:
 	var tween := create_tween().set_parallel(true)
 	tween.tween_property(self, "position:x", 10.0, 1.0).as_relative()
 	tween.tween_property(self, "self_modulate", Color(1.0,1.0,1.0, 0.0), 0.75)
 	await tween.finished
 
-func anim_fall():
+func anim_fall() -> void:
 	await get_tree().create_timer(0.25).timeout
 	var tween := create_tween().set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)

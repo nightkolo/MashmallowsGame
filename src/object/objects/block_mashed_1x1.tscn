@@ -163,7 +163,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0uj8"]
 size = Vector2(70, 70)
 
-[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "node_hat", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_hat", "sprite_eyes_wide", "sprite_eyes_closed")]
+[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "node_hat", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_hat", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed")]
 shape = SubResource("ConvexPolygonShape2D_ry2ml")
 script = ExtResource("2_lydfl")
 block_detect = NodePath("BlockDetect")
@@ -179,10 +179,10 @@ node_hat = NodePath("Visual/Hat")
 sprite_shade = NodePath("Visual/BlockSprites/Shade")
 sprite_block = NodePath("Visual/BlockSprites/Block")
 sprite_highlight = NodePath("Visual/BlockSprites/Highlight")
+sprite_hat = NodePath("Visual/Hat/Hat")
 sprite_eyes_open = NodePath("Visual/Node2D/EyeSprites/Regular/Open")
 sprite_eyes_regular = NodePath("Visual/Node2D/EyeSprites/Regular")
 sprite_eyes_angry = NodePath("Visual/Node2D/EyeSprites/Angy")
-sprite_hat = NodePath("Visual/Hat/Hat")
 sprite_eyes_wide = NodePath("Visual/Node2D/EyeSprites/Wide")
 sprite_eyes_closed = NodePath("Visual/Node2D/EyeSprites/Closed")
 metadata/_custom_type_script = "uid://bgc37b0mpxwv3"

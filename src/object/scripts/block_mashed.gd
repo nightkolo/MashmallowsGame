@@ -5,52 +5,53 @@ signal mashable_state_changed(can_mash: bool)
 signal cherry_bomb_activated(at_pos: Vector2)
 signal attribute_set()
 
-## Shared variables with [Unmashed]
-var attributes: BlockAttributes
 @export var mash_type: Util.MashType
 @export var build_type: Util.BuildType
-##
+
 @export_category("Objects to assign")
 @export var block_detect: BlockDetector
-#@export var mash_block: MashBlock
 @export var dust_particles: CPUParticles2D
 @export var r_particles: CPUParticles2D
 @export var l_particles: CPUParticles2D
 @export var audio: MashedAudio
-#@onready var unmashed_block_detect: Area2D = $UnmashedBlockDetect
 
-## For Anim
-
+@export_category("Animation")
+# For Anim
 @export var anim: AnimationPlayer
+@export_group("Nodes")
 @export var node_block_sprites: Node2D # node_block_sprites
 @export var node_eye_sprites_2: Node2D # node_eye_sprites
 @export var node_eye_sprites: Node2D # node_eye_sprites
 @export var node_hat: Node2D
+@export_group("Sprites")
 @export var sprite_shade: Sprite2D
 @export var sprite_block: Sprite2D  # sprite_block
 @export var sprite_highlight: Sprite2D
+@export var sprite_hat: Sprite2D
+@export_group("Eyes")
 @export var sprite_eyes_open: Sprite2D #sprite_eyes_open
 @export var sprite_eyes_regular: Node2D
 @export var sprite_eyes_angry: Sprite2D
-
-@export var sprite_hat: Sprite2D
 @export var sprite_eyes_wide: Sprite2D
 @export var sprite_eyes_closed: Sprite2D # sprite_eyes_closed
-# @export var idle_timer: Timer
+#
 
-
-var mark: PackedScene = preload("res://world/effects/particle_mark.tscn")
+# Objects
+var particle_mark: PackedScene = preload("res://world/effects/particle_mark.tscn")
 var trail: PackedScene = preload("res://world/effects/mashed_trail.tscn")
 var mashed_object: PackedScene = preload("res://object/objects/block_mashed_1x1.tscn")
 var mashed_object_1x2: PackedScene = preload("res://object/objects/block_mashed_1x2.tscn")
 
-var cherry_bomb_strength: float
-var twisted_strength: float
+# Animation
 var sprite_original_pos: Vector2
 
-var parent_player: Player
+# Attributes
+var attributes: BlockAttributes
+var cherry_bomb_strength: float
+var twisted_strength: float
 var is_idle_animating: bool
 var is_original: bool
+var parent_player: Player
 var current_trail: Trail
 var unmashed_block_entered: bool:
 	set(value):
@@ -58,14 +59,14 @@ var unmashed_block_entered: bool:
 			mashable_state_changed.emit(value)
 			unmashed_block_entered = value
 
-var _original_pos: Vector2
+#var _original_pos: Vector2
 
 
-func can_mash() -> bool:
+func can_mash() -> bool: ## @deprecated
 	return block_detect.is_colliding()
 
 
-func is_on_player() -> bool:
+func is_on_player() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.blocks_ray
 	
 	ray.force_shapecast_update()
@@ -79,39 +80,9 @@ func is_on_player() -> bool:
 	return false
 
 
-# Returns true if the mashed block on ground tilemap/sticky platform, not other unmashed blocks
+## Returns true if the mashed block on ground tilemap/sticky platform, not other unmashed blocks
 func is_on_ground() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.ground_ray
-	
-	ray.force_shapecast_update()
-	
-	if ray.is_colliding():
-		return true
-		
-	return false
-
-
-## Returns true if the mashed block only on a sticky platform.
-## [Param ignore_game_logic] ignores game logic. Normally, if it's a golden (roasted) marshmallow,
-## it won't be stuck in the sticky platform.
-## @deprecated
-#func is_on_sticky_platform(ignore_game_logic: bool = false) -> bool: # -> O(1)
-	#if is_golden && !ignore_game_logic:
-		#return false # Golden marshmallows don't stick.
-		#
-	#var ray: ShapeCast2D = block_detect.ground_ray
-	#
-	#ray.force_shapecast_update()
-	#
-	#if ray.is_colliding():
-		#if ray.get_collider(0) is StickyPlatform:
-			#return true # Found sticky platform
-		#
-	#return false
-
-
-func is_on_wall() -> bool: # -> O(1)
-	var ray: ShapeCast2D = block_detect.wall_ray
 	
 	ray.force_shapecast_update()
 	
@@ -155,11 +126,10 @@ var hat_tween: Tween
 var hat_land_tween: Tween
 
 func _ready() -> void:
-	_original_pos = position
+	#_original_pos = position
 	sprite_original_pos = node_block_sprites.position
 	
 	cherry_bomb_activated.connect(anim_explode)
-	
 	mashable_state_changed.connect(func(p_can_mash: bool):
 		if parent_player.audio == null:
 			return
@@ -170,7 +140,6 @@ func _ready() -> void:
 			parent_player.audio.sfx_unmash_exit.play()
 		)
 	
-
 	# Shared with [Unmashed]
 	if attributes == null:
 		attributes = BlockAttributes.new()
@@ -181,6 +150,8 @@ func _ready() -> void:
 		mash_type = attributes.mash_type
 		build_type = attributes.build_type
 
+	attribute_set.emit()
+	
 	if mash_type != Util.MashType.MISC:
 		anim_awake()
 		
@@ -189,111 +160,18 @@ func _ready() -> void:
 	if get_parent() is Player:
 		parent_player = get_parent()
 		
-		var is_dubble := parent_player.dubbleganger && is_original
-		
-		if sprite_hat:
-			node_hat.visible = is_dubble
-			# Animation
-			if is_dubble:
-				parent_player.is_emoting.connect(func(input: bool):
-					if is_on_ground() || is_on_block():
-						var mag: float = 0.4 if input else 0.0
-						var dur: float = 1.0 if !input else 0.8
-						if hat_tween:
-							hat_tween.kill()
-						hat_tween = create_tween()
-						hat_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-						hat_tween.tween_property(sprite_hat,"position:y",(mag * 60.0),dur)
-					else:
-						sprite_hat.position.y = 0.0
-					)
-					
-				parent_player.move_state_changed.connect(func(dir: Vector2):
-					#if absf(dir.y) > 0.0:
-						#return
-						#
-					if hat_tween:
-						hat_tween.kill()
-					hat_tween = create_tween()
-					hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir.x, 0.125 + (absf(dir.x) * 0.25))
-					)
-					
-				parent_player.has_jumpped.connect(func():
-					if hat_land_tween:
-						hat_land_tween.kill()
-					hat_land_tween = create_tween().set_parallel()
-					hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
-					)
-					
-				parent_player.has_landed.connect(func(strengh: float):
-					if hat_land_tween:
-						hat_land_tween.kill()
-					var s := strengh / 25.0
-					hat_land_tween = create_tween().set_parallel()
-					hat_land_tween.set_ease(Tween.EASE_OUT)
-					hat_land_tween.tween_property(node_hat, "scale", Vector2(1.0 + s, 1.0 - s), 0.1)
-					hat_land_tween.tween_property(node_hat, "position:y", -25.0 + (strengh * 2.0), 0.1)
-					hat_land_tween.set_trans(Tween.TRANS_ELASTIC)
-					hat_land_tween.chain().tween_property(node_hat, "scale:y", 1.0, 1.0)
-					hat_land_tween.tween_property(node_hat, "scale:x", 1.0, 1.0).set_delay(1.0 / 13.33)
-					hat_land_tween.tween_property(node_hat, "position:y", -25.0, 1.0)
-					)
-			#
-		
-		parent_player.state_machine.player_state_changed.connect(func(state: State):
-			if parent_player.is_running_full() && state is RunState && is_on_ground():
-				dust_particles.emitting = true
-			elif state is AirState:
-				dust_particles.emitting = false
-			)
-		if dust_particles && l_particles && r_particles:
-			parent_player.is_running.connect(func():
-				dust_particles.emitting = is_on_ground()
-			)
-			parent_player.has_stopped.connect(func():
-				dust_particles.emitting = false
-			)
-			parent_player.has_landed.connect(func(strength: float):
-				var hit_ground := is_on_ground() && strength > 12.0
-				l_particles.emitting = hit_ground
-				r_particles.emitting = hit_ground
-				if is_on_ground():
-					anim_blink(true)
-				)
+		_ready_parent_dependencies()
 
-		node_block_sprites.visible = parent_player.show_blocks
-		
-		if parent_player.auto_assign_child_blocks:
-			parent_player.push_block(self)
-		
-		parent_player.new_child_blocks.append(self)
-
-		if mark && mash_type != Util.MashType.MISC:
-			var m := mark.instantiate()
-			m.global_position = global_position + (Vector2.RIGHT * Util.BLOCK_SIZE * 0.5)
-			if GameMgr.current_level:
-				GameMgr.current_level.add_child(m)
-
-		## TRAIL
-		if parent_player.show_trail:
-			parent_player.has_jumpped.connect(func():
-				if current_trail == null && is_on_ground():
-					current_trail = trail.instantiate()
-					current_trail.exit_on_empty = true
-					current_trail.target = self
-					GameMgr.current_level.add_child(current_trail)
-				)
-			parent_player.has_landed.connect(func(_strength: float):
-				if current_trail:
-					current_trail.trail_enabled = false
-					current_trail = null
-				)
-	
-	attribute_set.emit()
+	# Exclamation mark animation
+	if mash_type != Util.MashType.MISC && particle_mark:
+		var m := particle_mark.instantiate()
+		m.global_position = global_position + (Vector2.RIGHT * Util.BLOCK_SIZE * 0.5)
+		if GameMgr.current_level:
+			GameMgr.current_level.add_child(m)
 
 	GameLogic.setup_mash(sprite_block, attributes.mash_type, attributes.build_type)
-	# if sprite_shade:
-	# 	sprite_shade.texture = Util.get_mash_type_shade_texture(mash_type, build_type)
+	
+	# Eyes
 	if sprite_eyes_regular && sprite_eyes_wide && sprite_eyes_angry:
 		sprite_eyes_angry.visible = false
 		sprite_eyes_regular.visible = false
@@ -307,10 +185,6 @@ func _ready() -> void:
 				sprite_eyes_regular.visible = true
 	#
 
-	#mash_block.mash_type = mash_type
-
-	# await get_tree().create_timer(Util.MASH_WAIT_TIME).timeout
-	
 	anim_blinking()
 
 	for ray: RayCast2D in block_detect.unmashed_block_detection_rays:
@@ -319,6 +193,104 @@ func _ready() -> void:
 	for ray: RayCast2D in block_detect.cherry_bomb_rays:
 		ray.enabled = true
 		
+
+func _ready_parent_dependencies() -> void:
+	var is_dubble := parent_player.dubbleganger && is_original
+		
+	if sprite_hat:
+		node_hat.visible = is_dubble
+		
+		if is_dubble:
+			
+			# Dubbleganger Hat Animation
+			parent_player.is_emoting.connect(func(input: bool):
+				if is_on_ground() || is_on_block():
+					var mag: float = 0.4 if input else 0.0
+					var dur: float = 1.0 if !input else 0.8
+					if hat_tween:
+						hat_tween.kill()
+					hat_tween = create_tween()
+					hat_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+					hat_tween.tween_property(sprite_hat,"position:y",(mag * 60.0),dur)
+				else:
+					sprite_hat.position.y = 0.0
+				)
+				
+			parent_player.move_state_changed.connect(func(dir: Vector2):
+				if hat_tween:
+					hat_tween.kill()
+				hat_tween = create_tween()
+				hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir.x, 0.125 + (absf(dir.x) * 0.25))
+				)
+				
+			parent_player.has_jumpped.connect(func():
+				if hat_land_tween:
+					hat_land_tween.kill()
+				hat_land_tween = create_tween().set_parallel()
+				hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
+				)
+				
+			parent_player.has_landed.connect(func(strengh: float):
+				if hat_land_tween:
+					hat_land_tween.kill()
+				var s := strengh / 25.0
+				hat_land_tween = create_tween().set_parallel()
+				hat_land_tween.set_ease(Tween.EASE_OUT)
+				hat_land_tween.tween_property(node_hat, "scale", Vector2(1.0 + s, 1.0 - s), 0.1)
+				hat_land_tween.tween_property(node_hat, "position:y", -25.0 + (strengh * 2.0), 0.1)
+				hat_land_tween.set_trans(Tween.TRANS_ELASTIC)
+				hat_land_tween.chain().tween_property(node_hat, "scale:y", 1.0, 1.0)
+				hat_land_tween.tween_property(node_hat, "scale:x", 1.0, 1.0).set_delay(1.0 / 13.33)
+				hat_land_tween.tween_property(node_hat, "position:y", -25.0, 1.0)
+				)
+			#
+	
+	# Dust emission
+	if dust_particles:
+		parent_player.state_machine.player_state_changed.connect(func(state: State):
+			if parent_player.is_running_full() && state is RunState && is_on_ground():
+				dust_particles.emitting = true
+			elif state is AirState:
+				dust_particles.emitting = false
+			)
+		parent_player.is_running.connect(func():
+			dust_particles.emitting = is_on_ground()
+		)
+		parent_player.has_stopped.connect(func():
+			dust_particles.emitting = false
+		)
+		
+	if l_particles && r_particles:
+		parent_player.has_landed.connect(func(strength: float):
+			var hit_ground := is_on_ground() && strength > 12.0
+			l_particles.emitting = hit_ground
+			r_particles.emitting = hit_ground
+			if is_on_ground(): anim_blink(true) 
+		)
+	#
+	
+	node_block_sprites.visible = parent_player.show_blocks
+	
+	if parent_player.auto_assign_child_blocks:
+		parent_player.push_block(self)
+	
+	parent_player.new_child_blocks.append(self)
+
+	## Trail
+	if parent_player.show_trail:
+		parent_player.has_jumpped.connect(func():
+			if current_trail == null && is_on_ground():
+				current_trail = trail.instantiate()
+				current_trail.exit_on_empty = true
+				current_trail.target = self
+				GameMgr.current_level.add_child(current_trail)
+			)
+		parent_player.has_landed.connect(func(_strength: float):
+			if current_trail:
+				current_trail.trail_enabled = false
+				current_trail = null
+			)
+
 
 func mash() -> bool: ## Ok O(1)
 	if mash_type == Util.MashType.CHERRY_BOMB || mash_type == Util.MashType.AIR_CHERRY_BOMB:
@@ -352,53 +324,51 @@ func mash() -> bool: ## Ok O(1)
 
 		var obj: Object = ray.get_collider()
 			
-		if !(obj is Unmashed):
-			continue
-			
-		var unmashed: Unmashed = obj as Unmashed
+		if obj is Unmashed:
+			var unmashed: Unmashed = obj as Unmashed
 
-		if !unmashed.is_mashable():
-			continue
-		
-		collided = true
-
-		var block_on_top: Unmashed = unmashed.get_top_unmashed()
-		var spawner: UnmashedSpawner = unmashed.unmashed_spawner as UnmashedSpawner
-		
-		if block_on_top:
-			block_on_top.move_up(5.0)
-		
-		if spawner:
-			spawner.has_been_taken = true
-		
-		var build: Util.BuildType = unmashed.build_type
-		var unmash_at: Vector2 = get_unmashed_position(
-			unmashed.global_position - global_position,
-			build,
-			unmashed.mash_type
-			)
-		var new_mashed: Mashed = get_mashed_object(build)
-		
-		# ATTRIBUTE SYNC
-		new_mashed.position = get_new_mashed_positioning(unmash_at, build, ray)
-		new_mashed.attributes = unmashed.attributes.duplicate(true)
-		new_mashed.cherry_bomb_strength = unmashed.cherry_bomb_strength
-		new_mashed.twisted_strength = unmashed.twisted_strength
-		#
-		
-		parent_player.has_mashed.emit(unmash_at, build)
-		unmashed.queue_free()
-		
-		parent_player.add_child(new_mashed)
-		
-		await parent_player.return_position()
+			if !unmashed.is_mashable():
+				continue
 			
-		break
+			collided = true
+
+			var block_on_top: Unmashed = unmashed.get_top_unmashed()
+			var spawner: UnmashedSpawner = unmashed.unmashed_spawner as UnmashedSpawner
+			
+			if block_on_top:
+				block_on_top.move_up(5.0)
+			
+			if spawner:
+				spawner.has_been_taken = true
+			
+			var build: Util.BuildType = unmashed.build_type
+			var unmash_at: Vector2 = _get_unmashed_position(
+				unmashed.global_position - global_position,
+				build,
+				unmashed.mash_type
+				)
+			var new_mashed: Mashed = _get_mashed_object(build)
+			
+			# ATTRIBUTE SYNC
+			new_mashed.position = get_new_mashed_positioning(unmash_at, build, ray)
+			new_mashed.attributes = unmashed.attributes.duplicate(true)
+			new_mashed.cherry_bomb_strength = unmashed.cherry_bomb_strength
+			new_mashed.twisted_strength = unmashed.twisted_strength
+			#
+			
+			parent_player.has_mashed.emit(unmash_at, build)
+			unmashed.queue_free()
+			
+			parent_player.add_child(new_mashed)
+			
+			await parent_player.return_position()
+				
+			break
 		
 	return collided
 
 
-func get_unmashed_position(found_at: Vector2, type: Util.BuildType, p_mash: Util.MashType) -> Vector2:
+func _get_unmashed_position(found_at: Vector2, type: Util.BuildType, p_mash: Util.MashType) -> Vector2:
 	var unmash_at: Vector2
 	
 	match type:
@@ -443,8 +413,8 @@ func get_new_mashed_positioning(found_at: Vector2, type: Util.BuildType, ray: Ra
 	
 	return repos
 				
-# TODO: Move to GameLogic
-func get_mashed_object(type: Util.BuildType) -> Mashed: 
+# Suggestion: Move to GameLogic
+func _get_mashed_object(type: Util.BuildType) -> Mashed: 
 	if mashed_object == null:
 		mashed_object = preload("res://object/objects/block_mashed_1x1.tscn")
 	if mashed_object_1x2 == null:
@@ -540,7 +510,6 @@ func anim_highlight(p_mash: bool) -> void:
 		await _tween_light.finished
 		
 		
-##### TODO Animation commit
 var explosion_fx: PackedScene = preload("res://world/effects/cherry_bomb_exposion_effect.tscn")
 
 func anim_explode(at_pos: Vector2) -> void:
@@ -562,8 +531,7 @@ func anim_explode(at_pos: Vector2) -> void:
 	ex.pos_at = at_pos
 	
 	GameMgr.current_level.add_child(ex)
-#####
 
 
-func is_attached() -> bool:
-	return get_parent() is Player
+#func is_attached() -> bool: ## What a stupid method.
+	#return get_parent() is Player
