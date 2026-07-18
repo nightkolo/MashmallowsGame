@@ -119,7 +119,7 @@ func _ready() -> void:
 func _ready_twisted() -> void:
 	#collision_mask = 1 + 2 + 8
 	if mash_type == Util.MashType.TWISTED:
-		anim_expanding()
+		anim_expanding(!was_mashed)
 
 
 func is_mashable() -> bool:
@@ -160,23 +160,37 @@ func stop_expanding(pushback: float = 20.0) -> void:
 		is_expanding = false
 
 
-func anim_expanding() -> void:
+func anim_expanding(instant: bool = false) -> void:
 	if colli == null || twisted_mask == null:
 		return
 	
-	const EXPAND_TIME = 1.0
-	const WAIT_TIME_BEFORE_EXPAND = 0.75
-
-	is_at_expand_period = true
+	var pos_to: float = twisted_strength * Util.BLOCK_SIZE
+	var s1: float = pos_to * 0.5
+	var s2: float = pos_to * 0.375
+	
+	if instant:
+		(colli.shape as RectangleShape2D).size.y = pos_to
+		(twisted_mask.texture as GradientTexture2D).height = int(pos_to)
+		top_detect.position.y = -s1
+		
+		player_down_detect.position.y = s1
+		position.y -= s2
+		
+		twisted_mask.position.y = s2
+		eyes_node.position.y = s2
+		return
 	
 	started_expanding.emit()
+	
+	const EXPAND_TIME = 1.0
+	const WAIT_TIME_BEFORE_EXPAND = 0.75
+	
+	is_at_expand_period = true
 	
 	if tween_expand:
 		tween_expand.kill()
 	
 	tween_expand = create_tween().set_parallel(true)
-	
-	var pos_to: float = twisted_strength * Util.BLOCK_SIZE
 	
 	tween_expand.tween_callback(func():
 		is_expanding = true
@@ -184,15 +198,10 @@ func anim_expanding() -> void:
 		).set_delay(WAIT_TIME_BEFORE_EXPAND)
 	tween_expand.chain().tween_property(colli.shape as RectangleShape2D,"size:y",pos_to,EXPAND_TIME)
 	tween_expand.tween_property(twisted_mask.texture as GradientTexture2D,"height",pos_to,EXPAND_TIME)
-#	
-	tween_expand.tween_property(top_detect,"position:y",-pos_to * 0.5,EXPAND_TIME)
-	
-	tween_expand.tween_property(player_down_detect,"position:y",pos_to * 0.5,EXPAND_TIME)
-	
-	#tween_expand.tween_property(self,"position:y",-1.0,EXPAND_TIME).from_current()
-	
-	tween_expand.tween_property(twisted_mask,"position:y",pos_to * 0.375,EXPAND_TIME)
-	tween_expand.tween_property(eyes_node,"position:y",pos_to * 0.375,EXPAND_TIME)
+	tween_expand.tween_property(top_detect,"position:y",-s1,EXPAND_TIME)
+	tween_expand.tween_property(player_down_detect,"position:y",s1,EXPAND_TIME)
+	tween_expand.tween_property(twisted_mask,"position:y",s2,EXPAND_TIME)
+	tween_expand.tween_property(eyes_node,"position:y",s2,EXPAND_TIME)
 	
 	if was_mashed:
 		anim_expanding_indicator(WAIT_TIME_BEFORE_EXPAND)
@@ -293,19 +302,18 @@ func _physics_process(delta: float) -> void:
 			if obj is TileMapLayer:
 				stop_expanding(0.0)
 			
-			# TODO Add player collision handling
+			# TODO Check if player collision handling needed
 			elif obj is Player:
 				pass
-				#print_debug((obj as Player).is_on_ceiling())
 	
 	if !is_expanding:
 		move_and_slide()
 	else:
-		
+		# TODO mult by EXPAND_TIME
 		position.y -= 100.0 * delta
 		
 		if player_down_detect.is_colliding():
-			var obj: Node2D = (player_down_detect.get_collider(0))
+			var obj: Node2D = player_down_detect.get_collider(0)
 			
 			if obj is Unmashed:
 				if (obj as Unmashed).is_expanding:
