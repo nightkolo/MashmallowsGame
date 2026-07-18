@@ -27,7 +27,7 @@
     - [ ] 10
   - [x] Mechanics introduced
     - [x] Twisted
-    - [x] Dubblegänger
+    - [x] Dubblegänger	
     - [ ] Hat only blocks
 - [ ] Outro Sequence
   - [ ] Monologue
@@ -37,7 +37,7 @@ Me when I decide to fix bugs and manage to discover more bugs
 ### Bugs
   - [ ] Twisted
     - [ ] Collision handling
-    - [ ] Level 16
+    - [x] Level 16
     - [x] Visual bug
     - [x] Fix Rewrites
     - [x] Highlight system

@@ -55,6 +55,7 @@ var is_player_close: bool = false:
 	set(value):
 		player_entered.emit(value)
 		is_player_close = value
+var is_at_expand_period: bool = false
 var is_expanding: bool = false
 
 
@@ -122,7 +123,7 @@ func _ready_twisted() -> void:
 
 
 func is_mashable() -> bool:
-	return !is_expanding
+	return !is_at_expand_period
 
 
 var tween_expand: Tween
@@ -149,12 +150,13 @@ func _on_ceiling_touched() -> void:
 
 # TODO Add raycast based collision checking
 func stop_expanding(pushback: float = 20.0) -> void:
-	if tween_expand && is_expanding:
+	if tween_expand && is_at_expand_period:
 		tween_expand.kill()
 		
 		(twisted_mask.texture as GradientTexture2D).height -= int(pushback)
 		(colli.shape as RectangleShape2D).size.y -= pushback
 		
+		is_at_expand_period = false
 		is_expanding = false
 
 
@@ -162,10 +164,10 @@ func anim_expanding() -> void:
 	if colli == null || twisted_mask == null:
 		return
 	
-	const EXPAND_TIME = 0.5
+	const EXPAND_TIME = 1.0
 	const WAIT_TIME_BEFORE_EXPAND = 0.75
 
-	is_expanding = true
+	is_at_expand_period = true
 	
 	started_expanding.emit()
 	
@@ -177,12 +179,17 @@ func anim_expanding() -> void:
 	var pos_to: float = twisted_strength * Util.BLOCK_SIZE
 	
 	tween_expand.tween_callback(func():
+		is_expanding = true
 		start_stop_expansion()
 		).set_delay(WAIT_TIME_BEFORE_EXPAND)
 	tween_expand.chain().tween_property(colli.shape as RectangleShape2D,"size:y",pos_to,EXPAND_TIME)
 	tween_expand.tween_property(twisted_mask.texture as GradientTexture2D,"height",pos_to,EXPAND_TIME)
-	
+#	
 	tween_expand.tween_property(top_detect,"position:y",-pos_to * 0.5,EXPAND_TIME)
+	
+	tween_expand.tween_property(player_down_detect,"position:y",pos_to * 0.5,EXPAND_TIME)
+	
+	#tween_expand.tween_property(self,"position:y",-1.0,EXPAND_TIME).from_current()
 	
 	tween_expand.tween_property(twisted_mask,"position:y",pos_to * 0.375,EXPAND_TIME)
 	tween_expand.tween_property(eyes_node,"position:y",pos_to * 0.375,EXPAND_TIME)
@@ -193,6 +200,7 @@ func anim_expanding() -> void:
 	await tween_expand.finished
 	
 	cancel_stop_expansion()
+	is_at_expand_period = false
 	is_expanding = false
 
 
@@ -269,7 +277,7 @@ func _physics_process(delta: float) -> void:
 		velocity += 0.6 * get_gravity() * delta
 	else:
 		velocity.y = 0.0
-
+		
 	if !_landed && is_on_floor():
 		has_landed.emit(abs(velocity.y / 100.0))
 		_landed = true
@@ -277,7 +285,7 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		_landed = false
 		
-	if is_expanding:
+	if is_at_expand_period:
 		
 		if top_detect.is_colliding():
 			var obj: Node2D = top_detect.get_collider(0)
@@ -290,8 +298,18 @@ func _physics_process(delta: float) -> void:
 				pass
 				#print_debug((obj as Player).is_on_ceiling())
 	
-	move_and_slide()
-
+	if !is_expanding:
+		move_and_slide()
+	else:
+		
+		position.y -= 100.0 * delta
+		
+		if player_down_detect.is_colliding():
+			var obj: Node2D = (player_down_detect.get_collider(0))
+			
+			if obj is Unmashed:
+				if (obj as Unmashed).is_expanding:
+					position.y -= 200.0 * delta
 
 signal anim_unmashed_finished()
 

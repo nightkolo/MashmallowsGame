@@ -66,12 +66,12 @@ metadata/_custom_type_script = "uid://5cfma5ft813q"
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_3irs3")]
 position = Vector2(232, 200)
 
-[node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("12_2nith")]
-position = Vector2(480, 608)
+[node name="UnmashedSpawner2" parent="." unique_id=2123362739 instance=ExtResource("12_2nith")]
+position = Vector2(480, 352)
 block_attributes = SubResource("Resource_wb4t8")
 
-[node name="UnmashedSpawner2" parent="." unique_id=878626531 instance=ExtResource("12_2nith")]
-position = Vector2(480, 288)
+[node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("12_2nith")]
+position = Vector2(480, 608)
 block_attributes = SubResource("Resource_wb4t8")
 
 [editable path="World/LevelGoal"]
