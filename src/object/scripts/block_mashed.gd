@@ -59,8 +59,6 @@ var unmashed_block_entered: bool:
 			mashable_state_changed.emit(value)
 			unmashed_block_entered = value
 
-#var _original_pos: Vector2
-
 
 func can_mash() -> bool: ## @deprecated
 	return block_detect.is_colliding()
@@ -126,7 +124,6 @@ var hat_tween: Tween
 var hat_land_tween: Tween
 
 func _ready() -> void:
-	#_original_pos = position
 	sprite_original_pos = node_block_sprites.position
 	
 	cherry_bomb_activated.connect(anim_explode)

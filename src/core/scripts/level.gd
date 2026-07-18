@@ -25,7 +25,7 @@ var intro_order: Order
 var saver_loader: SaverLoader
 var has_started: bool = true
 
-var _dev_ui: PackedScene = preload("res://interface/menus/dev_ui.tscn")
+var _dev_ui: PackedScene = preload("res://interface/runtime/dev_ui.tscn")
 
 
 func _ready() -> void:

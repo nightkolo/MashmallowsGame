@@ -270,9 +270,8 @@ func _physics_process(delta: float) -> void:
 		
 	if !is_on_floor():
 		_landed = false
-	var l_ceil: bool = is_on_ceiling()
-	print_debug(l_ceil)
-	if is_expanding && l_ceil:
+		
+	if is_expanding && is_on_ceiling():
 		stop_expanding(40.0)
 	
 	move_and_slide()

@@ -22,8 +22,8 @@
 - [ ] Bakery 2
   - [ ] **Level structure**
     - [x] 1-3
-    - [x] 4-7
-    - [ ] 8-9
+    - [x] 4-6
+    - [ ] 7-9
     - [ ] 10
   - [x] Mechanics introduced
     - [x] Twisted

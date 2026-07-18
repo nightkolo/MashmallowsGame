@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var back_inputs: MarginContainer = %Back
 @onready var tutorial_inputs: MarginContainer = %Tutorial
 
+@onready var input_container: HBoxContainer = %InputContainer
+
 @onready var select_button: Button = %SelectButton
 @onready var back_button: Button = %BackButton
 @onready var tut_button: Button = %TutButton
@@ -15,6 +17,11 @@ extends CanvasLayer
 
 
 func _ready() -> void:
+	# TODO: Add controller and keyboard detection
+	for node: Node in inputs_container.get_children():
+		if node is Node2D:
+			(node as Node2D).visible = false
+	
 	for btn: Button in buttons:
 		btn.self_modulate = Color(Color.WHITE, 0.0)
 		btn.mouse_filter = Control.MOUSE_FILTER_PASS

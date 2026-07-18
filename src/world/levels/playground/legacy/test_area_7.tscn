@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dtr2kfjvrdkir"]
 
 [ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_vg6m3"]
-[ext_resource type="PackedScene" uid="uid://ctwbrlwov72au" path="res://interface/menus/dev_ui.tscn" id="2_sg12d"]
+[ext_resource type="PackedScene" uid="uid://ctwbrlwov72au" path="res://interface/runtime/dev_ui.tscn" id="2_sg12d"]
 [ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_f0oei"]
 [ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="4_t74b1"]
 [ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_fld62"]

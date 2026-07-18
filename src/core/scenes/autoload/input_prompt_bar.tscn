@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://c0c8563nf3to3"]
 
-[ext_resource type="Script" uid="uid://b4hgs0xeoqvd8" path="res://core/scripts/input_prompt_bar.gd" id="1_ipkbc"]
+[ext_resource type="Script" uid="uid://b4hgs0xeoqvd8" path="res://core/scripts/system_input_prompt_bar.gd" id="1_ipkbc"]
 [ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://object/scripts/node_tiled_sprite_2d.gd" id="2_5qwaw"]
 [ext_resource type="Texture2D" uid="uid://bvsivqtrmsbcp" path="res://assets/interface/input-bar-02.png" id="2_y6jnm"]
 [ext_resource type="Texture2D" uid="uid://f81jtenh1qtk" path="res://assets/interface/keyboard_escape_outline.png" id="4_2h0lt"]
-[ext_resource type="Script" uid="uid://b8t0fal8b5g8p" path="res://core/scripts/input_prompt_bar_entry.gd" id="4_bxr3d"]
 [ext_resource type="Texture2D" uid="uid://cjgmj2g4vtlag" path="res://assets/interface/switch_button_b_outline.png" id="6_5t1hg"]
 [ext_resource type="Texture2D" uid="uid://jbundvlralxj" path="res://assets/interface/keyboard_arrows.png" id="7_4spx7"]
 [ext_resource type="Texture2D" uid="uid://etbagc43cibm" path="res://assets/interface/switch_dpad.png" id="8_galrl"]
@@ -41,7 +40,7 @@ texture_repeat = 2
 position = Vector2(960, -3)
 texture = ExtResource("2_y6jnm")
 region_enabled = true
-region_rect = Rect2(-149.2001, 0, 1920, 50)
+region_rect = Rect2(-58.32648, 0, 1920, 50)
 region_filter_clip_enabled = true
 script = ExtResource("2_5qwaw")
 animate_scroll = true
@@ -54,7 +53,7 @@ texture_repeat = 2
 position = Vector2(960, 2)
 texture = ExtResource("2_y6jnm")
 region_enabled = true
-region_rect = Rect2(223.80013, 0, 1920, 50)
+region_rect = Rect2(87.48983, 0, 1920, 50)
 region_filter_clip_enabled = true
 script = ExtResource("2_5qwaw")
 animate_scroll = true
@@ -75,7 +74,6 @@ theme_override_constants/separation = 50
 [node name="Back" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=652794191]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("4_bxr3d")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Back" unique_id=296210501]
 layout_mode = 2
@@ -107,7 +105,6 @@ mouse_filter = 1
 [node name="Move" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=939218903]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("4_bxr3d")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Move" unique_id=815839804]
 layout_mode = 2
@@ -134,7 +131,6 @@ label_settings = SubResource("LabelSettings_tggsk")
 [node name="Select" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=385449077]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("4_bxr3d")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Select" unique_id=1844297699]
 layout_mode = 2
@@ -166,7 +162,6 @@ mouse_filter = 1
 [node name="Tutorial" type="MarginContainer" parent="InputPromptPanel/MarginContainer/InputContainer" unique_id=655207681]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("4_bxr3d")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InputPromptPanel/MarginContainer/InputContainer/Tutorial" unique_id=1340318490]
 layout_mode = 2

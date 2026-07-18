@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqe6pedspolx4"]
 
-[ext_resource type="Script" uid="uid://pnjloqibygdv" path="res://core/scripts/trans.gd" id="1_otbg6"]
+[ext_resource type="Script" uid="uid://pnjloqibygdv" path="res://core/scripts/system_transition.gd" id="1_otbg6"]
 
 [sub_resource type="Animation" id="Animation_otbg6"]
 length = 0.001

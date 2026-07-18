@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bmw5xc6xifxkt"]
 
-[ext_resource type="Script" uid="uid://cu082kfq5wwn3" path="res://core/scripts/audio.gd" id="1_0i5ur"]
+[ext_resource type="Script" uid="uid://cu082kfq5wwn3" path="res://core/scripts/system_audio.gd" id="1_0i5ur"]
 [ext_resource type="AudioStream" uid="uid://dcxe7scqjrox0" path="res://audio/sounds/order_loss.ogg" id="2_a8t0x"]
 [ext_resource type="AudioStream" uid="uid://c8mdl0rnljbfq" path="res://audio/sounds/order_lost.wav" id="3_a8t0x"]
 [ext_resource type="AudioStream" uid="uid://bffdthrjgvshy" path="res://audio/sounds/order_progress_01.wav" id="4_a8t0x"]
