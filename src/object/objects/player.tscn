@@ -58,6 +58,9 @@ animator = NodePath("PlayerAnimationComponent")
 state_machine = NodePath("StateMachine")
 original_block = NodePath("Mashed")
 
+[node name="Mashed" parent="." unique_id=499008387 instance=ExtResource("2_2147m")]
+mash_type = 99
+
 [node name="StateMachine" type="Node" parent="." unique_id=1326447240 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_q8hb4")
 initial_state = NodePath("AirState")
@@ -103,9 +106,6 @@ script = ExtResource("3_h5uus")
 self_modulate = Color(1, 1, 1, 0.2)
 z_index = -1
 texture = SubResource("GradientTexture2D_s62i3")
-
-[node name="Mashed" parent="." unique_id=499008387 instance=ExtResource("2_2147m")]
-mash_type = 99
 
 [node name="Audio" type="Node2D" parent="." unique_id=117140185 node_paths=PackedStringArray("sfx_jump_single", "sfx_jump_mult", "sfx_jump_heavy", "slide_sfx", "fall_sfx", "sfx_unmash_enter", "sfx_unmash_exit")]
 script = ExtResource("8_vhdde")

@@ -7,7 +7,7 @@ class_name UnmashedSpawner
 
 @export var block_attributes: BlockAttributes ## The block configuration/resource this spawner should create.
 @export var tutorial_block: bool = false ## If [code]true[/code], this block shows a "Press X to Mash" prompt.
-@export var custom_spawn: Node2D ## Spawn location in the tree. Default is [member GameMgr.current_level] if not assigned
+@export var custom_spawn: Node2D = null ## Spawn location in the tree. Default is [member GameMgr.current_level] if not assigned
 @export_tool_button("Display (For this specific node only)") var p_display = display_block
 @export_group("Customize")
 @export var cherry_bomb_strength: float = 1600.0 
@@ -87,20 +87,14 @@ func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: #
 	
 	await _deflect_end()
 
-	if custom_spawn:
-		custom_spawn.add_child(unmashed)
+	var spawn_parent: Node2D = custom_spawn if custom_spawn else GameMgr.current_level
+	spawn_parent.add_child(unmashed)
 
-		if node_index >= 0:
-			custom_spawn.move_child(unmashed, node_index)
-
-	else:
-		GameMgr.current_level.add_child(unmashed)
-
-		if node_index >= 0:
-			GameMgr.current_level.move_child(unmashed, node_index)
+	if node_index >= 0:
+		spawn_parent.move_child(unmashed, node_index)
 		
 	unmashed.anim_spawn_particles()
-	unmashed.name = "Unmashed" + str(GameLogic.number_of_blocks)
+	unmashed.name = "Unmashed%d" % GameLogic.number_of_blocks
 
 	await get_tree().create_timer(misc_consective_delay).timeout
 	

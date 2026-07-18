@@ -362,12 +362,12 @@ func unmash() -> void: # -> O(1)
 			#
 
 			old_mashed.queue_free()
-			GameMgr.current_level.add_child(unmashed)
 			
 			Input.start_joy_vibration(0, 0.0, 0.5, 0.025)
 
 			await return_position()
 			await get_tree().create_timer(0.025).timeout
+			GameMgr.current_level.add_child(unmashed)
 			
 			Input.start_joy_vibration(0, 0.2, 0.0, 0.025)
 
@@ -483,6 +483,7 @@ func stop_jump_sfx() -> void:
 		audio.sfx_jump_mult.stop()
 	if audio.sfx_jump_heavy.playing:
 		audio.sfx_jump_heavy.stop()
+
 
 
 func hang() -> void:

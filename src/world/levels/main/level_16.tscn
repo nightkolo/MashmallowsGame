@@ -137,13 +137,12 @@ position = Vector2(272, 552)
 position = Vector2(416, 464)
 
 [node name="Player2" parent="." unique_id=304194070 instance=ExtResource("14_52kka")]
-position = Vector2(856, 608)
+position = Vector2(624, 600)
 dubbleganger = true
 
 [node name="UnmashedSpawner5" parent="." unique_id=759190204 instance=ExtResource("15_mqtr0")]
 position = Vector2(224, 456)
 block_attributes = SubResource("Resource_obv27")
-twisted_strength = 5.0
 
 [node name="UnmashedSpawner2" parent="." unique_id=1991074190 instance=ExtResource("15_mqtr0")]
 position = Vector2(1128, 408)
@@ -155,6 +154,10 @@ block_attributes = SubResource("Resource_gh7v2")
 
 [node name="UnmashedSpawner6" parent="." unique_id=1761846739 instance=ExtResource("15_mqtr0")]
 position = Vector2(992, 608)
+block_attributes = SubResource("Resource_rafc5")
+
+[node name="UnmashedSpawner8" parent="." unique_id=1097181414 instance=ExtResource("15_mqtr0")]
+position = Vector2(488, 592)
 block_attributes = SubResource("Resource_rafc5")
 
 [node name="UnmashedSpawner7" parent="." unique_id=1948565974 instance=ExtResource("15_mqtr0")]

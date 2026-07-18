@@ -116,11 +116,9 @@ func _ready() -> void:
 
 
 func _ready_twisted() -> void:
+	#collision_mask = 1 + 2 + 8
 	if mash_type == Util.MashType.TWISTED:
-		collision_mask = 1 + 8
 		anim_expanding()
-	else:
-		collision_mask = 1 + 8 + 4096
 
 
 func is_mashable() -> bool:
@@ -183,6 +181,9 @@ func anim_expanding() -> void:
 		).set_delay(WAIT_TIME_BEFORE_EXPAND)
 	tween_expand.chain().tween_property(colli.shape as RectangleShape2D,"size:y",pos_to,EXPAND_TIME)
 	tween_expand.tween_property(twisted_mask.texture as GradientTexture2D,"height",pos_to,EXPAND_TIME)
+	
+	tween_expand.tween_property(top_detect,"position:y",-pos_to * 0.5,EXPAND_TIME)
+	
 	tween_expand.tween_property(twisted_mask,"position:y",pos_to * 0.375,EXPAND_TIME)
 	tween_expand.tween_property(eyes_node,"position:y",pos_to * 0.375,EXPAND_TIME)
 	
@@ -240,7 +241,12 @@ func is_player_on_top() -> bool:
 func is_on_player() -> bool:
 	if player_down_detect:
 		player_down_detect.force_shapecast_update()
-		return player_down_detect.is_colliding()
+		
+		if !player_down_detect.is_colliding():
+			return false
+		
+		if player_down_detect.get_collider(0) is Player:
+			return true
 	return false
 
 
@@ -271,8 +277,18 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		_landed = false
 		
-	if is_expanding && is_on_ceiling():
-		stop_expanding(40.0)
+	if is_expanding:
+		
+		if top_detect.is_colliding():
+			var obj: Node2D = top_detect.get_collider(0)
+			
+			if obj is TileMapLayer:
+				stop_expanding(0.0)
+			
+			# TODO Add player collision handling
+			elif obj is Player:
+				pass
+				#print_debug((obj as Player).is_on_ceiling())
 	
 	move_and_slide()
 
