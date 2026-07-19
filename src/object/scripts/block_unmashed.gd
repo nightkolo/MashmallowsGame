@@ -119,7 +119,7 @@ func _ready() -> void:
 func _ready_twisted() -> void:
 	#collision_mask = 1 + 2 + 8
 	if mash_type == Util.MashType.TWISTED:
-		(colli.shape as RectangleShape2D).size.x -= 20.0
+		#(colli.shape as RectangleShape2D).size.x -= 10.0
 		
 		anim_expanding(!was_mashed)
 

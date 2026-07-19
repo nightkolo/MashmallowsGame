@@ -110,7 +110,6 @@ func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
 	else:
 		child_blocks.append(block)
 
-	GameLogic.player_mashed.emit()
 	
 	if dubbleganger:
 		return
@@ -123,6 +122,7 @@ func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
 		)
 	})
 	
+	GameLogic.player_mashed.emit()
 
 
 ## Performs an Unmash (Pop) to the [member child_blocks] Stack.
