@@ -4,6 +4,8 @@ class_name CompleteScreen
 @export var asset_star: Texture2D = preload("res://assets/interface/rabbitstar-yellow.png")
 @export var asset_checkmark: Texture2D = preload("res://assets/interface/lollipop-02.png")
 
+# TODO Colo system
+
 @onready var bg: ColorRect = $BG
 @onready var node_texture_1: Node2D = %TextureNode1
 @onready var node_texture_2: Node2D = %TextureNode2

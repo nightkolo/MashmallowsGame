@@ -40,9 +40,12 @@
 
 
 ### Assets, Design, and Project
-- [ ] Interface 
-  - [ ] Lollipop
-  - [ ] Text
+- [x] Interface 
+  - [x] Lollipop
+    - [x] 1
+    - [x] 2
+  - [x] Mini Lollipop
+  - [x] Text
 - [ ] Objects
   - [ ] Hat-only blocks
   - [ ] Scaredy eyes
