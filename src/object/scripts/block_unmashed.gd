@@ -171,7 +171,7 @@ func anim_expanding(instant: bool = false) -> void:
 	
 	var pos_to: float = twisted_strength * Util.BLOCK_SIZE
 	var s1: float = pos_to * 0.5
-	var s2: float = pos_to * 0.375
+	var s2: float = pos_to * 0.395
 	
 	if instant:
 		(colli.shape as RectangleShape2D).size.y = pos_to
@@ -311,14 +311,16 @@ func _physics_process(delta: float) -> void:
 	if !is_expanding:
 		move_and_slide()
 	else:
-		position.y -= EXPAND_TIME * 100.0 * delta
+		var displace: float = EXPAND_TIME * (twisted_strength / 4.0) * delta
+		
+		position.y -= displace * 100.0
 		
 		if player_down_detect.is_colliding():
 			var obj: Node2D = player_down_detect.get_collider(0)
 			
 			if obj is Unmashed:
 				if (obj as Unmashed).is_expanding:
-					position.y -= EXPAND_TIME * 200.0 * delta
+					position.y -= displace * 200.0
 
 signal anim_unmashed_finished()
 

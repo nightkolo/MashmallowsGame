@@ -28,8 +28,8 @@
   - [x] Mechanics introduced
     - [x] Twisted
     - [x] Dubblegänger	
-    - [ ] Hat only blocks
-- [ ] Outro Sequence
+    - [ ] **Hat only blocks**
+- [ ] **Outro Sequence**
   - [ ] Monologue
 
 Me when I decide to fix bugs and manage to discover more bugs
@@ -43,6 +43,9 @@ Me when I decide to fix bugs and manage to discover more bugs
     - [x] Highlight system
     - [x] Hat
     - [x] Sleep anim
+  - [ ] Cherry bomb
+    - [ ] Velocity y damp
+    - [ ] no regen on twisted
   - [x] Twisted
     - [x] Collision handling
     - [x] Level 16

@@ -70,9 +70,11 @@ func _deflect_end() -> void:
 
 
 func regen() -> void:
-	spawn()
-	
-	has_been_taken = false
+	if has_been_taken:
+		await get_tree().create_timer(0.5).timeout
+		spawn()
+		
+		has_been_taken = false
 
 
 func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: ## Self-explanatory.

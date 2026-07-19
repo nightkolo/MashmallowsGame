@@ -90,7 +90,8 @@ const DEFAULT_MEDAL_DATA = {
 	"game_comp": false, # Marshmallow Lady Approves
 	
 	# Level-specific
-	"2_16": false, # Trespassing
+	"2_16_1": false, # Trespassing
+	"2_16_2": false, # Leapfrog
 	
 	# Stats
 	"50squat": false # 
