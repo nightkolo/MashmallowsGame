@@ -1,6 +1,6 @@
 # Todo
 
-## 7-1 (Deadline 7-20)
+## 7-1 (Deadline 7-25)
 
 ### Codebase
 - [x] Codebase cleanup
@@ -20,6 +20,8 @@
     - [x] Cherry Bombs
   - [x] Bakery transtioins
 - [ ] Bakery 2
+  - [ ] Info
+    - [ ] 2-14 Dubbleganger Info
   - [ ] **Level structure**
     - [x] 1-3
     - [x] 4-6
@@ -31,6 +33,39 @@
     - [x] **Hat only blocks**
 - [ ] **Outro Sequence**
   - [ ] Monologue
+
+### Bugs
+  - [ ] Dubble
+    - [ ] Fix movement variables
+
+
+### Assets, Design, and Project
+- [ ] Interface 
+  - [ ] Lollipop
+  - [ ] Text
+- [ ] Objects
+  - [ ] Hat-only blocks
+  - [ ] Scaredy eyes
+  - [x] Dubble outline
+  - [x] Dubble indicator
+- [ ] Artwork
+  - [ ] Bakery complete Millie artwork
+  - [ ] Final screen artwork
+  - [ ] Title artwork
+- [ ] Project
+  - [ ] Email Avizura about OST
+- [ ] Promo
+  - [ ] Game artwork
+  - [ ] Game trailer layout
+  - [ ] Game section
+
+### Codebase
+- [ ] **API**
+  - [ ] Medal ideas
+  - [ ] Medals
+  - [x] API testing and saving
+- [ ] Input prompts
+    - [ ] Controller (Generic)
 
 Me when I decide to fix bugs and manage to discover more bugs
 
@@ -58,33 +93,20 @@ Me when I decide to fix bugs and manage to discover more bugs
   - [x] Bubblegate
     - [x] Fix interact animation
 
-### Codebase
-- [ ] **API**
-  - [ ] Medal ideas
-  - [ ] Medals
-  - [x] API testing and saving
-
-### Assets and Design
-- [ ] Promo
-  - [ ] Game trailer layout
-  - [ ] Game section
-  - [ ] Game artwork
-- [ ] Project
-  - [ ] Email Avizura about OST
-- [ ] Artwork
-  - [x] Lollipop
-  - [ ] Circular Ribbon
-  - [ ] Text
-  - [ ] Bakery complete
-- [x] Objects
-  - [x] Dubble outline
-  - [x] Dubble indicator
-
-
-
 ### Animation
+- [ ] PLayer
+  - [ ] Ledge animation (Scaredy eyes)
+- [ ] Blocks
+  - [ ] Bouncy on hit ground
+  - [ ] One eye open on player close
+  - [ ] Scared before hitting ground
 - [ ] Level
   - [ ] Start visual bug	
+  - [ ] NPC
+    - [ ] Looking when moving animation
+    - [ ] Popping up happy animation
+    - [ ] Artwork	
+      - [ ] Bakery complete "Millie gives you a Lollipop"
 - [ ] Mashing
   - [ ] Mash particles
 - [ ] Dubbleganger
@@ -109,7 +131,6 @@ Me when I decide to fix bugs and manage to discover more bugs
 - [ ] Bakery complete anim
 
 ### Codebase
-- [ ] Input prompts
-    - [ ] Controller (Generic)
+
 
 
