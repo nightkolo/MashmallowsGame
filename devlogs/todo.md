@@ -23,7 +23,7 @@
   - [ ] **Level structure**
     - [x] 1-3
     - [x] 4-6
-    - [ ] 7-9
+    - [x] 7-9
     - [ ] 10
   - [x] Mechanics introduced
     - [x] Twisted
