@@ -28,7 +28,7 @@
   - [x] Mechanics introduced
     - [x] Twisted
     - [x] Dubblegänger	
-    - [ ] **Hat only blocks**
+    - [x] **Hat only blocks**
 - [ ] **Outro Sequence**
   - [ ] Monologue
 
