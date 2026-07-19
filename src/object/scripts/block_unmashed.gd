@@ -119,6 +119,8 @@ func _ready() -> void:
 func _ready_twisted() -> void:
 	#collision_mask = 1 + 2 + 8
 	if mash_type == Util.MashType.TWISTED:
+		(colli.shape as RectangleShape2D).size.x -= 20.0
+		
 		anim_expanding(!was_mashed)
 
 
@@ -159,6 +161,9 @@ func stop_expanding(pushback: float = 20.0) -> void:
 		is_at_expand_period = false
 		is_expanding = false
 
+const EXPAND_TIME = 1.0
+const WAIT_TIME_BEFORE_EXPAND = 0.75
+
 
 func anim_expanding(instant: bool = false) -> void:
 	if colli == null || twisted_mask == null:
@@ -181,9 +186,6 @@ func anim_expanding(instant: bool = false) -> void:
 		return
 	
 	started_expanding.emit()
-	
-	const EXPAND_TIME = 1.0
-	const WAIT_TIME_BEFORE_EXPAND = 0.75
 	
 	is_at_expand_period = true
 	
@@ -309,15 +311,14 @@ func _physics_process(delta: float) -> void:
 	if !is_expanding:
 		move_and_slide()
 	else:
-		# TODO mult by EXPAND_TIME
-		position.y -= 100.0 * delta
+		position.y -= EXPAND_TIME * 100.0 * delta
 		
 		if player_down_detect.is_colliding():
 			var obj: Node2D = player_down_detect.get_collider(0)
 			
 			if obj is Unmashed:
 				if (obj as Unmashed).is_expanding:
-					position.y -= 200.0 * delta
+					position.y -= EXPAND_TIME * 200.0 * delta
 
 signal anim_unmashed_finished()
 

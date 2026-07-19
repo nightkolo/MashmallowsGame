@@ -35,7 +35,6 @@ signal check_finished() ## @deprecated
 	set(value):
 		start_asleep = value
 		is_active = !value
-@export var auto_assign_child_blocks: bool = true
 @export_group("Movement Variables")
 @export_range(-600.0, 600.0, 1.0, "or_greater", "or_less") var speed: float = 450.0
 @export_range(-1500.0, 1500.0, 1.0, "or_greater", "or_less") var acceleration: float = 800.0
@@ -44,6 +43,9 @@ signal check_finished() ## @deprecated
 @export_group("Appearance")
 @export var show_trail: bool = true
 @export var show_blocks: bool = true
+@export_group("Miscellanous")
+@export var auto_assign_child_blocks: bool = true
+@export var push_front_mashed_blocks: bool = false
 
 @export_category("Objects to Assign")
 @export var animator: PlayerAnimationComponent
@@ -102,8 +104,13 @@ var _last_velocity_y: float = 0.0
 
 
 ## Performs a Mash (Push) to a [Mashed] block, and pushes to the [member child_blocks] Stack.
-func push_block(block: Mashed) -> void:
-	child_blocks.append(block)
+func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
+	if front:
+		child_blocks.push_front(block)
+	else:
+		child_blocks.append(block)
+
+	GameLogic.player_mashed.emit()
 	
 	if dubbleganger:
 		return
@@ -116,13 +123,15 @@ func push_block(block: Mashed) -> void:
 		)
 	})
 	
-	GameLogic.player_mashed.emit()
 
 
 ## Performs an Unmash (Pop) to the [member child_blocks] Stack.
-func pop_block() -> Mashed:
-	player_blocks_code.pop_back()
-	return child_blocks.pop_back()
+func pop_block(front: bool = push_front_mashed_blocks) -> Mashed:
+	if !dubbleganger:
+		player_blocks_code.pop_back()
+	
+	return child_blocks.pop_front() if front else child_blocks.pop_back()
+	
 
 
 func show_reset_notice(wait: float = 4.0) -> void:
@@ -330,7 +339,7 @@ func unmash() -> void: # -> O(1)
 	if !can_unmash():
 		return
 	
-	var old_mashed: Mashed = child_blocks[-1]
+	var old_mashed: Mashed = child_blocks[0] if push_front_mashed_blocks else child_blocks[-1]
 	_pos_before_mash = position
 	
 	match old_mashed.mash_type:
@@ -439,9 +448,14 @@ func is_being_flown() -> bool:
 
 ## Checks if can perform mash, regardless of [member is_active]
 func can_perform_mash() -> bool:
+	var obj: Mashed = child_blocks[-1]
+	
+	if obj == null:
+		return false
+		
 	return !(
-		child_blocks[-1].mash_type == Util.MashType.CHERRY_BOMB ||
-		child_blocks[-1].mash_type == Util.MashType.AIR_CHERRY_BOMB
+		(obj as Mashed).mash_type == Util.MashType.CHERRY_BOMB ||
+		(obj as Mashed).mash_type == Util.MashType.AIR_CHERRY_BOMB
 		) && !GameLogic.has_won
 
 
@@ -464,6 +478,8 @@ func is_tall_block_mashed() -> bool:
 		return false
 	
 	for block: Mashed in child_blocks:
+		if block == null:
+			continue
 		if block.build_type == Util.BuildType.RECTANGLE:
 			return true
 	

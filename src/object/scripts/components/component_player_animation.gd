@@ -24,6 +24,8 @@ func _ready() -> void:
 
 func pause_anim_eye_wobble():
 	for block: Mashed in player.child_blocks:
+		if block == null:
+			return
 		if block.t_wobble:
 			block.t_wobble.kill()
 			if block.attributes.build_type == Util.BuildType.RECTANGLE:
@@ -39,6 +41,8 @@ func anim_eye_wobble():
 		return
 
 	for block: Mashed in player.child_blocks:
+		if block == null:
+			return
 		block.anim_eye_wobble(0.4, signf(randf()-0.5) * 3.0)
 
 ### Anim
@@ -71,6 +75,8 @@ func anim_down(input: bool, ignore_state: bool = false) -> void:
 	_tween_down.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	
 	for block: Mashed in player.child_blocks:
+		if block == null:
+			return
 		var ori: float = block.sprite_original_pos.y
 
 		if block.is_on_ground() || block.is_on_block():
@@ -96,6 +102,8 @@ func anim_land(strength: float = 1.0) -> void:
 	_tween_land.set_ease(Tween.EASE_OUT)
 	
 	for block: Mashed in player.child_blocks:
+		if block == null:
+			return
 		block.node_block_sprites.scale = Vector2.ONE
 
 		var ori: float = block.sprite_original_pos.y
@@ -124,6 +132,8 @@ func anim_jump() -> void:
 	tween_jump.set_ease(Tween.EASE_OUT)
 	
 	for block: Mashed in player.child_blocks:
+		if block == null:
+			return
 		if block.is_on_ground():
 			tween_jump.tween_property(block.sprite_block, "scale", Vector2(0.875, 1.25) * 0.5, 0.1)
 			tween_jump.tween_property(block.sprite_block, "scale", Vector2.ONE * 0.5, 0.6).set_trans(Tween.TRANS_SINE).set_delay(0.1)

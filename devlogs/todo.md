@@ -35,14 +35,6 @@
 Me when I decide to fix bugs and manage to discover more bugs
 
 ### Bugs
-  - [ ] Twisted
-    - [ ] Collision handling
-    - [x] Level 16
-    - [x] Visual bug
-    - [x] Fix Rewrites
-    - [x] Highlight system
-    - [x] Visual indicator
-    - [x] Smoother transition
   - [ ] Dubble
     - [ ] Audio dependency
     - [ ] Emote animation
@@ -51,6 +43,14 @@ Me when I decide to fix bugs and manage to discover more bugs
     - [x] Highlight system
     - [x] Hat
     - [x] Sleep anim
+  - [x] Twisted
+    - [x] Collision handling
+    - [x] Level 16
+    - [x] Visual bug
+    - [x] Fix Rewrites
+    - [x] Highlight system
+    - [x] Visual indicator
+    - [x] Smoother transition
   - [x] Intro
   - [x] Bubblegate
     - [x] Fix interact animation

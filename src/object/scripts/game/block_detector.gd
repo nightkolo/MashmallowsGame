@@ -77,6 +77,8 @@ func update_unmashed_direction_arrow_index(moving_toward: Vector2) -> void:
 	
 	var n: int = unmashed_block_detection_rays.size() # Either 3 or 5
 	
+	#print_debug("Before: " + str(unmashed_block_detection_rays))
+	
 	for i in n:
 		if (unmashed_block_detection_rays[i] as RayCast2D).target_position.sign() != dir:
 			continue
@@ -88,6 +90,8 @@ func update_unmashed_direction_arrow_index(moving_toward: Vector2) -> void:
 		
 		if n == 3: # Does not include an extra node to check
 			break
+	#print_debug("After: " + str(unmashed_block_detection_rays))
+	
 
 
 # Ok -> O(n)
