@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c8yt1ml8b0g85" path="res://interface/runtime/ui_complete_screen.gd" id="1_se1px"]
 [ext_resource type="Texture2D" uid="uid://cxvh8xb1jrys0" path="res://assets/interface/tile-01.png" id="2_nnv04"]
-[ext_resource type="Texture2D" uid="uid://vclivsn8ttbk" path="res://assets/interface/ui-panel.png" id="2_q06uw"]
 [ext_resource type="Script" uid="uid://dcwjj5nb0q5s" path="res://object/scripts/node_tiled_sprite_2d.gd" id="3_f8sg2"]
 [ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="3_pdo3c"]
 [ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="4_5mm1k"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://be7r2uavwa5aq" path="res://assets/interface/stick-02.png" id="7_q06uw"]
 [ext_resource type="Texture2D" uid="uid://bxr6puql72rqi" path="res://assets/interface/lollipop-02.png" id="7_se1px"]
 [ext_resource type="LabelSettings" uid="uid://biveh1g52dl6r" path="res://core/resources/label/level_number_label.tres" id="8_5mm1k"]
+[ext_resource type="Texture2D" uid="uid://dsp8livcg2qgw" path="res://assets/objects/circle-mask.png" id="9_dfij4"]
 [ext_resource type="Texture2D" uid="uid://dssqi37ffm7ee" path="res://assets/world/particle-marshspiral.png" id="10_f8sg2"]
 
 [sub_resource type="Gradient" id="Gradient_ytqxl"]
@@ -71,7 +71,7 @@ texture_repeat = 2
 position = Vector2(-11, 1)
 texture = ExtResource("2_nnv04")
 region_enabled = true
-region_rect = Rect2(-33533.242, 4.106091e-12, 1580, 800)
+region_rect = Rect2(-93479.11, 1.1449736e-11, 1580, 800)
 script = ExtResource("3_f8sg2")
 animate_scroll = true
 scroll_trajectory = 3.141592653589793
@@ -86,25 +86,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.2509804)
 
-[node name="Panel" type="NinePatchRect" parent="." unique_id=370675253]
-unique_name_in_owner = true
-visible = false
-self_modulate = Color(1, 1, 1, 0.95)
-custom_minimum_size = Vector2(450, 400)
-layout_mode = 0
-offset_left = 415.0
-offset_top = 300.0
-offset_right = 865.0
-offset_bottom = 700.0
-size_flags_horizontal = 4
-size_flags_vertical = 8
-texture = ExtResource("2_q06uw")
-region_rect = Rect2(0, 0, 144, 144)
-patch_margin_left = 48
-patch_margin_top = 48
-patch_margin_right = 48
-patch_margin_bottom = 48
-
 [node name="Main" type="MarginContainer" parent="." unique_id=1830294922]
 layout_mode = 1
 anchors_preset = 15
@@ -115,7 +96,7 @@ grow_vertical = 2
 theme = ExtResource("3_pdo3c")
 
 [node name="Content" type="MarginContainer" parent="Main" unique_id=1323990352]
-custom_minimum_size = Vector2(450, 500)
+custom_minimum_size = Vector2(550, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -129,11 +110,14 @@ layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Main/Content/VBoxContainer" unique_id=2007766003]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
+theme_override_constants/line_separation = -20
 theme_override_fonts/normal_font = SubResource("FontVariation_vproy")
 bbcode_enabled = true
-text = "[center][font_size=50][wave amp=20.0 freq=2.0][tornado radius=2.5 freq=4.0]You Got a Lollipop!"
+text = "[center][font_size=50][wave amp=20.0 freq=2.0][tornado radius=2.5 freq=4.0]Marshmallow Lady gives you a Lollipop!"
 fit_content = true
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Main" unique_id=2102955221]
 custom_minimum_size = Vector2(200, 375)
@@ -191,6 +175,16 @@ position = Vector2(0, 440)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("6_f8sg2")
 
+[node name="Beam" type="Node2D" parent="TextureNodes" unique_id=584142316]
+unique_name_in_owner = true
+visible = false
+
+[node name="Shine3" type="Sprite2D" parent="TextureNodes/Beam" unique_id=1205546633]
+unique_name_in_owner = true
+position = Vector2(0, 440)
+scale = Vector2(2, 2)
+texture = ExtResource("9_dfij4")
+
 [node name="Node2D" type="Node2D" parent="TextureNodes" unique_id=22873954]
 position = Vector2(0, 631)
 scale = Vector2(0.5, 0.5)
@@ -210,7 +204,7 @@ position = Vector2(640, 440)
 [node name="Particles" type="CPUParticles2D" parent="TextureNode1" unique_id=1292886224]
 unique_name_in_owner = true
 emitting = false
-amount = 16
+amount = 32
 texture = ExtResource("10_f8sg2")
 lifetime = 2.0
 one_shot = true
@@ -228,7 +222,7 @@ color_ramp = SubResource("Gradient_1xoux")
 [node name="Particles2" type="CPUParticles2D" parent="TextureNode1" unique_id=1520008604]
 unique_name_in_owner = true
 emitting = false
-amount = 32
+amount = 64
 texture = ExtResource("5_nnv04")
 lifetime = 11.0
 one_shot = true

@@ -66,8 +66,11 @@ func set_music(vol: float = original_music_db) -> void:
 func start_music():
 	await get_tree().create_timer(0.1).timeout
 
-	if !GameMgr.current_level.has_started || GameMgr.level_id <= 0 || music_stage.playing:
-		return
+	var lvl: Level = GameMgr.current_level
+
+	if lvl:
+		if !lvl.has_started || GameMgr.level_id <= 0 || music_stage.playing:
+			return
 
 	music_stage.finished.connect(func():
 		music_stage.play(8.422)

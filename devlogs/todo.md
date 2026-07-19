@@ -13,8 +13,8 @@
     - [x] World nodes
 
 ### Gameplay
-- [ ] Gameplay improvements
-  - [ ] Bakery complete screen animation
+- [x] Gameplay improvements
+  - [x] Bakery complete screen animation
   - [x] Mash direction revamps
   - [x] Regen System
     - [x] Cherry Bombs
