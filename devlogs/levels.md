@@ -16,13 +16,17 @@ Meet "Millie" Marshmallow Lady (and "Ettiko" Bubblegum Guy?)
 - **Twisted Marshmallows**: Special block that rises in size upon unmashing, elevating the blocks higher. It is 1x1 when mashed, and 1xn when unmashed. Is it a twisted marshmallow.
 - **Flame** and **Golden Marshmallows**: A flame object that toasts marshmallows into golden to meet the specific order with goldens
 - Hazard: Caramel: A hazard that gets marshmallows stuck if touched, except golden marshmallows
+- Match Doors: These are special doors that require a certain formation to open, they have bubbles on the form they desire.
+  - Ideas
+    - w/ Twisted
+    - 
 
 ### Mechanics
 
 - (N/A) **Flying Block**: a special block that flies off upon pressing Z
 - (N/A) **Falling Platform blocks**: Platforms that have count limit on how many block they can hold, past the threshold, the platform will become incollidible.
 - (N/A) **Butter**: Sticks to walls
-- **Magnet**: Special block that magnetically attracts force fields within focus, it moves the mashed blocks around the level.
+- **Magnet**: Special block that magnetically attracts force fields within focus, it moves the mashed blocks around the level. However, it requires being facing forward to the magnet in order to attract
 
 ## Collectibles?
 

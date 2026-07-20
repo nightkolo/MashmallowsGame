@@ -27,7 +27,8 @@
     - [x] 4-6
     - [x] 7-9
     - [ ] 10
-  - [x] Mechanics introduced
+  - [ ] Mechanics introduced
+    - [ ] Match blocks
     - [x] Twisted
     - [x] Dubblegänger	
     - [x] **Hat only blocks**
@@ -40,15 +41,8 @@
 
 
 ### Assets, Design, and Project
-- [x] Interface 
-  - [x] Lollipop
-    - [x] 1
-    - [x] 2
-  - [x] Mini Lollipop
-  - [x] Text
 - [ ] Objects
   - [ ] Hat-only blocks
-  - [ ] Scaredy eyes
   - [x] Dubble outline
   - [x] Dubble indicator
 - [ ] Artwork
@@ -60,7 +54,12 @@
 - [ ] Promo
   - [ ] Game artwork
   - [ ] Game trailer layout
+  - [ ] Screenshots layout
   - [ ] Game section
+- [x] Interface 
+  - [x] Lollipop
+  - [x] Mini Lollipop
+  - [x] Text
 
 ### Codebase
 - [ ] **API**
@@ -73,17 +72,18 @@
 Me when I decide to fix bugs and manage to discover more bugs
 
 ### Bugs
+  - [ ] Cherry bomb
+    - [ ] Velocity y damp
+    - [ ] no regen on twisted
   - [ ] Dubble
     - [ ] Audio dependency
     - [ ] Emote animation
+    - [ ] Just the hat
     - [x] Auto-moving on X when is_hanging = true
     - [x] Camera focus
     - [x] Highlight system
     - [x] Hat
     - [x] Sleep anim
-  - [ ] Cherry bomb
-    - [ ] Velocity y damp
-    - [ ] no regen on twisted
   - [x] Twisted
     - [x] Collision handling
     - [x] Level 16
@@ -92,17 +92,8 @@ Me when I decide to fix bugs and manage to discover more bugs
     - [x] Highlight system
     - [x] Visual indicator
     - [x] Smoother transition
-  - [x] Intro
-  - [x] Bubblegate
-    - [x] Fix interact animation
 
 ### Animation
-- [ ] PLayer
-  - [ ] Ledge animation (Scaredy eyes)
-- [ ] Blocks
-  - [ ] Bouncy on hit ground
-  - [ ] One eye open on player close
-  - [ ] Scared before hitting ground
 - [ ] Level
   - [ ] Start visual bug	
   - [ ] NPC
@@ -110,6 +101,13 @@ Me when I decide to fix bugs and manage to discover more bugs
     - [ ] Popping up happy animation
     - [ ] Artwork	
       - [ ] Bakery complete "Millie gives you a Lollipop"
+- [ ] PLayer
+  - [ ] Ledge animation (Scaredy eyes)
+- [ ] Blocks
+  - [ ] Seperated eyes
+  - [ ] Bouncy on hit ground
+  - [ ] One eye open on player close
+  - [ ] Scared before hitting ground
 - [ ] Mashing
   - [ ] Mash particles
 - [ ] Dubbleganger

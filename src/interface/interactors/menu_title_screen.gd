@@ -57,8 +57,8 @@ func goto_credits() -> void:
 
 
 func continue_game() -> void:
-	GameMgr.self_destruct()
-	GameLogic.self_destruct()
+	#GameMgr.self_destruct()
+	#GameLogic.self_destruct()
 	if !GameData.runtime_data.has("last_level"): 
 		return
 		
