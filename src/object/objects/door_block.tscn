@@ -29,6 +29,8 @@ length = 40.0
 shape = SubResource("RectangleShape2D_ivh0c")
 script = ExtResource("1_4ro5p")
 
+[node name="Sprite1" type="Node2D" parent="." unique_id=492383156]
+
 [node name="Sprite2" type="Node2D" parent="." unique_id=1095150530]
 
 [node name="Inflators" type="Sprite2D" parent="Sprite2" unique_id=1838665577]
@@ -91,37 +93,70 @@ collision_mask = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=757950327]
 shape = SubResource("SeparationRayShape2D_lgyk2")
 
-[node name="Close" type="Node2D" parent="." unique_id=1023223676]
+[node name="Audio1" type="Node2D" parent="." unique_id=491346253]
 
-[node name="Open01" type="AudioStreamPlayer2D" parent="Close" unique_id=1868707601]
+[node name="Open01" type="AudioStreamPlayer2D" parent="Audio1" unique_id=1855655767]
+stream = ExtResource("5_qu61c")
+volume_db = 20.0
+panning_strength = 5.0
+bus = &"SFX"
+
+[node name="Open02" type="AudioStreamPlayer2D" parent="Audio1" unique_id=1887238250]
+stream = ExtResource("6_iexf5")
+volume_db = 20.0
+panning_strength = 5.0
+bus = &"SFX"
+
+[node name="Open03" type="AudioStreamPlayer2D" parent="Audio1" unique_id=249462287]
+stream = ExtResource("7_3idpj")
+volume_db = 20.0
+panning_strength = 5.0
+bus = &"SFX"
+
+[node name="Close01" type="AudioStreamPlayer2D" parent="Audio1" unique_id=366705770]
+stream = ExtResource("8_lgyk2")
+volume_db = 10.0
+panning_strength = 5.0
+bus = &"SFX"
+
+[node name="Close02" type="AudioStreamPlayer2D" parent="Audio1" unique_id=932334444]
+stream = ExtResource("9_52xk0")
+volume_db = 10.0
+pitch_scale = 2.0
+panning_strength = 5.0
+bus = &"SFX"
+
+[node name="Audio2" type="Node2D" parent="." unique_id=1023223676]
+
+[node name="Open01" type="AudioStreamPlayer2D" parent="Audio2" unique_id=1868707601]
 unique_name_in_owner = true
 stream = ExtResource("5_qu61c")
 volume_db = 20.0
 panning_strength = 5.0
 bus = &"SFX"
 
-[node name="Open02" type="AudioStreamPlayer2D" parent="Close" unique_id=1376272864]
+[node name="Open02" type="AudioStreamPlayer2D" parent="Audio2" unique_id=1376272864]
 unique_name_in_owner = true
 stream = ExtResource("6_iexf5")
 volume_db = 20.0
 panning_strength = 5.0
 bus = &"SFX"
 
-[node name="Open03" type="AudioStreamPlayer2D" parent="Close" unique_id=1656641185]
+[node name="Open03" type="AudioStreamPlayer2D" parent="Audio2" unique_id=1656641185]
 unique_name_in_owner = true
 stream = ExtResource("7_3idpj")
 volume_db = 20.0
 panning_strength = 5.0
 bus = &"SFX"
 
-[node name="Close01" type="AudioStreamPlayer2D" parent="Close" unique_id=1606740964]
+[node name="Close01" type="AudioStreamPlayer2D" parent="Audio2" unique_id=1606740964]
 unique_name_in_owner = true
 stream = ExtResource("8_lgyk2")
 volume_db = 10.0
 panning_strength = 5.0
 bus = &"SFX"
 
-[node name="Close02" type="AudioStreamPlayer2D" parent="Close" unique_id=1891859088]
+[node name="Close02" type="AudioStreamPlayer2D" parent="Audio2" unique_id=1891859088]
 unique_name_in_owner = true
 stream = ExtResource("9_52xk0")
 volume_db = 10.0

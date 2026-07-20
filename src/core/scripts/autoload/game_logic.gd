@@ -4,7 +4,6 @@ extends Node
 # To avoid player null checks
 signal player_mashed() 
 signal player_unmashed() 
-signal player_touched_flame()
 signal player_interacted_monolog_area(entered: bool)
 signal cherry_bomb_exploded()
 #
@@ -55,10 +54,6 @@ func reset_game_logic() -> void:
 func _ready() -> void:
 	player_mashed.connect(check_order_completion)
 	player_unmashed.connect(check_order_completion)
-	player_touched_flame.connect(func():
-		# await get_tree().create_timer(0.1).timeout
-		check_order_completion()
-		)
 	
 	intro_order_complete.connect(level_won)
 

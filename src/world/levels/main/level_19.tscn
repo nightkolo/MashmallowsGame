@@ -73,10 +73,10 @@ metadata/_custom_type_script = "uid://5cfma5ft813q"
 [node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("10_0rihj")]
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_bhbb2")]
-position = Vector2(416, 400)
+position = Vector2(264, 368)
 
 [node name="Player2" parent="." unique_id=1564264209 instance=ExtResource("11_bhbb2")]
-position = Vector2(544, 544)
+position = Vector2(368, 528)
 dubbleganger = true
 
 [node name="UnmashedSpawner5" parent="." unique_id=180989199 instance=ExtResource("12_tecku")]

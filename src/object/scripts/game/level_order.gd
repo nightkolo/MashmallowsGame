@@ -80,16 +80,17 @@ func update_look() -> void:
 			break
 
 		sprite.texture = Util.get_order_block_texture(id.attributes.mash_type, id.attributes.build_type)
-		sprite.texture = Util.get_order_block_texture(id.attributes.mash_type, id.attributes.build_type)
 
 		if !id.is_node_ready():
 			continue
 
 
 func _ready() -> void:
-	
-	# Wait for assignment
-	await get_tree().create_timer(0.1).timeout
+	for id: Node in get_children():
+		if !(id is MashBlockCheckerID):
+			return
+			
+		mash_block_checker_ids.append(id as MashBlockCheckerID)
 	
 	order_code.clear()
 		

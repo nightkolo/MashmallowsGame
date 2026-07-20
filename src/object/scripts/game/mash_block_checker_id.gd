@@ -6,18 +6,17 @@ class_name MashBlockCheckerID
 
 @export var attributes: BlockAttributes
 
+@export var is_side_id: bool = false
+
 
 func _ready() -> void:
 	if attributes:
 		GameLogic.setup_mash_block(sprite, attributes.mash_type, attributes.build_type)
 		
-		if attributes.mash_type != Util.MashType.PLAYER:
-			GameLogic.number_of_order_blocks += 1
-			is_satisfied = false
-
-		if get_parent() is LevelOrder:
-			(get_parent() as LevelOrder).mash_block_checker_ids.append(self)
-
+		if !is_side_id:
+			if attributes.mash_type != Util.MashType.PLAYER:
+				GameLogic.number_of_order_blocks += 1
+				is_satisfied = false
 
 var is_satisfied: bool = true
 var tween_anim: Tween

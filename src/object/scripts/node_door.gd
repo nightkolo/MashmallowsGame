@@ -1,6 +1,8 @@
 extends StaticBody2D
 class_name Door
 
+@export var match_block_appearance: bool = false
+
 const BLOCK_ACTIVATION_DELAY := 0.125
 
 var is_open: bool = false

@@ -35,6 +35,11 @@ func display_block() -> void:
 
 func _ready() -> void:
 	add_to_group("Spawner")
+	
+	if block_attributes == null:
+		push_error("block_attributes not assigned.")
+		return
+	
 	display_block()
 
 
@@ -60,6 +65,7 @@ func _ready() -> void:
 			)
 
 
+
 func _deflect_end() -> void:
 	if collision_deflector:
 		collision_deflector.queue_free()
@@ -79,6 +85,10 @@ func regen() -> void:
 
 
 func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: ## Self-explanatory.
+	if block_attributes == null:
+		push_error("block_attributes not assigned.")
+		return
+	
 	var unmashed: Unmashed = _get_unmashed_object(block_attributes.build_type)
 	unmashed.global_position = global_position
 	unmashed.attributes = block_attributes

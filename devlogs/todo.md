@@ -21,17 +21,15 @@
   - [x] Bakery transtioins
 - [ ] Bakery 2
   - [ ] Info
-    - [ ] 2-14 Dubbleganger Info
+    - [ ] 2-14 Match doors Info
   - [ ] **Level structure**
     - [x] 1-3
-    - [x] 4-6
-    - [x] 7-9
-    - [ ] 10
-  - [ ] Mechanics introduced
-    - [ ] Match blocks
+    - [ ] 4-6
+    - [x] 7-8
+    - [ ] 9-10
+  - [x] Mechanics introduced
+    - [x] Match blocks
     - [x] Twisted
-    - [x] Dubblegänger	
-    - [x] **Hat only blocks**
 - [ ] **Outro Sequence**
   - [ ] Monologue
 
@@ -41,16 +39,15 @@
 
 
 ### Assets, Design, and Project
-- [ ] Objects
-  - [ ] Hat-only blocks
-  - [x] Dubble outline
-  - [x] Dubble indicator
 - [ ] Artwork
   - [ ] Bakery complete Millie artwork
   - [ ] Final screen artwork
   - [ ] Title artwork
 - [ ] Project
   - [ ] Email Avizura about OST
+- [ ] Objects
+  - [ ] Match Doors
+  - [ ] Bubble
 - [ ] Promo
   - [ ] Game artwork
   - [ ] Game trailer layout
