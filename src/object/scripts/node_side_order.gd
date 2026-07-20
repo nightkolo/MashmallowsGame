@@ -41,6 +41,11 @@ func check_sideorder_completion() -> void:
  	# Worst case -> O(n * m)
 	# n = order_code.size(), m = current_player_code.size()
 	for o_entry: Dictionary in order_code:
+		var id_node: MashBlockCheckerID = o_entry["ref"] as MashBlockCheckerID
+		
+		if id_node == null:
+			continue
+			
 		var match_found: bool = false
 		
 		for p_entry: Dictionary in current_player_code:
@@ -54,7 +59,7 @@ func check_sideorder_completion() -> void:
 			match_found = true
 			break
 		
-		#id_node.anim_satisfied(match_found)
+		id_node.anim_satisfied(match_found)
 		if match_found:
 			amount_satisfied += 1
 	
@@ -64,24 +69,33 @@ func check_sideorder_completion() -> void:
 	
 	if amount_satisfied == number_of_sideorder_blocks:
 		sideorder_met()
+	else:
+		sideorder_lost()
 		
 	#order_checked.emit()
 	is_checking_sideorder_match = false
 
 
+func sideorder_lost():
+	if door_to_activate:
+		door_to_activate.can_self_activate = false
+
 
 func sideorder_met():
-	if door_to_activate && !has_openned:
-		door_to_activate.interact(true)
-		
-		has_openned = true
+	if door_to_activate:
+		door_to_activate.can_self_activate = true
 
 
 func _ready() -> void:
 	if door_to_activate == null:
 		push_warning("door_to_activate not assigned")
 		return
-		
+	
+	door_to_activate.has_interacted.connect(func(on: bool):
+		if on:
+			has_openned = true
+		)
+	
 	for id: Node in get_children():
 		if !(id is MashBlockCheckerID):
 			return

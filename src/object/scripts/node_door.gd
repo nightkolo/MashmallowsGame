@@ -1,11 +1,14 @@
 extends StaticBody2D
 class_name Door
 
+signal has_interacted(on: bool)
+
 @export var match_block_appearance: bool = false
 
 const BLOCK_ACTIVATION_DELAY := 0.125
 
 var is_open: bool = false
+var can_self_activate: bool = false
 var door_blocks: Array[DoorBlock] = []
 
 var activation_timer: Timer = Timer.new()
@@ -44,6 +47,8 @@ func interact(should_open: bool) -> void:
 		return
 
 	is_open = should_open
+
+	has_interacted.emit(should_open)
 
 	if should_open:
 		activation_timer.start()

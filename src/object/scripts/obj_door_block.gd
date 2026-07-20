@@ -17,13 +17,12 @@ class_name DoorBlock
 
 @onready var detector_rays: Array[Area2D] = [$Down, $Up, $Right, $Left]
 
-
 var is_activated: bool:
 	get:
 		return is_activated
 	set(value):
 		is_activated = value
-
+var parent_door: Door
 var t_wobble: Tween
 
 func anim_eye_wobble(dur: float = 0.5, mag: float = 3.0) -> void:
@@ -46,15 +45,24 @@ var tween_squish: Tween
 func _ready() -> void:
 	anim_eye_wobble()
 	
+	if get_parent() is Door:
+		parent_door = get_parent() as Door
+	
 	for area: Area2D in detector_rays:
 		area.body_entered.connect(func(body: Node2D):
 			anim_body_entered(area.position.sign())
+			if parent_door:
+				if parent_door.can_self_activate:
+					parent_door.interact(true)
+			
 			)
 		area.body_exited.connect(func(_body: Node2D):
 			#for in_area: Area2D in detector_rays:
 				#print_debug("%s: %s" % [self, in_area.get_overlapping_bodies()])
 			anim_body_exited()
 			)
+
+
 
 func anim_body_entered(dir: Vector2) -> void:
 	var offset: Vector2 = dir

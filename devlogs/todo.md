@@ -33,10 +33,6 @@
 - [ ] **Outro Sequence**
   - [ ] Monologue
 
-### Bugs
-  - [ ] Dubble
-    - [ ] Fix movement variables
-
 
 ### Assets, Design, and Project
 - [ ] Artwork
@@ -63,15 +59,25 @@
   - [ ] Medal ideas
   - [ ] Medals
   - [x] API testing and saving
+- [ ] Dubble clean-up
 - [ ] Input prompts
     - [ ] Controller (Generic)
 
 Me when I decide to fix bugs and manage to discover more bugs
 
 ### Bugs
+	- [ ] Screen extents
   - [ ] Cherry bomb
     - [ ] Velocity y damp
     - [ ] no regen on twisted
+  - [x] Twisted
+    - [x] Collision handling
+    - [x] Level 16
+    - [x] Visual bug
+    - [x] Fix Rewrites
+    - [x] Highlight system
+    - [x] Visual indicator
+    - [x] Smoother transition
   - [ ] Dubble
     - [ ] Audio dependency
     - [ ] Emote animation
@@ -81,14 +87,6 @@ Me when I decide to fix bugs and manage to discover more bugs
     - [x] Highlight system
     - [x] Hat
     - [x] Sleep anim
-  - [x] Twisted
-    - [x] Collision handling
-    - [x] Level 16
-    - [x] Visual bug
-    - [x] Fix Rewrites
-    - [x] Highlight system
-    - [x] Visual indicator
-    - [x] Smoother transition
 
 ### Animation
 - [ ] Level
