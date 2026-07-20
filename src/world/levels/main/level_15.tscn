@@ -76,7 +76,6 @@ metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
 script = ExtResource("1_1phlm")
-no_progression = true
 level_goal = NodePath("World/LevelGoal")
 player = NodePath("Player")
 metadata/_custom_type_script = "uid://5fpkm17tw6kn"
@@ -89,6 +88,7 @@ zoom = Vector2(0.9, 0.9)
 script = ExtResource("3_5366p")
 
 [node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_0crid")]
+bg_color_set = 1
 terrain = NodePath("Terrain")
 camera = NodePath("../Cam")
 
@@ -129,6 +129,7 @@ offset_bottom = 448.0
 position = Vector2(-16, 80)
 scale = Vector2(0.75, 0.75)
 script = ExtResource("9_tir6s")
+level_id_to_modify = 15
 order_code = Array[Dictionary]([{
 "build": 0,
 "pos": Vector2(0, 0),

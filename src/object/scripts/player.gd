@@ -339,6 +339,8 @@ func unmash() -> void: # -> O(1)
 	if !can_unmash():
 		return
 	
+	# TODO Check for possible bugs with new behavior
+	
 	var old_mashed: Mashed = child_blocks[0] if push_front_mashed_blocks else child_blocks[-1]
 	_pos_before_mash = position
 	
@@ -448,15 +450,16 @@ func is_being_flown() -> bool:
 
 ## Checks if can perform mash, regardless of [member is_active]
 func can_perform_mash() -> bool:
-	var obj: Mashed = child_blocks[-1]
-	
-	if obj == null:
-		return false
-		
-	return !(
-		(obj as Mashed).mash_type == Util.MashType.CHERRY_BOMB ||
-		(obj as Mashed).mash_type == Util.MashType.AIR_CHERRY_BOMB
-		) && !GameLogic.has_won
+	#var obj: Mashed = child_blocks[-1]
+	#
+	#if obj == null:
+		#return false
+		#
+	#return !(
+		#(obj as Mashed).mash_type == Util.MashType.CHERRY_BOMB ||
+		#(obj as Mashed).mash_type == Util.MashType.AIR_CHERRY_BOMB
+		#) && !GameLogic.has_won
+	return !GameLogic.has_won
 
 
 func can_one_child_block_mash() -> bool:

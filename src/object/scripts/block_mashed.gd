@@ -130,7 +130,7 @@ func _ready() -> void:
 	mashable_state_changed.connect(func(p_can_mash: bool):
 		if parent_player.audio == null:
 			return
-			
+		
 		if p_can_mash:
 			parent_player.audio.sfx_unmash_enter.play()
 		else:
