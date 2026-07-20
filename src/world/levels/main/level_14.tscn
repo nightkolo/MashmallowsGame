@@ -83,6 +83,7 @@ position = Vector2(640, 400)
 script = ExtResource("3_cor28")
 
 [node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_fyh67")]
+bg_color_set = 1
 terrain = NodePath("Terrain")
 camera = NodePath("../Cam")
 

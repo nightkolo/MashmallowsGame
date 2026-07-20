@@ -51,9 +51,6 @@ func _ready() -> void:
 	for area: Area2D in detector_rays:
 		area.body_entered.connect(func(body: Node2D):
 			anim_body_entered(area.position.sign())
-			if parent_door:
-				if parent_door.can_self_activate:
-					parent_door.interact(true)
 			
 			)
 		area.body_exited.connect(func(_body: Node2D):

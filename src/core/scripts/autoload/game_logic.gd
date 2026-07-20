@@ -125,6 +125,10 @@ func check_order_completion() -> void:
 	
 	last_amount_satisfied = amount_satisfied
 	
+	print_debug("amount_satisfied: %d" % amount_satisfied)
+	
+	print_debug("number_of_order_blocks: %d" % number_of_order_blocks)
+	
 	if amount_satisfied - 1 == number_of_order_blocks:
 		order_met()
 	

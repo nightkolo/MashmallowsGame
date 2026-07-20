@@ -8,7 +8,6 @@ signal has_interacted(on: bool)
 const BLOCK_ACTIVATION_DELAY := 0.125
 
 var is_open: bool = false
-var can_self_activate: bool = false
 var door_blocks: Array[DoorBlock] = []
 
 var activation_timer: Timer = Timer.new()

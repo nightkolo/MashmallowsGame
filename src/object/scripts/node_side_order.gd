@@ -69,21 +69,14 @@ func check_sideorder_completion() -> void:
 	
 	if amount_satisfied == number_of_sideorder_blocks:
 		sideorder_met()
-	else:
-		sideorder_lost()
 		
 	#order_checked.emit()
 	is_checking_sideorder_match = false
 
 
-func sideorder_lost():
-	if door_to_activate:
-		door_to_activate.can_self_activate = false
-
-
 func sideorder_met():
 	if door_to_activate:
-		door_to_activate.can_self_activate = true
+		door_to_activate.interact(true)
 
 
 func _ready() -> void:
