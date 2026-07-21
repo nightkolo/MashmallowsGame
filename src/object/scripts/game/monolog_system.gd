@@ -55,7 +55,7 @@ var is_monolog_active: bool = false:
 		
 		if disable_player_control:
 			if GameMgr.current_main_player:
-				GameMgr.current_main_player.is_active = value
+				GameMgr.current_main_player.is_active = !value
 		
 		is_monolog_active = value
 var can_advance_line: bool = false
@@ -142,6 +142,10 @@ func _ready() -> void:
 		if character:
 			if reveal_name_at >= 0:
 				character.anim_reveal_name(reveal_name_at - 1 >= _current_line_index)
+			elif reveal_name_at == -2:
+				character.nameplate.visible = false
+			else:
+				character.anim_reveal_name(false)
 
 		speech_bubble.bubble.size = speech_bubble_size
 		# TODO: Auto-Resize Bubble

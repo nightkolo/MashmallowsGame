@@ -150,6 +150,34 @@ static var order_data: Dictionary = {
 	"13": {
 		"order_code": [
 			{
+				"build": 0.0,
+				"pos": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"type": 99.0
+			},
+			{
+				"build": 1.0,
+				"pos": {
+					"x": 0.0,
+					"y": 1.5
+				},
+				"type": 3.0
+			},
+			{
+				"build": 0.0,
+				"pos": {
+					"x": 1.0,
+					"y": 2.0
+				},
+				"type": 0.0
+			}
+		]
+	},
+	"14": {
+		"order_code": [
+			{
 				"build": 0,
 				"pos": {
 					"x": 0.0,
@@ -163,51 +191,23 @@ static var order_data: Dictionary = {
 					"x": 0.0,
 					"y": 1.5
 				},
-				"type": 3
+				"type": 0
 			},
 			{
 				"build": 0,
 				"pos": {
 					"x": 1.0,
-					"y": 2.0
-				},
-				"type": 0
-			}
-		]
-	},
-	"14": {
-		"order_code": [
-			{
-				"build": 0.0,
-				"pos": {
-					"x": 0.0,
 					"y": 0.0
 				},
-				"type": 99.0
+				"type": 3
 			},
 			{
-				"build": 1.0,
+				"build": 0,
 				"pos": {
-					"x": 1.0,
-					"y": 0.5
+					"x": -1.0,
+					"y": 0.0
 				},
-				"type": 1.0
-			},
-			{
-				"build": 0.0,
-				"pos": {
-					"x": 2.0,
-					"y": 1.0
-				},
-				"type": 1.0
-			},
-			{
-				"build": 0.0,
-				"pos": {
-					"x": 3.0,
-					"y": 1.0
-				},
-				"type": 0.0
+				"type": 3
 			}
 		]
 	},
@@ -224,54 +224,70 @@ static var order_data: Dictionary = {
 			{
 				"build": 0.0,
 				"pos": {
-					"x": -1.0,
-					"y": 0.0
+					"x": 0.0,
+					"y": 1.0
+				},
+				"type": 2.0
+			},
+			{
+				"build": 0.0,
+				"pos": {
+					"x": 1.0,
+					"y": 1.0
 				},
 				"type": 3.0
 			},
 			{
 				"build": 0.0,
 				"pos": {
-					"x": -1.0,
-					"y": 1.0
+					"x": 0.0,
+					"y": 2.0
 				},
-				"type": 0.0
+				"type": 1.0
 			}
 		]
 	},
 	"16": {
 		"order_code": [
 			{
-				"build": 0.0,
+				"build": 0,
 				"pos": {
 					"x": 0.0,
 					"y": 0.0
 				},
-				"type": 99.0
+				"type": 99
 			},
 			{
-				"build": 0.0,
+				"build": 0,
 				"pos": {
-					"x": 1.0,
-					"y": 0.0
+					"x": 0.0,
+					"y": 2.0
 				},
-				"type": 0.0
+				"type": 1
 			},
 			{
-				"build": 0.0,
+				"build": 0,
 				"pos": {
 					"x": 0.0,
 					"y": 1.0
 				},
-				"type": 0.0
+				"type": 0
 			},
 			{
-				"build": 1.0,
+				"build": 0,
 				"pos": {
 					"x": 0.0,
-					"y": 2.5
+					"y": 3.0
 				},
-				"type": 0.0
+				"type": 0
+			},
+			{
+				"build": 1,
+				"pos": {
+					"x": 0.0,
+					"y": 4.5
+				},
+				"type": 1
 			}
 		]
 	},

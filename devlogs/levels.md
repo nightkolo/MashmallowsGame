@@ -21,6 +21,11 @@ Meet "Millie" Marshmallow Lady (and "Ettiko" Bubblegum Guy?)
     - w/ Twisted
     - 
 
+### Ending
+- Includes all the blocks from previous orders moving
+- Last talk with Millie
+- Credits screen
+
 ### Mechanics
 
 - (N/A) **Flying Block**: a special block that flies off upon pressing Z

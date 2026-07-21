@@ -1,0 +1,176 @@
+[gd_scene format=4 uid="uid://tyha0y7rsmhf"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_8x21h"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_74n5r"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_qmi1j"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="4_hx0xr"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_gvbaw"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="6_tlrx2"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_p4q10"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="8_iivpe"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="9_k03yb"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="10_p42b0"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="11_vx8vf"]
+[ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="12_qmi1j"]
+[ext_resource type="PackedScene" uid="uid://cys70kcpvkm0y" path="res://world/interface/speech_bubble.tscn" id="13_hx0xr"]
+[ext_resource type="Script" uid="uid://drojb13rqhkar" path="res://core/resources/game_dialog/monolog_millie.gd" id="14_766v7"]
+[ext_resource type="AudioStream" uid="uid://doutjfd6vfo3s" path="res://audio/sounds/speech_ka.wav" id="14_iivpe"]
+[ext_resource type="AudioStream" uid="uid://bgtyfv4mukx" path="res://audio/sounds/speech_ke.wav" id="15_k03yb"]
+[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="15_s1cjh"]
+[ext_resource type="Script" uid="uid://coaf2q56w0fhq" path="res://core/resources/game_dialog/monolog_tree.gd" id="16_0n6ub"]
+[ext_resource type="AudioStream" uid="uid://lim7kxx0wuhn" path="res://audio/sounds/speech_ki.wav" id="16_p42b0"]
+[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="17_ugcbx"]
+[ext_resource type="AudioStream" uid="uid://dlivpjd07hi8g" path="res://audio/sounds/speech_ko.wav" id="17_vx8vf"]
+[ext_resource type="AudioStream" uid="uid://df0l3dd7j6esl" path="res://audio/sounds/speech_ku.wav" id="18_4c73u"]
+[ext_resource type="Script" uid="uid://d2gl7vnb88axq" path="res://world/world/monolog_activation_area.gd" id="23_n66mx"]
+[ext_resource type="Script" uid="uid://xf050jk32doo" path="res://world/levels/main/outro_comp.gd" id="24_0n6ub"]
+
+[sub_resource type="Resource" id="Resource_qfo1w"]
+script = ExtResource("15_s1cjh")
+monolog_eyes = 3
+monolog_line = "Thank you for Playing!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_0mp8r"]
+script = ExtResource("15_s1cjh")
+monolog_line = "Here they come!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_766v7"]
+script = ExtResource("15_s1cjh")
+monolog_emotion = 2
+monolog_line = "...Aha..."
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_s1cjh"]
+script = ExtResource("15_s1cjh")
+monolog_line = "I think we've had enough candy for today"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_yq3e7"]
+script = ExtResource("16_0n6ub")
+monolog_path_1 = "What about the Orders?"
+monolog_flow_1 = Array[ExtResource("14_766v7")]([SubResource("Resource_0mp8r")])
+monolog_path_2 = "You look tasty"
+monolog_flow_2 = Array[ExtResource("14_766v7")]([SubResource("Resource_766v7"), SubResource("Resource_s1cjh")])
+monolog_eyes = 3
+monolog_line = "You met all the Orders!
+Please come again!"
+metadata/_custom_type_script = "uid://coaf2q56w0fhq"
+
+[sub_resource type="Resource" id="Resource_0n6ub"]
+script = ExtResource("15_s1cjh")
+monolog_eyes = 3
+monolog_line = "Order up!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_px16p"]
+script = ExtResource("17_ugcbx")
+monolog_flow = Array[ExtResource("14_766v7")]([SubResource("Resource_qfo1w"), SubResource("Resource_yq3e7"), SubResource("Resource_0n6ub")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6r1i"]
+size = Vector2(290, 20)
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
+script = ExtResource("1_8x21h")
+level_id = 21
+bakery_id = 2
+no_progression = true
+level_goal = NodePath("World/LevelGoal")
+player = NodePath("Player")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_74n5r")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(640, 400)
+script = ExtResource("3_qmi1j")
+
+[node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_hx0xr")]
+bg_color_set = 1
+terrain = NodePath("Terrain")
+camera = NodePath("../Cam")
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("5_gvbaw")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_map_data = PackedByteArray("AAAAAAkAAAAKAAAAAAABAAkAAAAKAAAAAAACAAkAAAAKAAAAAAADAAkAAAAKAAAAAAAFAAkAAAAKAAAAAAAEAAkAAAAKAAAAAAAGAAkAAAAKAAAAAAAHAAkAAAAKAAAAAAAIAAkAAAAKAAAAAAAJAAkAAAAKAAAAAAAKAAkAAAAKAAAAAAALAAkAAAAKAAAAAAAMAAkAAAAKAAAAAAANAAkAAAAKAAAAAAAOAAkAAAAKAAAAAAAPAAkAAAAKAAAAAAAQAAkAAAAKAAAAAAARAAkAAAAKAAAAAAASAAkAAAAKAAAAAAATAAkAAAAKAAAAAAAUAAkAAAAKAAAAAAAUAAoAAAAKAAEAAAAUAAsAAAAKAAEAAAAUAAwAAAAJAAMAAAATAAwAAAAJAAMAAAASAAwAAAAJAAMAAAARAAwAAAAJAAMAAAAQAAwAAAAJAAMAAAAPAAwAAAAJAAMAAAAOAAwAAAAJAAMAAAANAAwAAAAJAAMAAAAMAAwAAAAJAAMAAAALAAwAAAAJAAMAAAAKAAwAAAAJAAMAAAAJAAwAAAAJAAMAAAAIAAwAAAAJAAMAAAAHAAwAAAAJAAMAAAAGAAwAAAAJAAMAAAAFAAwAAAAJAAMAAAAEAAwAAAAJAAMAAAADAAsAAAAKAAEAAAACAAsAAAAKAAEAAAABAAsAAAAKAAEAAAAAAAsAAAAKAAEAAAD//wsAAAAKAAEAAAD//woAAAAKAAEAAAD//wkAAAAKAAAAAAACAAoAAAAKAAEAAAADAAoAAAAKAAEAAAAEAAoAAAAKAAEAAAABAAoAAAAKAAEAAAAAAAoAAAAKAAEAAAD//wwAAAAJAAMAAAAAAAwAAAAJAAMAAAABAAwAAAAJAAMAAAACAAwAAAAJAAMAAAADAAwAAAAJAAMAAAASAAsAAAAKAAEAAAATAAsAAAAKAAEAAAARAAsAAAAKAAEAAAAPAAsAAAAKAAEAAAAQAAsAAAAKAAEAAAAOAAsAAAAKAAEAAAANAAsAAAAKAAEAAAAMAAsAAAAKAAEAAAALAAsAAAAKAAEAAAAKAAsAAAAKAAEAAAAJAAsAAAAKAAEAAAAIAAsAAAAKAAEAAAAHAAsAAAAKAAEAAAAGAAsAAAAKAAEAAAAFAAsAAAAKAAEAAAAEAAsAAAAKAAEAAAAHAAoAAAAKAAEAAAAJAAoAAAAKAAEAAAAIAAoAAAAKAAEAAAAKAAoAAAAKAAEAAAALAAoAAAAKAAEAAAAMAAoAAAAKAAEAAAANAAoAAAAKAAEAAAAOAAoAAAAKAAEAAAAPAAoAAAAKAAEAAAAQAAoAAAAKAAEAAAARAAoAAAAKAAEAAAASAAoAAAAKAAEAAAATAAoAAAAKAAEAAAAGAAoAAAAKAAEAAAAFAAoAAAAKAAEAAAD+/wkAAAAEAAEAAAD+/wgAAAAAAAEAAAD+/wcAAAAAAAEAAAD+/wYAAAAAAAEAAAD+/wUAAAAAAAEAAAD+/wQAAAAAAAEAAAD+/wMAAAAAAAAAAAAVAAkAAAAHAAEAAAAVAAgAAAAAAAEAAAAVAAcAAAAAAAEAAAAVAAYAAAAAAAEAAAAVAAUAAAAAAAEAAAAVAAQAAAAAAAEAAAAVAAMAAAAAAAAAAAD+/wwAAAAIAAMAAAD+/wsAAAAIAAEAAAD+/woAAAAIAAEAAAAVAAoAAAALAAIAAAAVAAsAAAALAAIAAAAVAAwAAAALAAMAAAA=")
+tile_set = ExtResource("6_tlrx2")
+
+[node name="Ground2" type="TileMapLayer" parent="World/Terrain" unique_id=503798420]
+light_mask = 8
+tile_map_data = PackedByteArray("AAAAAAkAAAAKAAAAAAABAAkAAAAKAAAAAAACAAkAAAAKAAAAAAADAAkAAAAKAAAAAAAFAAkAAAAKAAAAAAAEAAkAAAAKAAAAAAAGAAkAAAAKAAAAAAAHAAkAAAAKAAAAAAAIAAkAAAAKAAAAAAAJAAkAAAAKAAAAAAAKAAkAAAAKAAAAAAALAAkAAAAKAAAAAAAMAAkAAAAKAAAAAAANAAkAAAAKAAAAAAAOAAkAAAAKAAAAAAAPAAkAAAAKAAAAAAAQAAkAAAAKAAAAAAARAAkAAAAKAAAAAAASAAkAAAAKAAAAAAATAAkAAAAKAAAAAAAUAAkAAAAKAAAAAAAUAAoAAAAKAAEAAAAUAAsAAAAKAAEAAAAUAAwAAAAJAAMAAAATAAwAAAAJAAMAAAASAAwAAAAJAAMAAAARAAwAAAAJAAMAAAAQAAwAAAAJAAMAAAAPAAwAAAAJAAMAAAAOAAwAAAAJAAMAAAANAAwAAAAJAAMAAAAMAAwAAAAJAAMAAAALAAwAAAAJAAMAAAAKAAwAAAAJAAMAAAAJAAwAAAAJAAMAAAAIAAwAAAAJAAMAAAAHAAwAAAAJAAMAAAAGAAwAAAAJAAMAAAAFAAwAAAAJAAMAAAAEAAwAAAAJAAMAAAADAAsAAAAKAAEAAAACAAsAAAAKAAEAAAABAAsAAAAKAAEAAAAAAAsAAAAKAAEAAAD//wsAAAAKAAEAAAD//woAAAAKAAEAAAD//wkAAAAKAAAAAAACAAoAAAAKAAEAAAADAAoAAAAKAAEAAAAEAAoAAAAKAAEAAAABAAoAAAAKAAEAAAAAAAoAAAAKAAEAAAD//wwAAAAJAAMAAAAAAAwAAAAJAAMAAAABAAwAAAAJAAMAAAACAAwAAAAJAAMAAAADAAwAAAAJAAMAAAASAAsAAAAKAAEAAAATAAsAAAAKAAEAAAARAAsAAAAKAAEAAAAPAAsAAAAKAAEAAAAQAAsAAAAKAAEAAAAOAAsAAAAKAAEAAAANAAsAAAAKAAEAAAAMAAsAAAAKAAEAAAALAAsAAAAKAAEAAAAKAAsAAAAKAAEAAAAJAAsAAAAKAAEAAAAIAAsAAAAKAAEAAAAHAAsAAAAKAAEAAAAGAAsAAAAKAAEAAAAFAAsAAAAKAAEAAAAEAAsAAAAKAAEAAAAHAAoAAAAKAAEAAAAJAAoAAAAKAAEAAAAIAAoAAAAKAAEAAAAKAAoAAAAKAAEAAAALAAoAAAAKAAEAAAAMAAoAAAAKAAEAAAANAAoAAAAKAAEAAAAOAAoAAAAKAAEAAAAPAAoAAAAKAAEAAAAQAAoAAAAKAAEAAAARAAoAAAAKAAEAAAASAAoAAAAKAAEAAAATAAoAAAAKAAEAAAAGAAoAAAAKAAEAAAAFAAoAAAAKAAEAAAD+/wkAAAAFAAAAAAAVAAkAAAAKAAAAAAD+/wwAAAAIAAMAAAD+/wsAAAAIAAEAAAD+/woAAAAIAAEAAAAVAAoAAAAKAAEAAAAVAAsAAAAKAAEAAAAVAAwAAAAJAAMAAAAWAAkAAAAKAAAAAAAXAAkAAAAKAAAAAAAYAAkAAAAKAAAAAAAZAAkAAAAKAAAAAAAaAAkAAAAKAAAAAAAbAAkAAAAKAAAAAAAcAAkAAAAKAAAAAAAdAAkAAAAKAAAAAAAeAAkAAAAKAAAAAAAfAAkAAAAGAAAAAAAfAAoAAAALAAIAAAAfAAsAAAALAAIAAAAfAAwAAAALAAMAAAAeAAwAAAAJAAMAAAAdAAwAAAAJAAMAAAAcAAwAAAAJAAMAAAAbAAwAAAAJAAMAAAAaAAwAAAAJAAMAAAAZAAwAAAAJAAMAAAAYAAwAAAAJAAMAAAAXAAwAAAAJAAMAAAAWAAwAAAAJAAMAAAAWAAoAAAAKAAEAAAAXAAoAAAAKAAEAAAAYAAoAAAAKAAEAAAAZAAoAAAAKAAEAAAAaAAoAAAAKAAEAAAAbAAoAAAAKAAEAAAAcAAoAAAAKAAEAAAAdAAoAAAAKAAEAAAAeAAoAAAAKAAEAAAAeAAsAAAAKAAEAAAAdAAsAAAAKAAEAAAAYAAsAAAAKAAEAAAAXAAsAAAAKAAEAAAAWAAsAAAAKAAEAAAAZAAsAAAAKAAEAAAAaAAsAAAAKAAEAAAAbAAsAAAAKAAEAAAAcAAsAAAAKAAEAAAD9/wkAAAACAAMAAAD8/wkAAAACAAMAAAD7/wkAAAACAAMAAAD6/wkAAAACAAMAAAD5/wkAAAACAAMAAAD4/wkAAAACAAMAAAD3/wkAAAACAAMAAAD2/wkAAAACAAMAAAD1/wkAAAACAAMAAAD0/wkAAAACAAMAAADz/wkAAAACAAMAAADy/wkAAAACAAMAAADn/wkAAAACAAMAAADm/wkAAAACAAMAAADl/wkAAAACAAMAAADt/wkAAAACAAMAAADu/wkAAAACAAMAAADv/wkAAAACAAMAAADw/wkAAAACAAMAAADx/wkAAAACAAMAAADo/wkAAAACAAMAAADk/wkAAAACAAMAAADi/wkAAAACAAMAAADh/wkAAAACAAMAAADg/wkAAAABAAMAAADs/wkAAAACAAMAAADq/wkAAAACAAMAAADr/wkAAAACAAMAAADp/wkAAAACAAMAAADj/wkAAAACAAMAAAAkAAMAAAAAAAAAAAAkAAQAAAAAAAEAAAAkAAUAAAAAAAEAAAAkAAYAAAAAAAEAAAAkAAcAAAAAAAEAAAAkAAkAAAADAAIAAAAkAAgAAAAAAAEAAAAgAAkAAAACAAMAAAAhAAkAAAACAAMAAAAiAAkAAAACAAMAAAAjAAkAAAACAAMAAAA=")
+tile_set = ExtResource("6_tlrx2")
+
+[node name="WorldBlocks" type="Node2D" parent="World" unique_id=960871053]
+script = ExtResource("7_p4q10")
+metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("8_iivpe")]
+offset_left = 640.0
+offset_top = 856.0
+offset_right = 640.0
+offset_bottom = 856.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Board" parent="World/LevelGoal" index="0" unique_id=1651127727]
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelOrder" type="Node2D" parent="World/LevelGoal" unique_id=989048369]
+script = ExtResource("9_k03yb")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
+
+[node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("10_p42b0")]
+position = Vector2(552, 208)
+
+[node name="SpeechBubble" parent="World" unique_id=1740413481 instance=ExtResource("13_hx0xr")]
+offset_left = 784.0
+offset_top = 440.0
+offset_right = 784.0
+offset_bottom = 440.0
+
+[node name="TiledSprite2D" parent="World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
+region_rect = Rect2(-159322.31, 1.9533992e-11, 4776, 3584)
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_vx8vf")]
+position = Vector2(104, 480)
+
+[node name="MonologSystem" type="Node" parent="." unique_id=762021038 node_paths=PackedStringArray("speech_bubble", "character", "choice_1", "choice_2")]
+script = ExtResource("12_qmi1j")
+reveal_name_at = -2
+flow = SubResource("Resource_px16p")
+speech_bubble_size = Vector2(300, 120)
+speech_bubble = NodePath("../World/SpeechBubble")
+character = NodePath("../World/NPCBoard")
+speech_a = ExtResource("14_iivpe")
+speech_e = ExtResource("15_k03yb")
+speech_i = ExtResource("16_p42b0")
+speech_o = ExtResource("17_vx8vf")
+speech_u = ExtResource("18_4c73u")
+choice_1 = NodePath("../World/SpeechBubble/MonologOptions/Choice1")
+choice_2 = NodePath("../World/SpeechBubble/MonologOptions/Choice2")
+metadata/_custom_type_script = "uid://8084qpc74hbe"
+
+[node name="MonologArea" type="Area2D" parent="." unique_id=1964865839 node_paths=PackedStringArray("monolog_system_to_activate")]
+script = ExtResource("23_n66mx")
+monolog_system_to_activate = NodePath("../MonologSystem")
+metadata/_custom_type_script = "uid://d2gl7vnb88axq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonologArea" unique_id=1790290829]
+position = Vector2(552, 568)
+shape = SubResource("RectangleShape2D_j6r1i")
+
+[node name="Outro" type="Node" parent="." unique_id=734435710 node_paths=PackedStringArray("player", "camera", "level", "monolog")]
+script = ExtResource("24_0n6ub")
+player = NodePath("../Player")
+camera = NodePath("../Cam")
+level = NodePath("..")
+monolog = NodePath("../MonologSystem")
+
+[editable path="World/LevelGoal"]
+[editable path="World/SpeechBubble"]

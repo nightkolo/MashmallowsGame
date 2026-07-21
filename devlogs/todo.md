@@ -2,36 +2,26 @@
 
 ## 7-1 (Deadline 7-25)
 
-### Codebase
-- [x] Codebase cleanup
-  - [x] Core code
-    - [x] Game manager
-    - [x] Game Logic
-    - [x] Utils
-  - [x] Levels and worlds
-    - [x] Level code
-    - [x] World nodes
-
 ### Gameplay
+- [ ] Bakery 2
+  - [ ] Info
+    - [ ] 2-14 Match doors Info
+  - [ ] **Level structure**
+    - [x] 1-3
+    - [x] 4-6
+    - [x] 7-8
+    - [ ] 9-10
+  - [x] Mechanics introduced
+    - [x] Match blocks
+    - [x] Twisted
+- [x] **Outro Sequence**
+  - [x] Monologue
 - [x] Gameplay improvements
   - [x] Bakery complete screen animation
   - [x] Mash direction revamps
   - [x] Regen System
     - [x] Cherry Bombs
   - [x] Bakery transtioins
-- [ ] Bakery 2
-  - [ ] Info
-    - [ ] 2-14 Match doors Info
-  - [ ] **Level structure**
-    - [x] 1-3
-    - [ ] 4-6
-    - [x] 7-8
-    - [ ] 9-10
-  - [x] Mechanics introduced
-    - [x] Match blocks
-    - [x] Twisted
-- [ ] **Outro Sequence**
-  - [ ] Monologue
 
 
 ### Assets, Design, and Project
@@ -39,14 +29,18 @@
   - [ ] Bakery complete Millie artwork
   - [ ] Final screen artwork
   - [ ] Title artwork
+  - [ ] Logo
 - [ ] Project
   - [ ] Email Avizura about OST
-- [ ] Objects
+  - [ ] Find royalty free music for Bakery 2
+- [ ] Aseets
   - [ ] Match Doors
   - [ ] Bubble
-- [ ] Promo
-  - [ ] Game artwork
+  - [ ] New mille model
+- [ ] Promo (After bugs and anim)
   - [ ] Game trailer layout
+  - After bugs and anim
+  - [ ] Game artwork
   - [ ] Screenshots layout
   - [ ] Game section
 - [x] Interface 
@@ -67,6 +61,15 @@ Me when I decide to fix bugs and manage to discover more bugs
 
 ### Bugs
 	- [ ] Screen extents
+	- [ ] Menus
+  	- [ ] Pause info fix
+	- [ ] SFX
+  	- [ ] Click sound
+  	- [ ] Landing sound playing on stacked blocks
+	- [ ] Blocks
+  	- [ ] Slopped collisions
+	- [ ] PLayer
+  	- [ ] Able to press down on regular ground
   - [ ] Cherry bomb
     - [ ] Velocity y damp
     - [ ] no regen on twisted
