@@ -19,6 +19,8 @@ class_name CompleteScreen
 
 @onready var cb_complete_info: RichTextLabel = %RichTextLabel
 @onready var next_btn: Button = %NextButton
+@onready var artwork: Node2D = %Artwork
+@onready var artwork_2: Node2D = $Artwork/Sprite
 
 var tween_texture_idle: Tween
 var tween_texture_hover: Tween
@@ -26,6 +28,7 @@ var tween_texture_pulse: Tween
 
 var _gameplay_ui: GameplayUI
 var _final_texture_scale: Vector2 = Vector2.ONE * 0.5
+var screen_size : Vector2
 
 #const _INFO_BEGIN = "Bakery "
 #const _INFO_END = " Complete!"
@@ -36,10 +39,12 @@ func _ready() -> void:
 	
 	texture.scale = _final_texture_scale
 	
-	var screen_size := get_viewport().get_visible_rect().size
+	screen_size = get_viewport().get_visible_rect().size
 	
 	for node: Node2D in [texture_nodes, node_texture_1]:
 		node.position.x = screen_size.x * 0.5
+	
+	artwork.position.x = screen_size.x * 1.2
 	
 	next_btn.visible = false
 	
@@ -76,6 +81,24 @@ func _input(event: InputEvent) -> void:
 
 #func _process(_delta: float) -> void:
 	#(%Particles3 as CPUParticles2D).position = get_local_mouse_position()
+func anim_artwork() -> void:
+	var mag := 20.0
+	var dur := 1.0
+	artwork_2.position.y -= mag * 0.5
+	
+	var tween := create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(artwork, "position:x", screen_size.x * 0.8, 2.0)
+	
+	var tween_b := create_tween().set_loops()
+	tween_b.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tween_b.tween_property(artwork_2, "scale:y", 1.035, dur)
+	tween_b.tween_property(artwork_2, "scale:y", 0.965, dur)
+	
+	var tween_c := create_tween().set_loops()
+	tween_c.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	tween_c.tween_property(artwork_2, "position:y", mag, dur * 3.0).as_relative()
+	tween_c.tween_property(artwork_2, "position:y", -mag, dur * 2.6).as_relative()
 
 
 func open() -> void:
@@ -197,6 +220,7 @@ func _anim_texture_landed() -> void:
 	
 	anim_texture_idle()
 	anim_shine()
+	anim_artwork()
 	
 	var tween = create_tween().set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)

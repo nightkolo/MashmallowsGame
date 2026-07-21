@@ -26,8 +26,7 @@
 
 ### Assets, Design, and Project
 - [ ] Artwork
-  - [ ] Bakery complete Millie artwork
-  - [ ] Final screen artwork
+  - [x] Bakery complete Millie artwork
   - [ ] Title artwork
   - [ ] Logo
 - [ ] Project
