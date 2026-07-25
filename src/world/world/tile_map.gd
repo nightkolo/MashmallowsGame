@@ -7,7 +7,7 @@ func _ready():
 
 	# I'm so lazy lol
 
-	if children.size() == 2:
+	if children.size() > 1:
 		var node := children[0]
 		var node_2 := children[1]
 		

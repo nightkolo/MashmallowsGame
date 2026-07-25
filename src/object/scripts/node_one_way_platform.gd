@@ -1,6 +1,8 @@
 extends StaticBody2D
 class_name OneWayPlatform
 
+@export var enable: bool = true
+
 var p: Player
 var drop_notice: Node2D
 
@@ -54,7 +56,10 @@ func _ready() -> void:
 
 	await get_tree().create_timer(0.1).timeout
 
-	setup_node()
+	if enable:
+		setup_node()
+	else:
+		set_process(false)
 
 	
 var _tween_prompt: Tween

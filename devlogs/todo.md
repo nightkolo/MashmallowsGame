@@ -10,12 +10,14 @@
     - [x] 1-3
     - [x] 4-6
     - [x] 7-8
-    - [ ] 9-10
+    - [x] 9
+    - [ ] 10
   - [x] Mechanics introduced
     - [x] Match blocks
     - [x] Twisted
 - [x] **Outro Sequence**
   - [x] Monologue
+  - [ ] Auto-players
 - [x] Gameplay improvements
   - [x] Bakery complete screen animation
   - [x] Mash direction revamps
@@ -25,13 +27,9 @@
 
 
 ### Assets, Design, and Project
-- [ ] Artwork
-  - [x] Bakery complete Millie artwork
-  - [ ] Title artwork
-  - [ ] Logo
 - [ ] Project
-  - [ ] Email Avizura about OST
   - [ ] Find royalty free music for Bakery 2
+  - [x] Email Avizura about OST
 - [ ] Aseets
   - [ ] Match Doors
   - [ ] Bubble
@@ -46,6 +44,10 @@
   - [x] Lollipop
   - [x] Mini Lollipop
   - [x] Text
+- [x] Artwork
+  - [x] Bakery complete Millie artwork
+  - [x] Title artwork
+  - [x] Logo
 
 ### Codebase
 - [ ] **API**

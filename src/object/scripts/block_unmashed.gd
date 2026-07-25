@@ -306,7 +306,9 @@ func _physics_process(delta: float) -> void:
 		if top_detect.is_colliding():
 			var obj: Node2D = top_detect.get_collider(0)
 			
-			if obj is TileMapLayer:
+			if obj is IgnoreCeilingArea:
+				pass
+			elif obj is TileMapLayer:
 				stop_expanding(0.0)
 			
 			# TODO Check if player collision handling needed
@@ -316,16 +318,16 @@ func _physics_process(delta: float) -> void:
 	if !is_expanding:
 		move_and_slide()
 	else:
-		var displace: float = EXPAND_TIME * (twisted_strength / 4.0) * delta
+		var displace: float = EXPAND_TIME * (twisted_strength / 4.0)
 		
-		position.y -= displace * 100.0
+		position.y -= displace * 100.0 * delta
 		
 		if player_down_detect.is_colliding():
 			var obj: Node2D = player_down_detect.get_collider(0)
 			
 			if obj is Unmashed:
 				if (obj as Unmashed).is_expanding:
-					position.y -= displace * 200.0
+					position.y -= displace * 200.0 * delta
 
 signal anim_unmashed_finished()
 

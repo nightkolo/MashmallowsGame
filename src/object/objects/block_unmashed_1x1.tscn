@@ -92,7 +92,7 @@ blink_interval = 0.0
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -81591.01
+rotation = -82537.94
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"
@@ -183,6 +183,7 @@ color_ramp = SubResource("Gradient_ol1ck")
 [node name="TopDetect" type="ShapeCast2D" parent="." unique_id=1800823164]
 shape = SubResource("RectangleShape2D_ynmou")
 target_position = Vector2(0, -30)
-collision_mask = 11
+collision_mask = 523
+collide_with_areas = true
 
 [editable path="MashPrompt/InputPrompt"]
