@@ -40,21 +40,6 @@ script = ExtResource("13_ny7ri")
 mash_type = 3
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
-[sub_resource type="Resource" id="Resource_pn5ma"]
-script = ExtResource("13_ny7ri")
-mash_type = 3
-metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
-
-[sub_resource type="Resource" id="Resource_dvhsk"]
-script = ExtResource("13_ny7ri")
-mash_type = 3
-metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
-
-[sub_resource type="Resource" id="Resource_ny7ri"]
-script = ExtResource("13_ny7ri")
-build_type = 1
-metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
-
 [sub_resource type="Resource" id="Resource_d4v6b"]
 script = ExtResource("13_ny7ri")
 mash_type = 99
@@ -66,6 +51,21 @@ mash_type = 3
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_o72on"]
+script = ExtResource("13_ny7ri")
+build_type = 1
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_pn5ma"]
+script = ExtResource("13_ny7ri")
+mash_type = 3
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_dvhsk"]
+script = ExtResource("13_ny7ri")
+mash_type = 3
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_ny7ri"]
 script = ExtResource("13_ny7ri")
 build_type = 1
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
@@ -95,6 +95,7 @@ script = ExtResource("5_avu3u")
 metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World/Terrain" unique_id=543499065]
+light_mask = 8
 tile_map_data = PackedByteArray("AAAIAAgAAgAAAAEAAAARAAcAAgAAAAEAAAARAAYAAgAAAAEAAAASAAYAAgAAAAEAAAATAAYAAgAAAAEAAAATAAcAAgAAAAEAAAASAAcAAgAAAAEAAAAUAAcAAgAAAAEAAAAUAAYAAgAAAAEAAAADAAEAAgAAAAEAAAADAAAAAgAAAAEAAAADAP//AgAAAAEAAAAJAAEAAgAAAAEAAAAKAAEAAgAAAAEAAAALAAEAAgAAAAEAAAAMAAEAAgAAAAEAAAANAAEAAgAAAAEAAAAOAAEAAgAAAAEAAAAPAAEAAgAAAAEAAAAIAAkAAgAAAAEAAAAPAAgAAgAAAAEAAAAIAAQAAgABAAEAAAAIAAMAAgABAAEAAAAIAAIAAgABAAEAAAANAAYAAgABAAEAAAANAAcAAgABAAEAAAANAAgAAgABAAEAAAANAAkAAgABAAEAAAAOAAkAAgABAAEAAAAOAAoAAgABAAEAAAANAAoAAgABAAEAAAAOAAgAAgABAAEAAAAOAAcAAgABAAEAAAAOAAYAAgABAAEAAAAPAAYAAgABAAEAAAAPAAcAAgABAAEAAAAGAAMAAgABAAEAAAAGAAQAAgABAAEAAAAGAAUAAgABAAEAAAAGAAYAAgABAAEAAAAHAAUAAgABAAEAAAAHAAQAAgABAAEAAAAHAAMAAgABAAEAAAAHAAIAAgABAAEAAAA=")
 tile_set = ExtResource("6_eatuf")
 
@@ -191,12 +192,14 @@ offset_bottom = 600.0
 level_info = "[font_size=22.0]These bubblegates are needy for[br][color=yellow]Side-Orders"
 
 [node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
+modulate = Color(1, 1, 1, 0)
 offset_right = 256.0
 offset_bottom = 136.0
+scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
 position = Vector2(264, 200)
-region_rect = Rect2(-37502.7, 4.5922623e-12, 4776, 3584)
+region_rect = Rect2(-1511.1631, 1.8506221e-13, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 256.0
@@ -204,42 +207,15 @@ offset_bottom = 120.0
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
 text = "[b][font_size=21.0][font_size=22.0]These bubblegates are needy for[br][color=yellow]Side-Orders"
-visible_characters = 43
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
+[node name="InfoSpriteNode" parent="World/LevelInfo" index="2" unique_id=1221176953]
+visible = false
+
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
 position = Vector2(256, 106)
 rotation = 0.1553248
-
-[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_n8762")]
-position = Vector2(536, 264)
-
-[node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("12_pn5ma")]
-position = Vector2(800, 272)
-block_attributes = SubResource("Resource_pn5ma")
-
-[node name="UnmashedSpawner3" parent="." unique_id=86167403 instance=ExtResource("12_pn5ma")]
-position = Vector2(536, 544)
-block_attributes = SubResource("Resource_dvhsk")
-
-[node name="UnmashedSpawner2" parent="." unique_id=639945363 instance=ExtResource("12_pn5ma")]
-position = Vector2(224, 248)
-block_attributes = SubResource("Resource_ny7ri")
-
-[node name="Door" type="StaticBody2D" parent="." unique_id=566124244]
-script = ExtResource("14_o72on")
-metadata/_custom_type_script = "uid://b3cwwpsrywrrm"
-
-[node name="DoorBlock" parent="Door" unique_id=1732091715 instance=ExtResource("15_x7dbe")]
-position = Vector2(608, 352)
-
-[node name="DoorBlock2" parent="Door" unique_id=1468488182 instance=ExtResource("15_x7dbe")]
-position = Vector2(672, 352)
-
-[node name="DoorBlock3" parent="Door" unique_id=1289575713 instance=ExtResource("15_x7dbe")]
-position = Vector2(736, 352)
-
-[node name="DoorBlock4" parent="Door" unique_id=1256256273 instance=ExtResource("15_x7dbe")]
-position = Vector2(800, 352)
 
 [node name="SideOrder" type="Node2D" parent="." unique_id=1216487754 node_paths=PackedStringArray("door_to_activate")]
 position = Vector2(680, 432.00003)
@@ -261,6 +237,37 @@ is_side_id = true
 position = Vector2(64, 96)
 attributes = SubResource("Resource_o72on")
 is_side_id = true
+
+[node name="Door" type="StaticBody2D" parent="." unique_id=566124244]
+script = ExtResource("14_o72on")
+metadata/_custom_type_script = "uid://b3cwwpsrywrrm"
+
+[node name="DoorBlock" parent="Door" unique_id=1732091715 instance=ExtResource("15_x7dbe")]
+position = Vector2(608, 352)
+
+[node name="DoorBlock2" parent="Door" unique_id=1468488182 instance=ExtResource("15_x7dbe")]
+position = Vector2(672, 352)
+
+[node name="DoorBlock3" parent="Door" unique_id=1289575713 instance=ExtResource("15_x7dbe")]
+position = Vector2(736, 352)
+
+[node name="DoorBlock4" parent="Door" unique_id=1256256273 instance=ExtResource("15_x7dbe")]
+position = Vector2(800, 352)
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_n8762")]
+position = Vector2(536, 264)
+
+[node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("12_pn5ma")]
+position = Vector2(800, 272)
+block_attributes = SubResource("Resource_pn5ma")
+
+[node name="UnmashedSpawner3" parent="." unique_id=86167403 instance=ExtResource("12_pn5ma")]
+position = Vector2(536, 544)
+block_attributes = SubResource("Resource_dvhsk")
+
+[node name="UnmashedSpawner2" parent="." unique_id=639945363 instance=ExtResource("12_pn5ma")]
+position = Vector2(224, 248)
+block_attributes = SubResource("Resource_ny7ri")
 
 [editable path="World/LevelGoal"]
 [editable path="World/LevelInfo"]

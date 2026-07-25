@@ -12,6 +12,9 @@ func _ready():
 		var block: Unmashed = get_parent() as Unmashed
 
 		block.has_landed.connect(func(strength: float):
+			if block.attributes.slippery_block:
+				return
+				
 			var sfx: AudioStreamPlayer2D = land_sfx.pick_random()
 			sfx.play()
 		)

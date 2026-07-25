@@ -34,6 +34,7 @@ signal player_entered(entered: bool)
 @export_group("Audio")
 @export var audio: UnmashedAudio
 @export_group("Nodes")
+@export var slippery_colli: CollisionPolygon2D 
 @export var colli: CollisionShape2D 
 @export var particles_spawn: CPUParticles2D 
 @export var particles_z: CPUParticles2D 
@@ -80,6 +81,10 @@ func _ready() -> void:
 		mash_type = attributes.mash_type
 		build_type = attributes.build_type
 	#
+	
+	if slippery_colli && colli:
+		slippery_colli.set_deferred("disabled", !attributes.slippery_block)
+		colli.set_deferred("disabled", attributes.slippery_block)
 	
 	if mash_type == Util.MashType.TWISTED:
 		sprite.visible = false
