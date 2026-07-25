@@ -4,20 +4,20 @@
 
 ### Gameplay
 - [ ] Bakery 2
-  - [ ] Info
-    - [ ] 2-14 Match doors Info
   - [ ] **Level structure**
+    - [ ] 9
+    - [ ] 10
     - [x] 1-3
     - [x] 4-6
     - [x] 7-8
-    - [x] 9
-    - [ ] 10
+  - [x] Info
+    - [x] 2-14 Match doors Info
   - [x] Mechanics introduced
     - [x] Match blocks
     - [x] Twisted
-- [x] **Outro Sequence**
-  - [x] Monologue
+- [ ] **Outro Sequence**
   - [ ] Auto-players
+  - [x] Monologue
 - [x] Gameplay improvements
   - [x] Bakery complete screen animation
   - [x] Mash direction revamps
