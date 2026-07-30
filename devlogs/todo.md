@@ -76,6 +76,7 @@ Me when I decide to fix bugs and manage to discover more bugs
   	- [ ] Slopped collisions
 	- [ ] PLayer
   	- [ ] Able to press down on regular ground
+  	- [ ] Reduce movement on block count?
   - [ ] Levels
     - [ ] 1-3 Unmash indicator 
   - [ ] Cherry bomb
