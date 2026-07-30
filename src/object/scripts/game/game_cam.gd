@@ -3,7 +3,7 @@ class_name Cam
 
 ## @experimental
 @export var dynamic_cam: bool = true
-@export var dynamic_effect: float = 1.03:
+@export var dynamic_effect: float = 1.05:
 	set(value):
 		dynamic_effect = value
 

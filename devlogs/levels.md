@@ -75,3 +75,15 @@ The collectibles could be 4x4 large, that would present a movement challenge to 
 - 2-6, Leapfrog
 - 2-8, 
 - 2-10, 
+
+
+- 2-1, Twisted
+- 2-2, Twisted tech
+- 2-3, Twisted + Bubblegate
+- 2-4, Side-order
+- 2-5, Twisted + Side-order
+- 2-6, Side-order + Cherry bomb
+- 2-7, Twisted Tightness
+- 2-8, Cherry bomb only
+- 2-9, Side-order
+- 2-10, Twisted

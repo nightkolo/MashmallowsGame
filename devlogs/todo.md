@@ -1,12 +1,12 @@
 # Todo
 
-## 7-1 (Deadline 7-25)
+## 7-1 (Deadline 8-5)
 
 ### Gameplay
 - [ ] Bakery 2
   - [ ] **Level structure**
-    - [ ] 9
     - [ ] 10
+    - [x] 9
     - [x] 1-3
     - [x] 4-6
     - [x] 7-8
@@ -25,13 +25,22 @@
     - [x] Cherry Bombs
   - [x] Bakery transtioins
 
+### Quick bugs
+	- [ ] Side-order
+  	- [ ] Correct highlighting
 
 ### Assets, Design, and Project
+- [ ] **Artwork**
+  - [ ] Bakery complete Millie artwork
+  - [x] Title artwork
+  - [x] Logo
 - [ ] Project
   - [ ] Find royalty free music for Bakery 2
   - [x] Email Avizura about OST
-- [ ] Aseets
+- [ ] **Aseets**
   - [ ] Match Doors
+  - [ ] Goofy order blocks
+    - [ ] Jumping anim
   - [ ] Bubble
   - [ ] New mille model
 - [ ] Promo (After bugs and anim)
@@ -44,10 +53,6 @@
   - [x] Lollipop
   - [x] Mini Lollipop
   - [x] Text
-- [x] Artwork
-  - [x] Bakery complete Millie artwork
-  - [x] Title artwork
-  - [x] Logo
 
 ### Codebase
 - [ ] **API**
@@ -71,6 +76,8 @@ Me when I decide to fix bugs and manage to discover more bugs
   	- [ ] Slopped collisions
 	- [ ] PLayer
   	- [ ] Able to press down on regular ground
+  - [ ] Levels
+    - [ ] 1-3 Unmash indicator 
   - [ ] Cherry bomb
     - [ ] Velocity y damp
     - [ ] no regen on twisted
@@ -82,15 +89,6 @@ Me when I decide to fix bugs and manage to discover more bugs
     - [x] Highlight system
     - [x] Visual indicator
     - [x] Smoother transition
-  - [ ] Dubble
-    - [ ] Audio dependency
-    - [ ] Emote animation
-    - [ ] Just the hat
-    - [x] Auto-moving on X when is_hanging = true
-    - [x] Camera focus
-    - [x] Highlight system
-    - [x] Hat
-    - [x] Sleep anim
 
 ### Animation
 - [ ] Level
@@ -109,6 +107,7 @@ Me when I decide to fix bugs and manage to discover more bugs
   - [ ] Scared before hitting ground
 - [ ] Mashing
   - [ ] Mash particles
+  - [ ] Flashing
 - [ ] Dubbleganger
   - [ ] See-through
   - [ ] Switch

@@ -38,6 +38,7 @@ func interact(switch_on: bool = !is_activated) -> void:
 	
 	if door_to_interact_with == null:
 		push_error("door_to_interact_with not assigned, it's %s" % door_to_interact_with)
+		return
 	
 	is_activated = switch_on
 	door_to_interact_with.interact(switch_on)
