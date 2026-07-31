@@ -90,7 +90,7 @@ static func get_order_block_texture(type: MashType, build: BuildType, satisfied:
 	var l_name := str(MashType.find_key(type)).to_lower()
 	
 	var build_str := "1x2" if build == BuildType.RECTANGLE else "1x1"
-	var color_suffix := "" if satisfied else "-grey"
+	var color_suffix := "-02" if satisfied else "-grey"
 
 	var path := "res://assets/interface/order-%s-%s%s.png" % [
 		l_name, build_str, color_suffix

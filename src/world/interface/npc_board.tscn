@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://e41hr0ovjcl5" path="res://world/character/millie.tscn" id="3_f72hj"]
 [ext_resource type="Texture2D" uid="uid://3m47rnjmxcm1" path="res://assets/interface/npc-board.png" id="3_hkb5g"]
 [ext_resource type="Texture2D" uid="uid://cgq0uf5sbuc4y" path="res://assets/interface/spiral-01.png" id="4_8pasw"]
-[ext_resource type="Texture2D" uid="uid://bc4arhcoe7cyi" path="res://assets/interface/npc-board-outline-02.png" id="4_p7rwn"]
+[ext_resource type="Texture2D" uid="uid://bn641hpyruo0j" path="res://assets/interface/npc-board-outline-03.png" id="4_u7np0"]
 [ext_resource type="Texture2D" uid="uid://cas733rat33tx" path="res://assets/interface/npc-board-mask-02.png" id="5_usmij"]
 [ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="7_usmij"]
 [ext_resource type="LabelSettings" uid="uid://dohg6g363o0sh" path="res://core/resources/label/prompt_text_label.tres" id="8_u7np0"]
@@ -55,7 +55,7 @@ texture = ExtResource("4_8pasw")
 
 [node name="NpcBoardOutline" type="Sprite2D" parent="Board" unique_id=1912445747]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_p7rwn")
+texture = ExtResource("4_u7np0")
 centered = false
 
 [node name="NpcBoardMask" type="Sprite2D" parent="Board" unique_id=606391574]

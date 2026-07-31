@@ -30,14 +30,9 @@
   	- [x] Correct highlighting
 
 ### Assets, Design, and Project
-- [ ] **Aseets**
-  - [ ] Match Doors
-  - [ ] Goofy order blocks
-    - [ ] Jumping anim
-  - [ ] Bubble
-  - [ ] New mille model
 - [ ] Project
   - [ ] Find royalty free music for Bakery 2
+  - [ ] Side order SFX, Bokoblock Reuse
   - [x] Email Avizura about OST
 - [ ] **Artwork**
   - [ ] Bakery complete Millie artwork
@@ -53,6 +48,11 @@
   - [x] Lollipop
   - [x] Mini Lollipop
   - [x] Text
+- [x] **Aseets**
+  - [x] Match Doors
+  - [x] Goofy order blocks
+  - [x] Bubble
+  - [x] New mille model
 
 ### Codebase
 - [ ] **API**
