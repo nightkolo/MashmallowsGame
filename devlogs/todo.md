@@ -26,23 +26,23 @@
   - [x] Bakery transtioins
 
 ### Quick bugs
-	- [ ] Side-order
+	- [ ] **Side-order**
   	- [ ] Correct highlighting
 
 ### Assets, Design, and Project
-- [ ] **Artwork**
-  - [ ] Bakery complete Millie artwork
-  - [x] Title artwork
-  - [x] Logo
-- [ ] Project
-  - [ ] Find royalty free music for Bakery 2
-  - [x] Email Avizura about OST
 - [ ] **Aseets**
   - [ ] Match Doors
   - [ ] Goofy order blocks
     - [ ] Jumping anim
   - [ ] Bubble
   - [ ] New mille model
+- [ ] Project
+  - [ ] Find royalty free music for Bakery 2
+  - [x] Email Avizura about OST
+- [ ] **Artwork**
+  - [ ] Bakery complete Millie artwork
+  - [x] Title artwork
+  - [x] Logo
 - [ ] Promo (After bugs and anim)
   - [ ] Game trailer layout
   - After bugs and anim

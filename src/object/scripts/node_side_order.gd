@@ -5,9 +5,9 @@ class_name SideOrder
 @export var door_to_activate: Door
 @export_tool_button("Update Appearance") var update_look_ = update_look
 
-
 var order_code: Array[Dictionary]
 var mash_block_checker_ids: Array[MashBlockCheckerID]
+
 
 func update_look() -> void:
 	for id: MashBlockCheckerID in get_children():
@@ -60,12 +60,9 @@ func check_sideorder_completion() -> void:
 			break
 		
 		id_node.anim_satisfied(match_found)
+		print_debug("%s: %s" % [id_node, match_found])
 		if match_found:
 			amount_satisfied += 1
-	
-	print_debug("amount_satisfied: %d" % amount_satisfied)
-	
-	print_debug("number_of_sideorder_blocks: %d" % number_of_sideorder_blocks)
 	
 	if amount_satisfied == number_of_sideorder_blocks:
 		sideorder_met()
@@ -74,9 +71,15 @@ func check_sideorder_completion() -> void:
 	is_checking_sideorder_match = false
 
 
-func sideorder_met():
+func sideorder_met() -> void:
 	if door_to_activate:
 		door_to_activate.interact(true)
+		
+	anim_something()
+
+
+func anim_something() -> void:
+	pass
 
 
 func _ready() -> void:
@@ -108,11 +111,8 @@ func _ready() -> void:
 	for id: MashBlockCheckerID in mash_block_checker_ids:
 		Util.set_block_code(order_code, id.attributes, id)
 		number_of_sideorder_blocks += 1
-	
-	
-	print_debug("number_of_sideorder_blocks: %d" % number_of_sideorder_blocks)
-	#for o: Dictionary in order_code:
-		#print_debug(o)
 		
-	#GameLogic.current_level_order_object = self
+		id.anim_satisfied(id.attributes.mash_type == Util.MashType.PLAYER)
+	
+	check_sideorder_completion()
 	
