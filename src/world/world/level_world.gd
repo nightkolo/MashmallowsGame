@@ -37,9 +37,9 @@ func _ready() -> void:
 		# TODO: Fix terrain light issue, somehow
 		var tl: PointLight2D = terrain_light.instantiate()
 		tl.global_position = camera.global_position
-		tl.scale = Vector2.ONE / (camera.zoom.x / camera.dynamic_effect)
+		tl.scale = Vector2.ONE / (camera.zoom.x / (camera.dynamic_effect + 0.05))
 
-		await get_tree().create_timer(0.1).timeout
+		#await get_tree().create_timer(0.1).timeout
 		add_child.call_deferred(tl)
 		tl.range_item_cull_mask = 8
 
