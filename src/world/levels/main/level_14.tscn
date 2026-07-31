@@ -18,7 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://ck1gettgytye7" path="res://world/interface/level_info.tscn" id="14_kc42n"]
 [ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/node_door.gd" id="14_o72on"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="15_x7dbe"]
+[ext_resource type="Texture2D" uid="uid://vclivsn8ttbk" path="res://assets/interface/ui-panel.png" id="16_d4v6b"]
 [ext_resource type="Script" uid="uid://it5lri0w67wk" path="res://object/scripts/node_side_order.gd" id="16_kc42n"]
+[ext_resource type="Texture2D" uid="uid://db8f0oe1hg28" path="res://assets/world/particle_circle_02.png" id="19_tpiil"]
 
 [sub_resource type="Resource" id="Resource_x7dbe"]
 script = ExtResource("13_ny7ri")
@@ -39,6 +41,11 @@ metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 script = ExtResource("13_ny7ri")
 mash_type = 3
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Curve" id="Curve_lrakt"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.32956976), 0.0, 0.0, 0, 0, Vector2(1, 1.8849558), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Resource" id="Resource_d4v6b"]
 script = ExtResource("13_ny7ri")
@@ -199,7 +206,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
 position = Vector2(264, 200)
-region_rect = Rect2(-28879.232, 3.5367902e-12, 4776, 3584)
+region_rect = Rect2(-131885.42, 1.6153157e-11, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 256.0
@@ -217,27 +224,6 @@ visible = false
 position = Vector2(256, 106)
 rotation = 0.1553248
 
-[node name="SideOrder" type="Node2D" parent="." unique_id=1216487754 node_paths=PackedStringArray("door_to_activate")]
-position = Vector2(680, 432.00003)
-scale = Vector2(0.6, 0.6)
-script = ExtResource("16_kc42n")
-door_to_activate = NodePath("../Door")
-metadata/_custom_type_script = "uid://it5lri0w67wk"
-
-[node name="MashBlockCheckerID" parent="SideOrder" unique_id=632984756 instance=ExtResource("10_ny7ri")]
-attributes = SubResource("Resource_d4v6b")
-is_side_id = true
-
-[node name="MashBlockCheckerID2" parent="SideOrder" unique_id=2039878854 instance=ExtResource("10_ny7ri")]
-position = Vector2(64, 0)
-attributes = SubResource("Resource_tpiil")
-is_side_id = true
-
-[node name="MashBlockCheckerID3" parent="SideOrder" unique_id=1204013894 instance=ExtResource("10_ny7ri")]
-position = Vector2(64, 96)
-attributes = SubResource("Resource_o72on")
-is_side_id = true
-
 [node name="Door" type="StaticBody2D" parent="." unique_id=566124244]
 script = ExtResource("14_o72on")
 metadata/_custom_type_script = "uid://b3cwwpsrywrrm"
@@ -253,6 +239,55 @@ position = Vector2(736, 352)
 
 [node name="DoorBlock4" parent="Door" unique_id=1256256273 instance=ExtResource("15_x7dbe")]
 position = Vector2(800, 352)
+
+[node name="SideOrder" type="Node2D" parent="." unique_id=1216487754 node_paths=PackedStringArray("door_to_activate", "anchor")]
+position = Vector2(685, 447.00003)
+scale = Vector2(0.6, 0.6)
+script = ExtResource("16_kc42n")
+door_to_activate = NodePath("../Door")
+anchor = NodePath("Node2D")
+metadata/_custom_type_script = "uid://it5lri0w67wk"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SideOrder" unique_id=1646786227]
+position = Vector2(33.333374, -136.66675)
+amount = 2
+texture = ExtResource("19_tpiil")
+lifetime = 2.0
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_lrakt")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SideOrder" unique_id=773230576]
+offset_left = -80.00004
+offset_top = -13.333362
+offset_right = 146.66672
+offset_bottom = 253.33333
+texture = ExtResource("16_d4v6b")
+region_rect = Rect2(0, 0, 144, 144)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="Node2D" type="Node2D" parent="SideOrder" unique_id=13732482]
+position = Vector2(-2, 60.99997)
+
+[node name="MashBlockCheckerID" parent="SideOrder/Node2D" unique_id=632984756 instance=ExtResource("10_ny7ri")]
+attributes = SubResource("Resource_d4v6b")
+is_side_id = true
+
+[node name="MashBlockCheckerID2" parent="SideOrder/Node2D" unique_id=2039878854 instance=ExtResource("10_ny7ri")]
+position = Vector2(64.000244, 6.1035156e-05)
+attributes = SubResource("Resource_tpiil")
+is_side_id = true
+
+[node name="MashBlockCheckerID3" parent="SideOrder/Node2D" unique_id=1204013894 instance=ExtResource("10_ny7ri")]
+position = Vector2(64.000244, 96.00003)
+attributes = SubResource("Resource_o72on")
+is_side_id = true
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_n8762")]
 position = Vector2(536, 264)

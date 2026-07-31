@@ -105,7 +105,7 @@ func check_order_completion() -> void:
 			if o_entry["type"] != p_entry["type"]:
 				continue
 			
-			if o_entry["pos"] != p_entry["pos"]:
+			if !o_entry["pos"].is_equal_approx(p_entry["pos"]):
 				continue
 				
 			# Match found
@@ -125,9 +125,9 @@ func check_order_completion() -> void:
 	
 	last_amount_satisfied = amount_satisfied
 	
-	print_debug("amount_satisfied: %d" % amount_satisfied)
-	
-	print_debug("number_of_order_blocks: %d" % number_of_order_blocks)
+	#print_debug("amount_satisfied: %d" % amount_satisfied)
+	#
+	#print_debug("number_of_order_blocks: %d" % number_of_order_blocks)
 	
 	if amount_satisfied - 1 == number_of_order_blocks:
 		order_met()

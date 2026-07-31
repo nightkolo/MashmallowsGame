@@ -3,6 +3,7 @@ extends Node2D
 class_name SideOrder
 
 @export var door_to_activate: Door
+@export var anchor: Node2D = null
 @export_tool_button("Update Appearance") var update_look_ = update_look
 
 var order_code: Array[Dictionary]
@@ -10,7 +11,9 @@ var mash_block_checker_ids: Array[MashBlockCheckerID]
 
 
 func update_look() -> void:
-	for id: MashBlockCheckerID in get_children():
+	var surface: Array[Node] = anchor.get_children() if anchor else get_children()
+	
+	for id: MashBlockCheckerID in surface:
 		if !(id is MashBlockCheckerID):
 			return
 
@@ -23,6 +26,7 @@ func update_look() -> void:
 
 		if !id.is_node_ready():
 			continue
+
 
 var is_checking_sideorder_match: int = 0
 var amount_satisfied: int = 0
@@ -49,10 +53,12 @@ func check_sideorder_completion() -> void:
 		var match_found: bool = false
 		
 		for p_entry: Dictionary in current_player_code:
+			## Issue: Floating-point precision error, stupid CPU
+			#print_debug("%s: %s, %s, %s, %s" % [id_node, o_entry["type"], p_entry["type"], o_entry["pos"], p_entry["pos"]])
 			if o_entry["type"] != p_entry["type"]:
 				continue
 			
-			if o_entry["pos"] != p_entry["pos"]:
+			if !o_entry["pos"].is_equal_approx(p_entry["pos"]):
 				continue
 				
 			# Match found
@@ -60,7 +66,6 @@ func check_sideorder_completion() -> void:
 			break
 		
 		id_node.anim_satisfied(match_found)
-		print_debug("%s: %s" % [id_node, match_found])
 		if match_found:
 			amount_satisfied += 1
 	
@@ -92,15 +97,19 @@ func _ready() -> void:
 			has_openned = true
 		)
 	
-	for id: Node in get_children():
+	var surface: Array[Node] = anchor.get_children() if anchor else get_children()
+	
+	for id: Node in surface:
 		if !(id is MashBlockCheckerID):
 			return
 		
-		if (id as MashBlockCheckerID).is_side_id == false:
+		var id_node: MashBlockCheckerID = id
+		
+		if id_node.is_side_id == false:
 			push_warning("Be sure to turn on MashBlockCheckerID.is_side_id")
-			(id as MashBlockCheckerID).is_side_id = true
+			id_node.is_side_id = true
 			
-		mash_block_checker_ids.append(id as MashBlockCheckerID)
+		mash_block_checker_ids.append(id_node)
 	
 	GameLogic.player_mashed.connect(check_sideorder_completion)
 	GameLogic.player_unmashed.connect(check_sideorder_completion)

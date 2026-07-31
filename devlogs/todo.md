@@ -26,8 +26,8 @@
   - [x] Bakery transtioins
 
 ### Quick bugs
-	- [ ] **Side-order**
-  	- [ ] Correct highlighting
+	- [x] **Side-order**
+  	- [x] Correct highlighting
 
 ### Assets, Design, and Project
 - [ ] **Aseets**
