@@ -10,9 +10,9 @@ class_name UnmashedSpawner
 @export var custom_spawn: Node2D = null ## Spawn location in the tree. Default is [member GameMgr.current_level] if not assigned
 @export_tool_button("Display (For this specific node only)") var p_display = display_block
 @export_group("Customize")
-# @export var dubbleganger_block: bool = false
-@export var cherry_bomb_strength: float = 1600.0 
-@export var twisted_strength: float = 4.0
+# DONE These two variables should be in BlockAttributes considering new gameplay logic changes
+# @export var cherry_bomb_strength: float = 1600.0 
+# @export var twisted_strength: float = 4.0
 @export_category("Objects to Assign")
 @export var area: Area2D
 @export var sprite: Sprite2D ## For displaying node in editor
@@ -86,7 +86,7 @@ func regen() -> void:
 		
 
 
-func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: ## Self-explanatory.
+func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void:
 	if block_attributes == null:
 		push_error("block_attributes not assigned.")
 		return
@@ -95,10 +95,7 @@ func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void: #
 	unmashed.global_position = global_position
 	unmashed.attributes = block_attributes
 	unmashed.tutorial_block = tutorial_block
-	unmashed.cherry_bomb_strength = cherry_bomb_strength
-	unmashed.twisted_strength = twisted_strength
 	unmashed.unmashed_spawner = self
-	# unmashed.dubbleganger_block = dubbleganger_block
 	unmashed.was_mashed = false
 	
 	await _deflect_end()

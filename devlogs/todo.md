@@ -67,8 +67,8 @@ Me when I decide to fix bugs and manage to discover more bugs
 - [ ] SFX
 	- [ ] Click sound
 	- [ ] Landing sound playing on stacked blocks
-- [ ] Blocks
-	- [ ] Slopped collisions
+- [x] Blocks
+	- [x] Slopped collisions
 - [ ] PLayer
 	- [ ] Able to press down on regular ground
 	- [ ] Reduce movement on block count?

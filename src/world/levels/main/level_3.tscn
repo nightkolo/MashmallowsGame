@@ -20,20 +20,28 @@
 [sub_resource type="Resource" id="Resource_1o0fm"]
 script = ExtResource("11_8ibhb")
 mash_type = 99
+cherry_bomb_strength = null
+twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_gqij8"]
 script = ExtResource("11_8ibhb")
 mash_type = 3
+cherry_bomb_strength = null
+twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_7ynms"]
 script = ExtResource("11_8ibhb")
 mash_type = 3
+cherry_bomb_strength = null
+twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_05s1w"]
 script = ExtResource("11_8ibhb")
+cherry_bomb_strength = null
+twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ij0e"]
@@ -46,10 +54,14 @@ metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_542p4"]
 script = ExtResource("11_8ibhb")
+cherry_bomb_strength = null
+twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_5nq5i"]
 script = ExtResource("11_8ibhb")
+cherry_bomb_strength = null
+twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
@@ -179,7 +191,7 @@ position = Vector2(512, 568)
 shape = SubResource("RectangleShape2D_6ij0e")
 
 [node name="UnmashedSpawner2" parent="." unique_id=1761846739 instance=ExtResource("16_5nq5i")]
-position = Vector2(156, 542)
+position = Vector2(269, 439)
 block_attributes = SubResource("Resource_o1cu6")
 
 [node name="UnmashedSpawner3" parent="." unique_id=703901904 instance=ExtResource("16_5nq5i")]

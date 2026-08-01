@@ -47,8 +47,8 @@ var sprite_original_pos: Vector2
 
 # Attributes
 var attributes: BlockAttributes
-var cherry_bomb_strength: float
-var twisted_strength: float
+# var cherry_bomb_strength: float
+# var twisted_strength: float
 var is_idle_animating: bool
 var is_original: bool
 var parent_player: Player
@@ -353,8 +353,6 @@ func mash() -> bool:
 			# ATTRIBUTE SYNC
 			new_mashed.position = get_new_mashed_positioning(unmash_at, build, ray)
 			new_mashed.attributes = unmashed.attributes.duplicate(true)
-			new_mashed.cherry_bomb_strength = unmashed.cherry_bomb_strength
-			new_mashed.twisted_strength = unmashed.twisted_strength
 			#
 			
 			parent_player.has_mashed.emit(unmash_at, build)

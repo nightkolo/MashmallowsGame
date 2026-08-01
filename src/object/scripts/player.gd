@@ -369,7 +369,6 @@ func unmash() -> void: # -> O(1)
 			var unmashed: Unmashed = get_unmashed_object(old_mashed.build_type)
 			unmashed.global_position = old_mashed.global_position
 			unmashed.attributes = old_mashed.attributes.duplicate(true)
-			unmashed.twisted_strength = old_mashed.twisted_strength
 			unmashed.was_mashed = true
 			#
 
@@ -391,7 +390,7 @@ func _handle_cherry_bomb(old_mashed: Mashed) -> void:
 	cherry_bomb_activated.emit()
 	
 	var push_to: Vector2 = Vector2.ZERO
-	var stre: float = old_mashed.cherry_bomb_strength
+	var stre: float = old_mashed.attributes.cherry_bomb_strength
 	
 	for ray: RayCast2D in old_mashed.block_detect.cherry_bomb_rays:
 		ray.force_raycast_update()

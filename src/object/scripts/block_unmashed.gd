@@ -24,8 +24,8 @@ signal player_entered(entered: bool)
 		build_type = value
 
 @export_group("Variables")
-@export var cherry_bomb_strength: float = 1600.0
-@export var twisted_strength: float = 5.0
+# @export var cherry_bomb_strength: float = 1600.0
+# @export var twisted_strength: float = 5.0
 
 @export_group("Area casts")
 @export var player_down_detect: ShapeCast2D
@@ -179,7 +179,7 @@ func anim_expanding(instant: bool = false) -> void:
 	if colli == null || twisted_mask == null:
 		return
 	
-	var pos_to: float = twisted_strength * Util.BLOCK_SIZE
+	var pos_to: float = attributes.twisted_strength * Util.BLOCK_SIZE
 	var s1: float = pos_to * 0.5
 	var s2: float = pos_to * 0.395
 	
@@ -323,7 +323,7 @@ func _physics_process(delta: float) -> void:
 	if !is_expanding:
 		move_and_slide()
 	else:
-		var displace: float = EXPAND_TIME * (twisted_strength / 4.0)
+		var displace: float = EXPAND_TIME * (attributes.twisted_strength / 4.0)
 		
 		position.y -= displace * 100.0 * delta
 		
