@@ -30,7 +30,7 @@ signal check_finished() ## @deprecated
 # 		set_active(!value)
 # 		dubbleganger = value
 ## Starts this [Player] instance's [member is_active] to [code]true[/code]. Only one instance should have this on to work appropriately.
-@export var start_active: bool = false
+#@export var start_active: bool = false
 @export var start_asleep: bool = false:
 	set(value):
 		start_asleep = value
@@ -75,7 +75,7 @@ var stop_deceleration: float = deceleration * 4.0
 var air_deceleration: float = deceleration / 1.25
 var flown_deceleration: float = deceleration / 3.2
 
-# State
+# STATE
 var input_x: float:
 	set(value):
 		if value != input_x:
@@ -109,10 +109,6 @@ func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
 		child_blocks.push_front(block)
 	else:
 		child_blocks.append(block)
-
-	
-	# if dubbleganger:
-	# 	return
 		
 	player_blocks_code.append({
 		"type": block.mash_type,
@@ -127,8 +123,7 @@ func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
 
 ## Performs an Unmash (Pop) to the [member child_blocks] Stack.
 func pop_block(front: bool = push_front_mashed_blocks) -> Mashed:
-	# if !dubbleganger:
-	# 	player_blocks_code.pop_back()
+	player_blocks_code.pop_back()
 	
 	return child_blocks.pop_front() if front else child_blocks.pop_back()
 	
@@ -147,9 +142,10 @@ func show_reset_notice(wait: float = 4.0) -> void:
 	tween.tween_property(reset_notice, "modulate", Color(Color.WHITE), 1.0)
 
 
+
 func _ready() -> void:
 	# _ready_dubbleganger()
-	GameMgr.current_player = self
+	GameMgr.current_main_player = self
 	
 	if original_block:
 		original_block.is_original = true
@@ -237,15 +233,114 @@ func _unhandled_input(event: InputEvent) -> void:
 		animator.anim_down(false, true)
 
 
-func set_active(active: bool = !is_active) -> void:
-	is_active = active
+func mash_child_blocks() -> void: ## Ok -> O(n)
+	if !can_perform_mash():
+		return
+
+	if input_y > 0.0 || !is_active || !mash_timer.is_stopped():
+		return
 	
-	if !active:
-		sleep(false)
-	else:
-		GameMgr.current_player = self
-		mash_timer.start()
-		wake_up(false, false)
+	var blocks: Array[Mashed] = child_blocks.duplicate(true) # To avoid infinite recursion
+	_pos_before_mash = position
+	
+	for block: Mashed in blocks:
+		var res := await block.mash()
+		
+		if res:
+			animator.anim_down(false, true)
+			
+			break
+
+
+func unmash() -> void: # O(1)
+	if !can_unmash():
+		return
+
+	var old_mashed: Mashed = child_blocks.front() if push_front_mashed_blocks else child_blocks.back()
+
+	if state_machine.current_state is AirState && old_mashed.mash_type != Util.MashType.AIR_CHERRY_BOMB:
+		return
+
+	_pos_before_mash = position
+	has_unmashed.emit()
+
+	match old_mashed.mash_type:
+		Util.MashType.CHERRY_BOMB, Util.MashType.AIR_CHERRY_BOMB:
+			_handle_cherry_bomb(old_mashed)
+
+		_:
+			pop_block()
+
+			var unmashed := get_unmashed_object(old_mashed.build_type)
+			unmashed.global_position = old_mashed.global_position
+			unmashed.attributes = old_mashed.attributes.duplicate(true)
+			unmashed.was_mashed = true
+
+			old_mashed.queue_free()
+
+			Input.start_joy_vibration(0, 0.0, 0.5, 0.025)
+
+			await return_position()
+			await get_tree().create_timer(0.025).timeout
+
+			GameMgr.current_level.add_child(unmashed)
+			Input.start_joy_vibration(0, 0.2, 0.0, 0.025)
+
+	#await get_tree().create_timer(1.0).timeout
+
+	GameLogic.player_unmashed.emit()
+
+
+func _handle_cherry_bomb(old_mashed: Mashed) -> void:
+	is_exploding = true
+	cherry_bomb_activated.emit()
+
+	var push_to := Vector2.ZERO
+	var strength: float = old_mashed.attributes.cherry_bomb_strength
+
+	for ray: RayCast2D in old_mashed.block_detect.cherry_bomb_rays:
+		ray.force_raycast_update()
+
+		if ray.get_collider() is Player:
+			push_to = -ray.target_position.sign()
+
+	old_mashed.cherry_bomb_activated.emit(push_to)
+
+	var explosion_delay := Util.CHERRY_BOMB_WAITTIME_BEFORE_EXPLODING if old_mashed.mash_type == Util.MashType.CHERRY_BOMB else 0.0
+
+	if explosion_delay > 0.0:
+		await get_tree().create_timer(explosion_delay).timeout
+
+	pop_block()
+	explode(push_to, strength)
+
+	Input.start_joy_vibration(0, 0.25, 0.85, 0.025)
+
+	old_mashed.queue_free()
+	is_exploding = false
+
+
+func explode(push: Vector2, strength: float = 1600.0) -> void:
+	cherry_bomb_exploded.emit()
+	GameLogic.cherry_bomb_exploded.emit()
+	
+	if absf(push.y) > absf(push.x) && velocity.y > 0:
+		velocity.y = 0.0
+	
+	velocity += -push * strength
+	
+	state_machine.change_state("AirState", {"jumped": false, "falling": false})
+
+
+#func set_active(active: bool = !is_active) -> void:
+	#is_active = active
+	#
+	#if !active:
+		#sleep(false)
+	#else:
+		#GameMgr.current_player = self
+		#mash_timer.start()
+		#wake_up(false, false)
 
 
 func sleep(animate_zoom: bool = true) -> void:
@@ -315,114 +410,6 @@ func anim_idle_animation() -> void:
 			block.anim.play("RESET")
 			block.is_idle_animating = false
 		)
-		
-
-func mash_child_blocks() -> void: ## Ok -> O(n)
-	if !can_perform_mash():
-		return
-
-	if input_y > 0.0 || !is_active || !mash_timer.is_stopped():
-		return
-	
-	var blocks: Array[Mashed] = child_blocks.duplicate(true) # To avoid infinite recursion
-	_pos_before_mash = position
-	
-	for block: Mashed in blocks:
-		var res := await block.mash()
-		
-		if res:
-			animator.anim_down(false, true)
-			
-			break
-
-
-func unmash() -> void: # -> O(1)
-	if !can_unmash():
-		return
-	
-	# TODO Check for possible bugs with new behavior
-	
-	var old_mashed: Mashed = child_blocks[0] if push_front_mashed_blocks else child_blocks[-1]
-	_pos_before_mash = position
-	
-	match old_mashed.mash_type:
-		Util.MashType.CHERRY_BOMB:
-			if state_machine.current_state is AirState:
-				return
-				
-			has_unmashed.emit()
-			_handle_cherry_bomb(old_mashed)
-			
-		Util.MashType.AIR_CHERRY_BOMB:
-			has_unmashed.emit()
-			_handle_cherry_bomb(old_mashed)
-			
-		_:
-			if state_machine.current_state is AirState:
-				return
-			
-			has_unmashed.emit()
-			
-			pop_block()
-
-			# ATTRIBUTE SYNC
-			var unmashed: Unmashed = get_unmashed_object(old_mashed.build_type)
-			unmashed.global_position = old_mashed.global_position
-			unmashed.attributes = old_mashed.attributes.duplicate(true)
-			unmashed.was_mashed = true
-			#
-
-			old_mashed.queue_free()
-			
-			Input.start_joy_vibration(0, 0.0, 0.5, 0.025)
-
-			await return_position()
-			await get_tree().create_timer(0.025).timeout
-			GameMgr.current_level.add_child(unmashed)
-			
-			Input.start_joy_vibration(0, 0.2, 0.0, 0.025)
-
-	GameLogic.player_unmashed.emit()
-
-
-func _handle_cherry_bomb(old_mashed: Mashed) -> void:
-	is_exploding = true
-	cherry_bomb_activated.emit()
-	
-	var push_to: Vector2 = Vector2.ZERO
-	var stre: float = old_mashed.attributes.cherry_bomb_strength
-	
-	for ray: RayCast2D in old_mashed.block_detect.cherry_bomb_rays:
-		ray.force_raycast_update()
-		if ray.get_collider() is Player:
-			push_to = -ray.target_position.sign()
-	
-	old_mashed.cherry_bomb_activated.emit(push_to)
-	
-	var time := Util.CHERRY_BOMB_WAITTIME_BEFORE_EXPLODING if old_mashed.mash_type == Util.MashType.CHERRY_BOMB else 0.0
-	
-	await get_tree().create_timer(time).timeout
-	
-	pop_block()
-	
-	explode(push_to, stre)
-	Input.start_joy_vibration(0, 0.25, 0.85, 0.025)
-	
-	old_mashed.queue_free()
-	
-	is_exploding = false
-
-
-func explode(push: Vector2, strength: float = 1600.0) -> void:
-	cherry_bomb_exploded.emit()
-	GameLogic.cherry_bomb_exploded.emit()
-	
-	if absf(push.y) > absf(push.x) && velocity.y > 0:
-		velocity.y = 0.0
-	
-	velocity += -push * strength
-	
-	state_machine.change_state("AirState", {"jumped": false, "falling": false})
 
 
 # TODO: Move to GameLogic
