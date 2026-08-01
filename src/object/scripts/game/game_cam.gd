@@ -2,6 +2,7 @@ extends Camera2D
 class_name Cam
 
 ## @experimental
+@export var player: Player
 @export var dynamic_cam: bool = true
 @export var dynamic_effect: float = 1.05:
 	set(value):
@@ -40,16 +41,6 @@ func shake(strength: float, fade: float):
 
 
 func _process(delta: float) -> void:
-	var p: Player = GameMgr.current_player
-	if p && dynamic_cam:
-		position = Math.map_range(
-			p.global_position,
-			p_min,
-			p_max,
-			cam_min,
-			cam_max
-		)
-		
 	if shake_strength > 0:
 		offset = Vector2(
 			randf_range(-shake_strength, shake_strength),
@@ -59,3 +50,13 @@ func _process(delta: float) -> void:
 		shake_strength = lerp(shake_strength, 0.0, shake_fade * delta)
 	else:
 		offset = Vector2.ZERO
+	
+	var p: Player = player if player else GameMgr.current_player
+	if p && dynamic_cam:
+		position = Math.map_range(
+			p.global_position,
+			p_min,
+			p_max,
+			cam_min,
+			cam_max
+		)

@@ -10,11 +10,6 @@
     - [x] 1-3
     - [x] 4-6
     - [x] 7-8
-  - [x] Info
-    - [x] 2-14 Match doors Info
-  - [x] Mechanics introduced
-    - [x] Match blocks
-    - [x] Twisted
 - [ ] **Outro Sequence**
   - [ ] Auto-players
   - [x] Monologue
@@ -26,8 +21,8 @@
   - [x] Bakery transtioins
 
 ### Quick bugs
-	- [x] **Side-order**
-  	- [x] Correct highlighting
+- [x] **Side-order**
+	- [x] Correct highlighting
 
 ### Assets, Design, and Project
 - [ ] Project
@@ -66,17 +61,17 @@
 Me when I decide to fix bugs and manage to discover more bugs
 
 ### Bugs
-	- [ ] Screen extents
-	- [ ] Menus
-  	- [ ] Pause info fix
-	- [ ] SFX
-  	- [ ] Click sound
-  	- [ ] Landing sound playing on stacked blocks
-	- [ ] Blocks
-  	- [ ] Slopped collisions
-	- [ ] PLayer
-  	- [ ] Able to press down on regular ground
-  	- [ ] Reduce movement on block count?
+- [x] Screen extents
+- [ ] Menus
+	- [ ] Pause info fix
+- [ ] SFX
+	- [ ] Click sound
+	- [ ] Landing sound playing on stacked blocks
+- [ ] Blocks
+	- [ ] Slopped collisions
+- [ ] PLayer
+	- [ ] Able to press down on regular ground
+	- [ ] Reduce movement on block count?
   - [ ] Levels
     - [ ] 1-3 Unmash indicator 
   - [ ] Cherry bomb

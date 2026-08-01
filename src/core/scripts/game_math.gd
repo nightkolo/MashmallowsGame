@@ -18,8 +18,18 @@ static func is_equal_approx_custom(a: float, b: float, tolerance: float = 0.0001
 ## This performs a linear remapping:
 ## - `value` is assumed to be within the range [`in_min`, `in_max`]
 ## - It will be proportionally converted into the range [`out_min`, `out_max`]
-static func map_range(value: Vector2, in_min: Vector2, in_max: Vector2, out_min: Vector2, out_max: Vector2) -> Vector2:
-	return out_min + ((value - in_min) / (in_max - in_min)) * (out_max - out_min)
+static func map_range(value: Vector2,in_min: Vector2,in_max: Vector2,out_min: Vector2,out_max: Vector2) -> Vector2:
+	value = value.clamp(in_min, in_max)
+
+	return out_min + (
+		((value - in_min) / (in_max - in_min))
+		* (out_max - out_min)
+	)
+#static func map_range(value: Vector2, in_min: Vector2, in_max: Vector2, out_min: Vector2, out_max: Vector2, lock: bool = false) -> Vector2:
+	#if lock:
+		#return out_min + ((value - in_min) / (in_max - in_min)) * (out_max - out_min)
+#
+	#return out_min + ((value - in_min) / (in_max - in_min)) * (out_max - out_min)
 
 
 static func round_to_dec(num: float, decimals: int) -> float:
@@ -31,6 +41,7 @@ static func get_highest_axis(vec: Vector2) -> Vector2:
 		return Vector2(signf(vec.x), 0.0)
 	else:
 		return Vector2(0.0, signf(vec.y))
+
 
 static func get_direction(dir: String) -> Vector2:
 	dir = dir.to_lower()

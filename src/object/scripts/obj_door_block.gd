@@ -155,9 +155,7 @@ func anim_pop() -> void:
 var tween_regen: Tween
 
 func anim_regen() -> void:
-	
 	cancel_anim_pop()
-	
 	
 	var sfx : AudioStreamPlayer2D = close_sfx.pick_random()
 	sfx.play()

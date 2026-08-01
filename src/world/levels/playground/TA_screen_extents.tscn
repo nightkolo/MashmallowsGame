@@ -1,0 +1,61 @@
+[gd_scene format=4 uid="uid://bye7v8o2k8ugn"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_d1x1s"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_exmwa"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_vf6co"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="4_ictnk"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_hhali"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="6_w5muf"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_n8k0y"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="8_uc42u"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="9_1h4ib"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="10_l5107"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="11_2agmf"]
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
+script = ExtResource("1_d1x1s")
+no_progression = true
+level_goal = NodePath("World/LevelGoal")
+player = NodePath("Player")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_exmwa")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(640, 400)
+script = ExtResource("3_vf6co")
+
+[node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_ictnk")]
+terrain = NodePath("Terrain")
+camera = NodePath("../Cam")
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("5_hhali")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_map_data = PackedByteArray("AAAcAAgAAAADAAMAAAAbAAgAAAACAAMAAAAaAAgAAAACAAMAAAAYAAgAAAACAAMAAAAZAAgAAAACAAMAAAAXAAgAAAACAAMAAAAWAAgAAAACAAMAAAAVAAgAAAACAAMAAAAUAAgAAAACAAMAAAATAAgAAAACAAMAAAASAAgAAAACAAMAAAARAAgAAAACAAMAAAAPAAgAAAACAAMAAAAQAAgAAAACAAMAAAAOAAgAAAACAAMAAAANAAgAAAACAAMAAAAMAAgAAAACAAMAAAALAAgAAAACAAMAAAAKAAgAAAACAAMAAAAJAAgAAAACAAMAAAAIAAgAAAACAAMAAAAHAAgAAAACAAMAAAAGAAgAAAACAAMAAAAFAAgAAAACAAMAAAAEAAgAAAACAAMAAAACAAgAAAACAAMAAAADAAgAAAACAAMAAAABAAgAAAACAAMAAAAAAAgAAAACAAMAAAD//wgAAAACAAMAAAD+/wgAAAACAAMAAAD9/wgAAAACAAMAAAD8/wgAAAACAAMAAAD7/wgAAAACAAMAAAD6/wgAAAACAAMAAAD5/wgAAAACAAMAAAD4/wgAAAABAAMAAAASAAMAAAALAAMAAAASAAIAAAALAAIAAAARAAEAAAAIAAEAAAARAAAAAAAIAAEAAAARAP//AAAIAAEAAAARAP7/AAAIAAAAAAAOAAIAAAALAAIAAAANAAEAAAAIAAEAAAANAAAAAAAIAAEAAAANAP//AAAIAAEAAAANAP7/AAAIAAAAAAAJAAMAAAAAAAIAAAAJAAIAAAAAAAEAAAAJAAEAAAAAAAEAAAAJAAAAAAAAAAEAAAAJAP//AAAAAAAAAAAOAAMAAAALAAMAAAANAAMAAAAIAAMAAAANAAIAAAAIAAEAAAAOAP//AAALAAIAAAAOAAAAAAALAAIAAAAOAAEAAAALAAIAAAAOAP7/AAALAAAAAAARAAIAAAAIAAEAAAARAAMAAAAIAAMAAAASAAEAAAALAAIAAAASAAAAAAALAAIAAAASAP//AAALAAIAAAASAP7/AAALAAAAAAAVAAMAAAAIAAMAAAAVAAIAAAAIAAEAAAAVAAEAAAAIAAEAAAAVAAAAAAAIAAEAAAAVAP//AAAIAAEAAAAWAP//AAALAAIAAAAWAP7/AAALAAAAAAAVAP7/AAAIAAAAAAAWAAAAAAALAAIAAAAWAAEAAAALAAIAAAAWAAIAAAALAAIAAAAWAAMAAAALAAMAAAD//wMAAAAIAAMAAAAAAAMAAAAJAAMAAAABAAMAAAALAAMAAAABAAIAAAALAAIAAAABAAEAAAALAAAAAAAAAAEAAAAGAAEAAAAAAAAAAAALAAIAAAAAAP//AAAGAAIAAAAAAP7/AAAKAAAAAAD/////AAAIAAEAAAD//wAAAAAIAAEAAAD//wEAAAAIAAEAAAD//wIAAAAIAAEAAAAAAAIAAAAKAAEAAAABAP//AAALAAMAAAD///7/AAAIAAAAAAABAP7/AAALAAAAAAA=")
+tile_set = ExtResource("6_w5muf")
+
+[node name="WorldBlocks" type="Node2D" parent="World" unique_id=960871053]
+script = ExtResource("7_n8k0y")
+metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("8_uc42u")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Board" parent="World/LevelGoal" index="0" unique_id=1651127727]
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelOrder" type="Node2D" parent="World/LevelGoal" unique_id=989048369]
+script = ExtResource("9_1h4ib")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
+
+[node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("10_l5107")]
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_2agmf")]
+position = Vector2(1068, 444)
+
+[editable path="World/LevelGoal"]

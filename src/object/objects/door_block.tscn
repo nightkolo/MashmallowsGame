@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c2otvdkeaywff"]
 
 [ext_resource type="Script" uid="uid://df6x4rle15ggl" path="res://object/scripts/obj_door_block.gd" id="1_4ro5p"]
+[ext_resource type="Texture2D" uid="uid://dcpo5hasig6pb" path="res://assets/objects/bubblegate-1x1-02.png" id="3_3idpj"]
+[ext_resource type="Texture2D" uid="uid://c66vpcl625o6b" path="res://assets/objects/bubblegate-eyes-rest.png" id="4_lgyk2"]
 [ext_resource type="Texture2D" uid="uid://t6iy1xteem31" path="res://assets/objects/bubblegate-inflators.png" id="4_r5iui"]
 [ext_resource type="Texture2D" uid="uid://ciqp5qihnxtq8" path="res://assets/objects/bubblegate-1x1.png" id="5_8apu4"]
 [ext_resource type="AudioStream" uid="uid://vqtsin2d3gct" path="res://audio/sfx/bubblegate_open_01.wav" id="5_qu61c"]
@@ -30,6 +32,19 @@ shape = SubResource("RectangleShape2D_ivh0c")
 script = ExtResource("1_4ro5p")
 
 [node name="Sprite1" type="Node2D" parent="." unique_id=492383156]
+visible = false
+
+[node name="Inflators" type="Sprite2D" parent="Sprite1" unique_id=1085340160]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_r5iui")
+
+[node name="Bubble" type="Sprite2D" parent="Sprite1" unique_id=1531965830]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_3idpj")
+
+[node name="Eye" type="Sprite2D" parent="Sprite1" unique_id=2011938741]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_lgyk2")
 
 [node name="Sprite2" type="Node2D" parent="." unique_id=1095150530]
 
