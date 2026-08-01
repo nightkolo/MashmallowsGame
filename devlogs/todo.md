@@ -20,12 +20,8 @@
     - [x] Cherry Bombs
   - [x] Bakery transtioins
 
-### Quick bugs
-- [x] **Side-order**
-	- [x] Correct highlighting
-
 ### Assets, Design, and Project
-- [ ] Project
+- [ ] **Project**
   - [ ] Find royalty free music for Bakery 2
   - [ ] Side order SFX, Bokoblock Reuse
   - [x] Email Avizura about OST
@@ -33,8 +29,8 @@
   - [ ] Bakery complete Millie artwork
   - [x] Title artwork
   - [x] Logo
-- [ ] Promo (After bugs and anim)
-  - [ ] Game trailer layout
+- [ ] Promo 
+  - [ ] **Game trailer layout**
   - After bugs and anim
   - [ ] Game artwork
   - [ ] Screenshots layout
@@ -48,15 +44,6 @@
   - [x] Goofy order blocks
   - [x] Bubble
   - [x] New mille model
-
-### Codebase
-- [ ] **API**
-  - [ ] Medal ideas
-  - [ ] Medals
-  - [x] API testing and saving
-- [ ] Dubble clean-up
-- [ ] Input prompts
-    - [ ] Controller (Generic)
 
 Me when I decide to fix bugs and manage to discover more bugs
 
@@ -120,7 +107,13 @@ Me when I decide to fix bugs and manage to discover more bugs
 - [ ] Implementation
 
 
-# Roadmap
+### Codebase
+- [ ] **API**
+  - [ ] Medal ideas
+  - [ ] Medals
+  - [x] API testing and saving
+- [ ] Input prompts
+    - [ ] Controller (Generic)
 
 
 - [ ] Bakery complete anim
