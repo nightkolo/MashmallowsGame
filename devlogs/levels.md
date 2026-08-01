@@ -87,3 +87,14 @@ The collectibles could be 4x4 large, that would present a movement challenge to 
 - 2-8, Cherry bomb only
 - 2-9, Side-order
 - 2-10, Twisted
+
+## Outro monolog 
+
+- Congratulations! You have completed all the orders!
+- Thank you for playing, Mashmallows. Please come again!
+  - You look tasty
+  - What about the orders?
+- .....
+- A-ha...
+- I think we've had enough candy for today
+- Here they come! And a goodbye!ß g

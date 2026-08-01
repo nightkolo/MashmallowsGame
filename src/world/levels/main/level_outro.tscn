@@ -25,15 +25,29 @@
 [ext_resource type="Script" uid="uid://d2gl7vnb88axq" path="res://world/world/monolog_activation_area.gd" id="23_n66mx"]
 [ext_resource type="Script" uid="uid://xf050jk32doo" path="res://world/levels/main/outro_comp.gd" id="24_0n6ub"]
 
+[sub_resource type="Resource" id="Resource_ugcbx"]
+script = ExtResource("15_s1cjh")
+monolog_line = "Congratulations!
+You have completed all the orders!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
 [sub_resource type="Resource" id="Resource_qfo1w"]
 script = ExtResource("15_s1cjh")
 monolog_eyes = 3
-monolog_line = "Thank you for Playing!"
+monolog_line = "Thank you for Playing,
+[font_size=45.0]Mashmallows![/font_size]
+a sweet puzzler!"
 metadata/_custom_type_script = "uid://c0o6bw7881gjw"
 
 [sub_resource type="Resource" id="Resource_0mp8r"]
 script = ExtResource("15_s1cjh")
 monolog_line = "Here they come!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_n66mx"]
+script = ExtResource("15_s1cjh")
+monolog_emotion = 2
+monolog_line = "........"
 metadata/_custom_type_script = "uid://c0o6bw7881gjw"
 
 [sub_resource type="Resource" id="Resource_766v7"]
@@ -52,10 +66,9 @@ script = ExtResource("16_0n6ub")
 monolog_path_1 = "What about the Orders?"
 monolog_flow_1 = Array[ExtResource("14_766v7")]([SubResource("Resource_0mp8r")])
 monolog_path_2 = "You look tasty"
-monolog_flow_2 = Array[ExtResource("14_766v7")]([SubResource("Resource_766v7"), SubResource("Resource_s1cjh")])
+monolog_flow_2 = Array[ExtResource("14_766v7")]([SubResource("Resource_n66mx"), SubResource("Resource_766v7"), SubResource("Resource_s1cjh")])
 monolog_eyes = 3
-monolog_line = "You met all the Orders!
-Please come again!"
+monolog_line = "We hope you to see you again!"
 metadata/_custom_type_script = "uid://coaf2q56w0fhq"
 
 [sub_resource type="Resource" id="Resource_0n6ub"]
@@ -66,7 +79,7 @@ metadata/_custom_type_script = "uid://c0o6bw7881gjw"
 
 [sub_resource type="Resource" id="Resource_px16p"]
 script = ExtResource("17_ugcbx")
-monolog_flow = Array[ExtResource("14_766v7")]([SubResource("Resource_qfo1w"), SubResource("Resource_yq3e7"), SubResource("Resource_0n6ub")])
+monolog_flow = Array[ExtResource("14_766v7")]([SubResource("Resource_ugcbx"), SubResource("Resource_qfo1w"), SubResource("Resource_yq3e7"), SubResource("Resource_0n6ub")])
 metadata/_custom_type_script = "uid://bdvhnubwffufv"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6r1i"]
@@ -135,7 +148,15 @@ offset_right = 784.0
 offset_bottom = 440.0
 
 [node name="TiledSprite2D" parent="World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-159322.31, 1.9533992e-11, 4776, 3584)
+region_rect = Rect2(-12692.275, 1.554397e-12, 4776, 3584)
+
+[node name="Choice1" parent="World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
+visible = false
+disabled = true
+
+[node name="Choice2" parent="World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="1" unique_id=870054960]
+visible = false
+disabled = true
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_vx8vf")]
 position = Vector2(104, 480)
