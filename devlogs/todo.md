@@ -62,8 +62,8 @@ Me when I decide to fix bugs and manage to discover more bugs
 
 ### Bugs
 - [x] Screen extents
-- [ ] Menus
-	- [ ] Pause info fix
+- [x] Menus
+	- [x] Pause info fix
 - [ ] SFX
 	- [ ] Click sound
 	- [ ] Landing sound playing on stacked blocks

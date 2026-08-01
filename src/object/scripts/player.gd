@@ -25,10 +25,10 @@ signal check_finished() ## @deprecated
 
 @export var animate: bool = true
 ## Turns [Player] into a dubbleganger (dappel-ganger) entity.
-@export var dubbleganger: bool = false:
-	set(value):
-		set_active(!value)
-		dubbleganger = value
+# @export var dubbleganger: bool = false:
+# 	set(value):
+# 		set_active(!value)
+# 		dubbleganger = value
 ## Starts this [Player] instance's [member is_active] to [code]true[/code]. Only one instance should have this on to work appropriately.
 @export var start_active: bool = false
 @export var start_asleep: bool = false:
@@ -111,8 +111,8 @@ func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
 		child_blocks.append(block)
 
 	
-	if dubbleganger:
-		return
+	# if dubbleganger:
+	# 	return
 		
 	player_blocks_code.append({
 		"type": block.mash_type,
@@ -127,8 +127,8 @@ func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
 
 ## Performs an Unmash (Pop) to the [member child_blocks] Stack.
 func pop_block(front: bool = push_front_mashed_blocks) -> Mashed:
-	if !dubbleganger:
-		player_blocks_code.pop_back()
+	# if !dubbleganger:
+	# 	player_blocks_code.pop_back()
 	
 	return child_blocks.pop_front() if front else child_blocks.pop_back()
 	
@@ -148,7 +148,8 @@ func show_reset_notice(wait: float = 4.0) -> void:
 
 
 func _ready() -> void:
-	_ready_dubbleganger()
+	# _ready_dubbleganger()
+	GameMgr.current_player = self
 	
 	if original_block:
 		original_block.is_original = true
@@ -198,21 +199,21 @@ func _ready() -> void:
 	new_child_blocks.clear()
 
 
-func _ready_dubbleganger() -> void:
-	if !dubbleganger:
-		GameMgr.current_main_player = self
-		GameMgr.current_player = self
-	#else:
-		#acceleration = acceleration * 2.0
-		#jump_height += 200.0
+# func _ready_dubbleganger() -> void:
+# 	if !dubbleganger:
+# 		GameMgr.current_main_player = self
+# 		GameMgr.current_player = self
+# 	#else:
+# 		#acceleration = acceleration * 2.0
+# 		#jump_height += 200.0
 	
-	if start_active:
-		set_active(true)
+# 	if start_active:
+# 		set_active(true)
 		
-		if dubbleganger:
-			GameMgr.current_main_player.set_active(false)
-	else:
-		set_active(!dubbleganger)
+# 		if dubbleganger:
+# 			GameMgr.current_main_player.set_active(false)
+# 	else:
+# 		set_active(!dubbleganger)
 
 
 func _unhandled_input(event: InputEvent) -> void:

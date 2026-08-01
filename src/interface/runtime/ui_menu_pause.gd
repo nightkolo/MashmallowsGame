@@ -17,8 +17,6 @@ class_name PauseScreen
 var _gameplay_ui: GameplayUI
 
 const BBCODE_TXT = "[outline_size=8][outline_color=#3f3f3f][color=#ffffff][center][font_size=24]"
-const PAUSE_INFO_BEGIN = "≈Order "
-const PAUSE_INFO_END = " Paused≈"
 
 var shader: ShaderMaterial = preload("res://core/resources/shader/pause_menu_blur.tres")
 
@@ -76,12 +74,21 @@ func _ready() -> void:
 			)
 	
 
-func update_text() -> void:
-	if GameMgr.level_id == 0:
-		pause_info.text = BBCODE_TXT + "=Tutorial Paused="
-	else:
-		pause_info.text = BBCODE_TXT + PAUSE_INFO_BEGIN + "1-" + str(GameMgr.level_id) + PAUSE_INFO_END
+var pause_info_s: String = "≈%s%s%sPaused≈"
 
+func update_text() -> void:
+	var is_lvl_0: bool = GameMgr.level_id == 0
+	
+	var lvl: String = "Tutorial " if is_lvl_0 else "Order "
+	var b: String = "" if is_lvl_0 else str(GameMgr.bakery_id) + "-"
+	var o: String = "" if is_lvl_0 else str(GameMgr.level_id)
+	
+	var info: String = pause_info_s % [
+		lvl, b, o
+	]
+	
+	pause_info.text = BBCODE_TXT + info
+	
 
 var _t_blur: Tween
 

@@ -88,21 +88,6 @@ unique_name_in_owner = true
 rotation = -1.5707964
 shape = SubResource("SeparationRayShape2D_dw56o")
 
-[node name="DubblegangerDetect1x1" type="Area2D" parent="." unique_id=1763079843]
-collision_layer = 0
-collision_mask = 2
-
-[node name="Collision" type="CollisionShape2D" parent="DubblegangerDetect1x1" unique_id=2147159524]
-shape = SubResource("SeparationRayShape2D_dw56o")
-
-[node name="Collision2" type="CollisionShape2D" parent="DubblegangerDetect1x1" unique_id=918144339]
-rotation = 1.5707964
-shape = SubResource("SeparationRayShape2D_jws23")
-
-[node name="Collision3" type="CollisionShape2D" parent="DubblegangerDetect1x1" unique_id=1437597753]
-rotation = -1.5707964
-shape = SubResource("SeparationRayShape2D_dw56o")
-
 [node name="UnmashedBlockDetect1x2" type="Area2D" parent="." unique_id=1055852279]
 visible = false
 collision_layer = 0

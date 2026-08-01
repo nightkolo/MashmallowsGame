@@ -192,55 +192,55 @@ func _ready() -> void:
 		
 
 func _ready_parent_dependencies() -> void:
-	var is_dubble := parent_player.dubbleganger && is_original
+	# var is_dubble := parent_player.dubbleganger && is_original
 		
-	if sprite_hat:
-		node_hat.visible = is_dubble
+	# if sprite_hat:
+	# 	node_hat.visible = is_dubble
 		
-		if is_dubble:
+	# 	if is_dubble:
 			
-			# Dubbleganger Hat Animation
-			parent_player.is_emoting.connect(func(input: bool):
-				if is_on_ground() || is_on_block():
-					var mag: float = 0.4 if input else 0.0
-					var dur: float = 1.0 if !input else 0.8
-					if hat_tween:
-						hat_tween.kill()
-					hat_tween = create_tween()
-					hat_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-					hat_tween.tween_property(sprite_hat,"position:y",(mag * 60.0),dur)
-				else:
-					sprite_hat.position.y = 0.0
-				)
+	# 		# Dubbleganger Hat Animation
+	# 		parent_player.is_emoting.connect(func(input: bool):
+	# 			if is_on_ground() || is_on_block():
+	# 				var mag: float = 0.4 if input else 0.0
+	# 				var dur: float = 1.0 if !input else 0.8
+	# 				if hat_tween:
+	# 					hat_tween.kill()
+	# 				hat_tween = create_tween()
+	# 				hat_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	# 				hat_tween.tween_property(sprite_hat,"position:y",(mag * 60.0),dur)
+	# 			else:
+	# 				sprite_hat.position.y = 0.0
+	# 			)
 				
-			parent_player.move_state_changed.connect(func(dir: Vector2):
-				if hat_tween:
-					hat_tween.kill()
-				hat_tween = create_tween()
-				hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir.x, 0.125 + (absf(dir.x) * 0.25))
-				)
+	# 		parent_player.move_state_changed.connect(func(dir: Vector2):
+	# 			if hat_tween:
+	# 				hat_tween.kill()
+	# 			hat_tween = create_tween()
+	# 			hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir.x, 0.125 + (absf(dir.x) * 0.25))
+	# 			)
 				
-			parent_player.has_jumpped.connect(func():
-				if hat_land_tween:
-					hat_land_tween.kill()
-				hat_land_tween = create_tween().set_parallel()
-				hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
-				)
+	# 		parent_player.has_jumpped.connect(func():
+	# 			if hat_land_tween:
+	# 				hat_land_tween.kill()
+	# 			hat_land_tween = create_tween().set_parallel()
+	# 			hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
+	# 			)
 				
-			parent_player.has_landed.connect(func(strengh: float):
-				if hat_land_tween:
-					hat_land_tween.kill()
-				var s := strengh / 25.0
-				hat_land_tween = create_tween().set_parallel()
-				hat_land_tween.set_ease(Tween.EASE_OUT)
-				hat_land_tween.tween_property(node_hat, "scale", Vector2(1.0 + s, 1.0 - s), 0.1)
-				hat_land_tween.tween_property(node_hat, "position:y", -25.0 + (strengh * 2.0), 0.1)
-				hat_land_tween.set_trans(Tween.TRANS_ELASTIC)
-				hat_land_tween.chain().tween_property(node_hat, "scale:y", 1.0, 1.0)
-				hat_land_tween.tween_property(node_hat, "scale:x", 1.0, 1.0).set_delay(1.0 / 13.33)
-				hat_land_tween.tween_property(node_hat, "position:y", -25.0, 1.0)
-				)
-			#
+	# 		parent_player.has_landed.connect(func(strengh: float):
+	# 			if hat_land_tween:
+	# 				hat_land_tween.kill()
+	# 			var s := strengh / 25.0
+	# 			hat_land_tween = create_tween().set_parallel()
+	# 			hat_land_tween.set_ease(Tween.EASE_OUT)
+	# 			hat_land_tween.tween_property(node_hat, "scale", Vector2(1.0 + s, 1.0 - s), 0.1)
+	# 			hat_land_tween.tween_property(node_hat, "position:y", -25.0 + (strengh * 2.0), 0.1)
+	# 			hat_land_tween.set_trans(Tween.TRANS_ELASTIC)
+	# 			hat_land_tween.chain().tween_property(node_hat, "scale:y", 1.0, 1.0)
+	# 			hat_land_tween.tween_property(node_hat, "scale:x", 1.0, 1.0).set_delay(1.0 / 13.33)
+	# 			hat_land_tween.tween_property(node_hat, "position:y", -25.0, 1.0)
+	# 			)
+	# 		#
 	
 	# Dust emission
 	if dust_particles:
@@ -295,21 +295,21 @@ func mash() -> bool:
 
 	# Mash to a dubbleganger (Only one can exist)
 	# Ok -> O(1)
-	for p: Player in block_detect.dubbleganger_detect_1x1.get_overlapping_bodies():
-		if !(p is Player) || p == parent_player:
-			continue
+	# for p: Player in block_detect.dubbleganger_detect_1x1.get_overlapping_bodies():
+	# 	if !(p is Player) || p == parent_player:
+	# 		continue
 			
-		var active: bool = p.is_active
+	# 	var active: bool = p.is_active
 		
-		if !active || p.dubbleganger:
-			if p.global_position.y > global_position.y + (0.5 * Util.BLOCK_SIZE):
-				break
+	# 	if !active || p.dubbleganger:
+	# 		if p.global_position.y > global_position.y + (0.5 * Util.BLOCK_SIZE):
+	# 			break
 				
-			p.set_active(!active)
-			parent_player.set_active(active)
+	# 		p.set_active(!active)
+	# 		parent_player.set_active(active)
 			
-			return true
-		break
+	# 		return true
+	# 	break
 	#
 	
 	# Mash to a block

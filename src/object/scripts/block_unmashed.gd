@@ -51,7 +51,7 @@ signal player_entered(entered: bool)
 
 var attributes: BlockAttributes
 var unmashed_spawner: Node
-var dubbleganger_block: bool = false
+# var dubbleganger_block: bool = false
 var was_mashed: bool = false
 var is_player_close: bool = false:
 	set(value):
@@ -131,10 +131,10 @@ func _ready_twisted() -> void:
 
 
 func is_mashable() -> bool:
-	if dubbleganger_block:
-		var p: Player = GameMgr.current_player
-		if p != null:
-			return !is_at_expand_period && p.dubbleganger
+	# if dubbleganger_block:
+	# 	var p: Player = GameMgr.current_player
+	# 	if p != null:
+	# 		return !is_at_expand_period && p.dubbleganger
 	return !is_at_expand_period 
 
 
