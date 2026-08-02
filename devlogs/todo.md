@@ -28,15 +28,16 @@
     - [ ] Bubble start
     - [ ] hm vocal
     - [ ] complete
+ - [ ] Promo 
+    - [ ] **Game trailer layout**
   - [x] Find royalty free music for Bakery 2
   - [x] Email Avizura about OST
 - [ ] **Artwork**
-  - [ ] Bakery complete Millie artwork
+  - [ ] Bakery complete Millie artwork (After Galagen...)
   - [x] Title artwork
   - [x] Logo
-- [ ] Promo 
-  - [ ] **Game trailer layout**
-  - After bugs and anim
+- [ ] Promo (After bugs and anim)
+  - [ ] Game trailer
   - [ ] Game artwork
   - [ ] Screenshots layout
   - [ ] Game section
@@ -53,6 +54,16 @@
 Me when i decide to fix bugs but i discover more bugs
 
 ### Bugs
+- [ ] PLayer
+  - [ ] Levels
+    - [ ] 1-3 Unmash indicator 
+  - [ ] Cherry bomb
+    - [ ] i forgor
+    - [ ] Velocity y damp
+	- [x] Able to press down on regular ground
+	- [x] Reduce movement on block count?
+- [ ] Levels
+  - [ ] Account new changes
 - [x] Screen extents
 - [x] Menus
 	- [x] Pause info fix
@@ -61,16 +72,18 @@ Me when i decide to fix bugs but i discover more bugs
 	- [x] Landing sound playing on stacked blocks
 - [x] Blocks
 	- [x] Slopped collisions
-- [ ] PLayer
-  - [ ] Levels
-    - [ ] 1-3 Unmash indicator 
-  - [ ] Cherry bomb
-    - [ ] Velocity y damp
-    - [ ] no regen on twisted
-	- [x] Able to press down on regular ground
-	- [x] Reduce movement on block count?
 
 ### Animation
+- [ ] Side-order
+  - [ ] Pop-up anim
+  - [ ] Add anim
+    - [ ] Gain
+      - [ ] Blocks
+      - [ ] Faces
+    - [ ] Loss
+      - [ ] Blocks
+  - [ ] Complete anim
+  - [ ] Implement SFX
 - [ ] Level
   - [ ] Start visual bug	
   - [ ] NPC
