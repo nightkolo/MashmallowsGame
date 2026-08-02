@@ -13,12 +13,6 @@
 - [ ] **Outro Sequence**
   - [ ] Auto-players
   - [x] Monologue
-- [x] Gameplay improvements
-  - [x] Bakery complete screen animation
-  - [x] Mash direction revamps
-  - [x] Regen System
-    - [x] Cherry Bombs
-  - [x] Bakery transtioins
 
 ### Assets, Design, and Project
 - [ ] **Project**
@@ -41,15 +35,6 @@
   - [ ] Game artwork
   - [ ] Screenshots layout
   - [ ] Game section
-- [x] Interface 
-  - [x] Lollipop
-  - [x] Mini Lollipop
-  - [x] Text
-- [x] **Aseets**
-  - [x] Match Doors
-  - [x] Goofy order blocks
-  - [x] Bubble
-  - [x] New mille model
 
 Me when i decide to fix bugs but i discover more bugs
 
@@ -64,14 +49,9 @@ Me when i decide to fix bugs but i discover more bugs
 	- [x] Reduce movement on block count?
 - [ ] Levels
   - [ ] Account new changes
-- [x] Screen extents
-- [x] Menus
-	- [x] Pause info fix
 - [ ] SFX
 	- [ ] Click sound
 	- [x] Landing sound playing on stacked blocks
-- [x] Blocks
-	- [x] Slopped collisions
 
 ### Animation
 - [ ] Side-order
