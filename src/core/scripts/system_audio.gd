@@ -3,7 +3,10 @@ extends Node
 #@onready var SFX_BUS_ID: int = AudioServer.get_bus_index("SFX")
 @onready var UISound_BUS_ID: int = AudioServer.get_bus_index("UI")
 
-@onready var music_stage: AudioStreamPlayer = %MusicStage
+#@onready var music_stage: AudioStreamPlayer = %MusicStage
+#@onready var music_stage_2: AudioStreamPlayer = %MusicStage2
+@onready var music_current: AudioStreamPlayer = %MusicCurrent
+
 
 @onready var order_loss: AudioStreamPlayer = %OrderLoss
 @onready var order_lost: AudioStreamPlayer = %OrderLost
@@ -39,15 +42,15 @@ var _tween_aud: Tween
 func lower_higher_music(dur: float = 1.0, low: float = 15.0) -> void:
 	var tween = create_tween()
 	
-	tween.tween_property(music_stage, "volume_db", original_music_db-low, dur)
-	tween.tween_property(music_stage, "volume_db", original_music_db, dur).set_delay(dur)
+	tween.tween_property(music_current, "volume_db", original_music_db-low, dur)
+	tween.tween_property(music_current, "volume_db", original_music_db, dur).set_delay(dur)
 
 
 func lower_music(dur: float = 1.0, low: float = 15.0) -> void:
 	var tween = create_tween()
 	
-	tween.tween_property(music_stage, "volume_db", original_music_db-low, dur)
-	#tween.tween_property(music_stage, "volume_db", original_music_db, dur).set_delay(dur)
+	tween.tween_property(music_current, "volume_db", original_music_db-low, dur)
+	#tween.tween_property(music_current, "volume_db", original_music_db, dur).set_delay(dur)
 
 
 
@@ -58,62 +61,81 @@ func off_on_ui_sound(dur: float = 1.0) -> void:
 
 
 func set_music(vol: float = original_music_db) -> void:
-	music_stage.volume_db = vol
+	music_current.volume_db = vol
 	
 
 # var _music_timer: Timer = Timer.new()
+var music_path: String = "res://audio/music/stage_music_%d.ogg"
+var bid: int
 
 func start_music():
 	await get_tree().create_timer(0.1).timeout
 
 	var lvl: Level = GameMgr.current_level
+	bid = GameMgr.bakery_id
 
 	if lvl:
-		if !lvl.has_started || GameMgr.level_id <= 0 || music_stage.playing:
+		if !lvl.has_started || GameMgr.level_id <= 0 || music_current.playing:
 			return
 
-	music_stage.finished.connect(func():
-		music_stage.play(8.422)
-		)
+	music_current.stream = load(music_path % bid)
 
-	if !music_stage.playing:
-		music_stage.volume_db = original_music_db
-		#music_stage.volume_db = -80.0
+	if bid == 1:
+		original_music_db = -6.0
+	elif bid == 2:
+		original_music_db = 0.0
+
+	#match bid:
+		#1:
+			#music_current.stream = music_stage.stream.duplicate()
+		#2:
+			#music_current.stream = music_stage_2.stream.duplicate()
+		#_:
+			#music_current.stream = music_stage.stream.duplicate()
+
+	if !music_current.playing:
+		music_current.volume_db = original_music_db
+		#music_current.volume_db = -80.0
 		#
-		music_stage.play(0.0)
+		music_current.play(0.0)
 		#
 		#if _tween_aud:
 			#_tween_aud.kill()
 			#
 		#_tween_aud = create_tween()
-		#_tween_aud.tween_property(music_stage, "volume_db", original_music_db, 1.5)
+		#_tween_aud.tween_property(music_current, "volume_db", original_music_db, 1.5)
 	
 
 func stop_music():
-	if music_stage.playing:
+	if music_current.playing:
 		if _tween_aud:
 			_tween_aud.kill()
 			
 		_tween_aud = create_tween()
-		_tween_aud.tween_property(music_stage, "volume_db", -80.0, 0.75)
+		_tween_aud.tween_property(music_current, "volume_db", -80.0, 0.75)
 		
 		await _tween_aud.finished
 
-		music_stage.stop()
+		music_current.stop()
 
 func _ready() -> void:
-	original_music_db = music_stage.volume_db
+	music_current.finished.connect(func():
+		if bid == 1:
+			music_current.play(8.422)
+		elif bid == 2:
+			music_current.play(0.0)
+		)
 	
-	#if !music_stage.playing:
-		#music_stage.volume_db = -80.0
+	#if !music_current.playing:
+		#music_current.volume_db = -80.0
 		#
-		#music_stage.play()
+		#music_current.play()
 		#
 		#if _tween_aud:
 			#_tween_aud.kill()
 			#
 		#_tween_aud = create_tween()
-		#_tween_aud.tween_property(music_stage, "volume_db", original_music_db, 1.5)
+		#_tween_aud.tween_property(music_current, "volume_db", original_music_db, 1.5)
 
 	GameMgr.menu_entered.connect(func(entered: GameMgr.MenuID):
 		print_debug(entered)

@@ -1,7 +1,7 @@
 extends Node2D
 class_name UnmashedAudio
 
-@onready var land_sfx: Array[AudioStreamPlayer2D] = [$Land01, $Land02, $Land03, $Land04]
+#@onready var land_sfx: Array[AudioStreamPlayer2D] = [$Land01, $Land02, $Land03, $Land04]
 @onready var vocal_sfx: Array[AudioStreamPlayer2D] = [$Vocal01, $Vocal02, $Vocal03, $Vocal04]
 @onready var sleep_sfx: AudioStreamPlayer2D = $Sleep 
 @onready var drop_sfx: AudioStreamPlayer2D = $Drop
@@ -29,13 +29,13 @@ func _ready():
 			twisted_rise.play()
 		)
 
-		block.has_landed.connect(func(strength: float):
-			if block.attributes.slippery_block:
-				return
-				
-			var sfx: AudioStreamPlayer2D = land_sfx.pick_random()
-			sfx.play()
-		)
+		#block.has_landed.connect(func(strength: float):
+			#if block.attributes.slippery_block:
+				#return
+				#
+			#var sfx: AudioStreamPlayer2D = land_sfx.pick_random()
+			#sfx.play()
+		#)
 		sleep_sfx.finished.connect(func(): sleep_sfx.play() )
 
 		block.started_breathing.connect(func():

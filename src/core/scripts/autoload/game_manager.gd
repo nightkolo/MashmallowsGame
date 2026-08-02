@@ -150,6 +150,8 @@ func reset_game() -> void:
 
 
 func goto_next_checkerboard() -> void:
+	Audio.stop_music()
+	
 	goto_next_level(1, true)
 	
 	if level_id + 1 <= Util.NUMBER_OF_LEVELS:

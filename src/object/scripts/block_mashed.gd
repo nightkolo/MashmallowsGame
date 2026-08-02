@@ -78,7 +78,7 @@ func is_on_player() -> bool: # -> O(1)
 	return false
 
 
-## Returns true if the mashed block on ground tilemap/sticky platform, not other unmashed blocks
+## Returns true if the mashed block on ground tilemap, not other unmashed blocks
 func is_on_ground() -> bool: # -> O(1)
 	var ray: ShapeCast2D = block_detect.ground_ray
 	

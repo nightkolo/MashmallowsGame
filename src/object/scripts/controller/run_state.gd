@@ -54,5 +54,5 @@ func physics_update(delta: float) -> void:
 		player.velocity.x = move_toward(
 			player.velocity.x,
 			dir * player.speed,
-			player.acceleration * delta
+			player.inverse_mass_multiplier * player.acceleration * delta
 		)

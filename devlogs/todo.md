@@ -23,6 +23,11 @@
 ### Assets, Design, and Project
 - [ ] **Project**
   - [ ] Side order SFX, Bokoblock Reuse
+    - [ ] Gain
+    - [ ] Loss
+    - [ ] Bubble start
+    - [ ] hm vocal
+    - [ ] complete
   - [x] Find royalty free music for Bakery 2
   - [x] Email Avizura about OST
 - [ ] **Artwork**
@@ -53,17 +58,17 @@ Me when i decide to fix bugs but i discover more bugs
 	- [x] Pause info fix
 - [ ] SFX
 	- [ ] Click sound
-	- [ ] Landing sound playing on stacked blocks
+	- [x] Landing sound playing on stacked blocks
 - [x] Blocks
 	- [x] Slopped collisions
 - [ ] PLayer
-	- [ ] Able to press down on regular ground
-	- [ ] Reduce movement on block count?
   - [ ] Levels
     - [ ] 1-3 Unmash indicator 
   - [ ] Cherry bomb
     - [ ] Velocity y damp
     - [ ] no regen on twisted
+	- [x] Able to press down on regular ground
+	- [x] Reduce movement on block count?
 
 ### Animation
 - [ ] Level

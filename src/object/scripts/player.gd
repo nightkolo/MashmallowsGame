@@ -36,9 +36,9 @@ signal check_finished() ## @deprecated
 		start_asleep = value
 		is_active = !value
 @export_group("Movement Variables")
-@export_range(-600.0, 600.0, 1.0, "or_greater", "or_less") var speed: float = 450.0
+@export_range(-600.0, 600.0, 1.0, "or_greater", "or_less") var speed: float = 440.0
 @export_range(-1500.0, 1500.0, 1.0, "or_greater", "or_less") var acceleration: float = 700.0
-@export_range(-2000.0, 2500.0, 1.0, "or_greater", "or_less") var deceleration: float = 1000.0
+@export_range(-2000.0, 2500.0, 1.0, "or_greater", "or_less") var deceleration: float = 650.0
 @export_range(-400.0, 400.0, 1.0, "or_greater", "or_less") var jump_height: float = 1100.0
 @export_group("Appearance")
 @export var show_trail: bool = true
@@ -71,9 +71,10 @@ var unmashed_object: PackedScene = preload("res://object/objects/block_unmashed_
 var unmashed_object_1x2: PackedScene = preload("res://object/objects/block_unmashed_1x2.tscn")
 
 # Movement variables
-var stop_deceleration: float = deceleration * 4.0
+var stop_deceleration: float = deceleration * 8.0
 var air_deceleration: float = deceleration / 1.25
 var flown_deceleration: float = deceleration / 3.2
+var inverse_mass_multiplier: float = 1.35
 
 # STATE
 var input_x: float:
@@ -105,11 +106,12 @@ var _last_velocity_y: float = 0.0
 
 ## Performs a Mash (Push) to a [Mashed] block, and pushes to the [member child_blocks] Stack.
 func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
+	
 	if front:
 		child_blocks.push_front(block)
 	else:
 		child_blocks.append(block)
-		
+	
 	player_blocks_code.append({
 		"type": block.mash_type,
 		"pos": Vector2(
@@ -118,6 +120,11 @@ func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
 		)
 	})
 	
+	if child_blocks.size() > 1:
+		inverse_mass_multiplier = 0.66
+	else:
+		inverse_mass_multiplier -= 0.04
+	
 	GameLogic.player_mashed.emit()
 
 
@@ -125,7 +132,14 @@ func push_block(block: Mashed, front: bool = push_front_mashed_blocks) -> void:
 func pop_block(front: bool = push_front_mashed_blocks) -> Mashed:
 	player_blocks_code.pop_back()
 	
-	return child_blocks.pop_front() if front else child_blocks.pop_back()
+	var block: Mashed = child_blocks.pop_front() if front else child_blocks.pop_back()
+	
+	if child_blocks.size() <= 1:
+		inverse_mass_multiplier = 1.35
+	else:
+		inverse_mass_multiplier += 0.04
+	
+	return block
 	
 
 
@@ -237,8 +251,8 @@ func mash_child_blocks() -> void: ## Ok -> O(n)
 	if !can_perform_mash():
 		return
 
-	#if input_y > 0.0 || !is_active || !mash_timer.is_stopped():
-		#return
+	if cannot_perform_mash_in_gameplay():
+		return
 	
 	var blocks: Array[Mashed] = child_blocks.duplicate(true) # To avoid infinite recursion
 	_pos_before_mash = position
@@ -446,7 +460,11 @@ func can_perform_mash() -> bool:
 		#(obj as Mashed).mash_type == Util.MashType.CHERRY_BOMB ||
 		#(obj as Mashed).mash_type == Util.MashType.AIR_CHERRY_BOMB
 		#) && !GameLogic.has_won
-	return !GameLogic.has_won && !(input_y > 0.0 || !is_active || !mash_timer.is_stopped())
+	return !GameLogic.has_won
+
+
+func cannot_perform_mash_in_gameplay() -> bool:
+	return input_y > 0.0 || !is_active || !mash_timer.is_stopped()
 
 
 func can_one_child_block_mash() -> bool:
@@ -501,8 +519,12 @@ func hang() -> void:
 func drop() -> void:
 	if !is_active:
 		return
-	
+		
 	animator.anim_down(true)
+	
+	if !is_on_ground():
+		return
+	
 	position.y += 10.0
 
 

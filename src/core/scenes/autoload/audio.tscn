@@ -6,8 +6,9 @@
 [ext_resource type="AudioStream" uid="uid://bffdthrjgvshy" path="res://audio/sounds/order_progress_01.wav" id="4_a8t0x"]
 [ext_resource type="AudioStream" uid="uid://dxhpvdo2rxhw" path="res://audio/sounds/order_complete.wav" id="5_a8t0x"]
 [ext_resource type="AudioStream" uid="uid://bv86nt5h231jl" path="res://audio/sounds/order_progress_02.wav" id="5_pf5qh"]
-[ext_resource type="AudioStream" uid="uid://cayy711rg26c" path="res://audio/music/stage_music_01.ogg" id="7_dv5vm"]
+[ext_resource type="AudioStream" uid="uid://cayy711rg26c" path="res://audio/music/stage_music_1.ogg" id="7_dv5vm"]
 [ext_resource type="AudioStream" uid="uid://fx4btcdoowkx" path="res://audio/sounds/game_reset_01.wav" id="8_1jeqf"]
+[ext_resource type="AudioStream" uid="uid://bdrn7vekstnw8" path="res://audio/music/stage_music_2.ogg" id="8_6tju7"]
 [ext_resource type="AudioStream" uid="uid://ctr6ph8bi3wnu" path="res://audio/sounds/game_reset_02.wav" id="9_lo713"]
 [ext_resource type="AudioStream" uid="uid://dbasaqplmrtor" path="res://audio/sounds/game_pause.wav" id="10_2o34p"]
 [ext_resource type="AudioStream" uid="uid://dv13xrx4125mj" path="res://audio/sounds/game_start_01.wav" id="11_fetaq"]
@@ -66,6 +67,11 @@ bus = &"Gameplay"
 unique_name_in_owner = true
 stream = ExtResource("7_dv5vm")
 volume_db = -6.0
+bus = &"Music"
+
+[node name="MusicCurrent" type="AudioStreamPlayer" parent="UI" unique_id=1274934203]
+unique_name_in_owner = true
+stream = ExtResource("8_6tju7")
 bus = &"Music"
 
 [node name="GameReset01" type="AudioStreamPlayer" parent="UI" unique_id=2113812102]
