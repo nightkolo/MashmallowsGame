@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 	else:
 		offset = Vector2.ZERO
 	
-	var p: Player = player if player else GameMgr.current_main_player
+	var p: Player = player if player else GameMgr.current_player
 	if p && dynamic_cam:
 		position = Math.map_range(
 			p.global_position,

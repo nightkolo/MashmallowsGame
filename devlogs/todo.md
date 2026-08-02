@@ -22,8 +22,8 @@
 
 ### Assets, Design, and Project
 - [ ] **Project**
-  - [ ] Find royalty free music for Bakery 2
   - [ ] Side order SFX, Bokoblock Reuse
+  - [x] Find royalty free music for Bakery 2
   - [x] Email Avizura about OST
 - [ ] **Artwork**
   - [ ] Bakery complete Millie artwork
@@ -45,7 +45,7 @@
   - [x] Bubble
   - [x] New mille model
 
-Me when I decide to fix bugs and manage to discover more bugs
+Me when i decide to fix bugs but i discover more bugs
 
 ### Bugs
 - [x] Screen extents
@@ -64,14 +64,6 @@ Me when I decide to fix bugs and manage to discover more bugs
   - [ ] Cherry bomb
     - [ ] Velocity y damp
     - [ ] no regen on twisted
-  - [x] Twisted
-    - [x] Collision handling
-    - [x] Level 16
-    - [x] Visual bug
-    - [x] Fix Rewrites
-    - [x] Highlight system
-    - [x] Visual indicator
-    - [x] Smoother transition
 
 ### Animation
 - [ ] Level
@@ -80,7 +72,7 @@ Me when I decide to fix bugs and manage to discover more bugs
     - [ ] Looking when moving animation
     - [ ] Popping up happy animation
     - [ ] Artwork	
-      - [ ] Bakery complete "Millie gives you a Lollipop"
+      - [ ] Bakery complete 
 - [ ] PLayer
   - [ ] Ledge animation (Scaredy eyes)
 - [ ] Blocks

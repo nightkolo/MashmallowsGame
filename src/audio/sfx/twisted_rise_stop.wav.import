@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://clsxj3hlkqdfo"
-path="res://.godot/imported/twisted_rise_alert.wav-5362a5382c9ba9dc68cf3569469727af.sample"
+path="res://.godot/imported/twisted_rise_stop.wav-c2aa545412f9a9692941ec05a5ad319f.sample"
 
 [deps]
 
-source_file="res://audio/sfx/twisted_rise_alert.wav"
-dest_files=["res://.godot/imported/twisted_rise_alert.wav-5362a5382c9ba9dc68cf3569469727af.sample"]
+source_file="res://audio/sfx/twisted_rise_stop.wav"
+dest_files=["res://.godot/imported/twisted_rise_stop.wav-c2aa545412f9a9692941ec05a5ad319f.sample"]
 
 [params]
 

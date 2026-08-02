@@ -37,7 +37,7 @@ func setup():
 
 
 func set_monolog() -> void:
-	var cond: bool = GameMgr.current_main_player.child_blocks.size() == GameLogic.number_of_blocks
+	var cond: bool = GameMgr.current_player.child_blocks.size() == GameLogic.number_of_blocks
 	
 	monolog_area_2.enabled = cond
 	monolog_area_1.enabled = !cond

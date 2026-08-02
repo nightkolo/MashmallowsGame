@@ -81,7 +81,7 @@ func check_order_completion() -> void:
 		if GameMgr.current_level.ignore_order:
 			return
 	
-	if GameMgr.current_main_player == null || current_order_code.is_empty():
+	if GameMgr.current_player == null || current_order_code.is_empty():
 		return
 			
 	print_debug("Checking...")
@@ -89,7 +89,7 @@ func check_order_completion() -> void:
 	amount_satisfied = 0
 	is_checking_order_match = true
 	
-	var current_player_code: Array[Dictionary] = GameMgr.current_main_player.player_blocks_code
+	var current_player_code: Array[Dictionary] = GameMgr.current_player.player_blocks_code
 	
  	# Worst case -> O(n * m)
 	# n = current_order_code.size(), m = current_player_code.size()

@@ -145,7 +145,7 @@ func show_reset_notice(wait: float = 4.0) -> void:
 
 func _ready() -> void:
 	# _ready_dubbleganger()
-	GameMgr.current_main_player = self
+	GameMgr.current_player = self
 	
 	if original_block:
 		original_block.is_original = true
@@ -197,7 +197,7 @@ func _ready() -> void:
 
 # func _ready_dubbleganger() -> void:
 # 	if !dubbleganger:
-# 		GameMgr.current_main_player = self
+# 		GameMgr.current_player = self
 # 		GameMgr.current_player = self
 # 	#else:
 # 		#acceleration = acceleration * 2.0
@@ -207,7 +207,7 @@ func _ready() -> void:
 # 		set_active(true)
 		
 # 		if dubbleganger:
-# 			GameMgr.current_main_player.set_active(false)
+# 			GameMgr.current_player.set_active(false)
 # 	else:
 # 		set_active(!dubbleganger)
 
@@ -237,13 +237,13 @@ func mash_child_blocks() -> void: ## Ok -> O(n)
 	if !can_perform_mash():
 		return
 
-	if input_y > 0.0 || !is_active || !mash_timer.is_stopped():
-		return
+	#if input_y > 0.0 || !is_active || !mash_timer.is_stopped():
+		#return
 	
 	var blocks: Array[Mashed] = child_blocks.duplicate(true) # To avoid infinite recursion
 	_pos_before_mash = position
 	
-	for block: Mashed in blocks:
+	for block: Mashed in blocks: 
 		var res := await block.mash()
 		
 		if res:
@@ -446,7 +446,7 @@ func can_perform_mash() -> bool:
 		#(obj as Mashed).mash_type == Util.MashType.CHERRY_BOMB ||
 		#(obj as Mashed).mash_type == Util.MashType.AIR_CHERRY_BOMB
 		#) && !GameLogic.has_won
-	return !GameLogic.has_won
+	return !GameLogic.has_won && !(input_y > 0.0 || !is_active || !mash_timer.is_stopped())
 
 
 func can_one_child_block_mash() -> bool:

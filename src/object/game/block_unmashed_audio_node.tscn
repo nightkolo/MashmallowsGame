@@ -11,6 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://lvd845incure" path="res://audio/sfx/block_unmashed_spawn_vocal_04.wav" id="8_cev87"]
 [ext_resource type="AudioStream" uid="uid://dn7cr6lst5jai" path="res://audio/sfx/block_unmashed_sleep.wav" id="9_pto1y"]
 [ext_resource type="AudioStream" uid="uid://bjo4yqongb0bc" path="res://audio/sfx/switch_hit.ogg" id="11_5jtgo"]
+[ext_resource type="AudioStream" uid="uid://ca58yplh1ji1d" path="res://audio/sfx/twisted_rise_02.wav" id="12_rje5b"]
+[ext_resource type="AudioStream" uid="uid://3l5hg3ldw3cv" path="res://audio/sfx/twisted_rise_alert_02.wav" id="13_t1kxg"]
+[ext_resource type="AudioStream" uid="uid://clsxj3hlkqdfo" path="res://audio/sfx/twisted_rise_stop.wav" id="14_cev87"]
 
 [node name="UnmashedAudio" type="Node2D" unique_id=1397385759]
 script = ExtResource("1_8lrl5")
@@ -75,3 +78,18 @@ stream = ExtResource("11_5jtgo")
 volume_db = 5.0
 panning_strength = 5.0
 bus = &"SFX"
+
+[node name="TwistedRise" type="AudioStreamPlayer2D" parent="." unique_id=1271461695]
+stream = ExtResource("12_rje5b")
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="TwistedRiseAlert" type="AudioStreamPlayer2D" parent="." unique_id=1815893768]
+stream = ExtResource("13_t1kxg")
+panning_strength = 2.0
+bus = &"Gameplay"
+
+[node name="TwistedRiseStop" type="AudioStreamPlayer2D" parent="." unique_id=307061991]
+stream = ExtResource("14_cev87")
+panning_strength = 2.0
+bus = &"Gameplay"

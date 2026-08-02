@@ -34,13 +34,13 @@ var number_of_sideorder_blocks: int = 0
 var has_openned: bool = false
 
 func check_sideorder_completion() -> void:
-	if GameMgr.current_main_player == null || order_code.is_empty() || has_openned:
+	if GameMgr.current_player == null || order_code.is_empty() || has_openned:
 		return
 
 	amount_satisfied = 0
 	is_checking_sideorder_match = true
 	
-	var current_player_code: Array[Dictionary] = GameMgr.current_main_player.player_blocks_code
+	var current_player_code: Array[Dictionary] = GameMgr.current_player.player_blocks_code
 	
  	# Worst case -> O(n * m)
 	# n = order_code.size(), m = current_player_code.size()

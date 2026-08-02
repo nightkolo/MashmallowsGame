@@ -6,10 +6,28 @@ class_name UnmashedAudio
 @onready var sleep_sfx: AudioStreamPlayer2D = $Sleep 
 @onready var drop_sfx: AudioStreamPlayer2D = $Drop
 
+@onready var twisted_rise: AudioStreamPlayer2D = $TwistedRise
+@onready var twisted_rise_alert: AudioStreamPlayer2D = $TwistedRiseAlert
+@onready var twisted_rise_stop: AudioStreamPlayer2D = $TwistedRiseStop
+
+
 
 func _ready():
 	if get_parent() is Unmashed:
 		var block: Unmashed = get_parent() as Unmashed
+
+		block.expanding_stopped.connect(func():
+			twisted_rise_stop.play()
+			if twisted_rise.playing:
+				twisted_rise.stop()
+			)
+		block.expanding_entered.connect(func():
+			twisted_rise_alert.pitch_scale = randf_range(0.8, 1.2)
+			twisted_rise_alert.play()
+			)
+		block.expanding_started.connect(func():
+			twisted_rise.play()
+		)
 
 		block.has_landed.connect(func(strength: float):
 			if block.attributes.slippery_block:
@@ -24,10 +42,10 @@ func _ready():
 			sleep_sfx.play()
 		)
 		block.player_entered.connect(func(entered: bool):
-			if GameMgr.current_main_player == null:
+			if GameMgr.current_player == null:
 				return
 			
-			if entered && GameMgr.current_main_player.is_active:
+			if entered && GameMgr.current_player.is_active:
 				sleep_sfx.volume_db = -14.0
 			else:
 				sleep_sfx.volume_db = -80.0

@@ -4,7 +4,9 @@ extends CharacterBody2D
 
 signal has_landed(strength: float)
 signal started_breathing()
-signal started_expanding()
+signal expanding_started()
+signal expanding_entered()
+signal expanding_stopped()
 signal player_entered(entered: bool)
 
 @export var tutorial_block: bool = false
@@ -135,7 +137,8 @@ func is_mashable() -> bool:
 	# 	var p: Player = GameMgr.current_player
 	# 	if p != null:
 	# 		return !is_at_expand_period && p.dubbleganger
-	return !is_at_expand_period 
+	#return !is_at_expand_period
+	return true 
 
 
 var tween_expand: Tween
@@ -165,13 +168,15 @@ func stop_expanding(pushback: float = 20.0) -> void:
 	if tween_expand && is_at_expand_period:
 		tween_expand.kill()
 		
+		expanding_stopped.emit()
+		
 		(twisted_mask.texture as GradientTexture2D).height -= int(pushback)
 		(colli.shape as RectangleShape2D).size.y -= pushback
 		
 		is_at_expand_period = false
 		is_expanding = false
 
-const EXPAND_TIME = 1.0
+const EXPAND_TIME = 0.65
 const WAIT_TIME_BEFORE_EXPAND = 0.75
 
 
@@ -195,7 +200,7 @@ func anim_expanding(instant: bool = false) -> void:
 		eyes_node.position.y = s2
 		return
 	
-	started_expanding.emit()
+	expanding_entered.emit()
 	
 	is_at_expand_period = true
 	
@@ -207,6 +212,7 @@ func anim_expanding(instant: bool = false) -> void:
 	tween_expand.tween_callback(func():
 		is_expanding = true
 		start_stop_expansion()
+		expanding_started.emit()
 		).set_delay(WAIT_TIME_BEFORE_EXPAND)
 	tween_expand.chain().tween_property(colli.shape as RectangleShape2D,"size:y",pos_to,EXPAND_TIME)
 	tween_expand.tween_property(twisted_mask.texture as GradientTexture2D,"height",pos_to,EXPAND_TIME)
@@ -323,7 +329,7 @@ func _physics_process(delta: float) -> void:
 	if !is_expanding:
 		move_and_slide()
 	else:
-		var displace: float = EXPAND_TIME * (attributes.twisted_strength / 4.0)
+		var displace: float = (2.0 - EXPAND_TIME) * (attributes.twisted_strength / 4.0)
 		
 		position.y -= displace * 100.0 * delta
 		
@@ -396,8 +402,8 @@ var _tween_prompt: Tween
 func anim_highlight(p_highlight: bool) -> void:
 	var can_mash: bool = true
 
-	if GameMgr.current_main_player:
-		can_mash = GameMgr.current_main_player.can_perform_mash()
+	if GameMgr.current_player:
+		can_mash = GameMgr.current_player.can_perform_mash()
 		sprite_input.visible = !can_mash
 	
 	is_player_close = p_highlight

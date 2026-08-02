@@ -45,7 +45,7 @@ func _ready() -> void:
 			
 	if player == null:
 		await get_tree().create_timer(0.1).timeout
-		player = GameMgr.current_main_player
+		player = GameMgr.current_player
 		
 	start_stop_expansion()
 
