@@ -68,14 +68,17 @@ func set_music(vol: float = original_music_db) -> void:
 var music_path: String = "res://audio/music/stage_music_%d.ogg"
 var bid: int
 
-func start_music():
+func start_music() -> void:
 	await get_tree().create_timer(0.1).timeout
 
+	if music_current.playing:
+		return
+	
 	var lvl: Level = GameMgr.current_level
 	bid = GameMgr.bakery_id
 
 	if lvl:
-		if !lvl.has_started || GameMgr.level_id <= 0 || music_current.playing:
+		if !lvl.has_started || GameMgr.level_id <= 0:
 			return
 
 	music_current.stream = load(music_path % bid)
@@ -85,18 +88,9 @@ func start_music():
 	elif bid == 2:
 		original_music_db = 0.0
 
-	#match bid:
-		#1:
-			#music_current.stream = music_stage.stream.duplicate()
-		#2:
-			#music_current.stream = music_stage_2.stream.duplicate()
-		#_:
-			#music_current.stream = music_stage.stream.duplicate()
-
 	if !music_current.playing:
 		music_current.volume_db = original_music_db
-		#music_current.volume_db = -80.0
-		#
+
 		music_current.play(0.0)
 		#
 		#if _tween_aud:
@@ -106,7 +100,7 @@ func start_music():
 		#_tween_aud.tween_property(music_current, "volume_db", original_music_db, 1.5)
 	
 
-func stop_music():
+func stop_music() -> void:
 	if music_current.playing:
 		if _tween_aud:
 			_tween_aud.kill()
@@ -123,7 +117,7 @@ func _ready() -> void:
 		if bid == 1:
 			music_current.play(8.422)
 		elif bid == 2:
-			music_current.play(0.0)
+			music_current.play(11.54)
 		)
 	
 	#if !music_current.playing:

@@ -14,6 +14,9 @@
   - [ ] Auto-players
   - [x] Monologue
 
+I guess I'll start working from up here
+
+
 ### Assets, Design, and Project
 - [ ] **Project**
   - [ ] Side order SFX, Bokoblock Reuse

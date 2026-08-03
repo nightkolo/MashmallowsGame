@@ -175,6 +175,5 @@ block_attributes = SubResource("Resource_gegs0")
 [node name="UnmashedSpawner3" parent="." unique_id=1512262256 instance=ExtResource("14_dkwdk")]
 position = Vector2(480, 96)
 block_attributes = SubResource("Resource_nrchv")
-twisted_strength = 3.0
 
 [editable path="World/LevelGoal"]

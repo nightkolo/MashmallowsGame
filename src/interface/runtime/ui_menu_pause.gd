@@ -74,7 +74,7 @@ func _ready() -> void:
 			)
 	
 
-var pause_info_s: String = "≈%s%s%sPaused≈"
+var pause_info_s: String = "≈%s%s%s Paused≈"
 
 func update_text() -> void:
 	var is_lvl_0: bool = GameMgr.level_id == 0
