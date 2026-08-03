@@ -41,19 +41,20 @@ I guess I'll start working from up here
 Me when i decide to fix bugs but i discover more bugs
 
 ### Bugs
-- [ ] PLayer
-  - [ ] Levels
-    - [ ] 1-3 Unmash indicator 
+- [ ] Levels
+  - [ ] Account new changes
+  - [ ] 1-6 RESET NOTICE
+- [ ] SFX
+	- [ ] Click sound
+	- [x] Landing sound playing on stacked blocks
+- [x] PLayer
+  - [x] Levels
+    - [x] 1-3 Unmash indicator 
   - [x] Cherry bomb
     - [x] regen bug
     - [x] Velocity y damp
 	- [x] Able to press down on regular ground
 	- [x] Reduce movement on block count?
-- [ ] Levels
-  - [ ] Account new changes
-- [ ] SFX
-	- [ ] Click sound
-	- [x] Landing sound playing on stacked blocks
 
 ### Animation
 - [ ] Side-order

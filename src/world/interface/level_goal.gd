@@ -3,6 +3,8 @@ extends Control
 class_name LevelGoal
 
 
+@export_tool_button("Update Appearance") var update_look_ = update_goal_appearance
+
 @onready var level_number_label: Label = %LevelNumber
 
 @onready var star_node_2: Node2D = $Star/Star2
@@ -24,8 +26,19 @@ var _current_order_precent: float
 var _tween: Tween
 
 
+func update_goal_appearance():
+	var o: Node2D = get_node_or_null("Order")
+	
+	if o is LevelOrder:
+		(o as LevelOrder).update_look()
+		
+	setup_node()
+	
+	print_debug("Order number requires runtime.")
+
+
 func anim_spawn() -> void:
-	level_number_label.text = "%s-%s" % [GameMgr.bakery_id, GameMgr.level_id]
+	update_text()
 	
 	var dur := 0.75
 	var mag := 0.7
@@ -59,12 +72,20 @@ func anim_wobble(strength: float = PI / 28.0) -> void:
 	_tween.tween_property(self, "rotation", 0.0, dur).set_trans(Tween.TRANS_ELASTIC)
 
 
+func update_text() -> void:
+	level_number_label.text = "%s-%s" % [GameMgr.bakery_id, GameMgr.level_id]
+
+
+func setup_node() -> void:
+	#level_number_label.position = Vector2(-level_number_label.size.x / 2, 16.0)
+	star_node.position = Vector2(board.size.x / 4.0, board.size.y / 2.0)
+
+
 func _ready() -> void:
 	GameMgr.current_level_goal = self
 	percent_gradient.texture = prec_grad
 	
-	level_number_label.position = Vector2(-level_number_label.size.x / 2, 16.0)
-	star_node.position = Vector2(board.size.x / 4.0, board.size.y / 2.0)
+	setup_node()
 
 	GameLogic.completion_percentage_updated.connect(update_completion_prec)
 	GameLogic.cherry_bomb_exploded.connect(anim_wobble)

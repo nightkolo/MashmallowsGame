@@ -345,7 +345,7 @@ func _handle_cherry_bomb(old_mashed: Mashed) -> void:
 		await get_tree().create_timer(explosion_delay).timeout
 
 	pop_block()
-	explode(push_to, strength)
+	explode(push_to, strength, old_mashed.mash_type == Util.MashType.AIR_CHERRY_BOMB)
 
 	Input.start_joy_vibration(0, 0.25, 0.85, 0.025)
 
@@ -353,14 +353,15 @@ func _handle_cherry_bomb(old_mashed: Mashed) -> void:
 	is_exploding = false
 
 
-func explode(push: Vector2, strength: float = 1600.0) -> void:
+func explode(push: Vector2, strength: float = 1600.0, physics_delay: bool = false) -> void:
 	cherry_bomb_exploded.emit()
 	GameLogic.cherry_bomb_exploded.emit()
 	
 	if absf(push.y) > absf(push.x) && velocity.y > 0:
 		velocity.y = 0.0
 	
-	await get_tree().create_timer(0.05).timeout
+	if physics_delay:
+		await get_tree().create_timer(0.05).timeout
 	
 	velocity += -push * strength
 	
