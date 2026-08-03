@@ -8,6 +8,13 @@ extends Node
 @onready var music_current: AudioStreamPlayer = %MusicCurrent
 
 
+# RIP memory lol
+
+
+@onready var sideoder_progress: AudioStreamPlayer = %SideoderProgress
+@onready var sideorder_loss: AudioStreamPlayer = %SideorderLoss
+
+
 @onready var order_loss: AudioStreamPlayer = %OrderLoss
 @onready var order_lost: AudioStreamPlayer = %OrderLost
 @onready var order_progress_01: AudioStreamPlayer = %OrderProgress01
@@ -148,7 +155,7 @@ func _ready() -> void:
 		
 		if comp != 1.0:
 			var sfx: AudioStreamPlayer = order_progress.pick_random()
-			sfx.pitch_scale = lerpf(0.8, 1.3, GameLogic.completion_percentage)
+			sfx.pitch_scale = lerpf(0.7, 1.4, GameLogic.completion_percentage)
 			sfx.play()
 		else:
 			order_progress_02.play()

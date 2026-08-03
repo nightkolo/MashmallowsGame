@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cu082kfq5wwn3" path="res://core/scripts/system_audio.gd" id="1_0i5ur"]
 [ext_resource type="AudioStream" uid="uid://dcxe7scqjrox0" path="res://audio/sounds/order_loss.ogg" id="2_a8t0x"]
+[ext_resource type="AudioStream" uid="uid://i7say4q1xodo" path="res://audio/sounds/sideoder_progress.wav" id="2_kw874"]
 [ext_resource type="AudioStream" uid="uid://c8mdl0rnljbfq" path="res://audio/sounds/order_lost.wav" id="3_a8t0x"]
+[ext_resource type="AudioStream" uid="uid://c26n07p506efy" path="res://audio/sounds/sideorder_loss.ogg" id="3_ehx3e"]
 [ext_resource type="AudioStream" uid="uid://bffdthrjgvshy" path="res://audio/sounds/order_progress_01.wav" id="4_a8t0x"]
 [ext_resource type="AudioStream" uid="uid://dxhpvdo2rxhw" path="res://audio/sounds/order_complete.wav" id="5_a8t0x"]
 [ext_resource type="AudioStream" uid="uid://bv86nt5h231jl" path="res://audio/sounds/order_progress_02.wav" id="5_pf5qh"]
@@ -31,6 +33,16 @@ process_mode = 3
 script = ExtResource("1_0i5ur")
 
 [node name="Gameplay" type="Node" parent="." unique_id=1261521769]
+
+[node name="SideoderProgress" type="AudioStreamPlayer" parent="Gameplay" unique_id=1567546875]
+unique_name_in_owner = true
+stream = ExtResource("2_kw874")
+bus = &"Gameplay"
+
+[node name="SideorderLoss" type="AudioStreamPlayer" parent="Gameplay" unique_id=1695540965]
+unique_name_in_owner = true
+stream = ExtResource("3_ehx3e")
+bus = &"Gameplay"
 
 [node name="OrderLoss" type="AudioStreamPlayer" parent="Gameplay" unique_id=2146919442]
 unique_name_in_owner = true

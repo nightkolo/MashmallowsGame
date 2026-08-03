@@ -16,32 +16,25 @@
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="14_lx5wk"]
 [ext_resource type="Script" uid="uid://htbtlhtomd2y" path="res://object/scripts/game/reset_notice_area.gd" id="15_4eupj"]
 [ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="16_5nq5i"]
+[ext_resource type="Script" uid="uid://e6dwy0qv4h5h" path="res://object/scripts/game/node_unmash_notice_area.gd" id="17_o1cu6"]
 
 [sub_resource type="Resource" id="Resource_1o0fm"]
 script = ExtResource("11_8ibhb")
 mash_type = 99
-cherry_bomb_strength = null
-twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_gqij8"]
 script = ExtResource("11_8ibhb")
 mash_type = 3
-cherry_bomb_strength = null
-twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_7ynms"]
 script = ExtResource("11_8ibhb")
 mash_type = 3
-cherry_bomb_strength = null
-twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_05s1w"]
 script = ExtResource("11_8ibhb")
-cherry_bomb_strength = null
-twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ij0e"]
@@ -54,15 +47,14 @@ metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_542p4"]
 script = ExtResource("11_8ibhb")
-cherry_bomb_strength = null
-twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="Resource" id="Resource_5nq5i"]
 script = ExtResource("11_8ibhb")
-cherry_bomb_strength = null
-twisted_strength = null
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_542p4"]
+size = Vector2(256, 24)
 
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
 script = ExtResource("1_5nq5i")
@@ -205,6 +197,13 @@ block_attributes = SubResource("Resource_542p4")
 [node name="UnmashedSpawner8" parent="." unique_id=797414376 instance=ExtResource("16_5nq5i")]
 position = Vector2(352, 144)
 block_attributes = SubResource("Resource_5nq5i")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=557295624]
+script = ExtResource("17_o1cu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=494835961]
+position = Vector2(451, 630)
+shape = SubResource("RectangleShape2D_542p4")
 
 [editable path="World/LevelGoal"]
 [editable path="World/NPC"]

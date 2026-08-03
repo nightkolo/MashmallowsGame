@@ -64,6 +64,7 @@ signal check_finished() ## @deprecated
 @onready var trans_nodes: Array[Sprite2D] = [%TransR,%TransL,%TransD,%TransU]
 @onready var reset_notice: Node2D = $ResetNotice
 @onready var mash_notice: Node2D = $MashNotice
+@onready var z_notice: Node2D = $ZNotice
 @onready var particles_m: CPUParticles2D = $Z
 
 # Preloaded Scenes
@@ -155,6 +156,24 @@ func show_reset_notice(wait: float = 4.0) -> void:
 	var tween = create_tween()
 	tween.tween_property(reset_notice, "modulate", Color(Color.WHITE), 1.0)
 
+var z_tween: Tween
+
+func show_z_notice(p_show: bool = !z_notice.visible) -> void:
+	if z_tween:
+		z_tween.kill()
+	
+	var dur := 0.25
+	
+	z_tween = create_tween()
+	
+	if p_show:
+		z_notice.visible = true
+		z_tween.tween_property(z_notice, "modulate", Color(Color.WHITE, 1.0), dur)
+	else:
+		z_tween.tween_property(z_notice, "modulate", Color(Color.WHITE, 0.0), dur)
+		await get_tree().create_timer(dur).timeout
+		
+		z_notice.visible = p_show
 
 
 func _ready() -> void:
@@ -340,6 +359,8 @@ func explode(push: Vector2, strength: float = 1600.0) -> void:
 	
 	if absf(push.y) > absf(push.x) && velocity.y > 0:
 		velocity.y = 0.0
+	
+	await get_tree().create_timer(0.05).timeout
 	
 	velocity += -push * strength
 	

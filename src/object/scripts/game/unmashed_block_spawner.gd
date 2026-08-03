@@ -21,6 +21,7 @@ class_name UnmashedSpawner
 var unmashed_object: PackedScene = preload("res://object/objects/block_unmashed_1x1.tscn")
 var unmashed_object_1x2: PackedScene = preload("res://object/objects/block_unmashed_1x2.tscn")
 
+var colli: CollisionShape2D 
 var has_been_taken: bool = false
 
 
@@ -50,7 +51,10 @@ func _ready() -> void:
 
 	if !Engine.is_editor_hint():
 		sprite.self_modulate = Color(Color.WHITE, 0.0)
-
+	
+	if collision_deflector:
+		colli = collision_deflector.get_node_or_null("CollisionShape2D")
+	
 	if area:
 		area.collision_layer = 0
 		area.collision_mask = 2
@@ -68,23 +72,30 @@ func _ready() -> void:
 
 func _deflect_end() -> void:
 	if collision_deflector:
-		collision_deflector.queue_free()
+		if colli == null:
+			collision_deflector.queue_free()
+		else:
+			colli.set_deferred("disabled", true)
+		
 		await get_tree().create_timer(0.05).timeout
 
 		if sprite && !Engine.is_editor_hint():
-			sprite.queue_free()
-			sprite = null
+			sprite.visible = false
 
 
 func regen() -> void:
 	if has_been_taken:
 		has_been_taken = false
+		await get_tree().create_timer(0.1).timeout
+		
+		if colli && sprite:
+			colli.set_deferred("disabled", false)
+			sprite.visible = true
 		
 		await get_tree().create_timer(0.5).timeout
 		spawn()
 		
 		
-
 
 func spawn(node_index: int = -1, misc_consective_delay: float = 0.25) -> void:
 	if block_attributes == null:

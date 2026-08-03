@@ -19,12 +19,6 @@ I guess I'll start working from up here
 
 ### Assets, Design, and Project
 - [ ] **Project**
-  - [ ] Side order SFX, Bokoblock Reuse
-    - [ ] Gain
-    - [ ] Loss
-    - [ ] Bubble start
-    - [ ] hm vocal
-    - [ ] complete
  - [ ] Promo 
     - [ ] **Game trailer layout**
   - [x] Find royalty free music for Bakery 2
@@ -38,6 +32,11 @@ I guess I'll start working from up here
   - [ ] Game artwork
   - [ ] Screenshots layout
   - [ ] Game section
+  - [x] Side order SFX, Bokoblock Reuse
+    - [x] Gain
+    - [x] Loss
+    - [x] hm vocal
+    - [x] complete
 
 Me when i decide to fix bugs but i discover more bugs
 
@@ -45,9 +44,9 @@ Me when i decide to fix bugs but i discover more bugs
 - [ ] PLayer
   - [ ] Levels
     - [ ] 1-3 Unmash indicator 
-  - [ ] Cherry bomb
-    - [ ] i forgor
-    - [ ] Velocity y damp
+  - [x] Cherry bomb
+    - [x] regen bug
+    - [x] Velocity y damp
 	- [x] Able to press down on regular ground
 	- [x] Reduce movement on block count?
 - [ ] Levels

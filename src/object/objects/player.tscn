@@ -287,6 +287,16 @@ character = "X"
 blink_time = 1.0
 blink_interval = 0.0
 
+[node name="ZNotice" type="Node2D" parent="." unique_id=1936193363]
+visible = false
+z_index = 2
+
+[node name="InputPrompt" parent="ZNotice" unique_id=699284922 instance=ExtResource("28_5xn7n")]
+position = Vector2(0, -92)
+character = "Z"
+blink_time = 1.0
+blink_interval = 0.0
+
 [node name="ResetNotice" type="Node2D" parent="." unique_id=1114537431]
 visible = false
 
