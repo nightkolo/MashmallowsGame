@@ -14,19 +14,7 @@
   - [ ] Auto-players
   - [x] Monologue
 
-I guess I'll start working from up here
-
-
 ### Assets, Design, and Project
-- [ ] **Project**
- - [ ] Promo 
-    - [ ] **Game trailer layout**
-  - [x] Find royalty free music for Bakery 2
-  - [x] Email Avizura about OST
-- [ ] **Artwork**
-  - [ ] Bakery complete Millie artwork (After Galagen...)
-  - [x] Title artwork
-  - [x] Logo
 - [ ] Promo (After bugs and anim)
   - [ ] Game trailer
   - [ ] Game artwork
@@ -37,6 +25,16 @@ I guess I'll start working from up here
     - [x] Loss
     - [x] hm vocal
     - [x] complete
+- [ ] **Artwork**
+  - [ ] Add the goddamn fucking lollipop
+  - [x] Bakery complete Millie artwork (After Galagen...)
+  - [x] Title artwork
+  - [x] Logo
+- [x] **Project**
+ - [x] Promo 
+    - [x] **Game trailer layout**
+  - [x] Find royalty free music for Bakery 2
+  - [x] Email Avizura about OST
 
 Me when i decide to fix bugs but i discover more bugs
 

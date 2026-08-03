@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ssqab5ryf51"
-path="res://.godot/imported/millie-comp-01.png-759ab696097056b2d7540e76cec59051.ctex"
+uid="uid://d4gci8swva1gi"
+path="res://.godot/imported/millie-lollipop-artwork.png-919794edf36c092cc6c814adf6702de7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/artwork/millie-comp-01.png"
-dest_files=["res://.godot/imported/millie-comp-01.png-759ab696097056b2d7540e76cec59051.ctex"]
+source_file="res://assets/artwork/millie-lollipop-artwork.png"
+dest_files=["res://.godot/imported/millie-lollipop-artwork.png-919794edf36c092cc6c814adf6702de7.ctex"]
 
 [params]
 
