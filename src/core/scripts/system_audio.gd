@@ -117,7 +117,7 @@ func _ready() -> void:
 		if bid == 1:
 			music_current.play(8.422)
 		elif bid == 2:
-			music_current.play(11.54)
+			music_current.play(11.549)
 		)
 	
 	#if !music_current.playing:
