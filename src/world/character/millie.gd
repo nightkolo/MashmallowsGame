@@ -67,7 +67,7 @@ enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES
 @warning_ignore("unused_private_class_variable")
 @export_tool_button("Animate Transition", "Animation") var _animate = animate_node
 @export_category("Object to Assign")
-@export var auto_assign: bool = true  # TODO
+@export var auto_assign: bool = true
 @export var world: Node2D
 @export var player: Player
 
@@ -79,7 +79,7 @@ enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES
 @onready var hoodie_heart: Polygon2D = %HoodieHeart
 @onready var blue_face: Sprite2D = %Blue
 @onready var node_eyes: Node2D = %Eyes
-@onready var vocal_sfx: Array[AudioStreamPlayer] = [%Vocal01, %Vocal02, %Vocal03]
+@onready var vocal_sfx: Array[AudioStreamPlayer] = [%Vocal01, %Vocal02]
 
 var is_animation_line: bool = false
 var is_emoting: bool = false
@@ -99,10 +99,34 @@ func animate_emote() -> void:
 	anim_emote(emote)
 
 
+var tween_eyes: Tween
+var tween_eyes_update: Tween
+
 func _ready() -> void:
 	current_poly = hoodie_heart.polygon
-
-
+	
+	await get_tree().create_timer(0.1).timeout
+	
+	if auto_assign:
+		player = GameMgr.current_player
+		
+	if player && GameMgr.level_id > 0:
+		player.move_state_changed.connect(func(state: Vector2):
+			if state != Vector2.ZERO:
+				if tween_eyes_update == null:
+					tween_eyes_update = create_tween().set_loops()
+					
+					tween_eyes_update.tween_callback(anim_look_at_player).set_delay(1.0)
+			else:
+				if tween_eyes_update:
+					tween_eyes_update.kill()
+			
+			await get_tree().create_timer(0.1).timeout
+			
+			anim_look_at_player()
+		)
+		
+		
 var tween_spin: Tween
 var tween_bounce: Tween
 var tween: Tween
@@ -124,6 +148,27 @@ func play_yippie_vocal() -> void:
 	else:
 		%VocalExcited.play()
 		_special_vocal_played = true
+
+func anim_look_at_player() -> void:
+	var p_pos: Vector2 = player.global_position
+	var diff_strength_x := p_pos.x - global_position.x
+	var diff_strength_y := p_pos.y - global_position.y
+	var diff_x := signf(
+		0.0 if absf(diff_strength_x) < 100.0 else diff_strength_x
+		)
+	var dur := 0.15
+	var mag := 15.0
+	
+	if tween_eyes:
+		tween_eyes.kill()
+		
+	tween_eyes = create_tween().set_parallel(true)
+	
+	if player.input_x != 0.0:
+		tween_eyes.tween_property(node_eyes, "position:x", diff_x * mag, dur)
+		tween_eyes.tween_property(node_eyes, "position:y", clampf(diff_strength_y * 0.025, -mag, mag), dur)
+	else:
+		tween_eyes.tween_property(node_eyes, "position", Vector2.ZERO, dur)
 
 
 func anim_emote(p_emote : Emotes = emote, bounce: bool = true):

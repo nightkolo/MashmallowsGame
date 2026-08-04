@@ -31,8 +31,8 @@
       - [x] Block
 - [ ] Level
   - [ ] NPC
+    - [x] Looking when moving animation
     - [ ] Popping up happy animation
-    - [ ] Looking when moving animation
     - [ ] Speech sfx on Level Info
     - [ ] Add more vocal SFX 
   - [x] Start visual bug	

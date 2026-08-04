@@ -89,6 +89,9 @@ func _input(event: InputEvent) -> void:
 		next_btn.grab_focus()
 		
 	if event.is_action_pressed("ui_accept"):
+		if GameMgr.menu_id != GameMgr.MenuID.WORLD_COMPLETE:
+			return
+		
 		next_btn.visible = true
 		next_btn.grab_focus()
 
