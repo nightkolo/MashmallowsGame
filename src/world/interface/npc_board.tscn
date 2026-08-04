@@ -70,8 +70,8 @@ position = Vector2(0, 206)
 
 [node name="Millie" parent="Board/NpcBoardMask/NodeMillie" unique_id=2121837621 instance=ExtResource("3_f72hj")]
 unique_name_in_owner = true
-position = Vector2(0, -2)
 scale = Vector2(0.95, 1)
+auto_assign = true
 
 [node name="InfoNodes" type="Node2D" parent="." unique_id=1546510149]
 z_index = 1

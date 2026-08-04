@@ -31,10 +31,10 @@
       - [x] Block
 - [ ] Level
   - [ ] NPC
-    - [x] Looking when moving animation
-    - [ ] Popping up happy animation
     - [ ] Speech sfx on Level Info
-    - [ ] Add more vocal SFX 
+    - [x] Popping up happy animation
+    - [x] Looking when moving animation
+    - [x] Add more vocal SFX 
   - [x] Start visual bug	
 - [ ] PLayer
   - [ ] variable jump sfx pitch

@@ -2,14 +2,15 @@
 extends Node2D
 class_name Millie
 
-enum Emotes {InitialMatch = 0, Match = 1, Unmatch = 2, Scared = 3, Complete = 4}
-enum Expressions {NEUTRAL, EXCITED, FRUSTRATED, BOUNCY, ASLEEP, BITTEN}
+enum Emotes {InitialMatch = 0, Match = 1, Unmatch = 2, Scared = 3, Complete = 4, PopUp = 5}
+enum Expressions {NEUTRAL, EXCITED, FRUSTRATED, BOUNCY, ASLEEP, BITTEN, HIDDEN}
 enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES, CLOSED}
 
 @export var animate: bool = true:
 	set(value):
 		$AnimationTree.active = value
 		animate = value
+@export var look_at_player: bool = true
 @export var emote: Emotes = Emotes.Match
 @warning_ignore("unused_private_class_variable")
 @export_tool_button("Emote", "Animation") var _animate2 = animate_emote
@@ -110,7 +111,7 @@ func _ready() -> void:
 	if auto_assign:
 		player = GameMgr.current_player
 		
-	if player && GameMgr.level_id > 0:
+	if look_at_player && player:
 		player.move_state_changed.connect(func(state: Vector2):
 			if state != Vector2.ZERO:
 				if tween_eyes_update == null:
@@ -150,23 +151,21 @@ func play_yippie_vocal() -> void:
 		_special_vocal_played = true
 
 func anim_look_at_player() -> void:
-	var p_pos: Vector2 = player.global_position
-	var diff_strength_x := p_pos.x - global_position.x
-	var diff_strength_y := p_pos.y - global_position.y
+	var diff_strength := player.global_position - global_position
 	var diff_x := signf(
-		0.0 if absf(diff_strength_x) < 100.0 else diff_strength_x
+		0.0 if absf(diff_strength.x) < 100.0 else diff_strength.x
 		)
-	var dur := 0.15
-	var mag := 15.0
+	const dur := 0.15
+	const mag := 15.0
 	
 	if tween_eyes:
 		tween_eyes.kill()
 		
 	tween_eyes = create_tween().set_parallel(true)
 	
-	if player.input_x != 0.0:
+	if player.input_x != 0.0 || player.input_y != 0.0:
 		tween_eyes.tween_property(node_eyes, "position:x", diff_x * mag, dur)
-		tween_eyes.tween_property(node_eyes, "position:y", clampf(diff_strength_y * 0.025, -mag, mag), dur)
+		tween_eyes.tween_property(node_eyes, "position:y", clampf(diff_strength.y * 0.025, -mag, mag), dur)
 	else:
 		tween_eyes.tween_property(node_eyes, "position", Vector2.ZERO, dur)
 
@@ -208,6 +207,18 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 
 	# Animation
 	match p_emote:
+		Emotes.PopUp:
+			
+			eyes = Eyes.REGULAR
+			
+			position.y = 400.0
+			
+			tween = create_tween().set_parallel(true)
+			tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+			
+			tween.tween_property(self, "position:y", 0.0, 1.0).from(400.0)
+			tween.tween_callback(func(): visible = true).set_delay(0.25)
+		
 		Emotes.Match:
 			eyes = Eyes.HEART_EYES
 			
@@ -342,7 +353,8 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 	particle_zzz.emitting = false
 	hair_1.visible = true
 	hair_2.visible = true
-
+	position.y = 0.0
+	visible = true
 	m_ear_r.visible = true
 	head.self_modulate = Color(Color.WHITE, 1.0)
 	head.texture = preload("res://assets/character/millie-head.png")
@@ -366,6 +378,11 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 	
 	# ANIMATION
 	match p_expression:
+		Expressions.HIDDEN:
+			eyes = Eyes.REGULAR
+			
+			position.y = 400.0
+			visible = false
 		
 		Expressions.BITTEN:
 			eyes = Eyes.BLANK

@@ -77,11 +77,12 @@ script = ExtResource("13_ny7ri")
 build_type = 1
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
-[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "level_info", "player")]
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "level_info", "player", "npc")]
 script = ExtResource("1_3o3qu")
 level_goal = NodePath("World/LevelGoal")
 level_info = NodePath("World/LevelInfo")
 player = NodePath("Player")
+npc = NodePath("World/NPCBoard")
 metadata/_custom_type_script = "uid://5fpkm17tw6kn"
 
 [node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_v88ta")]
@@ -206,7 +207,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
 position = Vector2(264, 200)
-region_rect = Rect2(-42117.87, 5.157753e-12, 4776, 3584)
+region_rect = Rect2(-11946.44, 1.4630249e-12, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 256.0

@@ -168,6 +168,7 @@ position = Vector2(928, 480)
 rotation = -35759.145
 
 [node name="Millie" parent="World/NPC/Board/NpcBoardMask/NodeMillie" parent_id_path=PackedInt32Array(1914110685, 612389165) index="0" unique_id=2121837621]
+look_at_player = null
 auto_assign = true
 
 [node name="Label2" parent="World/NPC/InfoNodes/Nameplate" parent_id_path=PackedInt32Array(1914110685, 204120133) index="1" unique_id=983884813]

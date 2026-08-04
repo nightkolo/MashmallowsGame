@@ -10,6 +10,11 @@ class_name NPCBoard
 		if not Engine.is_editor_hint():
 			await m.ready
 		m.expression = value
+@export var look_at_player: bool = true:
+	set(value):
+		look_at_player = value
+		
+		%Millie.look_at_player = value
 
 @onready var interact_notice: ColorRect = %InteractNotice
 @onready var nameplate: ColorRect = %Nameplate

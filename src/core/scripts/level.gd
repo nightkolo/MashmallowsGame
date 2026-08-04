@@ -18,6 +18,7 @@ class_name Level
 @export var level_goal: LevelGoal
 @export var level_info: LevelInfo
 @export var player: Player
+@export var npc: NPCBoard
 
 @onready var spawners: Array = get_tree().get_nodes_in_group("Spawner")
 
@@ -115,6 +116,10 @@ func anim_level() -> void:
 
 
 func anim_level_goal() -> void:
+	if npc:
+		if npc.starting_emote == Millie.Expressions.HIDDEN:
+			npc.millie.anim_emote(Millie.Emotes.PopUp)
+		
 	level_goal.anim_wobble()
 	level_goal.anim_spawn()
 
