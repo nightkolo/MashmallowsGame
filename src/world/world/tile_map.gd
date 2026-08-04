@@ -13,5 +13,6 @@ func _ready():
 		
 		if node is Node2D:
 			(node as Node2D).self_modulate = Color(Color.WHITE, 0.75)
+			(node as Node2D).z_index = -2
 		if node_2 is Node2D:
 			(node_2 as Node2D).light_mask = 8

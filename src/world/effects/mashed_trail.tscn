@@ -7,7 +7,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_esnir"]
-offsets = PackedFloat32Array(0.0048000216, 1)
+offsets = PackedFloat32Array(0.73053277, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Trail" type="Line2D" unique_id=1725777840]

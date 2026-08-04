@@ -214,7 +214,7 @@ label_settings = SubResource("LabelSettings_a01d5")
 metadata/_edit_use_anchors_ = true
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("4_ayvup")]
-position = Vector2(352, 352)
+position = Vector2(630, 517)
 
 [node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("16_qhppe")]
 position = Vector2(352, 608)

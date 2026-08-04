@@ -4,9 +4,9 @@ extends CharacterBody2D
 
 signal has_landed(strength: float)
 signal started_breathing()
-signal expanding_started()
-signal expanding_entered()
-signal expanding_stopped()
+signal expanding_started() ## Emits when Twisted expands.
+signal expanding_entered() ## Emits when Twisted is about to expand.
+signal expanding_stopped() ## Emits when Twisted expansion stops. (i.e. ceiling collision)
 signal player_entered(entered: bool)
 
 @export var tutorial_block: bool = false
@@ -25,14 +25,9 @@ signal player_entered(entered: bool)
 			attributes.build_type = value
 		build_type = value
 
-@export_group("Variables")
-# @export var cherry_bomb_strength: float = 1600.0
-# @export var twisted_strength: float = 5.0
-
 @export_group("Area casts")
 @export var player_down_detect: ShapeCast2D
 @export var top_detect: ShapeCast2D
-
 @export_group("Audio")
 @export var audio: UnmashedAudio
 @export_group("Nodes")
@@ -40,7 +35,6 @@ signal player_entered(entered: bool)
 @export var colli: CollisionShape2D 
 @export var particles_spawn: CPUParticles2D 
 @export var particles_z: CPUParticles2D 
-
 @export_group("Sprites")
 @export var node_mash_prompt: Node2D 
 @export var sprite: Sprite2D
@@ -53,7 +47,6 @@ signal player_entered(entered: bool)
 
 var attributes: BlockAttributes
 var unmashed_spawner: Node
-# var dubbleganger_block: bool = false
 var was_mashed: bool = false
 var is_player_close: bool = false:
 	set(value):
@@ -134,12 +127,7 @@ func _ready_twisted_and_collision() -> void:
 		anim_expanding(!was_mashed)
 
 
-func is_mashable() -> bool:
-	# if dubbleganger_block:
-	# 	var p: Player = GameMgr.current_player
-	# 	if p != null:
-	# 		return !is_at_expand_period && p.dubbleganger
-	#return !is_at_expand_period
+func is_mashable() -> bool: ## @experimental
 	return true 
 
 
@@ -165,7 +153,7 @@ func _on_ceiling_touched() -> void:
 	if p.is_on_block():
 		stop_expanding()
 
-# TODO Add raycast based collision checking
+
 func stop_expanding(pushback: float = 20.0) -> void:
 	if tween_expand && is_at_expand_period:
 		tween_expand.kill()
@@ -178,7 +166,7 @@ func stop_expanding(pushback: float = 20.0) -> void:
 		is_at_expand_period = false
 		is_expanding = false
 
-const EXPAND_TIME = 0.65
+const EXPAND_TIME = 0.6
 const WAIT_TIME_BEFORE_EXPAND = 0.75
 
 
@@ -187,8 +175,8 @@ func anim_expanding(instant: bool = false) -> void:
 		return
 	
 	var pos_to: float = attributes.twisted_strength * Util.BLOCK_SIZE
-	var s1: float = pos_to * 0.5
-	var s2: float = pos_to * 0.395
+	var s1 := pos_to * 0.5
+	var s2 := pos_to * 0.395
 	
 	if instant:
 		(colli.shape as RectangleShape2D).size.y = pos_to
@@ -200,6 +188,7 @@ func anim_expanding(instant: bool = false) -> void:
 		
 		twisted_mask.position.y = s2
 		eyes_node.position.y = s2
+		
 		return
 	
 	expanding_entered.emit()
@@ -234,21 +223,20 @@ func anim_expanding(instant: bool = false) -> void:
 
 
 func anim_expanding_indicator(dur: float) -> void:
-	var p: float = twisted_mask.position.y
-	var t:= create_tween().set_loops(3)
-	
 	sprite_mashable.visible = true
 	
-	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 1.0), dur * 0.06)
-	t.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 0.0), dur * 0.27)
+	var p := twisted_mask.position.y
+	var t1 := create_tween().set_loops(3)
 	
-	var t_b := create_tween().set_loops(3)
+	t1.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 1.0), dur * 0.06)
+	t1.tween_property(sprite_mashable, "self_modulate", Color(Color.WHITE, 0.0), dur * 0.27)
 	
-	t_b.tween_property(twisted_mask, "position:y", p - 3.0, dur * 0.06)
-	t_b.tween_property(twisted_mask, "position:y", p, dur * 0.27)
+	var t2 := create_tween().set_loops(3)
+	
+	t2.tween_property(twisted_mask, "position:y", p - 3.0, dur * 0.06)
+	t2.tween_property(twisted_mask, "position:y", p, dur * 0.27)
 
 
-## TODO Add to Player
 func get_top_unmashed() -> Unmashed:
 	if top_detect:
 		if top_detect.is_colliding():
@@ -333,14 +321,14 @@ func _physics_process(delta: float) -> void:
 	else:
 		var displace: float = (2.0 - EXPAND_TIME) * (attributes.twisted_strength / 4.0)
 		
-		position.y -= displace * 100.0 * delta
+		position.y -= displace * 110.0 * delta
 		
 		if player_down_detect.is_colliding():
 			var obj: Node2D = player_down_detect.get_collider(0)
 			
 			if obj is Unmashed:
 				if (obj as Unmashed).is_expanding:
-					position.y -= displace * 200.0 * delta
+					position.y -= displace * 220.0 * delta
 
 signal anim_unmashed_finished()
 

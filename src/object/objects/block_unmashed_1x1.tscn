@@ -94,10 +94,10 @@ blink_time = 1.0
 blink_interval = 0.0
 
 [node name="Base" parent="MashPrompt/InputPrompt" index="1" unique_id=736620297]
-position = Vector2(0, -2)
+position = Vector2(0, 8.435173)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -84474.43
+rotation = -85632.46
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"

@@ -47,10 +47,8 @@ var sprite_original_pos: Vector2
 
 # Attributes
 var attributes: BlockAttributes
-# var cherry_bomb_strength: float
-# var twisted_strength: float
 var is_idle_animating: bool
-var is_original: bool
+var is_original: bool ## @experimental
 var parent_player: Player
 var current_trail: Trail
 var unmashed_block_entered: bool:
@@ -58,10 +56,6 @@ var unmashed_block_entered: bool:
 		if value != unmashed_block_entered:
 			mashable_state_changed.emit(value)
 			unmashed_block_entered = value
-
-
-func can_mash() -> bool: ## @deprecated
-	return block_detect.is_colliding()
 
 
 func is_on_player() -> bool: # -> O(1)
@@ -119,9 +113,6 @@ func set_asleep(player: Player, role_swapped: bool = false) -> void:
 		sprite_eyes_closed.visible = !player.is_active
 		sprite_eyes_open.visible = player.is_active
 
-
-var hat_tween: Tween
-var hat_land_tween: Tween
 
 func _ready() -> void:
 	sprite_original_pos = node_block_sprites.position
@@ -192,57 +183,7 @@ func _ready() -> void:
 		
 
 func _ready_parent_dependencies() -> void:
-	# var is_dubble := parent_player.dubbleganger && is_original
-		
-	# if sprite_hat:
-	# 	node_hat.visible = is_dubble
-		
-	# 	if is_dubble:
-			
-	# 		# Dubbleganger Hat Animation
-	# 		parent_player.is_emoting.connect(func(input: bool):
-	# 			if is_on_ground() || is_on_block():
-	# 				var mag: float = 0.4 if input else 0.0
-	# 				var dur: float = 1.0 if !input else 0.8
-	# 				if hat_tween:
-	# 					hat_tween.kill()
-	# 				hat_tween = create_tween()
-	# 				hat_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	# 				hat_tween.tween_property(sprite_hat,"position:y",(mag * 60.0),dur)
-	# 			else:
-	# 				sprite_hat.position.y = 0.0
-	# 			)
-				
-	# 		parent_player.move_state_changed.connect(func(dir: Vector2):
-	# 			if hat_tween:
-	# 				hat_tween.kill()
-	# 			hat_tween = create_tween()
-	# 			hat_tween.tween_property(sprite_hat, "rotation_degrees", -5.0 * dir.x, 0.125 + (absf(dir.x) * 0.25))
-	# 			)
-				
-	# 		parent_player.has_jumpped.connect(func():
-	# 			if hat_land_tween:
-	# 				hat_land_tween.kill()
-	# 			hat_land_tween = create_tween().set_parallel()
-	# 			hat_land_tween.tween_property(node_hat, "position:y", -125.0, 1.0)
-	# 			)
-				
-	# 		parent_player.has_landed.connect(func(strengh: float):
-	# 			if hat_land_tween:
-	# 				hat_land_tween.kill()
-	# 			var s := strengh / 25.0
-	# 			hat_land_tween = create_tween().set_parallel()
-	# 			hat_land_tween.set_ease(Tween.EASE_OUT)
-	# 			hat_land_tween.tween_property(node_hat, "scale", Vector2(1.0 + s, 1.0 - s), 0.1)
-	# 			hat_land_tween.tween_property(node_hat, "position:y", -25.0 + (strengh * 2.0), 0.1)
-	# 			hat_land_tween.set_trans(Tween.TRANS_ELASTIC)
-	# 			hat_land_tween.chain().tween_property(node_hat, "scale:y", 1.0, 1.0)
-	# 			hat_land_tween.tween_property(node_hat, "scale:x", 1.0, 1.0).set_delay(1.0 / 13.33)
-	# 			hat_land_tween.tween_property(node_hat, "position:y", -25.0, 1.0)
-	# 			)
-	# 		#
-	
-	# Dust emission
+	# Dust animation
 	if dust_particles:
 		parent_player.state_machine.player_state_changed.connect(func(state: State):
 			if parent_player.is_running_full() && state is RunState && is_on_ground():
@@ -259,7 +200,7 @@ func _ready_parent_dependencies() -> void:
 		
 	if l_particles && r_particles:
 		parent_player.has_landed.connect(func(strength: float):
-			var hit_ground := is_on_ground() && strength > 12.0
+			var hit_ground := (is_on_ground() || is_on_block()) && strength > 12.0
 			l_particles.emitting = hit_ground
 			r_particles.emitting = hit_ground
 			if is_on_ground(): anim_blink(true) 
@@ -273,10 +214,10 @@ func _ready_parent_dependencies() -> void:
 	
 	parent_player.new_child_blocks.append(self)
 
-	## Trail
+	# Trail
 	if parent_player.show_trail:
 		parent_player.has_jumpped.connect(func():
-			if current_trail == null && is_on_ground():
+			if current_trail == null && (is_on_ground() || is_on_block()):
 				current_trail = trail.instantiate()
 				current_trail.exit_on_empty = true
 				current_trail.target = self
@@ -293,25 +234,6 @@ func mash() -> bool:
 	if mash_type == Util.MashType.CHERRY_BOMB || mash_type == Util.MashType.AIR_CHERRY_BOMB:
 		return false
 
-	# Mash to a dubbleganger (Only one can exist)
-	# Ok -> O(1)
-	# for p: Player in block_detect.dubbleganger_detect_1x1.get_overlapping_bodies():
-	# 	if !(p is Player) || p == parent_player:
-	# 		continue
-			
-	# 	var active: bool = p.is_active
-		
-	# 	if !active || p.dubbleganger:
-	# 		if p.global_position.y > global_position.y + (0.5 * Util.BLOCK_SIZE):
-	# 			break
-				
-	# 		p.set_active(!active)
-	# 		parent_player.set_active(active)
-			
-	# 		return true
-	# 	break
-	#
-	
 	# Mash to a block
 	# Ok -> O(1)
 	# block_detect.unmashed_block_detection_rays.size() fixed to 3 or 5
@@ -361,7 +283,6 @@ func mash() -> bool:
 			parent_player.add_child(new_mashed)
 			
 			await parent_player.return_position()
-				
 			break
 		
 	return collided

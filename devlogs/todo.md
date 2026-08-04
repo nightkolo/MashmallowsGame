@@ -4,18 +4,18 @@
 - [ ] Levels
   - [ ] 1-6 RESET NOTICE
   - [x] Account new changes
-- [ ] PLayer
-  - [ ] No trail when jumping off unmashed blocks
-  - [ ] Actually particles too
-  - [ ] trail behind BG terrain
-- [ ] Twisted
-  - [ ] Clipping through ground on rise
 - [ ] Complete screen
-  - [ ] Fix behavior
   - [ ] Add SFX
+  - [x] Fix behavior
 - [ ] SFX
 	- [ ] Click sound
 	- [x] Landing sound playing on stacked blocks
+- [x] PLayer
+  - [x] No trail when jumping off unmashed blocks
+  - [x] Actually particles too
+  - [x] trail behind BG terrain
+- [x] Twisted
+  - [x] Clipping through ground on rise
 
 ### Animation and SFX (DL 8-5)
 - [ ] Side-order
@@ -38,7 +38,7 @@
     - [ ] Artwork	
       - [ ] Bakery complete 
 - [ ] PLayer
-  - [ ] variable jump sfxß pitch
+  - [ ] variable jump sfx pitch
   - [ ] Ledge animation (Scaredy eyes)
 - [ ] Blocks
   - [ ] Seperated eyes

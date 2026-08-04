@@ -16,6 +16,7 @@ class_name CompleteScreen
 @onready var shine_1: Sprite2D = %Shine1
 @onready var shine_2: Sprite2D = %Shine2
 @onready var beam: Node2D = %Beam
+@export var label: Label
 
 @onready var cb_complete_info: RichTextLabel = %RichTextLabel
 @onready var next_btn: Button = %NextButton
@@ -29,6 +30,9 @@ var tween_texture_pulse: Tween
 var _gameplay_ui: GameplayUI
 var _final_texture_scale: Vector2 = Vector2.ONE * 0.5
 var screen_size : Vector2
+
+var button_text: String = "Go to Bakery %d!"
+var completion_text: String = "%s Bakery Complete!"
 
 #const _INFO_BEGIN = "Bakery "
 #const _INFO_END = " Complete!"
@@ -47,6 +51,12 @@ func _ready() -> void:
 	artwork.position.x = screen_size.x * 1.2
 	
 	next_btn.visible = false
+	next_btn.text = button_text % (GameMgr.bakery_id + 1)
+	# Primitive for the time-being
+	label.text = completion_text % ("First" if GameMgr.bakery_id == 1 else "Second")
+	
+	# TODO Add specialized loillipop textures for the complete screens
+	
 	
 	if get_parent() is GameplayUI:
 		_gameplay_ui = get_parent() as GameplayUI
@@ -77,23 +87,27 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_click"):
 		next_btn.visible = true
 		next_btn.grab_focus()
+		
+	if event.is_action_pressed("ui_accept"):
+		next_btn.visible = true
+		next_btn.grab_focus()
 
 
 #func _process(_delta: float) -> void:
 	#(%Particles3 as CPUParticles2D).position = get_local_mouse_position()
 func anim_artwork() -> void:
-	var mag := 20.0
+	var mag := 10.0
 	var dur := 1.0
 	artwork_2.position.y -= mag * 0.5
 	
 	var tween := create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	tween.tween_property(artwork, "position:x", screen_size.x * 0.8, 2.0)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(artwork, "position:x", screen_size.x * 0.8, 1.75)
 	
 	var tween_b := create_tween().set_loops()
 	tween_b.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween_b.tween_property(artwork_2, "scale:y", 1.035, dur)
-	tween_b.tween_property(artwork_2, "scale:y", 0.965, dur)
+	tween_b.tween_property(artwork_2, "scale:y", 1.02, dur)
+	tween_b.tween_property(artwork_2, "scale:y", 0.98, dur)
 	
 	var tween_c := create_tween().set_loops()
 	tween_c.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)

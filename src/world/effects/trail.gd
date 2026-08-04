@@ -1,7 +1,7 @@
 extends Line2D
 class_name Trail
  
-@export var max_length: int = 30
+@export var max_length: int = 60
 @export var trail_enabled: bool = true
 @export var exit_on_empty: bool = true
 
@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if trail_enabled && target && queue.size() < 30:
+	if trail_enabled && target && queue.size() < max_length:
 		queue.push_front(target.global_position)
  
 	clear_points()
