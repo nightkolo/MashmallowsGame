@@ -27,7 +27,7 @@ var _tween: Tween
 
 
 func update_goal_appearance():
-	var o: Node2D = get_node_or_null("Order")
+	var o: Node2D = get_node_or_null("LevelOrder")
 	
 	if o is LevelOrder:
 		(o as LevelOrder).update_look()

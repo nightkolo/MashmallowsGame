@@ -115,7 +115,7 @@ func _ready() -> void:
 
 	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type)
 	
-	_ready_twisted()
+	_ready_twisted_and_collision()
 	
 	if was_mashed:
 		await anim_unmashed_finished
@@ -124,8 +124,10 @@ func _ready() -> void:
 		sprite_node.visible = GameMgr.current_level.show_unmashed_blocks
 
 
-func _ready_twisted() -> void:
-	#collision_mask = 1 + 2 + 8
+func _ready_twisted_and_collision() -> void:
+	collision_layer = 8
+	collision_mask = 1 + 2 + 8 + 2048
+	
 	if mash_type == Util.MashType.TWISTED:
 		#(colli.shape as RectangleShape2D).size.x -= 10.0
 		

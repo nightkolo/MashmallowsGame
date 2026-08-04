@@ -1,8 +1,55 @@
 # Todo
 
-## 7-1 (Deadline 8-5)
+### Bugs (DL 8-4)
+- [ ] Levels
+  - [ ] 1-6 RESET NOTICE
+  - [x] Account new changes
+- [ ] PLayer
+  - [ ] No trail when jumping off unmashed blocks
+  - [ ] Actually particles too
+  - [ ] trail behind BG terrain
+- [ ] Twisted
+  - [ ] Clipping through ground on rise
+- [ ] Complete screen
+  - [ ] Fix behavior
+  - [ ] Add SFX
+- [ ] SFX
+	- [ ] Click sound
+	- [x] Landing sound playing on stacked blocks
 
-### Gameplay
+### Animation and SFX (DL 8-5)
+- [ ] Side-order
+  - [ ] Pop-up anim
+  - [ ] Add anim
+    - [ ] Gain
+      - [ ] Blocks
+      - [ ] Faces
+    - [ ] Loss
+      - [ ] Block
+  - [ ] Complete anim
+  - [ ] Implement SFX
+- [ ] Level
+  - [ ] Start visual bug	
+  - [ ] NPC
+    - [ ] Looking when moving animation
+    - [ ] Popping up happy animation
+    - [ ] Speech sfx on Level Info
+    - [ ] Add more vocal SFX
+    - [ ] Artwork	
+      - [ ] Bakery complete 
+- [ ] PLayer
+  - [ ] variable jump sfxß pitch
+  - [ ] Ledge animation (Scaredy eyes)
+- [ ] Blocks
+  - [ ] Seperated eyes
+  - [ ] Bouncy on hit ground
+  - [ ] One eye open on player close
+  - [ ] Scared before hitting ground
+- [ ] Mashing
+  - [ ] Mash particles
+  - [ ] Flashing
+
+### Gameplay (DL 8-6)
 - [ ] Bakery 2
   - [ ] **Level structure**
     - [ ] 10
@@ -14,8 +61,8 @@
   - [ ] Auto-players
   - [x] Monologue
 
-### Assets, Design, and Project
-- [ ] Promo (After bugs and anim)
+### Assets, Design, and Project (DL 8-8)
+- [ ] Promo (After bugs and anim) 
   - [ ] Game trailer
   - [ ] Game artwork
   - [ ] Screenshots layout
@@ -25,91 +72,24 @@
     - [x] Loss
     - [x] hm vocal
     - [x] complete
-- [ ] **Artwork**
+- [ ] **Artwork** 
   - [ ] Add the goddamn fucking lollipop
   - [x] Bakery complete Millie artwork (After Galagen...)
   - [x] Title artwork
   - [x] Logo
-- [x] **Project**
- - [x] Promo 
-    - [x] **Game trailer layout**
-  - [x] Find royalty free music for Bakery 2
-  - [x] Email Avizura about OST
 
 Me when i decide to fix bugs but i discover more bugs
 
-### Bugs
-- [ ] Levels
-  - [ ] Account new changes
-  - [ ] 1-6 RESET NOTICE
-- [ ] SFX
-	- [ ] Click sound
-	- [x] Landing sound playing on stacked blocks
-- [x] PLayer
-  - [x] Levels
-    - [x] 1-3 Unmash indicator 
-  - [x] Cherry bomb
-    - [x] regen bug
-    - [x] Velocity y damp
-	- [x] Able to press down on regular ground
-	- [x] Reduce movement on block count?
 
-### Animation
-- [ ] Side-order
-  - [ ] Pop-up anim
-  - [ ] Add anim
-    - [ ] Gain
-      - [ ] Blocks
-      - [ ] Faces
-    - [ ] Loss
-      - [ ] Blocks
-  - [ ] Complete anim
-  - [ ] Implement SFX
-- [ ] Level
-  - [ ] Start visual bug	
-  - [ ] NPC
-    - [ ] Looking when moving animation
-    - [ ] Popping up happy animation
-    - [ ] Artwork	
-      - [ ] Bakery complete 
-- [ ] PLayer
-  - [ ] Ledge animation (Scaredy eyes)
-- [ ] Blocks
-  - [ ] Seperated eyes
-  - [ ] Bouncy on hit ground
-  - [ ] One eye open on player close
-  - [ ] Scared before hitting ground
-- [ ] Mashing
-  - [ ] Mash particles
-  - [ ] Flashing
-- [ ] Dubbleganger
-  - [ ] See-through
-  - [ ] Switch
-  - [ ] Active
-  - [ ] Inactive
-- [x] Twisted Marshmallow
-  - [x] Match assets colors
-
-
-### Audio
-- [x] Twisted
-  - [x] Alert
-  - [x] Rising
-- [ ] Implementation
-
-
-### Codebase
+### Codebase and touches (DL 8-10)
+- [ ] Add new logo and artwork
 - [ ] **API**
+  - [ ] JUST COPY AND PASTE
   - [ ] Medal ideas
   - [ ] Medals
   - [x] API testing and saving
 - [ ] Input prompts
     - [ ] Controller (Generic)
-
-
-- [ ] Bakery complete anim
-
-### Codebase
 
 
 

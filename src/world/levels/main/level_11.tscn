@@ -162,25 +162,23 @@ position = Vector2(0, 64)
 attributes = SubResource("Resource_0jyni")
 
 [node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("13_8wxph")]
-position = Vector2(96, 400)
+position = Vector2(105, 400)
 
 [node name="LevelInfo" parent="World" unique_id=1741767880 node_paths=PackedStringArray("show_sprites") instance=ExtResource("14_dggo1")]
-offset_left = 40.0
+offset_left = 49.0
 offset_top = 568.0
-offset_right = 80.0
+offset_right = 89.0
 offset_bottom = 608.0
 level_info = "[font_size=20.0][color=#00000000][TT][/color][color=yellow]Twisted Marshmallows[/color] grow
 Taller when [color=lightblue]Unmashed!"
 show_sprites = [NodePath("Sprite2D")]
 
 [node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
-modulate = Color(1, 1, 1, 0)
 offset_right = 272.0
 offset_bottom = 120.0
-scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-50349.82, 6.1658677e-12, 4776, 3584)
+region_rect = Rect2(-3570.8003, 4.373022e-13, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 272.0
@@ -189,18 +187,13 @@ offset_bottom = 136.0
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
 text = "[b][font_size=21.0][font_size=20.0][color=#00000000][TT][/color][color=yellow]Twisted Marshmallows[/color] grow
 Taller when [color=lightblue]Unmashed!"
-visible_characters = 0
-visible_ratio = 0.0
+visible_characters = 51
 
-[node name="InfoSpriteNode" parent="World/LevelInfo" index="2" unique_id=1221176953]
-visible = false
-
-[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
 position = Vector2(272, 90)
-rotation = 0.15627849
+rotation = -0.17435642
 
 [node name="Sprite2D" type="Sprite2D" parent="World/LevelInfo" unique_id=1766427129]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(40, 29)
 rotation = -0.17453292
 scale = Vector2(0.6, 0.6)

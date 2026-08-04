@@ -38,8 +38,8 @@ signal check_finished() ## @deprecated
 @export_group("Movement Variables")
 @export_range(-600.0, 600.0, 1.0, "or_greater", "or_less") var speed: float = 440.0
 @export_range(-1500.0, 1500.0, 1.0, "or_greater", "or_less") var acceleration: float = 700.0
-@export_range(-2000.0, 2500.0, 1.0, "or_greater", "or_less") var deceleration: float = 650.0
-@export_range(-400.0, 400.0, 1.0, "or_greater", "or_less") var jump_height: float = 1100.0
+@export_range(-2000.0, 2500.0, 1.0, "or_greater", "or_less") var deceleration: float = 600.0
+@export_range(-400.0, 400.0, 1.0, "or_greater", "or_less") var jump_height: float = 1100.0 * 0.95
 @export_group("Appearance")
 @export var show_trail: bool = true
 @export var show_blocks: bool = true
@@ -72,10 +72,10 @@ var unmashed_object: PackedScene = preload("res://object/objects/block_unmashed_
 var unmashed_object_1x2: PackedScene = preload("res://object/objects/block_unmashed_1x2.tscn")
 
 # Movement variables
-var stop_deceleration: float = deceleration * 8.0
+var stop_deceleration: float = deceleration * 12.0
 var air_deceleration: float = deceleration / 1.25
 var flown_deceleration: float = deceleration / 3.2
-var inverse_mass_multiplier: float = 1.35
+var inverse_mass_multiplier: float = 1.5
 
 # STATE
 var input_x: float:
@@ -136,7 +136,7 @@ func pop_block(front: bool = push_front_mashed_blocks) -> Mashed:
 	var block: Mashed = child_blocks.pop_front() if front else child_blocks.pop_back()
 	
 	if child_blocks.size() <= 1:
-		inverse_mass_multiplier = 1.35
+		inverse_mass_multiplier = 1.5
 	else:
 		inverse_mass_multiplier += 0.04
 	

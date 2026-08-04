@@ -61,7 +61,6 @@ func _ready() -> void:
 	else:
 		push_warning("player not assigned")
 
-
 	if save_stats:
 		if !ignore_order:
 			GameMgr.game_just_ended.connect(store_stats)

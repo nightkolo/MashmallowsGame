@@ -183,7 +183,7 @@ position = Vector2(512, 568)
 shape = SubResource("RectangleShape2D_6ij0e")
 
 [node name="UnmashedSpawner2" parent="." unique_id=1761846739 instance=ExtResource("16_5nq5i")]
-position = Vector2(269, 439)
+position = Vector2(154, 543)
 block_attributes = SubResource("Resource_o1cu6")
 
 [node name="UnmashedSpawner3" parent="." unique_id=703901904 instance=ExtResource("16_5nq5i")]
