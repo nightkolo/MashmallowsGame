@@ -8,6 +8,8 @@ class_name MashBlockCheckerID
 
 @export var is_side_id: bool = false
 
+var sprite_face: Sprite2D
+
 
 func _ready() -> void:
 	if attributes:
@@ -36,12 +38,18 @@ func anim_satisfied(satisfied: bool) -> void:
 	tween_anim = create_tween().set_parallel()
 	tween_anim.set_ease(Tween.EASE_OUT)
 	
-	sprite.self_modulate = Color(2.0 * Color.WHITE)
-	sprite.scale = Vector2.ONE * 0.25
+	tween_anim.tween_callback(func(): pass) # To ignore started no tweeners errors
 	
-	tween_anim.tween_property(sprite, "scale", Vector2.ONE / 2.0, 1.25).set_trans(Tween.TRANS_ELASTIC)
+	for s: Sprite2D in [sprite, sprite_face]:
+		if s == null:
+			continue
+		
+		s.self_modulate = Color(2.0 * Color.WHITE)
+		s.scale = Vector2.ONE * 0.25
+		
+		tween_anim.tween_property(s, "scale", Vector2.ONE / 2.0, 1.25).set_trans(Tween.TRANS_ELASTIC)
 
-	tween_anim.tween_property(sprite, "self_modulate", Color(Color.WHITE), 0.25)
+		tween_anim.tween_property(s, "self_modulate", Color(Color.WHITE), 0.25)
 	
 	sprite.texture = Util.get_order_block_texture(attributes.mash_type, attributes.build_type, satisfied)
 		

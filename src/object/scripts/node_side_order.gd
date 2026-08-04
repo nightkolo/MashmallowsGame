@@ -2,14 +2,25 @@
 extends Node2D
 class_name SideOrder
 
+signal sideorder_gain(amount: int)
+signal sideorder_loss()
+signal sideorder_complete()
+
 @export var door_to_activate: Door
 @export var anchor: Node2D = null
 @export var panel: Node2D = null
 @export var particles: CPUParticles2D
 @export_tool_button("Update Appearance") var update_look_ = update_look
+@export_category("Sprites")
+@export var text_reg: Texture2D = preload("res://assets/objects/sideorder-block-eyes-01.png")
+@export var text_happy: Texture2D = preload("res://assets/objects/sideorder-block-eyes-02.png")
+
 
 var order_code: Array[Dictionary]
 var mash_block_checker_ids: Array[MashBlockCheckerID]
+var last_amount_satisfied: int = 1
+
+
 
 
 func update_look() -> void:
@@ -25,7 +36,7 @@ func update_look() -> void:
 			break
 
 		sprite.texture = Util.get_order_block_texture(id.attributes.mash_type, id.attributes.build_type)
-
+		
 		if !id.is_node_ready():
 			continue
 
@@ -68,8 +79,18 @@ func check_sideorder_completion() -> void:
 			break
 		
 		id_node.anim_satisfied(match_found)
+		print_debug(id_node.sprite_face)
+		id_node.sprite_face.texture = text_happy if match_found else text_reg
+		
 		if match_found:
 			amount_satisfied += 1
+	
+	if amount_satisfied > last_amount_satisfied:
+		sideorder_gain.emit(amount_satisfied)
+	elif amount_satisfied < last_amount_satisfied:
+		sideorder_loss.emit()
+	
+	last_amount_satisfied = amount_satisfied
 	
 	if amount_satisfied == number_of_sideorder_blocks:
 		sideorder_met()
@@ -79,6 +100,8 @@ func check_sideorder_completion() -> void:
 
 
 func sideorder_met() -> void:
+	sideorder_complete.emit()
+	
 	if door_to_activate:
 		door_to_activate.interact(true)
 		
@@ -114,6 +137,12 @@ func _ready() -> void:
 		if on:
 			has_openned = true
 		)
+	sideorder_gain.connect(func(_amount: int):
+		if door_to_activate:
+			var d: DoorBlock = door_to_activate.door_blocks.pick_random()
+			
+			d.anim_side_eye()
+		)
 	
 	var surface: Array[Node] = anchor.get_children() if anchor else get_children()
 	
@@ -126,7 +155,12 @@ func _ready() -> void:
 		if id_node.is_side_id == false:
 			push_warning("Be sure to turn on MashBlockCheckerID.is_side_id")
 			id_node.is_side_id = true
-			
+		
+		var s: Sprite2D = Sprite2D.new()
+		s.scale = Vector2.ONE * 0.5
+		id.sprite_face = s
+		id.add_child(s)
+		
 		mash_block_checker_ids.append(id_node)
 	
 	GameLogic.player_mashed.connect(check_sideorder_completion)

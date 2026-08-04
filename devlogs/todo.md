@@ -21,12 +21,12 @@
 - [ ] Side-order
   - [x] Sleep anim
   - [x] Pop-up anim
-  - [ ] Add anim
-    - [ ] Gain
-      - [ ] Blocks
-      - [ ] Faces
-    - [ ] Loss
-      - [ ] Block
+  - [x] Add anim
+    - [x] Gain
+      - [x] Blocks
+      - [x] Faces
+    - [x] Loss
+      - [x] Block
   - [ ] Complete anim
   - [ ] Implement SFX
 - [ ] Level

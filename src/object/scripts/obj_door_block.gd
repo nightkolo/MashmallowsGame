@@ -96,6 +96,23 @@ func anim_sleep() -> void:
 	tween.tween_property(node_bubble, "scale:y", 1.05, dur).set_delay(dur)
 
 
+var t_sideye: Tween
+
+func anim_side_eye() -> void:
+	sprite_eye.texture = eye_text_one_eye_open
+	sprite_eye.scale.y = 0.0
+	
+	if t_sideye:
+		t_sideye.kill()
+		
+	t_sideye = create_tween().set_parallel(true)
+	t_sideye.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	t_sideye.tween_property(sprite_eye, "scale:y", 0.5, 0.4)
+	
+	t_sideye.tween_callback(func():
+		sprite_eye.texture = eye_text_rest
+		).set_delay(1.0)
+
 
 func anim_body_entered(dir: Vector2) -> void:
 	var offset: Vector2 = dir
