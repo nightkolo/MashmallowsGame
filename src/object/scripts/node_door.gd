@@ -1,9 +1,13 @@
+@tool
 extends StaticBody2D
 class_name Door
 
 signal has_interacted(on: bool)
 
-@export var match_block_appearance: bool = false
+@export var match_block_appearance: bool = false:
+	set(value):
+		match_block_appearance = value
+		update_appearance()
 
 const BLOCK_ACTIVATION_DELAY := 0.125
 
@@ -14,9 +18,21 @@ var activation_timer: Timer = Timer.new()
 var next_block_index: int = 0
 
 
+func update_appearance():
+	for child: Node in get_children():
+		if child is DoorBlock:
+			var b: DoorBlock = child as DoorBlock
+			
+			b.misc = match_block_appearance
+			
+			
+
+
 func _ready() -> void:
 
  	# GameLogic.current_door = self
+	if Engine.is_editor_hint():
+		return
 	
 	for child: Node in get_children():
 		if child is DoorBlock:

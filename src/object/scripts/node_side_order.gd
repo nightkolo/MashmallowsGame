@@ -4,6 +4,8 @@ class_name SideOrder
 
 @export var door_to_activate: Door
 @export var anchor: Node2D = null
+@export var panel: Node2D = null
+@export var particles: CPUParticles2D
 @export_tool_button("Update Appearance") var update_look_ = update_look
 
 var order_code: Array[Dictionary]
@@ -87,10 +89,26 @@ func anim_something() -> void:
 	pass
 
 
+func anim_open():
+	if panel:
+		var t := create_tween().set_parallel(true)
+		
+		t.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+		
+		t.tween_property(panel, "scale", Vector2.ONE, 0.75)
+		t.tween_property(panel, "modulate", Color(Color.WHITE, 1.0), 0.6).set_trans(Tween.TRANS_LINEAR)
+		
+
+
 func _ready() -> void:
 	if door_to_activate == null:
 		push_warning("door_to_activate not assigned")
 		return
+		
+	if panel && particles:
+		particles.emitting = false
+		panel.scale = Vector2.ONE * -0.5
+		panel.modulate = Color(Color.WHITE, 0.0)
 	
 	door_to_activate.has_interacted.connect(func(on: bool):
 		if on:
@@ -124,4 +142,14 @@ func _ready() -> void:
 		id.anim_satisfied(id.attributes.mash_type == Util.MashType.PLAYER)
 	
 	check_sideorder_completion()
+	
+	if panel && particles:
+		await get_tree().create_timer(0.5).timeout
+		
+		particles.emitting = true
+		
+		await get_tree().create_timer(0.6).timeout
+		
+		anim_open()
+	
 	

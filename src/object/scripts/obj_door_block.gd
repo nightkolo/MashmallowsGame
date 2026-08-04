@@ -1,14 +1,34 @@
+@tool
 extends CollisionShape2D
 class_name DoorBlock
+
+
 
 @export var pop_text_1: Texture = preload("res://assets/world/pop-02.png")
 @export var pop_text_2: Texture = preload("res://assets/world/pop-03.png")
 
-@export var eye_text_reg: Texture = preload("res://assets/objects/bubblegate-eyes-reg.png")
-@export var eye_text_closed: Texture = preload("res://assets/objects/bubblegate-eyes-closed.png")
+@export var bubble_text_1: Texture = preload("res://assets/objects/bubblegate-1x1.png")
+@export var bubble_text_2: Texture = preload("res://assets/objects/bubblegate-1x1-02.png")
 
+@export var eye_text_open: Texture = preload("res://assets/objects/bubblegate-eyes-reg.png")
+@export var eye_text_closed: Texture = preload("res://assets/objects/bubblegate-eyes-closed.png")
+@export var eye_text_rest: Texture = preload("res://assets/objects/bubblegate-eyes-rest.png")
+@export var eye_text_star: Texture = preload("res://assets/objects/bubblegate-eyes-star.png")
+@export var eye_text_one_eye_open: Texture = preload("res://assets/objects/bubblegate-eyes-one-eye-open-when-im-sleepin.png")
+
+@export var misc: bool = false:
+	set(value):
+		
+		if value:
+			%Bubble.texture = bubble_text_2
+			%Eye.texture = eye_text_rest
+		else:
+			%Eye.texture = eye_text_open
+			%Bubble.texture = bubble_text_1
+		misc = value
+		
+@onready var node_bubble: Node2D = %BubbleNode
 @onready var sprite_node: Node2D = $Sprite2
-@onready var sprite_inflators: Sprite2D = %Inflators
 @onready var sprite_bubble: Sprite2D = %Bubble
 @onready var sprite_eye: Sprite2D = %Eye
 #@onready var area_2d: Area2D = $Area2D
@@ -43,7 +63,13 @@ func anim_eye_wobble(dur: float = 0.5, mag: float = 3.0) -> void:
 var tween_squish: Tween
 
 func _ready() -> void:
-	anim_eye_wobble()
+	if Engine.is_editor_hint():
+		return
+	
+	if !misc:
+		anim_eye_wobble()
+	else:
+		anim_sleep()
 	
 	if get_parent() is Door:
 		parent_door = get_parent() as Door
@@ -54,10 +80,20 @@ func _ready() -> void:
 			
 			)
 		area.body_exited.connect(func(_body: Node2D):
-			#for in_area: Area2D in detector_rays:
-				#print_debug("%s: %s" % [self, in_area.get_overlapping_bodies()])
 			anim_body_exited()
 			)
+
+
+func anim_sleep() -> void:
+	var dur := 1.0
+	var tween := create_tween().set_loops()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	
+	tween.tween_property(node_bubble, "scale:x", 1.1, dur)
+	tween.tween_property(node_bubble, "scale:y", 0.9, dur)
+	tween.tween_property(node_bubble, "scale:x", 0.9, dur).set_delay(dur)
+	tween.tween_property(node_bubble, "scale:y", 1.05, dur).set_delay(dur)
 
 
 
@@ -69,9 +105,9 @@ func anim_body_entered(dir: Vector2) -> void:
 	
 	tween_squish = create_tween()
 	if abs(offset.x) > abs(offset.y):
-		tween_squish.tween_property(sprite_bubble, "scale", Vector2(0.8, 1.0) * 0.5, 0.1)
+		tween_squish.tween_property(sprite_bubble, "scale", Vector2(0.7, 1.0) * 0.5, 0.1)
 	else:
-		tween_squish.tween_property(sprite_bubble, "scale", Vector2(1.0, 0.8) * 0.5, 0.1)
+		tween_squish.tween_property(sprite_bubble, "scale", Vector2(1.0, 0.7) * 0.5, 0.1)
 
 
 func anim_body_exited() -> void:
@@ -79,7 +115,7 @@ func anim_body_exited() -> void:
 		tween_squish.kill()
 	
 	tween_squish = create_tween()
-	tween_squish.tween_property(sprite_bubble, "scale", Vector2.ONE * 0.5, 1.25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween_squish.tween_property(sprite_bubble, "scale", Vector2.ONE * 0.5, 1.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		
 
 func activate(p_activate: bool) -> void:
@@ -165,7 +201,7 @@ func anim_regen() -> void:
 	
 	var pop_dur := 0.15
 	
-	sprite_eye.texture = eye_text_reg
+	sprite_eye.texture = eye_text_open
 	
 	tween_pop = create_tween().set_parallel(true)
 	#tween_pop.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)

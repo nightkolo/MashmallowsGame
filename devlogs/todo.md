@@ -19,7 +19,8 @@
 
 ### Animation and SFX (DL 8-5)
 - [ ] Side-order
-  - [ ] Pop-up anim
+  - [x] Sleep anim
+  - [x] Pop-up anim
   - [ ] Add anim
     - [ ] Gain
       - [ ] Blocks
