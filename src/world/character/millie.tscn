@@ -25,16 +25,18 @@
 [ext_resource type="Texture2D" uid="uid://cjolsqy078wbi" path="res://assets/character/millie-eyes-happy.png" id="13_cputi"]
 [ext_resource type="Texture2D" uid="uid://diemu7dls02t2" path="res://assets/character/millie-eyes-blank.png" id="14_w8e22"]
 [ext_resource type="Texture2D" uid="uid://ch1kca0pyltjq" path="res://assets/character/millie-eyes-closed-wide.png" id="15_2rfuc"]
+[ext_resource type="Texture2D" uid="uid://dkqxlqqjyeyr3" path="res://assets/character/millie-head.png" id="16_5pee7"]
 [ext_resource type="Texture2D" uid="uid://ccmulkum1rrc2" path="res://assets/character/millie-eyes-heart-01.png" id="16_wbijq"]
 [ext_resource type="Texture2D" uid="uid://dn5px40hcq0y6" path="res://assets/character/millie-head-half.png" id="17_3tl18"]
 [ext_resource type="Texture2D" uid="uid://chw471dalgxsc" path="res://assets/character/millie-front-hair-02.png" id="17_80abj"]
-[ext_resource type="Texture2D" uid="uid://bvqh2mqhwlrl0" path="res://assets/character/millie-head-02.png" id="17_ljnpu"]
 [ext_resource type="Texture2D" uid="uid://cqcbpb076mvkh" path="res://assets/character/millie-marshmallow-hair-02.png" id="18_80abj"]
 [ext_resource type="Texture2D" uid="uid://vf1qudmy2mq4" path="res://assets/character/face-marks-01.png" id="19_80abj"]
 [ext_resource type="AudioStream" uid="uid://ccp7eom2g5qp1" path="res://audio/sounds/millie_expression_bitten.wav" id="34_ljnpu"]
 [ext_resource type="AudioStream" uid="uid://cstf3acb1mn30" path="res://audio/sounds/millie_expression_frustrated.wav" id="35_bcvi4"]
 [ext_resource type="AudioStream" uid="uid://dl7fw6wp8052r" path="res://audio/sounds/millie_expression_regen.wav" id="36_4n6cw"]
+[ext_resource type="AudioStream" uid="uid://bkt5shbffcjdq" path="res://audio/sfx/vocal_02.wav" id="36_ljnpu"]
 [ext_resource type="AudioStream" uid="uid://brccjwjj1u4qo" path="res://audio/sounds/millie_vocal_01.wav" id="37_85bs0"]
+[ext_resource type="AudioStream" uid="uid://d0f31ntyecg6r" path="res://audio/sfx/vocal_03.wav" id="37_bcvi4"]
 [ext_resource type="AudioStream" uid="uid://di6olgf113arv" path="res://audio/sounds/millie_vocal_excited.wav" id="38_vason"]
 [ext_resource type="AudioStream" uid="uid://dgoeiyrhapbl2" path="res://audio/sounds/millie_vocal_frustrated.wav" id="39_pn5rf"]
 
@@ -478,7 +480,7 @@ animation = &"ears_idle"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wbijq"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l7gxt"]
-graph_offset = Vector2(893.1146, -310.8811)
+graph_offset = Vector2(-446.05957, -167.07198)
 nodes/output/position = Vector2(1980, -380)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_80abj")
 nodes/Animation/position = Vector2(660, 90)
@@ -520,8 +522,11 @@ nodes/DanceBlend2/position = Vector2(1830, -390)
 "nodes/Animation 9/position" = Vector2(1480, -620)
 node_connections = [&"output", 0, &"DanceBlend2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 3", 0, &"Add2 2", &"Add2 3", 1, &"Animation 4", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"Neutral2ExpressionBlend2", 0, &"BreathingAdd2", &"Neutral2ExpressionBlend2", 1, &"Add2 3", &"Add2 4", 0, &"Animation 5", &"Add2 4", 1, &"EarAnimBlend2", &"BreathingAdd2", 0, &"Add2 4", &"BreathingAdd2", 1, &"Animation 7", &"EarAnimBlend2", 0, &"Animation 6", &"EarAnimBlend2", 1, &"EarAnim", &"DanceBlend2", 0, &"Add2 6", &"DanceBlend2", 1, &"Neutral2ExpressionBlend2", &"Add2 6", 0, &"Animation 9", &"Add2 6", 1, &"Animation 8"]
 
-[node name="Millie2" type="Node2D" unique_id=2121837621]
+[node name="Millie" type="Node2D" unique_id=2121837621]
 script = ExtResource("1_jc1j4")
+expression = 2
+eyes = 5
+auto_assign = null
 
 [node name="TiledSprite2D" type="Sprite2D" parent="." unique_id=1651687842]
 visible = false
@@ -533,7 +538,7 @@ scale = Vector2(0.49999997, 0.49999997)
 texture = ExtResource("2_eavx2")
 centered = false
 region_enabled = true
-region_rect = Rect2(19016.627, 32944.996, 3200, 2000)
+region_rect = Rect2(31556.357, 54717.21, 3200, 2000)
 script = ExtResource("3_vcxqx")
 animate_scroll = true
 scroll_trajectory = 1.0471975511965976
@@ -605,73 +610,69 @@ visible = false
 
 [node name="EarL" type="Sprite2D" parent="Outline" unique_id=1920523084]
 show_behind_parent = true
-position = Vector2(-84.43893, -234.12393)
-rotation = 0.10376873
-scale = Vector2(0.49980798, 0.4834475)
-skew = 0.007257819
+position = Vector2(-81.99973, -212.46315)
+rotation = 0.095262125
+scale = Vector2(0.49985525, 0.48521855)
+skew = 0.005912304
 texture = ExtResource("5_1y7t3")
 
 [node name="EarR" type="Sprite2D" parent="Outline" unique_id=448522651]
 show_behind_parent = true
-position = Vector2(79.52385, -237.48201)
-rotation = -0.1447689
-scale = Vector2(0.49963057, 0.48363087)
-skew = -0.010049462
+position = Vector2(81.99973, -212.46315)
+rotation = -0.095262125
+scale = Vector2(0.49985525, 0.48521855)
+skew = -0.005912423
 texture = ExtResource("5_1y7t3")
 
 [node name="Head" type="Sprite2D" parent="Outline" unique_id=1006272161]
-position = Vector2(-0.088854164, -127.57834)
-rotation = -0.02147166
-scale = Vector2(0.49999055, 0.48326203)
-skew = -0.0015133619
+position = Vector2(0, -128.06015)
+scale = Vector2(0.49999833, 0.4850748)
 texture = ExtResource("6_ypqpy")
 offset = Vector2(0, -194)
 
 [node name="Heart" type="Sprite2D" parent="Outline" unique_id=497725396]
-position = Vector2(-93.99999, -155.4421)
-scale = Vector2(0.49999997, 0.48325494)
+position = Vector2(-94, -156.02797)
+scale = Vector2(0.5, 0.4850764)
 texture = ExtResource("7_ndqde")
 centered = false
 offset = Vector2(9.86, 16.9)
 
 [node name="ArmL" type="Sprite2D" parent="Outline" unique_id=1202992009]
-position = Vector2(-33, -121.78024)
-rotation = 0.031594794
-scale = Vector2(0.49998093, 0.48327166)
-skew = 0.0022257566
+position = Vector2(-32.999996, -122.23924)
+rotation = 0.02085168
+scale = Vector2(0.49999136, 0.4850816)
+skew = 0.0013023615
 texture = ExtResource("8_rwi8i")
 offset = Vector2(-85, 120)
 
 [node name="ArmR" type="Sprite2D" parent="Outline" unique_id=1580241006]
-position = Vector2(-32.989296, -122.92355)
-rotation = -0.032207925
-scale = Vector2(0.49998006, 0.48327225)
-skew = -0.0022690296
+position = Vector2(-32.97066, -124.14413)
+rotation = -0.020851681
+scale = Vector2(0.49999133, 0.48508155)
+skew = -0.0013023615
 texture = ExtResource("9_3tl18")
 offset = Vector2(217.41, 136.99)
 
 [node name="Hair" type="Sprite2D" parent="Outline" unique_id=129784328]
-position = Vector2(21.990013, -306.87454)
-rotation = -0.020477913
-scale = Vector2(0.4999913, 0.48326132)
-skew = -0.0014433861
+position = Vector2(25.999912, -307.53784)
+scale = Vector2(0.49999833, 0.4850748)
 texture = ExtResource("10_ndqde")
 offset = Vector2(21.86, 68.47)
 
 [node name="BackHair" type="Sprite2D" parent="Outline" unique_id=74909920]
-position = Vector2(61.065636, -159.36902)
-rotation = -0.13571642
-scale = Vector2(0.49967486, 0.4835855)
-skew = -0.009438753
+position = Vector2(61.833454, -158.70651)
+rotation = 0.27132657
+scale = Vector2(0.49887857, 0.48622313)
+skew = 0.016058445
 texture = ExtResource("11_rwi8i")
 centered = false
 offset = Vector2(-25.91, -34.55)
 
 [node name="FrontHair" type="Sprite2D" parent="Outline" unique_id=871314736]
-position = Vector2(53.06772, -303.64413)
-rotation = -0.0479429
-scale = Vector2(0.49995548, 0.4832929)
-skew = -0.0033743382
+position = Vector2(56.999813, -303.65723)
+rotation = 0.050799817
+scale = Vector2(0.49995494, 0.48511323)
+skew = 0.0031678677
 texture = ExtResource("13_3tl18")
 offset = Vector2(52.95, 101.82)
 
@@ -680,20 +681,18 @@ metadata/_edit_lock_ = true
 
 [node name="BodyAnimate" type="Node2D" parent="VisualRoot" unique_id=1167659839]
 unique_name_in_owner = true
-scale = Vector2(1, 0.9946671)
 
 [node name="BodyMain" type="Node2D" parent="VisualRoot/BodyAnimate" unique_id=1516597551]
-scale = Vector2(0.99999994, 0.9716918)
+scale = Vector2(1, 0.9701528)
 
 [node name="Head" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1967514663]
-position = Vector2(0, -128)
-rotation = -0.022215426
-scale = Vector2(0.99999744, 0.9999973)
+position = Vector2(0, -127.99999)
+scale = Vector2(0.99999666, 0.99999666)
 
 [node name="MillieBackHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=221018394]
-position = Vector2(61.87022, -35.52574)
-rotation = -0.11814315
-scale = Vector2(0.4999985, 0.4999985)
+position = Vector2(61.83366, -35.58931)
+rotation = 0.27925268
+scale = Vector2(0.4999984, 0.4999984)
 texture = ExtResource("3_6pub8")
 offset = Vector2(61.93763, 68.01831)
 
@@ -702,9 +701,9 @@ remote_path = NodePath("../../../../../../Outline/BackHair")
 
 [node name="MillieEarL" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1698998040]
 unique_name_in_owner = true
-position = Vector2(-81.8807, -116.08429)
-rotation = 0.1295527
-scale = Vector2(0.4999983, 0.49999833)
+position = Vector2(-82.00001, -90.999985)
+rotation = 0.098174386
+scale = Vector2(0.49999818, 0.49999815)
 texture = SubResource("CompressedTexture2D_5pee7")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieEarL" unique_id=2065349746]
@@ -712,9 +711,9 @@ remote_path = NodePath("../../../../../../Outline/EarL")
 
 [node name="MillieEarR" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=24473110]
 unique_name_in_owner = true
-position = Vector2(82.119225, -115.91565)
-rotation = -0.12749639
-scale = Vector2(0.4999983, 0.49999833)
+position = Vector2(82.00001, -90.999985)
+rotation = -0.098174386
+scale = Vector2(0.49999818, 0.49999815)
 texture = SubResource("CompressedTexture2D_7d6je")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieEarR" unique_id=1780232382]
@@ -722,9 +721,10 @@ remote_path = NodePath("../../../../../../Outline/EarR")
 
 [node name="MillieHead" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1313048426]
 unique_name_in_owner = true
+self_modulate = Color(1, 0.7, 0.7, 1)
 position = Vector2(0, -4)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("17_ljnpu")
+texture = ExtResource("16_5pee7")
 offset = Vector2(0, -194)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieHead" unique_id=1256097333]
@@ -738,9 +738,9 @@ texture = ExtResource("17_3tl18")
 
 [node name="MillieFrontHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=442689887]
 unique_name_in_owner = true
-position = Vector2(57.19018, -184.94133)
-rotation = -0.027386047
-scale = Vector2(0.49999726, 0.4999973)
+position = Vector2(57.000004, -185)
+rotation = 0.052359883
+scale = Vector2(0.49999687, 0.49999684)
 texture = ExtResource("17_80abj")
 offset = Vector2(63, 100.5)
 
@@ -752,6 +752,7 @@ unique_name_in_owner = true
 
 [node name="1" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=1599579729]
 unique_name_in_owner = true
+visible = false
 
 [node name="Open" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes/1" unique_id=337184713]
 position = Vector2(0, -69)
@@ -794,7 +795,6 @@ texture = ExtResource("14_w8e22")
 
 [node name="6" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/Eyes" unique_id=294966052]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0, -60)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_2rfuc")
@@ -803,7 +803,6 @@ texture = ExtResource("15_2rfuc")
 unique_name_in_owner = true
 visible = false
 z_index = 1
-position = Vector2(0, -60)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("16_wbijq")
 
@@ -816,9 +815,8 @@ texture = SubResource("CompressedTexture2D_ndqde")
 
 [node name="MillieMarshmallowHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1676594491]
 unique_name_in_owner = true
-position = Vector2(26.19431, -188.97319)
-rotation = 0.0010281504
-scale = Vector2(0.5, 0.50000006)
+position = Vector2(26, -189)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("18_80abj")
 offset = Vector2(27, 68.5)
 
@@ -827,12 +825,11 @@ remote_path = NodePath("../../../../../../Outline/Hair")
 
 [node name="NoiseFace" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=271610249]
 unique_name_in_owner = true
-visible = false
 position = Vector2(-65, -149.76918)
 
 [node name="NoiseLine2D" type="Line2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/NoiseFace" unique_id=681840862]
 unique_name_in_owner = true
-points = PackedVector2Array(17.630589, 1.6283761, -14.245006, -7.141075, 16.866127, -3.4233348, 0.6948238, 0.3512608, -2.9699483, 13.654979, 6.5004377, 18.158615, 24.970388, 10.6005)
+points = PackedVector2Array(-11.965132, -9.337727, -20.103432, -16.388935, -22.692099, -24.532707, 18.756563, 4.1475706, 2.504352, 7.1465526, -16.299562, 2.1594672, -4.7586823, 9.081632)
 width = 4.0
 default_color = Color(0, 0, 0, 1)
 joint_mode = 2
@@ -845,9 +842,9 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("19_80abj")
 
 [node name="MillieArmL" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=479821313]
-position = Vector2(-33.000004, -126)
-rotation = 0.0326888
-scale = Vector2(0.49999854, 0.49999848)
+position = Vector2(-32.999996, -125.99999)
+rotation = 0.021492995
+scale = Vector2(0.49999815, 0.49999815)
 texture = ExtResource("1_7u5cv")
 offset = Vector2(-90, 130)
 
@@ -855,9 +852,9 @@ offset = Vector2(-90, 130)
 remote_path = NodePath("../../../../../Outline/ArmL")
 
 [node name="MillieArmR" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=312520476]
-position = Vector2(33.000004, -126)
-rotation = -0.033323135
-scale = Vector2(0.49999854, 0.49999848)
+position = Vector2(32.999996, -125.99999)
+rotation = -0.021492997
+scale = Vector2(0.49999827, 0.49999827)
 texture = ExtResource("2_yq6py")
 offset = Vector2(90, 134)
 
@@ -890,7 +887,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_kf5n4")
 
 [node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=364517588]
-visible = false
 
 [node name="Body" type="Bone2D" parent="Skeleton2D" unique_id=2018718298]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
@@ -901,7 +897,7 @@ remote_path = NodePath("../../../VisualRoot/BodyAnimate/BodyMain")
 [node name="Head" type="Bone2D" parent="Skeleton2D/Body" unique_id=1609304975]
 unique_name_in_owner = true
 position = Vector2(0, -128)
-scale = Vector2(0.9999973, 0.9999973)
+scale = Vector2(0.9999967, 0.9999967)
 rest = Transform2D(1, 0, 0, 1, 0, -128)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/Body/Head" unique_id=1616108681]
@@ -909,8 +905,8 @@ remote_path = NodePath("../../../../VisualRoot/BodyAnimate/BodyMain/Head")
 
 [node name="EarL" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=1838437302]
 unique_name_in_owner = true
-position = Vector2(-82, -116)
-scale = Vector2(0.49999827, 0.49999827)
+position = Vector2(-82, -91)
+scale = Vector2(0.49999815, 0.49999815)
 rest = Transform2D(0.5, 0, 0, 0.5, -82, -116)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -922,8 +918,8 @@ remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/Mill
 [node name="EarR" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=536107048]
 unique_name_in_owner = true
 visible = false
-position = Vector2(82, -116)
-scale = Vector2(0.49999827, 0.49999827)
+position = Vector2(82, -91)
+scale = Vector2(0.49999815, 0.49999815)
 rest = Transform2D(0.5, 0, 0, 0.5, 82, -116)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -935,7 +931,7 @@ remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/Mill
 [node name="BackHair" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=1767547658]
 position = Vector2(61.833656, -35.589314)
 rotation = 0.27925268
-scale = Vector2(0.49999848, 0.49999848)
+scale = Vector2(0.49999836, 0.49999836)
 rest = Transform2D(0.47678345, 0.15059067, -0.15059067, 0.47678345, 61.833656, -35.589314)
 
 [node name="End" type="Bone2D" parent="Skeleton2D/Body/Head/BackHair" unique_id=1127734466]
@@ -951,7 +947,7 @@ remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/Mill
 [node name="Hair" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=431350459]
 position = Vector2(57, -185)
 rotation = 0.05235988
-scale = Vector2(0.49999723, 0.49999723)
+scale = Vector2(0.49999684, 0.49999684)
 rest = Transform2D(0.49931476, -0.02616798, 0.02616798, 0.49931476, 57, -185)
 
 [node name="End" type="Bone2D" parent="Skeleton2D/Body/Head/Hair" unique_id=1542907943]
@@ -982,7 +978,7 @@ remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/Mill
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Body" unique_id=384265428]
 position = Vector2(-33, -126)
 rotation = -0.08726646
-scale = Vector2(0.49999848, 0.49999848)
+scale = Vector2(0.49999818, 0.49999818)
 rest = Transform2D(0.5, 0, 0, 0.5, -33, -126)
 
 [node name="End" type="Bone2D" parent="Skeleton2D/Body/ArmL" unique_id=786637529]
@@ -998,7 +994,7 @@ remote_path = NodePath("../../../../VisualRoot/BodyAnimate/BodyMain/MillieArmL")
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Body" unique_id=1599861962]
 position = Vector2(33, -126)
 rotation = 0.08726646
-scale = Vector2(0.49999848, 0.49999848)
+scale = Vector2(0.4999983, 0.4999983)
 rest = Transform2D(0.5, 0, 0, 0.5, 33, -126)
 
 [node name="End" type="Bone2D" parent="Skeleton2D/Body/ArmR" unique_id=561759515]
@@ -1029,7 +1025,7 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Add2/add_amount = 1.2
 "parameters/Add2 3/add_amount" = 1.4
 "parameters/Add2 2/add_amount" = 1.4
-parameters/Neutral2ExpressionBlend2/blend_amount = 1.0
+parameters/Neutral2ExpressionBlend2/blend_amount = 0.0
 "parameters/Add2 4/add_amount" = 1.0
 parameters/BreathingAdd2/add_amount = 1.0
 parameters/EarAnimBlend2/blend_amount = 1.0
@@ -1057,6 +1053,16 @@ bus = &"UI"
 [node name="Vocal01" type="AudioStreamPlayer" parent="Audio" unique_id=258248656]
 unique_name_in_owner = true
 stream = ExtResource("37_85bs0")
+bus = &"UI"
+
+[node name="Vocal02" type="AudioStreamPlayer" parent="Audio" unique_id=1784044550]
+unique_name_in_owner = true
+stream = ExtResource("36_ljnpu")
+bus = &"UI"
+
+[node name="Vocal03" type="AudioStreamPlayer" parent="Audio" unique_id=1073981365]
+unique_name_in_owner = true
+stream = ExtResource("37_bcvi4")
 bus = &"UI"
 
 [node name="VocalExcited" type="AudioStreamPlayer" parent="Audio" unique_id=2113629635]

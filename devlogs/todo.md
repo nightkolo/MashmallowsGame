@@ -19,6 +19,8 @@
 
 ### Animation and SFX (DL 8-5)
 - [ ] Side-order
+  - [ ] Complete anim
+  - [ ] Implement SFX
   - [x] Sleep anim
   - [x] Pop-up anim
   - [x] Add anim
@@ -27,17 +29,13 @@
       - [x] Faces
     - [x] Loss
       - [x] Block
-  - [ ] Complete anim
-  - [ ] Implement SFX
 - [ ] Level
-  - [ ] Start visual bug	
   - [ ] NPC
-    - [ ] Looking when moving animation
     - [ ] Popping up happy animation
+    - [ ] Looking when moving animation
     - [ ] Speech sfx on Level Info
-    - [ ] Add more vocal SFX
-    - [ ] Artwork	
-      - [ ] Bakery complete 
+    - [ ] Add more vocal SFX 
+  - [x] Start visual bug	
 - [ ] PLayer
   - [ ] variable jump sfx pitch
   - [ ] Ledge animation (Scaredy eyes)

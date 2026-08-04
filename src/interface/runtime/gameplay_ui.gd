@@ -21,6 +21,8 @@ const BBCODE_TXT = "
 const BBCODE_TXT_NO_MOTION = "
 [outline_size=8][outline_color=#3f3f3f][color=#ffffff][center][font_size=37]"
 
+# I need to refactrore this shit
+
 #var _tween: Tween
 func the_checkerboard_has_been_checkered() -> void:
 	#is_game_paused = true

@@ -2,12 +2,8 @@
 extends Node2D
 class_name Millie
 
-# enum Animations {NA = 0, TEST = 99}
-
 enum Emotes {InitialMatch = 0, Match = 1, Unmatch = 2, Scared = 3, Complete = 4}
-
 enum Expressions {NEUTRAL, EXCITED, FRUSTRATED, BOUNCY, ASLEEP, BITTEN}
-
 enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES, CLOSED}
 
 @export var animate: bool = true:
@@ -44,7 +40,6 @@ enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES
 		if expression == Expressions.BITTEN && value != Expressions.BITTEN:
 			%ExpressionRegen.play()
 		
-		print_debug("is_animation_line: %s" % is_animation_line)
 		anim_expression(value, Eyes.REGULAR, true, is_animation_line)
 		expression = value
 @export var eyes: Eyes:
@@ -62,12 +57,9 @@ enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES
 			node.visible = true
 
 		eyes = value
-		
-		# anim_bounce(0.055)
 @export var show_outline: bool = false:
 	set(value):
-		if get_node_or_null("Outline"):
-			$Outline.visible = value
+		$Outline.visible = value
 		show_outline = value 
 @export_group("Animation variables")
 @export_range(0.0, 2.0, 0.05, "or_greater") var bounceness: float = 1.5
@@ -75,7 +67,9 @@ enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES
 @warning_ignore("unused_private_class_variable")
 @export_tool_button("Animate Transition", "Animation") var _animate = animate_node
 @export_category("Object to Assign")
+@export var auto_assign: bool = true  # TODO
 @export var world: Node2D
+@export var player: Player
 
 @onready var visual_root: Node2D = $VisualRoot
 @onready var outline: Node2D = $Outline
@@ -84,8 +78,11 @@ enum Eyes {REGULAR, HALF_CLOSED, SIDE_EYE, HAPPY, BLANK, WIDE_CLOSED, HEART_EYES
 @onready var body: Node2D = %BodyAnimate
 @onready var hoodie_heart: Polygon2D = %HoodieHeart
 @onready var blue_face: Sprite2D = %Blue
+@onready var node_eyes: Node2D = %Eyes
+@onready var vocal_sfx: Array[AudioStreamPlayer] = [%Vocal01, %Vocal02, %Vocal03]
 
 var is_animation_line: bool = false
+var is_emoting: bool = false
 
 var current_poly: PackedVector2Array
 var poly_middle_point: Vector2 = Vector2(186.769, 160)
@@ -93,11 +90,12 @@ var poly_middle_point: Vector2 = Vector2(186.769, 160)
 var ear_fall: PackedScene = preload("res://world/character/ear_fall.tscn")
 var hair_fall: PackedScene = preload("res://world/character/hair_fall.tscn")
 
-func animate_node():
+
+func animate_node() -> void:
 	anim_expression(expression, eyes)
 
 
-func animate_emote():
+func animate_emote() -> void:
 	anim_emote(emote)
 
 
@@ -110,8 +108,6 @@ var tween_bounce: Tween
 var tween: Tween
 var tween_emote: Tween
 
-var is_emoting: bool = false
-
 var _special_vocal_played: bool = false
 
 func play_yippie_vocal() -> void:
@@ -121,11 +117,14 @@ func play_yippie_vocal() -> void:
 		return
 
 	if randf() < 0.25 || _special_vocal_played:
-		%Vocal01.play()
+		var sfx: AudioStreamPlayer = vocal_sfx.pick_random()
+		
+		sfx.play()
 		_special_vocal_played = false
 	else:
 		%VocalExcited.play()
 		_special_vocal_played = true
+
 
 func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 	if p_emote == Emotes.Complete:
@@ -136,6 +135,7 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 	
 	if is_emoting:
 		return
+		
 	is_emoting = true
 	emote = p_emote
 
@@ -159,9 +159,9 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 	var ear_r := %EarR
 	var noise_face := %NoiseFace
 	var head := %MillieHead
+	var vocal := %VocalFrustrated
 
-	# print_debug(p_emote)
-
+	# Animation
 	match p_emote:
 		Emotes.Match:
 			eyes = Eyes.HEART_EYES
@@ -208,13 +208,13 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 			)
 		Emotes.Unmatch:
 			eyes = Eyes.WIDE_CLOSED
-			%VocalFrustrated.play()
+			vocal.play()
 			noise_face.visible = true
 			head.self_modulate = Color(1.0, 0.7, 0.7, 1.0)
 			ear_l.position.y = -116.0+25.0
 			ear_r.position.y = -116.0+25.0
 			tween_spin = create_tween().set_loops()
-			tween_spin.tween_callback(gen_noise).set_delay(0.1)
+			tween_spin.tween_callback(generate_noise).set_delay(0.1)
 			await anim_wobble(%Head, 2.0 * bounceness, 1.2)
 			if tween_spin:
 				tween_spin.kill()
@@ -229,24 +229,20 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 			
 		Emotes.Scared:
 			eyes = Eyes.BLANK
-			%VocalFrustrated.play()
+			vocal.play()
 
 			blue_face.visible = true
-			# blue_face.position.y = -540.0
 			ear_l.position.y = -116.0+25.0
 			ear_r.position.y = -116.0+25.0
 
 			tween = create_tween().set_parallel(true)
 			tween.tween_property(head, "self_modulate", Color(1.0, 0.0, 1.0), 0.8)
-			# tween.tween_property(blue_face, "position:y", -540.0+300.0, 0.8).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 			await anim_wobble(%Head, 2.0 * bounceness, 1.5)
-			# await get_tree().create_timer(0.15).timeout
 			if tween:
 				tween.kill()
 			tween = create_tween().set_parallel(true)
 			tween.tween_property(ear_l, "position:y", -116.0, 0.125)
 			tween.tween_property(ear_r, "position:y", -116.0, 0.125)
-			# tween.tween_property(blue_face, "position:y", -540.0, 0.125)
 			tween.tween_callback(func():
 				head.self_modulate = Color.WHITE
 				eyes = Eyes.REGULAR
@@ -261,14 +257,12 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 	is_emoting = false
 
 
-
 func anim_bounce(delay: float, p_expression : Expressions = expression, strength: float = 1.0) -> PackedVector2Array:
 	var l_poly: PackedVector2Array = current_poly.duplicate()
 	
 	body.scale.y = 1.0 / (strength * bounceness)
 
 	# HOODIE HEART PRESET
-
 	if p_expression == Expressions.FRUSTRATED:
 		l_poly[8].x = poly_middle_point.x - (bounceness * 40.0)
 	elif p_expression == Expressions.BOUNCY:
@@ -287,6 +281,7 @@ func anim_bounce(delay: float, p_expression : Expressions = expression, strength
 	return l_poly
 
 func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eyes.REGULAR, bounce: bool = true, animated: bool = false) -> void:
+	#Cache
 	var heart_eyes := %"7"
 	var ear_l := %EarL
 	var ear_r := %EarR
@@ -296,7 +291,6 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 	var noise_face := %NoiseFace
 	var head := %MillieHead
 	var particle_zzz := $Z
-
 
 	## PRESET
 	noise_face.visible = false
@@ -312,7 +306,6 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 	var delay := 0.055
 	
 	# TWEEN RESET
-	
 	if tween:
 		tween.kill()
 	if tween_spin:
@@ -326,7 +319,7 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 	if bounce:
 		l_poly = anim_bounce(delay, p_expression)
 	
-	# TWEEN EXPRESSION SPECIFIC
+	# ANIMATION
 	match p_expression:
 		
 		Expressions.BITTEN:
@@ -383,7 +376,7 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 			ear_r.position.y = -116.0+25.0
 			anim_wobble(%Head, 2.0 * bounceness, 1.5)
 			tween_spin = create_tween().set_loops()
-			tween_spin.tween_callback(gen_noise).set_delay(0.1)
+			tween_spin.tween_callback(generate_noise).set_delay(0.1)
 		
 		Expressions.ASLEEP:
 			eyes = Eyes.WIDE_CLOSED
@@ -394,7 +387,6 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 		
 		Expressions.BOUNCY:
 			eyes = Eyes.HAPPY
-
 		
 		_:
 			eyes = p_eyes
@@ -408,36 +400,47 @@ func anim_expression(p_expression : Expressions = expression, p_eyes: Eyes = Eye
 		hoodie_heart.polygon = l_poly 
 	
 	
-func gen_noise():
-	var l_range := noise_extend
-	%NoiseLine2D.points = PackedVector2Array([
-	Vector2(randf_range(-l_range, l_range),randf_range(-l_range, l_range)),
-	Vector2(randf_range(-l_range, l_range),randf_range(-l_range, l_range)),
-	Vector2(randf_range(-l_range, l_range),randf_range(-l_range, l_range)),
-	Vector2(randf_range(-l_range, l_range),randf_range(-l_range, l_range)),
-	Vector2(randf_range(-l_range, l_range),randf_range(-l_range, l_range)),
-	Vector2(randf_range(-l_range, l_range),randf_range(-l_range, l_range)),
-	Vector2(randf_range(-l_range, l_range),randf_range(-l_range, l_range)),
-	])
+func generate_noise() -> void:
+	var points := PackedVector2Array()
+
+	for i in 7:
+		points.append(
+			Vector2(
+				randf_range(-noise_extend, noise_extend),
+				randf_range(-noise_extend, noise_extend)
+			)
+		)
+
+	%NoiseLine2D.points = points
 
 
 var tween_wobble: Tween
 
 func anim_wobble(node: Node2D, amplitude: float = 10.0, duration: float = 1.0) -> void:
-	var amp := amplitude
-	var dur := duration
-	
+	var wobble_offsets: Array[float] = [
+		amplitude,
+		-amplitude,
+		amplitude * 0.5,
+		-amplitude * 0.5,
+		amplitude * 0.25,
+		-amplitude * 0.25,
+		amplitude * 0.125,
+		-amplitude * 0.125,
+		0.0
+	]
+	var step_duration := duration / wobble_offsets.size()
+
 	if tween_wobble:
 		tween_wobble.kill()
 	tween_wobble = create_tween()
 	tween_wobble.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	tween_wobble.tween_property(node,"rotation_degrees",amp,dur/18.0)
-	tween_wobble.tween_property(node,"rotation_degrees",-amp,dur/18.0)
-	tween_wobble.tween_property(node,"rotation_degrees",amp/2.0,dur/13.0)
-	tween_wobble.tween_property(node,"rotation_degrees",-amp/2.0,dur/13.0)
-	tween_wobble.tween_property(node,"rotation_degrees",amp/4.0,dur/13.0)
-	tween_wobble.tween_property(node,"rotation_degrees",-amp/4.0,dur/13.0)
-	tween_wobble.tween_property(node,"rotation_degrees",amp/8.0,dur/13.0)
-	tween_wobble.tween_property(node,"rotation_degrees",-amp/8.0,dur/13.0)
-	tween_wobble.tween_property(node,"rotation_degrees",0.0,dur/13.0)
+	
+	for offset: float in wobble_offsets:
+		tween_wobble.tween_property(
+			node,
+			"rotation_degrees",
+			offset,
+			step_duration
+		)
+	
 	await tween_wobble.finished
