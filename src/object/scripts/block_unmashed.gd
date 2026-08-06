@@ -13,14 +13,14 @@ signal player_entered(entered: bool)
 @export var mash_type: Util.MashType:
 	set(value):
 		if is_node_ready():
-			sprite.texture = Util.get_mash_type_texture(value, build_type)
+			sprite_block.texture = Util.get_mash_type_texture(value, build_type)
 		if attributes:
 			attributes.mash_type = value
 		mash_type = value
 @export var build_type: Util.BuildType:
 	set(value):
 		if is_node_ready():
-			sprite.texture = Util.get_mash_type_texture(mash_type, value)
+			sprite_block.texture = Util.get_mash_type_texture(mash_type, value)
 		if attributes:
 			attributes.build_type = value
 		build_type = value
@@ -28,6 +28,7 @@ signal player_entered(entered: bool)
 @export_group("Area casts")
 @export var player_down_detect: ShapeCast2D
 @export var top_detect: ShapeCast2D
+@export var ground_detect: ShapeCast2D
 @export_group("Audio")
 @export var audio: UnmashedAudio
 @export_group("Nodes")
@@ -37,7 +38,9 @@ signal player_entered(entered: bool)
 @export var particles_z: CPUParticles2D 
 @export_group("Sprites")
 @export var node_mash_prompt: Node2D 
-@export var sprite: Sprite2D
+@export var sprite_block: Sprite2D
+@export var sprite_eyes: Sprite2D
+@export var sprite_eyes_alert: Sprite2D
 @export var twisted_mask: Sprite2D
 @export var sprite_mashable: Sprite2D
 @export var sprite_highlight: Sprite2D
@@ -82,7 +85,7 @@ func _ready() -> void:
 		colli.set_deferred("disabled", attributes.slippery_block)
 	
 	if mash_type == Util.MashType.TWISTED:
-		sprite.visible = false
+		sprite_block.visible = false
 		sprite_highlight.visible = false
 		twisted_mask.visible = true
 		
@@ -106,7 +109,7 @@ func _ready() -> void:
 			
 	eyes_node.visible = mash_type != Util.MashType.MISC
 
-	GameLogic.setup_mash(sprite, attributes.mash_type, attributes.build_type)
+	GameLogic.setup_mash(sprite_block, attributes.mash_type, attributes.build_type)
 	
 	_ready_twisted_and_collision()
 	
@@ -282,7 +285,45 @@ var amount_collided_with: int:
 		
 		anim_highlight(collidied)
 		
-var _landed: bool
+var _landed: bool = true:
+	set(value):
+		if _landed == value:
+			return
+		
+		_landed = value
+		if value:
+			anim_sleep()
+		else:
+			anim_panick()
+var t_panick: Tween
+
+
+func anim_panick():
+	if ground_detect.is_colliding():
+		print_debug(ground_detect.get_collider(0))
+		return
+	
+	if sprite_node && sprite_eyes && sprite_eyes_alert:
+		sprite_eyes.visible = false
+		sprite_eyes_alert.visible = true
+		
+		if t_panick && t_panick.is_valid():
+			t_panick.kill()
+		const MAG = 10.0
+		const DUR = 0.25
+		
+		# Bad.
+		
+		t_panick = create_tween().set_loops()
+		t_panick.set_parallel(true)
+		t_panick.tween_property(sprite_eyes_alert, "position", Vector2(randf_range(-MAG,MAG),randf_range(-MAG,MAG)), DUR)
+		t_panick.tween_property(sprite_node, "skew", MAG, DUR)
+		t_panick.tween_property(sprite_node, "rotation_degrees", MAG, DUR)
+		t_panick.chain().tween_property(sprite_eyes_alert, "position", Vector2(randf_range(-MAG,MAG),randf_range(-MAG,MAG)), DUR)
+		t_panick.tween_property(sprite_node, "skew", -MAG, DUR)
+		t_panick.tween_property(sprite_node, "rotation_degrees", -MAG, DUR)
+		
+	
 
 # TODO hanging mid-air
 func _physics_process(delta: float) -> void:
@@ -351,7 +392,16 @@ func anim_unmashed() -> void:
 		anim_unmashed_finished.emit()
 
 func anim_sleep() -> void:
-	if sprite_node:
+	if t_panick:
+		t_panick.kill()
+	
+	if sprite_node && sprite_eyes && sprite_eyes_alert:
+		sprite_eyes.visible = true
+		sprite_eyes_alert.visible = false
+		
+		sprite_eyes_alert.position = Vector2.ZERO
+		sprite_node.skew = 0.0
+		sprite_node.rotation = 0.0
 		var dur := 1.0
 		var tween := create_tween().set_loops()
 		tween.set_parallel(true)
@@ -376,7 +426,7 @@ func anim_spawn_particles() -> void:
 		push_warning("particles_spawn not assigned")
 
 	var s: Sprite2D = Sprite2D.new()
-	s.texture = sprite.texture.duplicate()
+	s.texture = sprite_block.texture.duplicate()
 	s.scale = Vector2.ZERO
 	s.rotation = 0.0 if attributes.build_type == Util.BuildType.RECTANGLE else PI / 4.0
 	s.z_index = 1

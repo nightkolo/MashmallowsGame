@@ -37,9 +37,9 @@
     - [x] Add more vocal SFX 
   - [x] Start visual bug	
 - [ ] Blocks
+  - [x] Scared before hitting ground 
   - [ ] Bouncy on hit ground
   - [ ] One eye open on player close
-  - [ ] Scared before hitting ground 
 - [ ] Mashing
   - [ ] Mash particles
   - [ ] Flashing

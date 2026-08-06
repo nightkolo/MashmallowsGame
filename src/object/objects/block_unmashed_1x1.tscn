@@ -14,8 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://di0gtwsbffgjt" path="res://assets/objects/block-twisted-1xAny.png" id="9_qnklu"]
 [ext_resource type="Texture2D" uid="uid://dssqi37ffm7ee" path="res://assets/world/particle-marshspiral.png" id="9_siqqs"]
 [ext_resource type="Texture2D" uid="uid://bhfflnx828xex" path="res://assets/objects/block-twisted-1xAny-mashable.png" id="10_uaxf7"]
+[ext_resource type="Texture2D" uid="uid://7lf6cbddmsuf" path="res://assets/objects/block-eyes-stressed.png" id="13_w52cb"]
+[ext_resource type="PackedScene" uid="uid://bmu1cdw8x8kxs" path="res://world/effects/player_particles_dust.tscn" id="15_uaxf7"]
+[ext_resource type="PackedScene" uid="uid://df10xqr51prs8" path="res://world/effects/player_particle_right.tscn" id="16_w52cb"]
+[ext_resource type="PackedScene" uid="uid://cbuw1efjfm6wr" path="res://world/effects/player_particle_left.tscn" id="17_8y0bf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry3tk"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynmou"]
 size = Vector2(60, 20)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3xak3"]
@@ -33,23 +40,23 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynmou"]
-size = Vector2(60, 20)
-
-[node name="Unmashed" type="CharacterBody2D" unique_id=1597136109 node_paths=PackedStringArray("player_down_detect", "top_detect", "audio", "slippery_colli", "colli", "particles_spawn", "particles_z", "node_mash_prompt", "sprite", "twisted_mask", "sprite_mashable", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node")]
+[node name="Unmashed" type="CharacterBody2D" unique_id=1597136109 node_paths=PackedStringArray("player_down_detect", "top_detect", "ground_detect", "audio", "slippery_colli", "colli", "particles_spawn", "particles_z", "node_mash_prompt", "sprite_block", "sprite_eyes", "sprite_eyes_alert", "twisted_mask", "sprite_mashable", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node")]
 collision_layer = 8
 collision_mask = 11
 floor_stop_on_slope = false
 script = ExtResource("1_n48d1")
 player_down_detect = NodePath("PlayerBottomDetect")
 top_detect = NodePath("TopDetect")
+ground_detect = NodePath("GroundDetect")
 audio = NodePath("UnmashedAudio")
 slippery_colli = NodePath("CollisionPolygon2D")
 colli = NodePath("CollisionShape2D")
 particles_spawn = NodePath("Visual/Particles")
 particles_z = NodePath("Visual/Eyes/Z")
 node_mash_prompt = NodePath("MashPrompt")
-sprite = NodePath("Visual/SpriteNode/Sprite2D")
+sprite_block = NodePath("Visual/SpriteNode/Sprite2D")
+sprite_eyes = NodePath("Visual/Eyes/Sprite2D")
+sprite_eyes_alert = NodePath("Visual/Eyes/Alert")
 twisted_mask = NodePath("Visual/SpriteNode/TwistedMask")
 sprite_mashable = NodePath("Visual/SpriteNode/TwistedMask/Mashable")
 sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
@@ -62,6 +69,17 @@ metadata/_custom_type_script = "uid://madv71ijp5i3"
 shape = SubResource("RectangleShape2D_ry3tk")
 target_position = Vector2(0, 30)
 collision_mask = 42
+
+[node name="GroundDetect" type="ShapeCast2D" parent="." unique_id=354936773]
+shape = SubResource("RectangleShape2D_ry3tk")
+target_position = Vector2(0, 30)
+collision_mask = 2121
+
+[node name="TopDetect" type="ShapeCast2D" parent="." unique_id=1800823164]
+shape = SubResource("RectangleShape2D_ynmou")
+target_position = Vector2(0, -30)
+collision_mask = 523
+collide_with_areas = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=512506024]
 polygon = PackedVector2Array(-16, -32, -28, -16, -28, 8, -12, 32, 12, 32, 28, 8, 28, -16, 16, -32)
@@ -94,10 +112,10 @@ blink_time = 1.0
 blink_interval = 0.0
 
 [node name="Base" parent="MashPrompt/InputPrompt" index="1" unique_id=736620297]
-position = Vector2(0, 8.435173)
+position = Vector2(0, -2)
 
 [node name="Spiral" parent="MashPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -85632.46
+rotation = -87956.71
 
 [node name="Label" parent="MashPrompt/InputPrompt/Base" index="2" unique_id=1670702822]
 text = "X"
@@ -149,6 +167,12 @@ emitting = false
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_4m1b3")
 
+[node name="Alert" type="Sprite2D" parent="Visual/Eyes" unique_id=16678072]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("13_w52cb")
+
 [node name="Unmashable" type="Sprite2D" parent="Visual/Eyes" unique_id=1109161912]
 unique_name_in_owner = true
 editor_description = "80.0"
@@ -185,10 +209,14 @@ damping_max = 240.0
 scale_amount_curve = SubResource("Curve_barkj")
 color_ramp = SubResource("Gradient_ol1ck")
 
-[node name="TopDetect" type="ShapeCast2D" parent="." unique_id=1800823164]
-shape = SubResource("RectangleShape2D_ynmou")
-target_position = Vector2(0, -30)
-collision_mask = 523
-collide_with_areas = true
+[node name="Dust" parent="." unique_id=1755879273 instance=ExtResource("15_uaxf7")]
+position = Vector2(0, 30)
+emitting = false
+
+[node name="R" parent="." unique_id=585947001 instance=ExtResource("16_w52cb")]
+position = Vector2(0, 30)
+
+[node name="L" parent="." unique_id=531245437 instance=ExtResource("17_8y0bf")]
+position = Vector2(0, 30)
 
 [editable path="MashPrompt/InputPrompt"]

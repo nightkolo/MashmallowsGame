@@ -6,24 +6,27 @@
 [ext_resource type="Texture2D" uid="uid://du7hfm2logsjq" path="res://assets/objects/block-white-1x2.png" id="2_onbp7"]
 [ext_resource type="Texture2D" uid="uid://drcifs86uiqmb" path="res://assets/world/mash-highlighter-1x2.png" id="2_vrlv6"]
 [ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="3_cg17m"]
-[ext_resource type="Texture2D" uid="uid://bkdp3upfs50a2" path="res://assets/objects/block-shade-1x2-01.png" id="4_bnw4p"]
+[ext_resource type="Texture2D" uid="uid://7lf6cbddmsuf" path="res://assets/objects/block-eyes-stressed.png" id="6_bnw4p"]
 [ext_resource type="PackedScene" uid="uid://b8b1jq0amanoa" path="res://world/particles_z.tscn" id="7_gnbv7"]
 [ext_resource type="Texture2D" uid="uid://dssqi37ffm7ee" path="res://assets/world/particle-marshspiral.png" id="8_ssm2y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqld8"]
+size = Vector2(63, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1msb7"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnw4p"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg17m"]
+size = Vector2(62, 124)
 
 [sub_resource type="LabelSettings" id="LabelSettings_wqv4d"]
 font_size = 64
 font_color = Color(0.40392157, 0.40392157, 0.40392157, 1)
 outline_size = 14
 outline_color = Color(0.40392157, 0.40392157, 0.40392157, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg17m"]
-size = Vector2(62, 124)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqld8"]
-size = Vector2(63, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqv4d"]
-size = Vector2(60, 20)
 
 [sub_resource type="Curve" id="Curve_bnw4p"]
 _data = [Vector2(0, 0.49712896), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -34,29 +37,64 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402, 1)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "audio", "particles_spawn", "particles_z", "sprite", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node")]
+[node name="Unmashed" type="CharacterBody2D" unique_id=1957847022 node_paths=PackedStringArray("player_down_detect", "top_detect", "ground_detect", "audio", "slippery_colli", "colli", "particles_spawn", "particles_z", "sprite_block", "sprite_eyes", "sprite_eyes_alert", "sprite_highlight", "sprite_input", "sprite_node", "eyes_node")]
 collision_layer = 8
 collision_mask = 4105
 script = ExtResource("1_cg17m")
 build_type = 1
 player_down_detect = NodePath("PlayerBottomDetect")
+top_detect = NodePath("TopDetect")
+ground_detect = NodePath("GroundDetect")
 audio = NodePath("UnmashedAudio")
+slippery_colli = NodePath("CollisionPolygon2D2")
+colli = NodePath("CollisionShape2D")
 particles_spawn = NodePath("Particles")
 particles_z = NodePath("Z")
-sprite = NodePath("Visual/SpriteNode/Sprite2D")
+sprite_block = NodePath("Visual/SpriteNode/Sprite2D")
+sprite_eyes = NodePath("Visual/Eyes/Sprite2D")
+sprite_eyes_alert = NodePath("Visual/Eyes/Alert")
 sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
 sprite_input = NodePath("Visual/Eyes/Unmashable")
 sprite_node = NodePath("Visual/SpriteNode")
 eyes_node = NodePath("Visual/Eyes")
 metadata/_custom_type_script = "uid://madv71ijp5i3"
 
+[node name="PlayerBottomDetect" type="ShapeCast2D" parent="." unique_id=928000916]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_eqld8")
+target_position = Vector2(0, 30)
+collision_mask = 2
+
+[node name="GroundDetect" type="ShapeCast2D" parent="." unique_id=2004369765]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_1msb7")
+target_position = Vector2(0, 30)
+collision_mask = 2121
+
+[node name="TopDetect" type="ShapeCast2D" parent="." unique_id=1305217928]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_bnw4p")
+target_position = Vector2(0, -30)
+collision_mask = 523
+collide_with_areas = true
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." unique_id=331237745]
+polygon = PackedVector2Array(-16, -64, -28, -52, -28, 32, -12, 64, 12, 64, 28, 32, 28, -52, 16, -64)
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767633492]
+shape = SubResource("RectangleShape2D_cg17m")
+
 [node name="UnmashedAudio" parent="." unique_id=1397385759 instance=ExtResource("2_1msb7")]
 
 [node name="Visual" type="Node2D" parent="." unique_id=91394970]
+metadata/_edit_lock_ = true
 
 [node name="SpriteNode" type="Node2D" parent="Visual" unique_id=1466462306]
 position = Vector2(0, 64)
+rotation = -0.17453292
 scale = Vector2(0.9584988, 1.0186259)
+skew = 0.17453292
 
 [node name="Highlight" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1604238858]
 position = Vector2(0, -64)
@@ -68,19 +106,19 @@ position = Vector2(0, -64)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_onbp7")
 
-[node name="Shade" type="Sprite2D" parent="Visual/SpriteNode" unique_id=1733588835]
-visible = false
-self_modulate = Color(1, 1, 1, 0.3)
-position = Vector2(0, -63.50731)
-scale = Vector2(0.45, 0.4799451)
-texture = ExtResource("4_bnw4p")
-
 [node name="Eyes" type="Node2D" parent="Visual" unique_id=774960741]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visual/Eyes" unique_id=1096876944]
 position = Vector2(0, 32)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_cg17m")
+
+[node name="Alert" type="Sprite2D" parent="Visual/Eyes" unique_id=591429720]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 32)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_bnw4p")
 
 [node name="Unmashable" type="Sprite2D" parent="Visual/Eyes" unique_id=790824455]
 unique_name_in_owner = true
@@ -96,21 +134,6 @@ offset_right = 21.0
 offset_bottom = 46.0
 text = "X"
 label_settings = SubResource("LabelSettings_wqv4d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=767633492]
-shape = SubResource("RectangleShape2D_cg17m")
-
-[node name="PlayerBottomDetect" type="ShapeCast2D" parent="." unique_id=928000916]
-position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_eqld8")
-target_position = Vector2(0, 30)
-collision_mask = 2
-
-[node name="UnmashedBlockonTopDetect" type="ShapeCast2D" parent="." unique_id=1835517699]
-position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_wqv4d")
-target_position = Vector2(0, -30)
-collision_mask = 8
 
 [node name="Z" parent="." unique_id=2080773523 instance=ExtResource("7_gnbv7")]
 position = Vector2(32, 16)
