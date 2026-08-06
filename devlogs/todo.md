@@ -38,7 +38,7 @@
   - [x] Start visual bug	
 - [ ] Blocks
   - [x] Scared before hitting ground 
-  - [ ] Bouncy on hit ground
+  - [x] Bouncy on hit ground
   - [ ] One eye open on player close
 - [ ] Mashing
   - [ ] Mash particles

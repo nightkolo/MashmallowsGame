@@ -27,7 +27,8 @@ signal attribute_set()
 @export var sprite_highlight: Sprite2D
 @export_group("Eyes")
 @export var sprite_eyes_open: Sprite2D #sprite_eyes_open
-@export var sprite_eyes_regular: Node2D
+@export var node_eyes_regular: Node2D
+@export var sprite_eyes_regular: Sprite2D
 @export var sprite_eyes_angry: Sprite2D
 @export var sprite_eyes_wide: Sprite2D
 @export var sprite_eyes_closed: Sprite2D # sprite_eyes_closed
@@ -159,17 +160,21 @@ func _ready() -> void:
 	GameLogic.setup_mash(sprite_block, attributes.mash_type, attributes.build_type)
 	
 	# Eyes
-	if sprite_eyes_regular && sprite_eyes_wide && sprite_eyes_angry:
+	if node_eyes_regular && sprite_eyes_wide && sprite_eyes_angry:
 		sprite_eyes_angry.visible = false
-		sprite_eyes_regular.visible = false
+		node_eyes_regular.visible = false
 		sprite_eyes_wide.visible = false
 		match mash_type:
 			Util.MashType.AIR_CHERRY_BOMB, Util.MashType.CHERRY_BOMB:
 				sprite_eyes_angry.visible = true
-			Util.MashType.CHOCO:
-				sprite_eyes_wide.visible = true
+			Util.MashType.MISC:
+				pass
 			_:
-				sprite_eyes_regular.visible = true
+				var is_choco := mash_type == Util.MashType.CHOCO
+				
+				sprite_eyes_open.visible = !is_choco
+				sprite_eyes_wide.visible = is_choco
+				node_eyes_regular.visible = true
 				
 				# Ledge animation
 				if mash_type != Util.MashType.PLAYER && parent_player:
@@ -180,7 +185,7 @@ func _ready() -> void:
 					
 					block_detect.ground_detect.body_exited.connect(func(_body: Node2D):
 						if !parent_player.is_mashing && parent_player.is_on_floor() && block_detect.ground_detect.get_overlapping_bodies().is_empty():
-							sprite_eyes_regular.visible = false
+							node_eyes_regular.visible = false
 							sprite_eyes_stressed.visible = true
 						else:
 							_show_regular_eyes()
@@ -196,7 +201,7 @@ func _ready() -> void:
 
 
 func _show_regular_eyes(_temp = null) -> void:
-	sprite_eyes_regular.visible = true
+	node_eyes_regular.visible = true
 	sprite_eyes_stressed.visible = false
 
 

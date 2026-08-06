@@ -9,7 +9,7 @@ size = Vector2(60, 1)
 size = Vector2(50, 1)
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_jn510"]
-length = 192.0
+length = 128.0
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_dw56o"]
 length = 45.0

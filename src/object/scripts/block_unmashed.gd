@@ -41,6 +41,7 @@ signal player_entered(entered: bool)
 @export var sprite_block: Sprite2D
 @export var sprite_eyes: Sprite2D
 @export var sprite_eyes_alert: Sprite2D
+@export var sprite_eyes_one: Sprite2D
 @export var twisted_mask: Sprite2D
 @export var sprite_mashable: Sprite2D
 @export var sprite_highlight: Sprite2D
@@ -58,6 +59,7 @@ var is_player_close: bool = false:
 var is_at_expand_period: bool = false
 var is_expanding: bool = false
 
+var _tween_land: Tween
 
 func _ready() -> void:
 	set_physics_process(true)
@@ -111,6 +113,26 @@ func _ready() -> void:
 
 	GameLogic.setup_mash(sprite_block, attributes.mash_type, attributes.build_type)
 	
+	# Animation
+	has_landed.connect(func(strength: float):
+		var mag: float = minf(strength * 0.04, 0.5)
+		var dur := 1.35
+		
+		sprite_highlight.visible = false
+		
+		if _tween_land:
+			_tween_land.kill()
+			
+		_tween_land = create_tween().set_parallel(true)
+		
+		_tween_land.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+		_tween_land.tween_property(sprite_block,"scale",0.5*Vector2(1.0 + mag,1.0 - mag),0.07)
+		_tween_land.tween_property(sprite_block,"scale",0.5*Vector2(1.0,1.0),dur).set_delay(0.07)
+		await _tween_land.finished
+		
+		sprite_highlight.visible = true
+		)
+	
 	_ready_twisted_and_collision()
 	
 	if was_mashed:
@@ -125,8 +147,6 @@ func _ready_twisted_and_collision() -> void:
 	collision_mask = 1 + 2 + 8 + 2048
 	
 	if mash_type == Util.MashType.TWISTED:
-		#(colli.shape as RectangleShape2D).size.x -= 10.0
-		
 		anim_expanding(!was_mashed)
 
 
@@ -307,23 +327,23 @@ func anim_panick():
 		sprite_eyes.visible = false
 		sprite_eyes_alert.visible = true
 		
-		if t_panick && t_panick.is_valid():
-			t_panick.kill()
-		const MAG = 10.0
-		const DUR = 0.25
+		#if t_panick && t_panick.is_valid():
+			#t_panick.kill()
+		#const MAG = 10.0
+		#const DUR = 0.25
+		#
+		## Bad.
+		#
+		#t_panick = create_tween().set_loops()
+		#t_panick.set_parallel(true)
+		#t_panick.tween_property(sprite_eyes_alert, "position", Vector2(randf_range(-MAG,MAG),randf_range(-MAG,MAG)), DUR)
+		#t_panick.tween_property(sprite_node, "skew", MAG, DUR)
+		#t_panick.tween_property(sprite_node, "rotation_degrees", MAG, DUR)
+		#t_panick.chain().tween_property(sprite_eyes_alert, "position", Vector2(randf_range(-MAG,MAG),randf_range(-MAG,MAG)), DUR)
+		#t_panick.tween_property(sprite_node, "skew", -MAG, DUR)
+		#t_panick.tween_property(sprite_node, "rotation_degrees", -MAG, DUR)
 		
-		# Bad.
-		
-		t_panick = create_tween().set_loops()
-		t_panick.set_parallel(true)
-		t_panick.tween_property(sprite_eyes_alert, "position", Vector2(randf_range(-MAG,MAG),randf_range(-MAG,MAG)), DUR)
-		t_panick.tween_property(sprite_node, "skew", MAG, DUR)
-		t_panick.tween_property(sprite_node, "rotation_degrees", MAG, DUR)
-		t_panick.chain().tween_property(sprite_eyes_alert, "position", Vector2(randf_range(-MAG,MAG),randf_range(-MAG,MAG)), DUR)
-		t_panick.tween_property(sprite_node, "skew", -MAG, DUR)
-		t_panick.tween_property(sprite_node, "rotation_degrees", -MAG, DUR)
-		
-	
+var _last_velocity: Vector2
 
 # TODO hanging mid-air
 func _physics_process(delta: float) -> void:
@@ -337,12 +357,15 @@ func _physics_process(delta: float) -> void:
 		velocity.y = 0.0
 		
 	if !_landed && is_on_floor():
-		has_landed.emit(abs(velocity.y / 100.0))
+		has_landed.emit(abs(_last_velocity.y / 100.0))
 		_landed = true
 		
 	if !is_on_floor():
 		_landed = false
-		
+		sprite_eyes_one.visible = false
+	
+	_last_velocity = velocity
+	
 	if is_at_expand_period:
 		
 		if top_detect.is_colliding():
@@ -359,6 +382,8 @@ func _physics_process(delta: float) -> void:
 	
 	if !is_expanding:
 		move_and_slide()
+		
+		
 	else:
 		var displace: float = (2.0 - EXPAND_TIME) * (attributes.twisted_strength / 4.0)
 		
@@ -439,14 +464,23 @@ func anim_spawn_particles() -> void:
 
 var _tween_prompt: Tween
 
-func anim_highlight(p_highlight: bool) -> void:
+func anim_highlight(highlight_block: bool) -> void:
 	var can_mash: bool = true
-
-	if GameMgr.current_player:
-		can_mash = GameMgr.current_player.can_perform_mash()
-		sprite_input.visible = !can_mash
+	var p: Player = GameMgr.current_player
 	
-	is_player_close = p_highlight
+	if p:
+		can_mash = p.can_perform_mash()
+		sprite_input.visible = !can_mash
+		
+		if highlight_block && (randf() > 1.0 / 2.0):
+			sprite_eyes_one.flip_h = signf(global_position.x - p.global_position.x) < 0
+			sprite_eyes_one.visible = true
+			sprite_eyes.self_modulate = Color(Color.WHITE, 0.0)
+		else:
+			sprite_eyes_one.visible = false
+			sprite_eyes.self_modulate = Color(Color.WHITE, 1.0)
+	
+	is_player_close = highlight_block
 	
 	if _tween_light:
 		_tween_light.kill()
@@ -456,8 +490,8 @@ func anim_highlight(p_highlight: bool) -> void:
 	if sprite_mashable:
 		sprite_mashable.self_modulate = Color(Color.WHITE, 1.0)
 	
-	if p_highlight:
-		if tutorial_block && node_mash_prompt:
+	if highlight_block:
+		if tutorial_block:
 			node_mash_prompt.visible = true
 			
 			if _tween_prompt:
@@ -465,19 +499,14 @@ func anim_highlight(p_highlight: bool) -> void:
 			_tween_prompt = create_tween()
 			_tween_prompt.tween_property(node_mash_prompt, "scale", Vector2.ONE, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		
-		if can_mash:
-			if sprite_mashable:
-				sprite_mashable.visible = true
-			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52, 0.1)
-		else:
-			if sprite_mashable:
-				sprite_mashable.visible = false
-			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
+		if mash_type == Util.MashType.TWISTED:
+			sprite_mashable.visible = can_mash
 		
+		_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52 if can_mash else Vector2.ONE*0.25, 0.1)
 		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE), 0.1)
 
 	else:
-		if tutorial_block && node_mash_prompt:
+		if tutorial_block:
 			if _tween_prompt:
 				_tween_prompt.kill()
 				
@@ -485,7 +514,7 @@ func anim_highlight(p_highlight: bool) -> void:
 			_tween_prompt.tween_property(node_mash_prompt, "scale", Vector2.ONE * 0.0, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 
 		if can_mash:
-			if sprite_mashable:
+			if mash_type == Util.MashType.TWISTED:
 				sprite_mashable.visible = false
 			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
 		
@@ -493,5 +522,5 @@ func anim_highlight(p_highlight: bool) -> void:
 		
 		await _tween_light.finished
 		
-		if node_mash_prompt:
+		if build_type == Util.BuildType.SQUARE:
 			node_mash_prompt.visible = false

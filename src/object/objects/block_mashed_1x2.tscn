@@ -158,7 +158,7 @@ _data = {
 &"idle": SubResource("Animation_avy6u")
 }
 
-[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed", "sprite_eyes_stressed")]
+[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_block", "sprite_highlight", "sprite_eyes_open", "node_eyes_regular", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed", "sprite_eyes_stressed")]
 shape = SubResource("ConvexPolygonShape2D_e3omn")
 script = ExtResource("2_jo7o3")
 build_type = 1
@@ -174,9 +174,10 @@ node_eye_sprites = NodePath("Visual/Node2D/Eyes")
 sprite_block = NodePath("Visual/SpriteNode/Sprite2D")
 sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
 sprite_eyes_open = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D")
-sprite_eyes_regular = NodePath("Visual/Node2D/Eyes/Regular")
+node_eyes_regular = NodePath("Visual/Node2D/Eyes/Regular")
+sprite_eyes_regular = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D")
 sprite_eyes_angry = NodePath("Visual/Node2D/Eyes/Angy")
-sprite_eyes_wide = NodePath("Visual/Node2D/Eyes/Wide")
+sprite_eyes_wide = NodePath("Visual/Node2D/Eyes/Regular/Wide")
 sprite_eyes_closed = NodePath("Visual/Node2D/Eyes/Closed")
 sprite_eyes_stressed = NodePath("Visual/Node2D/Eyes/Stressed")
 metadata/_custom_type_script = "uid://bgc37b0mpxwv3"
@@ -208,6 +209,11 @@ position = Vector2(0, 32)
 
 [node name="Regular" type="Node2D" parent="Visual/Node2D/Eyes" unique_id=1793175892]
 
+[node name="Wide" type="Sprite2D" parent="Visual/Node2D/Eyes/Regular" unique_id=291937244]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_i6i5v")
+
 [node name="Sprite2D" type="Sprite2D" parent="Visual/Node2D/Eyes/Regular" unique_id=724720804]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_ka0jd")
@@ -216,11 +222,6 @@ texture = ExtResource("3_ka0jd")
 visible = false
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("8_axj8d")
-
-[node name="Wide" type="Sprite2D" parent="Visual/Node2D/Eyes" unique_id=291937244]
-visible = false
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_i6i5v")
 
 [node name="Closed" type="Sprite2D" parent="Visual/Node2D/Eyes" unique_id=584785497]
 visible = false
