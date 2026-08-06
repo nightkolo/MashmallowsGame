@@ -1,9 +1,7 @@
 # Todo
 
 ### Bugs (DL 8-4)
-- [ ] Levels
-  - [ ] 1-6 RESET NOTICE
-  - [x] Account new changes
+- [x] Account new changes
 - [ ] Complete screen
   - [ ] Add SFX
   - [x] Fix behavior
@@ -36,16 +34,13 @@
     - [x] Looking when moving animation
     - [x] Add more vocal SFX 
   - [x] Start visual bug	
-- [ ] Blocks
-  - [x] Scared before hitting ground 
-  - [x] Bouncy on hit ground
-  - [ ] One eye open on player close
-- [ ] Mashing
-  - [ ] Mash particles
-  - [ ] Flashing
 - [x] PLayer
   - [x] variable jump sfx pitch
   - [x] Ledge animation (Scaredy eyes)
+- [x] Blocks
+  - [x] Scared before hitting ground 
+  - [x] Bouncy on hit ground
+  - [x] One eye open on player close
 
 ### Gameplay (DL 8-6)
 - [ ] Bakery 2
@@ -61,8 +56,8 @@
 
 ### Assets, Design, and Project (DL 8-8)
 - [ ] Promo (After bugs and anim) 
-  - [ ] Game trailer
-  - [ ] Game artwork
+  - [ ] Game trailer (See promo.md)
+  - [ ] Game artwork 
   - [ ] Screenshots layout
   - [ ] Game section
   - [x] Side order SFX, Bokoblock Reuse
@@ -88,6 +83,14 @@ Me when i decide to fix bugs but i discover more bugs
   - [x] API testing and saving
 - [ ] Input prompts
     - [ ] Controller (Generic)
+- [ ] Menus
 
 
+### Extra
 
+- [ ] Codebase clean-up
+- [ ] Mashing
+  - [ ] Mash particles
+  - [ ] Flashing
+- [ ] Levels
+  - [ ] 1-6 RESET NOTICE

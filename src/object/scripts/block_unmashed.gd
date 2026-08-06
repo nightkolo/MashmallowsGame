@@ -106,8 +106,7 @@ func _ready() -> void:
 		if audio:
 			audio.play_spawn_sound()
 		
-		if mash_type != Util.MashType.TWISTED:
-			anim_sleep()
+		anim_sleep()
 			
 	eyes_node.visible = mash_type != Util.MashType.MISC
 
@@ -420,6 +419,9 @@ func anim_sleep() -> void:
 	if t_panick:
 		t_panick.kill()
 	
+	if mash_type == Util.MashType.TWISTED:
+		return
+	
 	if sprite_node && sprite_eyes && sprite_eyes_alert:
 		sprite_eyes.visible = true
 		sprite_eyes_alert.visible = false
@@ -501,9 +503,9 @@ func anim_highlight(highlight_block: bool) -> void:
 		
 		if mash_type == Util.MashType.TWISTED:
 			sprite_mashable.visible = can_mash
-		
-		_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52 if can_mash else Vector2.ONE*0.25, 0.1)
-		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE), 0.1)
+		else:
+			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.52 if can_mash else Vector2.ONE*0.25, 0.1)
+			_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE), 0.1)
 
 	else:
 		if tutorial_block:
@@ -516,7 +518,8 @@ func anim_highlight(highlight_block: bool) -> void:
 		if can_mash:
 			if mash_type == Util.MashType.TWISTED:
 				sprite_mashable.visible = false
-			_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
+			else:
+				_tween_light.tween_property(sprite_highlight, "scale", Vector2.ONE*0.25, 0.1)
 		
 		_tween_light.tween_property(sprite_input, "modulate", Color(Color.WHITE, 0.0), 0.1)
 		

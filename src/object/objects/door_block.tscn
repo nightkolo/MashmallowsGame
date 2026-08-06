@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bv06a5tb7sqj3" path="res://audio/sfx/bubblegate_close_02.wav" id="9_52xk0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivh0c"]
-size = Vector2(64, 64)
+size = Vector2(54, 54)
 
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_qu61c"]
 length = 40.0
