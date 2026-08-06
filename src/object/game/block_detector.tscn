@@ -8,6 +8,9 @@ size = Vector2(60, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gib7m"]
 size = Vector2(50, 1)
 
+[sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_jn510"]
+length = 192.0
+
 [sub_resource type="SeparationRayShape2D" id="SeparationRayShape2D_dw56o"]
 length = 45.0
 
@@ -62,12 +65,19 @@ collision_mask = 4104
 [node name="GroundRay" type="ShapeCast2D" parent="." unique_id=810734938]
 shape = SubResource("RectangleShape2D_dw56o")
 target_position = Vector2(0, 35)
-collision_mask = 10305
+collision_mask = 2113
 
 [node name="BlocksRay" type="ShapeCast2D" parent="." unique_id=1047533884]
 shape = SubResource("RectangleShape2D_gib7m")
 target_position = Vector2(0, 45)
 collision_mask = 4107
+
+[node name="GroundDetect" type="Area2D" parent="." unique_id=14659380]
+collision_layer = 0
+collision_mask = 2121
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDetect" unique_id=619263320]
+shape = SubResource("SeparationRayShape2D_jn510")
 
 [node name="UnmashedBlockDetect1x1" type="Area2D" parent="." unique_id=223326301]
 visible = false

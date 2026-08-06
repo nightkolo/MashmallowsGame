@@ -94,6 +94,7 @@ var is_active: bool = true:
 		is_active = value
 var is_exploding: bool ## Is during Cherry Bomb explosion animation
 var is_hanging: bool = false
+var is_mashing: bool = false
 var player_blocks_code: Array[Dictionary] = []
 var child_blocks: Array[Mashed] = [] # Stack data structure
 var new_child_blocks: Array[Mashed] # Temporary Stack data structure
@@ -273,6 +274,8 @@ func mash_child_blocks() -> void: ## Ok -> O(n)
 	if cannot_perform_mash_in_gameplay():
 		return
 	
+	is_mashing = true
+	
 	var blocks: Array[Mashed] = child_blocks.duplicate(true) # To avoid infinite recursion
 	_pos_before_mash = position
 	
@@ -283,6 +286,8 @@ func mash_child_blocks() -> void: ## Ok -> O(n)
 			animator.anim_down(false, true)
 			
 			break
+	
+	is_mashing = false
 
 
 func unmash() -> void: # O(1)
@@ -556,14 +561,19 @@ func jump() -> void:
 	
 	if audio.fall_sfx.playing:
 		audio.fall_sfx.stop()
-		
+	
+	var aud: AudioStreamPlayer2D
+	
 	if is_tall_block_mashed():
-		audio.sfx_jump_heavy.play()
+		aud = audio.sfx_jump_heavy
 	else:
 		if child_blocks.size() > 1:
-			audio.sfx_jump_mult.play()
+			aud = audio.sfx_jump_mult
 		else:
-			audio.sfx_jump_single.play()
+			aud = audio.sfx_jump_single
+	
+	aud.pitch_scale = randf_range(0.8, 1.1)
+	aud.play()
 	
 	has_jumpped.emit()
 	velocity.y = -jump_height

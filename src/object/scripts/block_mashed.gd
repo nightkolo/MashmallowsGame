@@ -22,18 +22,16 @@ signal attribute_set()
 @export var node_block_sprites: Node2D # node_block_sprites
 @export var node_eye_sprites_2: Node2D # node_eye_sprites
 @export var node_eye_sprites: Node2D # node_eye_sprites
-@export var node_hat: Node2D
 @export_group("Sprites")
-@export var sprite_shade: Sprite2D
 @export var sprite_block: Sprite2D  # sprite_block
 @export var sprite_highlight: Sprite2D
-@export var sprite_hat: Sprite2D
 @export_group("Eyes")
 @export var sprite_eyes_open: Sprite2D #sprite_eyes_open
 @export var sprite_eyes_regular: Node2D
 @export var sprite_eyes_angry: Sprite2D
 @export var sprite_eyes_wide: Sprite2D
 @export var sprite_eyes_closed: Sprite2D # sprite_eyes_closed
+@export var sprite_eyes_stressed: Sprite2D # sprite_eyes_closed
 #
 
 # Objects
@@ -149,7 +147,8 @@ func _ready() -> void:
 		parent_player = get_parent()
 		
 		_ready_parent_dependencies()
-
+	
+	
 	# Exclamation mark animation
 	if mash_type != Util.MashType.MISC && particle_mark:
 		var m := particle_mark.instantiate()
@@ -171,7 +170,21 @@ func _ready() -> void:
 				sprite_eyes_wide.visible = true
 			_:
 				sprite_eyes_regular.visible = true
-	#
+				
+				# Ledge animation
+				if mash_type != Util.MashType.PLAYER && parent_player:
+					anim_stressed()
+					
+					parent_player.has_landed.connect(_show_regular_eyes)
+					block_detect.ground_detect.body_entered.connect(_show_regular_eyes)
+					
+					block_detect.ground_detect.body_exited.connect(func(_body: Node2D):
+						if !parent_player.is_mashing && parent_player.is_on_floor() && block_detect.ground_detect.get_overlapping_bodies().is_empty():
+							sprite_eyes_regular.visible = false
+							sprite_eyes_stressed.visible = true
+						else:
+							_show_regular_eyes()
+						)
 
 	anim_blinking()
 
@@ -180,7 +193,12 @@ func _ready() -> void:
 	
 	for ray: RayCast2D in block_detect.cherry_bomb_rays:
 		ray.enabled = true
-		
+
+
+func _show_regular_eyes(_temp = null) -> void:
+	sprite_eyes_regular.visible = true
+	sprite_eyes_stressed.visible = false
+
 
 func _ready_parent_dependencies() -> void:
 	# Dust animation
@@ -365,6 +383,13 @@ func anim_eye_wobble(dur: float = 1.0, mag: float = 10.0) -> void:
 
 	t_wobble.tween_property(node_eye_sprites_2, "position:y", -mag + extra, dur)
 	t_wobble.tween_property(node_eye_sprites_2, "position:y", mag + extra, dur)
+
+
+func anim_stressed():
+	var t := create_tween().set_loops()
+	t.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
+	t.tween_property(sprite_eyes_stressed, "position:x", -4.0, 0.25)
+	t.tween_property(sprite_eyes_stressed, "position:x", 4.0, 0.25)
 
 
 func anim_blinking():

@@ -32,21 +32,20 @@
 - [ ] Level
   - [ ] NPC
     - [ ] Speech sfx on Level Info
-    - [x] Popping up happy animation
+    - [ ] Popping up animation bug
     - [x] Looking when moving animation
     - [x] Add more vocal SFX 
   - [x] Start visual bug	
-- [ ] PLayer
-  - [ ] variable jump sfx pitch
-  - [ ] Ledge animation (Scaredy eyes)
 - [ ] Blocks
-  - [ ] Seperated eyes
   - [ ] Bouncy on hit ground
   - [ ] One eye open on player close
-  - [ ] Scared before hitting ground
+  - [ ] Scared before hitting ground 
 - [ ] Mashing
   - [ ] Mash particles
   - [ ] Flashing
+- [x] PLayer
+  - [x] variable jump sfx pitch
+  - [x] Ledge animation (Scaredy eyes)
 
 ### Gameplay (DL 8-6)
 - [ ] Bakery 2

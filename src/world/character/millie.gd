@@ -324,7 +324,7 @@ func anim_bounce(delay: float, p_expression : Expressions = expression, strength
 	elif p_expression == Expressions.BOUNCY:
 		l_poly[8].y = poly_middle_point.y - (bounceness * 10.0)
 	else:
-		l_poly[8].y = poly_middle_point.y - (bounceness * 35.0)
+		l_poly[8].y = poly_middle_point.y - (bounceness * 39.0)
 	
 	if tween_bounce:
 		tween_bounce.kill()
@@ -490,7 +490,7 @@ func anim_wobble(node: Node2D, amplitude: float = 10.0, duration: float = 1.0) -
 		-amplitude * 0.125,
 		0.0
 	]
-	var step_duration := duration / wobble_offsets.size()
+	var step_dur := duration / wobble_offsets.size()
 
 	if tween_wobble:
 		tween_wobble.kill()
@@ -498,11 +498,6 @@ func anim_wobble(node: Node2D, amplitude: float = 10.0, duration: float = 1.0) -
 	tween_wobble.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	
 	for offset: float in wobble_offsets:
-		tween_wobble.tween_property(
-			node,
-			"rotation_degrees",
-			offset,
-			step_duration
-		)
+		tween_wobble.tween_property(node,"rotation_degrees",offset,step_dur)
 	
 	await tween_wobble.finished

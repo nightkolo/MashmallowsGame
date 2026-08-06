@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://du7hfm2logsjq" path="res://assets/objects/block-white-1x2.png" id="2_wfio2"]
 [ext_resource type="Texture2D" uid="uid://dwkdg7wxabl4p" path="res://assets/objects/block-eyes-regular.png" id="3_ka0jd"]
 [ext_resource type="PackedScene" uid="uid://krw76abox8r3" path="res://object/game/block_detector.tscn" id="4_84y5p"]
-[ext_resource type="Texture2D" uid="uid://bkdp3upfs50a2" path="res://assets/objects/block-shade-1x2-01.png" id="5_1seuy"]
 [ext_resource type="Texture2D" uid="uid://cbyhro8uojy6a" path="res://assets/objects/block-eyes-closed.png" id="6_jo6og"]
 [ext_resource type="Texture2D" uid="uid://28pnv22t5b7d" path="res://assets/objects/block-eyes-angry-black.png" id="8_axj8d"]
+[ext_resource type="Texture2D" uid="uid://7lf6cbddmsuf" path="res://assets/objects/block-eyes-stressed.png" id="9_grhf2"]
 [ext_resource type="Texture2D" uid="uid://cwhqh20gmoa4t" path="res://assets/objects/block-eyes-choco.png" id="9_i6i5v"]
 [ext_resource type="PackedScene" uid="uid://bmu1cdw8x8kxs" path="res://world/effects/player_particles_dust.tscn" id="9_vq6hd"]
 [ext_resource type="PackedScene" uid="uid://df10xqr51prs8" path="res://world/effects/player_particle_right.tscn" id="10_avy6u"]
@@ -158,7 +158,7 @@ _data = {
 &"idle": SubResource("Animation_avy6u")
 }
 
-[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_shade", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed")]
+[node name="Mashed" type="CollisionShape2D" unique_id=499008387 node_paths=PackedStringArray("block_detect", "dust_particles", "r_particles", "l_particles", "audio", "anim", "node_block_sprites", "node_eye_sprites_2", "node_eye_sprites", "sprite_block", "sprite_highlight", "sprite_eyes_open", "sprite_eyes_regular", "sprite_eyes_angry", "sprite_eyes_wide", "sprite_eyes_closed", "sprite_eyes_stressed")]
 shape = SubResource("ConvexPolygonShape2D_e3omn")
 script = ExtResource("2_jo7o3")
 build_type = 1
@@ -171,7 +171,6 @@ anim = NodePath("AnimationPlayer")
 node_block_sprites = NodePath("Visual/SpriteNode")
 node_eye_sprites_2 = NodePath("Visual/Node2D")
 node_eye_sprites = NodePath("Visual/Node2D/Eyes")
-sprite_shade = NodePath("Visual/Node2D/Shade")
 sprite_block = NodePath("Visual/SpriteNode/Sprite2D")
 sprite_highlight = NodePath("Visual/SpriteNode/Highlight")
 sprite_eyes_open = NodePath("Visual/Node2D/Eyes/Regular/Sprite2D")
@@ -179,6 +178,7 @@ sprite_eyes_regular = NodePath("Visual/Node2D/Eyes/Regular")
 sprite_eyes_angry = NodePath("Visual/Node2D/Eyes/Angy")
 sprite_eyes_wide = NodePath("Visual/Node2D/Eyes/Wide")
 sprite_eyes_closed = NodePath("Visual/Node2D/Eyes/Closed")
+sprite_eyes_stressed = NodePath("Visual/Node2D/Eyes/Stressed")
 metadata/_custom_type_script = "uid://bgc37b0mpxwv3"
 
 [node name="MashedAudio" parent="." unique_id=1474038607 instance=ExtResource("2_grhf2")]
@@ -203,12 +203,6 @@ texture = ExtResource("2_wfio2")
 
 [node name="Node2D" type="Node2D" parent="Visual" unique_id=1206578792]
 
-[node name="Shade" type="Sprite2D" parent="Visual/Node2D" unique_id=1021077654]
-visible = false
-self_modulate = Color(1, 1, 1, 0.3)
-scale = Vector2(0.45, 0.45)
-texture = ExtResource("5_1seuy")
-
 [node name="Eyes" type="Node2D" parent="Visual/Node2D" unique_id=119415306]
 position = Vector2(0, 32)
 
@@ -232,6 +226,12 @@ texture = ExtResource("9_i6i5v")
 visible = false
 scale = Vector2(0.6, 0.6)
 texture = SubResource("CompressedTexture2D_axj8d")
+
+[node name="Stressed" type="Sprite2D" parent="Visual/Node2D/Eyes" unique_id=665586968]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_grhf2")
 
 [node name="Dust" parent="." unique_id=1755879273 instance=ExtResource("9_vq6hd")]
 position = Vector2(0, 60)
