@@ -12,6 +12,7 @@ class_name Level
 @export var show_dev_ui: bool = false ## @experimental
 @export var show_unmashed_blocks: bool = true 
 @export var auto_spawn_unmashed_blocks: bool = true
+@export var disable_reset: bool = false
 @export var ignore_order: bool = false
 @export var no_progression: bool = false
 @export_category("Objects to Assign")

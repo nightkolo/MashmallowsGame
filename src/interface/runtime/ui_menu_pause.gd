@@ -77,6 +77,9 @@ func _ready() -> void:
 var pause_info_s: String = "≈%s%s%s Paused≈"
 
 func update_text() -> void:
+	if GameMgr.current_level:
+		reset_btn.visible = !GameMgr.current_level.disable_reset
+	
 	var is_lvl_0: bool = GameMgr.level_id == 0
 	
 	var lvl: String = "Tutorial " if is_lvl_0 else "Order "

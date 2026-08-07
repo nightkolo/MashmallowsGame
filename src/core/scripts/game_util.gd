@@ -43,8 +43,7 @@ const bg_b2: Array[Color] = [
 ]
 
 static func get_bakery_number(lvl_id: int) -> int:
-	@warning_ignore("integer_division")
-	return ((lvl_id - 1) / 10) + 1
+	return int(float(lvl_id - 1.0) / 10.0) + 1
 
 
 static func set_block_code(arr: Array[Dictionary], block: BlockAttributes, node: Node2D) -> void:

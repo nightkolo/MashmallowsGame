@@ -250,44 +250,36 @@ static var order_data: Dictionary = {
 	"16": {
 		"order_code": [
 			{
-				"build": 0.0,
+				"build": 0,
 				"pos": {
 					"x": 0.0,
 					"y": 0.0
 				},
-				"type": 99.0
+				"type": 99
 			},
 			{
-				"build": 0.0,
+				"build": 1,
 				"pos": {
 					"x": 0.0,
-					"y": 2.0
+					"y": 1.5
 				},
-				"type": 1.0
+				"type": 0
 			},
 			{
-				"build": 0.0,
-				"pos": {
-					"x": 0.0,
-					"y": 1.0
-				},
-				"type": 0.0
-			},
-			{
-				"build": 0.0,
+				"build": 0,
 				"pos": {
 					"x": 0.0,
 					"y": 3.0
 				},
-				"type": 0.0
+				"type": 1
 			},
 			{
-				"build": 1.0,
+				"build": 1,
 				"pos": {
 					"x": 0.0,
 					"y": 4.5
 				},
-				"type": 1.0
+				"type": 1
 			}
 		]
 	},
@@ -312,16 +304,16 @@ static var order_data: Dictionary = {
 			{
 				"build": 0.0,
 				"pos": {
-					"x": 0.0,
-					"y": 2.0
+					"x": -1.0,
+					"y": 0.0
 				},
 				"type": 0.0
 			},
 			{
 				"build": 0.0,
 				"pos": {
-					"x": 0.0,
-					"y": 3.0
+					"x": 1.0,
+					"y": 0.0
 				},
 				"type": 102.0
 			}
@@ -374,44 +366,44 @@ static var order_data: Dictionary = {
 	"19": {
 		"order_code": [
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 0.0,
 					"y": 0.0
 				},
-				"type": 99
+				"type": 99.0
 			},
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 1.0,
 					"y": 0.0
 				},
-				"type": 0
+				"type": 0.0
 			},
 			{
-				"build": 1,
+				"build": 1.0,
 				"pos": {
 					"x": -1.0,
 					"y": 0.5
 				},
-				"type": 2
+				"type": 2.0
 			},
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": -1.0,
 					"y": 2.0
 				},
-				"type": 2
+				"type": 2.0
 			},
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 2.0,
 					"y": 0.0
 				},
-				"type": 102
+				"type": 102.0
 			}
 		]
 	},

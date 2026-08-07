@@ -51,9 +51,6 @@ func _ready() -> void:
 	artwork.position.x = screen_size.x * 1.2
 	
 	next_btn.visible = false
-	next_btn.text = button_text % (GameMgr.bakery_id + 1) if GameMgr.bakery_id + 1 <= Util.NUMBER_OF_BAKERIES else "Finish!"
-	# Primitive for the time-being
-	label.text = completion_text % ("First" if GameMgr.bakery_id == 1 else "Second")
 	
 	# TODO Add specialized loillipop textures for the complete screens
 	
@@ -128,7 +125,9 @@ func open() -> void:
 
 
 func update_text() -> void:
-	pass
+	next_btn.text = button_text % (GameMgr.bakery_id + 1) if GameMgr.bakery_id + 1 <= Util.NUMBER_OF_BAKERIES else "Finish!"
+	label.text = completion_text % ("First" if GameMgr.bakery_id == 1 else "Second")
+	
 	#if GameMgr.get_reduce_motion_setting():
 		#cb_complete_info.text = GameplayUI.BBCODE_TXT_NO_MOTION + _INFO_BEGIN + str(GameMgr.checkerboard_id) + _INFO_END
 	#else:

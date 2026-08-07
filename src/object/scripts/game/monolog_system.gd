@@ -347,7 +347,7 @@ func start() -> void:
 		return
 
 	if one_time && monolog_has_happened:
-			return
+		return
 
 	Audio.monolog_on.play()
 	move_to_next_line()

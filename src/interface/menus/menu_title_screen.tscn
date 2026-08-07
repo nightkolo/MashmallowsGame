@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cm6comiam43nr" path="res://interface/animators/anim_button_icon.gd" id="6_mmakm"]
 [ext_resource type="Texture2D" uid="uid://b4ndvo76fmqy1" path="res://assets/interface/option-sfx.png" id="7_jrgp0"]
 [ext_resource type="Texture2D" uid="uid://73cne5ae0fv5" path="res://assets/interface/option-music.png" id="8_06imj"]
-[ext_resource type="Texture2D" uid="uid://c7iku6srfd18x" path="res://assets/interface/logo-beta-02.png" id="8_am52u"]
+[ext_resource type="PackedScene" uid="uid://bltj01af7hhkl" path="res://interface/runtime/game_title.tscn" id="9_fnwt2"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_am52u"]
 content_margin_left = 4.0
@@ -135,11 +135,13 @@ texture = ExtResource("8_06imj")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="Main/HBoxContainer/CenterContainer2" unique_id=647986971]
-custom_minimum_size = Vector2(70, 0)
+[node name="GameTitle" parent="Main/HBoxContainer/CenterContainer2" unique_id=71151200 instance=ExtResource("9_fnwt2")]
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
-texture = ExtResource("8_am52u")
-stretch_mode = 3
+size_flags_horizontal = 4
+size_flags_vertical = 6
+expand_mode = 3
+stretch_mode = 4
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Main" unique_id=1607425799]
 layout_mode = 2

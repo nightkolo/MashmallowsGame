@@ -86,6 +86,7 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 50
 
 [node name="Label" type="RichTextLabel" parent="Main/VBoxContainer2" unique_id=297281300]
+visible = false
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 theme_override_constants/line_separation = -4
@@ -165,7 +166,7 @@ layout_mode = 2
 theme_override_constants/line_separation = -10
 bbcode_enabled = true
 text = "[font_size=24.0][outline_size=5.0][color=#ffa7ff]Special Thanks[/color] and
-[color=yellow]People who supported so far[/color]:"
+[color=yellow]Awesome Supporters[/color]:"
 fit_content = true
 horizontal_alignment = 1
 

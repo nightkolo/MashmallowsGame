@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bltj01af7hhkl"]
 
-[ext_resource type="Texture2D" uid="uid://c7iku6srfd18x" path="res://assets/interface/logo-beta-02.png" id="1_jctfk"]
+[ext_resource type="Texture2D" uid="uid://ds20ctu82cmsn" path="res://assets/interface/logo-02.png" id="1_jctfk"]
 [ext_resource type="Script" uid="uid://c45cfhmogpej6" path="res://interface/animators/anim_logo.gd" id="2_0rudu"]
 
 [node name="GameTitle" type="TextureRect" unique_id=71151200]

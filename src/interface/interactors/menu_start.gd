@@ -59,12 +59,12 @@ func start_game() -> void:
 		)
 	await particles[0].finished
 	# await tween.finished
-	if GameData.runtime_data.has("first_session") && GameData.runtime_data.has("last_level"):
-		if GameData.runtime_data["first_session"] == false:
-			GameData.runtime_data["last_level"] = 0
-			
-			Trans.slide_to_scene("res://interface/menus/main_menus_scene.tscn")
-			return
+	#if GameData.runtime_data.has("first_session") && GameData.runtime_data.has("last_level"):
+		#if GameData.runtime_data["first_session"] == false:
+			#GameData.runtime_data["last_level"] = 0
+			#
+			#Trans.slide_to_scene("res://interface/menus/main_menus_scene.tscn")
+			#return
 		
 	loading.visible = true
 	loading.start_loading()

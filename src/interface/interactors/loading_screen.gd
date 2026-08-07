@@ -11,7 +11,6 @@ func _ready() -> void:
 	if !OS.has_feature("web"):
 		var t: Tween = create_tween().set_loops()
 		t.set_parallel(true)
-		print_debug(t)
 		t.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 		t.tween_property(l, "scale", Vector2.ONE * 0.85, 0.25)
 		t.tween_property(l, "self_modulate", Color(Color.WHITE, 0.75), 0.25)

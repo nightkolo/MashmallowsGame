@@ -122,9 +122,11 @@ func _ready() -> void:
 			return
 		
 		if p_can_mash:
-			parent_player.audio.sfx_unmash_enter.play()
+			if parent_player.audio.sfx_unmash_enter:
+				parent_player.audio.sfx_unmash_enter.play()
 		else:
-			parent_player.audio.sfx_unmash_exit.play()
+			if parent_player.audio.sfx_unmash_exit:
+				parent_player.audio.sfx_unmash_exit.play()
 		)
 	
 	# Shared with [Unmashed]

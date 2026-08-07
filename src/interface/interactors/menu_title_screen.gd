@@ -42,7 +42,8 @@ func _ready() -> void:
 	
 	print_debug(GameData.runtime_data)
 	if GameData.runtime_data.has("last_level"):
-		start_btn.text = "Continue 1-%s" % GameData.runtime_data["last_level"]
+		var lvl: float = GameData.runtime_data["last_level"]
+		start_btn.text = "Continue %d-%d" % [Util.get_bakery_number(int(lvl)), int(lvl)]
 		#GameData.runtime_data
 		
 		#start_btn.text = "Start"
@@ -63,8 +64,6 @@ func continue_game() -> void:
 		return
 		
 	var lvl: String = Util.LEVEL_FILE_BEGIN + str(int(GameData.runtime_data["last_level"])) + Util.LEVEL_FILE_END 
-	
-	print("Going to %s" % lvl)
 	
 	if FileAccess.file_exists(lvl):
 		_disable_buttons(btns)

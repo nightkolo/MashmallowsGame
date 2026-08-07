@@ -566,7 +566,6 @@ func drop() -> void:
 	
 	position.y += 10.0
 
-
 func jump() -> void:
 	if is_exploding:
 		return

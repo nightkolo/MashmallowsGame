@@ -28,7 +28,10 @@ var menu_id: MenuID
 var bakery_id: int = 0
 var level_id: int = 0:
 	set(value):
-		GameData.runtime_data["last_level"] = value
+		if value > 0 && value < Util.NUMBER_OF_LEVELS:
+			GameData.runtime_data["last_level"] = value
+		elif value == Util.NUMBER_OF_LEVELS:
+			GameData.runtime_data["last_level"] = 0
 		
 		level_id = value
 		
@@ -53,8 +56,9 @@ var saver_loader: SaverLoader = SaverLoader.new()
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("game_reset"):
-		game_reset.emit()
+	pass
+	#if event.is_action_pressed("game_reset"):
+		#game_reset.emit()
 		
 	#if event.is_action_pressed("debug_next"):
 		#if level_id != 0:

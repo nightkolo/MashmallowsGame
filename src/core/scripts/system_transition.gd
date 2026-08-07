@@ -119,7 +119,7 @@ func slide_to_next_stage(scene: String) -> void:
 
 
 func reset_level() -> void:
-	if is_transitioning:
+	if is_transitioning || GameMgr.current_level.disable_reset:
 		return 
 	
 	is_transitioning = true

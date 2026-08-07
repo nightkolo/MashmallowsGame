@@ -104,7 +104,9 @@ func reset_stage() -> void:
 		#GameMgr.has_resetted_during_board_win = true
 		pass
 	
-	Audio.play_reset_sound()
+	print_debug("Reseting..")
+	
+	#Audio.play_reset_sound()
 	return_to_run()
 	Trans.reset_level()
 	

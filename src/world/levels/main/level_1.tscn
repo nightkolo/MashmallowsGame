@@ -138,7 +138,7 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-58.328617, 7.143197e-15, 4776, 3584)
+region_rect = Rect2(-6505.5693, 7.967171e-13, 4776, 3584)
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" parent_id_path=PackedInt32Array(1741767880, 7455025) index="0" unique_id=587048025]
 text = "[b][font_size=21.0]Mash the [color=#00000000][M][/color][color=yellow]Marshmallows[/color] to fulfill the order!"
@@ -166,15 +166,7 @@ gizmo_extents = 15.0
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("4_hdw51")]
 position = Vector2(432, 144)
-animate = null
 start_asleep = true
-speed = null
-acceleration = null
-deceleration = null
-jump_height = null
-show_trail = null
-show_blocks = null
-auto_assign_child_blocks = null
 
 [node name="UnmashedSpawner3" parent="." unique_id=1761846739 instance=ExtResource("17_fvjdg")]
 position = Vector2(480, 480)

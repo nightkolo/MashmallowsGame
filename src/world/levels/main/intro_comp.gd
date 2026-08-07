@@ -20,21 +20,63 @@ class_name IntroComponent2
 
 @export var monolog: MonologSystem
 
+@export var skip_interface: Control
+@export var skip_btn: Button
+@export var pause_btn: Button
+
 var tween_cam: Tween
 var tween_area: Tween
 
 var cam_pos: Vector2
 
 func _unhandled_input(event: InputEvent) -> void:
-	pass
-	#if event.is_action_pressed("debug_next"):
-		#GameLogic.intro_order_complete.emit()
+	if event.is_action_pressed("game_skip"):
+		skip_intro()
+		
+	if event.is_action_pressed("game_menu"):
+		goto_menus()
+
+
+func skip_intro() -> void:
+	if skip_interface.visible && !monolog.monolog_has_happened:
+		Trans.slide_to_scene("res://world/levels/main/level_1.tscn")
+		
+		skip_interface.visible = false
+
+func goto_menus() -> void:
+	if skip_interface.visible:
+		GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
+		
+		Trans.slide_to_scene("res://interface/menus/main_menus_scene.tscn")
+		
+		skip_interface.visible = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if logo:
 		logo.visible = false
+	
+	if skip_interface && skip_btn && pause_btn:
+		
+		skip_interface.modulate = Color(Color.WHITE, 0.0)
+		skip_interface.visible = false
+		
+		if GameData.runtime_data.has("first_session"):
+				
+			if GameData.runtime_data["first_session"] == false:
+				GameMgr.game_pause_toggled.connect(func(paused: bool):
+					skip_interface.visible = !paused
+					)
+					
+				skip_interface.visible = true
+				
+				skip_btn.pressed.connect(skip_intro)
+				pause_btn.pressed.connect(goto_menus)
+				
+				var t := create_tween()
+				
+				t.tween_property(skip_interface, "modulate", Color(Color.WHITE, 1.0), 1.0).set_delay(1.0)
 
 	area_text.body_entered.connect(func(body: Node2D):
 		if body is Player:
@@ -64,6 +106,8 @@ func _ready() -> void:
 	# text_2.scale = Vector2(0.0, -0.5)
 
 	monolog.monolog_finished.connect(func():
+		skip_interface.visible = false
+		
 		await get_tree().create_timer(1.5).timeout
 
 		await player.animator.anim_zoom_in()

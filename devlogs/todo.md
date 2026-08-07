@@ -1,11 +1,18 @@
 # Todo
 
+### Pre-final Alpha
+- [x] Level data clean
+- [x] Save system clean
+- [x] Start button
+- [x] Credits screen
+
 ### Bugs (DL 8-4)
 - [x] Account new changes
 - [ ] Complete screen
   - [ ] Add SFX
   - [x] Fix behavior
-- [ ] SFX
+- [ ] SFX and Music
+  - [ ] Keep Avizura's song but lower pitch?
 	- [ ] Click sound
 	- [x] Landing sound playing on stacked blocks
 - [x] PLayer

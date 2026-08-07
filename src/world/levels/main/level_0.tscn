@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_saqt4"]
 [ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_l728u"]
+[ext_resource type="Theme" uid="uid://vnjfeobf1xfo" path="res://core/resources/theme/theme_menus.tres" id="3_8a3ch"]
 [ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_gwvtg"]
+[ext_resource type="Script" uid="uid://ccyg5othuwlpx" path="res://interface/animators/anim_button.gd" id="4_q354p"]
 [ext_resource type="Script" uid="uid://b3301uyw5i1iv" path="res://world/levels/main/intro_comp.gd" id="4_y72ok"]
+[ext_resource type="Texture2D" uid="uid://unubdc4kqcpq" path="res://assets/interface/input-prompt.png" id="5_l728u"]
 [ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="5_vp58q"]
+[ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="6_gwvtg"]
 [ext_resource type="Resource" uid="uid://di3vbxq70xysm" path="res://core/resources/game_dialog/monolog_intro.tres" id="6_vperl"]
 [ext_resource type="AudioStream" uid="uid://cti38do6a3qct" path="res://audio/sounds/speech_generic.wav" id="11_pp181"]
 [ext_resource type="AudioStream" uid="uid://doutjfd6vfo3s" path="res://audio/sounds/speech_ka.wav" id="12_17l4c"]
@@ -25,7 +29,12 @@
 [ext_resource type="PackedScene" uid="uid://cys70kcpvkm0y" path="res://world/interface/speech_bubble.tscn" id="27_ce4h8"]
 [ext_resource type="Script" uid="uid://d2gl7vnb88axq" path="res://world/world/monolog_activation_area.gd" id="28_y4i7q"]
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="29_owqqn"]
-[ext_resource type="Texture2D" uid="uid://c7iku6srfd18x" path="res://assets/interface/logo-beta-02.png" id="30_l728u"]
+[ext_resource type="Texture2D" uid="uid://ds20ctu82cmsn" path="res://assets/interface/logo-02.png" id="30_l728u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y72ok"]
+font = ExtResource("6_gwvtg")
+font_size = 32
+font_color = Color(0.7019608, 0.7019608, 0.7019608, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dr7fv"]
 font_size = 32
@@ -48,16 +57,79 @@ NPC & SpeechBubble: z_index = 2"
 script = ExtResource("1_saqt4")
 level_id = 0
 auto_spawn_unmashed_blocks = false
+disable_reset = true
 player = NodePath("Player")
 metadata/_custom_type_script = "uid://5fpkm17tw6kn"
 
 [node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_l728u")]
 
+[node name="SkipInterface" type="MarginContainer" parent="UI" unique_id=246651592]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_8a3ch")
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/SkipInterface" unique_id=1253849792]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Pause" type="Button" parent="UI/SkipInterface/VBoxContainer" unique_id=699483817]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "     Menus"
+script = ExtResource("4_q354p")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/SkipInterface/VBoxContainer/Pause" unique_id=821575720]
+position = Vector2(13.400002, 20)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_l728u")
+
+[node name="Label" type="Label" parent="UI/SkipInterface/VBoxContainer/Pause/Sprite2D" unique_id=970129928]
+offset_left = -28.0
+offset_top = -54.0
+offset_right = 12.0
+offset_bottom = -9.0
+scale = Vector2(2, 2)
+text = "M"
+label_settings = SubResource("LabelSettings_y72ok")
+
+[node name="Skip" type="Button" parent="UI/SkipInterface/VBoxContainer" unique_id=2100867416]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "     Skip"
+script = ExtResource("4_q354p")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/SkipInterface/VBoxContainer/Skip" unique_id=1642985140]
+position = Vector2(14, 18.349976)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_l728u")
+
+[node name="Label" type="Label" parent="UI/SkipInterface/VBoxContainer/Skip/Sprite2D" unique_id=1890067169]
+offset_left = -28.0
+offset_top = -54.0
+offset_right = 12.0
+offset_bottom = -9.0
+scale = Vector2(2, 2)
+text = "Q"
+label_settings = SubResource("LabelSettings_y72ok")
+
 [node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
 position = Vector2(640, 400)
 script = ExtResource("3_gwvtg")
 
-[node name="Intro" type="Node" parent="." unique_id=29428490 node_paths=PackedStringArray("player", "camera", "player_spawn_pos", "logo", "area_text", "node_text", "text_1", "text_2", "scene_1", "scene_2", "level", "monolog")]
+[node name="Intro" type="Node" parent="." unique_id=29428490 node_paths=PackedStringArray("player", "camera", "player_spawn_pos", "logo", "area_text", "node_text", "text_1", "text_2", "scene_1", "scene_2", "level", "monolog", "skip_interface", "skip_btn", "pause_btn")]
 script = ExtResource("4_y72ok")
 player = NodePath("../Player")
 camera = NodePath("../Cam")
@@ -71,6 +143,9 @@ scene_1 = NodePath("../Scene1")
 scene_2 = NodePath("../Scene2")
 level = NodePath("..")
 monolog = NodePath("../MonologSystem")
+skip_interface = NodePath("../UI/SkipInterface")
+skip_btn = NodePath("../UI/SkipInterface/VBoxContainer/Skip")
+pause_btn = NodePath("../UI/SkipInterface/VBoxContainer/Pause")
 
 [node name="MonologSystem" type="Node" parent="." unique_id=1815639917 node_paths=PackedStringArray("speech_bubble", "character", "choice_1", "choice_2")]
 script = ExtResource("5_vp58q")
@@ -130,7 +205,7 @@ position = Vector2(0, -66)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt2/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -120165.73
+rotation = -131516.69
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt2/Base" index="3" unique_id=1893349169]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -144,7 +219,7 @@ texture = ExtResource("23_nl2gi")
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(1420007166, 206340744) index="0" unique_id=520484544]
-rotation = -120165.73
+rotation = -131516.69
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt/Base" index="3" unique_id=2138650363]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -159,7 +234,7 @@ position = Vector2(64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt3/Base/Sprite2D2" parent_id_path=PackedInt32Array(823154426, 206340744) index="0" unique_id=520484544]
-rotation = -120165.73
+rotation = -131516.69
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt3/Base" index="3" unique_id=1815677311]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -173,7 +248,7 @@ position = Vector2(-64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt4/Base/Sprite2D2" parent_id_path=PackedInt32Array(1387734507, 206340744) index="0" unique_id=520484544]
-rotation = -120165.73
+rotation = -131516.69
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt4/Base" index="3" unique_id=1257870127]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -287,7 +362,7 @@ offset_right = 871.0
 offset_bottom = 458.0
 
 [node name="TiledSprite2D" parent="Scene2/World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-356.56598, 4.3666693e-14, 4776, 3584)
+region_rect = Rect2(-17941.977, 2.1975258e-12, 4776, 3584)
 
 [node name="Choice1" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false
@@ -316,7 +391,19 @@ position = Vector2(372, 464)
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("29_owqqn")]
 position = Vector2(952, 608)
+animate = null
 start_asleep = true
+speed = null
+acceleration = null
+deceleration = null
+jump_height = null
+show_trail = null
+show_blocks = null
+auto_assign_child_blocks = null
+push_front_mashed_blocks = null
+auto_controlled = null
+idle_direction = null
+random_jumping = null
 
 [node name="Logo" type="Sprite2D" parent="." unique_id=908471044]
 visible = false
