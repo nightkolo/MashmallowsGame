@@ -178,36 +178,36 @@ static var order_data: Dictionary = {
 	"14": {
 		"order_code": [
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 0.0,
 					"y": 0.0
 				},
-				"type": 99
+				"type": 99.0
 			},
 			{
-				"build": 1,
+				"build": 1.0,
 				"pos": {
 					"x": 0.0,
 					"y": 1.5
 				},
-				"type": 0
+				"type": 0.0
 			},
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 1.0,
 					"y": 0.0
 				},
-				"type": 3
+				"type": 3.0
 			},
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": -1.0,
 					"y": 0.0
 				},
-				"type": 3
+				"type": 3.0
 			}
 		]
 	},
@@ -250,44 +250,44 @@ static var order_data: Dictionary = {
 	"16": {
 		"order_code": [
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 0.0,
 					"y": 0.0
 				},
-				"type": 99
+				"type": 99.0
 			},
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 0.0,
 					"y": 2.0
 				},
-				"type": 1
+				"type": 1.0
 			},
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 0.0,
 					"y": 1.0
 				},
-				"type": 0
+				"type": 0.0
 			},
 			{
-				"build": 0,
+				"build": 0.0,
 				"pos": {
 					"x": 0.0,
 					"y": 3.0
 				},
-				"type": 0
+				"type": 0.0
 			},
 			{
-				"build": 1,
+				"build": 1.0,
 				"pos": {
 					"x": 0.0,
 					"y": 4.5
 				},
-				"type": 1
+				"type": 1.0
 			}
 		]
 	},
@@ -372,7 +372,48 @@ static var order_data: Dictionary = {
 		]
 	},
 	"19": {
-		"order_code": []
+		"order_code": [
+			{
+				"build": 0,
+				"pos": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"type": 99
+			},
+			{
+				"build": 0,
+				"pos": {
+					"x": 1.0,
+					"y": 0.0
+				},
+				"type": 0
+			},
+			{
+				"build": 1,
+				"pos": {
+					"x": -1.0,
+					"y": 0.5
+				},
+				"type": 2
+			},
+			{
+				"build": 0,
+				"pos": {
+					"x": -1.0,
+					"y": 2.0
+				},
+				"type": 2
+			},
+			{
+				"build": 0,
+				"pos": {
+					"x": 2.0,
+					"y": 0.0
+				},
+				"type": 102
+			}
+		]
 	},
 	"2": {
 		"order_code": [
@@ -411,7 +452,48 @@ static var order_data: Dictionary = {
 		]
 	},
 	"20": {
-		"order_code": []
+		"order_code": [
+			{
+				"build": 0.0,
+				"pos": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"type": 99.0
+			},
+			{
+				"build": 0.0,
+				"pos": {
+					"x": 1.0,
+					"y": 0.0
+				},
+				"type": 3.0
+			},
+			{
+				"build": 0.0,
+				"pos": {
+					"x": 2.0,
+					"y": 0.0
+				},
+				"type": 0.0
+			},
+			{
+				"build": 0.0,
+				"pos": {
+					"x": 3.0,
+					"y": 0.0
+				},
+				"type": 3.0
+			},
+			{
+				"build": 1.0,
+				"pos": {
+					"x": 1.0,
+					"y": 1.5
+				},
+				"type": 0.0
+			}
+		]
 	},
 	"3": {
 		"order_code": [

@@ -61,6 +61,8 @@ original_block = NodePath("Mashed")
 [node name="Mashed" parent="." unique_id=499008387 instance=ExtResource("2_2147m")]
 mash_type = 99
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1557092742]
+
 [node name="StateMachine" type="Node" parent="." unique_id=1326447240 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_q8hb4")
 initial_state = NodePath("AirState")

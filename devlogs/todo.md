@@ -43,8 +43,8 @@
   - [x] One eye open on player close
 
 ### Gameplay (DL 8-6)
-- [ ] **Outro Sequence**
-  - [ ] Auto-players
+- [x] **Outro Sequence**
+  - [x] Auto-players
   - [x] Monologue
 - [x] Bakery 2
   - [x] **Level structure**

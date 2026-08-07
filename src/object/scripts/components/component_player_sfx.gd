@@ -31,15 +31,21 @@ func _ready() -> void:
 	
 	else:
 		return
-		
+	
+	#await get_tree().create_timer(0.5).timeout
+	
 	player.has_unmashed.connect(func():
-		unmash_01.play()
+		if player.screen_notifier.is_on_screen():
+			unmash_01.play()
 		
 		#if GameLogic.current_door:
 			#if GameLogic.current_door.is_open:
 				#drop.play()
 		)
 	player.has_landed.connect(func(strength: float):
+		if !player.screen_notifier.is_on_screen():
+			return
+		
 		var sfx: AudioStreamPlayer2D = land_sfx.pick_random()
 		sfx.play()
 		
@@ -47,14 +53,19 @@ func _ready() -> void:
 			land_hard_01.play()
 		)
 	player.cherry_bomb_exploded.connect(func():
+		if !player.screen_notifier.is_on_screen():
+			return
+		
 		bomb.play()
 		laugh.play()
 		)
 
 	player.has_mashed.connect(func(pos: Vector2, _build: Util.BuildType):
+		if !player.screen_notifier.is_on_screen():
+			return
+		
 		if player.state_machine.current_state is AirState:
 			mash_01.play()
-			
 		else:
 			mash_02.play()
 		)

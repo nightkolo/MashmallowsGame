@@ -181,7 +181,7 @@ func goto_next_level(strength: int = 1, force_progression: bool = false) -> void
 			push_error("Level file missing: " + next_lvl_path)
 			
 	else:
-		Trans.slide_to_credits(0.8)
+		Trans.slide_to_endlevel(0.8)
 		#Trans.slide_to_scene("res://interface/menus/thank_you_screen.tscn")
 		game_has_ended = true
 

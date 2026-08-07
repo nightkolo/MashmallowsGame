@@ -101,6 +101,9 @@ The collectibles could be 4x4 large, that would present a movement challenge to 
 
 ## Disclaimer
 
-This game contains slightly **Suggestive** Artwork and/or Themes.
+This game contains mild **Suggestive** Themes.
 
 It is normally **ON**, but you can toggle that sort of content ON or OFF at any time.
+
+<button>Keep ON</button>
+<button>OFF</button>

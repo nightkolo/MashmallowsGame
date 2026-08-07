@@ -141,6 +141,31 @@ func reset_level() -> void:
 	is_transitioning = false
 
 
+func slide_to_endlevel(speed: float = 1.0) -> void:
+	if is_transitioning:
+		return 
+	
+	is_transitioning = true
+	($Trans1 as Node2D).visible = true
+	
+	anim.play(&"slide_in", -1, speed)
+	Audio.lower_music(2.0)
+	Audio.off_on_ui_sound(4.0)
+	
+	await anim.animation_finished
+	
+	get_tree().change_scene_to_file("res://world/levels/main/level_outro.tscn")
+	
+	await get_tree().create_timer(1.55).timeout
+	
+	anim.play(&"slide_out", -1, speed)
+	
+	await anim.animation_finished
+	
+	($Trans1 as Node2D).visible = false
+	is_transitioning = false
+
+
 func slide_to_credits(speed: float = 1.0) -> void:
 	if is_transitioning:
 		return 

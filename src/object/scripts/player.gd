@@ -24,13 +24,6 @@ signal is_emoting(on: bool)
 signal check_finished() ## @deprecated
 
 @export var animate: bool = true
-## Turns [Player] into a dubbleganger (dappel-ganger) entity.
-# @export var dubbleganger: bool = false:
-# 	set(value):
-# 		set_active(!value)
-# 		dubbleganger = value
-## Starts this [Player] instance's [member is_active] to [code]true[/code]. Only one instance should have this on to work appropriately.
-#@export var start_active: bool = false
 @export var start_asleep: bool = false:
 	set(value):
 		start_asleep = value
@@ -46,6 +39,20 @@ signal check_finished() ## @deprecated
 @export_group("Miscellanous")
 @export var auto_assign_child_blocks: bool = true
 @export var push_front_mashed_blocks: bool = false
+@export var auto_controlled: bool = false
+@export var idle_direction: Vector2 = Vector2.ZERO
+var _tween_jump: Tween
+@export var random_jumping: bool = false:
+	set(value):
+		random_jumping = value
+		if value:
+			if _tween_jump:
+				_tween_jump.kill()
+				
+			_tween_jump = create_tween().set_loops()
+			_tween_jump.tween_callback(func(): if is_on_floor(): jump() ).set_delay(randf())
+		elif _tween_jump:
+			_tween_jump.kill()
 
 @export_category("Objects to Assign")
 @export var animator: PlayerAnimationComponent
@@ -66,6 +73,7 @@ signal check_finished() ## @deprecated
 @onready var mash_notice: Node2D = $MashNotice
 @onready var z_notice: Node2D = $ZNotice
 @onready var particles_m: CPUParticles2D = $Z
+@onready var screen_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 # Preloaded Scenes
 var unmashed_object: PackedScene = preload("res://object/objects/block_unmashed_1x1.tscn")
@@ -178,8 +186,8 @@ func show_z_notice(p_show: bool = !z_notice.visible) -> void:
 
 
 func _ready() -> void:
-	# _ready_dubbleganger()
-	GameMgr.current_player = self
+	if !auto_controlled:
+		GameMgr.current_player = self
 	
 	if original_block:
 		original_block.is_original = true
@@ -190,7 +198,7 @@ func _ready() -> void:
 	if start_asleep:
 		is_active = false
 		sleep()
-		
+	
 	anim_idle_animation()
 
 	## EVENTS
@@ -247,6 +255,9 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if auto_controlled:
+		return
+	
 	if event.is_action_pressed("move_mash"):
 		mash_child_blocks()
 
@@ -508,6 +519,7 @@ func can_unmash() -> bool:
 	return is_active && child_blocks.size() > 1 && !is_exploding && !GameLogic.has_won && !(input_y > 0.0)
 
 
+
 func is_tall_block_mashed() -> bool:
 	if child_blocks.size() == 1:
 		return false
@@ -562,18 +574,19 @@ func jump() -> void:
 	if audio.fall_sfx.playing:
 		audio.fall_sfx.stop()
 	
-	var aud: AudioStreamPlayer2D
-	
-	if is_tall_block_mashed():
-		aud = audio.sfx_jump_heavy
-	else:
-		if child_blocks.size() > 1:
-			aud = audio.sfx_jump_mult
+	if screen_notifier.is_on_screen():
+		var aud: AudioStreamPlayer2D
+		
+		if is_tall_block_mashed():
+			aud = audio.sfx_jump_heavy
 		else:
-			aud = audio.sfx_jump_single
-	
-	aud.pitch_scale = randf_range(0.8, 1.1)
-	aud.play()
+			if child_blocks.size() > 1:
+				aud = audio.sfx_jump_mult
+			else:
+				aud = audio.sfx_jump_single
+		
+		aud.pitch_scale = randf_range(0.8, 1.1)
+		aud.play()
 	
 	has_jumpped.emit()
 	velocity.y = -jump_height
@@ -656,9 +669,9 @@ func _move(delta: float) -> void:
 	if is_on_floor() && !jump_window_timer.is_stopped():
 		jump()
 		
-	if !is_active:
-		input_x = 0.0
-		input_y = 0.0
+	if !is_active || auto_controlled:
+		input_x = idle_direction.x if auto_controlled else 0.0
+		input_y = idle_direction.y if auto_controlled else 0.0
 	else:
 		input_x = Input.get_axis("move_left", "move_right")
 		input_y = Input.get_axis("move_up", "move_down")

@@ -26,7 +26,7 @@ func physics_update(delta: float) -> void:
 		if !player.audio.fall_sfx.playing:
 			player.audio.fall_sfx.play()
 		else:
-			player.audio.fall_sfx.volume_db = minf(0.0, -20.0 + (player.velocity.y / 25.0))
+			player.audio.fall_sfx.volume_db = minf(0.0, -20.0 + (player.velocity.y / 25.0)) if player.screen_notifier.is_on_screen() else -100.00
 	## Gravity logic is global
 	#player.velocity += player.get_gravity() * delta
 	

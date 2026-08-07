@@ -9,8 +9,14 @@ class_name OutroComponent
 
 @export var monolog: MonologSystem
 
+@export var ground_1: TileMapLayer
+
+@export var player_spawner: PlayerSpawner
+
 var tween_cam: Tween
 var tween_area: Tween
+
+var lvl_index: int 
 
 #var cam_pos: Vector2
 
@@ -22,20 +28,32 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
+	GameLogic.has_won = true
+	
+	lvl_index = Util.NUMBER_OF_LEVELS - 1
+	
+	if player_spawner:
+		player_spawner.zoomed_in.connect(func():
+			Trans.slide_to_credits()
+			)
+	
 	monolog.monolog_finished.connect(func():
-		await get_tree().create_timer(1.5).timeout
-
-		await player.animator.anim_zoom_in()
-		player.is_active = true
-
-		#Trans.instant_to_scene(Util.LEVEL_FILE_BEGIN + "1" + Util.LEVEL_FILE_END)
+		ground_1.queue_free()
 		
-
-	)
-	player.has_mashed.connect(func(a, b):
-		if player.child_blocks.size() == GameLogic.number_of_blocks:
-			GameLogic.intro_order_complete.emit()
+		var p: Player = GameMgr.current_player
+		
+		p.auto_controlled = true
+		p.idle_direction = Vector2.RIGHT
+		p.random_jumping = true
+		
+		if player_spawner:
+			while lvl_index > 0:
+				await get_tree().create_timer(1.0).timeout
+				
+				player_spawner.spawn_config = lvl_index
+				player_spawner.spawn(lvl_index == 1, 8.0)
+				
+				lvl_index -= 1
 	)
 
 	## CAMERA ZOOM

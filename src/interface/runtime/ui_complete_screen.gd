@@ -51,7 +51,7 @@ func _ready() -> void:
 	artwork.position.x = screen_size.x * 1.2
 	
 	next_btn.visible = false
-	next_btn.text = button_text % (GameMgr.bakery_id + 1)
+	next_btn.text = button_text % (GameMgr.bakery_id + 1) if GameMgr.bakery_id >= Util.NUMBER_OF_BAKERIES else "Finish!"
 	# Primitive for the time-being
 	label.text = completion_text % ("First" if GameMgr.bakery_id == 1 else "Second")
 	
