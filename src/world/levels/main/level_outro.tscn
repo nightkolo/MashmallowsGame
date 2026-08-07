@@ -151,7 +151,7 @@ look_at_player = false
 eyes = 3
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_vx8vf")]
-position = Vector2(440, 424)
+position = Vector2(72, 384)
 
 [node name="Mashed2" parent="Player" unique_id=499008387 instance=ExtResource("12_ugcbx")]
 position = Vector2(64, 0)
@@ -174,7 +174,7 @@ offset_right = 784.0
 offset_bottom = 440.0
 
 [node name="TiledSprite2D" parent="SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-41514.188, 5.083847e-12, 4776, 3584)
+region_rect = Rect2(-58130.92, 7.1191044e-12, 4776, 3584)
 
 [node name="Choice1" parent="SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false
@@ -220,12 +220,7 @@ ground_1 = NodePath("../World/Terrain/Ground")
 player_spawner = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=694253420]
-position = Vector2(-200, 8)
-script = ExtResource("27_n66mx")
-spawn_config = 19
-
-[node name="Marker2D2" type="Marker2D" parent="." unique_id=1324657539]
-position = Vector2(-200, 8)
+position = Vector2(-264, 8)
 script = ExtResource("27_n66mx")
 spawn_config = 19
 

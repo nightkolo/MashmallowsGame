@@ -47,6 +47,7 @@ func spawn(anim_endscreen: bool = false, queue_free_after: float = -1.0):
 	player.auto_controlled = true
 	player.idle_direction = Vector2.RIGHT
 	player.random_jumping = true
+	player.global_position = self.global_position
 	
 	GameMgr.current_level.add_child(player)
 	
