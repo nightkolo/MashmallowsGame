@@ -85,8 +85,8 @@ The collectibles could be 4x4 large, that would present a movement challenge to 
 - 2-6, Side-order + Cherry bomb
 - 2-7, Twisted Tightness
 - 2-8, Cherry bomb only
-- 2-9, Side-order
-- 2-10, Twisted
+- 2-9, Twisted
+- 2-10, Side-order
 
 ## Outro monolog 
 
@@ -97,4 +97,10 @@ The collectibles could be 4x4 large, that would present a movement challenge to 
 - .....
 - A-ha...
 - I think we've had enough candy for today
-- Here they come! And a goodbye!ß g
+- Here they come! And a goodbye!
+
+## Disclaimer
+
+This game contains slightly **Suggestive** Artwork and/or Themes.
+
+It is normally **ON**, but you can toggle that sort of content ON or OFF at any time.

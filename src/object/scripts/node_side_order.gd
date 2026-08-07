@@ -178,6 +178,9 @@ func _ready() -> void:
 	check_sideorder_completion()
 	
 	if panel && particles:
+		panel.scale = Vector2.ONE * -0.5
+		panel.modulate = Color(Color.WHITE, 0.0)
+		
 		await get_tree().create_timer(0.5).timeout
 		
 		particles.emitting = true

@@ -9,6 +9,8 @@ signal expanding_entered() ## Emits when Twisted is about to expand.
 signal expanding_stopped() ## Emits when Twisted expansion stops. (i.e. ceiling collision)
 signal player_entered(entered: bool)
 
+signal anim_unmashed_finished()
+
 @export var tutorial_block: bool = false
 @export var mash_type: Util.MashType:
 	set(value):
@@ -114,6 +116,8 @@ func _ready() -> void:
 	
 	# Animation
 	has_landed.connect(func(strength: float):
+		print_debug(strength)
+		
 		var mag: float = minf(strength * 0.04, 0.5)
 		var dur := 1.35
 		
@@ -317,46 +321,49 @@ var _landed: bool = true:
 var t_panick: Tween
 
 
-func anim_panick():
+func anim_panick() -> void:
 	if ground_detect.is_colliding():
-		print_debug(ground_detect.get_collider(0))
+		return
+	
+	if mash_type == Util.MashType.TWISTED:
 		return
 	
 	if sprite_node && sprite_eyes && sprite_eyes_alert:
 		sprite_eyes.visible = false
 		sprite_eyes_alert.visible = true
 		
-		#if t_panick && t_panick.is_valid():
-			#t_panick.kill()
-		#const MAG = 10.0
-		#const DUR = 0.25
-		#
-		## Bad.
-		#
-		#t_panick = create_tween().set_loops()
-		#t_panick.set_parallel(true)
-		#t_panick.tween_property(sprite_eyes_alert, "position", Vector2(randf_range(-MAG,MAG),randf_range(-MAG,MAG)), DUR)
-		#t_panick.tween_property(sprite_node, "skew", MAG, DUR)
-		#t_panick.tween_property(sprite_node, "rotation_degrees", MAG, DUR)
-		#t_panick.chain().tween_property(sprite_eyes_alert, "position", Vector2(randf_range(-MAG,MAG),randf_range(-MAG,MAG)), DUR)
-		#t_panick.tween_property(sprite_node, "skew", -MAG, DUR)
-		#t_panick.tween_property(sprite_node, "rotation_degrees", -MAG, DUR)
 		
 var _last_velocity: Vector2
+var _prev_position: Vector2
+var velocity_position_based: Vector2
+
+
+## Computes velocity from global_position
+func get_position_based_velocity(global_pos: Vector2, delta: float) -> Vector2:
+	if delta <= 0.0:
+		return Vector2.ZERO
+	
+	var vel := (global_pos - _prev_position) / delta
+	_prev_position = global_pos
+	return vel
+
 
 # TODO hanging mid-air
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		set_physics_process(false)
 		return
-
+	
+	# Gravity
 	if !is_on_player() && !is_on_floor():
 		velocity += 0.6 * get_gravity() * delta
 	else:
 		velocity.y = 0.0
 		
+	# State
 	if !_landed && is_on_floor():
-		has_landed.emit(abs(_last_velocity.y / 100.0))
+		if velocity_position_based.y > 100.0:
+			has_landed.emit(abs(_last_velocity.y / 100.0))
 		_landed = true
 		
 	if !is_on_floor():
@@ -365,8 +372,10 @@ func _physics_process(delta: float) -> void:
 	
 	_last_velocity = velocity
 	
+	velocity_position_based = get_position_based_velocity(global_position, delta)
+	
+	# Expansion stop detection
 	if is_at_expand_period:
-		
 		if top_detect.is_colliding():
 			var obj: Node2D = top_detect.get_collider(0)
 			
@@ -382,7 +391,6 @@ func _physics_process(delta: float) -> void:
 	if !is_expanding:
 		move_and_slide()
 		
-		
 	else:
 		var displace: float = (2.0 - EXPAND_TIME) * (attributes.twisted_strength / 4.0)
 		
@@ -395,7 +403,7 @@ func _physics_process(delta: float) -> void:
 				if (obj as Unmashed).is_expanding:
 					position.y -= displace * 220.0 * delta
 
-signal anim_unmashed_finished()
+
 
 # Anim
 func anim_unmashed() -> void:
@@ -426,7 +434,6 @@ func anim_sleep() -> void:
 		sprite_eyes.visible = true
 		sprite_eyes_alert.visible = false
 		
-		sprite_eyes_alert.position = Vector2.ZERO
 		sprite_node.skew = 0.0
 		sprite_node.rotation = 0.0
 		var dur := 1.0
@@ -488,6 +495,8 @@ func anim_highlight(highlight_block: bool) -> void:
 		_tween_light.kill()
 		
 	_tween_light = get_tree().create_tween().set_parallel()
+	
+	_tween_light.tween_callback(func(): pass)
 	
 	if sprite_mashable:
 		sprite_mashable.self_modulate = Color(Color.WHITE, 1.0)

@@ -2,7 +2,6 @@ extends Node
 class_name Math
 
 
-
 ## Returns true if two Vector2s are approximately equal within a tolerance.
 static func is_equal_approx_vec2(a: Vector2, b: Vector2, tolerance: float = 0.0001) -> bool:
 	return a.distance_to(b) <= tolerance

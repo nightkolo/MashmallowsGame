@@ -43,16 +43,16 @@
   - [x] One eye open on player close
 
 ### Gameplay (DL 8-6)
-- [ ] Bakery 2
-  - [ ] **Level structure**
-    - [ ] 10
+- [ ] **Outro Sequence**
+  - [ ] Auto-players
+  - [x] Monologue
+- [x] Bakery 2
+  - [x] **Level structure**
+    - [x] 10
     - [x] 9
     - [x] 1-3
     - [x] 4-6
     - [x] 7-8
-- [ ] **Outro Sequence**
-  - [ ] Auto-players
-  - [x] Monologue
 
 ### Assets, Design, and Project (DL 8-8)
 - [ ] Promo (After bugs and anim) 

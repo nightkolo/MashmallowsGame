@@ -118,7 +118,7 @@ func _ready() -> void:
 	
 	cherry_bomb_activated.connect(anim_explode)
 	mashable_state_changed.connect(func(p_can_mash: bool):
-		if parent_player.audio == null:
+		if !parent_player.audio.is_node_ready():
 			return
 		
 		if p_can_mash:

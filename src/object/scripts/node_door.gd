@@ -8,6 +8,7 @@ signal has_interacted(on: bool)
 	set(value):
 		match_block_appearance = value
 		update_appearance()
+@export var instant_open: bool = false
 
 const BLOCK_ACTIVATION_DELAY := 0.125
 
@@ -66,9 +67,24 @@ func interact(should_open: bool) -> void:
 	has_interacted.emit(should_open)
 
 	if should_open:
-		activation_timer.start()
+		_try_open()
 	else:
 		reset_door()
+
+
+func _try_open() -> void:
+	if instant_open:
+		if door_blocks.is_empty():
+			return
+			
+		var sfx: AudioStreamPlayer2D = door_blocks[0].close_sfx.pick_random()
+		sfx.play()
+		
+		for block: DoorBlock in door_blocks:
+			block.activate(true, false)
+	else:
+		activation_timer.start()
+
 
 
 func reset_door() -> void:

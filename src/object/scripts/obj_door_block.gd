@@ -135,7 +135,7 @@ func anim_body_exited() -> void:
 	tween_squish.tween_property(sprite_bubble, "scale", Vector2.ONE * 0.5, 1.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		
 
-func activate(p_activate: bool) -> void:
+func activate(p_activate: bool, play_pop_sfx: bool = true) -> void:
 	if is_activated == p_activate:
 		return
 	
@@ -144,7 +144,7 @@ func activate(p_activate: bool) -> void:
 	set_deferred("disabled", p_activate)
 	
 	if p_activate:
-		anim_pop()
+		anim_pop(play_pop_sfx)
 		#sprite_node.modulate = Color(Color.WHITE, 0.5)
 	else:
 		anim_regen()
@@ -164,12 +164,13 @@ func cancel_anim_pop() -> void:
 		pop_sprite.queue_free()
 
 
-func anim_pop() -> void:
+func anim_pop(play_sfx: bool = true) -> void:
 	if !is_activated:
 		return
 	
-	var sfx : AudioStreamPlayer2D= open_sfx.pick_random()
-	sfx.play()
+	if play_sfx:
+		var sfx : AudioStreamPlayer2D = open_sfx.pick_random()
+		sfx.play()
 	#is_popping = true
 	
 	cancel_anim_pop()
