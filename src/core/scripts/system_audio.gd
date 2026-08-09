@@ -10,6 +10,7 @@ extends Node
 
 # RIP memory lol
 
+@onready var bakery_complete: AudioStreamPlayer = %BakeryComplete
 
 @onready var sideoder_progress: AudioStreamPlayer = %SideoderProgress
 @onready var sideorder_loss: AudioStreamPlayer = %SideorderLoss
@@ -99,7 +100,7 @@ func start_music() -> void:
 	if !music_current.playing:
 		music_current.volume_db = original_music_db
 
-		music_current.play(0.0)
+		music_current.play(0.5)
 		#
 		#if _tween_aud:
 			#_tween_aud.kill()

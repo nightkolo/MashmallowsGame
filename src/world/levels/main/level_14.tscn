@@ -200,7 +200,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
 position = Vector2(264, 200)
-region_rect = Rect2(-190.16446, 2.3288454e-14, 4776, 3584)
+region_rect = Rect2(-3060.0903, 3.7475367e-13, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 256.0
@@ -216,7 +216,7 @@ visible = false
 
 [node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
 position = Vector2(256, 106)
-rotation = 0.1553248
+rotation = 0.17186032
 
 [node name="Door" type="StaticBody2D" parent="." unique_id=566124244]
 script = ExtResource("14_o72on")

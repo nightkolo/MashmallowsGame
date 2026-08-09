@@ -123,8 +123,7 @@ func _ready() -> void:
 		)
 
 func order_complete() -> void:
-	@warning_ignore("integer_division")
-	if level_id / bakery_id == 10:
+	if level_id % 10 == 0:
 		bakery_complete()
 	else:
 		goto_next_level()
@@ -132,6 +131,7 @@ func order_complete() -> void:
 
 func bakery_complete() -> void:
 	if current_ui_handler:
+		
 		current_ui_handler.the_checkerboard_has_been_checkered()
 
 

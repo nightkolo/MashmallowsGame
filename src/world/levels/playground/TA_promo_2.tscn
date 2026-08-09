@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://83xwm7hkw2fd"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_c8ebc"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_43uw4"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_lr3a0"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="4_3t6o2"]
+[ext_resource type="Texture2D" uid="uid://c2btku2rn6wf2" path="res://assets/bg/bg-menu.png" id="5_56man"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_mr7ef"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_jbmjp"]
+
+[node name="Level" type="Node2D" unique_id=1688286197]
+script = ExtResource("1_c8ebc")
+no_progression = true
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_43uw4")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(673, 508)
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("3_lr3a0")
+dynamic_cam = false
+
+[node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_3t6o2")]
+bg_color_set = 1
+terrain = NodePath("Terrain")
+camera = NodePath("../Cam")
+
+[node name="TiledSprite2D" parent="World/CanvasLayer" parent_id_path=PackedInt32Array(1317599791, 305668516) index="0" unique_id=1078230963]
+self_modulate = Color(1, 0.7607843, 0.7607843, 1)
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("5_56man")
+region_rect = Rect2(82.232765, 142.43143, 3200, 2000)
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("5_mr7ef")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="WorldBlocks" type="Node2D" parent="World" unique_id=960871053]
+script = ExtResource("7_jbmjp")
+metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
+
+[editable path="World"]

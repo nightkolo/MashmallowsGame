@@ -129,19 +129,16 @@ bus = &"Gameplay"
 
 [node name="Jump01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1375524]
 stream = ExtResource("13_s62i3")
-volume_db = -10.0
 panning_strength = 2.0
 bus = &"Gameplay"
 
 [node name="Jump02" type="AudioStreamPlayer2D" parent="Audio" unique_id=806071470]
 stream = ExtResource("7_4driq")
-volume_db = -8.0
 panning_strength = 2.0
 bus = &"Gameplay"
 
 [node name="Jump03" type="AudioStreamPlayer2D" parent="Audio" unique_id=2840009]
 stream = ExtResource("15_5xn7n")
-volume_db = -10.0
 panning_strength = 2.0
 bus = &"Gameplay"
 

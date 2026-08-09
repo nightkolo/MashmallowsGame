@@ -195,7 +195,7 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 	# TWEEN TRANSITION
 	var l_poly: PackedVector2Array
 	if bounce && p_emote != Emotes.Complete:
-		l_poly = anim_bounce(delay)
+		l_poly = anim_bounce(delay, expression, p_emote)
 
 	# CACHE
 	var heart_eyes := %"7"
@@ -208,6 +208,7 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 	# Animation
 	match p_emote:
 		Emotes.PopUp:
+			visible = false
 			
 			eyes = Eyes.REGULAR
 			
@@ -217,7 +218,7 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 			tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 			
 			tween.tween_property(self, "position:y", 0.0, 1.0).from(400.0)
-			tween.tween_callback(func(): visible = true).set_delay(0.25)
+			tween.tween_callback(func(): visible = true).set_delay(0.1)
 		
 		Emotes.Match:
 			eyes = Eyes.HEART_EYES
@@ -313,7 +314,7 @@ func anim_emote(p_emote : Emotes = emote, bounce: bool = true):
 	is_emoting = false
 
 
-func anim_bounce(delay: float, p_expression : Expressions = expression, strength: float = 1.0) -> PackedVector2Array:
+func anim_bounce(delay: float, p_expression : Expressions = expression, p_emote: Emotes = emote, strength: float = 1.0) -> PackedVector2Array:
 	var l_poly: PackedVector2Array = current_poly.duplicate()
 	
 	body.scale.y = 1.0 / (strength * bounceness)
@@ -322,9 +323,10 @@ func anim_bounce(delay: float, p_expression : Expressions = expression, strength
 	if p_expression == Expressions.FRUSTRATED:
 		l_poly[8].x = poly_middle_point.x - (bounceness * 40.0)
 	elif p_expression == Expressions.BOUNCY:
-		l_poly[8].y = poly_middle_point.y - (bounceness * 10.0)
+		l_poly[8].y = poly_middle_point.y - (bounceness * 20.0)
 	else:
-		l_poly[8].y = poly_middle_point.y - (bounceness * 39.0)
+		l_poly[8].y = poly_middle_point.y - (bounceness * 45.0)
+	
 	
 	if tween_bounce:
 		tween_bounce.kill()
@@ -332,7 +334,7 @@ func anim_bounce(delay: float, p_expression : Expressions = expression, strength
 	tween_bounce = create_tween().set_parallel(true)
 	tween_bounce.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	tween_bounce.tween_property(body, "scale:y", 1.0, 1.0)
-	tween_bounce.tween_property(hoodie_heart, "polygon", PackedVector2Array(current_poly), 2.4).set_delay(delay)
+	tween_bounce.tween_property(hoodie_heart, "polygon", PackedVector2Array(current_poly), 2.0).set_delay(delay)
 	
 	return l_poly
 

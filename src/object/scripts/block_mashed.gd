@@ -179,19 +179,19 @@ func _ready() -> void:
 				node_eyes_regular.visible = true
 				
 				# Ledge animation
-				if mash_type != Util.MashType.PLAYER && parent_player:
-					anim_stressed()
-					
-					parent_player.has_landed.connect(_show_regular_eyes)
-					block_detect.ground_detect.body_entered.connect(_show_regular_eyes)
-					
-					block_detect.ground_detect.body_exited.connect(func(_body: Node2D):
-						if !parent_player.is_mashing && parent_player.is_on_floor() && block_detect.ground_detect.get_overlapping_bodies().is_empty():
-							node_eyes_regular.visible = false
-							sprite_eyes_stressed.visible = true
-						else:
-							_show_regular_eyes()
-						)
+				#if mash_type != Util.MashType.PLAYER && parent_player:
+					#anim_stressed()
+					#
+					#parent_player.has_landed.connect(_show_regular_eyes)
+					#block_detect.ground_detect.body_entered.connect(_show_regular_eyes)
+					#
+					#block_detect.ground_detect.body_exited.connect(func(_body: Node2D):
+						#if !parent_player.is_mashing && parent_player.is_on_floor() && block_detect.ground_detect.get_overlapping_bodies().is_empty():
+							#node_eyes_regular.visible = false
+							#sprite_eyes_stressed.visible = true
+						#else:
+							#_show_regular_eyes()
+						#)
 
 	anim_blinking()
 

@@ -314,6 +314,10 @@ var _landed: bool = true:
 			return
 		
 		_landed = value
+		
+		if mash_type == Util.MashType.MISC:
+			return
+		
 		if value:
 			anim_sleep()
 		else:
@@ -394,7 +398,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		var displace: float = (2.0 - EXPAND_TIME) * (attributes.twisted_strength / 4.0)
 		
-		position.y -= displace * 110.0 * delta
+		position.y -= displace * 120.0 * delta
 		
 		if player_down_detect.is_colliding():
 			var obj: Node2D = player_down_detect.get_collider(0)

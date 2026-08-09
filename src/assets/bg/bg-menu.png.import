@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dms13m01n8ll8"
-path="res://.godot/imported/millie-hoodie-heart-69.png-84d16b7c9e07c3a50ab998ce09371fce.ctex"
+uid="uid://c2btku2rn6wf2"
+path="res://.godot/imported/bg-menu.png-3523a2bd3356e596d7f4e192a4ec24c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/millie-hoodie-heart-69.png"
-dest_files=["res://.godot/imported/millie-hoodie-heart-69.png-84d16b7c9e07c3a50ab998ce09371fce.ctex"]
+source_file="res://assets/bg/bg-menu.png"
+dest_files=["res://.godot/imported/bg-menu.png-3523a2bd3356e596d7f4e192a4ec24c3.ctex"]
 
 [params]
 

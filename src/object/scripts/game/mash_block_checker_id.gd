@@ -19,9 +19,18 @@ func _ready() -> void:
 			if attributes.mash_type != Util.MashType.PLAYER:
 				GameLogic.number_of_order_blocks += 1
 				is_satisfied = false
+		else:
+			const mag= 9.0
+			const dur= 1.0
+			var t := create_tween().set_loops()
+			t.tween_callback(func(): sprite_face.rotation_degrees = -mag).set_delay(dur*0.5)
+			t.tween_callback(func(): sprite_face.rotation_degrees = mag).set_delay(dur*0.5)
+			
 
 var is_satisfied: bool = true
 var tween_anim: Tween
+
+
 
 
 # TODO Clean-up

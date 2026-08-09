@@ -3,18 +3,25 @@
 [ext_resource type="Script" uid="uid://it5lri0w67wk" path="res://object/scripts/node_side_order.gd" id="1_gy5tq"]
 [ext_resource type="Texture2D" uid="uid://db8f0oe1hg28" path="res://assets/world/particle_circle_02.png" id="2_7uq2j"]
 [ext_resource type="Texture2D" uid="uid://c1g8e24gsww0r" path="res://assets/interface/sideorder-goal.png" id="3_4i4ht"]
+[ext_resource type="AudioStream" uid="uid://i7say4q1xodo" path="res://audio/sounds/sideoder_progress.wav" id="4_4i4ht"]
+[ext_resource type="AudioStream" uid="uid://bj46ewnmvug6k" path="res://audio/sounds/sideorder_complete.wav" id="5_hdkre"]
+[ext_resource type="AudioStream" uid="uid://c26n07p506efy" path="res://audio/sounds/sideorder_loss.ogg" id="6_2f5sr"]
 
 [sub_resource type="Curve" id="Curve_lrakt"]
 _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0.32956976), 0.0, 0.0, 0, 0, Vector2(1, 1.8849558), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="SideOrder" type="Node2D" unique_id=1359360017 node_paths=PackedStringArray("anchor", "panel", "particles")]
+[node name="SideOrder" type="Node2D" unique_id=1359360017 node_paths=PackedStringArray("anchor", "panel", "particles", "audio_progress", "audio_complete", "audio_loss", "vocal_sideorder")]
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_gy5tq")
 anchor = NodePath("Node2D2/Node2D")
 panel = NodePath("Node2D2")
 particles = NodePath("CPUParticles2D")
+audio_progress = NodePath("Node/SideoderProgress")
+audio_complete = NodePath("Node/SideorderComplete")
+audio_loss = NodePath("Node/SideorderLoss")
+vocal_sideorder = NodePath("")
 metadata/_custom_type_script = "uid://it5lri0w67wk"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=903849173]
@@ -48,3 +55,20 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Node2D" type="Node2D" parent="Node2D2" unique_id=489570482]
 position = Vector2(-33.666664, 60.99999)
+
+[node name="Node" type="Node" parent="." unique_id=1757861321]
+
+[node name="SideoderProgress" type="AudioStreamPlayer" parent="Node" unique_id=205158018]
+unique_name_in_owner = true
+stream = ExtResource("4_4i4ht")
+bus = &"Gameplay"
+
+[node name="SideorderComplete" type="AudioStreamPlayer" parent="Node" unique_id=1972933550]
+unique_name_in_owner = true
+stream = ExtResource("5_hdkre")
+bus = &"Gameplay"
+
+[node name="SideorderLoss" type="AudioStreamPlayer" parent="Node" unique_id=527274401]
+unique_name_in_owner = true
+stream = ExtResource("6_2f5sr")
+bus = &"Gameplay"

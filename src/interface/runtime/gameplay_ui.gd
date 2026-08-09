@@ -25,8 +25,8 @@ const BBCODE_TXT_NO_MOTION = "
 
 #var _tween: Tween
 func the_checkerboard_has_been_checkered() -> void:
-	#is_game_paused = true
-	#game_pause_toggled.emit(true)
+	Audio.bakery_complete.play()
+	
 	if GameMgr.current_player:
 		GameMgr.current_player.is_active = false
 	checkerboard_complete_screen.open()

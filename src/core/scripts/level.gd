@@ -51,6 +51,7 @@ func _ready() -> void:
 
 		if !player.start_asleep:
 			anim_level()
+			
 		else:
 			player.has_waken_up.connect(
 				func():

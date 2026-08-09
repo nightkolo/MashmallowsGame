@@ -1,0 +1,125 @@
+[gd_scene format=4 uid="uid://djjpqxw7h4sod"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_ptosd"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_sypxs"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_q1avl"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="4_48ojl"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_wwxgp"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="6_nhr8j"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_m5oo4"]
+[ext_resource type="PackedScene" uid="uid://7i2kjfba5ohg" path="res://world/world/deco_block.tscn" id="8_8kocb"]
+[ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="12_1hj84"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="14_4i62a"]
+[ext_resource type="Script" uid="uid://htbtlhtomd2y" path="res://object/scripts/game/reset_notice_area.gd" id="15_7o58o"]
+[ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="16_6xvwx"]
+[ext_resource type="Script" uid="uid://e6dwy0qv4h5h" path="res://object/scripts/game/node_unmash_notice_area.gd" id="17_7mf0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ij0e"]
+size = Vector2(768, 176)
+
+[sub_resource type="Resource" id="Resource_sq3ac"]
+script = ExtResource("12_1hj84")
+build_type = 1
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_o1cu6"]
+script = ExtResource("12_1hj84")
+mash_type = 3
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_542p4"]
+script = ExtResource("12_1hj84")
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="Resource" id="Resource_5nq5i"]
+script = ExtResource("12_1hj84")
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_542p4"]
+size = Vector2(256, 24)
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("player")]
+script = ExtResource("1_ptosd")
+spawn_anim_time = 1.0
+player = NodePath("Player")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_sypxs")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255 node_paths=PackedStringArray("player")]
+position = Vector2(792, 388)
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("3_q1avl")
+player = NodePath("../Player")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Cam" unique_id=968229847]
+update_rotation = false
+update_scale = false
+
+[node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_48ojl")]
+bg_color_set = 1
+terrain = NodePath("Terrain")
+camera = NodePath("../Cam")
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("5_wwxgp")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World/Terrain" unique_id=66097381]
+light_mask = 8
+tile_map_data = PackedByteArray("AAAJAAkAAgAAAAEAAAAKAAkAAgABAAEAAAAHAAkAAgAAAAEAAAAIAAkAAgABAAEAAAAFAAkAAgAAAAEAAAAGAAkAAgABAAEAAAAFAAgAAgAAAAEAAAAGAAgAAgABAAEAAAAHAAgAAgAAAAEAAAAIAAgAAgABAAEAAAADAAkAAgAAAAEAAAAEAAkAAgABAAEAAAABAAkAAgAAAAEAAAACAAkAAgABAAEAAAABAAgAAgAAAAEAAAACAAgAAgABAAEAAAABAAcAAgAAAAEAAAACAAcAAgABAAEAAAABAAYAAgAAAAEAAAACAAYAAgABAAEAAAABAAUAAgAAAAEAAAACAAUAAgABAAEAAAADAAUAAgAAAAEAAAAEAAUAAgABAAEAAAAFAAUAAgAAAAEAAAAGAAUAAgABAAEAAAAHAAUAAgAAAAEAAAAIAAUAAgABAAEAAAAHAAYAAgAAAAEAAAAIAAYAAgABAAEAAAAHAAcAAgAAAAEAAAAIAAcAAgABAAEAAAAFAAcAAgAAAAEAAAAGAAcAAgABAAEAAAADAAcAAgAAAAEAAAAEAAcAAgABAAEAAAADAAYAAgAAAAEAAAAEAAYAAgABAAEAAAAFAAYAAgAAAAEAAAAGAAYAAgABAAEAAAAFAAMAAgAAAAEAAAAGAAMAAgABAAEAAAAFAAIAAgAAAAEAAAAGAAIAAgABAAEAAAAFAAEAAgAAAAEAAAAGAAEAAgABAAEAAAAFAAAAAgAAAAEAAAAGAAAAAgABAAEAAAAFAP//AgAAAAEAAAAGAP//AgABAAEAAAAHAAMAAgAAAAEAAAAIAAMAAgABAAEAAAAHAAIAAgAAAAEAAAAIAAIAAgABAAEAAAAHAAEAAgAAAAEAAAAIAAEAAgABAAEAAAAHAAAAAgAAAAEAAAAIAAAAAgABAAEAAAAHAP//AgAAAAEAAAAIAP//AgABAAEAAAAHAP7/AgAAAAEAAAAIAP7/AgABAAEAAAAJAAgAAgAAAAEAAAAKAAgAAgAAAAEAAAAPAAgAAgAAAAEAAAAQAAgAAgAAAAEAAAARAAgAAgAAAAEAAAASAAgAAgAAAAEAAAASAAkAAgAAAAEAAAARAAkAAgAAAAEAAAAQAAkAAgAAAAEAAAAPAAkAAgAAAAEAAAAIAAoAAgAAAAEAAAAJAAoAAgAAAAEAAAAKAAoAAgAAAAEAAAAOAAoAAgAAAAEAAAAPAAoAAgAAAAEAAAAQAAoAAgAAAAEAAAARAAoAAgAAAAEAAAASAAoAAgAAAAEAAAAVAAkAAgABAAEAAAAUAAkAAgABAAEAAAATAAkAAgABAAEAAAATAAoAAgABAAEAAAAUAAoAAgABAAEAAAAVAAoAAgABAAEAAAA=")
+tile_set = ExtResource("6_nhr8j")
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_map_data = PackedByteArray("AAD//wMAAAAIAAAAAAD//wQAAAAIAAEAAAD//wUAAAAIAAEAAAD//wYAAAAIAAEAAAD//wcAAAAIAAEAAAD//wgAAAAIAAEAAAAAAAMAAAAKAAAAAAAAAAQAAAAKAAEAAAAAAAUAAAAKAAEAAAAAAAYAAAAKAAEAAAAAAAcAAAAKAAEAAAAAAAgAAAAKAAEAAAABAAMAAAAKAAAAAAABAAQAAAAGAAIAAAABAAUAAAALAAIAAAABAAYAAAALAAIAAAABAAcAAAALAAIAAAABAAgAAAALAAIAAAAIAAQAAAAFAAIAAAAJAAQAAAAKAAEAAAAJAAUAAAAKAAEAAAAJAAYAAAAFAAIAAAAKAAQAAAALAAIAAAAKAAUAAAALAAIAAAAKAAYAAAALAAIAAAAOAAcAAAAIAAAAAAAPAAcAAAAKAAAAAAAQAAcAAAAKAAAAAAARAAEAAAAIAAEAAAARAAIAAAAIAAEAAAARAAMAAAAIAAEAAAARAAQAAAAIAAEAAAARAAUAAAAIAAEAAAARAAYAAAAIAAEAAAARAAcAAAAFAAEAAAASAAEAAAAKAAEAAAASAAIAAAAKAAEAAAASAAMAAAAKAAEAAAASAAQAAAAKAAEAAAASAAUAAAAKAAEAAAASAAYAAAAKAAEAAAASAAcAAAAKAAEAAAD//wkAAAAIAAEAAAD//woAAAAIAAEAAAAAAAkAAAAKAAEAAAAAAAoAAAAKAAEAAAABAAkAAAAGAAEAAAABAAoAAAAKAAEAAAACAAMAAAAKAAAAAAACAAQAAAAJAAMAAAACAAkAAAAKAAAAAAACAAoAAAAKAAEAAAADAAoAAAAKAAEAAAAEAAoAAAAGAAEAAAAFAAoAAAAKAAAAAAAGAAoAAAAKAAAAAAAHAAoAAAALAAAAAAAJAAcAAAAIAAMAAAAKAAcAAAALAAMAAAASAAAAAAAKAAEAAAARAAAAAAAIAAEAAAASAAsAAAACAAMAAAARAAsAAAACAAMAAAAQAAsAAAACAAMAAAAPAAsAAAACAAMAAAAOAAsAAAACAAMAAAANAAsAAAACAAMAAAAMAAsAAAACAAMAAAALAAsAAAACAAMAAAAKAAsAAAACAAMAAAAJAAsAAAACAAMAAAAIAAsAAAACAAMAAAAHAAsAAAAGAAMAAAAGAAsAAAAJAAMAAAAFAAsAAAAJAAMAAAAEAAsAAAAJAAMAAAADAAsAAAAJAAMAAAACAAsAAAAJAAMAAAABAAsAAAAJAAMAAAAAAAsAAAAJAAMAAAD//wsAAAAIAAMAAAASAP//AAAKAAAAAAARAP//AAAIAAAAAAADAAkAAAAKAAAAAAAEAAkAAAALAAAAAAAHAAMAAAAGAAEAAAAGAAMAAAAFAAEAAAAFAAMAAAAKAAAAAAAEAAMAAAAKAAAAAAADAAMAAAAKAAAAAAAHAAIAAAALAAIAAAAHAAEAAAALAAIAAAAHAAAAAAALAAIAAAAHAP//AAALAAAAAAADAAQAAAAJAAMAAAAEAAQAAAAJAAMAAAAFAAQAAAAJAAMAAAAGAAQAAAAJAAMAAAAHAAQAAAAJAAMAAAAGAAIAAAAIAAEAAAAGAAEAAAAIAAEAAAAGAAAAAAAIAAEAAAAGAP//AAAIAAAAAAAIAAYAAAAIAAMAAAAIAAUAAAAIAAEAAAAKAAMAAAALAAAAAAAJAAMAAAAKAAAAAAAIAAMAAAAKAAAAAAAOAAgAAAAIAAMAAAAPAAgAAAAJAAMAAAAQAAgAAAAJAAMAAAARAAgAAAAJAAMAAAASAAgAAAAJAAMAAAATAAgAAAAJAAMAAAATAAcAAAAKAAEAAAATAAYAAAAKAAEAAAATAAUAAAAKAAEAAAATAAQAAAAKAAEAAAATAAMAAAAKAAEAAAATAAIAAAAKAAEAAAATAAEAAAAKAAEAAAATAAAAAAAKAAEAAAATAP//AAAKAAAAAAAUAP//AAAKAAAAAAAUAAAAAAAKAAEAAAAUAAEAAAAKAAEAAAAUAAIAAAAKAAEAAAAUAAMAAAAKAAEAAAAUAAQAAAAKAAEAAAAUAAUAAAAKAAEAAAAUAAYAAAAKAAEAAAAUAAcAAAAKAAEAAAAUAAgAAAAJAAMAAAATAAsAAAACAAMAAAAUAAsAAAACAAMAAAAVAAgAAAALAAMAAAAVAAcAAAALAAIAAAAVAAYAAAALAAIAAAAVAAUAAAALAAIAAAAVAAQAAAALAAIAAAAVAAMAAAALAAIAAAAVAAIAAAALAAIAAAAVAAEAAAALAAIAAAAVAAAAAAALAAIAAAAVAP//AAALAAAAAAAVAAsAAAADAAMAAAA=")
+tile_set = ExtResource("6_nhr8j")
+
+[node name="WorldBlocks" type="Node2D" parent="World" unique_id=698511279]
+script = ExtResource("7_m5oo4")
+metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
+
+[node name="DecoBlock" parent="World/WorldBlocks" unique_id=825592049 instance=ExtResource("8_8kocb")]
+position = Vector2(256, 576)
+
+[node name="DecoBlock2" parent="World/WorldBlocks" unique_id=1409315642 instance=ExtResource("8_8kocb")]
+position = Vector2(504, 264)
+
+[node name="DecoBlock3" parent="World/WorldBlocks" unique_id=510747391 instance=ExtResource("8_8kocb")]
+position = Vector2(968, 640)
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("14_4i62a")]
+position = Vector2(852, 540)
+
+[node name="ResetNoticeArea" type="Area2D" parent="." unique_id=1244284567]
+collision_layer = 0
+collision_mask = 10
+script = ExtResource("15_7o58o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ResetNoticeArea" unique_id=761020651]
+position = Vector2(512, 568)
+shape = SubResource("RectangleShape2D_6ij0e")
+
+[node name="UnmashedSpawner3" parent="." unique_id=703901904 instance=ExtResource("16_6xvwx")]
+position = Vector2(736, 596)
+block_attributes = SubResource("Resource_sq3ac")
+
+[node name="UnmashedSpawner2" parent="." unique_id=1761846739 instance=ExtResource("16_6xvwx")]
+position = Vector2(736, 496)
+block_attributes = SubResource("Resource_o1cu6")
+
+[node name="UnmashedSpawner6" parent="." unique_id=1851591530 instance=ExtResource("16_6xvwx")]
+position = Vector2(600, 200)
+block_attributes = SubResource("Resource_542p4")
+
+[node name="UnmashedSpawner8" parent="." unique_id=797414376 instance=ExtResource("16_6xvwx")]
+position = Vector2(352, 144)
+block_attributes = SubResource("Resource_5nq5i")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=557295624]
+script = ExtResource("17_7mf0s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=494835961]
+position = Vector2(451, 630)
+shape = SubResource("RectangleShape2D_542p4")

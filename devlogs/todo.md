@@ -1,87 +1,41 @@
 # Todo
 
-### Pre-final Alpha
-- [x] Level data clean
-- [x] Save system clean
-- [x] Start button
-- [x] Credits screen
+### Bugs
+- [x] Complete screen
+  - [x] Add SFX
+- [x] SFX and Music
+	- [x] Click sound
 
-### Bugs (DL 8-4)
-- [x] Account new changes
-- [ ] Complete screen
-  - [ ] Add SFX
-  - [x] Fix behavior
-- [ ] SFX and Music
-  - [ ] Keep Avizura's song but lower pitch?
-	- [ ] Click sound
-	- [x] Landing sound playing on stacked blocks
-- [x] PLayer
-  - [x] No trail when jumping off unmashed blocks
-  - [x] Actually particles too
-  - [x] trail behind BG terrain
-- [x] Twisted
-  - [x] Clipping through ground on rise
+### Animation and SFX
+- [x] Side-order
+  - [x] Complete anim
+  - [x] Implement SFX
+- [x] NPC
+  - [x] Popping up animation bug
+  - [x] Speech sfx on Level Info
 
-### Animation and SFX (DL 8-5)
-- [ ] Side-order
-  - [ ] Complete anim
-  - [ ] Implement SFX
-  - [x] Sleep anim
-  - [x] Pop-up anim
-  - [x] Add anim
-    - [x] Gain
-      - [x] Blocks
-      - [x] Faces
-    - [x] Loss
-      - [x] Block
-- [ ] Level
-  - [ ] NPC
-    - [ ] Speech sfx on Level Info
-    - [ ] Popping up animation bug
-    - [x] Looking when moving animation
-    - [x] Add more vocal SFX 
-  - [x] Start visual bug	
-- [x] PLayer
-  - [x] variable jump sfx pitch
-  - [x] Ledge animation (Scaredy eyes)
-- [x] Blocks
-  - [x] Scared before hitting ground 
-  - [x] Bouncy on hit ground
-  - [x] One eye open on player close
+### Gameplay
+- [ ] **Outro Sequence**
+  - [ ] Finalized monologue
+- [ ] Bakery 2
+  - [ ] Design needed
+    - [ ] 10
+    - [ ] 9
 
-### Gameplay (DL 8-6)
-- [x] **Outro Sequence**
-  - [x] Auto-players
-  - [x] Monologue
-- [x] Bakery 2
-  - [x] **Level structure**
-    - [x] 10
-    - [x] 9
-    - [x] 1-3
-    - [x] 4-6
-    - [x] 7-8
-
-### Assets, Design, and Project (DL 8-8)
-- [ ] Promo (After bugs and anim) 
-  - [ ] Game trailer (See promo.md)
-  - [ ] Game artwork 
-  - [ ] Screenshots layout
-  - [ ] Game section
-  - [x] Side order SFX, Bokoblock Reuse
-    - [x] Gain
-    - [x] Loss
-    - [x] hm vocal
-    - [x] complete
+### Assets, Design, and Project
 - [ ] **Artwork** 
   - [ ] Add the goddamn fucking lollipop
-  - [x] Bakery complete Millie artwork (After Galagen...)
-  - [x] Title artwork
-  - [x] Logo
+- [ ] Codebase
+  - [ ] Content disclaimer
+  - [ ] New option
+- [ ] Promo (After bugs and anim) 
+  - [ ] Finish NG poster version
+  - [ ] Finalize section design
+  - [ ] Screenshot ideas
+  - [ ] Millie Panel
+  - [ ] About desc.
 
-Me when i decide to fix bugs but i discover more bugs
-
-
-### Codebase and touches (DL 8-10)
+### Codebase and touches
 - [ ] Add new logo and artwork
 - [ ] **API**
   - [ ] JUST COPY AND PASTE
@@ -94,7 +48,6 @@ Me when i decide to fix bugs but i discover more bugs
 
 
 ### Extra
-
 - [ ] Codebase clean-up
 - [ ] Mashing
   - [ ] Mash particles

@@ -60,7 +60,7 @@ load_path = "res://.godot/imported/millie-ear-r-02.png-5a5ae49da6dbd5a9df39cbc11
 load_path = "res://.godot/imported/millie-eyes-closed.png-ae2afbd9d52337817adea9d68d7b750c.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ljnpu"]
-load_path = "res://.godot/imported/millie-hoodie-heart-69.png-84d16b7c9e07c3a50ab998ce09371fce.ctex"
+load_path = "res://.godot/imported/millie-hoodie-heart-04.png-44f0920500ca362684e9aa719294d204.ctex"
 
 [sub_resource type="Animation" id="Animation_jc1j4"]
 length = 0.001
@@ -523,7 +523,6 @@ node_connections = [&"output", 0, &"DanceBlend2", &"Add2", 0, &"Animation", &"Ad
 
 [node name="Millie" type="Node2D" unique_id=2121837621]
 script = ExtResource("1_jc1j4")
-emote = 5
 
 [node name="TiledSprite2D" type="Sprite2D" parent="." unique_id=1651687842]
 visible = false
@@ -535,7 +534,7 @@ scale = Vector2(0.49999997, 0.49999997)
 texture = ExtResource("2_eavx2")
 centered = false
 region_enabled = true
-region_rect = Rect2(2588.7747, 4483.76, 3200, 2000)
+region_rect = Rect2(2499.1655, 4328.6313, 3200, 2000)
 script = ExtResource("3_vcxqx")
 animate_scroll = true
 scroll_trajectory = 1.0471975511965976
@@ -607,73 +606,73 @@ visible = false
 
 [node name="EarL" type="Sprite2D" parent="Outline" unique_id=1920523084]
 show_behind_parent = true
-position = Vector2(-85.69395, -234.49092)
-rotation = 0.116281636
-scale = Vector2(0.49979764, 0.4860949)
-skew = 0.0067818165
+position = Vector2(-85.38256, -235.31746)
+rotation = 0.11402267
+scale = Vector2(0.49982265, 0.48730743)
+skew = 0.00604558
 texture = ExtResource("5_1y7t3")
 
 [node name="EarR" type="Sprite2D" parent="Outline" unique_id=448522651]
 show_behind_parent = true
-position = Vector2(78.22027, -239.625)
-rotation = -0.17898458
-scale = Vector2(0.49952966, 0.48637024)
-skew = -0.010298848
+position = Vector2(78.54554, -240.02615)
+rotation = -0.17151739
+scale = Vector2(0.49960646, 0.48752913)
+skew = -0.008986592
 texture = ExtResource("5_1y7t3")
 
 [node name="Head" type="Sprite2D" parent="Outline" unique_id=1006272161]
-position = Vector2(-0.13029729, -128.27429)
-rotation = -0.031661775
-scale = Vector2(0.4999832, 0.48590854)
-skew = -0.0018634796
+position = Vector2(-0.120766215, -128.60156)
+rotation = -0.029419703
+scale = Vector2(0.49998638, 0.4871438)
+skew = -0.0015736818
 texture = ExtResource("6_ypqpy")
 offset = Vector2(0, -194)
 
 [node name="Heart" type="Sprite2D" parent="Outline" unique_id=497725396]
-position = Vector2(-94, -156.2914)
-scale = Vector2(0.5, 0.48589534)
+position = Vector2(-94, -156.68979)
+scale = Vector2(0.5, 0.48713392)
 texture = ExtResource("7_ndqde")
 centered = false
 offset = Vector2(9.86, 16.9)
 
 [node name="ArmL" type="Sprite2D" parent="Outline" unique_id=1202992009]
-position = Vector2(-33, -122.445625)
-rotation = 0.047159567
-scale = Vector2(0.49996522, 0.48592702)
-skew = 0.0027731657
+position = Vector2(-33, -122.75775)
+rotation = 0.04368705
+scale = Vector2(0.4999724, 0.48715812)
+skew = 0.0023349524
 texture = ExtResource("8_rwi8i")
 offset = Vector2(-85, 120)
 
 [node name="ArmR" type="Sprite2D" parent="Outline" unique_id=1580241006]
-position = Vector2(-32.999634, -122.598076)
-rotation = -0.047493834
-scale = Vector2(0.49996462, 0.48592734)
-skew = -0.0027928352
+position = Vector2(-32.99865, -123.140526)
+rotation = -0.044130415
+scale = Vector2(0.4999717, 0.48715845)
+skew = -0.002358675
 texture = ExtResource("9_3tl18")
 offset = Vector2(217.41, 136.99)
 
 [node name="Hair" type="Sprite2D" parent="Outline" unique_id=129784328]
-position = Vector2(19.897917, -308.7755)
-rotation = -0.031311594
-scale = Vector2(0.49998355, 0.48590815)
-skew = -0.0018429756
+position = Vector2(20.418793, -309.50873)
+rotation = -0.028716264
+scale = Vector2(0.49998695, 0.48714334)
+skew = -0.0015360117
 texture = ExtResource("10_ndqde")
 offset = Vector2(21.86, 68.47)
 
 [node name="BackHair" type="Sprite2D" parent="Outline" unique_id=74909920]
-position = Vector2(60.654835, -160.89221)
-rotation = -0.06864307
-scale = Vector2(0.4999267, 0.48596257)
-skew = -0.004029274
+position = Vector2(60.757732, -161.13995)
+rotation = -0.1655857
+scale = Vector2(0.49963278, 0.4875025)
+skew = -0.008688331
 texture = ExtResource("11_rwi8i")
 centered = false
 offset = Vector2(-25.91, -34.55)
 
 [node name="FrontHair" type="Sprite2D" parent="Outline" unique_id=871314736]
-position = Vector2(51.01056, -305.86084)
-rotation = 0.019560328
-scale = Vector2(0.49998862, 0.4858955)
-skew = 0.001151681
+position = Vector2(51.52308, -306.50336)
+rotation = -0.077091634
+scale = Vector2(0.49991485, 0.48720974)
+skew = -0.004108429
 texture = ExtResource("13_3tl18")
 offset = Vector2(52.95, 101.82)
 
@@ -683,17 +682,17 @@ offset = Vector2(52.95, 101.82)
 unique_name_in_owner = true
 
 [node name="BodyMain" type="Node2D" parent="VisualRoot/BodyAnimate" unique_id=1516597551]
-scale = Vector2(1, 0.9717907)
+scale = Vector2(1, 0.97426784)
 
 [node name="Head" type="Node2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=1967514663]
 position = Vector2(0, -128)
-rotation = -0.03258022
+rotation = -0.030196264
 scale = Vector2(0.9999959, 0.9999959)
 
 [node name="MillieBackHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=221018394]
-position = Vector2(61.84648, -35.56704)
-rotation = -0.038048908
-scale = Vector2(0.49999797, 0.49999788)
+position = Vector2(61.859333, -35.544662)
+rotation = -0.13968024
+scale = Vector2(0.49999797, 0.49999803)
 texture = ExtResource("3_6pub8")
 offset = Vector2(61.93763, 68.01831)
 
@@ -702,9 +701,9 @@ remote_path = NodePath("../../../../../../Outline/BackHair")
 
 [node name="MillieEarL" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1698998040]
 unique_name_in_owner = true
-position = Vector2(-81.95819, -116.02955)
-rotation = 0.15220563
-scale = Vector2(0.49999776, 0.4999977)
+position = Vector2(-81.91624, -116.05917)
+rotation = 0.14720342
+scale = Vector2(0.4999978, 0.4999978)
 texture = SubResource("CompressedTexture2D_5pee7")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieEarL" unique_id=2065349746]
@@ -712,9 +711,9 @@ remote_path = NodePath("../../../../../../Outline/EarL")
 
 [node name="MillieEarR" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=24473110]
 unique_name_in_owner = true
-position = Vector2(82.0418, -115.970436)
-rotation = -0.151485
-scale = Vector2(0.49999774, 0.49999768)
+position = Vector2(82.08373, -115.940765)
+rotation = -0.14575945
+scale = Vector2(0.4999978, 0.49999782)
 texture = SubResource("CompressedTexture2D_7d6je")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="VisualRoot/BodyAnimate/BodyMain/Head/MillieEarR" unique_id=1780232382]
@@ -738,9 +737,9 @@ texture = ExtResource("17_3tl18")
 
 [node name="MillieFrontHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=442689887]
 unique_name_in_owner = true
-position = Vector2(57.066658, -184.97946)
-rotation = 0.0527082
-scale = Vector2(0.49999627, 0.49999624)
+position = Vector2(57.133553, -184.9588)
+rotation = -0.04892312
+scale = Vector2(0.49999624, 0.49999627)
 texture = ExtResource("17_80abj")
 offset = Vector2(63, 100.5)
 
@@ -816,9 +815,9 @@ texture = SubResource("CompressedTexture2D_ndqde")
 
 [node name="MillieMarshmallowHair" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain/Head" unique_id=1676594491]
 unique_name_in_owner = true
-position = Vector2(26.0681, -188.99063)
-rotation = 0.00036032868
-scale = Vector2(0.5, 0.49999997)
+position = Vector2(26.136452, -188.9812)
+rotation = 0.0007219836
+scale = Vector2(0.5, 0.50000006)
 texture = ExtResource("18_80abj")
 offset = Vector2(27, 68.5)
 
@@ -846,7 +845,7 @@ texture = ExtResource("19_80abj")
 
 [node name="MillieArmL" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=479821313]
 position = Vector2(-33, -126)
-rotation = 0.048526406
+rotation = 0.044839375
 scale = Vector2(0.49999794, 0.49999794)
 texture = ExtResource("1_7u5cv")
 offset = Vector2(-90, 130)
@@ -856,8 +855,8 @@ remote_path = NodePath("../../../../../Outline/ArmL")
 
 [node name="MillieArmR" type="Sprite2D" parent="VisualRoot/BodyAnimate/BodyMain" unique_id=312520476]
 position = Vector2(33, -126)
-rotation = -0.048870333
-scale = Vector2(0.49999794, 0.49999794)
+rotation = -0.045294408
+scale = Vector2(0.49999788, 0.49999788)
 texture = ExtResource("2_yq6py")
 offset = Vector2(90, 134)
 
@@ -951,7 +950,7 @@ remote_path = NodePath("../../../../../VisualRoot/BodyAnimate/BodyMain/Head/Mill
 [node name="Hair" type="Bone2D" parent="Skeleton2D/Body/Head" unique_id=431350459]
 position = Vector2(57, -185)
 rotation = 0.05235988
-scale = Vector2(0.49999627, 0.49999627)
+scale = Vector2(0.49999622, 0.49999622)
 rest = Transform2D(0.49931476, -0.02616798, 0.02616798, 0.49931476, 57, -185)
 
 [node name="End" type="Bone2D" parent="Skeleton2D/Body/Head/Hair" unique_id=1542907943]
@@ -998,7 +997,7 @@ remote_path = NodePath("../../../../VisualRoot/BodyAnimate/BodyMain/MillieArmL")
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Body" unique_id=1599861962]
 position = Vector2(33, -126)
 rotation = 0.08726646
-scale = Vector2(0.49999794, 0.49999794)
+scale = Vector2(0.49999788, 0.49999788)
 rest = Transform2D(0.5, 0, 0, 0.5, 33, -126)
 
 [node name="End" type="Bone2D" parent="Skeleton2D/Body/ArmR" unique_id=561759515]

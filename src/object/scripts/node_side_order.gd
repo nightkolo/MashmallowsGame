@@ -14,7 +14,10 @@ signal sideorder_complete()
 @export_category("Sprites")
 @export var text_reg: Texture2D = preload("res://assets/objects/sideorder-block-eyes-01.png")
 @export var text_happy: Texture2D = preload("res://assets/objects/sideorder-block-eyes-02.png")
-
+@export_category("Audio")
+@export var audio_progress: AudioStreamPlayer
+@export var audio_complete: AudioStreamPlayer 
+@export var audio_loss: AudioStreamPlayer
 
 var order_code: Array[Dictionary]
 var mash_block_checker_ids: Array[MashBlockCheckerID]
@@ -100,16 +103,18 @@ func check_sideorder_completion() -> void:
 
 
 func sideorder_met() -> void:
+	audio_complete.play()
 	sideorder_complete.emit()
 	
 	if door_to_activate:
 		door_to_activate.interact(true)
 		
-	anim_something()
+	anim_complete()
 
 
-func anim_something() -> void:
-	pass
+func anim_complete() -> void:
+	var t := create_tween()
+	t.tween_property(self, "modulate", Color(Color.WHITE, 0.0), 1.0)
 
 
 func anim_open():
@@ -142,8 +147,11 @@ func _ready() -> void:
 			var d: DoorBlock = door_to_activate.door_blocks.pick_random()
 			
 			d.anim_side_eye()
+		
+		await get_tree().create_timer(0.3).timeout
+		if audio_progress:
+			audio_progress.play()
 		)
-	
 	var surface: Array[Node] = anchor.get_children() if anchor else get_children()
 	
 	for id: Node in surface:
@@ -157,7 +165,7 @@ func _ready() -> void:
 			id_node.is_side_id = true
 		
 		var s: Sprite2D = Sprite2D.new()
-		s.scale = Vector2.ONE * 0.5
+		s.scale = Vector2.ONE * 0.4
 		id.sprite_face = s
 		id.add_child(s)
 		
@@ -188,5 +196,7 @@ func _ready() -> void:
 		await get_tree().create_timer(0.6).timeout
 		
 		anim_open()
+		
+		check_sideorder_completion()
 	
 	
