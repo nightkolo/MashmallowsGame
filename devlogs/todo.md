@@ -26,7 +26,15 @@
 
 ### Codebase and touches
 - [x] Add new logo and artwork
+- [ ] Add SpoonFish credit
 - [ ] **API**
+  - [ ] a
+    - [ ] Load extension
+    - [ ] Make medals on Ng.com
+    - [ ] Import medals
+    - [ ] Paste code
+    - [ ] Create logic
+    - [ ] Use overlay
   - [ ] JUST COPY AND PASTE
   - [ ] Medal ideas
   - [ ] Medal code

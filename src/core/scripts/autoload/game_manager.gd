@@ -44,6 +44,7 @@ var current_level: Level
 var current_player: Player
 var current_NPC: NPCBoard ## Used for quicker access by [ResetNoticeArea]
 var current_ui_handler: GameplayUI ## @experimental
+var current_medal_notifier: MedalUnlockedPopup
 var current_level_goal: LevelGoal
 var current_camera: Cam
 
@@ -68,11 +69,18 @@ func _input(event: InputEvent) -> void:
 		#goto_next_level(-1)
 
 
+const ON_NEWGROUNDS_MIRROR = true
+
 func _ready() -> void:
 	add_child(saver_loader)
 	
 	load_game_data()
 	saver_loader.save_level_data()
+	
+	if ON_NEWGROUNDS_MIRROR:
+		#NG.on_session_change.connect(session_change)
+		
+		load_game_medals_data()
 	
 	if !GameData.runtime_data.has("op_a_on"):
 		reset_game_data()
@@ -154,6 +162,14 @@ func save_game_data() -> void:
 func load_game_data() -> void:
 	saver_loader.load_game()
 	
+	
+func save_game_medals_data() -> void:
+	saver_loader.save_medals()
+
+
+func load_game_medals_data() -> void:
+	saver_loader.load_medals()
+
 
 func reset_game() -> void:
 	GameLogic.reset_game_logic()

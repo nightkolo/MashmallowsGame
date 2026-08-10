@@ -87,20 +87,39 @@ const DEFAULT_MEDAL_DATA = {
 	
 	# Progression
 	"bitten": false, # You Menace...
+	# Choose "Eat Her Anyway" and devour the prey.
 	"safe": false, # Good Ending
+	# Choose "Got it" and display mercy.
 	"b1_comp": false, # First Bakery Complete!
+	# Complete all the Orders in the First Bakery.
 	"b2_comp": false, # Second Bakery Complete!
+	# Complete all the Orders in the Second Bakery.
 	"game_comp": false, # Marshmallow Lady Approves
+	# Complete all the Orders in the game.
 	
 	# Level-specific
-	"2_16_1": false, # Trespassing
-	"2_16_2": false, # Leapfrog
-	
+	"1_2": false, # "An Order by the Book"
+	# Complete Order 1-2 without Unmashing.
+	"1_6": false, # "Trespassing"
+	# Complete Order 1-6 without using the Green Cherry Bomb.
+	"2_11": false, # "Nothing Hershey but us Chickens"
+	# Get on top of the Left Platform on Level 2-11.
+	"2_13": false, # "Lofty Toffee"
+	# Complete Order 2-13 without mashing into the Grey Block. (Perform a mid-air jump.)
+	"2_20": false, # "The Floor is Lava"
+	# Complete Order 2-20 without falling down (Completing the Side-Order is fine.)
+ 		
 	# Stats
-	"50squat": false # 
+	"100squat": false, # "Big Butt"
+	# Press down to squat 100 times. (Life-time)
+	"200mash": false, # "I Like to Mash"
+	# Mash 200 times. (Life-time)
 	
 	# Misc
-	
+	"midair": false, # "Pop and Lock"
+	# Mash into a Block after flying off of a Cherry Bomb explosion.
+	"curiousity": false, # "Curiousity"
+	# Open the Credits screen.
 }
 const DEFAULT_GAME_DATA = {
 	"1": {

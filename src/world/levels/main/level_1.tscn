@@ -138,7 +138,7 @@ modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-9770.205, 1.1965123e-12, 4776, 3584)
+region_rect = Rect2(-15540.515, 1.9033223e-12, 4776, 3584)
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" parent_id_path=PackedInt32Array(1741767880, 7455025) index="0" unique_id=587048025]
 text = "[b][font_size=21.0]Mash the [color=#00000000][M][/color][color=yellow]Marshmallows[/color] to fulfill the order!"

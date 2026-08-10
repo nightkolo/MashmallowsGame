@@ -4,8 +4,73 @@ class_name SaverLoader
 signal game_saved()
 signal game_loaded()
 
+signal medals_saved()
+signal medals_loaded()
+
+const MEDAL_SAVE_LOCATION = "user://medaldata.json"
+
 const SAVE_LOCATION = "user://save_data.json"
 const LEVEL_SAVE_LOCATION = "user://level_data.json"
+
+
+func save_medals() -> void:
+	if !GameMgr.ON_NEWGROUNDS_MIRROR:
+		return
+	
+	print("saving medals...")
+	
+	var file: FileAccess = FileAccess.open(MEDAL_SAVE_LOCATION, FileAccess.WRITE)
+	var json: String = JSON.stringify(GameData.medal_data)
+	
+	file.store_line(json)
+	
+	medals_saved.emit()
+	GameMgr.game_medals_data_saved.emit()
+
+	file.close()
+	
+	print("Medal save successful! :D")
+
+
+func load_medals() -> void:
+	if !GameMgr.ON_NEWGROUNDS_MIRROR:
+		return
+	
+	print("loading medals...")
+	
+	if not FileAccess.file_exists(MEDAL_SAVE_LOCATION):
+		print("Could not find %s." % MEDAL_SAVE_LOCATION)
+		new_game_medals()
+		return
+
+	var file: FileAccess = FileAccess.open(MEDAL_SAVE_LOCATION, FileAccess.READ)
+	
+	var saved_medals = JSON.parse_string(file.get_as_text())
+	
+	if typeof(saved_medals) != TYPE_DICTIONARY:
+		push_error("Invalid medal save file format.")
+		new_game_medals()
+		return
+	
+	GameData.medal_data = (saved_medals as Dictionary).duplicate(true)
+	
+	medals_loaded.emit()
+	GameMgr.game_medals_data_loaded.emit()
+
+	file.close()
+	
+	print("Medal load successful! :D")
+
+
+func new_game_medals() -> void:
+	if !GameMgr.ON_NEWGROUNDS_MIRROR:
+		return
+	
+	print("starting new game medals...")
+	
+	GameData.medal_data = GameData.DEFAULT_MEDAL_DATA.duplicate(true)
+	
+	save_medals()
 
 
 func save_level_data() -> void:
