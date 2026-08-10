@@ -12,6 +12,9 @@ signal letter_showing_started()
 signal letter_showing_finished()
 signal letter_showed()
 
+signal choice_1_pressed()
+signal choice_2_pressed()
+
 @export var auto_start: bool = true
 @export var one_time: bool = true
 @export var disable_player_control: bool = true
@@ -323,12 +326,14 @@ func check_and_play_animation(line: MillieMonolog) -> void:
 
 
 func _on_choice_1_pressed():
+	choice_1_pressed.emit()
 	speed_text()
 	choice_2.visible = false
 	_selected_choice(_choice_flow_1)
 
 
 func _on_choice_2_pressed():
+	choice_2_pressed.emit()
 	speed_text()
 	choice_1.visible = false
 	_selected_choice(_choice_flow_2)

@@ -75,6 +75,8 @@ static var runtime_data: Dictionary = {
 	},
   "first_session": true,
   "last_level": 0,
+	"squats_made": 0,
+	"mashes_made": 0,
 	"op_sfx_muted": false,
 	"op_music_muted": false,
 	"op_a_on": false
@@ -86,15 +88,15 @@ const DEFAULT_MEDAL_DATA = {
 	# TODO: Possible issues with save data when versioning
 	
 	# Progression
-	"bitten": false, # You Menace...
+	"bitten": false, # You Menace... c
 	# Choose "Eat Her Anyway" and devour the prey.
-	"safe": false, # Good Ending
+	"safe": false, # Good Ending c
 	# Choose "Got it" and display mercy.
-	"b1_comp": false, # First Bakery Complete!
+	"b1_comp": false, # First Bakery Complete! c
 	# Complete all the Orders in the First Bakery.
-	"b2_comp": false, # Second Bakery Complete!
+	"b2_comp": false, # Second Bakery Complete! c
 	# Complete all the Orders in the Second Bakery.
-	"game_comp": false, # Marshmallow Lady Approves
+	"game_comp": false, # Marshmallow Lady Approves c
 	# Complete all the Orders in the game.
 	
 	# Level-specific
@@ -110,15 +112,15 @@ const DEFAULT_MEDAL_DATA = {
 	# Complete Order 2-20 without falling down (Completing the Side-Order is fine.)
  		
 	# Stats
-	"100squat": false, # "Big Butt"
+	"100squat": false, # "Big Butt" c
 	# Press down to squat 100 times. (Life-time)
-	"200mash": false, # "I Like to Mash"
+	"200mash": false, # "I Like to Mash" c
 	# Mash 200 times. (Life-time)
 	
 	# Misc
 	"midair": false, # "Pop and Lock"
 	# Mash into a Block after flying off of a Cherry Bomb explosion.
-	"curiousity": false, # "Curiousity"
+	"curiosity": false, # "Curiousity" c
 	# Open the Credits screen.
 }
 const DEFAULT_GAME_DATA = {
@@ -190,8 +192,10 @@ const DEFAULT_GAME_DATA = {
 	},
   "first_session": true,
   "last_level": 0,
+	"squats_made": 0,
+	"mashes_made": 0,
 	"op_sfx_muted": false,
 	"op_music_muted": false,
-	"op_a_on": false,
+	"op_a_on": false
 }
 # Dear data miners, be nice with the data :)

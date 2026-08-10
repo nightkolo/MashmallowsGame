@@ -7,7 +7,7 @@ signal game_loaded()
 signal medals_saved()
 signal medals_loaded()
 
-const MEDAL_SAVE_LOCATION = "user://medaldata.json"
+const MEDAL_SAVE_LOCATION = "user://medal_data.json"
 
 const SAVE_LOCATION = "user://save_data.json"
 const LEVEL_SAVE_LOCATION = "user://level_data.json"

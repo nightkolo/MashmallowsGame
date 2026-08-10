@@ -71,7 +71,7 @@ func _ready() -> void:
 		enter_main_menu(MainMenus.CREDITS)
 		#GameMgr.menu_entered.emit(GameMgr.MenuID.CREDITS)
 		
-		#_unlock_credits_medal()
+		_unlock_credits_medal()
 		)
 	
 	for menu: MainMenu in menus:
@@ -83,6 +83,14 @@ func _ready() -> void:
 		)
 	
 	#_apply_ui_juice()
+
+
+func _unlock_credits_medal() -> void:
+	if GameData.medal_data.has("curiosity") && GameMgr.current_medal_notifier:
+		if GameData.medal_data["curiosity"] == false: 
+			GameMgr.current_medal_notifier.anim_medal_unlocked(NewgroundsIds.MedalId.Curiosity)
+		
+	await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity)
 
 
 func enter_main_menu(p_menu: MainMenus) -> void:

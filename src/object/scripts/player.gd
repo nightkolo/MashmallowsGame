@@ -560,6 +560,7 @@ func drop() -> void:
 		return
 		
 	animator.anim_down(true)
+	GameLogic.player_squated.emit()
 	
 	if !is_on_ground():
 		return

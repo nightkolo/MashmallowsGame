@@ -57,6 +57,11 @@ func return_run() -> void:
 	get_tree().paused = false
 	disc_interface.visible = false
 
+
+func _unlock_safe_medal() -> void:
+	await MedalMgr.unlock_a_medal("safe", NewgroundsIds.MedalId.YouMenace)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if logo:
@@ -83,7 +88,7 @@ func _ready() -> void:
 				var t := create_tween()
 				
 				t.tween_property(skip_interface, "modulate", Color(Color.WHITE, 1.0), 1.0).set_delay(1.0)
-			else:
+			elif !GameMgr.ON_NEWGROUNDS_MIRROR:
 				get_tree().paused = true
 				disc_interface.visible = true
 				GameMgr.current_ui_handler.allow_input = false
@@ -124,6 +129,12 @@ func _ready() -> void:
 	# text_1.scale = Vector2(0.0, -0.5)
 	# text_2.pivot_offset_ratio = Vector2.ONE * 0.5
 	# text_2.scale = Vector2(0.0, -0.5)
+	monolog.choice_1_pressed.connect(func():
+		await MedalMgr.unlock_a_medal("bitten", NewgroundsIds.MedalId.YouMenace)
+		)
+	monolog.choice_2_pressed.connect(func():
+		await MedalMgr.unlock_a_medal("safe", NewgroundsIds.MedalId.GoodEnding)
+		)
 
 	monolog.monolog_finished.connect(func():
 		skip_interface.visible = false

@@ -169,5 +169,4 @@ func _check_cb_progression(cb: int) -> bool:
 		if GameData.runtime_data[str(i)]["completed"] == true:
 			completed += 1
 	
-	@warning_ignore("integer_division")
 	return completed == 10

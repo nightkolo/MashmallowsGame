@@ -7,6 +7,7 @@ signal game_pause_toggled(is_paused: bool)
 @onready var reset_btn: Button = %ResetButton
 @onready var reset_screen: MarginContainer = $ResetScreen
 @onready var checkerboard_complete_screen: CompleteScreen = $CheckerboardCompleteScreen
+@onready var medal_unlocked_popup: MedalUnlockedPopup = $MedalUnlockedPopup
 
 var allow_input: bool = true
 var is_game_paused: bool = false:
@@ -30,6 +31,10 @@ func the_checkerboard_has_been_checkered() -> void:
 	if GameMgr.current_player:
 		GameMgr.current_player.is_active = false
 	checkerboard_complete_screen.open()
+
+
+func a_medal_has_been_unlocked() -> void:
+	medal_unlocked_popup.anim_medal_unlocked()
 
 
 func _unhandled_input(event: InputEvent) -> void:

@@ -4,6 +4,7 @@ extends Node
 # To avoid player null checks
 signal player_mashed() 
 signal player_unmashed() 
+signal player_squated() 
 signal player_interacted_monolog_area(entered: bool)
 signal cherry_bomb_exploded()
 #

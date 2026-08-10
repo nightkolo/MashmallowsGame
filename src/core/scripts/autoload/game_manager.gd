@@ -9,6 +9,8 @@ signal game_reset()
 
 signal game_data_saved()
 signal game_data_loaded()
+signal game_medals_data_saved()
+signal game_medals_data_loaded()
 
 signal monolog_activated(active: bool)
 
