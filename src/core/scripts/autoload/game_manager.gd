@@ -74,6 +74,13 @@ func _ready() -> void:
 	load_game_data()
 	saver_loader.save_level_data()
 	
+	if !GameData.runtime_data.has("op_a_on"):
+		reset_game_data()
+	
+	set_adult_filter_on(GameData.runtime_data["op_a_on"])
+	set_game_sfx_muted(GameData.runtime_data["op_sfx_muted"])
+	set_game_music_muted(GameData.runtime_data["op_music_muted"])
+	
 	menu_entered.connect(func(menu: MenuID):
 		menu_id = menu
 		
@@ -197,14 +204,34 @@ var _game_sfx_muted: bool = false:
 	get:
 		return _game_sfx_muted
 	set(value):
+		GameData.runtime_data["op_sfx_muted"] = value
 		AudioServer.set_bus_mute(SFX_BUS_ID, value)
 		_game_sfx_muted = value
+		save_game_data()
 var _game_music_muted: bool = false:
 	get:
 		return _game_music_muted
 	set(value):
+		GameData.runtime_data["op_music_muted"] = value
 		AudioServer.set_bus_mute(Music_BUS_ID, value)
 		_game_music_muted = value
+		save_game_data()
+var _adult_filter_on: bool = false:
+	get:
+		return _adult_filter_on
+	set(value):
+		GameData.runtime_data["op_a_on"] = value
+		_adult_filter_on = value
+		save_game_data()
+
+
+func set_adult_filter_on(value: bool) -> void:
+	_adult_filter_on = value
+
+
+func get_adult_filter_on_setting() -> bool:
+	return _adult_filter_on
+
 
 func set_game_sfx_muted(value: bool) -> void:
 	_game_sfx_muted = value

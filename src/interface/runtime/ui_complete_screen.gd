@@ -7,6 +7,7 @@ class_name CompleteScreen
 
 @export var asset_bakery_1: Texture2D = preload("res://assets/artwork/millie-bakery-artwork-01.png")
 @export var asset_bakery_2: Texture2D = preload("res://assets/artwork/millie-bakery-artwork-02.png")
+@export var asset_bakery_3: Texture2D = preload("res://assets/artwork/millie-main-artwork.png")
 
 # TODO Colo system
 
@@ -53,7 +54,7 @@ func _ready() -> void:
 	for node: Node2D in [texture_nodes, node_texture_1]:
 		node.position.x = screen_size.x * 0.5
 	
-	artwork.position.x = screen_size.x * 1.2
+	artwork.position.x = screen_size.x * 1.4
 	
 	next_btn.visible = false
 	
@@ -131,9 +132,12 @@ func open() -> void:
 
 func update_text() -> void:
 	var bid := GameMgr.bakery_id
+	var adult_filter := GameMgr.get_adult_filter_on_setting()
 	
-	bakery.texture = asset_bakery_1 if bid == 1 else asset_bakery_2
+	bakery.texture = asset_bakery_3 if adult_filter else (asset_bakery_1 if bid == 1 else asset_bakery_2)
+	
 	next_btn.text = button_text % (bid + 1) if bid + 1 <= Util.NUMBER_OF_BAKERIES else "Finish!"
+	
 	label.text = completion_text % ("First" if bid == 1 else "Second")
 	
 	#if GameMgr.get_reduce_motion_setting():

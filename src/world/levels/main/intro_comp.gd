@@ -42,6 +42,7 @@ func skip_intro() -> void:
 		
 		skip_interface.visible = false
 
+
 func goto_menus() -> void:
 	if skip_interface.visible:
 		GameMgr.menu_entered.emit(GameMgr.MenuID.MENUS)
@@ -50,6 +51,11 @@ func goto_menus() -> void:
 		
 		skip_interface.visible = false
 
+
+func return_run() -> void:
+	GameMgr.current_ui_handler.allow_input = true
+	get_tree().paused = false
+	disc_interface.visible = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -81,15 +87,14 @@ func _ready() -> void:
 		disc_interface.visible = true
 		GameMgr.current_ui_handler.allow_input = false
 		
+		on_btn.grab_focus()
 		on_btn.pressed.connect(func():
-			GameMgr.current_ui_handler.allow_input = true
-			get_tree().paused = false
-			disc_interface.visible = false
+			GameMgr.set_adult_filter_on(false)
+			return_run()
 			)
 		off_btn.pressed.connect(func():
-			GameMgr.current_ui_handler.allow_input = true
-			get_tree().paused = false
-			disc_interface.visible = false
+			GameMgr.set_adult_filter_on(true)
+			return_run()
 			)
 
 	area_text.body_entered.connect(func(body: Node2D):

@@ -1,5 +1,7 @@
 extends Button
 
+@export var tone_down: bool = false
+
 var tween: Tween
 
 
@@ -47,7 +49,8 @@ func anim_entered() -> void:
 	var dur := 1.0
 	var scale_to := 1.11
 	
-	Audio.ui_button_hover.play()
+	if !Audio.ui_button_hover.playing:
+		Audio.ui_button_hover.play()
 	
 	self_modulate = Color(Color.WHITE*1.2)
 	
@@ -57,8 +60,8 @@ func anim_entered() -> void:
 	tween = create_tween().set_parallel(true)
 	tween.set_ease(Tween.EASE_OUT)
 	
-	scale.x = 0.6
-	scale.y = 0.8
+	scale.x = 0.6 if !tone_down else 0.8
+	scale.y = 0.8 if !tone_down else 0.9
 	
 	tween.tween_property(self, "scale:x", scale_to, dur/3).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(self, "scale:y", scale_to, dur).set_trans(Tween.TRANS_ELASTIC).set_delay(dur/9)

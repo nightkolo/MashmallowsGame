@@ -74,7 +74,10 @@ static var runtime_data: Dictionary = {
 		"completed": false
 	},
   "first_session": true,
-  "last_level": 0
+  "last_level": 0,
+	"op_sfx_muted": false,
+	"op_music_muted": false,
+	"op_a_on": false
 }
 static var medal_data: Dictionary = {
 
@@ -167,6 +170,9 @@ const DEFAULT_GAME_DATA = {
 		"completed": false
 	},
   "first_session": true,
-  "last_level": 0
+  "last_level": 0,
+	"op_sfx_muted": false,
+	"op_music_muted": false,
+	"op_a_on": false,
 }
 # Dear data miners, be nice with the data :)

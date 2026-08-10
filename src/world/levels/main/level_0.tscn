@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://8084qpc74hbe" path="res://object/scripts/game/monolog_system.gd" id="5_vp58q"]
 [ext_resource type="FontFile" uid="uid://c6xkgov5mobxj" path="res://assets/addons/fonts/Nunito-Black.ttf" id="6_gwvtg"]
 [ext_resource type="Resource" uid="uid://di3vbxq70xysm" path="res://core/resources/game_dialog/monolog_intro.tres" id="6_vperl"]
+[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="7_gwvtg"]
 [ext_resource type="AudioStream" uid="uid://cti38do6a3qct" path="res://audio/sounds/speech_generic.wav" id="11_pp181"]
 [ext_resource type="AudioStream" uid="uid://doutjfd6vfo3s" path="res://audio/sounds/speech_ka.wav" id="12_17l4c"]
 [ext_resource type="AudioStream" uid="uid://bgtyfv4mukx" path="res://audio/sounds/speech_ke.wav" id="13_kqy10"]
@@ -105,7 +106,6 @@ label_settings = SubResource("LabelSettings_y72ok")
 
 [node name="DisclaimerInterface" type="Control" parent="UI" unique_id=745354623]
 process_mode = 2
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,7 +120,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.10980392, 0.03137255, 0.13333334, 1)
 
 [node name="Main" type="MarginContainer" parent="UI/DisclaimerInterface" unique_id=378435881]
 layout_mode = 1
@@ -166,10 +166,14 @@ alignment = 1
 [node name="On" type="Button" parent="UI/DisclaimerInterface/Main/CenterContainer/VBoxContainer/HBoxContainer" unique_id=825689541]
 layout_mode = 2
 text = "Keep ON"
+script = ExtResource("7_gwvtg")
+tone_down = true
 
 [node name="Off" type="Button" parent="UI/DisclaimerInterface/Main/CenterContainer/VBoxContainer/HBoxContainer" unique_id=788514825]
 layout_mode = 2
 text = "OFF"
+script = ExtResource("7_gwvtg")
+tone_down = true
 
 [node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
 position = Vector2(640, 400)
@@ -253,7 +257,7 @@ position = Vector2(0, -66)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt2/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -135029.52
+rotation = -137400.39
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt2/Base" index="3" unique_id=1893349169]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -267,7 +271,7 @@ texture = ExtResource("23_nl2gi")
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(1420007166, 206340744) index="0" unique_id=520484544]
-rotation = -135029.52
+rotation = -137400.39
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt/Base" index="3" unique_id=2138650363]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -279,10 +283,10 @@ texture = ExtResource("23_nl2gi")
 position = Vector2(64, 0)
 
 [node name="Base" parent="Scene1/World/InputPrompt/InputPrompt3" index="1" unique_id=736620297]
-position = Vector2(0, -2)
+position = Vector2(0, 7.9998026)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt3/Base/Sprite2D2" parent_id_path=PackedInt32Array(823154426, 206340744) index="0" unique_id=520484544]
-rotation = -135029.52
+rotation = -137400.39
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt3/Base" index="3" unique_id=1815677311]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -296,7 +300,7 @@ position = Vector2(-64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt4/Base/Sprite2D2" parent_id_path=PackedInt32Array(1387734507, 206340744) index="0" unique_id=520484544]
-rotation = -135029.52
+rotation = -137400.39
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt4/Base" index="3" unique_id=1257870127]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -410,7 +414,7 @@ offset_right = 871.0
 offset_bottom = 458.0
 
 [node name="TiledSprite2D" parent="Scene2/World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-44653.39, 5.468265e-12, 4776, 3584)
+region_rect = Rect2(-82415.086, 1.0095127e-11, 4776, 3584)
 
 [node name="Choice1" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false

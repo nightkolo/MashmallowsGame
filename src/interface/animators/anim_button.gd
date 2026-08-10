@@ -1,5 +1,7 @@
 extends Button
 
+#@export tone_down: bool = true
+
 var tween: Tween
 
 var col_down: Color = Color(Color.WHITE*0.9, 1.0)
