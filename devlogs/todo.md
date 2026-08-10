@@ -11,6 +11,8 @@
 ### Assets, Design, and Project
 - [ ] Promo (After bugs and anim) 
   - [ ] Finish NG poster version
+  - [ ] Splash screen
+    - [ ] Proudly made in Godot
   - [ ] Finalize section design
   - [ ] Screenshot ideas
   - [ ] Millie Panel
@@ -23,19 +25,25 @@
   - [x] Add the goddamn fucking lollipop
 
 ### Codebase and touches
-- [ ] Add new logo and artwork
+- [x] Add new logo and artwork
 - [ ] **API**
   - [ ] JUST COPY AND PASTE
   - [ ] Medal ideas
-  - [ ] Medals
+  - [ ] Medal code
+  - [ ] Medal assets
   - [x] API testing and saving
 - [ ] Input prompts
     - [ ] Controller (Generic)
 - [ ] Menus
+- [ ] Audio mostly on left issue
+- [ ] Continue button bug on web
+- [ ] Off fall audio on auto_controlled
+- [ ] 2-18 Bug
 
 
 ### Extra
 - [ ] Codebase clean-up
+  - [ ] Remove print lines
 - [ ] Mashing
   - [ ] Mash particles
   - [ ] Flashing

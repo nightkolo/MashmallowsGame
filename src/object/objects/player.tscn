@@ -129,40 +129,43 @@ bus = &"Gameplay"
 
 [node name="Jump01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1375524]
 stream = ExtResource("13_s62i3")
+volume_db = 12.0
 panning_strength = 2.0
 bus = &"Gameplay"
 
 [node name="Jump02" type="AudioStreamPlayer2D" parent="Audio" unique_id=806071470]
 stream = ExtResource("7_4driq")
+volume_db = 12.0
 panning_strength = 2.0
 bus = &"Gameplay"
 
 [node name="Jump03" type="AudioStreamPlayer2D" parent="Audio" unique_id=2840009]
 stream = ExtResource("15_5xn7n")
+volume_db = 10.0
 panning_strength = 2.0
 bus = &"Gameplay"
 
 [node name="Land01" type="AudioStreamPlayer2D" parent="Audio" unique_id=1079389287]
 stream = ExtResource("16_81t2s")
-volume_db = 12.0
+volume_db = 16.0
 panning_strength = 2.0
 bus = &"Gameplay"
 
 [node name="Land02" type="AudioStreamPlayer2D" parent="Audio" unique_id=1940800812]
 stream = ExtResource("17_djp6n")
-volume_db = 12.0
+volume_db = 16.0
 panning_strength = 2.0
 bus = &"Gameplay"
 
 [node name="Land03" type="AudioStreamPlayer2D" parent="Audio" unique_id=2086795886]
 stream = ExtResource("16_4driq")
-volume_db = 12.0
+volume_db = 16.0
 panning_strength = 2.0
 bus = &"Gameplay"
 
 [node name="Land04" type="AudioStreamPlayer2D" parent="Audio" unique_id=1182105597]
 stream = ExtResource("19_exfef")
-volume_db = 12.0
+volume_db = 16.0
 panning_strength = 2.0
 bus = &"Gameplay"
 

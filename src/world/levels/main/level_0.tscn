@@ -258,7 +258,7 @@ position = Vector2(0, -66)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt2/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -142307.78
+rotation = -142961.0
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt2/Base" index="3" unique_id=1893349169]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -269,10 +269,10 @@ texture = ExtResource("23_nl2gi")
 [node name="InputPrompt" parent="Scene1/World/InputPrompt" unique_id=1420007166 instance=ExtResource("22_0t8fm")]
 
 [node name="Base" parent="Scene1/World/InputPrompt/InputPrompt" index="1" unique_id=736620297]
-position = Vector2(0, 11.594344)
+position = Vector2(0, 3.624118)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(1420007166, 206340744) index="0" unique_id=520484544]
-rotation = -142307.78
+rotation = -142961.0
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt/Base" index="3" unique_id=2138650363]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -287,7 +287,7 @@ position = Vector2(64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt3/Base/Sprite2D2" parent_id_path=PackedInt32Array(823154426, 206340744) index="0" unique_id=520484544]
-rotation = -142307.78
+rotation = -142961.0
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt3/Base" index="3" unique_id=1815677311]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -301,7 +301,7 @@ position = Vector2(-64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt4/Base/Sprite2D2" parent_id_path=PackedInt32Array(1387734507, 206340744) index="0" unique_id=520484544]
-rotation = -142307.78
+rotation = -142961.0
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt4/Base" index="3" unique_id=1257870127]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -415,7 +415,7 @@ offset_right = 871.0
 offset_bottom = 458.0
 
 [node name="TiledSprite2D" parent="Scene2/World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-9268.054, 1.134988e-12, 4776, 3584)
+region_rect = Rect2(-19666.383, 2.4086761e-12, 4776, 3584)
 
 [node name="Choice1" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false

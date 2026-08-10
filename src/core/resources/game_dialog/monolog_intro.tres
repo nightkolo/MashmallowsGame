@@ -37,7 +37,7 @@ metadata/_custom_type_script = "uid://c0o6bw7881gjw"
 [sub_resource type="Resource" id="Resource_mmk00"]
 script = ExtResource("2_mnqud")
 monolog_eyes = 3
-monolog_line = "I'm made out of candy, joy, and eccentricism!"
+monolog_line = "I'm made out of candy, super joyful and eccenteric!"
 metadata/_custom_type_script = "uid://c0o6bw7881gjw"
 
 [sub_resource type="Resource" id="Resource_wbx4n"]
@@ -107,7 +107,7 @@ monolog_path_1 = "Eat her anyway"
 monolog_flow_1 = Array[ExtResource("1_kaeyv")]([SubResource("Resource_wbx4n"), SubResource("Resource_o4sdu"), SubResource("Resource_c4agd"), SubResource("Resource_j16u5"), SubResource("Resource_dtp6q"), SubResource("Resource_5jp5s"), SubResource("Resource_dkpg5"), SubResource("Resource_i8e48")])
 monolog_path_2 = "Got it"
 monolog_flow_2 = Array[ExtResource("1_kaeyv")]([SubResource("Resource_oj4og"), SubResource("Resource_1x2i2"), SubResource("Resource_3q136")])
-monolog_line = "I may be sweet, but don't eat me. My candy parts are expired."
+monolog_line = "I may be sweet, but don't eat me. [font_size=16.0]uhhhhh..[/font_size] my candy parts are expired."
 metadata/_custom_type_script = "uid://coaf2q56w0fhq"
 
 [sub_resource type="Resource" id="Resource_2vsxg"]

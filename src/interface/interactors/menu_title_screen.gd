@@ -65,6 +65,8 @@ func continue_game() -> void:
 		
 	var lvl: String = Util.LEVEL_FILE_BEGIN + str(int(GameData.runtime_data["last_level"])) + Util.LEVEL_FILE_END 
 	
+	print_debug(lvl)
+	
 	if FileAccess.file_exists(lvl):
 		_disable_buttons(btns)
 		
