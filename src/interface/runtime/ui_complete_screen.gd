@@ -2,7 +2,11 @@ extends Control
 class_name CompleteScreen
 
 @export var asset_star: Texture2D = preload("res://assets/interface/rabbitstar-yellow.png")
-@export var asset_checkmark: Texture2D = preload("res://assets/interface/lollipop-02.png")
+@export var asset_lollipop_1: Texture2D = preload("res://assets/interface/lollipop-bakery-1-01.png")
+@export var asset_lollipop_2: Texture2D = preload("res://assets/interface/lollipop-bakery-2-01.png")
+
+@export var asset_bakery_1: Texture2D = preload("res://assets/artwork/millie-bakery-artwork-01.png")
+@export var asset_bakery_2: Texture2D = preload("res://assets/artwork/millie-bakery-artwork-02.png")
 
 # TODO Colo system
 
@@ -22,6 +26,7 @@ class_name CompleteScreen
 @onready var next_btn: Button = %NextButton
 @onready var artwork: Node2D = %Artwork
 @onready var artwork_2: Node2D = $Artwork/Sprite
+@onready var bakery: Sprite2D = %Bakery
 
 var tween_texture_idle: Tween
 var tween_texture_hover: Tween
@@ -125,8 +130,11 @@ func open() -> void:
 
 
 func update_text() -> void:
-	next_btn.text = button_text % (GameMgr.bakery_id + 1) if GameMgr.bakery_id + 1 <= Util.NUMBER_OF_BAKERIES else "Finish!"
-	label.text = completion_text % ("First" if GameMgr.bakery_id == 1 else "Second")
+	var bid := GameMgr.bakery_id
+	
+	bakery.texture = asset_bakery_1 if bid == 1 else asset_bakery_2
+	next_btn.text = button_text % (bid + 1) if bid + 1 <= Util.NUMBER_OF_BAKERIES else "Finish!"
+	label.text = completion_text % ("First" if bid == 1 else "Second")
 	
 	#if GameMgr.get_reduce_motion_setting():
 		#cb_complete_info.text = GameplayUI.BBCODE_TXT_NO_MOTION + _INFO_BEGIN + str(GameMgr.checkerboard_id) + _INFO_END
@@ -225,7 +233,7 @@ func _anim_texture_landed() -> void:
 	
 	texture_2.visible = true
 	cb_complete_info.visible = true
-	texture.texture = asset_checkmark
+	texture.texture = asset_lollipop_1 if GameMgr.bakery_id == 1 else asset_lollipop_2
 	bg.color = Color(Color.WHITE, 1.0)
 	node_texture_2.scale = -Vector2.ONE * 0.5
 	
@@ -281,6 +289,6 @@ func anim_texture_idle() -> void:
 	tween_texture_hover.tween_property(node_texture_2, "position:y", -10.0, dur_hover)
 	tween_texture_hover.tween_property(node_texture_2, "position:y", 5.0, dur_hover)
 	
-	tween_texture_pulse.tween_property(texture, "self_modulate", Color(Color.WHITE * 2.4), 0.05).set_delay(dur_hover)
-	tween_texture_pulse.tween_property(texture, "self_modulate", Color(Color.WHITE), 0.8)
+	tween_texture_pulse.tween_property(texture, "self_modulate", Color(Color.WHITE * 4.0), 0.05).set_delay(dur_hover)
+	tween_texture_pulse.tween_property(texture, "self_modulate", Color(Color.WHITE), 1.0)
 	

@@ -1,19 +1,5 @@
 # Todo
 
-### Bugs
-- [x] Complete screen
-  - [x] Add SFX
-- [x] SFX and Music
-	- [x] Click sound
-
-### Animation and SFX
-- [x] Side-order
-  - [x] Complete anim
-  - [x] Implement SFX
-- [x] NPC
-  - [x] Popping up animation bug
-  - [x] Speech sfx on Level Info
-
 ### Gameplay
 - [ ] **Outro Sequence**
   - [ ] Finalized monologue
@@ -23,17 +9,18 @@
     - [ ] 9
 
 ### Assets, Design, and Project
-- [ ] **Artwork** 
-  - [ ] Add the goddamn fucking lollipop
 - [ ] Codebase
-  - [ ] Content disclaimer
+  - [x] Content disclaimer
   - [ ] New option
+  - [ ] Additional music credit
 - [ ] Promo (After bugs and anim) 
   - [ ] Finish NG poster version
   - [ ] Finalize section design
   - [ ] Screenshot ideas
   - [ ] Millie Panel
   - [ ] About desc.
+- [x] **Artwork** 
+  - [x] Add the goddamn fucking lollipop
 
 ### Codebase and touches
 - [ ] Add new logo and artwork

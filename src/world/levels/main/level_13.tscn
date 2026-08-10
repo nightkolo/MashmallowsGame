@@ -108,9 +108,6 @@ offset_bottom = 360.0
 [node name="LevelGoalBoard" parent="World/LevelGoal/Board" parent_id_path=PackedInt32Array(1756025330, 1651127727) index="0" unique_id=877003082]
 offset_bottom = 496.0
 
-[node name="LevelNumber" parent="World/LevelGoal/Board/LevelGoalBoard/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1756025330, 1835387487) index="0" unique_id=1805443537]
-visible = false
-
 [node name="Star" parent="World/LevelGoal" index="1" unique_id=1640468128]
 position = Vector2(96, 248)
 

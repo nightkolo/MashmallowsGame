@@ -73,6 +73,7 @@ func anim_wobble(strength: float = PI / 28.0) -> void:
 
 
 func update_text() -> void:
+	level_number_label.visible = true
 	level_number_label.text = "%s-%s" % [GameMgr.bakery_id, GameMgr.level_id]
 
 

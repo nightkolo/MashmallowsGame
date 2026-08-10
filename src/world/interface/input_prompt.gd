@@ -20,7 +20,7 @@ func _ready() -> void:
 
 	var tween_b := create_tween().set_loops()
 
-	tween_b.tween_property(base, "position:y", 10.0, 0.1)
+	tween_b.tween_property(base, "position:y", 16.0, 0.1)
 	tween_b.tween_property(base, "position:y", -2.0, 0.1) 
 	if blink_interval > 0.0:
 		tween_b.tween_interval(randf_range(blink_time - blink_interval, blink_time + blink_interval))

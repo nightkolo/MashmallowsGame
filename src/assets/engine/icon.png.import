@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw4q2v7y422ed"
-path="res://.godot/imported/millie-lollipop-artwork(i forgor the lollipop).png-cf1f80b225b50390978b45e90964c7b6.ctex"
+uid="uid://cdnyihi1860wv"
+path="res://.godot/imported/icon.png-75a35bc11779e8deec8eac06f20ef778.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/artwork/millie-lollipop-artwork(i forgor the lollipop).png"
-dest_files=["res://.godot/imported/millie-lollipop-artwork(i forgor the lollipop).png-cf1f80b225b50390978b45e90964c7b6.ctex"]
+source_file="res://assets/engine/icon.png"
+dest_files=["res://.godot/imported/icon.png-75a35bc11779e8deec8eac06f20ef778.ctex"]
 
 [params]
 

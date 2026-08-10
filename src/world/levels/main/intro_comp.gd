@@ -20,9 +20,11 @@ class_name IntroComponent2
 
 @export var monolog: MonologSystem
 
+@export var disc_interface: Control
+@export var on_btn: Button
+@export var off_btn: Button
 @export var skip_interface: Control
 @export var skip_btn: Button
-@export var pause_btn: Button
 
 var tween_cam: Tween
 var tween_area: Tween
@@ -31,9 +33,6 @@ var cam_pos: Vector2
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("game_skip"):
-		skip_intro()
-		
-	if event.is_action_pressed("game_menu"):
 		goto_menus()
 
 
@@ -57,26 +56,41 @@ func _ready() -> void:
 	if logo:
 		logo.visible = false
 	
-	if skip_interface && skip_btn && pause_btn:
+	if skip_interface && skip_btn && on_btn && off_btn && disc_interface:
 		
 		skip_interface.modulate = Color(Color.WHITE, 0.0)
 		skip_interface.visible = false
 		
-		if GameData.runtime_data.has("first_session"):
-				
-			if GameData.runtime_data["first_session"] == false:
-				GameMgr.game_pause_toggled.connect(func(paused: bool):
-					skip_interface.visible = !paused
-					)
-					
-				skip_interface.visible = true
-				
-				skip_btn.pressed.connect(skip_intro)
-				pause_btn.pressed.connect(goto_menus)
-				
-				var t := create_tween()
-				
-				t.tween_property(skip_interface, "modulate", Color(Color.WHITE, 1.0), 1.0).set_delay(1.0)
+		#if GameData.runtime_data.has("first_session"):
+				#
+			#if GameData.runtime_data["first_session"] == false:
+				#GameMgr.game_pause_toggled.connect(func(paused: bool):
+					#skip_interface.visible = !paused
+					#)
+					#
+				#skip_interface.visible = true
+				#
+				#skip_btn.pressed.connect(goto_menus)
+				##pause_btn.pressed.connect(goto_menus)
+				#
+				#var t := create_tween()
+				#
+				#t.tween_property(skip_interface, "modulate", Color(Color.WHITE, 1.0), 1.0).set_delay(1.0)
+		#else:
+		get_tree().paused = true
+		disc_interface.visible = true
+		GameMgr.current_ui_handler.allow_input = false
+		
+		on_btn.pressed.connect(func():
+			GameMgr.current_ui_handler.allow_input = true
+			get_tree().paused = false
+			disc_interface.visible = false
+			)
+		off_btn.pressed.connect(func():
+			GameMgr.current_ui_handler.allow_input = true
+			get_tree().paused = false
+			disc_interface.visible = false
+			)
 
 	area_text.body_entered.connect(func(body: Node2D):
 		if body is Player:

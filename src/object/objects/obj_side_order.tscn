@@ -12,7 +12,7 @@ _limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0.32956976), 0.0, 0.0, 0, 0, Vector2(1, 1.8849558), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="SideOrder" type="Node2D" unique_id=1359360017 node_paths=PackedStringArray("anchor", "panel", "particles", "audio_progress", "audio_complete", "audio_loss", "vocal_sideorder")]
+[node name="SideOrder" type="Node2D" unique_id=1359360017 node_paths=PackedStringArray("anchor", "panel", "particles", "audio_progress", "audio_complete", "audio_loss")]
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_gy5tq")
 anchor = NodePath("Node2D2/Node2D")
@@ -21,7 +21,6 @@ particles = NodePath("CPUParticles2D")
 audio_progress = NodePath("Node/SideoderProgress")
 audio_complete = NodePath("Node/SideorderComplete")
 audio_loss = NodePath("Node/SideorderLoss")
-vocal_sideorder = NodePath("")
 metadata/_custom_type_script = "uid://it5lri0w67wk"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=903849173]

@@ -100,7 +100,7 @@ func start_music() -> void:
 	if !music_current.playing:
 		music_current.volume_db = original_music_db
 
-		music_current.play(0.5)
+		music_current.play(0.0)
 		#
 		#if _tween_aud:
 			#_tween_aud.kill()

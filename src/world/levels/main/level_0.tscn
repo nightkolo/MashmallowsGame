@@ -81,28 +81,6 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Pause" type="Button" parent="UI/SkipInterface/VBoxContainer" unique_id=699483817]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 32
-text = "     Menus"
-script = ExtResource("4_q354p")
-
-[node name="Sprite2D" type="Sprite2D" parent="UI/SkipInterface/VBoxContainer/Pause" unique_id=821575720]
-position = Vector2(13.400002, 20)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_l728u")
-
-[node name="Label" type="Label" parent="UI/SkipInterface/VBoxContainer/Pause/Sprite2D" unique_id=970129928]
-offset_left = -28.0
-offset_top = -54.0
-offset_right = 12.0
-offset_bottom = -9.0
-scale = Vector2(2, 2)
-text = "M"
-label_settings = SubResource("LabelSettings_y72ok")
-
 [node name="Skip" type="Button" parent="UI/SkipInterface/VBoxContainer" unique_id=2100867416]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -125,11 +103,79 @@ scale = Vector2(2, 2)
 text = "Q"
 label_settings = SubResource("LabelSettings_y72ok")
 
+[node name="DisclaimerInterface" type="Control" parent="UI" unique_id=745354623]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/DisclaimerInterface" unique_id=1583591983]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Main" type="MarginContainer" parent="UI/DisclaimerInterface" unique_id=378435881]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_8a3ch")
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/DisclaimerInterface/Main" unique_id=1791172078]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DisclaimerInterface/Main/CenterContainer" unique_id=1886569287]
+custom_minimum_size = Vector2(650, 500)
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/DisclaimerInterface/Main/CenterContainer/VBoxContainer" unique_id=1516912241]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "This game contains mild [b]Suggestive[/b] Themes.
+
+It is normally [b]ON[/b], but you can toggle that sort of content [b]ON[/b] or [b]OFF[/b] at any time."
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/DisclaimerInterface/Main/CenterContainer/VBoxContainer" unique_id=740378996]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="On" type="Button" parent="UI/DisclaimerInterface/Main/CenterContainer/VBoxContainer/HBoxContainer" unique_id=825689541]
+layout_mode = 2
+text = "Keep ON"
+
+[node name="Off" type="Button" parent="UI/DisclaimerInterface/Main/CenterContainer/VBoxContainer/HBoxContainer" unique_id=788514825]
+layout_mode = 2
+text = "OFF"
+
 [node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
 position = Vector2(640, 400)
 script = ExtResource("3_gwvtg")
 
-[node name="Intro" type="Node" parent="." unique_id=29428490 node_paths=PackedStringArray("player", "camera", "player_spawn_pos", "logo", "area_text", "node_text", "text_1", "text_2", "scene_1", "scene_2", "level", "monolog", "skip_interface", "skip_btn", "pause_btn")]
+[node name="Intro" type="Node" parent="." unique_id=29428490 node_paths=PackedStringArray("player", "camera", "player_spawn_pos", "logo", "area_text", "node_text", "text_1", "text_2", "scene_1", "scene_2", "level", "monolog", "disc_interface", "on_btn", "off_btn", "skip_interface", "skip_btn")]
 script = ExtResource("4_y72ok")
 player = NodePath("../Player")
 camera = NodePath("../Cam")
@@ -143,9 +189,11 @@ scene_1 = NodePath("../Scene1")
 scene_2 = NodePath("../Scene2")
 level = NodePath("..")
 monolog = NodePath("../MonologSystem")
+disc_interface = NodePath("../UI/DisclaimerInterface")
+on_btn = NodePath("../UI/DisclaimerInterface/Main/CenterContainer/VBoxContainer/HBoxContainer/On")
+off_btn = NodePath("../UI/DisclaimerInterface/Main/CenterContainer/VBoxContainer/HBoxContainer/Off")
 skip_interface = NodePath("../UI/SkipInterface")
 skip_btn = NodePath("../UI/SkipInterface/VBoxContainer/Skip")
-pause_btn = NodePath("../UI/SkipInterface/VBoxContainer/Pause")
 
 [node name="MonologSystem" type="Node" parent="." unique_id=1815639917 node_paths=PackedStringArray("speech_bubble", "character", "choice_1", "choice_2")]
 script = ExtResource("5_vp58q")
@@ -205,7 +253,7 @@ position = Vector2(0, -66)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt2/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -131516.69
+rotation = -135029.52
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt2/Base" index="3" unique_id=1893349169]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -219,7 +267,7 @@ texture = ExtResource("23_nl2gi")
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(1420007166, 206340744) index="0" unique_id=520484544]
-rotation = -131516.69
+rotation = -135029.52
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt/Base" index="3" unique_id=2138650363]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -234,7 +282,7 @@ position = Vector2(64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt3/Base/Sprite2D2" parent_id_path=PackedInt32Array(823154426, 206340744) index="0" unique_id=520484544]
-rotation = -131516.69
+rotation = -135029.52
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt3/Base" index="3" unique_id=1815677311]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -248,7 +296,7 @@ position = Vector2(-64, 0)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="Scene1/World/InputPrompt/InputPrompt4/Base/Sprite2D2" parent_id_path=PackedInt32Array(1387734507, 206340744) index="0" unique_id=520484544]
-rotation = -131516.69
+rotation = -135029.52
 
 [node name="Sprite2D4" type="Sprite2D" parent="Scene1/World/InputPrompt/InputPrompt4/Base" index="3" unique_id=1257870127]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
@@ -362,7 +410,7 @@ offset_right = 871.0
 offset_bottom = 458.0
 
 [node name="TiledSprite2D" parent="Scene2/World/SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-17941.977, 2.1975258e-12, 4776, 3584)
+region_rect = Rect2(-44653.39, 5.468265e-12, 4776, 3584)
 
 [node name="Choice1" parent="Scene2/World/SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false
@@ -391,19 +439,7 @@ position = Vector2(372, 464)
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("29_owqqn")]
 position = Vector2(952, 608)
-animate = null
 start_asleep = true
-speed = null
-acceleration = null
-deceleration = null
-jump_height = null
-show_trail = null
-show_blocks = null
-auto_assign_child_blocks = null
-push_front_mashed_blocks = null
-auto_controlled = null
-idle_direction = null
-random_jumping = null
 
 [node name="Logo" type="Sprite2D" parent="." unique_id=908471044]
 visible = false
