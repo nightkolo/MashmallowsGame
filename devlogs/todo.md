@@ -1,13 +1,5 @@
 # Todo
 
-### Gameplay
-- [x] **Outro Sequence**
-  - [x] Finalized monologue
-- [x] Bakery 2
-  - [x] Re-design needed
-    - [x] 10
-    - [x] 9
-
 ### Assets, Design, and Project
 - [ ] Promo (After bugs and anim) 
   - [ ] Finish NG poster version
@@ -17,6 +9,7 @@
   - [ ] Screenshot ideas
   - [ ] Millie Panel
   - [ ] About desc.
+  - [ ] Finish trailer
 - [x] Codebase
   - [x] Content disclaimer (itch.io only)
   - [x] New option
@@ -25,20 +18,12 @@
   - [x] Add the goddamn fucking lollipop
 
 ### Codebase and touches
-- [x] Add new logo and artwork
-- [ ] Add SpoonFish credit
 - [ ] **API**
-  - [ ] a
-    - [ ] Load extension
-    - [ ] Make medals on Ng.com
-    - [ ] Import medals
-    - [ ] Paste code
-    - [ ] Create logic
-    - [ ] Use overlay
-  - [ ] JUST COPY AND PASTE
-  - [ ] Medal ideas
-  - [ ] Medal code
+  - [ ] Harder medal code
   - [ ] Medal assets
+  - [x] JUST COPY AND PASTE
+  - [x] Medal ideas
+  - [x] Medal code
   - [x] API testing and saving
 - [ ] Input prompts
     - [ ] Controller (Generic)
@@ -47,6 +32,8 @@
 - [ ] Continue button bug on web
 - [ ] Off fall audio on auto_controlled
 - [ ] 2-18 Bug
+- [x] Add new logo and artwork
+- [x] Add SpoonFish credit
 
 
 ### Extra

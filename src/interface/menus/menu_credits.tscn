@@ -207,7 +207,14 @@ text = "Scout (Starsfordia)"
 label_settings = SubResource("LabelSettings_sng62")
 horizontal_alignment = 1
 
+[node name="Derp" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=650918468]
+layout_mode = 2
+text = "Derp"
+label_settings = SubResource("LabelSettings_sng62")
+horizontal_alignment = 1
+
 [node name="Thanks3" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=549026694]
+visible = false
 layout_mode = 2
 text = "Avizura"
 label_settings = SubResource("LabelSettings_1tel5")
@@ -222,6 +229,12 @@ horizontal_alignment = 1
 [node name="Thanks2" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=1820827681]
 layout_mode = 2
 text = "Kenney"
+label_settings = SubResource("LabelSettings_1tel5")
+horizontal_alignment = 1
+
+[node name="Thanks4" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Others" unique_id=1576296854]
+layout_mode = 2
+text = "jevfel"
 label_settings = SubResource("LabelSettings_1tel5")
 horizontal_alignment = 1
 
