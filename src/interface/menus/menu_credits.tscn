@@ -30,8 +30,17 @@ shadow_color = Color(0, 0, 0, 0.5)
 shadow_offset = Vector2(6, 6)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7l5mp"]
-font_size = 64
+font_size = 46
 font_color = Color(1, 0.654902, 1, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="LabelSettings" id="LabelSettings_nbgy1"]
+font_size = 46
+font_color = Color(1, 1, 0, 1)
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
@@ -84,6 +93,7 @@ custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 50
+alignment = 1
 
 [node name="Label" type="RichTextLabel" parent="Main/VBoxContainer2" unique_id=297281300]
 visible = false
@@ -154,6 +164,27 @@ texture = ExtResource("2_sng62")
 layout_mode = 2
 text = "Avizura"
 label_settings = SubResource("LabelSettings_7l5mp")
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer2/Authors" unique_id=1433144880]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Musicby" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer3" unique_id=170871499]
+layout_mode = 2
+text = "Additional music by:"
+label_settings = SubResource("LabelSettings_vltc8")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer3" unique_id=2105005692]
+visible = false
+layout_mode = 2
+texture = ExtResource("2_sng62")
+
+[node name="Aliens2Exist" type="Label" parent="Main/VBoxContainer2/HBoxContainer2/Authors/VBoxContainer3" unique_id=1450553459]
+layout_mode = 2
+text = "Aliens2Exist"
+label_settings = SubResource("LabelSettings_nbgy1")
 horizontal_alignment = 1
 
 [node name="Others" type="VBoxContainer" parent="Main/VBoxContainer2/HBoxContainer2" unique_id=33664027]

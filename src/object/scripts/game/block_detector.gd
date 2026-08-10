@@ -2,6 +2,8 @@
 extends Node2D
 class_name BlockDetector
 
+signal changed_index()
+
 @export var notify_mash_highlight: bool = true
 @export var unmash_notify_rays_length: float = 45.0:
 	set(value):
@@ -79,6 +81,8 @@ func update_unmashed_direction_arrow_index(moving_toward: Vector2) -> void:
 	var n: int = unmashed_block_detection_rays.size() # Either 3 or 5
 	
 	#print_debug("Before: " + str(unmashed_block_detection_rays))
+	
+	changed_index.emit()
 	
 	for i in n:
 		if (unmashed_block_detection_rays[i] as RayCast2D).target_position.sign() != dir:

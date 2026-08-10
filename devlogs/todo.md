@@ -1,24 +1,24 @@
 # Todo
 
 ### Gameplay
-- [ ] **Outro Sequence**
-  - [ ] Finalized monologue
-- [ ] Bakery 2
-  - [ ] Design needed
-    - [ ] 10
-    - [ ] 9
+- [x] **Outro Sequence**
+  - [x] Finalized monologue
+- [x] Bakery 2
+  - [x] Re-design needed
+    - [x] 10
+    - [x] 9
 
 ### Assets, Design, and Project
-- [ ] Codebase
-  - [x] Content disclaimer
-  - [ ] New option
-  - [ ] Additional music credit
 - [ ] Promo (After bugs and anim) 
   - [ ] Finish NG poster version
   - [ ] Finalize section design
   - [ ] Screenshot ideas
   - [ ] Millie Panel
   - [ ] About desc.
+- [x] Codebase
+  - [x] Content disclaimer (itch.io only)
+  - [x] New option
+  - [x] Additional music credit
 - [x] **Artwork** 
   - [x] Add the goddamn fucking lollipop
 

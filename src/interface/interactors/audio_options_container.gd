@@ -53,8 +53,8 @@ func music_text():
 	option_entered.emit("Music: %s" % s)
 
 func a_text():
-	var s := "ON" if GameMgr.get_adult_filter_on_setting() else "OFF"
-	option_entered.emit("Adult Filter: %s" % s)
+	var s := "OFF" if GameMgr.get_adult_filter_on_setting() else "ON" 
+	option_entered.emit("Adult Themes: %s" % s)
 
 
 func update_options() -> void:
@@ -69,6 +69,6 @@ func update_options() -> void:
 		music_icon.self_modulate = Color(Color.WHITE, 1.0)
 		
 	if GameMgr.get_adult_filter_on_setting():
-		a_icon.self_modulate = Color(Color.WHITE, 1.0)
-	else:
 		a_icon.self_modulate = Color(Color.WHITE/2.0, 1.0)
+	else:
+		a_icon.self_modulate = Color(Color.WHITE, 1.0)

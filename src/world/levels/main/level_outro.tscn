@@ -15,75 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://bt15qcfnm63xf" path="res://object/objects/block_mashed_1x1.tscn" id="12_ugcbx"]
 [ext_resource type="PackedScene" uid="uid://cys70kcpvkm0y" path="res://world/interface/speech_bubble.tscn" id="13_hx0xr"]
 [ext_resource type="PackedScene" uid="uid://buwssnpn4ltxb" path="res://object/objects/block_mashed_1x2.tscn" id="13_n66mx"]
-[ext_resource type="Script" uid="uid://drojb13rqhkar" path="res://core/resources/game_dialog/monolog_millie.gd" id="14_766v7"]
 [ext_resource type="AudioStream" uid="uid://doutjfd6vfo3s" path="res://audio/sounds/speech_ka.wav" id="14_iivpe"]
 [ext_resource type="AudioStream" uid="uid://bgtyfv4mukx" path="res://audio/sounds/speech_ke.wav" id="15_k03yb"]
-[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="15_s1cjh"]
-[ext_resource type="Script" uid="uid://coaf2q56w0fhq" path="res://core/resources/game_dialog/monolog_tree.gd" id="16_0n6ub"]
 [ext_resource type="AudioStream" uid="uid://lim7kxx0wuhn" path="res://audio/sounds/speech_ki.wav" id="16_p42b0"]
-[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="17_ugcbx"]
+[ext_resource type="Resource" uid="uid://cxu38f6ir1sae" path="res://core/resources/game_dialog/monolog_outro_safe.tres" id="16_s1cjh"]
 [ext_resource type="AudioStream" uid="uid://dlivpjd07hi8g" path="res://audio/sounds/speech_ko.wav" id="17_vx8vf"]
 [ext_resource type="AudioStream" uid="uid://df0l3dd7j6esl" path="res://audio/sounds/speech_ku.wav" id="18_4c73u"]
 [ext_resource type="Script" uid="uid://d2gl7vnb88axq" path="res://world/world/monolog_activation_area.gd" id="23_n66mx"]
 [ext_resource type="Script" uid="uid://xf050jk32doo" path="res://world/levels/main/outro_comp.gd" id="24_0n6ub"]
 [ext_resource type="Script" uid="uid://5td4o6biedai" path="res://world/levels/main/player_spawner.gd" id="27_n66mx"]
-
-[sub_resource type="Resource" id="Resource_ugcbx"]
-script = ExtResource("15_s1cjh")
-monolog_line = "Congratulations!
-You have completed all the orders!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_qfo1w"]
-script = ExtResource("15_s1cjh")
-monolog_eyes = 3
-monolog_line = "Thank you for Playing,
-[font_size=30.0]Mashmallows!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_0mp8r"]
-script = ExtResource("15_s1cjh")
-monolog_line = "Here they come!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_n66mx"]
-script = ExtResource("15_s1cjh")
-monolog_emotion = 2
-monolog_line = "........"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_766v7"]
-script = ExtResource("15_s1cjh")
-monolog_emotion = 2
-monolog_line = "...Aha..."
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_s1cjh"]
-script = ExtResource("15_s1cjh")
-monolog_line = "I think we've had enough candy for today"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_yq3e7"]
-script = ExtResource("16_0n6ub")
-monolog_path_1 = "What about
-the Orders?"
-monolog_flow_1 = Array[ExtResource("14_766v7")]([SubResource("Resource_0mp8r")])
-monolog_path_2 = "You look tasty"
-monolog_flow_2 = Array[ExtResource("14_766v7")]([SubResource("Resource_n66mx"), SubResource("Resource_766v7"), SubResource("Resource_s1cjh")])
-monolog_eyes = 3
-monolog_line = "We hope you to see you again!"
-metadata/_custom_type_script = "uid://coaf2q56w0fhq"
-
-[sub_resource type="Resource" id="Resource_0n6ub"]
-script = ExtResource("15_s1cjh")
-monolog_eyes = 3
-monolog_line = "Goodbye!"
-metadata/_custom_type_script = "uid://c0o6bw7881gjw"
-
-[sub_resource type="Resource" id="Resource_px16p"]
-script = ExtResource("17_ugcbx")
-monolog_flow = Array[ExtResource("14_766v7")]([SubResource("Resource_ugcbx"), SubResource("Resource_qfo1w"), SubResource("Resource_yq3e7"), SubResource("Resource_0n6ub")])
-metadata/_custom_type_script = "uid://bdvhnubwffufv"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6r1i"]
 size = Vector2(217, 20)
@@ -92,6 +32,7 @@ size = Vector2(217, 20)
 script = ExtResource("1_8x21h")
 level_id = 21
 bakery_id = 2
+disable_reset = true
 no_progression = true
 level_goal = NodePath("World/LevelGoal")
 player = NodePath("Player")
@@ -139,7 +80,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LevelOrder" type="Node2D" parent="World/LevelGoal" unique_id=989048369]
 script = ExtResource("9_k03yb")
-order_code = Array[Dictionary]([])
 metadata/_custom_type_script = "uid://5cfma5ft813q"
 
 [node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("10_p42b0")]
@@ -174,11 +114,12 @@ offset_right = 784.0
 offset_bottom = 440.0
 
 [node name="TiledSprite2D" parent="SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-58130.92, 7.1191044e-12, 4776, 3584)
+region_rect = Rect2(-52965.137, 6.4861497e-12, 4776, 3584)
 
 [node name="Choice1" parent="SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false
 disabled = true
+rot = -2.5
 
 [node name="Choice2" parent="SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="1" unique_id=870054960]
 visible = false
@@ -188,8 +129,8 @@ disabled = true
 script = ExtResource("12_qmi1j")
 auto_start = false
 reveal_name_at = -2
-flow = SubResource("Resource_px16p")
-speech_bubble_size = Vector2(300, 120)
+flow = ExtResource("16_s1cjh")
+speech_bubble_size = Vector2(300, 150)
 speech_bubble = NodePath("../SpeechBubble")
 character = NodePath("../World/NPCBoard")
 speech_a = ExtResource("14_iivpe")
@@ -210,12 +151,14 @@ metadata/_custom_type_script = "uid://d2gl7vnb88axq"
 position = Vector2(515.5, 568)
 shape = SubResource("RectangleShape2D_j6r1i")
 
-[node name="Outro" type="Node" parent="." unique_id=734435710 node_paths=PackedStringArray("player", "camera", "level", "monolog", "ground_1", "player_spawner")]
+[node name="Outro" type="Node" parent="." unique_id=734435710 node_paths=PackedStringArray("player", "camera", "level", "monolog", "monolog_Area", "millie", "ground_1", "player_spawner")]
 script = ExtResource("24_0n6ub")
 player = NodePath("../Player")
 camera = NodePath("../Cam")
 level = NodePath("..")
 monolog = NodePath("../MonologSystem")
+monolog_Area = NodePath("../MonologArea")
+millie = NodePath("../World/NPCBoard/Board/NpcBoardMask/NodeMillie/Millie")
 ground_1 = NodePath("../World/Terrain/Ground")
 player_spawner = NodePath("../Marker2D")
 

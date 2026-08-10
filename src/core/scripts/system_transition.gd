@@ -154,9 +154,9 @@ func slide_to_endlevel(speed: float = 1.0) -> void:
 	
 	await anim.animation_finished
 	
-	get_tree().change_scene_to_file("res://world/levels/main/level_outro.tscn")
+	await get_tree().create_timer(1.25).timeout
 	
-	await get_tree().create_timer(1.55).timeout
+	get_tree().change_scene_to_file("res://world/levels/main/level_outro.tscn")
 	
 	anim.play(&"slide_out", -1, speed)
 	
@@ -182,7 +182,7 @@ func slide_to_credits(speed: float = 1.0) -> void:
 	GameMgr.menu_entered.emit(GameMgr.MenuID.CREDITS)
 	get_tree().change_scene_to_file("res://interface/menus/main_menus_scene.tscn")
 	
-	await get_tree().create_timer(1.55).timeout
+	await get_tree().create_timer(1.0).timeout
 	
 	anim.play(&"slide_out", -1, speed)
 	

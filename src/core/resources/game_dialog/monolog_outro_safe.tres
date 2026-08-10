@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="MonologFlow" format=3 uid="uid://cxu38f6ir1sae"]
+
+[ext_resource type="Script" uid="uid://drojb13rqhkar" path="res://core/resources/game_dialog/monolog_millie.gd" id="1_nq0uo"]
+[ext_resource type="Script" uid="uid://c0o6bw7881gjw" path="res://core/resources/game_dialog/monolog_line.gd" id="2_sc31u"]
+[ext_resource type="Script" uid="uid://bdvhnubwffufv" path="res://core/resources/game_dialog/monolog_flow.gd" id="3_e5sb1"]
+
+[sub_resource type="Resource" id="Resource_ugcbx"]
+script = ExtResource("2_sc31u")
+monolog_line = "Congratulations!
+You have completed all the orders!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_qfo1w"]
+script = ExtResource("2_sc31u")
+monolog_eyes = 3
+monolog_line = "Thank you for Playing,
+[font_size=26.0][wave][rainbow]Mashmallows!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_n66mx"]
+script = ExtResource("2_sc31u")
+monolog_eyes = 3
+monolog_line = "We hope you to see you again!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[sub_resource type="Resource" id="Resource_0n6ub"]
+script = ExtResource("2_sc31u")
+monolog_eyes = 3
+monolog_line = "Goodbye!"
+metadata/_custom_type_script = "uid://c0o6bw7881gjw"
+
+[resource]
+script = ExtResource("3_e5sb1")
+monolog_flow = Array[ExtResource("1_nq0uo")]([SubResource("Resource_ugcbx"), SubResource("Resource_qfo1w"), SubResource("Resource_n66mx"), SubResource("Resource_0n6ub")])
+metadata/_custom_type_script = "uid://bdvhnubwffufv"

@@ -194,7 +194,7 @@ position = Vector2(192, 360)
 position = Vector2(0, 60)
 script = ExtResource("11_38cfg")
 match_block_appearance = true
-instant_open = true
+fast_open = true
 metadata/_custom_type_script = "uid://b3cwwpsrywrrm"
 
 [node name="DoorBlock5" parent="Door" unique_id=1870965058 instance=ExtResource("12_cuham")]

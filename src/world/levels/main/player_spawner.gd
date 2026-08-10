@@ -55,7 +55,7 @@ func spawn(anim_endscreen: bool = false, queue_free_after: float = -1.0):
 	
 	t.tween_callback(func():
 		if anim_endscreen:
-			await player.animator.anim_zoom_in(0.5, true)
+			await player.animator.anim_zoom_in(0.25, true)
 			zoomed_in.emit()
 		).set_delay(2.0)
 	

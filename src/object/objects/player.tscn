@@ -204,7 +204,7 @@ bus = &"Gameplay"
 
 [node name="UnmashExit" type="AudioStreamPlayer2D" parent="Audio" unique_id=1670651370]
 stream = ExtResource("20_uls5r")
-volume_db = 5.0
+volume_db = 10.0
 panning_strength = 2.0
 bus = &"Gameplay"
 

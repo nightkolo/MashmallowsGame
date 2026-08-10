@@ -22,7 +22,7 @@ func physics_update(delta: float) -> void:
 	if player == null:
 		return
 	
-	if player.velocity_position_based.y > 600.0:
+	if player.velocity_position_based.y > 660.0:
 		if !player.audio.fall_sfx.playing:
 			player.audio.fall_sfx.play()
 		else:

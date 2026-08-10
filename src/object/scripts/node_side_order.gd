@@ -60,6 +60,7 @@ func check_sideorder_completion() -> void:
 	
  	# Worst case -> O(n * m)
 	# n = order_code.size(), m = current_player_code.size()
+
 	for o_entry: Dictionary in order_code:
 		var id_node: MashBlockCheckerID = o_entry["ref"] as MashBlockCheckerID
 		
@@ -81,6 +82,7 @@ func check_sideorder_completion() -> void:
 			match_found = true
 			break
 		
+		
 		id_node.anim_satisfied(match_found)
 		print_debug(id_node.sprite_face)
 		id_node.sprite_face.texture = text_happy if match_found else text_reg
@@ -95,7 +97,7 @@ func check_sideorder_completion() -> void:
 	
 	last_amount_satisfied = amount_satisfied
 	
-	if amount_satisfied == number_of_sideorder_blocks:
+	if amount_satisfied == number_of_sideorder_blocks && current_player_code.size() == order_code.size():
 		sideorder_met()
 		
 	#order_checked.emit()
