@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="5_b1ou4"]
 [ext_resource type="Script" uid="uid://dpw8xwxo4mbrv" path="res://interface/interactors/audio_options_container.gd" id="9_ksf64"]
 [ext_resource type="Texture2D" uid="uid://b4ndvo76fmqy1" path="res://assets/interface/option-sfx.png" id="9_usxwo"]
+[ext_resource type="Texture2D" uid="uid://detdfs04hxy25" path="res://assets/interface/option-adult-filter.png" id="10_o07dq"]
 [ext_resource type="Texture2D" uid="uid://73cne5ae0fv5" path="res://assets/interface/option-music.png" id="10_u8yhx"]
 
 [sub_resource type="Gradient" id="Gradient_ytqxl"]
@@ -158,6 +159,7 @@ layout_mode = 2
 theme_override_constants/separation = -5
 
 [node name="AudioOptions" type="HBoxContainer" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2" unique_id=1985167060]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -169,7 +171,7 @@ unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-focus_neighbor_left = NodePath("../Music")
+focus_neighbor_left = NodePath("../A")
 focus_neighbor_top = NodePath("../../../ReturnButton")
 focus_neighbor_right = NodePath("../Music")
 focus_neighbor_bottom = NodePath("../../../ResumeButton")
@@ -193,7 +195,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../SFX")
 focus_neighbor_top = NodePath("../../../ReturnButton")
-focus_neighbor_right = NodePath("../SFX")
+focus_neighbor_right = NodePath("../A")
 focus_neighbor_bottom = NodePath("../../../ResumeButton")
 theme_override_font_sizes/font_size = 28
 script = ExtResource("5_b1ou4")
@@ -205,3 +207,23 @@ position = Vector2(25, 25)
 self_modulate = Color(1, 1, 0.735357, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_u8yhx")
+
+[node name="A" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=1921086884 groups=["UIButton"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Music")
+focus_neighbor_top = NodePath("../../../ReturnButton")
+focus_neighbor_right = NodePath("../SFX")
+focus_neighbor_bottom = NodePath("../../../ResumeButton")
+theme_override_font_sizes/font_size = 28
+script = ExtResource("5_b1ou4")
+
+[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/A" unique_id=1074743493]
+position = Vector2(25, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/A/Node2D" unique_id=677523292]
+self_modulate = Color(1, 1, 0.735357, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_o07dq")

@@ -83,7 +83,7 @@ texture_repeat = 2
 position = Vector2(-11, 1)
 texture = ExtResource("2_nnv04")
 region_enabled = true
-region_rect = Rect2(-33636.46, 4.119062e-12, 1580, 800)
+region_rect = Rect2(-59777.535, 7.320722e-12, 1580, 800)
 script = ExtResource("3_f8sg2")
 animate_scroll = true
 scroll_trajectory = 3.141592653589793
@@ -102,12 +102,12 @@ color = Color(0, 0, 0, 0.2509804)
 unique_name_in_owner = true
 
 [node name="Sprite" type="Node2D" parent="Artwork" unique_id=729867076]
-position = Vector2(0, 869)
+position = Vector2(0, 850)
 
 [node name="Bakery" type="Sprite2D" parent="Artwork/Sprite" unique_id=1605328234]
 unique_name_in_owner = true
 position = Vector2(0, -375)
-scale = Vector2(0.36, 0.36)
+scale = Vector2(0.37, 0.37)
 texture = ExtResource("5_dfij4")
 
 [node name="Main" type="MarginContainer" parent="." unique_id=1830294922]
@@ -139,7 +139,7 @@ layout_mode = 2
 theme_override_constants/line_separation = -20
 theme_override_fonts/normal_font = SubResource("FontVariation_vproy")
 bbcode_enabled = true
-text = "[center][font_size=50][wave amp=20.0 freq=2.0][tornado radius=2.5 freq=4.0]Marshmallow Lady gives you a Lollipop!"
+text = "[center][font_size=50][wave amp=20.0 freq=2.0][tornado radius=2.5 freq=4.0][outline_size=10.0]Marshmallow Lady Gives You a Lollipop!"
 fit_content = true
 horizontal_alignment = 1
 

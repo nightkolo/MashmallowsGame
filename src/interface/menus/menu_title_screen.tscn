@@ -5,10 +5,11 @@
 [ext_resource type="Theme" uid="uid://croyx1o13jqlf" path="res://core/resources/theme/button_menus_menus.tres" id="3_qc6yc"]
 [ext_resource type="Script" uid="uid://ccyg5othuwlpx" path="res://interface/animators/anim_button.gd" id="4_ki3e0"]
 [ext_resource type="Script" uid="uid://dpw8xwxo4mbrv" path="res://interface/interactors/audio_options_container.gd" id="5_is32b"]
-[ext_resource type="Script" uid="uid://cm6comiam43nr" path="res://interface/animators/anim_button_icon.gd" id="6_mmakm"]
 [ext_resource type="Texture2D" uid="uid://b4ndvo76fmqy1" path="res://assets/interface/option-sfx.png" id="7_jrgp0"]
 [ext_resource type="Texture2D" uid="uid://73cne5ae0fv5" path="res://assets/interface/option-music.png" id="8_06imj"]
+[ext_resource type="Script" uid="uid://imm8qseo17u7" path="res://interface/animators/anim_button_panel.gd" id="9_1jpwj"]
 [ext_resource type="PackedScene" uid="uid://bltj01af7hhkl" path="res://interface/runtime/game_title.tscn" id="9_fnwt2"]
+[ext_resource type="Texture2D" uid="uid://detdfs04hxy25" path="res://assets/interface/option-adult-filter.png" id="10_hbtan"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_am52u"]
 content_margin_left = 4.0
@@ -60,7 +61,6 @@ theme_override_styles/separator = SubResource("StyleBoxLine_am52u")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
-focus_neighbor_top = NodePath("../AudioOptions/SFX")
 focus_neighbor_bottom = NodePath("../SelectStageButton")
 theme = ExtResource("3_qc6yc")
 text = "Continue 00-00"
@@ -81,7 +81,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 focus_neighbor_top = NodePath("../SelectStageButton")
-focus_neighbor_bottom = NodePath("../AudioOptions/SFX")
 theme = ExtResource("3_qc6yc")
 text = "Credits & Support<3"
 script = ExtResource("4_ki3e0")
@@ -93,43 +92,67 @@ size_flags_vertical = 8
 theme_override_constants/separation = 25
 script = ExtResource("5_is32b")
 
-[node name="SFX" type="Button" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions" unique_id=1999003539 groups=["UIButton"]]
+[node name="SFX" type="Button" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions" unique_id=2083304535 groups=["UIButton"]]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../A")
 focus_neighbor_top = NodePath("../../CreditsButton")
 focus_neighbor_right = NodePath("../Music")
 focus_neighbor_bottom = NodePath("../../StartButton")
 theme_override_font_sizes/font_size = 28
 text = "
 "
-script = ExtResource("6_mmakm")
+script = ExtResource("9_1jpwj")
 
-[node name="Node2D" type="Node2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/SFX" unique_id=553068450]
+[node name="Node2D" type="Node2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/SFX" unique_id=717492252]
 position = Vector2(25, 25)
 
-[node name="Sprite2D" type="Sprite2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/SFX/Node2D" unique_id=1024316865]
+[node name="Sprite2D" type="Sprite2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/SFX/Node2D" unique_id=1145258264]
+self_modulate = Color(1, 1, 0.735357, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_jrgp0")
 
-[node name="Music" type="Button" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions" unique_id=1678485810 groups=["UIButton"]]
+[node name="Music" type="Button" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions" unique_id=1771116656 groups=["UIButton"]]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../SFX")
 focus_neighbor_top = NodePath("../../CreditsButton")
+focus_neighbor_right = NodePath("../A")
 focus_neighbor_bottom = NodePath("../../StartButton")
 theme_override_font_sizes/font_size = 28
-script = ExtResource("6_mmakm")
+script = ExtResource("9_1jpwj")
 
-[node name="Node2D" type="Node2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/Music" unique_id=172274309]
+[node name="Node2D" type="Node2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/Music" unique_id=992244814]
 position = Vector2(25, 25)
 
-[node name="Sprite2D" type="Sprite2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/Music/Node2D" unique_id=1337035546]
+[node name="Sprite2D" type="Sprite2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/Music/Node2D" unique_id=1064384707]
+self_modulate = Color(1, 1, 0.735357, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_06imj")
+
+[node name="A" type="Button" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions" unique_id=1560896120 groups=["UIButton"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Music")
+focus_neighbor_top = NodePath("../../CreditsButton")
+focus_neighbor_right = NodePath("../SFX")
+focus_neighbor_bottom = NodePath("../../StartButton")
+theme_override_font_sizes/font_size = 28
+script = ExtResource("9_1jpwj")
+
+[node name="Node2D" type="Node2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/A" unique_id=1006685048]
+position = Vector2(25, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="Main/HBoxContainer/VBoxContainer2/AudioOptions/A/Node2D" unique_id=1187604330]
+self_modulate = Color(1, 1, 0.735357, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_hbtan")
 
 [node name="CenterContainer2" type="CenterContainer" parent="Main/HBoxContainer" unique_id=418607462]
 layout_mode = 2

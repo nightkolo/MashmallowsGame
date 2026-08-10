@@ -10,6 +10,7 @@ class_name PauseScreen
 @onready var op_btn: Button = %OptionsButton
 @onready var quit_btn: Button = %ReturnButton
 
+@onready var options: OptionsContainer = %AudioOptions
 @onready var pause_info: RichTextLabel = %PauseInfo
 
 @onready var btns: Array[Node] = get_tree().get_nodes_in_group("UIButton")
@@ -36,6 +37,8 @@ func _ready() -> void:
 		resume_btn.grab_focus()
 		get_tree().paused = true
 		visible = true
+	
+	options.option_entered.connect(show_option_text)
 	
 	visibility_changed.connect(func():
 		#anim_bg_blur(visible)
@@ -91,7 +94,18 @@ func update_text() -> void:
 	]
 	
 	pause_info.text = BBCODE_TXT + info
+
+var _t: Tween
+
+func show_option_text(option: String):
+	if _t:
+		_t.kill()
 	
+	pause_info.text = BBCODE_TXT + option
+	
+	_t = create_tween()
+	_t.tween_callback(update_text).set_delay(1.0)
+
 
 var _t_blur: Tween
 

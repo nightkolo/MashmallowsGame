@@ -66,36 +66,37 @@ func _ready() -> void:
 		
 		skip_interface.modulate = Color(Color.WHITE, 0.0)
 		skip_interface.visible = false
+		disc_interface.visible = false
 		
-		#if GameData.runtime_data.has("first_session"):
-				#
-			#if GameData.runtime_data["first_session"] == false:
-				#GameMgr.game_pause_toggled.connect(func(paused: bool):
-					#skip_interface.visible = !paused
-					#)
-					#
-				#skip_interface.visible = true
-				#
-				#skip_btn.pressed.connect(goto_menus)
-				##pause_btn.pressed.connect(goto_menus)
-				#
-				#var t := create_tween()
-				#
-				#t.tween_property(skip_interface, "modulate", Color(Color.WHITE, 1.0), 1.0).set_delay(1.0)
-		#else:
-		get_tree().paused = true
-		disc_interface.visible = true
-		GameMgr.current_ui_handler.allow_input = false
-		
-		on_btn.grab_focus()
-		on_btn.pressed.connect(func():
-			GameMgr.set_adult_filter_on(false)
-			return_run()
-			)
-		off_btn.pressed.connect(func():
-			GameMgr.set_adult_filter_on(true)
-			return_run()
-			)
+		if GameData.runtime_data.has("first_session"):
+				
+			if GameData.runtime_data["first_session"] == false:
+				GameMgr.game_pause_toggled.connect(func(paused: bool):
+					skip_interface.visible = !paused
+					)
+					
+				skip_interface.visible = true
+				
+				skip_btn.pressed.connect(goto_menus)
+				#pause_btn.pressed.connect(goto_menus)
+				
+				var t := create_tween()
+				
+				t.tween_property(skip_interface, "modulate", Color(Color.WHITE, 1.0), 1.0).set_delay(1.0)
+			else:
+				get_tree().paused = true
+				disc_interface.visible = true
+				GameMgr.current_ui_handler.allow_input = false
+				
+				on_btn.grab_focus()
+				on_btn.pressed.connect(func():
+					GameMgr.set_adult_filter_on(false)
+					return_run()
+					)
+				off_btn.pressed.connect(func():
+					GameMgr.set_adult_filter_on(true)
+					return_run()
+					)
 
 	area_text.body_entered.connect(func(body: Node2D):
 		if body is Player:

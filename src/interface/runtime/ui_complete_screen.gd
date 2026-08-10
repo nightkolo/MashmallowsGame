@@ -108,7 +108,7 @@ func anim_artwork() -> void:
 	
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(artwork, "position:x", screen_size.x * 0.8, 1.75)
+	tween.tween_property(artwork, "position:x", screen_size.x * 0.79, 1.75)
 	
 	var tween_b := create_tween().set_loops()
 	tween_b.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
