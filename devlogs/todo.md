@@ -2,16 +2,15 @@
 
 ### Assets, Design, and Project
 - [ ] Promo (After bugs and anim) 
+  - [ ] Finalize section design
+    - [ ] About desc.
+    - [x] Gameplay
+    - [x] About
+  - [ ] Screenshots
+  - [ ] Finish trailer
   - [x] Finish NG poster version
   - [x] Splash screen
     - [x] Proudly made in Godot
-  - [ ] Finalize section design
-    - [x] Gameplay
-    - [ ] Brief mention of Millie
-    - [x] About
-  - [ ] Screenshots
-  - [ ] About desc.
-  - [ ] Finish trailer
 - [x] Codebase
   - [x] Content disclaimer (itch.io only)
   - [x] New option

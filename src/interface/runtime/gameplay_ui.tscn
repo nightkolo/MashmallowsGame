@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://d0nbdjl7inkmr" path="res://interface/runtime/ui_menu_pause.tscn" id="1_o3ryy"]
 [ext_resource type="Script" uid="uid://bc3jxk8lrcioj" path="res://interface/runtime/gameplay_ui.gd" id="1_po83g"]
-[ext_resource type="PackedScene" uid="uid://cpj5rph2x2wgj" path="res://interface/overlay/medal_unlocked_popup.tscn" id="3_v0r0x"]
 [ext_resource type="PackedScene" uid="uid://b2xy2qdv8rd36" path="res://interface/runtime/ui_complete_screen.tscn" id="4_53n36"]
 [ext_resource type="Theme" uid="uid://croyx1o13jqlf" path="res://core/resources/theme/button_menus_menus.tres" id="5_hvvly"]
 
@@ -11,8 +10,6 @@ process_mode = 3
 script = ExtResource("1_po83g")
 
 [node name="PauseMenu" parent="." unique_id=754779589 instance=ExtResource("1_o3ryy")]
-
-[node name="MedalUnlockedPopup" parent="." unique_id=1047416417 instance=ExtResource("3_v0r0x")]
 
 [node name="ResetScreen" type="MarginContainer" parent="." unique_id=784061721]
 visible = false

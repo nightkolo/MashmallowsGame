@@ -21,7 +21,6 @@ shadow_color = Color(0, 0, 0, 0.298)
 shadow_offset = Vector2(5, 5)
 
 [node name="MedalUnlockedPopup" type="CanvasLayer" unique_id=1047416417]
-visible = false
 script = ExtResource("1_fgwg5")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1456052417]

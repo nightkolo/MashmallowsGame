@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://h4p3r0qfbuy2"]
+
+[ext_resource type="Script" uid="uid://dadhhmed7uat7" path="res://core/scripts/autoload/newgrounds_medal_manager.gd" id="1_v1dp5"]
+[ext_resource type="Texture2D" uid="uid://dwgu8g8po16w" path="res://assets/interface/medal-star.png" id="2_7klhv"]
+[ext_resource type="Texture2D" uid="uid://cq3e383r2otus" path="res://assets/world/particle-rabbitstar-02.png" id="3_fwea3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v1dp5"]
+font_size = 36
+font_color = Color(0.52610093, 1, 0.54297876, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.298)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7klhv"]
+font_size = 36
+font_color = Color(1, 1, 0.5, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.298)
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Curve" id="Curve_barkj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ol1ck"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
+
+[node name="MedalMgr" type="CanvasLayer" unique_id=640810201]
+script = ExtResource("1_v1dp5")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=940030552]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 120
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1025781042]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=315855031]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_7klhv")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1530954272]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -6
+alignment = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1921412963]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "\"You Menace\""
+label_settings = SubResource("LabelSettings_v1dp5")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=910533373]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Medal Unlocked!"
+label_settings = SubResource("LabelSettings_7klhv")
+
+[node name="Marker2D" type="Marker2D" parent="MarginContainer/HBoxContainer" unique_id=1278293290]
+position = Vector2(184, 199)
+gizmo_extents = 50.0
+
+[node name="Particles" type="CPUParticles2D" parent="." unique_id=1465561876]
+unique_name_in_owner = true
+z_index = 6
+position = Vector2(170, 637)
+emitting = false
+amount = 16
+texture = ExtResource("3_fwea3")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 500)
+initial_velocity_min = 350.0
+initial_velocity_max = 600.0
+angular_velocity_max = 500.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.1
+damping_min = 120.0
+damping_max = 120.0
+scale_amount_curve = SubResource("Curve_barkj")
+color_ramp = SubResource("Gradient_ol1ck")

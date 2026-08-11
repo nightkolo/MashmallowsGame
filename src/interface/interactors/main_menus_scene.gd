@@ -86,9 +86,9 @@ func _ready() -> void:
 
 
 func _unlock_credits_medal() -> void:
-	if GameData.medal_data.has("curiosity") && GameMgr.current_medal_notifier:
+	if GameData.medal_data.has("curiosity"):
 		if GameData.medal_data["curiosity"] == false: 
-			GameMgr.current_medal_notifier.anim_medal_unlocked(NewgroundsIds.MedalId.Curiosity)
+			MedalMgr.anim_medal_unlocked(NewgroundsIds.MedalId.Curiosity)
 		
 	await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity)
 
@@ -248,17 +248,17 @@ func _reset_tween_fade_in() -> void:
 
 
 #func _unlock_credits_medal() -> void:
-	#if GameData.medal_data.has("curiosity") && GameMgr.current_medal_notifier:
+	#if GameData.medal_data.has("curiosity") && MedalMgr:
 		#if GameData.medal_data["curiosity"] == false: 
-			#GameMgr.current_medal_notifier.anim_medal_unlocked()
+			#MedalMgr.anim_medal_unlocked()
 		#
 	#await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity)
 
 
 #func _unlock_halls_medal() -> void:
-	#if GameData.medal_data.has("halls") && GameMgr.current_medal_notifier:
+	#if GameData.medal_data.has("halls") && MedalMgr:
 		#if GameData.medal_data["halls"] == false: 
-			#GameMgr.current_medal_notifier.anim_medal_unlocked()
+			#MedalMgr.anim_medal_unlocked()
 		#
 	#await MedalMgr.unlock_a_medal("halls", NewgroundsIds.MedalId.RunningInTheHalls)
 

@@ -46,7 +46,6 @@ var current_level: Level
 var current_player: Player
 var current_NPC: NPCBoard ## Used for quicker access by [ResetNoticeArea]
 var current_ui_handler: GameplayUI ## @experimental
-var current_medal_notifier: MedalUnlockedPopup
 var current_level_goal: LevelGoal
 var current_camera: Cam
 

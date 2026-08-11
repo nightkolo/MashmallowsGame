@@ -1,10 +1,24 @@
 ## Newgrounds Medal and Stat Manager
-extends Node
+extends CanvasLayer
+
+@onready var label: Label = %Label
+@onready var label_2: Label = %Label2
+@onready var h_box_container: HBoxContainer = %HBoxContainer
+@onready var particles: CPUParticles2D = %Particles
+@onready var texture_rect: TextureRect = %TextureRect
 
 
 func _ready() -> void:
+	visible = false
+	
 	if !GameMgr.ON_NEWGROUNDS_MIRROR:
 		return
+	
+	texture_rect.pivot_offset_ratio = Vector2.ONE * 0.5
+	
+	var t := create_tween().set_loops()
+	t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	t.tween_property(texture_rect, "rotation", TAU, 2.0).from(0.0)
 	
 	# Medals are checkered when GameMgr.game_data_saved is emitted
 	# GameMgr.game_data_saved is emitted by Stage (Level code) on GameMgr.game_just_ended.
@@ -82,3 +96,41 @@ func check_board_progression_medals() -> void:
 		
 		if GameData.runtime_data["101"]["completed"] == true && GameData.runtime_data["102"]["completed"] == true:
 			await unlock_a_medal("game_comp", NewgroundsIds.MedalId.MarshmallowLadyApproves)
+
+
+
+var _tween: Tween
+
+
+func anim_medal_unlocked(medal_id: int = 0) -> void:
+	if !GameMgr.ON_NEWGROUNDS_MIRROR:
+		return
+	
+	var dur := 1.0
+	
+	if _tween:
+		_tween.kill()
+	
+	var m_res: MedalResource = NG.get_medal_resource(medal_id)
+	
+	var medal_name: String = '"%s"' % m_res.name
+	label_2.text = medal_name
+	
+	visible = true
+	
+	particles.emitting = true
+	h_box_container.modulate = Color(Color.WHITE, 0.0)
+	
+	_tween = create_tween().set_parallel(true)
+	_tween.set_ease(Tween.EASE_OUT)
+	_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	for l_label: Label in [label, label_2]:
+		l_label.scale.x = 0.0
+		_tween.tween_property(l_label, "scale:x", 1.0, dur).set_trans(Tween.TRANS_ELASTIC)
+	
+	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 1.0), dur / 2.0)
+	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 0.0), dur * 2.0).set_delay(dur * 1.5)
+	
+	await get_tree().create_timer(dur * 4.0).timeout
+	
+	visible = false
