@@ -23,7 +23,7 @@ func physics_update(delta: float) -> void:
 		return
 	
 	if player.velocity_position_based.y > 660.0:
-		if !player.audio.fall_sfx.playing:
+		if !player.auto_controlled && !player.audio.fall_sfx.playing:
 			player.audio.fall_sfx.play()
 		else:
 			player.audio.fall_sfx.volume_db = minf(0.0, -20.0 + (player.velocity.y / 25.0)) if player.screen_notifier.is_on_screen() else -100.00

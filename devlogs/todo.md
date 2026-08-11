@@ -19,6 +19,8 @@
   - [x] Add the goddamn fucking lollipop
 
 ### Codebase and touches
+- [ ] Input prompts
+    - [ ] Controller (Generic)
 - [ ] **API**
   - [ ] Medal assets
   - [x] JUST COPY AND PASTE
@@ -26,18 +28,16 @@
   - [x] Medal code
   - [x] API testing and saving
   - [x] Harder medal code
-- [ ] Input prompts
-    - [ ] Controller (Generic)
-- [ ] Menus
-- [ ] Audio mostly on left issue
-- [ ] Continue button bug on web
-- [ ] Off fall audio on auto_controlled
-- [ ] 2-18 Bug
+- [x] Continue button bug on web
+- [x] Off fall audio on auto_controlled
+- [x] 2-18 Bug
 - [x] Add new logo and artwork
 - [x] Add SpoonFish credit
 
 
 ### Extra
+- [ ] Menus
+- [ ] Audio mostly on left issue
 - [ ] Codebase clean-up
   - [ ] Remove print lines
 - [ ] Mashing

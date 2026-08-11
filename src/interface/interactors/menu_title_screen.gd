@@ -67,12 +67,11 @@ func continue_game() -> void:
 	
 	print_debug(lvl)
 	
-	if FileAccess.file_exists(lvl):
-		_disable_buttons(btns)
-		
-		await get_tree().create_timer(0.25).timeout
-		
-		Trans.slide_to_scene(lvl)
+	_disable_buttons(btns)
+	
+	await get_tree().create_timer(0.25).timeout
+	
+	Trans.slide_to_scene(lvl)
 	
 	#_disable_buttons(btns)
 		
