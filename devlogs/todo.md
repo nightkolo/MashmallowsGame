@@ -2,12 +2,14 @@
 
 ### Assets, Design, and Project
 - [ ] Promo (After bugs and anim) 
-  - [ ] Finish NG poster version
-  - [ ] Splash screen
-    - [ ] Proudly made in Godot
+  - [x] Finish NG poster version
+  - [x] Splash screen
+    - [x] Proudly made in Godot
   - [ ] Finalize section design
-  - [ ] Screenshot ideas
-  - [ ] Millie Panel
+    - [x] Gameplay
+    - [ ] Brief mention of Millie
+    - [x] About
+  - [ ] Screenshots
   - [ ] About desc.
   - [ ] Finish trailer
 - [x] Codebase
