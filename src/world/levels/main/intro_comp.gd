@@ -213,9 +213,14 @@ func _ready() -> void:
 			tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.1, 1.0)
 		)
 
-
+var start_up_finished: bool = false
 
 func anim_text_popping_up():
+	if start_up_finished:
+		return
+		
+	start_up_finished = true
+	
 	var dur := 1.0
 	await get_tree().create_timer(1.0).timeout
 

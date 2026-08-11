@@ -88,7 +88,7 @@ func start_music() -> void:
 	bid = GameMgr.bakery_id
 
 	if lvl:
-		if !lvl.has_started || lvlid <= 0 || lvlid >= Util.NUMBER_OF_LEVELS:
+		if !lvl.has_started || lvlid <= 0 || lvlid > Util.NUMBER_OF_LEVELS:
 			return
 
 	music_current.stream = load(music_path % bid)

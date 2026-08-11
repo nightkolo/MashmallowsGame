@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://djgv45k3n5ibr" path="res://object/objects/obj_switch.tscn" id="16_7l7t8"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="16_kbegu"]
 [ext_resource type="Script" uid="uid://b8lotyygsrs23" path="res://object/scripts/node_ignore_ceiling_area.gd" id="19_vjcht"]
+[ext_resource type="Script" uid="uid://bd6du812x8r2l" path="res://world/components/component_medal_unlock.gd" id="20_npbjn"]
 
 [sub_resource type="Resource" id="Resource_oasej"]
 script = ExtResource("14_xefue")
@@ -208,5 +209,11 @@ script = ExtResource("19_vjcht")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IgnoreCeilingArea" unique_id=951882195]
 position = Vector2(992, 168)
 shape = SubResource("RectangleShape2D_oasej")
+
+[node name="MedalUnlockComponent" type="Node" parent="." unique_id=756223216 node_paths=PackedStringArray("block_to_restrict", "player")]
+script = ExtResource("20_npbjn")
+block_to_restrict = NodePath("../UnmashedSpawner3")
+player = NodePath("../Player")
+metadata/_custom_type_script = "uid://bd6du812x8r2l"
 
 [editable path="World/LevelGoal"]

@@ -20,12 +20,12 @@
 
 ### Codebase and touches
 - [ ] **API**
-  - [ ] Harder medal code
   - [ ] Medal assets
   - [x] JUST COPY AND PASTE
   - [x] Medal ideas
   - [x] Medal code
   - [x] API testing and saving
+  - [x] Harder medal code
 - [ ] Input prompts
     - [ ] Controller (Generic)
 - [ ] Menus

@@ -44,8 +44,9 @@ func unlock_a_medal(medal_code: String, medal_id: int, pop_up: bool = false) -> 
 	
 	if !GameData.medal_data.has(medal_code):
 		print("Could not find " + str(medal_code) + " in GameData.medal_data.")
+		return
 	
-	if pop_up:
+	if pop_up && GameData.medal_data[medal_code] == false:
 		anim_medal_unlocked(medal_id)
 	
 	var res: bool = await NG.medal_unlock(medal_id)
@@ -59,12 +60,7 @@ func unlock_a_medal(medal_code: String, medal_id: int, pop_up: bool = false) -> 
 				print("Medal Name: " + str(medal.name) + ". ID: " + str(medal.id) + ". Unlocked: " + str(medal.unlocked))
 				break
 		
-		if !GameData.medal_data.has(medal_code):
-			return
-		
 		if GameData.medal_data[medal_code] == false:
-			
-				
 			GameData.medal_data[medal_code] = true
 			
 			print("Medal unlocked (code): ", medal_code)
@@ -83,6 +79,12 @@ func update_squats_made() -> void:
 		
 		
 func update_mashes_made() -> void:
+	var p: Player = GameMgr.current_player
+	
+	if p:
+		if p.is_being_flown():
+			await unlock_a_medal("midair", NewgroundsIds.MedalId.PopAndLock, true)
+	
 	if GameData.runtime_data.has("mashes_made"):
 		GameData.runtime_data["mashes_made"] += 1
 
@@ -91,32 +93,45 @@ func check_player_stat_medals() -> void:
 	if GameData.runtime_data.has("squats_made") && GameData.runtime_data.has("mashes_made"):
 #
 		if GameData.runtime_data["squats_made"] > 50:
-			await unlock_a_medal("100squat", NewgroundsIds.MedalId.BigButt)
+			await unlock_a_medal("100squat", NewgroundsIds.MedalId.BigButt, true)
 			
 		if GameData.runtime_data["mashes_made"] > 200:
-			await unlock_a_medal("200mash", NewgroundsIds.MedalId.ILikeToMash)
+			await unlock_a_medal("200mash", NewgroundsIds.MedalId.ILikeToMash, true)
 
 
 func check_board_progression_medals() -> void:
 	if GameData.runtime_data.has("101") && GameData.runtime_data.has("102"):
 
 		if GameData.runtime_data["101"]["completed"] == true:
-			await unlock_a_medal("b1_comp", NewgroundsIds.MedalId.FirstBakeryComplete)
+			await unlock_a_medal("b1_comp", NewgroundsIds.MedalId.FirstBakeryComplete, true)
 				
 		if GameData.runtime_data["102"]["completed"] == true:
-			await unlock_a_medal("b2_comp", NewgroundsIds.MedalId.SecondBakeryComplete)
+			await unlock_a_medal("b2_comp", NewgroundsIds.MedalId.SecondBakeryComplete, true)
 		
 		if GameData.runtime_data["101"]["completed"] == true && GameData.runtime_data["102"]["completed"] == true:
-			await unlock_a_medal("game_comp", NewgroundsIds.MedalId.MarshmallowLadyApproves)
+			await unlock_a_medal("game_comp", NewgroundsIds.MedalId.MarshmallowLadyApproves, true)
 
 
 
 var _tween: Tween
+var is_animating: bool = false
+var current_medal_id: int
 
+signal medal_anim_finished()
 
 func anim_medal_unlocked(medal_id: int = 0) -> void:
 	if !GameMgr.ON_NEWGROUNDS_MIRROR:
 		return
+		
+	if is_animating:
+		if current_medal_id != medal_id:
+			await medal_anim_finished
+		else:
+			return
+	
+	current_medal_id = medal_id
+	
+	is_animating = true
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -141,8 +156,10 @@ func anim_medal_unlocked(medal_id: int = 0) -> void:
 	_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	
 	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 1.0), dur / 2.0)
-	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 0.0), dur * 2.0).set_delay(dur * 1.5)
+	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 0.0), dur * 2.0).set_delay(dur * 2.0)
 	
-	await get_tree().create_timer(dur * 4.0).timeout
+	await get_tree().create_timer(dur * 5.0).timeout
 	
 	visible = false
+	is_animating = false
+	medal_anim_finished.emit()

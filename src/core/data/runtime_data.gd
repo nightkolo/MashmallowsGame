@@ -100,15 +100,15 @@ const DEFAULT_MEDAL_DATA = {
 	# Complete all the Orders in the game.
 	
 	# Level-specific
-	"1_2": false, # "An Order by the Book"
+	"1_2": false, # "An Order by the Book" c
 	# Complete Order 1-2 without Unmashing.
-	"1_6": false, # "Trespassing"
+	"1_6": false, # "Trespassing" c
 	# Complete Order 1-6 without using the Green Cherry Bomb.
-	"2_11": false, # "Nothing Hershey but us Chickens"
+	"2_11": false, # "Nothing Hershey but us Chickens" c
 	# Get on top of the Left Platform on Level 2-11.
-	"2_13": false, # "Lofty Toffee"
+	"2_13": false, # "Lofty Toffee" c
 	# Complete Order 2-13 without mashing into the Grey Block. (Perform a mid-air jump.)
-	"2_20": false, # "The Floor is Lava"
+	"2_20": false, # "The Floor is Lava" c
 	# Complete Order 2-20 without falling down (Completing the Side-Order is fine.)
  		
 	# Stats
@@ -118,7 +118,7 @@ const DEFAULT_MEDAL_DATA = {
 	# Mash 200 times. (Life-time)
 	
 	# Misc
-	"midair": false, # "Pop and Lock"
+	"midair": false, # "Pop and Lock" c
 	# Mash into a Block after flying off of a Cherry Bomb explosion.
 	"curiosity": false, # "Curiousity" c
 	# Open the Credits screen.

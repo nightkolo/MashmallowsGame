@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="13_5n27o"]
 [ext_resource type="PackedScene" uid="uid://b2f8cj6qbjf0g" path="res://object/objects/obj_side_order.tscn" id="16_ien2t"]
 [ext_resource type="PackedScene" uid="uid://dm2w7x53dr4sx" path="res://world/interface/mash_block_checker_id.tscn" id="17_c3pmo"]
+[ext_resource type="Script" uid="uid://bd6du812x8r2l" path="res://world/components/component_medal_unlock.gd" id="19_rj2t2"]
 
 [sub_resource type="Resource" id="Resource_c3pmo"]
 script = ExtResource("13_5n27o")
@@ -67,6 +68,9 @@ metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 [sub_resource type="Resource" id="Resource_fjwei"]
 script = ExtResource("13_5n27o")
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rj2t2"]
+size = Vector2(546, 194)
 
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
 script = ExtResource("1_4tne7")
@@ -263,6 +267,17 @@ block_attributes = SubResource("Resource_38cfg")
 [node name="UnmashedSpawner12" parent="." unique_id=2120237617 instance=ExtResource("12_awdrg")]
 position = Vector2(352, 288)
 block_attributes = SubResource("Resource_fjwei")
+
+[node name="MedalUnlockComponent" type="Node" parent="." unique_id=1418739899 node_paths=PackedStringArray("area")]
+script = ExtResource("19_rj2t2")
+area = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://bd6du812x8r2l"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=298932907]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=966444028]
+position = Vector2(639, 751)
+shape = SubResource("RectangleShape2D_rj2t2")
 
 [editable path="World/LevelGoal"]
 [editable path="SideOrder"]

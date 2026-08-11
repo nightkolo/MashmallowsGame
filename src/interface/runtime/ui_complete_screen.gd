@@ -54,8 +54,8 @@ func _ready() -> void:
 	for node: Node2D in [texture_nodes, node_texture_1]:
 		node.position.x = screen_size.x * 0.5
 	
-	artwork.position.x = screen_size.x * 1.4
-	
+	artwork.position.x = screen_size.x * -0.5
+	artwork.modulate = Color(Color.BLACK)
 	next_btn.visible = false
 	
 	# TODO Add specialized loillipop textures for the complete screens
@@ -106,9 +106,10 @@ func anim_artwork() -> void:
 	var dur := 1.0
 	artwork_2.position.y -= mag * 0.5
 	
-	var tween := create_tween()
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(artwork, "position:x", screen_size.x * 0.79, 1.75)
+	var tween : Tween = create_tween().set_parallel(true)
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(artwork, "position:x", screen_size.x * 0.77, 1.75).set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(artwork, "modulate", Color(Color.WHITE), 1.0).set_delay(0.25)
 	
 	var tween_b := create_tween().set_loops()
 	tween_b.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
@@ -256,14 +257,18 @@ func _anim_texture_landed() -> void:
 	tween_b.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
 	
 	tween.tween_property(node_texture_2, "scale", Vector2.ONE, dur_pop).set_trans(Tween.TRANS_ELASTIC)
-	tween_b.tween_property(bg, "color", Color(Color.BLACK, 1.0), 0.045)
+	tween_b.tween_property(bg, "color", Color(Color.BLACK, 1.0), 0.03)
 	tween_b.tween_callback(func():
 		beam.visible = true
 		)
-	tween_b.chain().tween_property(bg, "color", Color(Color.WHITE, 1.0), 0.045)
+	tween_b.chain().tween_property(bg, "color", Color(Color.WHITE, 1.0), 0.03)
 	tween_b.tween_callback(func():
 		beam.visible = false
 		)
+	tween_b.chain().tween_property(bg, "color", Color(Color.BLACK, 1.0), 0.03)
+	tween_b.chain().tween_property(bg, "color", Color(Color.WHITE, 1.0), 0.03)
+	tween_b.chain().tween_property(bg, "color", Color(Color.BLACK, 1.0), 0.03)
+	tween_b.chain().tween_property(bg, "color", Color(Color.WHITE, 1.0), 0.03)
 	tween_b.chain().tween_property(bg, "color", Color(Color.BLACK, 0.25), dur_bg * 0.6)
 
 

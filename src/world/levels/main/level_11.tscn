@@ -53,6 +53,21 @@ script = ExtResource("12_qonpk")
 mash_type = 3
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
+[sub_resource type="GDScript" id="GDScript_2khqr"]
+script/source = "extends Area2D
+
+func _ready() -> void:
+	collision_mask = 2
+	
+	body_entered.connect(func(_body: Node2D):
+		await MedalMgr.unlock_a_medal(\"2_11\", NewgroundsIds.MedalId.NothingHersheyButUsChickens, true)
+		)
+		
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk3qq"]
+size = Vector2(121, 20)
+
 [node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "level_info", "player", "npc")]
 script = ExtResource("1_ij1n8")
 level_goal = NodePath("World/LevelGoal")
@@ -181,7 +196,7 @@ offset_bottom = 120.0
 scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-10371.17, 1.2701177e-12, 4776, 3584)
+region_rect = Rect2(-22564.656, 2.7635804e-12, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 272.0
@@ -223,6 +238,13 @@ block_attributes = SubResource("Resource_gegs0")
 [node name="UnmashedSpawner3" parent="." unique_id=1512262256 instance=ExtResource("16_c5peb")]
 position = Vector2(664, 224)
 block_attributes = SubResource("Resource_nrchv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1849817503]
+script = SubResource("GDScript_2khqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=858731187]
+position = Vector2(59.5, 183)
+shape = SubResource("RectangleShape2D_uk3qq")
 
 [editable path="World/LevelGoal"]
 [editable path="World/LevelInfo"]

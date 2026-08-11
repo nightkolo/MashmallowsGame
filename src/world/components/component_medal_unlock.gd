@@ -1,9 +1,10 @@
 extends Node
 class_name MedalUnlockComponent
 
-var block_to_restrict: UnmashedSpawner
+@export var block_to_restrict: UnmashedSpawner
 
 @export var player: Player
+@export var area: Area2D
 
 var _has_unmashed: bool = false
 
@@ -25,17 +26,38 @@ func _ready() -> void:
 			2:
 				if _has_unmashed == false:
 					await MedalMgr.unlock_a_medal("1_2", NewgroundsIds.MedalId.AnOrderByTheBook, true)
+					
+			6:
+				if block_to_restrict:
+					if block_to_restrict.taken_no_regen == false:
+						await MedalMgr.unlock_a_medal("1_6", NewgroundsIds.MedalId.Trespassing, true)
+		
+			13:
+				if block_to_restrict:
+					if block_to_restrict.taken_no_regen == false:
+						await MedalMgr.unlock_a_medal("2_13", NewgroundsIds.MedalId.LoftyToffee, true)
+			
+			20:
+				if _has_unmashed == false:
+					await MedalMgr.unlock_a_medal("2_20", NewgroundsIds.MedalId.TheFloorIsLava, true)
 		)
 	
 	await get_tree().create_timer(0.5).timeout
 	
-	if player == null:
-		print("ASSIGN THE PLAYER")
-		return
-	
 	match GameMgr.level_id:
 		# Processes condition medals
-		2:
-			player.has_unmashed.connect(func():
-				_has_unmashed = true
-				)
+		2:	
+			if player:
+				player.has_unmashed.connect(func():
+					_has_unmashed = true
+					)
+		
+		20:
+			if area:
+				area.collision_mask = 2
+				
+				area.body_entered.connect(func(body: Node2D):
+					if body is Player:
+						_has_unmashed = true
+					)
+					
