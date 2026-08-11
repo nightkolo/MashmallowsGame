@@ -1,6 +1,6 @@
 extends Node
 
-signal level_entered()
+signal level_entered(is_level_id: int)
 signal menu_entered(menu: MenuID)
 signal game_pause_toggled(is_paused: bool)
 signal game_just_ended()

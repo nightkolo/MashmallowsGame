@@ -32,7 +32,6 @@ var _dev_ui: PackedScene = preload("res://interface/runtime/dev_ui.tscn")
 
 func _ready() -> void:
 	GameMgr.current_level = self
-	GameMgr.level_entered.emit()
 	GameMgr.menu_entered.emit(GameMgr.MenuID.RUNTIME)
 	
 	# deflect_spawn_blocks()
@@ -84,6 +83,8 @@ func _ready() -> void:
 	else:
 		GameMgr.bakery_id = bakery_id
 		GameMgr.level_id = level_id
+	
+	GameMgr.level_entered.emit(level_id)
 	
 	if show_dev_ui:
 		var ui := _dev_ui.instantiate()

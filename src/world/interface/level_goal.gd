@@ -92,7 +92,7 @@ func _ready() -> void:
 	GameLogic.cherry_bomb_exploded.connect(anim_wobble)
 	GameLogic.order_complete.connect(anim_complete)
 	
-	GameMgr.level_entered.connect(func():
+	GameMgr.level_entered.connect(func(_lvl_id: int):
 		if tween_prec:
 			tween_prec.kill()
 			

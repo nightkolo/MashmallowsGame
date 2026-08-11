@@ -23,6 +23,7 @@ var unmashed_object_1x2: PackedScene = preload("res://object/objects/block_unmas
 
 var colli: CollisionShape2D 
 var has_been_taken: bool = false
+var taken_no_regen: bool = false
 
 
 func display_block() -> void:

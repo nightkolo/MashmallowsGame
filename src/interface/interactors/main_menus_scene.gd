@@ -86,11 +86,7 @@ func _ready() -> void:
 
 
 func _unlock_credits_medal() -> void:
-	if GameData.medal_data.has("curiosity"):
-		if GameData.medal_data["curiosity"] == false: 
-			MedalMgr.anim_medal_unlocked(NewgroundsIds.MedalId.Curiosity)
-		
-	await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity)
+	await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity, true)
 
 
 func enter_main_menu(p_menu: MainMenus) -> void:

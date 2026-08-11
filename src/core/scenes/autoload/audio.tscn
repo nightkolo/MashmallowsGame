@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bdrn7vekstnw8" path="res://audio/music/test_sample_02.ogg" id="8_6tju7"]
 [ext_resource type="AudioStream" uid="uid://dcs0ayhuwsaid" path="res://audio/sounds/bakery_complete.wav" id="9_ehx3e"]
 [ext_resource type="AudioStream" uid="uid://ctr6ph8bi3wnu" path="res://audio/sounds/game_reset_02.wav" id="9_lo713"]
+[ext_resource type="AudioStream" uid="uid://causlbh70i0iq" path="res://audio/sounds/medal_unlocked.wav" id="10_1ljjd"]
 [ext_resource type="AudioStream" uid="uid://dbasaqplmrtor" path="res://audio/sounds/game_pause.wav" id="10_2o34p"]
 [ext_resource type="AudioStream" uid="uid://dv13xrx4125mj" path="res://audio/sounds/game_start_01.wav" id="11_fetaq"]
 [ext_resource type="AudioStream" uid="uid://dnmoufaarbyrq" path="res://audio/sounds/button_click_01.wav" id="13_bptgd"]
@@ -77,6 +78,11 @@ bus = &"Gameplay"
 [node name="BakeryComplete" type="AudioStreamPlayer" parent="Gameplay" unique_id=1792097917]
 unique_name_in_owner = true
 stream = ExtResource("9_ehx3e")
+bus = &"Gameplay"
+
+[node name="MedalUnlock" type="AudioStreamPlayer" parent="Gameplay" unique_id=646563647]
+unique_name_in_owner = true
+stream = ExtResource("10_1ljjd")
 bus = &"Gameplay"
 
 [node name="UI" type="Node" parent="." unique_id=1306566131]

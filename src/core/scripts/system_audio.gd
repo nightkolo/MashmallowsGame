@@ -14,6 +14,7 @@ extends Node
 
 @onready var sideoder_progress: AudioStreamPlayer = %SideoderProgress
 @onready var sideorder_loss: AudioStreamPlayer = %SideorderLoss
+@onready var medal_unlock: AudioStreamPlayer = %MedalUnlock
 
 
 @onready var order_loss: AudioStreamPlayer = %OrderLoss

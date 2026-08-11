@@ -288,6 +288,7 @@ func mash() -> bool:
 			
 			if spawner:
 				spawner.has_been_taken = true
+				spawner.taken_no_regen = true
 			
 			var build: Util.BuildType = unmashed.build_type
 			var unmash_at: Vector2 = _get_unmashed_position(

@@ -31,38 +31,50 @@ func _ready() -> void:
 	
 	GameLogic.player_mashed.connect(update_mashes_made)
 	GameLogic.player_squated.connect(update_squats_made)
-	
+
+
 	
 ## Unlocks the Newgrounds medals by their[br]
 ## [param medal_code]: The medal code (the game uses to store data) for the medal.[br]
 ## [param medal_id]: The medal ID (Newgrounds.io uses to unlock medals on newgrounds.com) for the medal.[br][br]
 ## Must be called with [code]await[/code].
-func unlock_a_medal(medal_code: String, medal_id: int) -> void:
+func unlock_a_medal(medal_code: String, medal_id: int, pop_up: bool = false) -> void:
 	if !GameMgr.ON_NEWGROUNDS_MIRROR:
 		return
 	
 	if !GameData.medal_data.has(medal_code):
 		print("Could not find " + str(medal_code) + " in GameData.medal_data.")
 	
-	await NG.medal_unlock(medal_id)
+	if pop_up:
+		anim_medal_unlocked(medal_id)
 	
-	## Debug
-	var medals: Array[MedalResource] = await NG.medal_get_list()
+	var res: bool = await NG.medal_unlock(medal_id)
 	
-	for medal: MedalResource in medals:
-		if medal.id == medal_id:
-			print("Medal Name: " + str(medal.name) + ". ID: " + str(medal.id) + ". Unlocked: " + str(medal.unlocked))
-			break
-	
-	if !GameData.medal_data.has(medal_code):
-		return
-	
-	if GameData.medal_data[medal_code] == false:
-		GameData.medal_data[medal_code] = true
+	if res:
+		## Debug
+		var medals: Array[MedalResource] = await NG.medal_get_list()
 		
-		print("Medal unlocked (code): ", medal_code)
+		for medal: MedalResource in medals:
+			if medal.id == medal_id:
+				print("Medal Name: " + str(medal.name) + ". ID: " + str(medal.id) + ". Unlocked: " + str(medal.unlocked))
+				break
 		
-		GameMgr.save_game_medals_data()
+		if !GameData.medal_data.has(medal_code):
+			return
+		
+		if GameData.medal_data[medal_code] == false:
+			
+				
+			GameData.medal_data[medal_code] = true
+			
+			print("Medal unlocked (code): ", medal_code)
+			
+			GameMgr.save_game_medals_data()
+		
+		
+		
+	else:
+		print("Could not unlock medal :(")
 	
 
 func update_squats_made() -> void:
@@ -106,6 +118,8 @@ func anim_medal_unlocked(medal_id: int = 0) -> void:
 	if !GameMgr.ON_NEWGROUNDS_MIRROR:
 		return
 	
+	await get_tree().create_timer(0.5).timeout
+	
 	var dur := 1.0
 	
 	if _tween:
@@ -116,6 +130,7 @@ func anim_medal_unlocked(medal_id: int = 0) -> void:
 	var medal_name: String = '"%s"' % m_res.name
 	label_2.text = medal_name
 	
+	Audio.medal_unlock.play()
 	visible = true
 	
 	particles.emitting = true
@@ -124,9 +139,6 @@ func anim_medal_unlocked(medal_id: int = 0) -> void:
 	_tween = create_tween().set_parallel(true)
 	_tween.set_ease(Tween.EASE_OUT)
 	_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	for l_label: Label in [label, label_2]:
-		l_label.scale.x = 0.0
-		_tween.tween_property(l_label, "scale:x", 1.0, dur).set_trans(Tween.TRANS_ELASTIC)
 	
 	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 1.0), dur / 2.0)
 	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 0.0), dur * 2.0).set_delay(dur * 1.5)

@@ -32,9 +32,10 @@ offsets = PackedFloat32Array(0, 0.182243, 0.359813, 0.551402)
 colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1)
 
 [node name="MedalMgr" type="CanvasLayer" unique_id=640810201]
+layer = 11
 script = ExtResource("1_v1dp5")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=940030552]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=388808624]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,13 +47,13 @@ theme_override_constants/margin_top = 120
 theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 120
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1025781042]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=301850916]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 20
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=315855031]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=655249666]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -61,13 +62,13 @@ size_flags_vertical = 4
 texture = ExtResource("2_7klhv")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1530954272]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1448024095]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = -6
 alignment = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1921412963]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1337744823]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -75,7 +76,7 @@ size_flags_vertical = 8
 text = "\"You Menace\""
 label_settings = SubResource("LabelSettings_v1dp5")
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=910533373]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1367569428]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -83,12 +84,13 @@ size_flags_vertical = 8
 text = "Medal Unlocked!"
 label_settings = SubResource("LabelSettings_7klhv")
 
-[node name="Marker2D" type="Marker2D" parent="MarginContainer/HBoxContainer" unique_id=1278293290]
+[node name="Marker2D" type="Marker2D" parent="MarginContainer/HBoxContainer" unique_id=1883347524]
 position = Vector2(184, 199)
 gizmo_extents = 50.0
 
-[node name="Particles" type="CPUParticles2D" parent="." unique_id=1465561876]
+[node name="Particles" type="CPUParticles2D" parent="." unique_id=1578424031]
 unique_name_in_owner = true
+process_mode = 3
 z_index = 6
 position = Vector2(170, 637)
 emitting = false
