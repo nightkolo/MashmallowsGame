@@ -153,7 +153,7 @@ func bakery_complete() -> void:
 
 func reset_game_data() -> void:
 	saver_loader.new_game()
-	#saver_loader.new_game_medals()
+	saver_loader.new_game_medals()
 
 
 func save_game_data() -> void:

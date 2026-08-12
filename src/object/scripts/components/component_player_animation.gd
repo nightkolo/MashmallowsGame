@@ -221,12 +221,14 @@ func anim_zoom_in(spd: float = 1.0, reset: bool = false) -> void:
 
 	if tween_zoom:
 		tween_zoom.kill()
-		
+	
+	
 	tween_zoom = create_tween().set_parallel(true)
 	tween_zoom.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 
 	for node: Sprite2D in player.trans_nodes:
 		tween_zoom.tween_property(node, "position", node.position.sign() * 640.0, 1.0)
-	
+	tween_zoom.tween_property(player.particles_m, "self_modulate", Color(Color.WHITE, 0.0), 1.0)
+
 	await tween_zoom.finished
 	# player.node_player_zoom_trans.visible = false

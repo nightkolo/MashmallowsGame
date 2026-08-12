@@ -1,10 +1,16 @@
 extends Node2D
 class_name WorldBlocks
 
+
+@export var rand: bool = true
+
 var decos: Array[String] = ["choco", "heart", "star", "white"]
 
 
 func _ready() -> void:
+	if !rand:
+		return
+		
 	for node: Node in get_children():
 		if decos.is_empty():
 			break

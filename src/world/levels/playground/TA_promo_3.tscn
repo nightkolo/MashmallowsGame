@@ -1,0 +1,102 @@
+[gd_scene format=4 uid="uid://d36hy85s2wsnp"]
+
+[ext_resource type="Script" uid="uid://5fpkm17tw6kn" path="res://core/scripts/level.gd" id="1_61ufy"]
+[ext_resource type="PackedScene" uid="uid://c2td8hv4f264o" path="res://interface/runtime/gameplay_ui.tscn" id="2_op4t5"]
+[ext_resource type="Script" uid="uid://h0t65tftxt3e" path="res://object/scripts/game/game_cam.gd" id="3_yaile"]
+[ext_resource type="PackedScene" uid="uid://bl0u0p0mf5g16" path="res://world/world/level_world.tscn" id="4_piu6l"]
+[ext_resource type="Script" uid="uid://cyw0ns0pn6gd5" path="res://world/world/tile_map.gd" id="5_m240c"]
+[ext_resource type="TileSet" uid="uid://cuppb1uimxgtj" path="res://core/resources/world_tileset_01.tres" id="6_28jok"]
+[ext_resource type="Script" uid="uid://pyl1ubbpvhv0" path="res://world/world/world_blocks.gd" id="7_nubed"]
+[ext_resource type="PackedScene" uid="uid://cb0na4nijl8sd" path="res://world/interface/level_goal.tscn" id="8_1550s"]
+[ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="9_447x3"]
+[ext_resource type="PackedScene" uid="uid://qjvmasbcnvbp" path="res://world/interface/npc_board.tscn" id="10_vklci"]
+[ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="11_os3up"]
+[ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="12_op4t5"]
+[ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="13_yaile"]
+[ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="14_piu6l"]
+
+[sub_resource type="Resource" id="Resource_piu6l"]
+script = ExtResource("13_yaile")
+metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
+
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
+script = ExtResource("1_61ufy")
+no_progression = true
+level_goal = NodePath("World/LevelGoal")
+player = NodePath("Player")
+metadata/_custom_type_script = "uid://5fpkm17tw6kn"
+
+[node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_op4t5")]
+
+[node name="Cam" type="Camera2D" parent="." unique_id=1604178255]
+position = Vector2(608, 472)
+zoom = Vector2(1.75, 1.75)
+script = ExtResource("3_yaile")
+dynamic_cam = false
+
+[node name="World" parent="." unique_id=1317599791 node_paths=PackedStringArray("terrain", "camera") instance=ExtResource("4_piu6l")]
+terrain = NodePath("Terrain")
+camera = NodePath("../Cam")
+
+[node name="Terrain" type="Node2D" parent="World" unique_id=1237230088]
+modulate = Color(0.95, 0.95, 0.95, 1)
+script = ExtResource("5_m240c")
+metadata/_custom_type_script = "uid://cyw0ns0pn6gd5"
+
+[node name="Ground" type="TileMapLayer" parent="World/Terrain" unique_id=462480928]
+light_mask = 8
+tile_map_data = PackedByteArray("AAAEAAkAAAAKAAEAAAAFAAkAAAAKAAEAAAAGAAkAAAAKAAEAAAAHAAkAAAAGAAEAAAAIAAkAAAAKAAAAAAAIAAoAAAAKAAEAAAAJAAoAAAAKAAEAAAAKAAoAAAAKAAEAAAALAAoAAAAKAAEAAAAMAAoAAAAKAAEAAAALAAkAAAAFAAEAAAAMAAkAAAAKAAEAAAAKAAkAAAAKAAAAAAADAAkAAAAKAAEAAAACAAkAAAAKAAEAAAACAAoAAAAKAAEAAAADAAoAAAAKAAEAAAAEAAoAAAAKAAEAAAAFAAoAAAAKAAEAAAAGAAoAAAAKAAEAAAAHAAoAAAAKAAEAAAANAAoAAAAKAAEAAAAOAAoAAAAKAAEAAAAPAAoAAAAKAAEAAAAQAAoAAAAKAAEAAAARAAoAAAAKAAEAAAASAAoAAAAKAAEAAAATAAoAAAALAAIAAAASAAkAAAAKAAEAAAARAAkAAAAKAAEAAAAQAAkAAAAKAAEAAAAPAAkAAAAKAAEAAAAOAAkAAAAKAAEAAAANAAkAAAAKAAEAAAABAAkAAAAIAAEAAAABAAoAAAAIAAEAAAACAAsAAAAJAAMAAAADAAsAAAAJAAMAAAAEAAsAAAAJAAMAAAAFAAsAAAAJAAMAAAAGAAsAAAAJAAMAAAAHAAsAAAAJAAMAAAAIAAsAAAAJAAMAAAAJAAsAAAAJAAMAAAAKAAsAAAAJAAMAAAALAAsAAAAJAAMAAAAMAAsAAAAJAAMAAAANAAsAAAAJAAMAAAAOAAsAAAAJAAMAAAAPAAsAAAAJAAMAAAAQAAsAAAAJAAMAAAARAAsAAAAJAAMAAAASAAsAAAAJAAMAAAATAAsAAAALAAMAAAATAAkAAAALAAIAAAABAAsAAAAIAAMAAAAGAAgAAAAKAAAAAAAFAAgAAAAKAAAAAAALAAgAAAAIAAAAAAAMAAgAAAAKAAAAAAAHAAgAAAALAAAAAAANAAgAAAAKAAAAAAAOAAgAAAAKAAAAAAAPAAgAAAAKAAAAAAAQAAgAAAAKAAAAAAARAAgAAAAKAAAAAAASAAgAAAAKAAAAAAATAAgAAAALAAAAAAAJAAkAAAAKAAAAAAAEAAgAAAAKAAAAAAADAAgAAAAKAAAAAAACAAgAAAAKAAAAAAABAAgAAAAFAAAAAAAAAAgAAAACAAMAAAD//wgAAAABAAMAAAA=")
+tile_set = ExtResource("6_28jok")
+
+[node name="WorldBlocks" type="Node2D" parent="World" unique_id=960871053]
+script = ExtResource("7_nubed")
+metadata/_custom_type_script = "uid://pyl1ubbpvhv0"
+
+[node name="LevelGoal" parent="World" unique_id=1756025330 instance=ExtResource("8_1550s")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Board" parent="World/LevelGoal" index="0" unique_id=1651127727]
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelOrder" type="Node2D" parent="World/LevelGoal" unique_id=989048369]
+script = ExtResource("9_447x3")
+metadata/_custom_type_script = "uid://5cfma5ft813q"
+
+[node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("10_vklci")]
+
+[node name="InputPrompt" parent="." unique_id=2128616327 instance=ExtResource("14_piu6l")]
+position = Vector2(448, 365)
+scale = Vector2(0.75, 0.75)
+character = "M"
+blink_time = 1.0
+blink_interval = 0.0
+
+[node name="Base" parent="InputPrompt" index="1" unique_id=736620297]
+position = Vector2(0, -2)
+
+[node name="Spiral" parent="InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
+rotation = -2533.7527
+
+[node name="Label" parent="InputPrompt/Base" index="2" unique_id=1670702822]
+offset_top = -60.0
+offset_right = 43.0
+offset_bottom = 50.0
+text = "X"
+
+[node name="Player" parent="." unique_id=1691389058 instance=ExtResource("11_os3up")]
+position = Vector2(76, 456)
+
+[node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("12_op4t5")]
+position = Vector2(608, 540)
+block_attributes = SubResource("Resource_piu6l")
+
+[node name="UnmashedSpawner2" parent="." unique_id=116756749 instance=ExtResource("12_op4t5")]
+position = Vector2(540, 540)
+block_attributes = SubResource("Resource_piu6l")
+
+[node name="UnmashedSpawner3" parent="." unique_id=1345523488 instance=ExtResource("12_op4t5")]
+position = Vector2(676, 540)
+block_attributes = SubResource("Resource_piu6l")
+
+[editable path="World/LevelGoal"]
+[editable path="InputPrompt"]

@@ -4,8 +4,8 @@ extends MainMenu
 signal entered_cb_1()
 signal entered_cb_2()
 
-#@export var texture_checkerboard_complete_checkmark: Texture = preload("res://assets/interface/checkerboard-complete-checkmark-02.png")
-#@export var texture_checkerboard_uncomplete_checkmark: Texture = preload("res://assets/interface/checkerboard-uncomplete-checkmark-01.png")
+@export var texture_checkerboard_complete_checkmark: Texture = preload("res://assets/interface/lollipop-mini-plain-01.png")
+@export var texture_checkerboard_uncomplete_checkmark: Texture = preload("res://assets/interface/lollipop-mini-02.png")
 
 @onready var board_btns: Array[Node] = get_tree().get_nodes_in_group("UIBoardButton")
 @onready var main: MarginContainer = $Main
@@ -14,7 +14,6 @@ signal entered_cb_2()
 @onready var btn_b_1: Button = %BtnB1
 
 @onready var reset_popup: Control = %ResetPopup
-@onready var progess_btn: Button = %ProgessBtn
 @onready var yes_progress_btn: Button = %YesProgressBtn
 
 @onready var no_progress_btn: Button = %NoProgressBtn
@@ -25,45 +24,50 @@ signal entered_cb_2()
 #@onready var cb_1_check: Node2D = %CB1check
 #@onready var cb_2_check: Node2D = %CB2check
 #
-#@onready var cb_1_check_sprite: Sprite2D = %CB1checkSprite
-#@onready var cb_2_check_sprite: Sprite2D = %CB2checkSprite
+@onready var cb_1_check_sprite: Sprite2D = %Lollipop
+@onready var cb_2_check_sprite: Sprite2D = %Lollipop2
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("game_tutorial"):
-		goto_level(0)
+		_show_reset_popup()
 		
 
 var _cb_entered: int = 1
 
 
 
+func _show_reset_popup():
+	reset_popup.visible = true
+		
+	no_progress_btn.grab_focus()
 
 func _ready() -> void:
 	display_data()
 	
 	#### Reset popup
-	progess_btn.pressed.connect(func():
-		reset_popup.visible = true
-		
-		no_progress_btn.grab_focus()
-		)
+	#progess_btn.pressed.connect(func():
+		#reset_popup.visible = true
+		#
+		#no_progress_btn.grab_focus()
+		#)
 	yes_progress_btn.pressed.connect(func():
 		GameMgr.reset_game_data()
 		
 		Util.disable_buttons(btns)
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.5).timeout
 		
-		#display_data()
+		display_data()
+		GameMgr.save_game_data()
 		reset_popup.visible = false
 		
 		Util.disable_buttons(btns, false)
 		
-		progess_btn.grab_focus()
+		btn_b_1.grab_focus()
 		)
 	no_progress_btn.pressed.connect(func():
 		reset_popup.visible = false
 		
-		progess_btn.grab_focus()
+		btn_b_1.grab_focus()
 		)
 	####
 	
@@ -106,7 +110,8 @@ func _ready() -> void:
 			board_btn.mouse_entered.connect(_cb_2_entered)
 		
 	btn_b_1.grab_focus()
-	left.bakery_panel_entered(0)
+	left.bakery_panel_entered(1)
+	left.order_preview.current_level_focussed = 1
 	#var tween := create_tween()
 	#tween.tween_property(main, "size", main.get_viewport_rect().size, 1.0)
 	main.set_deferred("size", main.get_viewport_rect().size)
@@ -144,15 +149,15 @@ func display_data() -> void:
 	
 	star_count_label.text = "Orders met: %s / %s" % [GameData.get_star_count(), Util.NUMBER_OF_LEVELS]
 	
-	#if GameData.runtime_data["101"]["completed"] == true:
-		#cb_1_check_sprite.texture = texture_checkerboard_complete_checkmark
-	#else:
-		#cb_1_check_sprite.texture = texture_checkerboard_uncomplete_checkmark
-		#
-	#if GameData.runtime_data["102"]["completed"] == true:
-		#cb_2_check_sprite.texture = texture_checkerboard_complete_checkmark
-	#else:
-		#cb_2_check_sprite.texture = texture_checkerboard_uncomplete_checkmark
+	if GameData.runtime_data["101"]["completed"] == true:
+		cb_1_check_sprite.texture = texture_checkerboard_complete_checkmark
+	else:
+		cb_1_check_sprite.texture = texture_checkerboard_uncomplete_checkmark
+		
+	if GameData.runtime_data["102"]["completed"] == true:
+		cb_2_check_sprite.texture = texture_checkerboard_complete_checkmark
+	else:
+		cb_2_check_sprite.texture = texture_checkerboard_uncomplete_checkmark
 
 
 func _cb_1_entered() -> void:

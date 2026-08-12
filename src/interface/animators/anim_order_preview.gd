@@ -136,7 +136,7 @@ func _ready() -> void:
 	var s: Vector2 = (get_parent() as Control).size
 	
 	position = Vector2(300.0, 410.0)
-	scale = Vector2.ONE * 1.5
+	scale = Vector2.ONE * 1.35
 	
 	timer.wait_time = 0.15
 	timer.one_shot = true

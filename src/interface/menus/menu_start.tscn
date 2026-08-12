@@ -169,11 +169,23 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[color=#FFFFFF5A]v2.0.0-alpha
-[font_size=24.0][color=#FFFFFF]A Demo by [color=yellow]Night Kolo
+text = "[font_size=24.0][color=#FFFFFF]A Demo by [color=yellow]Night Kolo
 [color=#FFFFFF]Music by [color=yellow]Avizura"
 fit_content = true
 horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer" unique_id=2107007715]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Version" type="RichTextLabel" parent="MarginContainer/VBoxContainer3" unique_id=1673186698]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[color=#FFFFFF5A]v1.0.0"
+fit_content = true
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer" unique_id=1886644291]
 layout_mode = 2

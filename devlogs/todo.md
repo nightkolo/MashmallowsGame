@@ -1,28 +1,29 @@
 # Todo
 
 ### Assets, Design, and Project
-- [ ] Promo (After bugs and anim) 
-  - [ ] Finalize section design
-    - [ ] About desc.
+- [x] Promo (After bugs and anim) 
+  - [x] Screenshots
+  - [x] Finish trailer
+  - [x] Marshmallow Lady Sheet
+  - [x] Finalize section design
+    - [x] About desc.
+    - [x] OC
     - [x] Gameplay
     - [x] About
-  - [ ] Screenshots
-  - [ ] Finish trailer
 
 ### Codebase and touches
 - [ ] Input prompts
+    - [ ] Keyboard
     - [ ] Controller (Generic)
 - [ ] **API**
   - [ ] Medal assets
 
 
 ### Extra
-- [ ] Menus
+- [x] Menus
 - [ ] Audio mostly on left issue
 - [ ] Codebase clean-up
+  - [ ] Check ALL TODOs	
   - [ ] Remove print lines
-- [ ] Mashing
-  - [ ] Mash particles
-  - [ ] Flashing
 - [ ] Levels
   - [ ] 1-6 RESET NOTICE

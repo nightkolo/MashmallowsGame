@@ -71,7 +71,7 @@ func anim_exited() -> void:
 	if tween:
 		tween.kill()
 	
-	self_modulate = Color(Color.WHITE*1.0)
+	self_modulate = Color(Color.WHITE*0.8)
 	
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)

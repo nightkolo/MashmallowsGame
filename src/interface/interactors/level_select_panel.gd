@@ -7,6 +7,9 @@ signal input_x(dir: Vector2)
 
 @export var order_preview: UIOrderPreview
 
+@onready var lollipop: Sprite2D = %Lollipop
+@onready var lollipop_2: Sprite2D = %Lollipop2
+
 @onready var panel_1: BakeryPanel = %Panel
 @onready var panel_2: BakeryPanel = %Panel2
 #@onready var marker_2d: Marker2D = $Marker2D
@@ -34,9 +37,11 @@ func _input(event: InputEvent) -> void:
 func bakery_panel_entered(bakery_num: int, lvl_num: int = 0) -> void:
 	#print_debug("Bakery %s entered" % i)
 	if order_preview:
-		print_debug(lvl_num)
 		order_preview.current_level_focussed = lvl_num
 	
+	if lvl_num == 0:
+		return
+		
 	for p: BakeryPanel in lvl_panels:
 		p.is_active = false
 	

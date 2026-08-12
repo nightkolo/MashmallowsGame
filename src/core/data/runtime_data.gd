@@ -82,7 +82,41 @@ static var runtime_data: Dictionary = {
 	"op_a_on": false
 }
 static var medal_data: Dictionary = {
-
+	# Progression
+	"bitten": false, # You Menace... c
+	# Choose "Eat Her Anyway" and devour the prey.
+	"safe": false, # Good Ending c
+	# Choose "Got it" and display mercy.
+	"b1_comp": false, # First Bakery Complete! c
+	# Complete all the Orders in the First Bakery.
+	"b2_comp": false, # Second Bakery Complete! c
+	# Complete all the Orders in the Second Bakery.
+	"game_comp": false, # Marshmallow Lady Approves c
+	# Complete all the Orders in the game.
+	
+	# Level-specific
+	"1_2": false, # "An Order by the Book" c
+	# Complete Order 1-2 without Unmashing.
+	"1_6": false, # "Trespassing" c
+	# Complete Order 1-6 without using the Green Cherry Bomb.
+	"2_11": false, # "Nothing Hershey but us Chickens" c
+	# Get on top of the Left Platform on Level 2-11.
+	"2_13": false, # "Lofty Toffee" c
+	# Complete Order 2-13 without mashing into the Grey Block. (Perform a mid-air jump.)
+	"2_20": false, # "The Floor is Lava" c
+	# Complete Order 2-20 without falling down (Completing the Side-Order is fine.)
+ 		
+	# Stats
+	"100squat": false, # "Big Butt" c
+	# Press down to squat 100 times. (Life-time)
+	"200mash": false, # "I Like to Mash" c
+	# Mash 200 times. (Life-time)
+	
+	# Misc
+	"midair": false, # "Pop and Lock" c
+	# Mash into a Block after flying off of a Cherry Bomb explosion.
+	"curiosity": false, # "Curiousity" c
+	# Open the Credits screen.
 }
 const DEFAULT_MEDAL_DATA = {
 	# TODO: Possible issues with save data when versioning

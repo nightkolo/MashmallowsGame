@@ -5,24 +5,27 @@ extends Control
 @onready var authors_text: RichTextLabel = %Authors
 @onready var start_text: RichTextLabel = %Text
 @onready var particles: Array[CPUParticles2D] = [%Particles, %Particles2]
+@onready var version_label: RichTextLabel = %Version
 
 var _started: bool = false
 
 var version: String = ProjectSettings.get_setting("application/config/version")
 var release: String = ""
-var author_info: String = "[color=#FFFFFF5A]v%s[br][font_size=24.0][color=#FFFFFF]A %s by [color=yellow]Night Kolo
+var author_info: String = "[font_size=24.0][color=#FFFFFF]A %s by [color=yellow]Night Kolo
 [color=#FFFFFF]Music by [color=yellow]Avizura"
 
 
 func _ready() -> void:
 	GameMgr.menu_entered.emit(GameMgr.MenuID.START)
 	
-	if version.find("alpha"):
-		release = "Demo"
-	else:
+	if version.find("alpha") < 0:
 		release = "Game"
-		
-	authors_text.text = author_info % [version, release]
+	else:
+		release = "Demo"
+	
+	version_label.text = "[color=#FFFFFF5A]v" + version
+	
+	authors_text.text = author_info % release
 
 
 func _input(event: InputEvent) -> void:
@@ -50,6 +53,7 @@ func start_game() -> void:
 	var tween := create_tween().set_parallel(true)
 
 	tween.tween_property(shade, "self_modulate", Color(Color.WHITE, 0.0), 0.4)
+	tween.tween_property(version_label, "self_modulate", Color(Color.WHITE, 0.0), 0.4)
 	tween.tween_property(start_text, "scale", Vector2.ZERO, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 	tween.tween_property(authors_text, "scale", Vector2.ZERO, 0.4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 	tween.tween_callback(func():

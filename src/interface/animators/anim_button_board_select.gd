@@ -15,6 +15,7 @@ var uncom_texture: Texture = preload("res://assets/interface/level-star-uncom.pn
 func _ready() -> void:
 	display_data_once()
 	
+	GameMgr.game_data_saved.connect(stop_anim)
 	GameMgr.game_data_saved.connect(display_data_once)
 	
 	#com_star.texture = com_texture
@@ -37,6 +38,7 @@ func _ready() -> void:
 	focus_exited.connect(anim_exited)
 
 var node: Node2D
+var sprite: Sprite2D
 
 func display_data_once() -> void:
 	board_id = self.name.to_int()
@@ -50,11 +52,15 @@ func display_data_once() -> void:
 	if !(board_id >= 0 && board_id <= Util.NUMBER_OF_LEVELS):
 		print_debug("Cannot display data. Key %s is out of bounds from GameUtil.NUMBER_OF_LEVELS." % board_num)
 		return
+	if node:
+		node.queue_free()
+	if sprite:
+		sprite.queue_free()
 	
 	## TODO: Fix added twice
-	if node == null && GameData.runtime_data[board_num]["completed"] == true:
+	if GameData.runtime_data[board_num]["completed"] == true:
 		node = Node2D.new()
-		var sprite := Sprite2D.new()
+		sprite = Sprite2D.new()
 		
 		sprite.texture = com_texture
 		sprite.self_modulate = Color(1.0, 1.0, 0.25, 1.0)
@@ -66,6 +72,7 @@ func display_data_once() -> void:
 		anim_star()
 	#com_star.visible = GameData.runtime_data[board_num]["completed"] == true
 	#uncom_star.visible = GameData.runtime_data[board_num]["completed"] == false
+var l_tween: Tween
 
 func anim_star() -> void:
 	if node == null:
@@ -75,7 +82,10 @@ func anim_star() -> void:
 	anim_star_rot()
 	var spd := 0.25
 	
-	var l_tween := create_tween().set_loops()
+	if l_tween:
+		l_tween.kill()
+		
+	l_tween = create_tween().set_loops()
 	
 	l_tween.set_parallel(true)
 	l_tween.set_ease(Tween.EASE_OUT)
@@ -92,16 +102,28 @@ func anim_star() -> void:
 		#)
 	l_tween.tween_interval(1.0)
 
+var l_tween_2
+
 func anim_star_rot():
 	var dir := 1.0 if board_id % 2 == 0 else -1.0 
 	
-	var l_tween_2 := create_tween().set_loops()
+	if l_tween_2:
+		l_tween_2.kill()
+	l_tween_2 = create_tween().set_loops()
 	l_tween_2.set_ease(Tween.EASE_OUT_IN)
 	l_tween_2.tween_property(node, "rotation_degrees", dir * 5.5, 1.0).set_ease(Tween.EASE_OUT_IN)
 	l_tween_2.tween_property(node, "rotation_degrees", dir * -5.5, 1.0).set_ease(Tween.EASE_OUT_IN)
 
 var l_tween_3: Tween
 
+func stop_anim():
+	if l_tween_3:
+		l_tween_3.kill()
+	if l_tween:
+		l_tween.kill()
+	if l_tween_2:
+		l_tween_2.kill()
+	
 func anim_star_pulse():
 	if l_tween_3:
 		l_tween_3.kill()

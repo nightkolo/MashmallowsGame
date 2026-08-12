@@ -40,7 +40,7 @@ mash_type = 1
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
 [sub_resource type="LabelSettings" id="LabelSettings_a01d5"]
-line_spacing = -15.0
+line_spacing = -5.0
 font_size = 50
 outline_size = 12
 outline_color = Color(0.7019608, 0.7019608, 0.7019608, 1)
@@ -76,7 +76,7 @@ metadata/_custom_type_script = "uid://5fpkm17tw6kn"
 [node name="UI" parent="." unique_id=396871414 instance=ExtResource("2_3q5il")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1231098020]
-position = Vector2(640, 400)
+position = Vector2(640, 464)
 zoom = Vector2(1.1, 1.1)
 script = ExtResource("2_7x7cx")
 metadata/_custom_type_script = "uid://h0t65tftxt3e"
@@ -180,8 +180,7 @@ attributes = SubResource("Resource_3itp8")
 position = Vector2(800, 480)
 
 [node name="InputPrompt" parent="World" unique_id=2128616327 instance=ExtResource("14_qhppe")]
-visible = false
-position = Vector2(550, 692)
+position = Vector2(389, 693)
 scale = Vector2(0.4, 0.4)
 character = "R"
 blink_time = 1.0
@@ -198,8 +197,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="InputPrompt2" parent="World" unique_id=1140204570 instance=ExtResource("14_qhppe")]
-visible = false
-position = Vector2(656, 691)
+position = Vector2(473, 693)
 scale = Vector2(0.4, 0.4)
 character = "P"
 blink_time = 1.0
@@ -207,9 +205,9 @@ blink_interval = 0.0
 
 [node name="Label" type="Label" parent="World/InputPrompt2" unique_id=383465670]
 offset_left = -70.0
-offset_top = 70.0
+offset_top = 67.5
 offset_right = 69.0
-offset_bottom = 139.0
+offset_bottom = 136.5
 text = "Pause"
 label_settings = SubResource("LabelSettings_a01d5")
 metadata/_edit_use_anchors_ = true
