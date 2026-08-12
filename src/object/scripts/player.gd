@@ -206,7 +206,7 @@ func _ready() -> void:
 	has_landed.connect(func(strength: float):
 		var s := strength / 80.0
 		
-		Input.start_joy_vibration(0, s / 2.0, s, 0.025)
+		#Input.start_joy_vibration(0, s / 2.0, s, 0.025)
 
 		if input_y > 0.0:
 			animator.anim_down(true, true)
@@ -216,10 +216,11 @@ func _ready() -> void:
 			hang()
 		)
 	has_jumpped.connect(func():
-		Input.start_joy_vibration(0, 0.05, 0.0, 0.1)
+		pass
+		#Input.start_joy_vibration(0, 0.05, 0.0, 0.1)
 		)
 	has_mashed.connect(func(pos: Vector2, _build: Util.BuildType):
-		Input.start_joy_vibration(0, 0.4, 0.0, 0.025)
+		#Input.start_joy_vibration(0, 0.4, 0.0, 0.025)
 		
 		if !_has_mashed:
 			_has_mashed = true
@@ -228,7 +229,7 @@ func _ready() -> void:
 		
 		_check_child_blocks()
 		await get_tree().create_timer(0.01).timeout
-		Input.start_joy_vibration(0, 0.0, 0.5, 0.025)
+		#Input.start_joy_vibration(0, 0.0, 0.5, 0.025)
 		)
 	cherry_bomb_activated.connect(func():
 		cherry_bomb_air_timer.start()
@@ -327,13 +328,13 @@ func unmash() -> void: # O(1)
 
 			old_mashed.queue_free()
 
-			Input.start_joy_vibration(0, 0.0, 0.5, 0.025)
+			#Input.start_joy_vibration(0, 0.0, 0.5, 0.025)
 
 			await return_position()
 			await get_tree().create_timer(0.025).timeout
 
 			GameMgr.current_level.add_child(unmashed)
-			Input.start_joy_vibration(0, 0.2, 0.0, 0.025)
+			#Input.start_joy_vibration(0, 0.2, 0.0, 0.025)
 
 	#await get_tree().create_timer(1.0).timeout
 
@@ -363,7 +364,7 @@ func _handle_cherry_bomb(old_mashed: Mashed) -> void:
 	pop_block()
 	explode(push_to, strength, old_mashed.mash_type == Util.MashType.AIR_CHERRY_BOMB)
 
-	Input.start_joy_vibration(0, 0.25, 0.85, 0.025)
+	#Input.start_joy_vibration(0, 0.25, 0.85, 0.025)
 
 	old_mashed.queue_free()
 	is_exploding = false
@@ -398,8 +399,6 @@ func explode(push: Vector2, strength: float = 1600.0, physics_delay: bool = fals
 func sleep(animate_zoom: bool = true) -> void:
 	if particles_m:
 		particles_m.emitting = true
-	#is_active = true
-	print_debug(original_block)
 	
 	if original_block:
 		original_block.is_original = true
@@ -447,8 +446,6 @@ func anim_idle_animation() -> void:
 	)
 
 	idle_timer.timeout.connect(func():
-		
-		# TODO: Issue, animation not starting on newly mashed blocks
 		for block: Mashed in child_blocks:
 			if !block.is_on_ground() || !block.is_on_block():
 				continue
@@ -464,7 +461,6 @@ func anim_idle_animation() -> void:
 		)
 
 
-# TODO: Move to GameLogic
 func get_unmashed_object(type: Util.BuildType) -> Unmashed:
 	match type:
 		Util.BuildType.SQUARE:

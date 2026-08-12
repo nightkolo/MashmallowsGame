@@ -32,8 +32,6 @@ var tween_anim: Tween
 
 
 
-
-# TODO Clean-up
 ## Called by [MashBlockChecker]
 func anim_satisfied(satisfied: bool) -> void:
 	if satisfied == is_satisfied:

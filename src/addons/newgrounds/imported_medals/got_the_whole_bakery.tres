@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MedalResource" format=3 uid="uid://s1ru6kptoygx"]
+
+[ext_resource type="Script" uid="uid://dmv5h7uw73ypf" path="res://addons/newgrounds/data/medal_resource.gd" id="1_dnccy"]
+
+[resource]
+script = ExtResource("1_dnccy")
+name = "Got the Whole Bakery"
+description = "Complete all the Orders in the game."
+icon_url = "https://apifiles.ngfiles.com/icons/medal_secret.png"
+id = 91683.0
+secret = 1.0
+value = 50.0
+difficulty = 4.0

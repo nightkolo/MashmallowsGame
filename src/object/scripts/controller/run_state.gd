@@ -26,7 +26,7 @@ func physics_update(delta: float) -> void:
 	## Jump logic and platform fall is handled globally in player code
 	
 	## SLIDE AUDIO
-	player.audio.slide_sfx.volume_db = minf(5.0, (absf(player.velocity.x) / (player.speed / 40.0)) - 30.0)
+	player.audio.slide_sfx.volume_db = minf(5.0, (absf(player.velocity.x) / (player.speed / 40.0)) - 30.0) if !player.auto_controlled else -100.00
 	# print(minf(2.0, (absf(player.velocity.x) / (player.speed / 40.0)) - 30.0))
 	var dir := player.input_x
 

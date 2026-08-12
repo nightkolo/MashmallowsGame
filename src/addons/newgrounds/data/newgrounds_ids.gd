@@ -24,7 +24,7 @@ enum MedalId {
 	SecondBakeryComplete = 91682,
 	Trespassing = 91685,
 	TheFloorIsLava = 91688,
-	MarshmallowLadyApproves = 91683,
+	GotTheWholeBakery = 91683,
 
 }
 
@@ -43,6 +43,6 @@ class MedalIdsToResource:
 		91682: "res://addons/newgrounds/imported_medals/second_bakery_complete!.tres",
 		91685: "res://addons/newgrounds/imported_medals/trespassing.tres",
 		91688: "res://addons/newgrounds/imported_medals/the_floor_is_lava.tres",
-		91683: "res://addons/newgrounds/imported_medals/marshmallow_lady_approves.tres",
+		91683: "res://addons/newgrounds/imported_medals/got_the_whole_bakery.tres",
 
 	}

@@ -97,8 +97,6 @@ func _ready() -> void:
 	for id: MashBlockCheckerID in mash_block_checker_ids:
 		Util.set_block_code(order_code, id.attributes, id)
 	
-	#for o: Dictionary in order_code:
-		#print_debug(o)
 		
 	GameLogic.current_level_order_object = self
 	

@@ -23,7 +23,7 @@
 - [x] Menus
 - [ ] Audio mostly on left issue
 - [ ] Codebase clean-up
-  - [ ] Check ALL TODOs	
-  - [ ] Remove print lines
-- [ ] Levels
-  - [ ] 1-6 RESET NOTICE
+  - [x] Check ALL TODOs	
+  - [x] Remove print lines
+- [x] Levels
+  - [x] 1-6 RESET NOTICE

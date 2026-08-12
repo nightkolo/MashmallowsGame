@@ -9,7 +9,6 @@ class_name CompleteScreen
 @export var asset_bakery_2: Texture2D = preload("res://assets/artwork/millie-bakery-artwork-02.png")
 @export var asset_bakery_3: Texture2D = preload("res://assets/artwork/millie-main-artwork.png")
 
-# TODO Colo system
 
 @onready var bg: ColorRect = $BG
 @onready var node_texture_1: Node2D = %TextureNode1
@@ -58,22 +57,19 @@ func _ready() -> void:
 	artwork.modulate = Color(Color.BLACK)
 	next_btn.visible = false
 	
-	# TODO Add specialized loillipop textures for the complete screens
-	
-	
 	if get_parent() is GameplayUI:
 		_gameplay_ui = get_parent() as GameplayUI
 		
 	else:
 		#push_warning(str(self) + " must be run under GameplayUI.")
-		next_btn.grab_focus()
+		#next_btn.grab_focus()
 		#get_tree().paused = true
 		#visible = true
 		open()
 	
 	visibility_changed.connect(func():
 		if visible:
-			next_btn.grab_focus()
+			#next_btn.grab_focus()
 			update_text()
 		)
 		
@@ -96,6 +92,7 @@ func _input(event: InputEvent) -> void:
 			return
 		
 		next_btn.visible = true
+		await get_tree().create_timer(0.5).timeout
 		next_btn.grab_focus()
 
 

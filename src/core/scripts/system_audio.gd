@@ -142,8 +142,6 @@ func _ready() -> void:
 		#_tween_aud.tween_property(music_current, "volume_db", original_music_db, 1.5)
 
 	GameMgr.menu_entered.connect(func(entered: GameMgr.MenuID):
-		print_debug(entered)
-		
 		match entered:
 			
 			GameMgr.MenuID.PAUSE, GameMgr.MenuID.WORLD_COMPLETE, GameMgr.MenuID.RUNTIME:

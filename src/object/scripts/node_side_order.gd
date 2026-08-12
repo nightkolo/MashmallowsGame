@@ -84,7 +84,6 @@ func check_sideorder_completion() -> void:
 		
 		
 		id_node.anim_satisfied(match_found)
-		print_debug(id_node.sprite_face)
 		id_node.sprite_face.texture = text_happy if match_found else text_reg
 		
 		if match_found:

@@ -3,8 +3,6 @@
 extends Node2D
 class_name World
 
-# TODO: PRE-DEFINED BG COLORS
-# TODO: Export variables, Camera, 
 enum BGcolors {WORLD_1, WORLD_2}
 
 @onready var bg_sprite: TiledSprite2D = %TiledSprite2D

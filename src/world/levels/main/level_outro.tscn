@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://bgtyfv4mukx" path="res://audio/sounds/speech_ke.wav" id="15_k03yb"]
 [ext_resource type="AudioStream" uid="uid://lim7kxx0wuhn" path="res://audio/sounds/speech_ki.wav" id="16_p42b0"]
 [ext_resource type="Resource" uid="uid://cxu38f6ir1sae" path="res://core/resources/game_dialog/monolog_outro_safe.tres" id="16_s1cjh"]
+[ext_resource type="AudioStream" uid="uid://cti38do6a3qct" path="res://audio/sounds/speech_generic.wav" id="17_0n6ub"]
 [ext_resource type="AudioStream" uid="uid://dlivpjd07hi8g" path="res://audio/sounds/speech_ko.wav" id="17_vx8vf"]
 [ext_resource type="AudioStream" uid="uid://df0l3dd7j6esl" path="res://audio/sounds/speech_ku.wav" id="18_4c73u"]
 [ext_resource type="Script" uid="uid://d2gl7vnb88axq" path="res://world/world/monolog_activation_area.gd" id="23_n66mx"]
@@ -114,7 +115,7 @@ offset_right = 784.0
 offset_bottom = 440.0
 
 [node name="TiledSprite2D" parent="SpeechBubble/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1740413481, 827350809) index="0" unique_id=1380465130]
-region_rect = Rect2(-52965.137, 6.4861497e-12, 4776, 3584)
+region_rect = Rect2(-7787.572, 9.537135e-13, 4776, 3584)
 
 [node name="Choice1" parent="SpeechBubble/MonologOptions" parent_id_path=PackedInt32Array(1740413481, 2042871335) index="0" unique_id=1932466959]
 visible = false
@@ -128,11 +129,13 @@ disabled = true
 [node name="MonologSystem" type="Node" parent="." unique_id=762021038 node_paths=PackedStringArray("speech_bubble", "character", "choice_1", "choice_2")]
 script = ExtResource("12_qmi1j")
 auto_start = false
+leave_at_expression = true
 reveal_name_at = -2
 flow = ExtResource("16_s1cjh")
 speech_bubble_size = Vector2(300, 150)
 speech_bubble = NodePath("../SpeechBubble")
 character = NodePath("../World/NPCBoard")
+speech_generic = ExtResource("17_0n6ub")
 speech_a = ExtResource("14_iivpe")
 speech_e = ExtResource("15_k03yb")
 speech_i = ExtResource("16_p42b0")

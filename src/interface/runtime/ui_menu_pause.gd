@@ -63,7 +63,6 @@ func _ready() -> void:
 			)
 
 		op_btn.pressed.connect(func():
-			# TODO: Skip til release
 			_gameplay_ui.pause_or_unpause(false)
 			GameMgr.goto_next_level(1)
 		)

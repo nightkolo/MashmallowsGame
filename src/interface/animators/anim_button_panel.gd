@@ -19,6 +19,8 @@ func _ready() -> void:
 	focus_exited.connect(anim_exited)
 	button_up.connect(_held)
 	button_down.connect(_rest)
+	
+	anim_exited()
 
 
 func _held() -> void:

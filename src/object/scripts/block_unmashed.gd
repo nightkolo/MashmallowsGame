@@ -96,8 +96,6 @@ func _ready() -> void:
 		if colli:
 			colli.shape = colli.shape.duplicate() as RectangleShape2D
 			
-			print_debug(twisted_mask.position)
-			
 			if twisted_mask:
 				twisted_mask.texture = twisted_mask.texture.duplicate() as GradientTexture2D
 	
@@ -116,8 +114,6 @@ func _ready() -> void:
 	
 	# Animation
 	has_landed.connect(func(strength: float):
-		print_debug(strength)
-		
 		var mag: float = minf(strength * 0.04, 0.5)
 		var dur := 1.35
 		
@@ -351,8 +347,6 @@ func get_position_based_velocity(global_pos: Vector2, delta: float) -> Vector2:
 	_prev_position = global_pos
 	return vel
 
-
-# TODO hanging mid-air
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		set_physics_process(false)
@@ -387,10 +381,6 @@ func _physics_process(delta: float) -> void:
 				pass
 			elif obj is TileMapLayer:
 				stop_expanding(0.0)
-			
-			# TODO Check if player collision handling needed
-			elif obj is Player:
-				pass
 	
 	if !is_expanding:
 		move_and_slide()

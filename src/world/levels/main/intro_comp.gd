@@ -203,11 +203,9 @@ func _ready() -> void:
 		tween_cam = create_tween().set_parallel(true)
 		tween_cam.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
 		
-		# TODO remove fixed values
 		if active:
 			tween_cam.tween_property(camera, "position", Vector2(750.0, 424.0), 1.0)
 			tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.4, 1.0)
-			# tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.2, 1.0)
 		else:
 			tween_cam.tween_property(camera, "position", cam_pos, 1.0)
 			tween_cam.tween_property(camera, "zoom", Vector2.ONE * 1.1, 1.0)

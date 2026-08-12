@@ -109,7 +109,7 @@ func check_board_progression_medals() -> void:
 			await unlock_a_medal("b2_comp", NewgroundsIds.MedalId.SecondBakeryComplete, true)
 		
 		if GameData.runtime_data["101"]["completed"] == true && GameData.runtime_data["102"]["completed"] == true:
-			await unlock_a_medal("game_comp", NewgroundsIds.MedalId.MarshmallowLadyApproves, true)
+			await unlock_a_medal("game_comp", NewgroundsIds.MedalId.GotTheWholeBakery, true)
 
 
 

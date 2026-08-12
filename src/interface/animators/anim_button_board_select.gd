@@ -57,7 +57,6 @@ func display_data_once() -> void:
 	if sprite:
 		sprite.queue_free()
 	
-	## TODO: Fix added twice
 	if GameData.runtime_data[board_num]["completed"] == true:
 		node = Node2D.new()
 		sprite = Sprite2D.new()

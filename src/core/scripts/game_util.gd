@@ -61,7 +61,6 @@ static func set_block_code(arr: Array[Dictionary], block: BlockAttributes, node:
 
 static func get_bg_color_set(p_set: World.BGcolors) -> Color:
 	var col: Color
-	## TODO: Make selectable variants
 	match p_set:
 		
 		World.BGcolors.WORLD_1:

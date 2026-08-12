@@ -29,7 +29,6 @@ class_name NPCBoard
 @onready var board: Node2D = $Board
 
 
-# TODO Tween and mask, return if no change
 func anim_reveal_name(p_show: bool = true):
 	if label:
 		label.visible = !p_show
@@ -53,7 +52,6 @@ func _ready() -> void:
 	GameLogic.player_interacted_monolog_area.connect(anim_interact)
 	GameMgr.monolog_activated.connect(anim_monolog_active)
 	
-# TODO complete anim
 	GameLogic.cherry_bomb_exploded.connect(func():
 		if !GameLogic.is_stuck:
 			millie.anim_emote(Millie.Emotes.Scared)

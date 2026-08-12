@@ -4,7 +4,6 @@ class_name UIOrderPreview
 var current_level_focussed: int = 0:
 	set(value):
 		current_level_focussed = value
-		#print_debug(value)
 		_try_update()
 
 var tween: Tween
@@ -121,16 +120,6 @@ func reposition_sprites(order_code: Array):
 		
 	current_pos = -1 * ((origin * Util.BLOCK_SIZE) + (Util.BLOCK_SIZE * length * 0.5))
 	center_sprite.position = current_pos + (last_dir * 150.0)
-	#center_sprite.texture = preload("res://assets/world/particle_circle_01.png")
-	
-	#print_debug("current_level_forder_codeussed: %s" % current_level_focussed)
-	#print_debug("max_x: %s" % max_x)
-	#print_debug("min_x: %s" % min_x)
-	#print_debug("max_y: %s" % max_y)
-	#print_debug("min_y: %s" % min_y)
-	#print_debug("l_repos: %s" % l_repos)
-	
-	#center_sprite.position = Vector2.ZERO
 
 func _ready() -> void:
 	var s: Vector2 = (get_parent() as Control).size

@@ -17,6 +17,7 @@ signal choice_2_pressed()
 
 @export var auto_start: bool = true
 @export var one_time: bool = true
+@export var leave_at_expression: bool = false
 @export var disable_player_control: bool = true
 @export var reveal_name_at: int = -1
 
@@ -152,7 +153,7 @@ func _ready() -> void:
 
 		speech_bubble.bubble.size = speech_bubble_size
 		# TODO: Auto-Resize Bubble
-		print("Text size: " + str(displayed_text.length()))
+		#print("Text size: " + str(displayed_text.length()))
 		)
 	
 	await get_tree().create_timer(0.1).timeout
@@ -364,8 +365,9 @@ func stop() -> void:
 		Audio.monolog_off.play()
 
 		monolog_finished.emit()
-
-		character_emotion_set.emit(Millie.Expressions.NEUTRAL, Millie.Eyes.REGULAR)
+	
+		if !leave_at_expression:
+			character_emotion_set.emit(Millie.Expressions.NEUTRAL, Millie.Eyes.REGULAR)
 		
 		speech_bubble.label.text = ""
 		_current_line_index = 0

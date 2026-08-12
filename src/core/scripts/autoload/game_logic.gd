@@ -112,9 +112,6 @@ func check_order_completion() -> void:
 			# Match found
 			match_found = true
 			break
-		#print_debug(
-			#"%s: %s" % [id_node, match_found]
-			#)
 		
 		id_node.anim_satisfied(match_found)
 		if match_found:
@@ -128,10 +125,6 @@ func check_order_completion() -> void:
 		order_loss.emit()
 	
 	last_amount_satisfied = amount_satisfied
-	
-	#print_debug("amount_satisfied: %d" % amount_satisfied)
-	#
-	#print_debug("number_of_order_blocks: %d" % number_of_order_blocks)
 	
 	if amount_satisfied - 1 == number_of_order_blocks:
 		order_met()

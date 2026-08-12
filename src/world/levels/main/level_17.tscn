@@ -166,28 +166,34 @@ offset_left = 176.0
 offset_top = 568.0
 offset_right = 216.0
 offset_bottom = 608.0
-level_info = "Use [color=lightyellow]Arrow Keys[/color]
+level_info = "[color=yellow] Tip:[/color] Use [color=lightyellow]Arrow Keys[/color]
 to Mash in a direction
-when [color=pink]surrounded[/color] by Blocks"
+when [color=pink]surrounded[/color] by mulitple Blocks"
 BBcode_default = "[b][font_size=18.0]"
 
 [node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
+modulate = Color(1, 1, 1, 0)
 offset_right = 232.0
 offset_bottom = 120.0
+scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-23990.438, 2.938103e-12, 4776, 3584)
+region_rect = Rect2(-23.853691, 2.9212343e-15, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 232.0
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
-text = "[b][font_size=18.0]Use [color=lightyellow]Arrow Keys[/color]
+text = "[b][font_size=18.0][color=yellow] Tip:[/color] Use [color=lightyellow]Arrow Keys[/color]
 to Mash in a direction
-when [color=pink]surrounded[/color] by Blocks"
-visible_characters = 63
+when [color=pink]surrounded[/color] by mulitple Blocks"
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
+[node name="InfoSpriteNode" parent="World/LevelInfo" index="2" unique_id=1221176953]
+visible = false
+
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
 position = Vector2(232, 90)
 rotation = 0.026156971
 

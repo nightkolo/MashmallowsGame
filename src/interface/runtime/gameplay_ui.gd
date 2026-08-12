@@ -44,10 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			match GameMgr.menu_id:
 				
 				GameMgr.MenuID.RUNTIME, GameMgr.MenuID.PAUSE:
-					if GameLogic.has_won:
-						reset_stage() # for controller input
-					else:
-						pause_or_unpause()
+					pause_or_unpause()
 			
 		if event.is_action_pressed("game_reset"):
 			match GameMgr.menu_id:
@@ -59,6 +56,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	GameMgr.current_ui_handler = self
+	
+	GameMgr.game_just_ended.connect(func(): allow_input = false)
 	
 	
 	allow_input = true

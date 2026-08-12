@@ -83,7 +83,7 @@ texture_repeat = 2
 position = Vector2(-11, 1)
 texture = ExtResource("2_nnv04")
 region_enabled = true
-region_rect = Rect2(-16865.316, 2.0655767e-12, 1580, 800)
+region_rect = Rect2(-31384.48, 3.8436485e-12, 1580, 800)
 script = ExtResource("3_f8sg2")
 animate_scroll = true
 scroll_trajectory = 3.141592653589793
@@ -106,8 +106,8 @@ position = Vector2(0, 850)
 
 [node name="Bakery" type="Sprite2D" parent="Artwork/Sprite" unique_id=1605328234]
 unique_name_in_owner = true
-position = Vector2(0, -375)
-scale = Vector2(0.37, 0.37)
+position = Vector2(0, -395)
+scale = Vector2(0.39, 0.39)
 texture = ExtResource("5_dfij4")
 
 [node name="Main" type="MarginContainer" parent="." unique_id=1830294922]

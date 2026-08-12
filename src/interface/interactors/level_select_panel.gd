@@ -88,8 +88,6 @@ func anim_levels_panel(control: NinePatchRect) -> void:
 	var scal := 0.75
 	var s := get_viewport_rect().size.y
 	
-	print_debug("Animating %s" % control)
-	
 	_panel_tween = create_tween().set_parallel(true)
 	_panel_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	

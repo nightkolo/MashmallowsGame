@@ -27,8 +27,6 @@ func anim_explode() ->void:
 	anim_explode_then_free()
 
 
-## TODO Anim
-
 ## @experimental
 func anim_explode_then_free() -> void:
 	sprite_cloud.visible = true
