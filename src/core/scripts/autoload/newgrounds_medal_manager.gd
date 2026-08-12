@@ -156,7 +156,7 @@ func anim_medal_unlocked(medal_id: int = 0) -> void:
 	_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	
 	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 1.0), dur / 2.0)
-	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 0.0), dur * 2.0).set_delay(dur * 2.0)
+	_tween.tween_property(h_box_container, "modulate", Color(Color.WHITE, 0.0), dur * 1.75).set_delay(dur * 1.5)
 	
 	await get_tree().create_timer(dur * 5.0).timeout
 	

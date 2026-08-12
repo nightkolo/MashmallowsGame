@@ -12,7 +12,7 @@ signal credits_btn_pressed()
 @onready var author_text: RichTextLabel = %Authors
 
 var version: String = ProjectSettings.get_setting("application/config/version")
-var version_text: String = "[color=#FFFFFF5A]v%s
+var version_text: String = "[color=#FFFFFFFF]v%s
 [color=#FFFFFFFF][font_size=20.0]© 2026 Night Kolo"
 
 
