@@ -95,6 +95,9 @@ func check_order_completion() -> void:
  	# Worst case -> O(n * m)
 	# n = current_order_code.size(), m = current_player_code.size()
 	for o_entry: Dictionary in current_order_code:
+		if !o_entry.has("ref"):
+			continue
+		
 		var id_node: MashBlockCheckerID = o_entry["ref"] as MashBlockCheckerID
 		
 		if id_node == null:

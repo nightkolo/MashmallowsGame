@@ -2,13 +2,12 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://bdrn7vekstnw8"
-path="res://.godot/imported/test_sample_02.ogg-501ca7b3656759b0fbc8338057c3a9c6.oggvorbisstr"
+uid="uid://dm5wknjxq5ol5"
+valid=false
 
 [deps]
 
 source_file="res://audio/music/test_sample_02.ogg"
-dest_files=["res://.godot/imported/test_sample_02.ogg-501ca7b3656759b0fbc8338057c3a9c6.oggvorbisstr"]
 
 [params]
 

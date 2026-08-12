@@ -12,14 +12,13 @@ signal credits_btn_pressed()
 @onready var author_text: RichTextLabel = %Authors
 
 var version: String = ProjectSettings.get_setting("application/config/version")
-var version_text: String = "[color=#FFFFFFFF]v%s
-[color=#FFFFFFFF][font_size=20.0]© 2026 Night Kolo"
+var version_text: String = "[color=#FFFFFFFF][font_size=20.0]© 2026 Night Kolo"
 
 
 func _ready() -> void:
 	start_btn.grab_focus()
 	
-	author_text.text = version_text % version
+	author_text.text = version_text
 
 	
 	is_showing.connect(func():

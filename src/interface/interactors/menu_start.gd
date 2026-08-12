@@ -23,7 +23,7 @@ func _ready() -> void:
 	else:
 		release = "Demo"
 	
-	version_label.text = "[color=#FFFFFF5A]v" + version
+	version_label.text = "[color=#FFFFFF0F]v" + version
 	
 	authors_text.text = author_info % release
 

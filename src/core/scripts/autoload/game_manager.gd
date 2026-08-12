@@ -70,7 +70,8 @@ func _input(event: InputEvent) -> void:
 		#goto_next_level(-1)
 
 
-const ON_NEWGROUNDS_MIRROR = true
+const ON_NEWGROUNDS_MIRROR = false
+const VER = 100
 
 func _ready() -> void:
 	add_child(saver_loader)
@@ -83,7 +84,11 @@ func _ready() -> void:
 		
 		load_game_medals_data()
 	
-	if !GameData.runtime_data.has("op_a_on"):
+	if !GameData.runtime_data.has("ver"):
+		reset_game_data()
+		
+	elif GameData.runtime_data["ver"] != VER:
+		# TODO Adapt game data
 		reset_game_data()
 	
 	set_adult_filter_on(GameData.runtime_data["op_a_on"])

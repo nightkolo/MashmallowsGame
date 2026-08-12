@@ -1,7 +1,7 @@
 class_name GameData extends Node
 static func get_star_count() -> int:
 	var c: int = 0
-	for i in range(1, Util.NUMBER_OF_LEVELS):
+	for i in range(1, Util.NUMBER_OF_LEVELS + 1):
 		if runtime_data[str(i)]["completed"] == true:
 			c += 1
 	return c
@@ -79,7 +79,8 @@ static var runtime_data: Dictionary = {
 	"mashes_made": 0,
 	"op_sfx_muted": false,
 	"op_music_muted": false,
-	"op_a_on": false
+	"op_a_on": false,
+	"ver": 100
 }
 static var medal_data: Dictionary = {
 	# Progression
@@ -230,6 +231,7 @@ const DEFAULT_GAME_DATA = {
 	"mashes_made": 0,
 	"op_sfx_muted": false,
 	"op_music_muted": false,
-	"op_a_on": false
+	"op_a_on": false,
+	"ver": 100
 }
 # Dear data miners, be nice with the data :)
