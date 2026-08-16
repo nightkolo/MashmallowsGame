@@ -49,26 +49,26 @@ func unlock_a_medal(medal_code: String, medal_id: int, pop_up: bool = false) -> 
 	if pop_up && GameData.medal_data[medal_code] == false:
 		anim_medal_unlocked(medal_id)
 	
-	var res: bool = await NG.medal_unlock(medal_id)
-	
-	if res:
-		## Debug
-		var medals: Array[MedalResource] = await NG.medal_get_list()
-		
-		for medal: MedalResource in medals:
-			if medal.id == medal_id:
-				print("Medal Name: " + str(medal.name) + ". ID: " + str(medal.id) + ". Unlocked: " + str(medal.unlocked))
-				break
-		
-		if GameData.medal_data[medal_code] == false:
-			GameData.medal_data[medal_code] = true
-			
-			print("Medal unlocked (code): ", medal_code)
-			
-			GameMgr.save_game_medals_data()
-		
-	else:
-		print("Could not unlock medal :(")
+	#var res: bool = await NG.medal_unlock(medal_id)
+	#
+	#if res:
+		### Debug
+		#var medals: Array[MedalResource] = await NG.medal_get_list()
+		#
+		#for medal: MedalResource in medals:
+			#if medal.id == medal_id:
+				#print("Medal Name: " + str(medal.name) + ". ID: " + str(medal.id) + ". Unlocked: " + str(medal.unlocked))
+				#break
+		#
+		#if GameData.medal_data[medal_code] == false:
+			#GameData.medal_data[medal_code] = true
+			#
+			#print("Medal unlocked (code): ", medal_code)
+			#
+			#GameMgr.save_game_medals_data()
+		#
+	#else:
+		#print("Could not unlock medal :(")
 	
 
 func update_squats_made() -> void:
@@ -81,7 +81,8 @@ func update_mashes_made() -> void:
 	
 	if p:
 		if p.is_being_flown():
-			await unlock_a_medal("midair", NewgroundsIds.MedalId.PopAndLock, true)
+			pass
+			#await unlock_a_medal("midair", NewgroundsIds.MedalId.PopAndLock, true)
 	
 	if GameData.runtime_data.has("mashes_made"):
 		GameData.runtime_data["mashes_made"] += 1
@@ -91,23 +92,28 @@ func check_player_stat_medals() -> void:
 	if GameData.runtime_data.has("squats_made") && GameData.runtime_data.has("mashes_made"):
 #
 		if GameData.runtime_data["squats_made"] > 50:
-			await unlock_a_medal("100squat", NewgroundsIds.MedalId.BigButt, true)
+			pass
+			#await unlock_a_medal("100squat", NewgroundsIds.MedalId.BigButt, true)
 			
 		if GameData.runtime_data["mashes_made"] > 200:
-			await unlock_a_medal("200mash", NewgroundsIds.MedalId.ILikeToMash, true)
+			pass
+			#await unlock_a_medal("200mash", NewgroundsIds.MedalId.ILikeToMash, true)
 
 
 func check_board_progression_medals() -> void:
 	if GameData.runtime_data.has("101") && GameData.runtime_data.has("102"):
 
 		if GameData.runtime_data["101"]["completed"] == true:
-			await unlock_a_medal("b1_comp", NewgroundsIds.MedalId.FirstBakeryComplete, true)
+			pass
+			#await unlock_a_medal("b1_comp", NewgroundsIds.MedalId.FirstBakeryComplete, true)
 				
 		if GameData.runtime_data["102"]["completed"] == true:
-			await unlock_a_medal("b2_comp", NewgroundsIds.MedalId.SecondBakeryComplete, true)
+			pass
+			#await unlock_a_medal("b2_comp", NewgroundsIds.MedalId.SecondBakeryComplete, true)
 		
 		if GameData.runtime_data["101"]["completed"] == true && GameData.runtime_data["102"]["completed"] == true:
-			await unlock_a_medal("game_comp", NewgroundsIds.MedalId.GotTheWholeBakery, true)
+			pass
+			#await unlock_a_medal("game_comp", NewgroundsIds.MedalId.GotTheWholeBakery, true)
 
 
 
@@ -138,10 +144,10 @@ func anim_medal_unlocked(medal_id: int = 0) -> void:
 	if _tween:
 		_tween.kill()
 	
-	var m_res: MedalResource = NG.get_medal_resource(medal_id)
-	
-	var medal_name: String = '"%s"' % m_res.name
-	label_2.text = medal_name
+	#var m_res: MedalResource = NG.get_medal_resource(medal_id)
+	#
+	#var medal_name: String = '"%s"' % m_res.name
+	#label_2.text = medal_name
 	
 	Audio.medal_unlock.play()
 	visible = true

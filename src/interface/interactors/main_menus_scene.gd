@@ -87,7 +87,7 @@ func _ready() -> void:
 
 func _unlock_credits_medal() -> void:
 	pass
-	await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity, true)
+	#await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity, true)
 
 
 func enter_main_menu(p_menu: MainMenus) -> void:
@@ -247,17 +247,17 @@ func _reset_tween_fade_in() -> void:
 #func _unlock_credits_medal() -> void:
 	#if GameData.medal_data.has("curiosity") && MedalMgr:
 		#if GameData.medal_data["curiosity"] == false: 
-			#MedalMgr.anim_medal_unlocked()
+			##MedalMgr.anim_medal_unlocked()
 		#
-	#await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity)
+	#await #MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity)
 
 
 #func _unlock_halls_medal() -> void:
 	#if GameData.medal_data.has("halls") && MedalMgr:
 		#if GameData.medal_data["halls"] == false: 
-			#MedalMgr.anim_medal_unlocked()
+			##MedalMgr.anim_medal_unlocked()
 		#
-	#await MedalMgr.unlock_a_medal("halls", NewgroundsIds.MedalId.RunningInTheHalls)
+	#await #MedalMgr.unlock_a_medal("halls", NewgroundsIds.MedalId.RunningInTheHalls)
 
 
 #var tween_text: Tween

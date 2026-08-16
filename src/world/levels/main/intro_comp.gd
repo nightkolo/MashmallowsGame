@@ -59,7 +59,8 @@ func return_run() -> void:
 
 
 func _unlock_safe_medal() -> void:
-	await MedalMgr.unlock_a_medal("safe", NewgroundsIds.MedalId.YouMenace)
+	pass
+	#await MedalMgr.unlock_a_medal("safe", NewgroundsIds.MedalId.YouMenace)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -130,10 +131,12 @@ func _ready() -> void:
 	# text_2.pivot_offset_ratio = Vector2.ONE * 0.5
 	# text_2.scale = Vector2(0.0, -0.5)
 	monolog.choice_1_pressed.connect(func():
-		await MedalMgr.unlock_a_medal("bitten", NewgroundsIds.MedalId.YouMenace)
+		pass
+		#await MedalMgr.unlock_a_medal("bitten", NewgroundsIds.MedalId.YouMenace)
 		)
 	monolog.choice_2_pressed.connect(func():
-		await MedalMgr.unlock_a_medal("safe", NewgroundsIds.MedalId.GoodEnding)
+		pass
+		#await MedalMgr.unlock_a_medal("safe", NewgroundsIds.MedalId.GoodEnding)
 		)
 
 	monolog.monolog_finished.connect(func():
