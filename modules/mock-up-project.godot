@@ -11,11 +11,13 @@ config_version=5
 [application]
 
 config/name="Mashmallows"
-config/version="1.0.1-NG"
+config/version="1.0.0-Desktop"
 run/main_scene="uid://cxbpqh6onu3ar"
 config/features=PackedStringArray("4.6", "Mobile")
+run/max_fps=60
 boot_splash/image="uid://lnkxtfx3154f"
 config/icon="uid://cdnyihi1860wv"
+config/windows_native_icon="res://assets/engine/icon.ico"
 
 [audio]
 
@@ -29,8 +31,6 @@ GameMgr="*uid://do5s7j3sonrxq"
 Trans="*uid://bqe6pedspolx4"
 MedalMgr="*uid://h4p3r0qfbuy2"
 InputPrompts="*uid://c0c8563nf3to3"
-NG="*uid://cx0lbddb6da4w"
-NGCloudSave="*uid://b7g1k2gu4cpve"
 
 [debug]
 
@@ -40,7 +40,7 @@ gdscript/warnings/unused_signal=0
 
 [display]
 
-window/size/viewport_width=1280
+window/size/viewport_width=1422
 window/size/viewport_height=800
 window/size/window_width_override=1920
 window/size/window_height_override=1200
@@ -49,10 +49,6 @@ window/stretch/mode="canvas_items"
 [editor]
 
 movie_writer/movie_file="/Users/kolo/Documents/Dev/Godot/mashmallows/src/record/input.avi"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/newgrounds/plugin.cfg")
 
 [file_customization]
 
