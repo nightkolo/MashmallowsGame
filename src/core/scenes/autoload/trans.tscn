@@ -134,13 +134,13 @@ visible = false
 
 [node name="Up" type="ColorRect" parent="Trans1" unique_id=1287711765]
 offset_top = -400.0
-offset_right = 1280.0
+offset_right = 1423.0
 color = Color(0, 0, 0, 1)
 
 [node name="Down" type="ColorRect" parent="Trans1" unique_id=604253936]
 offset_top = 800.0
-offset_right = 1280.0
-offset_bottom = 1200.0005
+offset_right = 1423.0
+offset_bottom = 1200.0
 color = Color(0, 0, 0, 1)
 
 [node name="Trans2" type="Node2D" parent="." unique_id=1222399744]
@@ -149,7 +149,7 @@ visible = false
 [node name="Node2D" type="Node2D" parent="Trans2" unique_id=1816131517]
 
 [node name="ColorRect" type="ColorRect" parent="Trans2/Node2D" unique_id=1002991023]
-offset_right = 1280.0
+offset_right = 1423.0
 offset_bottom = 800.0
 
 [node name="Trans3" type="Node2D" parent="." unique_id=642743145]
@@ -158,6 +158,6 @@ visible = false
 [node name="Node2D" type="Node2D" parent="Trans3" unique_id=649722945]
 
 [node name="ColorRect" type="ColorRect" parent="Trans3/Node2D" unique_id=1972198435]
-offset_right = 1280.0
+offset_right = 1423.0
 offset_bottom = 800.0
 color = Color(0.10980392, 0.03137255, 0.13333334, 1)

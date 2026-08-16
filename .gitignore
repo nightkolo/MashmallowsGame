@@ -4,5 +4,6 @@ src/.godot/
 /android/
 devlogs/priv/
 src/export/
+src/builds/
 src/record/
 src/project.godot

@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b4ndvo76fmqy1" path="res://assets/interface/option-sfx.png" id="9_usxwo"]
 [ext_resource type="Texture2D" uid="uid://detdfs04hxy25" path="res://assets/interface/option-adult-filter.png" id="10_o07dq"]
 [ext_resource type="Texture2D" uid="uid://73cne5ae0fv5" path="res://assets/interface/option-music.png" id="10_u8yhx"]
+[ext_resource type="Texture2D" uid="uid://kknsfptwpckr" path="res://assets/interface/flair_arrows_diagonal_all.png" id="11_q0x3i"]
 
 [sub_resource type="Gradient" id="Gradient_ytqxl"]
 offsets = PackedFloat32Array(0.16348195, 1)
@@ -171,7 +172,7 @@ unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-focus_neighbor_left = NodePath("../A")
+focus_neighbor_left = NodePath("../F")
 focus_neighbor_top = NodePath("../../../ReturnButton")
 focus_neighbor_right = NodePath("../Music")
 focus_neighbor_bottom = NodePath("../../../ResumeButton")
@@ -215,7 +216,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Music")
 focus_neighbor_top = NodePath("../../../ReturnButton")
-focus_neighbor_right = NodePath("../SFX")
+focus_neighbor_right = NodePath("../F")
 focus_neighbor_bottom = NodePath("../../../ResumeButton")
 theme_override_font_sizes/font_size = 28
 script = ExtResource("5_b1ou4")
@@ -227,3 +228,23 @@ position = Vector2(25, 25)
 self_modulate = Color(1, 1, 0.735357, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_o07dq")
+
+[node name="F" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=244913301 groups=["UIButton"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../../../ReturnButton")
+focus_neighbor_right = NodePath("../SFX")
+focus_neighbor_bottom = NodePath("../../../ResumeButton")
+theme_override_font_sizes/font_size = 28
+script = ExtResource("5_b1ou4")
+
+[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/F" unique_id=316848442]
+position = Vector2(25, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/F/Node2D" unique_id=1885514014]
+self_modulate = Color(1, 1, 0.735357, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_q0x3i")

@@ -28,7 +28,7 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_yjfax"]
 gradient = SubResource("Gradient_trhp8")
-width = 1280
+width = 1422
 height = 800
 fill = 2
 fill_from = Vector2(0.5, 0.5)
@@ -89,7 +89,7 @@ script = ExtResource("1_gxkgx")
 self_modulate = Color(0.10980392, 0.03137255, 0.13333334, 1)
 texture_repeat = 2
 layout_mode = 0
-offset_right = 1280.0
+offset_right = 1422.0
 offset_bottom = 800.0
 texture = SubResource("GradientTexture2D_lol1l")
 expand_mode = 1
@@ -143,7 +143,7 @@ color_ramp = SubResource("Gradient_yjfax")
 [node name="Shade" type="Sprite2D" parent="." unique_id=1098441663]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0.3)
-position = Vector2(640, 400)
+position = Vector2(715, 400)
 texture = SubResource("GradientTexture2D_yjfax")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=613171617]

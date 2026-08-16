@@ -9,6 +9,7 @@ signal option_entered(option: String)
 @onready var sfx_icon: Sprite2D = $SFX/Node2D/Sprite2D
 @onready var music_icon: Sprite2D = $Music/Node2D/Sprite2D
 @onready var a_icon: Sprite2D = $A/Node2D/Sprite2D
+@onready var full: Button = %F
 
 
 func _ready() -> void:
@@ -21,6 +22,7 @@ func _ready() -> void:
 	sfx_btn.focus_entered.connect(sfx_text)
 	music_btn.focus_entered.connect(music_text)
 	a_btn.focus_entered.connect(a_text)
+	full.focus_entered.connect(func(): option_entered.emit("Fullscreen"))
 		
 	sfx_btn.pressed.connect(func():
 		var setting : bool = GameMgr.get_game_sfx_muted_setting()
@@ -42,6 +44,16 @@ func _ready() -> void:
 		
 		update_options()
 		a_text()
+		)
+	full.pressed.connect(func():
+		var l_set := DisplayServer.window_get_mode()
+		
+		if l_set >= 0 && l_set <= 2:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		
+		option_entered.emit("Fullscreen")
 		)
 
 func sfx_text():

@@ -26,7 +26,7 @@ func _ready() -> void:
 	version_label.text = "[color=#FFFFFF0F]v" + version
 	
 	authors_text.text = author_info % release
-
+	
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("start_game"):
