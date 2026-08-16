@@ -558,10 +558,10 @@ func drop() -> void:
 	animator.anim_down(true)
 	GameLogic.player_squated.emit()
 	
-	if !is_on_ground():
+	if is_on_ground(true):
 		return
 	
-	position.y += 10.0
+	position.y += 35.0
 
 func jump() -> void:
 	if is_exploding:
@@ -601,9 +601,9 @@ func is_on_block() -> bool:
 	
 ## Returns true if the player on ground tilemap, and not other unmashed blocks
 ## -> Worst case, O(n)
-func is_on_ground() -> bool: 
+func is_on_ground(ground_only: bool = false) -> bool: 
 	for block: Mashed in child_blocks:
-		if block.is_on_ground():
+		if block.is_on_ground(ground_only):
 			return true
 	return false
 

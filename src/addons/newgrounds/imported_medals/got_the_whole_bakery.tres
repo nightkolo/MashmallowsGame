@@ -8,6 +8,5 @@ name = "Got the Whole Bakery"
 description = "Complete all the Orders in the game."
 icon_url = "https://apifiles.ngfiles.com/icons/medal_secret.png"
 id = 91683.0
-secret = 1.0
 value = 50.0
 difficulty = 4.0

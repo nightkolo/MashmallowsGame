@@ -168,6 +168,7 @@ func _ready() -> void:
 		var s: Sprite2D = Sprite2D.new()
 		s.scale = Vector2.ONE * 0.4
 		id.sprite_face = s
+		id.sprite_face.self_modulate = Color(Color.WHITE, 0.0)
 		id.add_child(s)
 		
 		mash_block_checker_ids.append(id_node)

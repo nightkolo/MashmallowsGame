@@ -14,8 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://chans4uy22002" path="res://object/objects/player.tscn" id="10_n03s7"]
 [ext_resource type="Script" uid="uid://5cfma5ft813q" path="res://object/scripts/game/level_order.gd" id="10_shjcp"]
 [ext_resource type="Script" uid="uid://b3cwwpsrywrrm" path="res://object/scripts/node_door.gd" id="12_nv3uj"]
+[ext_resource type="PackedScene" uid="uid://ck1gettgytye7" path="res://world/interface/level_info.tscn" id="13_mub42"]
 [ext_resource type="PackedScene" uid="uid://c2otvdkeaywff" path="res://object/objects/door_block.tscn" id="13_n58ur"]
 [ext_resource type="PackedScene" uid="uid://djgv45k3n5ibr" path="res://object/objects/obj_switch.tscn" id="14_qylky"]
+[ext_resource type="PackedScene" uid="uid://c7f3rvl7v62ii" path="res://world/interface/input_prompt.tscn" id="14_xbq60"]
+[ext_resource type="Texture2D" uid="uid://bjfbkepenqn6d" path="res://assets/interface/input-arrow.png" id="15_ol4fs"]
 [ext_resource type="PackedScene" uid="uid://daw4dfhjt0aka" path="res://object/objects/unmashed_spawner.tscn" id="18_shjcp"]
 [ext_resource type="Script" uid="uid://bjkgnwsfk5w6y" path="res://core/resources/game/block_attributes.gd" id="19_mub42"]
 
@@ -63,9 +66,10 @@ script = ExtResource("19_mub42")
 mash_type = 1
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
-[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "player")]
+[node name="Level" type="Node2D" unique_id=1688286197 node_paths=PackedStringArray("level_goal", "level_info", "player")]
 script = ExtResource("1_su11v")
 level_goal = NodePath("World/LevelGoal")
+level_info = NodePath("World/LevelInfo")
 player = NodePath("Player")
 metadata/_custom_type_script = "uid://5fpkm17tw6kn"
 
@@ -181,7 +185,51 @@ position = Vector2(-128, 64)
 attributes = SubResource("Resource_085uh")
 
 [node name="NPCBoard" parent="World" unique_id=1914110685 instance=ExtResource("9_aqv8b")]
-position = Vector2(624, 48)
+position = Vector2(624, 39)
+
+[node name="LevelInfo" parent="World" unique_id=1741767880 node_paths=PackedStringArray("show_sprites") instance=ExtResource("13_mub42")]
+offset_left = 590.0
+offset_top = 208.0
+offset_right = 630.0
+offset_bottom = 248.0
+level_info = " [color=yellow]Tip:[/color] [color=#00000000][D]][/color] to [color=lightpink]Squeeze[/color] In-between [color=lightyellow]Marshmallows"
+show_sprites = [NodePath("InputPrompt")]
+BBcode_default = "[b][font_size=18.0]"
+
+[node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
+offset_right = 232.0
+offset_bottom = 106.0
+
+[node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
+region_rect = Rect2(-8349.009, 1.0224654e-12, 4776, 3584)
+
+[node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
+offset_right = 229.0
+offset_bottom = 105.0
+
+[node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
+text = "[b][font_size=18.0] [color=yellow]Tip:[/color] [color=#00000000][D]][/color] to [color=lightpink]Squeeze[/color] In-between [color=lightyellow]Marshmallows"
+visible_characters = 45
+
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
+position = Vector2(232, 76)
+rotation = 0.09734549
+
+[node name="InputPrompt" parent="World/LevelInfo" unique_id=2128616327 instance=ExtResource("14_xbq60")]
+position = Vector2(81, 29)
+scale = Vector2(0.25, 0.25)
+
+[node name="Base" parent="World/LevelInfo/InputPrompt" index="1" unique_id=736620297]
+position = Vector2(0, -2)
+
+[node name="Spiral" parent="World/LevelInfo/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
+rotation = -2630.4778
+
+[node name="Sprite2D4" type="Sprite2D" parent="World/LevelInfo/InputPrompt/Base" index="3" unique_id=116314505]
+self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+position = Vector2(2, -8)
+rotation = 1.5707964
+texture = ExtResource("15_ol4fs")
 
 [node name="Door" type="StaticBody2D" parent="." unique_id=1154852288]
 position = Vector2(0, -64)
@@ -222,3 +270,5 @@ position = Vector2(1056, 672)
 block_attributes = SubResource("Resource_2hmdl")
 
 [editable path="World/LevelGoal"]
+[editable path="World/LevelInfo"]
+[editable path="World/LevelInfo/InputPrompt"]

@@ -67,8 +67,6 @@ func unlock_a_medal(medal_code: String, medal_id: int, pop_up: bool = false) -> 
 			
 			GameMgr.save_game_medals_data()
 		
-		
-		
 	else:
 		print("Could not unlock medal :(")
 	

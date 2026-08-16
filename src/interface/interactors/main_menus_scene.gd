@@ -86,6 +86,7 @@ func _ready() -> void:
 
 
 func _unlock_credits_medal() -> void:
+	pass
 	await MedalMgr.unlock_a_medal("curiosity", NewgroundsIds.MedalId.Curiosity, true)
 
 

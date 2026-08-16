@@ -158,11 +158,13 @@ level_info = "[color=#00000000][CB][/color]Cherry bombs [color=#ff7f7f][shake ra
 show_sprites = [NodePath("Sprite2D")]
 
 [node name="BubbleContainer" parent="World/LevelInfo" index="0" unique_id=29693961]
+modulate = Color(1, 1, 1, 0)
 offset_right = 240.0
 offset_bottom = 120.0
+scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-14502.213, 1.7760704e-12, 4776, 3584)
+region_rect = Rect2(-16382.845, 2.0063911e-12, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 248.0
@@ -170,13 +172,18 @@ offset_bottom = 256.0
 
 [node name="MonologLabel" parent="World/LevelInfo/LabelContainer" index="0" unique_id=587048025]
 text = "[b][font_size=21.0][color=#00000000][CB][/color]Cherry bombs [color=#ff7f7f][shake rate=15.0 level=18] [color=#00000000][[/color]explode[/shake][/color] when [color=pink]Unmashed.[/color] "
-visible_characters = 40
+visible_characters = 0
+visible_ratio = 0.0
 
-[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" parent_id_path=PackedInt32Array(1741767880, 1221176953) index="0" unique_id=690829696]
+[node name="InfoSpriteNode" parent="World/LevelInfo" index="2" unique_id=1221176953]
+visible = false
+
+[node name="InfoSprite" parent="World/LevelInfo/InfoSpriteNode" index="0" unique_id=690829696]
 position = Vector2(240, 90)
 rotation = 0.14296138
 
 [node name="Sprite2D" type="Sprite2D" parent="World/LevelInfo" unique_id=1482451094]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(42, 30)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("15_354dw")

@@ -39,6 +39,9 @@ func anim_satisfied(satisfied: bool) -> void:
 	
 	is_satisfied = satisfied
 	
+	if sprite_face:
+		sprite_face.self_modulate = Color(Color.WHITE, 1.0)
+	
 	if tween_anim:
 		tween_anim.kill()
 		
@@ -57,6 +60,9 @@ func anim_satisfied(satisfied: bool) -> void:
 		tween_anim.tween_property(s, "scale", Vector2.ONE / 2.0, 1.25).set_trans(Tween.TRANS_ELASTIC)
 
 		tween_anim.tween_property(s, "self_modulate", Color(Color.WHITE), 0.25)
+	
+	if sprite_face:
+		tween_anim.tween_property(sprite_face, "self_modulate", Color(Color.WHITE, 0.0), 0.5).set_delay(0.75)
 	
 	sprite.texture = Util.get_order_block_texture(attributes.mash_type, attributes.build_type, satisfied)
 		

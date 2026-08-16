@@ -62,11 +62,13 @@ func anim_down(input: bool, ignore_state: bool = false) -> void:
 	if input:
 		if player.audio.stretch.playing:
 			player.audio.stretch.stop()
-		player.audio.squash.play()
+		if !player.audio.squash.playing:
+			player.audio.squash.play()
 	else:
 		if player.audio.squash.playing:
 			player.audio.squash.stop()
-		player.audio.stretch.play()
+		if !player.audio.stretch.playing:
+			player.audio.stretch.play()	
 
 	if _tween_down:
 		_tween_down.kill()

@@ -70,7 +70,7 @@ func _input(event: InputEvent) -> void:
 		#goto_next_level(-1)
 
 
-const ON_NEWGROUNDS_MIRROR = false
+const ON_NEWGROUNDS_MIRROR = true
 const VER = 100
 
 func _ready() -> void:
@@ -83,6 +83,8 @@ func _ready() -> void:
 		#NG.on_session_change.connect(session_change)
 		
 		load_game_medals_data()
+	else:
+		MedalMgr.visible = false
 	
 	if !GameData.runtime_data.has("ver"):
 		reset_game_data()
