@@ -67,6 +67,26 @@ mash_type = 1
 build_type = 1
 metadata/_custom_type_script = "uid://bjkgnwsfk5w6y"
 
+[sub_resource type="GDScript" id="GDScript_a01d5"]
+script/source = "extends Area2D
+
+@export var npc: NPCBoard
+
+func _ready() -> void:
+	collision_mask = 2
+	
+	body_entered.connect(func(body: Node2D):
+		if body is Player:
+			var p: Player = body as Player
+			
+			if p.is_being_flown() == false && p.input_x > 0.0:
+				npc.millie.anim_emote(Millie.Emotes.Unmatch)
+		)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0ivk"]
+size = Vector2(290, 489)
+
 [node name="Level" type="Node2D" unique_id=2026468441 node_paths=PackedStringArray("level_goal", "player")]
 script = ExtResource("1_qotri")
 level_goal = NodePath("World/LevelGoal")
@@ -236,5 +256,13 @@ script = ExtResource("17_w0ivk")
 block_to_restrict = NodePath("../UnmashedSpawner")
 player = NodePath("../Player")
 metadata/_custom_type_script = "uid://bd6du812x8r2l"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1363653680 node_paths=PackedStringArray("npc")]
+script = SubResource("GDScript_a01d5")
+npc = NodePath("../World/NPC")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=617649906]
+position = Vector2(924, 220.5)
+shape = SubResource("RectangleShape2D_w0ivk")
 
 [editable path="World/LevelGoal"]

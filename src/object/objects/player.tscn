@@ -98,7 +98,7 @@ wait_time = 15.0
 
 [node name="MashTimer" type="Timer" parent="Timers" unique_id=2131348310]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="PlayerAnimationComponent" type="Node" parent="." unique_id=896765118]

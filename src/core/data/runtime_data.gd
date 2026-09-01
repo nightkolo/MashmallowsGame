@@ -79,7 +79,7 @@ static var runtime_data: Dictionary = {
 	"mashes_made": 0,
 	"op_sfx_muted": false,
 	"op_music_muted": false,
-	"op_a_on": false,
+	"op_a_on": true,
 	"ver": 100
 }
 static var medal_data: Dictionary = {
@@ -231,7 +231,7 @@ const DEFAULT_GAME_DATA = {
 	"mashes_made": 0,
 	"op_sfx_muted": false,
 	"op_music_muted": false,
-	"op_a_on": false,
+	"op_a_on": true,
 	"ver": 100
 }
 # Dear data miners, be nice with the data :)

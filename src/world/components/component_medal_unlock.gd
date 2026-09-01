@@ -5,6 +5,7 @@ class_name MedalUnlockComponent
 
 @export var player: Player
 @export var area: Area2D
+@export var button: Switch
 
 var _has_unmashed: bool = false
 
@@ -25,25 +26,17 @@ func _ready() -> void:
 			
 			2:
 				if _has_unmashed == false:
-					pass
-					#await MedalMgr.unlock_a_medal("1_2", NewgroundsIds.MedalId.AnOrderByTheBook, true)
+					await MedalMgr.unlock_a_medal("1_2", NewgroundsIds.MedalId.AnOrderByTheBook, true)
 					
 			6:
 				if block_to_restrict:
 					if block_to_restrict.taken_no_regen == false:
-						pass
-						#await MedalMgr.unlock_a_medal("1_6", NewgroundsIds.MedalId.Trespassing, true)
+						await MedalMgr.unlock_a_medal("1_6", NewgroundsIds.MedalId.Trespassing, true)
 		
-			13:
-				if block_to_restrict:
-					if block_to_restrict.taken_no_regen == false:
-						pass
-						#await MedalMgr.unlock_a_medal("2_13", NewgroundsIds.MedalId.LoftyToffee, true)
 			
-			20:
+			20: 
 				if _has_unmashed == false:
-					pass
-					#await MedalMgr.unlock_a_medal("2_20", NewgroundsIds.MedalId.TheFloorIsLava, true)
+					await MedalMgr.unlock_a_medal("2_20", NewgroundsIds.MedalId.TheFloorIsLava, true)
 		)
 	
 	await get_tree().create_timer(0.5).timeout
@@ -54,6 +47,13 @@ func _ready() -> void:
 			if player:
 				player.has_unmashed.connect(func():
 					_has_unmashed = true
+					)
+		
+		13:
+			if button:
+				button.body_entered.connect(func(body: Node2D):
+					if body is Unmashed:
+						await MedalMgr.unlock_a_medal("2_13", NewgroundsIds.MedalId.LoftyToffee, true)
 					)
 		
 		20:

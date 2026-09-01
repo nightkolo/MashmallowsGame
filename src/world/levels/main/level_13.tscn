@@ -182,7 +182,7 @@ position = Vector2(864, 480)
 position = Vector2(928, 480)
 
 [node name="Player" parent="." unique_id=1691389058 instance=ExtResource("12_ttc7x")]
-position = Vector2(184, 520)
+position = Vector2(176, 512)
 
 [node name="UnmashedSpawner" parent="." unique_id=1761846739 instance=ExtResource("13_c7yal")]
 position = Vector2(352, 584)
@@ -210,10 +210,10 @@ script = ExtResource("19_vjcht")
 position = Vector2(992, 168)
 shape = SubResource("RectangleShape2D_oasej")
 
-[node name="MedalUnlockComponent" type="Node" parent="." unique_id=756223216 node_paths=PackedStringArray("block_to_restrict", "player")]
+[node name="MedalUnlockComponent" type="Node" parent="." unique_id=756223216 node_paths=PackedStringArray("player", "button")]
 script = ExtResource("20_npbjn")
-block_to_restrict = NodePath("../UnmashedSpawner3")
 player = NodePath("../Player")
+button = NodePath("../Switch")
 metadata/_custom_type_script = "uid://bd6du812x8r2l"
 
 [editable path="World/LevelGoal"]

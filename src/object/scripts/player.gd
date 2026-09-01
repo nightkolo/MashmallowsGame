@@ -102,7 +102,11 @@ var is_active: bool = true:
 		is_active = value
 var is_exploding: bool ## Is during Cherry Bomb explosion animation
 var is_hanging: bool = false
-var is_mashing: bool = false
+var is_mashing: bool = false:
+	set(value):
+		if value:
+			mash_timer.start()
+		is_mashing = value
 var player_blocks_code: Array[Dictionary] = []
 var child_blocks: Array[Mashed] = [] # Stack data structure
 var new_child_blocks: Array[Mashed] # Temporary Stack data structure
@@ -203,6 +207,8 @@ func _ready() -> void:
 
 	## EVENTS
 	# TODO
+	#mash_timer.timeout.connect(func():
+		#)
 	has_landed.connect(func(strength: float):
 		var s := strength / 80.0
 		
@@ -236,6 +242,11 @@ func _ready() -> void:
 		)
 	
 	new_child_blocks.clear()
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	if GameMgr.level_id == 13:
+		mash_timer.wait_time = 0.25
 
 
 # func _ready_dubbleganger() -> void:
@@ -566,6 +577,14 @@ func drop() -> void:
 func jump() -> void:
 	if is_exploding:
 		return
+	
+	if !mash_timer.is_stopped():
+		return
+	
+	if GameMgr.level_id == 13:
+		if !is_on_ground(false):
+			return
+	
 	
 	if audio.fall_sfx.playing:
 		audio.fall_sfx.stop()

@@ -46,7 +46,7 @@ func _ready():
 				return
 			
 			if entered && GameMgr.current_player.is_active:
-				sleep_sfx.volume_db = -14.0
+				sleep_sfx.volume_db = -25.0
 			else:
 				sleep_sfx.volume_db = -80.0
 		)
