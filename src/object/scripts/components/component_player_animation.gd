@@ -87,6 +87,7 @@ func anim_down(input: bool, ignore_state: bool = false) -> void:
 			_tween_down.tween_property(block.node_block_sprites,"scale",Vector2(1.0 + mag,1.0 - mag),dur)
 		else:
 			_tween_down.tween_property(block.node_block_sprites,"position:y",ori + (mag * 60.0),dur)
+			_tween_down.tween_property(block.node_block_sprites,"scale",Vector2(1.0,1.0),dur)
 
 
 

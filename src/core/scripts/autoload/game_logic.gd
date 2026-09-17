@@ -8,6 +8,7 @@ signal player_squated()
 signal player_interacted_monolog_area(entered: bool)
 signal cherry_bomb_exploded()
 #
+signal you_suck()
 signal order_gain(amount: int)
 signal order_loss()
 signal order_complete()
@@ -22,6 +23,12 @@ var is_checking_order_match: bool = false
 var has_won: bool = false
 var is_stuck: bool = false
 
+var number_of_resets: int = 0:
+	set(value):
+		number_of_resets = value
+		if value > 2 && value % 2 != 0:
+			await get_tree().create_timer(0.5).timeout
+			you_suck.emit()
 var number_of_order_blocks: int
 var number_of_blocks: int
 var completion_percentage: float:
@@ -64,6 +71,10 @@ func _ready() -> void:
 	
 	order_complete.connect(func():
 		GameMgr.game_just_ended.emit()
+		)
+		
+	GameMgr.level_entered.connect(func(_p: int):
+		number_of_resets = 0
 		)
 
 

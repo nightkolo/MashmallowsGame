@@ -128,11 +128,11 @@ func _ready() -> void:
 	# text_2.scale = Vector2(0.0, -0.5)
 	monolog.choice_1_pressed.connect(func():
 		# pass
-		await MedalMgr.unlock_a_medal("bitten", NewgroundsIds.MedalId.YouMenace)
+		await MedalMgr.unlock_a_medal("bitten", NewgroundsIds.MedalId.YouMenace, true)
 		)
 	monolog.choice_2_pressed.connect(func():
 		# pass
-		await MedalMgr.unlock_a_medal("safe", NewgroundsIds.MedalId.GoodEnding)
+		await MedalMgr.unlock_a_medal("safe", NewgroundsIds.MedalId.GoodEnding, true)
 		)
 
 	monolog.monolog_finished.connect(func():

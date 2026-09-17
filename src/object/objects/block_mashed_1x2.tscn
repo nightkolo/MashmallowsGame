@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cyfut2pqoyg2y" path="res://assets/objects/block-eyes-side-eye.png" id="12_kdh0o"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_e3omn"]
-points = PackedVector2Array(-15, -60, 15, -60, 30, -45, 30, 45, 15, 60, -15, 60, -30, 45, -30, -45)
+points = PackedVector2Array(-3, -60, 3, -60, 16, -48, 16, 48, 3, 60, -3, 60, -16, 48, -16, -48)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_axj8d"]
 load_path = "res://.godot/imported/block-eyes-closed.png-3f098a97875b32cbda0d0f988693cb56.ctex"

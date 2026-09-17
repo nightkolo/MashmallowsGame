@@ -35,6 +35,9 @@ var level_id: int = 0:
 		elif value == Util.NUMBER_OF_LEVELS:
 			GameData.runtime_data["last_level"] = 0
 		
+		if value != level_id:
+			GameMgr.level_entered.emit(value)
+		
 		level_id = value
 		
 		await get_tree().create_timer(1.0).timeout
@@ -49,6 +52,7 @@ var current_ui_handler: GameplayUI ## @experimental
 var current_level_goal: LevelGoal
 var current_camera: Cam
 
+var is_monolog_active: bool = false
 var game_has_ended: bool
 #var is_monolog_active: bool
 ## Level Begin
@@ -70,7 +74,7 @@ func _input(event: InputEvent) -> void:
 		#goto_next_level(-1)
 
 
-const ON_NEWGROUNDS_MIRROR = false
+const ON_NEWGROUNDS_MIRROR = true
 const VER = 100
 
 func _ready() -> void:
@@ -106,6 +110,11 @@ func _ready() -> void:
 		InputPrompts.tutorial_inputs.visible = false
 		
 		match menu:
+			MenuID.TITLE:
+				GameLogic.number_of_resets = 0
+				is_monolog_active = false
+		
+		match menu:
 			MenuID.WORLD_COMPLETE:
 				InputPrompts.visible = true
 				InputPrompts.select_inputs.visible = true
@@ -131,6 +140,8 @@ func _ready() -> void:
 		)
 	
 	game_just_ended.connect(func():
+		GameLogic.number_of_resets = 0
+		
 		await get_tree().create_timer(Util.ORDER_COMPLETE_WAIT_TIME_BEFORE_TRANSITION).timeout
 		
 		game_end.emit()
@@ -139,8 +150,9 @@ func _ready() -> void:
 	game_end.connect(order_complete)
 		
 	game_reset.connect(func():
-		Trans.reset_level()
+		#Trans.reset_level()
 		
+		GameLogic.number_of_resets += 1
 		#GameLogic.reset_game_logic()
 		#get_tree().reload_current_scene()
 		)

@@ -5,6 +5,7 @@
 extends Marker2D
 class_name UnmashedSpawner
 
+@export var auto_spawn: bool = true
 @export var block_attributes: BlockAttributes ## The block configuration/resource this spawner should create.
 @export var tutorial_block: bool = false ## If [code]true[/code], this block shows a "Press X to Mash" prompt.
 @export var custom_spawn: Node2D = null ## Spawn location in the tree. Default is [member GameMgr.current_level] if not assigned
@@ -53,8 +54,8 @@ func _ready() -> void:
 	if !Engine.is_editor_hint():
 		sprite.self_modulate = Color(Color.WHITE, 0.0)
 	
-	if collision_deflector:
-		colli = collision_deflector.get_node_or_null("CollisionShape2D")
+	#if collision_deflector:
+		#colli = collision_deflector.get_node_or_null("CollisionShape2D")
 	
 	if area:
 		area.collision_layer = 0
@@ -84,16 +85,17 @@ func _deflect_end() -> void:
 			sprite.visible = false
 
 
-func regen() -> void:
-	if has_been_taken:
+func regen(force_regen: bool = false) -> void:
+	if has_been_taken || force_regen:
 		has_been_taken = false
 		await get_tree().create_timer(0.1).timeout
 		
 		if colli && sprite:
 			colli.set_deferred("disabled", false)
 			sprite.visible = true
-		
-		await get_tree().create_timer(0.5).timeout
+			
+		if !force_regen:
+			await get_tree().create_timer(0.5).timeout
 		spawn()
 		
 		

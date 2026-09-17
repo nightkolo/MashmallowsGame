@@ -57,6 +57,8 @@ var is_monolog_active: bool = false:
 		
 		GameMgr.monolog_activated.emit(value)
 		
+		GameMgr.is_monolog_active = value
+		
 		if disable_player_control:
 			if GameMgr.current_player:
 				GameMgr.current_player.is_active = !value

@@ -16,6 +16,7 @@ class_name NPCBoard
 		
 		%Millie.look_at_player = value
 
+@onready var skip_notice: LevelInfo = $LevelInfo
 @onready var interact_notice: ColorRect = %InteractNotice
 @onready var nameplate: ColorRect = %Nameplate
 @onready var node_millie: Node2D = %NodeMillie
@@ -76,6 +77,7 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.1).timeout
 	millie.world = GameMgr.current_level
+	GameMgr.current_level.npc = self
 
 func anim_nameplate():
 	nameplate.pivot_offset_ratio = Vector2.ONE * 0.5

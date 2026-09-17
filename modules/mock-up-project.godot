@@ -11,11 +11,12 @@ config_version=5
 [application]
 
 config/name="Mashmallows"
-config/version="1.0.1-NG"
+config/version="1.2.0-NG"
 run/main_scene="uid://cxbpqh6onu3ar"
 config/features=PackedStringArray("4.6", "Mobile")
 boot_splash/image="uid://lnkxtfx3154f"
 config/icon="uid://cdnyihi1860wv"
+config/windows_native_icon="res://assets/engine/icon.ico"
 
 [audio]
 
@@ -45,6 +46,7 @@ window/size/viewport_height=800
 window/size/window_width_override=1920
 window/size/window_height_override=1200
 window/stretch/mode="canvas_items"
+mouse_cursor/size/viewport_width=1280
 
 [editor]
 

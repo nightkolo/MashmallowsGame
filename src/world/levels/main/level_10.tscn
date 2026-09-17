@@ -203,7 +203,7 @@ offset_bottom = 106.0
 scale = Vector2(0.5, 0.5)
 
 [node name="TiledSprite2D" parent="World/LevelInfo/BubbleContainer/Bubble" parent_id_path=PackedInt32Array(1741767880, 1010957929) index="0" unique_id=1932792285]
-region_rect = Rect2(-2822.284, 3.456296e-13, 4776, 3584)
+region_rect = Rect2(-6555.769, 8.0286326e-13, 4776, 3584)
 
 [node name="LabelContainer" parent="World/LevelInfo" index="1" unique_id=7455025]
 offset_right = 229.0
@@ -230,7 +230,7 @@ scale = Vector2(0.25, 0.25)
 position = Vector2(0, -2)
 
 [node name="Spiral" parent="World/LevelInfo/InputPrompt/Base/Sprite2D2" parent_id_path=PackedInt32Array(2128616327, 206340744) index="0" unique_id=520484544]
-rotation = -2807.808
+rotation = -3219.8506
 
 [node name="Sprite2D4" type="Sprite2D" parent="World/LevelInfo/InputPrompt/Base" index="3" unique_id=116314505]
 self_modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)

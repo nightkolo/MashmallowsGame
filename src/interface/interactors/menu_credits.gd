@@ -4,13 +4,17 @@ class_name CreditsScreen
 @onready var back_btn: Button = %BackButton
 #@onready var chibi_boko: CharacterChibiBoko = $Main2/CharacterChibiBoko
 #@onready var messages: Node2D = $Main2/Messages
+@onready var authors: RichTextLabel = %Authors
 
 @onready var kolo: Label = %Me ## @experimental
 
+var version: String = ProjectSettings.get_setting("application/config/version")
+var version_text: String = "[color=#FFFFFFFF] v%s"
 
 func _ready() -> void:
 	back_btn.grab_focus()
 	
+	authors.text = version_text % version
 	is_showing.connect(func():
 		#for node: Node in messages.get_children():
 			#node.visible = false

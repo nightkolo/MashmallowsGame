@@ -61,12 +61,21 @@ var is_player_close: bool = false:
 var is_at_expand_period: bool = false
 var is_expanding: bool = false
 
+var mash_timer: Timer = Timer.new()
 var _tween_land: Tween
+
 
 func _ready() -> void:
 	set_physics_process(true)
 	process_mode = Node.PROCESS_MODE_INHERIT
 	
+	mash_timer.wait_time = 0.06
+	mash_timer.one_shot = true
+	add_child(mash_timer)
+	
+	GameLogic.player_mashed.connect(func():
+		mash_timer.start()
+		)
 	if was_mashed:
 		anim_unmashed()
 	
@@ -337,7 +346,6 @@ var _last_velocity: Vector2
 var _prev_position: Vector2
 var velocity_position_based: Vector2
 
-
 ## Computes velocity from global_position
 func get_position_based_velocity(global_pos: Vector2, delta: float) -> Vector2:
 	if delta <= 0.0:
@@ -356,7 +364,7 @@ func _physics_process(delta: float) -> void:
 	if !is_on_player() && !is_on_floor():
 		velocity += 0.6 * get_gravity() * delta
 	else:
-		velocity.y = 0.0
+		velocity.x = 0.0
 		
 	# State
 	if !_landed && is_on_floor():
@@ -382,10 +390,10 @@ func _physics_process(delta: float) -> void:
 			elif obj is TileMapLayer:
 				stop_expanding(0.0)
 	
-	if !is_expanding:
+	if !is_expanding && mash_timer.time_left == 0.0:
 		move_and_slide()
 		
-	else:
+	elif is_expanding:
 		var displace: float = (2.0 - EXPAND_TIME) * (attributes.twisted_strength / 4.0)
 		
 		position.y -= displace * 120.0 * delta
@@ -472,8 +480,9 @@ func anim_highlight(highlight_block: bool) -> void:
 	var p: Player = GameMgr.current_player
 	
 	if p:
-		can_mash = p.can_perform_mash()
+		can_mash = p.can_perform_mash() && !get_top_unmashed()
 		sprite_input.visible = !can_mash
+		sprite_input.modulate = Color(Color.WHITE, 1.0)
 		
 		if highlight_block && (randf() > 1.0 / 2.0):
 			sprite_eyes_one.flip_h = signf(global_position.x - p.global_position.x) < 0

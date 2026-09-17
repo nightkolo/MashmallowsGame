@@ -30,8 +30,8 @@ signal check_finished() ## @deprecated
 		is_active = !value
 @export_group("Movement Variables")
 @export_range(-600.0, 600.0, 1.0, "or_greater", "or_less") var speed: float = 440.0
-@export_range(-1500.0, 1500.0, 1.0, "or_greater", "or_less") var acceleration: float = 700.0
-@export_range(-2000.0, 2500.0, 1.0, "or_greater", "or_less") var deceleration: float = 600.0
+@export_range(-1500.0, 1500.0, 1.0, "or_greater", "or_less") var acceleration: float = 500.0
+@export_range(-2000.0, 2500.0, 1.0, "or_greater", "or_less") var deceleration: float = 1600.0
 @export_range(-400.0, 400.0, 1.0, "or_greater", "or_less") var jump_height: float = 1100.0 * 0.95
 @export_group("Appearance")
 @export var show_trail: bool = true
@@ -208,6 +208,7 @@ func _ready() -> void:
 	## EVENTS
 	# TODO
 	#mash_timer.timeout.connect(func():
+		#is_mashing_period = false
 		#)
 	has_landed.connect(func(strength: float):
 		var s := strength / 80.0
@@ -273,9 +274,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_mash"):
 		mash_child_blocks()
 
-		if start_asleep && !is_active:
+		if start_asleep && !is_active && !GameMgr.is_monolog_active:
 			is_active = true
-			wake_up()
+			wake_up(true, true)
 
 	if event.is_action_pressed("move_unmash"):
 		unmash()
@@ -287,7 +288,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		drop()
 
 	if event.is_action_released("move_down"):
-		animator.anim_down(false, true)
+		if is_active:
+			animator.anim_down(false, true)
 
 
 func mash_child_blocks() -> void: ## Ok -> O(n)
@@ -306,6 +308,7 @@ func mash_child_blocks() -> void: ## Ok -> O(n)
 		var res := await block.mash()
 		
 		if res:
+			position.y -= 10.0
 			animator.anim_down(false, true)
 			
 			break
@@ -565,10 +568,8 @@ func hang() -> void:
 func drop() -> void:
 	if !is_active:
 		return
-		
 	animator.anim_down(true)
 	GameLogic.player_squated.emit()
-	
 	if is_on_ground(true):
 		return
 	

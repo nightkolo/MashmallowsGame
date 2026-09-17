@@ -4,9 +4,11 @@ class_name ResetNoticeArea
 
 enum Condition {
 	NO_UNMASHED_IN_AREA = 0, 
-	NO_CHERRY_BOMB_IN_AREA = 1 ## @experimental
+	NO_CHERRY_BOMB_IN_AREA = 1, ## @experimental
+	UNMASHED_IN_AREA = 2 
 	}
 
+@export var respawn: Array[UnmashedSpawner]
 @export var condition: Condition
 @export var blocks_in_area_should_be: int 
 
@@ -22,6 +24,27 @@ func _ready() -> void:
 	
 	body_entered.connect(func(body: Node2D):
 		match condition:
+			
+			Condition.UNMASHED_IN_AREA:
+				# if !(body is Player):
+
+				# 	return
+				# var player := body as Player
+				# var overlapping := get_overlapping_bodies()
+				# var has_unmashed := overlapping.any(func(node):
+				# 	return node is Unmashed
+				# )
+				# if !has_unmashed and player.child_blocks.size() == 1:
+				# 	got_stuck()
+
+				if body is Player:
+					var player := body as Player
+					var bodies: Array[Node2D] = get_overlapping_bodies()
+					
+					if !bodies.filter(func(entry: Node2D): 
+						return entry is Unmashed
+						).is_empty() && player.child_blocks.size() == 1:
+							got_stuck()
 			
 			Condition.NO_UNMASHED_IN_AREA:
 				# if !(body is Player):
@@ -42,7 +65,15 @@ func _ready() -> void:
 					if bodies.filter(func(entry: Node2D): 
 						return entry is Unmashed
 						).is_empty() && player.child_blocks.size() == 1:
-							got_stuck()
+							if respawn.is_empty():
+								got_stuck()
+							else:
+								var n: Node = get_tree().root.get_node_or_null("Level")
+								for m: Node in n.get_children():
+									if m is Unmashed:
+										m.queue_free()
+								for r: UnmashedSpawner in respawn:
+									r.regen(true)
 
 			Condition.NO_CHERRY_BOMB_IN_AREA:
 				pass

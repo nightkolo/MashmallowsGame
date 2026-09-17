@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_0o6nf"]
 script = ExtResource("2_mnqud")
-monolog_line = "Nice task, what a candidate!"
+monolog_line = "[font_size=26.0]Hey there!"
 metadata/_custom_type_script = "uid://c0o6bw7881gjw"
 
 [sub_resource type="Resource" id="Resource_p111g"]

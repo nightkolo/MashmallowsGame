@@ -285,10 +285,13 @@ func mash() -> bool:
 			collided = true
 
 			var block_on_top: Unmashed = unmashed.get_top_unmashed()
-			var spawner: UnmashedSpawner = unmashed.unmashed_spawner as UnmashedSpawner
-			
 			if block_on_top:
-				block_on_top.move_up(5.0)
+				continue
+				
+			var spawner: UnmashedSpawner = unmashed.unmashed_spawner as UnmashedSpawner
+			#
+			#if block_on_top:
+				#block_on_top.move_up(5.0)
 			
 			if spawner:
 				spawner.has_been_taken = true
@@ -321,25 +324,28 @@ func mash() -> bool:
 func _get_unmashed_position(found_at: Vector2, type: Util.BuildType, p_mash: Util.MashType) -> Vector2:
 	var unmash_at: Vector2
 	
+	var x: float = signf(found_at.x) if signf(found_at.x) != 0.0 else 1.0
+	var y: float = signf(found_at.y) if signf(found_at.y) != 0.0 else 1.0
+	
 	match type:
 		
 		Util.BuildType.RECTANGLE:
 			if absf(found_at.y) > absf(found_at.x):
-				unmash_at = Vector2(0.0, signf(found_at.y))
+				unmash_at = Vector2(0.0, y)
 			else:
-				unmash_at = Vector2(signf(found_at.x) ,minf(0.0, signf(found_at.y)))
+				unmash_at = Vector2(x ,minf(0.0, y))
 		
 		Util.BuildType.SQUARE:
 			if p_mash == Util.MashType.TWISTED:
 				if absf(found_at.x) < Util.BLOCK_SIZE * 0.5:
-					unmash_at = Vector2(0.0, signf(found_at.y))
+					unmash_at = Vector2(0.0, y)
 				else:
-					unmash_at = Vector2(signf(found_at.x), 0.0)
+					unmash_at = Vector2(x, 0.0)
 			else:
 				if absf(found_at.x) > absf(found_at.y):
-					unmash_at = Vector2(signf(found_at.x), 0.0)
+					unmash_at = Vector2(x, 0.0)
 				else:
-					unmash_at = Vector2(0.0, signf(found_at.y))
+					unmash_at = Vector2(0.0, y)
 		
 	return unmash_at
 

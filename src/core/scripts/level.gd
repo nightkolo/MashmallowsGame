@@ -26,6 +26,7 @@ class_name Level
 var intro_order: Order
 var saver_loader: SaverLoader
 var has_started: bool = true
+var show_skip_notice: bool = false
 
 var _dev_ui: PackedScene = preload("res://interface/runtime/dev_ui.tscn")
 
@@ -36,6 +37,9 @@ func _ready() -> void:
 	
 	# deflect_spawn_blocks()
 	# Vague error: canvas_item_set_draw_index: Parameter "canvas_item" is null.
+	GameLogic.you_suck.connect(func():
+		show_skip_notice = true
+		)
 
 	if set_for_each:
 		pass
@@ -81,8 +85,6 @@ func _ready() -> void:
 		GameMgr.bakery_id = bakery_id
 		GameMgr.level_id = level_id
 	
-	GameMgr.level_entered.emit(level_id)
-	
 	if show_dev_ui:
 		var ui := _dev_ui.instantiate()
 		
@@ -92,7 +94,8 @@ func _ready() -> void:
 
 func spawn_blocks(p_spawn_speed: float = spawn_anim_time_each) -> void:
 	for spawn: UnmashedSpawner in spawners:
-		await spawn.spawn(-1, p_spawn_speed)
+		if spawn.auto_spawn:
+			await spawn.spawn(-1, p_spawn_speed)
 
 
 func deflect_spawn_blocks() -> void:
@@ -107,7 +110,9 @@ func anim_level() -> void:
 	if auto_spawn_unmashed_blocks:
 		await spawn_blocks()
 	
-	if level_info:
+	if show_skip_notice:
+		npc.skip_notice.start()
+	elif level_info:
 		level_info.start()
 
 	if level_goal:

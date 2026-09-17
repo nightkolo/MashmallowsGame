@@ -109,7 +109,8 @@ func reset_stage() -> void:
 		pass
 	
 	print_debug("Reseting..")
-	
+	GameMgr.game_reset.emit()
+
 	#Audio.play_reset_sound()
 	return_to_run()
 	Trans.reset_level()
