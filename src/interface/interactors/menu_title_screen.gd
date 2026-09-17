@@ -9,6 +9,7 @@ signal credits_btn_pressed()
 @onready var select_stage_btn: Button = %SelectStageButton
 @onready var credits_btn: Button = %CreditsButton
 #@onready var quit_button: Button = %QuitButton
+@onready var credits_button_2: Button = %CreditsButton2
 
 @onready var author_text: RichTextLabel = %Authors
 
@@ -39,6 +40,7 @@ func _ready() -> void:
 	start_btn.pressed.connect(continue_game)
 	select_stage_btn.pressed.connect(goto_select_board)
 	credits_btn.pressed.connect(goto_credits)
+	credits_button_2.pressed.connect(func(): get_tree().quit())
 	#quit_button.pressed.connect(quit_game)
 
 	if GameData.runtime_data.has("last_level"):

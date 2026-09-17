@@ -10,7 +10,7 @@ colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.5)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_p3vyk"]
 gradient = SubResource("Gradient_x5k3i")
-width = 1280
+width = 1422
 height = 800
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -34,12 +34,16 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_dokrb")
 centered = false
 region_enabled = true
-region_rect = Rect2(85.69372, 148.42609, 3200, 2000)
+region_rect = Rect2(967.88806, 1676.3903, 3200, 2000)
 script = ExtResource("4_t8w17")
 animate_scroll = true
 scroll_trajectory = 1.0471975511965976
 metadata/_custom_type_script = "uid://dcwjj5nb0q5s"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=137717849]
-position = Vector2(640, 400)
+position = Vector2(711, 400)
+texture = SubResource("GradientTexture2D_p3vyk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer" unique_id=272808724]
+position = Vector2(711, 400)
 texture = SubResource("GradientTexture2D_p3vyk")

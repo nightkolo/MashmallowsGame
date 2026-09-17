@@ -142,4 +142,3 @@ func update_options() -> void:
 		#pause_info.text = GameplayUI.BBCODE_TXT_NO_MOTION + PAUSE_INFO_BEGIN + str(GameMgr.checkerboard_id) + "-" + str(GameMgr.board_id) + PAUSE_INFO_END
 	#else:
 		#pause_info.text = GameplayUI.BBCODE_TXT + PAUSE_INFO_BEGIN + str(GameMgr.checkerboard_id) + "-" + str(GameMgr.board_id) + PAUSE_INFO_END
-		

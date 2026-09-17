@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b4ndvo76fmqy1" path="res://assets/interface/option-sfx.png" id="9_usxwo"]
 [ext_resource type="Texture2D" uid="uid://detdfs04hxy25" path="res://assets/interface/option-adult-filter.png" id="10_o07dq"]
 [ext_resource type="Texture2D" uid="uid://73cne5ae0fv5" path="res://assets/interface/option-music.png" id="10_u8yhx"]
+[ext_resource type="Texture2D" uid="uid://kknsfptwpckr" path="res://assets/interface/flair_arrows_diagonal_all.png" id="11_q0x3i"]
 
 [sub_resource type="Gradient" id="Gradient_ytqxl"]
 offsets = PackedFloat32Array(0.16348195, 1)
@@ -119,7 +120,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 55)
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_top = NodePath("../VBoxContainer2/AudioOptions/SFX")
 focus_neighbor_bottom = NodePath("../ResetButton")
 text = "Continue"
 script = ExtResource("5_b1ou4")
@@ -150,7 +150,6 @@ custom_minimum_size = Vector2(200, 55)
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../OptionsButton")
-focus_neighbor_bottom = NodePath("../VBoxContainer2/AudioOptions/SFX")
 text = "Go to Menus"
 script = ExtResource("5_b1ou4")
 
@@ -166,11 +165,12 @@ size_flags_vertical = 8
 theme_override_constants/separation = 25
 script = ExtResource("9_ksf64")
 
-[node name="SFX" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=1250700385 groups=["UIButton"]]
+[node name="SFX" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=2147030827 groups=["UIButton"]]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../F")
 focus_neighbor_top = NodePath("../../../ReturnButton")
 focus_neighbor_right = NodePath("../Music")
 focus_neighbor_bottom = NodePath("../../../ResumeButton")
@@ -179,15 +179,15 @@ text = "
 "
 script = ExtResource("5_b1ou4")
 
-[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/SFX" unique_id=144325998]
+[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/SFX" unique_id=948697178]
 position = Vector2(25, 25)
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/SFX/Node2D" unique_id=2128629024]
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/SFX/Node2D" unique_id=732640487]
 self_modulate = Color(1, 1, 0.735357, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_usxwo")
 
-[node name="Music" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=405952188 groups=["UIButton"]]
+[node name="Music" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=2042164200 groups=["UIButton"]]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
@@ -199,30 +199,50 @@ focus_neighbor_bottom = NodePath("../../../ResumeButton")
 theme_override_font_sizes/font_size = 28
 script = ExtResource("5_b1ou4")
 
-[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/Music" unique_id=1911473318]
+[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/Music" unique_id=1171782157]
 position = Vector2(25, 25)
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/Music/Node2D" unique_id=1327074708]
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/Music/Node2D" unique_id=1668497499]
 self_modulate = Color(1, 1, 0.735357, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_u8yhx")
 
-[node name="A" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=1921086884 groups=["UIButton"]]
+[node name="A" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=1348618945 groups=["UIButton"]]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../Music")
 focus_neighbor_top = NodePath("../../../ReturnButton")
+focus_neighbor_right = NodePath("../F")
+focus_neighbor_bottom = NodePath("../../../ResumeButton")
+theme_override_font_sizes/font_size = 28
+script = ExtResource("5_b1ou4")
+
+[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/A" unique_id=913536546]
+position = Vector2(25, 25)
+
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/A/Node2D" unique_id=1073441734]
+self_modulate = Color(1, 1, 0.735357, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_o07dq")
+
+[node name="F" type="Button" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions" unique_id=114541710 groups=["UIButton"]]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_left = NodePath("../A")
+focus_neighbor_top = NodePath("../../../ReturnButton")
 focus_neighbor_right = NodePath("../SFX")
 focus_neighbor_bottom = NodePath("../../../ResumeButton")
 theme_override_font_sizes/font_size = 28
 script = ExtResource("5_b1ou4")
 
-[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/A" unique_id=1074743493]
+[node name="Node2D" type="Node2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/F" unique_id=1903603501]
 position = Vector2(25, 25)
 
-[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/A/Node2D" unique_id=677523292]
+[node name="Sprite2D" type="Sprite2D" parent="PauseMenuAgain/VBoxContainer/Content/VBoxContainer/VBoxContainer/VBoxContainer2/AudioOptions/F/Node2D" unique_id=1725328524]
 self_modulate = Color(1, 1, 0.735357, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_o07dq")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_q0x3i")

@@ -16,6 +16,7 @@ func setup_node() -> void:
 		return
 	
 	drop_notice = notice.instantiate()
+	drop_notice.scale = Vector2.ZERO
 	GameMgr.current_level.add_child.call_deferred(drop_notice)
 
 	var node: Node = children[0]
