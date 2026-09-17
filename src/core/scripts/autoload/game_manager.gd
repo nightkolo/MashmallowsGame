@@ -74,7 +74,7 @@ func _input(event: InputEvent) -> void:
 		#goto_next_level(-1)
 
 
-const ON_NEWGROUNDS_MIRROR = true
+const ON_NEWGROUNDS_MIRROR = false
 const VER = 100
 
 func _ready() -> void:
